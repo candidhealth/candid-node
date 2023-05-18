@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const Tag: core.serialization.ObjectSchema<serializers.Tag.Raw, CandidApi.Tag> = core.serialization

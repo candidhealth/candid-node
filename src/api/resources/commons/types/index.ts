@@ -8,7 +8,7 @@ export * from "./Npi";
 export * from "./LinkUrl";
 export * from "./ContentDownloadUrl";
 export * from "./PageToken";
-export * from "./Date";
+export * from "./Date_";
 export * from "./ResourcePage";
 export * from "./StreetAddressBase";
 export * from "./StreetAddressShortZip";

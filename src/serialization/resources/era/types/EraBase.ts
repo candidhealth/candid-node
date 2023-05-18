@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const EraBase: core.serialization.ObjectSchema<serializers.EraBase.Raw, CandidApi.EraBase> =
@@ -11,13 +11,13 @@ export const EraBase: core.serialization.ObjectSchema<serializers.EraBase.Raw, C
         checkNumber: core.serialization.property("check_number", core.serialization.string()),
         checkDate: core.serialization.property(
             "check_date",
-            core.serialization.lazy(async () => (await import("../../..")).Date)
+            core.serialization.lazy(async () => (await import("../../..")).Date_)
         ),
     });
 
 export declare namespace EraBase {
     interface Raw {
         check_number: string;
-        check_date: serializers.Date.Raw;
+        check_date: serializers.Date_.Raw;
     }
 }

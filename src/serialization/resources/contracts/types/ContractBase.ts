@@ -3,18 +3,18 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const ContractBase: core.serialization.ObjectSchema<serializers.ContractBase.Raw, CandidApi.ContractBase> =
     core.serialization.object({
         effectiveDate: core.serialization.property(
             "effective_date",
-            core.serialization.lazy(async () => (await import("../../..")).Date)
+            core.serialization.lazy(async () => (await import("../../..")).Date_)
         ),
         expirationDate: core.serialization.property(
             "expiration_date",
-            core.serialization.lazy(async () => (await import("../../..")).Date).optional()
+            core.serialization.lazy(async () => (await import("../../..")).Date_).optional()
         ),
         regions: core.serialization.lazy(async () => (await import("../../..")).Regions),
         contractStatus: core.serialization.property(
@@ -29,8 +29,8 @@ export const ContractBase: core.serialization.ObjectSchema<serializers.ContractB
 
 export declare namespace ContractBase {
     interface Raw {
-        effective_date: serializers.Date.Raw;
-        expiration_date?: serializers.Date.Raw | null;
+        effective_date: serializers.Date_.Raw;
+        expiration_date?: serializers.Date_.Raw | null;
         regions: serializers.Regions.Raw;
         contract_status?: serializers.ContractStatus.Raw | null;
         authorized_signatory?: serializers.AuthorizedSignatory.Raw | null;

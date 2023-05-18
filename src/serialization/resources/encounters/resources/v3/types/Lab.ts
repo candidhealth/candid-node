@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const Lab: core.serialization.ObjectSchema<serializers.encounters.v3.Lab.Raw, CandidApi.encounters.v3.Lab> =

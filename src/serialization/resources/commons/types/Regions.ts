@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const Regions: core.serialization.Schema<serializers.Regions.Raw, CandidApi.Regions> = core.serialization
@@ -12,17 +12,8 @@ export const Regions: core.serialization.Schema<serializers.Regions.Raw, CandidA
         national: core.serialization.lazyObject(async () => (await import("../../..")).RegionNational),
     })
     .transform<CandidApi.Regions>({
-        transform: (value) => {
-            switch (value.type) {
-                case "states":
-                    return CandidApi.Regions.states(value);
-                case "national":
-                    return CandidApi.Regions.national(value);
-                default:
-                    return CandidApi.Regions._unknown(value);
-            }
-        },
-        untransform: ({ _visit, ...value }) => value as any,
+        transform: (value) => value,
+        untransform: (value) => value,
     });
 
 export declare namespace Regions {

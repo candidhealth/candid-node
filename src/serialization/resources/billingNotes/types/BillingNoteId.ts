@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const BillingNoteId: core.serialization.Schema<serializers.BillingNoteId.Raw, CandidApi.BillingNoteId> =

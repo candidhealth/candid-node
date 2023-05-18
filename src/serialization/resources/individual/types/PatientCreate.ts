@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const PatientCreate: core.serialization.ObjectSchema<serializers.PatientCreate.Raw, CandidApi.PatientCreate> =
@@ -12,7 +12,7 @@ export const PatientCreate: core.serialization.ObjectSchema<serializers.PatientC
             externalId: core.serialization.property("external_id", core.serialization.string()),
             dateOfBirth: core.serialization.property(
                 "date_of_birth",
-                core.serialization.lazy(async () => (await import("../../..")).Date)
+                core.serialization.lazy(async () => (await import("../../..")).Date_)
             ),
             address: core.serialization.lazyObject(async () => (await import("../../..")).StreetAddressShortZip),
         })
@@ -21,7 +21,7 @@ export const PatientCreate: core.serialization.ObjectSchema<serializers.PatientC
 export declare namespace PatientCreate {
     interface Raw extends serializers.IndividualBase.Raw {
         external_id: string;
-        date_of_birth: serializers.Date.Raw;
+        date_of_birth: serializers.Date_.Raw;
         address: serializers.StreetAddressShortZip.Raw;
     }
 }

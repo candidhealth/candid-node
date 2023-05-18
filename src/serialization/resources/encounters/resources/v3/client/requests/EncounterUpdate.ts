@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../../../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../../../../api";
 import * as core from "../../../../../../../core";
 
 export const EncounterUpdate: core.serialization.Schema<
@@ -22,7 +22,7 @@ export const EncounterUpdate: core.serialization.Schema<
     ),
     dateOfService: core.serialization.property(
         "date_of_service",
-        core.serialization.lazy(async () => (await import("../../../../../..")).Date).optional()
+        core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
     ),
     diagnosisIds: core.serialization.property(
         "diagnosis_ids",
@@ -56,7 +56,7 @@ export declare namespace EncounterUpdate {
     interface Raw {
         prior_authorization_number?: serializers.encounters.v3.PriorAuthorizationNumber.Raw | null;
         external_id?: serializers.EncounterExternalId.Raw | null;
-        date_of_service?: serializers.Date.Raw | null;
+        date_of_service?: serializers.Date_.Raw | null;
         diagnosis_ids?: serializers.DiagnosisId.Raw[] | null;
         tag_ids?: serializers.TagId.Raw[] | null;
         clinical_notes?: serializers.encounters.v3.ClinicalNoteCategoryCreate.Raw[] | null;

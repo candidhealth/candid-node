@@ -3,9 +3,9 @@
  */
 
 import * as core from "../../../../core";
-import { CandidApi } from "";
-import urlJoin from "url-join";
+import * as CandidApi from "../../..";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace ExpectedNetworkStatus {
@@ -16,7 +16,7 @@ export declare namespace ExpectedNetworkStatus {
 }
 
 export class ExpectedNetworkStatus {
-    constructor(private readonly options: ExpectedNetworkStatus.Options) {}
+    constructor(protected readonly options: ExpectedNetworkStatus.Options) {}
 
     public async compute(
         request: CandidApi.ExpectedNetworkStatusRequest
@@ -25,15 +25,24 @@ export class ExpectedNetworkStatus {
             url: urlJoin(this.options.environment, "/api/expected-network-status/v1"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
-            body: await serializers.ExpectedNetworkStatusRequest.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.ExpectedNetworkStatusRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.ExpectedNetworkStatusResponse.parseOrThrow(
-                _response.body as serializers.ExpectedNetworkStatusResponse.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.ExpectedNetworkStatusResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -56,5 +65,9 @@ export class ExpectedNetworkStatus {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this.options.token)}`;
     }
 }

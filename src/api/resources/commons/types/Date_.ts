@@ -5,4 +5,4 @@
 /**
  * ISO 8601 date; formatted YYYY-MM-DD (i.e. 2012-02-01)
  */
-export type Date = string;
+export type Date_ = string;

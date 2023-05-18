@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const ProviderCredentialingSpan: core.serialization.ObjectSchema<
@@ -31,7 +31,7 @@ export const ProviderCredentialingSpan: core.serialization.ObjectSchema<
         dates: core.serialization.lazy(async () => (await import("../../..")).CredentialingSpanDates),
         submittedDate: core.serialization.property(
             "submitted_date",
-            core.serialization.lazy(async () => (await import("../../..")).Date).optional()
+            core.serialization.lazy(async () => (await import("../../..")).Date_).optional()
         ),
         credentialingStatus: core.serialization.property(
             "credentialing_status",
@@ -39,7 +39,7 @@ export const ProviderCredentialingSpan: core.serialization.ObjectSchema<
         ),
         payerLoadedDate: core.serialization.property(
             "payer_loaded_date",
-            core.serialization.lazy(async () => (await import("../../..")).Date).optional()
+            core.serialization.lazy(async () => (await import("../../..")).Date_).optional()
         ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).ProviderCredentialingSpanBase));
@@ -51,8 +51,8 @@ export declare namespace ProviderCredentialingSpan {
         contracting_provider: serializers.organizationProviders.v2.OrganizationProvider.Raw;
         payer: serializers.Payer.Raw;
         dates: serializers.CredentialingSpanDates.Raw;
-        submitted_date?: serializers.Date.Raw | null;
+        submitted_date?: serializers.Date_.Raw | null;
         credentialing_status: serializers.CredentialingSpanStatus.Raw;
-        payer_loaded_date?: serializers.Date.Raw | null;
+        payer_loaded_date?: serializers.Date_.Raw | null;
     }
 }

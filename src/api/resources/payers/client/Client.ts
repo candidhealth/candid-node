@@ -3,10 +3,11 @@
  */
 
 import * as core from "../../../../core";
-import { CandidApi } from "";
+import * as CandidApi from "../../..";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
+import URLSearchParams from "@ungap/url-search-params";
 
 export declare namespace Payers {
     interface Options {
@@ -16,19 +17,27 @@ export declare namespace Payers {
 }
 
 export class Payers {
-    constructor(private readonly options: Payers.Options) {}
+    constructor(protected readonly options: Payers.Options) {}
 
     public async get(payerUuid: string): Promise<CandidApi.Payer> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `/api/payers/v3/${payerUuid}`),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.Payer.parseOrThrow(_response.body as serializers.Payer.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.Payer.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -73,13 +82,21 @@ export class Payers {
             url: urlJoin(this.options.environment, "/api/payers/v3"),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
             queryParameters: _queryParams,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.PayerPage.parseOrThrow(_response.body as serializers.PayerPage.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.PayerPage.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -103,5 +120,9 @@ export class Payers {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this.options.token)}`;
     }
 }

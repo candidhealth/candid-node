@@ -3,7 +3,8 @@
  */
 
 import * as core from "../../../../../../core";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../..";
+import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../../../serialization";
 import * as errors from "../../../../../../errors";
@@ -16,7 +17,7 @@ export declare namespace V3 {
 }
 
 export class V3 {
-    constructor(private readonly options: V3.Options) {}
+    constructor(protected readonly options: V3.Options) {}
 
     public async getAll(
         request: CandidApi.encounters.v3.GetAllEncountersRequest = {}
@@ -94,15 +95,22 @@ export class V3 {
             url: urlJoin(this.options.environment, "/api/encounters/v3"),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
             queryParameters: _queryParams,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.EncounterPage.parseOrThrow(
-                _response.body as serializers.encounters.v3.EncounterPage.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.EncounterPage.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -135,14 +143,21 @@ export class V3 {
             ),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.Encounter.parseOrThrow(
-                _response.body as serializers.encounters.v3.Encounter.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -172,15 +187,24 @@ export class V3 {
             url: urlJoin(this.options.environment, "/api/encounters/v3"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
-            body: await serializers.encounters.v3.EncounterCreate.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.encounters.v3.EncounterCreate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.Encounter.parseOrThrow(
-                _response.body as serializers.encounters.v3.Encounter.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -216,15 +240,24 @@ export class V3 {
             ),
             method: "PATCH",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
-            body: await serializers.encounters.v3.EncounterUpdate.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.encounters.v3.EncounterUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.Encounter.parseOrThrow(
-                _response.body as serializers.encounters.v3.Encounter.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -259,14 +292,21 @@ export class V3 {
             ),
             method: "GET",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.getAttachments.Response.parseOrThrow(
-                _response.body as serializers.encounters.v3.getAttachments.Response.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.getAttachments.Response.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -303,14 +343,21 @@ export class V3 {
             ),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.GenerateClinicalNotesPdfResponse.parseOrThrow(
-                _response.body as serializers.encounters.v3.GenerateClinicalNotesPdfResponse.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.GenerateClinicalNotesPdfResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -348,14 +395,21 @@ export class V3 {
             ),
             method: "PUT",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.NetworkStatusComputationResults.parseOrThrow(
-                _response.body as serializers.encounters.v3.NetworkStatusComputationResults.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.NetworkStatusComputationResults.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -390,14 +444,21 @@ export class V3 {
             ),
             method: "PUT",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
+            contentType: "application/json",
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.MarkAsNotBillableResponse.parseOrThrow(
-                _response.body as serializers.encounters.v3.MarkAsNotBillableResponse.Raw,
-                { allowUnknownKeys: true }
-            );
+            return await serializers.encounters.v3.MarkAsNotBillableResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
@@ -420,5 +481,9 @@ export class V3 {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this.options.token)}`;
     }
 }

@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const OrganizationProvider: core.serialization.ObjectSchema<
@@ -25,11 +25,11 @@ export const OrganizationProvider: core.serialization.ObjectSchema<
         ),
         employmentStartDate: core.serialization.property(
             "employment_start_date",
-            core.serialization.lazy(async () => (await import("../../../../..")).Date).optional()
+            core.serialization.lazy(async () => (await import("../../../../..")).Date_).optional()
         ),
         employmentTerminationDate: core.serialization.property(
             "employment_termination_date",
-            core.serialization.lazy(async () => (await import("../../../../..")).Date).optional()
+            core.serialization.lazy(async () => (await import("../../../../..")).Date_).optional()
         ),
     })
     .extend(
@@ -42,7 +42,7 @@ export declare namespace OrganizationProvider {
     interface Raw extends serializers.organizationProviders.v2.OrganizationProviderBase.Raw {
         organization_provider_id: serializers.organizationProviders.v2.OrganizationProviderId.Raw;
         employment_status: serializers.organizationProviders.v2.EmploymentStatus.Raw;
-        employment_start_date?: serializers.Date.Raw | null;
-        employment_termination_date?: serializers.Date.Raw | null;
+        employment_start_date?: serializers.Date_.Raw | null;
+        employment_termination_date?: serializers.Date_.Raw | null;
     }
 }

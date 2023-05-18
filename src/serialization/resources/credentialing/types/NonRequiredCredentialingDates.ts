@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const NonRequiredCredentialingDates: core.serialization.ObjectSchema<
@@ -12,17 +12,17 @@ export const NonRequiredCredentialingDates: core.serialization.ObjectSchema<
 > = core.serialization.object({
     startDate: core.serialization.property(
         "start_date",
-        core.serialization.lazy(async () => (await import("../../..")).Date).optional()
+        core.serialization.lazy(async () => (await import("../../..")).Date_).optional()
     ),
     endDate: core.serialization.property(
         "end_date",
-        core.serialization.lazy(async () => (await import("../../..")).Date).optional()
+        core.serialization.lazy(async () => (await import("../../..")).Date_).optional()
     ),
 });
 
 export declare namespace NonRequiredCredentialingDates {
     interface Raw {
-        start_date?: serializers.Date.Raw | null;
-        end_date?: serializers.Date.Raw | null;
+        start_date?: serializers.Date_.Raw | null;
+        end_date?: serializers.Date_.Raw | null;
     }
 }

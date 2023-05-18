@@ -16,27 +16,27 @@ export declare namespace CandidApiClient {
 }
 
 export class CandidApiClient {
-    constructor(private readonly options: CandidApiClient.Options) {}
+    constructor(protected readonly options: CandidApiClient.Options) {}
 
-    private _encounters: Encounters | undefined;
+    protected _encounters: Encounters | undefined;
 
     public get encounters(): Encounters {
         return (this._encounters ??= new Encounters(this.options));
     }
 
-    private _billingNotes: BillingNotes | undefined;
+    protected _billingNotes: BillingNotes | undefined;
 
     public get billingNotes(): BillingNotes {
         return (this._billingNotes ??= new BillingNotes(this.options));
     }
 
-    private _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
+    protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
 
     public get expectedNetworkStatus(): ExpectedNetworkStatus {
         return (this._expectedNetworkStatus ??= new ExpectedNetworkStatus(this.options));
     }
 
-    private _payers: Payers | undefined;
+    protected _payers: Payers | undefined;
 
     public get payers(): Payers {
         return (this._payers ??= new Payers(this.options));

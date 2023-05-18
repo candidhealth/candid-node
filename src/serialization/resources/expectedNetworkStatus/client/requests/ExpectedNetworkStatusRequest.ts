@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../../api";
 import * as core from "../../../../../core";
 
 export const ExpectedNetworkStatusRequest: core.serialization.Schema<
@@ -27,7 +27,7 @@ export const ExpectedNetworkStatusRequest: core.serialization.Schema<
     ),
     dateOfService: core.serialization.property(
         "date_of_service",
-        core.serialization.lazy(async () => (await import("../../../..")).Date)
+        core.serialization.lazy(async () => (await import("../../../..")).Date_)
     ),
 });
 
@@ -42,6 +42,6 @@ export declare namespace ExpectedNetworkStatusRequest {
         billing_provider_tin: string;
         rendering_provider_npi: string;
         contracted_state: serializers.State.Raw;
-        date_of_service: serializers.Date.Raw;
+        date_of_service: serializers.Date_.Raw;
     }
 }

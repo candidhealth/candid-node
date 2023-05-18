@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const CredentialingSpanDates: core.serialization.Schema<
@@ -19,17 +19,8 @@ export const CredentialingSpanDates: core.serialization.Schema<
         ),
     })
     .transform<CandidApi.CredentialingSpanDates>({
-        transform: (value) => {
-            switch (value.type) {
-                case "required_dates":
-                    return CandidApi.CredentialingSpanDates.requiredDates(value);
-                case "non_required_dates":
-                    return CandidApi.CredentialingSpanDates.nonRequiredDates(value);
-                default:
-                    return CandidApi.CredentialingSpanDates._unknown(value);
-            }
-        },
-        untransform: ({ _visit, ...value }) => value as any,
+        transform: (value) => value,
+        untransform: (value) => value,
     });
 
 export declare namespace CredentialingSpanDates {

@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const GenerateClinicalNotesPdfResponse: core.serialization.Schema<
@@ -16,15 +16,8 @@ export const GenerateClinicalNotesPdfResponse: core.serialization.Schema<
         ),
     })
     .transform<CandidApi.encounters.v3.GenerateClinicalNotesPdfResponse>({
-        transform: (value) => {
-            switch (value.result) {
-                case "success":
-                    return CandidApi.encounters.v3.GenerateClinicalNotesPdfResponse.success(value);
-                default:
-                    return CandidApi.encounters.v3.GenerateClinicalNotesPdfResponse._unknown(value);
-            }
-        },
-        untransform: ({ _visit, ...value }) => value as any,
+        transform: (value) => value,
+        untransform: (value) => value,
     });
 
 export declare namespace GenerateClinicalNotesPdfResponse {

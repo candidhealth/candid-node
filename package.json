@@ -1,26 +1,17 @@
 {
     "name": "",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": false,
     "repository": "https://github.com/candidhealth/candid-node",
-    "files": [
-        "Client.d.ts",
-        "Client.js",
-        "index.d.ts",
-        "index.js",
-        "api",
-        "core",
-        "errors",
-        "serialization"
-    ],
     "main": "./index.js",
     "types": "./index.d.ts",
     "scripts": {
         "format": "prettier --write 'src/**/*.ts'",
-        "build": "tsc && tsc-alias",
+        "build": "tsc",
         "prepack": "cp -rv dist/. ."
     },
     "dependencies": {
+        "@ungap/url-search-params": "0.2.2",
         "url-join": "4.0.1",
         "@types/url-join": "4.0.1",
         "js-base64": "3.7.2",
@@ -29,7 +20,6 @@
     "devDependencies": {
         "@types/node": "17.0.33",
         "prettier": "2.7.1",
-        "tsc-alias": "1.7.1",
         "typescript": "4.6.4"
     }
 }

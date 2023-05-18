@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const ResourcePage: core.serialization.ObjectSchema<serializers.ResourcePage.Raw, CandidApi.ResourcePage> =

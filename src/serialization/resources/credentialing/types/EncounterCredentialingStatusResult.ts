@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const EncounterCredentialingStatusResult: core.serialization.Schema<
@@ -17,17 +17,8 @@ export const EncounterCredentialingStatusResult: core.serialization.Schema<
         not_credentialed: core.serialization.object({}),
     })
     .transform<CandidApi.EncounterCredentialingStatusResult>({
-        transform: (value) => {
-            switch (value.type) {
-                case "credentialed":
-                    return CandidApi.EncounterCredentialingStatusResult.credentialed(value);
-                case "not_credentialed":
-                    return CandidApi.EncounterCredentialingStatusResult.notCredentialed();
-                default:
-                    return CandidApi.EncounterCredentialingStatusResult._unknown(value);
-            }
-        },
-        untransform: ({ _visit, ...value }) => value as any,
+        transform: (value) => value,
+        untransform: (value) => value,
     });
 
 export declare namespace EncounterCredentialingStatusResult {

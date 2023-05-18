@@ -13,9 +13,9 @@ export declare namespace Encounters {
 }
 
 export class Encounters {
-    constructor(private readonly options: Encounters.Options) {}
+    constructor(protected readonly options: Encounters.Options) {}
 
-    private _v3: V3 | undefined;
+    protected _v3: V3 | undefined;
 
     public get v3(): V3 {
         return (this._v3 ??= new V3(this.options));

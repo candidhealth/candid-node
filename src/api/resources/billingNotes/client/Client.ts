@@ -3,9 +3,9 @@
  */
 
 import * as core from "../../../../core";
-import { CandidApi } from "";
-import urlJoin from "url-join";
+import * as CandidApi from "../../..";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace BillingNotes {
@@ -16,20 +16,30 @@ export declare namespace BillingNotes {
 }
 
 export class BillingNotes {
-    constructor(private readonly options: BillingNotes.Options) {}
+    constructor(protected readonly options: BillingNotes.Options) {}
 
     public async create(request: CandidApi.StandaloneBillingNoteCreate): Promise<CandidApi.BillingNote> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "/api/billing_notes/v2"),
             method: "POST",
             headers: {
-                Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "",
+                "X-Fern-SDK-Version": "0.0.2",
             },
-            body: await serializers.StandaloneBillingNoteCreate.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.StandaloneBillingNoteCreate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.BillingNote.parseOrThrow(_response.body as serializers.BillingNote.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.BillingNote.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -53,5 +63,9 @@ export class BillingNotes {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getAuthorizationHeader() {
+        return `Bearer ${await core.Supplier.get(this.options.token)}`;
     }
 }

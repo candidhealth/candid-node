@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const Invoice: core.serialization.ObjectSchema<serializers.Invoice.Raw, CandidApi.Invoice> =
@@ -24,7 +24,7 @@ export const Invoice: core.serialization.ObjectSchema<serializers.Invoice.Raw, C
         note: core.serialization.string().optional(),
         dueDate: core.serialization.property(
             "due_date",
-            core.serialization.lazy(async () => (await import("../../..")).Date)
+            core.serialization.lazy(async () => (await import("../../..")).Date_)
         ),
         status: core.serialization.lazy(async () => (await import("../../..")).InvoiceStatus),
         url: core.serialization.string().optional(),
@@ -44,7 +44,7 @@ export declare namespace Invoice {
         source_customer_id: string;
         patient_external_id: serializers.PatientExternalId.Raw;
         note?: string | null;
-        due_date: serializers.Date.Raw;
+        due_date: serializers.Date_.Raw;
         status: serializers.InvoiceStatus.Raw;
         url?: string | null;
         customer_invoice_url?: string | null;

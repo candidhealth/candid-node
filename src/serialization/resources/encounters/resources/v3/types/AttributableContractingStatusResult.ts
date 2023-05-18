@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "../../../../..";
-import { CandidApi } from "";
+import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const AttributableContractingStatusResult: core.serialization.Schema<
@@ -20,19 +20,8 @@ export const AttributableContractingStatusResult: core.serialization.Schema<
         unknown: core.serialization.object({}),
     })
     .transform<CandidApi.encounters.v3.AttributableContractingStatusResult>({
-        transform: (value) => {
-            switch (value.contractingStatus) {
-                case "out_of_network":
-                    return CandidApi.encounters.v3.AttributableContractingStatusResult.outOfNetwork(value);
-                case "in_network":
-                    return CandidApi.encounters.v3.AttributableContractingStatusResult.inNetwork(value);
-                case "unknown":
-                    return CandidApi.encounters.v3.AttributableContractingStatusResult.unknown();
-                default:
-                    return CandidApi.encounters.v3.AttributableContractingStatusResult._unknown(value);
-            }
-        },
-        untransform: ({ _visit, ...value }) => value as any,
+        transform: (value) => value,
+        untransform: (value) => value,
     });
 
 export declare namespace AttributableContractingStatusResult {
