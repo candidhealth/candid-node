@@ -9,7 +9,10 @@ import * as core from "../../../../../../core";
 export const ProviderId: core.serialization.Schema<
     serializers.encounterProviders.v2.ProviderId.Raw,
     CandidApi.encounterProviders.v2.ProviderId
-> = core.serialization.string();
+> = core.serialization.string().transform({
+    transform: CandidApi.encounterProviders.v2.ProviderId,
+    untransform: (value) => value,
+});
 
 export declare namespace ProviderId {
     type Raw = string;

@@ -6,8 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const ClaimId: core.serialization.Schema<serializers.ClaimId.Raw, CandidApi.ClaimId> =
-    core.serialization.string();
+export const ClaimId: core.serialization.Schema<serializers.ClaimId.Raw, CandidApi.ClaimId> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.ClaimId,
+        untransform: (value) => value,
+    });
 
 export declare namespace ClaimId {
     type Raw = string;

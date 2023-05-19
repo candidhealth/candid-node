@@ -6,7 +6,6 @@ import * as core from "../../../../core";
 import * as CandidApi from "../../..";
 import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
 
 export declare namespace ExpectedNetworkStatus {
     interface Options {
@@ -20,15 +19,17 @@ export class ExpectedNetworkStatus {
 
     public async compute(
         request: CandidApi.ExpectedNetworkStatusRequest
-    ): Promise<CandidApi.ExpectedNetworkStatusResponse> {
+    ): Promise<
+        core.APIResponse<CandidApi.ExpectedNetworkStatusResponse, CandidApi.expectedNetworkStatus.compute.Error>
+    > {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "/api/expected-network-status/v1"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             body: await serializers.ExpectedNetworkStatusRequest.jsonOrThrow(request, {
@@ -37,34 +38,21 @@ export class ExpectedNetworkStatus {
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.ExpectedNetworkStatusResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.ExpectedNetworkStatusResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.expectedNetworkStatus.compute.Error._unknown(_response.error),
+        };
     }
 
     protected async _getAuthorizationHeader() {

@@ -9,7 +9,10 @@ import * as core from "../../../../../../core";
 export const IntakeQuestionId: core.serialization.Schema<
     serializers.encounters.v3.IntakeQuestionId.Raw,
     CandidApi.encounters.v3.IntakeQuestionId
-> = core.serialization.string();
+> = core.serialization.string().transform({
+    transform: CandidApi.encounters.v3.IntakeQuestionId,
+    untransform: (value) => value,
+});
 
 export declare namespace IntakeQuestionId {
     type Raw = string;

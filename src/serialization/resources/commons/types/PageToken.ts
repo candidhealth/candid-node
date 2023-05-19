@@ -6,8 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const PageToken: core.serialization.Schema<serializers.PageToken.Raw, CandidApi.PageToken> =
-    core.serialization.string();
+export const PageToken: core.serialization.Schema<serializers.PageToken.Raw, CandidApi.PageToken> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.PageToken,
+        untransform: (value) => value,
+    });
 
 export declare namespace PageToken {
     type Raw = string;

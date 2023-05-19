@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../../../serialization";
-import * as errors from "../../../../../../errors";
 
 export declare namespace V3 {
     interface Options {
@@ -21,7 +20,7 @@ export class V3 {
 
     public async getAll(
         request: CandidApi.encounters.v3.GetAllEncountersRequest = {}
-    ): Promise<CandidApi.encounters.v3.EncounterPage> {
+    ): Promise<core.APIResponse<CandidApi.encounters.v3.EncounterPage, CandidApi.encounters.v3.getAll.Error>> {
         const {
             limit,
             claimStatus,
@@ -97,45 +96,34 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.EncounterPage.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.EncounterPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.getAll.Error._unknown(_response.error),
+        };
     }
 
-    public async get(encounterId: CandidApi.EncounterId): Promise<CandidApi.encounters.v3.Encounter> {
+    public async get(
+        encounterId: CandidApi.EncounterId
+    ): Promise<core.APIResponse<CandidApi.encounters.v3.Encounter, CandidApi.encounters.v3.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment,
@@ -145,52 +133,41 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.get.Error._unknown(_response.error),
+        };
     }
 
-    public async create(request: CandidApi.encounters.v3.EncounterCreate): Promise<CandidApi.encounters.v3.Encounter> {
+    public async create(
+        request: CandidApi.encounters.v3.EncounterCreate
+    ): Promise<core.APIResponse<CandidApi.encounters.v3.Encounter, CandidApi.encounters.v3.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "/api/encounters/v3"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             body: await serializers.encounters.v3.EncounterCreate.jsonOrThrow(request, {
@@ -199,40 +176,27 @@ export class V3 {
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.create.Error._unknown(_response.error),
+        };
     }
 
     public async update(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounters.v3.EncounterUpdate = {}
-    ): Promise<CandidApi.encounters.v3.Encounter> {
+    ): Promise<core.APIResponse<CandidApi.encounters.v3.Encounter, CandidApi.encounters.v3.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment,
@@ -242,8 +206,8 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             body: await serializers.encounters.v3.EncounterUpdate.jsonOrThrow(request, {
@@ -252,39 +216,28 @@ export class V3 {
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.Encounter.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.update.Error._unknown(_response.error),
+        };
     }
 
     public async getAttachments(
         encounterId: CandidApi.EncounterId
-    ): Promise<CandidApi.encounters.v3.EncounterAttachment[]> {
+    ): Promise<
+        core.APIResponse<CandidApi.encounters.v3.EncounterAttachment[], CandidApi.encounters.v3.getAttachments.Error>
+    > {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment,
@@ -294,46 +247,38 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.getAttachments.Response.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.getAttachments.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.getAttachments.Error._unknown(_response.error),
+        };
     }
 
     public async generateClinicalNotesPdf(
         encounterId: CandidApi.EncounterId
-    ): Promise<CandidApi.encounters.v3.GenerateClinicalNotesPdfResponse> {
+    ): Promise<
+        core.APIResponse<
+            CandidApi.encounters.v3.GenerateClinicalNotesPdfResponse,
+            CandidApi.encounters.v3.generateClinicalNotesPdf.Error
+        >
+    > {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment,
@@ -345,41 +290,28 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.GenerateClinicalNotesPdfResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.GenerateClinicalNotesPdfResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.generateClinicalNotesPdf.Error._unknown(_response.error),
+        };
     }
 
     /**
@@ -387,7 +319,12 @@ export class V3 {
      */
     public async recomputeNetworkStatusResults(
         encounterId: CandidApi.EncounterId
-    ): Promise<CandidApi.encounters.v3.NetworkStatusComputationResults> {
+    ): Promise<
+        core.APIResponse<
+            CandidApi.encounters.v3.NetworkStatusComputationResults,
+            CandidApi.encounters.v3.recomputeNetworkStatusResults.Error
+        >
+    > {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment,
@@ -397,46 +334,38 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.NetworkStatusComputationResults.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.NetworkStatusComputationResults.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.recomputeNetworkStatusResults.Error._unknown(_response.error),
+        };
     }
 
     public async markAsNotBillable(
         encounterId: CandidApi.EncounterId
-    ): Promise<CandidApi.encounters.v3.MarkAsNotBillableResponse> {
+    ): Promise<
+        core.APIResponse<
+            CandidApi.encounters.v3.MarkAsNotBillableResponse,
+            CandidApi.encounters.v3.markAsNotBillable.Error
+        >
+    > {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment,
@@ -446,41 +375,28 @@ export class V3 {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.encounters.v3.MarkAsNotBillableResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.encounters.v3.MarkAsNotBillableResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.encounters.v3.markAsNotBillable.Error._unknown(_response.error),
+        };
     }
 
     protected async _getAuthorizationHeader() {

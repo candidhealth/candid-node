@@ -6,7 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const Date_: core.serialization.Schema<serializers.Date_.Raw, CandidApi.Date_> = core.serialization.string();
+export const Date_: core.serialization.Schema<serializers.Date_.Raw, CandidApi.Date_> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.Date_,
+        untransform: (value) => value,
+    });
 
 export declare namespace Date_ {
     type Raw = string;

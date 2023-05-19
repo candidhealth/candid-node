@@ -6,7 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const Npi: core.serialization.Schema<serializers.Npi.Raw, CandidApi.Npi> = core.serialization.string();
+export const Npi: core.serialization.Schema<serializers.Npi.Raw, CandidApi.Npi> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.Npi,
+        untransform: (value) => value,
+    });
 
 export declare namespace Npi {
     type Raw = string;

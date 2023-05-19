@@ -6,7 +6,6 @@ import * as core from "../../../../core";
 import * as CandidApi from "../../..";
 import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
 
 export declare namespace BillingNotes {
     interface Options {
@@ -18,15 +17,17 @@ export declare namespace BillingNotes {
 export class BillingNotes {
     constructor(protected readonly options: BillingNotes.Options) {}
 
-    public async create(request: CandidApi.StandaloneBillingNoteCreate): Promise<CandidApi.BillingNote> {
+    public async create(
+        request: CandidApi.StandaloneBillingNoteCreate
+    ): Promise<core.APIResponse<CandidApi.BillingNote, CandidApi.billingNotes.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "/api/billing_notes/v2"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "",
-                "X-Fern-SDK-Version": "0.0.2",
+                "X-Fern-SDK-Name": "candid-test-package",
+                "X-Fern-SDK-Version": "0.0.1",
             },
             contentType: "application/json",
             body: await serializers.StandaloneBillingNoteCreate.jsonOrThrow(request, {
@@ -35,34 +36,21 @@ export class BillingNotes {
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.BillingNote.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                ok: true,
+                body: await serializers.BillingNote.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
         }
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.CandidApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.CandidApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.CandidApiTimeoutError();
-            case "unknown":
-                throw new errors.CandidApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+        return {
+            ok: false,
+            error: CandidApi.billingNotes.create.Error._unknown(_response.error),
+        };
     }
 
     protected async _getAuthorizationHeader() {

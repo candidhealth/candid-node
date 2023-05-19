@@ -9,7 +9,10 @@ import * as core from "../../../../core";
 export const ContentDownloadUrl: core.serialization.Schema<
     serializers.ContentDownloadUrl.Raw,
     CandidApi.ContentDownloadUrl
-> = core.serialization.string();
+> = core.serialization.string().transform({
+    transform: CandidApi.ContentDownloadUrl,
+    untransform: (value) => value,
+});
 
 export declare namespace ContentDownloadUrl {
     type Raw = string;

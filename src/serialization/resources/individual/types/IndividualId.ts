@@ -7,7 +7,10 @@ import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const IndividualId: core.serialization.Schema<serializers.IndividualId.Raw, CandidApi.IndividualId> =
-    core.serialization.string();
+    core.serialization.string().transform({
+        transform: CandidApi.IndividualId,
+        untransform: (value) => value,
+    });
 
 export declare namespace IndividualId {
     type Raw = string;

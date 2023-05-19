@@ -7,7 +7,10 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const RxCui: core.serialization.Schema<serializers.encounters.v3.RxCui.Raw, CandidApi.encounters.v3.RxCui> =
-    core.serialization.string();
+    core.serialization.string().transform({
+        transform: CandidApi.encounters.v3.RxCui,
+        untransform: (value) => value,
+    });
 
 export declare namespace RxCui {
     type Raw = string;

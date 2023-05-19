@@ -6,7 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const TagId: core.serialization.Schema<serializers.TagId.Raw, CandidApi.TagId> = core.serialization.string();
+export const TagId: core.serialization.Schema<serializers.TagId.Raw, CandidApi.TagId> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.TagId,
+        untransform: (value) => value,
+    });
 
 export declare namespace TagId {
     type Raw = string;

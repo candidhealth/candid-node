@@ -11,7 +11,9 @@ export const RenderingProvider: core.serialization.ObjectSchema<
     CandidApi.encounterProviders.v2.RenderingProvider
 > = core.serialization
     .object({
-        address: core.serialization.lazyObject(async () => (await import("../../../../..")).StreetAddressLongZip),
+        address: core.serialization
+            .lazyObject(async () => (await import("../../../../..")).StreetAddressLongZip)
+            .optional(),
         npi: core.serialization.string(),
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
     })
@@ -23,7 +25,7 @@ export const RenderingProvider: core.serialization.ObjectSchema<
 
 export declare namespace RenderingProvider {
     interface Raw extends serializers.encounterProviders.v2.EncounterProviderBase.Raw {
-        address: serializers.StreetAddressLongZip.Raw;
+        address?: serializers.StreetAddressLongZip.Raw | null;
         npi: string;
         taxonomy_code?: string | null;
     }

@@ -7,7 +7,10 @@ import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const ServiceLineId: core.serialization.Schema<serializers.ServiceLineId.Raw, CandidApi.ServiceLineId> =
-    core.serialization.string();
+    core.serialization.string().transform({
+        transform: CandidApi.ServiceLineId,
+        untransform: (value) => value,
+    });
 
 export declare namespace ServiceLineId {
     type Raw = string;

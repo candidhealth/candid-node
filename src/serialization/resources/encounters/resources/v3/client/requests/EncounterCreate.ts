@@ -32,7 +32,9 @@ export const EncounterCreate: core.serialization.Schema<
         ),
         serviceFacility: core.serialization.property(
             "service_facility",
-            core.serialization.lazyObject(async () => (await import("../../../../../..")).EncounterServiceFacilityBase)
+            core.serialization
+                .lazyObject(async () => (await import("../../../../../..")).EncounterServiceFacilityBase)
+                .optional()
         ),
         subscriberPrimary: core.serialization.property(
             "subscriber_primary",
@@ -47,11 +49,13 @@ export const EncounterCreate: core.serialization.Schema<
         ),
         clinicalNotes: core.serialization.property(
             "clinical_notes",
-            core.serialization.list(
-                core.serialization.lazyObject(
-                    async () => (await import("../../../../../..")).encounters.v3.ClinicalNoteCategoryCreate
+            core.serialization
+                .list(
+                    core.serialization.lazyObject(
+                        async () => (await import("../../../../../..")).encounters.v3.ClinicalNoteCategoryCreate
+                    )
                 )
-            )
+                .optional()
         ),
         billingNotes: core.serialization.property(
             "billing_notes",
@@ -88,11 +92,11 @@ export declare namespace EncounterCreate {
         billing_provider: serializers.encounterProviders.v2.BillingProvider.Raw;
         rendering_provider: serializers.encounterProviders.v2.RenderingProvider.Raw;
         referring_provider?: serializers.encounterProviders.v2.ReferringProvider.Raw | null;
-        service_facility: serializers.EncounterServiceFacilityBase.Raw;
+        service_facility?: serializers.EncounterServiceFacilityBase.Raw | null;
         subscriber_primary?: serializers.SubscriberCreate.Raw | null;
         subscriber_secondary?: serializers.SubscriberCreate.Raw | null;
         diagnoses: serializers.DiagnosisCreate.Raw[];
-        clinical_notes: serializers.encounters.v3.ClinicalNoteCategoryCreate.Raw[];
+        clinical_notes?: serializers.encounters.v3.ClinicalNoteCategoryCreate.Raw[] | null;
         billing_notes?: serializers.BillingNoteBase.Raw[] | null;
         place_of_service_code: serializers.FacilityTypeCode.Raw;
         patient_histories?: serializers.encounters.v3.PatientHistoryCategory.Raw[] | null;

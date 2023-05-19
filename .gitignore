@@ -7,5 +7,4 @@ node_modules
 /index.js
 /api
 /core
-/errors
 /serialization

@@ -17,7 +17,7 @@ export interface EncounterCreate extends CandidApi.encounters.v3.EncounterBase {
      *
      */
     referringProvider?: CandidApi.encounterProviders.v2.ReferringProvider;
-    serviceFacility: CandidApi.EncounterServiceFacilityBase;
+    serviceFacility?: CandidApi.EncounterServiceFacilityBase;
     /**
      * Please always include this when you have it, even for cash-only claims.
      * Must be included when `do_not_bill` is `False`
@@ -36,7 +36,7 @@ export interface EncounterCreate extends CandidApi.encounters.v3.EncounterBase {
      *
      */
     diagnoses: CandidApi.DiagnosisCreate[];
-    clinicalNotes: CandidApi.encounters.v3.ClinicalNoteCategoryCreate[];
+    clinicalNotes?: CandidApi.encounters.v3.ClinicalNoteCategoryCreate[];
     /**
      * Spot to store misc, human-readable, notes about this encounter to be used
      * in the billing process.

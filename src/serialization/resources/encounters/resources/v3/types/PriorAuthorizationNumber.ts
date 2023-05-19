@@ -9,7 +9,10 @@ import * as core from "../../../../../../core";
 export const PriorAuthorizationNumber: core.serialization.Schema<
     serializers.encounters.v3.PriorAuthorizationNumber.Raw,
     CandidApi.encounters.v3.PriorAuthorizationNumber
-> = core.serialization.string();
+> = core.serialization.string().transform({
+    transform: CandidApi.encounters.v3.PriorAuthorizationNumber,
+    untransform: (value) => value,
+});
 
 export declare namespace PriorAuthorizationNumber {
     type Raw = string;

@@ -6,7 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const TaskId: core.serialization.Schema<serializers.TaskId.Raw, CandidApi.TaskId> = core.serialization.string();
+export const TaskId: core.serialization.Schema<serializers.TaskId.Raw, CandidApi.TaskId> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.TaskId,
+        untransform: (value) => value,
+    });
 
 export declare namespace TaskId {
     type Raw = string;

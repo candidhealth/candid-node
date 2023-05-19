@@ -6,7 +6,12 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const EraId: core.serialization.Schema<serializers.EraId.Raw, CandidApi.EraId> = core.serialization.string();
+export const EraId: core.serialization.Schema<serializers.EraId.Raw, CandidApi.EraId> = core.serialization
+    .string()
+    .transform({
+        transform: CandidApi.EraId,
+        untransform: (value) => value,
+    });
 
 export declare namespace EraId {
     type Raw = string;

@@ -7,7 +7,10 @@ import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const BillingNoteId: core.serialization.Schema<serializers.BillingNoteId.Raw, CandidApi.BillingNoteId> =
-    core.serialization.string();
+    core.serialization.string().transform({
+        transform: CandidApi.BillingNoteId,
+        untransform: (value) => value,
+    });
 
 export declare namespace BillingNoteId {
     type Raw = string;
