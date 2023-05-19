@@ -1,6 +1,6 @@
 {
-    "name": "candid-test-package",
-    "version": "0.0.4",
+    "name": "@candidhealth/candid-test-package",
+    "version": "0.0.5",
     "private": false,
     "repository": "https://github.com/candidhealth/candid-node",
     "main": "./index.js",

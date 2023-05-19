@@ -25,8 +25,8 @@ export class Payers {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candid-test-package",
-                "X-Fern-SDK-Version": "0.0.4",
+                "X-Fern-SDK-Name": "@candidhealth/candid-test-package",
+                "X-Fern-SDK-Version": "0.0.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -72,8 +72,8 @@ export class Payers {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candid-test-package",
-                "X-Fern-SDK-Version": "0.0.4",
+                "X-Fern-SDK-Name": "@candidhealth/candid-test-package",
+                "X-Fern-SDK-Version": "0.0.5",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
