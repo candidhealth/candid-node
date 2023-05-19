@@ -28,8 +28,8 @@ export class ExpectedNetworkStatus {
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.9",
+                "X-Fern-SDK-Name": "candidhealth-test",
+                "X-Fern-SDK-Version": "0.0.10",
             },
             contentType: "application/json",
             body: await serializers.ExpectedNetworkStatusRequest.jsonOrThrow(request, {
