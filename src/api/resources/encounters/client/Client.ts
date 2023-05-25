@@ -4,21 +4,21 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { V3 } from "../resources/v3/client/Client";
+import { V4 } from "../resources/v4/client/Client";
 
 export declare namespace Encounters {
     interface Options {
         environment?: environments.CandidApiEnvironment | string;
-        token: core.Supplier<core.BearerToken>;
+        token?: core.Supplier<core.BearerToken | undefined>;
     }
 }
 
 export class Encounters {
     constructor(protected readonly options: Encounters.Options) {}
 
-    protected _v3: V3 | undefined;
+    protected _v4: V4 | undefined;
 
-    public get v3(): V3 {
-        return (this._v3 ??= new V3(this.options));
+    public get v4(): V4 {
+        return (this._v4 ??= new V4(this.options));
     }
 }

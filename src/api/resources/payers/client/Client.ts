@@ -12,7 +12,7 @@ import URLSearchParams from "@ungap/url-search-params";
 export declare namespace Payers {
     interface Options {
         environment?: environments.CandidApiEnvironment | string;
-        token: core.Supplier<core.BearerToken>;
+        token?: core.Supplier<core.BearerToken | undefined>;
     }
 }
 
@@ -30,7 +30,7 @@ export class Payers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.1.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -77,7 +77,7 @@ export class Payers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.1.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -102,6 +102,11 @@ export class Payers {
     }
 
     protected async _getAuthorizationHeader() {
-        return `Bearer ${await core.Supplier.get(this.options.token)}`;
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

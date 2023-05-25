@@ -14,7 +14,7 @@ export interface ServiceLineCreate extends CandidApi.ServiceLineBase {
      * equal to 0.
      *
      */
-    chargeAmountCents: number;
+    chargeAmountCents?: number;
     /** Indices (zero-indexed) of all the diagnoses this service line references */
     diagnosisPointers: number[];
     drugIdentification?: CandidApi.DrugIdentification;

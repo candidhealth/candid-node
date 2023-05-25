@@ -11,7 +11,7 @@ import urlJoin from "url-join";
 export declare namespace BillingNotes {
     interface Options {
         environment?: environments.CandidApiEnvironment | string;
-        token: core.Supplier<core.BearerToken>;
+        token?: core.Supplier<core.BearerToken | undefined>;
     }
 }
 
@@ -31,7 +31,7 @@ export class BillingNotes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.1.0",
             },
             contentType: "application/json",
             body: await serializers.StandaloneBillingNoteCreate.jsonOrThrow(request, {
@@ -58,6 +58,11 @@ export class BillingNotes {
     }
 
     protected async _getAuthorizationHeader() {
-        return `Bearer ${await core.Supplier.get(this.options.token)}`;
+        const bearer = await core.Supplier.get(this.options.token);
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

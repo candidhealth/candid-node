@@ -1,7 +1,9 @@
+export * as auth from "./auth";
 export * as encounterProviders from "./encounterProviders";
 export * as encounters from "./encounters";
 export * as organizationProviders from "./organizationProviders";
 export * as patientPayments from "./patientPayments";
+export * as workQueues from "./workQueues";
 export * as billingNotes from "./billingNotes";
 export * from "./billingNotes/types";
 export * as claims from "./claims";
@@ -34,5 +36,7 @@ export * as tags from "./tags";
 export * from "./tags/types";
 export * as tasks from "./tasks";
 export * from "./tasks/types";
+export * as users from "./users";
+export * from "./users/types";
 export * from "./billingNotes/client/requests";
 export * from "./expectedNetworkStatus/client/requests";

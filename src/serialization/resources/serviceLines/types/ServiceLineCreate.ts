@@ -14,7 +14,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
         procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
         quantity: core.serialization.string(),
         units: core.serialization.lazy(async () => (await import("../../..")).ServiceLineUnits),
-        chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number()),
+        chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
         diagnosisPointers: core.serialization.property(
             "diagnosis_pointers",
             core.serialization.list(core.serialization.number())
@@ -31,7 +31,7 @@ export declare namespace ServiceLineCreate {
         procedure_code: string;
         quantity: string;
         units: serializers.ServiceLineUnits.Raw;
-        charge_amount_cents: number;
+        charge_amount_cents?: number | null;
         diagnosis_pointers: number[];
         drug_identification?: serializers.DrugIdentification.Raw | null;
     }
