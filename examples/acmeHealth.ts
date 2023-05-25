@@ -13,7 +13,7 @@ const client = new CandidApiClient({
 });
 
 // Create a new encounter for patient Loki Laufeyson
-const createEncounterResponse = await client.encounters.v3.create({
+const createEncounterResponse = await client.encounters.v4.create({
     externalId: CandidApi.EncounterExternalId("emr-claim-id-abc"),
     dateOfService: CandidApi.Date_("2023-05-23"),
     patient: {

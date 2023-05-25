@@ -4,8 +4,9 @@ import { CandidApiClient as GeneratedCandidApiClient } from "./Client";
 export declare namespace CandidApiClient {
     interface Options {
         environment?: environments.CandidApiEnvironment;
-        clientId: string;
-        clientSecret: string;
+        token?: string;
+        clientId?: string;
+        clientSecret?: string;
     }
 }
 
@@ -17,14 +18,17 @@ export class CandidApiClient extends GeneratedCandidApiClient {
         });
     }
 
-    private static createToken(options: CandidApiClient.Options): string {
+    private static async createToken(options: CandidApiClient.Options): Promise<string> {
+        if (options.token != null) return options.token;
+        if (options.clientId == null || options.clientSecret == null) throw Error("Must provide a token or client id and client secret to authenticate to the Candid API");
+
         const noAuthRequiredClient = new GeneratedCandidApiClient({ environment: options.environment, token: undefined });
-        const tokenResponse = noAuthRequiredClient.auth.v2.getToken({
+        const tokenResponse = await noAuthRequiredClient.auth.v2.getToken({
             clientId: options.clientId,
             clientSecret: options.clientSecret,
         });
         if (tokenResponse.ok) {
-            return tokenResponse.accessToken;
+            return tokenResponse.body.accessToken;
         } else {
             throw Error("Could not get token");
         }
