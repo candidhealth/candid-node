@@ -1,3 +1,3 @@
 export * as CandidApi from "./api";
-export { CandidApiClient } from "./Client";
+export { CandidApiClient } from "./CandidApiClient";
 export { CandidApiEnvironment } from "./environments";
