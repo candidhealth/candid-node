@@ -34,6 +34,7 @@ const createEncounter = async () => {
         },
         patientAuthorizedRelease: true,
         billingProvider: {
+            organizationName: "Acme Health PC",
             npi: "1234567890",
             taxId: "123456789",
             address: {
