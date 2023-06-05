@@ -6,14 +6,14 @@ import * as serializers from "../../../../..";
 import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
-export const PatientPaymentId: core.serialization.Schema<
-    serializers.patientPayments.v2.PatientPaymentId.Raw,
-    CandidApi.patientPayments.v2.PatientPaymentId
+export const GuarantorId: core.serialization.Schema<
+    serializers.guarantor.v1.GuarantorId.Raw,
+    CandidApi.guarantor.v1.GuarantorId
 > = core.serialization.string().transform({
-    transform: CandidApi.patientPayments.v2.PatientPaymentId,
+    transform: CandidApi.guarantor.v1.GuarantorId,
     untransform: (value) => value,
 });
 
-export declare namespace PatientPaymentId {
+export declare namespace GuarantorId {
     type Raw = string;
 }

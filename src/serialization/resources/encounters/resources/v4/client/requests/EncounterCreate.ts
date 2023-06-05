@@ -12,6 +12,10 @@ export const EncounterCreate: core.serialization.Schema<
 > = core.serialization
     .object({
         patient: core.serialization.lazyObject(async () => (await import("../../../../../..")).PatientCreate),
+        patientIsSelfGuarantor: core.serialization.property(
+            "patient_is_self_guarantor",
+            core.serialization.boolean().optional()
+        ),
         billingProvider: core.serialization.property(
             "billing_provider",
             core.serialization.lazyObject(
@@ -83,12 +87,16 @@ export const EncounterCreate: core.serialization.Schema<
                 .list(core.serialization.lazyObject(async () => (await import("../../../../../..")).ServiceLineCreate))
                 .optional()
         ),
+        guarantor: core.serialization
+            .lazyObject(async () => (await import("../../../../../..")).guarantor.v1.GuarantorCreate)
+            .optional(),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../../..")).encounters.v4.EncounterBase));
 
 export declare namespace EncounterCreate {
     interface Raw extends serializers.encounters.v4.EncounterBase.Raw {
         patient: serializers.PatientCreate.Raw;
+        patient_is_self_guarantor?: boolean | null;
         billing_provider: serializers.encounterProviders.v2.BillingProvider.Raw;
         rendering_provider: serializers.encounterProviders.v2.RenderingProvider.Raw;
         referring_provider?: serializers.encounterProviders.v2.ReferringProvider.Raw | null;
@@ -101,5 +109,6 @@ export declare namespace EncounterCreate {
         place_of_service_code: serializers.FacilityTypeCode.Raw;
         patient_histories?: serializers.encounters.v4.PatientHistoryCategory.Raw[] | null;
         service_lines?: serializers.ServiceLineCreate.Raw[] | null;
+        guarantor?: serializers.guarantor.v1.GuarantorCreate.Raw | null;
     }
 }

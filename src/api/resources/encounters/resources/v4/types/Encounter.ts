@@ -27,7 +27,7 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     patientHistories: CandidApi.encounters.v4.PatientHistoryCategory[];
-    patientPayments: CandidApi.patientPayments.v2.PatientPayment[];
+    patientPayments: CandidApi.patientPayments.v3.PatientPayment[];
     tags: CandidApi.Tag[];
     codingAttribution?: CandidApi.encounters.v4.CodingAttributionType;
     workQueue?: CandidApi.workQueues.v1.WorkQueue;

@@ -5,16 +5,16 @@
 import * as CandidApi from "../../../../..";
 
 export interface PatientPayment {
-    patientPaymentId: CandidApi.patientPayments.v2.PatientPaymentId;
+    patientPaymentId: CandidApi.patientPayments.v3.PatientPaymentId;
     organizationId: CandidApi.OrganizationId;
     sourceInternalId: string;
-    source: CandidApi.patientPayments.v2.PatientPaymentSource;
+    source: CandidApi.patientPayments.v3.PatientPaymentSource;
     amountCents: number;
     paymentTimestamp?: Date;
-    status?: CandidApi.patientPayments.v2.PatientPaymentStatus;
+    status?: CandidApi.patientPayments.v3.PatientPaymentStatus;
     paymentName?: string;
     paymentNote?: string;
     patientExternalId?: CandidApi.PatientExternalId;
-    encounterId?: CandidApi.EncounterId;
+    encounterExternalId?: CandidApi.EncounterExternalId;
     serviceLineId?: CandidApi.ServiceLineId;
 }

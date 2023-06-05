@@ -50,6 +50,14 @@ export const EncounterUpdate: core.serialization.Schema<
         "pay_to_address",
         core.serialization.lazyObject(async () => (await import("../../../../../..")).StreetAddressLongZip).optional()
     ),
+    patientIsSelfGuarantor: core.serialization.property(
+        "patient_is_self_guarantor",
+        core.serialization.boolean().optional()
+    ),
+    guarantorId: core.serialization.property(
+        "guarantor_id",
+        core.serialization.lazy(async () => (await import("../../../../../..")).guarantor.v1.GuarantorId).optional()
+    ),
 });
 
 export declare namespace EncounterUpdate {
@@ -61,5 +69,7 @@ export declare namespace EncounterUpdate {
         tag_ids?: serializers.TagId.Raw[] | null;
         clinical_notes?: serializers.encounters.v4.ClinicalNoteCategoryCreate.Raw[] | null;
         pay_to_address?: serializers.StreetAddressLongZip.Raw | null;
+        patient_is_self_guarantor?: boolean | null;
+        guarantor_id?: serializers.guarantor.v1.GuarantorId.Raw | null;
     }
 }

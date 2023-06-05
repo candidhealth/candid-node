@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const PatientPaymentStatus: core.serialization.Schema<
-    serializers.patientPayments.v2.PatientPaymentStatus.Raw,
-    CandidApi.patientPayments.v2.PatientPaymentStatus
+    serializers.patientPayments.v3.PatientPaymentStatus.Raw,
+    CandidApi.patientPayments.v3.PatientPaymentStatus
 > = core.serialization.enum_([
     "PENDING",
     "paid",

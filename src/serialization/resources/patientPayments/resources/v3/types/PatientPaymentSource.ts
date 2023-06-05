@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const PatientPaymentSource: core.serialization.Schema<
-    serializers.patientPayments.v2.PatientPaymentSource.Raw,
-    CandidApi.patientPayments.v2.PatientPaymentSource
+    serializers.patientPayments.v3.PatientPaymentSource.Raw,
+    CandidApi.patientPayments.v3.PatientPaymentSource
 > = core.serialization.enum_([
     "MANUAL_ENTRY",
     "CHARGEBEE_PAYMENTS",

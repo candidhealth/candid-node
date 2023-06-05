@@ -4,5 +4,6 @@ export * from "./SubscriberBase";
 export * from "./SubscriberCreate";
 export * from "./Subscriber";
 export * from "./PatientCreate";
+export * from "./PatientBase";
 export * from "./Patient";
 export * from "./Gender";

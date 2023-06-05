@@ -13,10 +13,10 @@ export const Patient: core.serialization.ObjectSchema<serializers.Patient.Raw, C
             core.serialization.lazy(async () => (await import("../../..")).IndividualId)
         ),
     })
-    .extend(core.serialization.lazyObject(async () => (await import("../../..")).PatientCreate));
+    .extend(core.serialization.lazyObject(async () => (await import("../../..")).PatientBase));
 
 export declare namespace Patient {
-    interface Raw extends serializers.PatientCreate.Raw {
+    interface Raw extends serializers.PatientBase.Raw {
         individual_id: serializers.IndividualId.Raw;
     }
 }

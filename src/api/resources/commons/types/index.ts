@@ -25,3 +25,7 @@ export * from "./PatientRelationshipToInsuredCodeAll";
 export * from "./ProcedureModifier";
 export * from "./ServiceLineUnits";
 export * from "./InsuranceTypeCode";
+export * from "./PhoneNumber";
+export * from "./PhoneNumberType";
+export * from "./Email";
+export * from "./ContactInfo";

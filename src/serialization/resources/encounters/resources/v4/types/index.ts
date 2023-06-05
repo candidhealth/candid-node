@@ -36,3 +36,4 @@ export * from "./PriorAuthorizationNumber";
 export * from "./RxCui";
 export * from "./IntakeQuestionId";
 export * from "./IntakeFollowUpId";
+export * from "./EncounterExternalIdUniquenessErrorType";

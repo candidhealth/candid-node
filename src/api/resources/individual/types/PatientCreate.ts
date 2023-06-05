@@ -4,15 +4,4 @@
 
 import * as CandidApi from "../../..";
 
-export interface PatientCreate extends CandidApi.IndividualBase {
-    /**
-     * Another ID you want to associate with this patient.
-     * For example, your internal patient ID or a Dr. Chrono patient ID. Box 1a on the CMS-1500 claim form
-     *
-     */
-    externalId: string;
-    /** Box 3 on the CMS-1500 claim form. The date format should be in ISO 8601 date; formatted YYYY-MM-DD (i.e. 2012-02-01) */
-    dateOfBirth: CandidApi.Date_;
-    /** Box 5 on the CMS-1500 claim form. */
-    address: CandidApi.StreetAddressShortZip;
-}
+export interface PatientCreate extends CandidApi.PatientBase {}

@@ -1,6 +1,7 @@
 export * as auth from "./auth";
 export * as encounterProviders from "./encounterProviders";
 export * as encounters from "./encounters";
+export * as guarantor from "./guarantor";
 export * as organizationProviders from "./organizationProviders";
 export * as patientPayments from "./patientPayments";
 export * as workQueues from "./workQueues";

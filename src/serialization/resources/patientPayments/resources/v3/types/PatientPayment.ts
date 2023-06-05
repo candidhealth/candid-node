@@ -7,12 +7,12 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const PatientPayment: core.serialization.ObjectSchema<
-    serializers.patientPayments.v2.PatientPayment.Raw,
-    CandidApi.patientPayments.v2.PatientPayment
+    serializers.patientPayments.v3.PatientPayment.Raw,
+    CandidApi.patientPayments.v3.PatientPayment
 > = core.serialization.object({
     patientPaymentId: core.serialization.property(
         "patient_payment_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).patientPayments.v2.PatientPaymentId)
+        core.serialization.lazy(async () => (await import("../../../../..")).patientPayments.v3.PatientPaymentId)
     ),
     organizationId: core.serialization.property(
         "organization_id",
@@ -20,12 +20,12 @@ export const PatientPayment: core.serialization.ObjectSchema<
     ),
     sourceInternalId: core.serialization.property("source_internal_id", core.serialization.string()),
     source: core.serialization.lazy(
-        async () => (await import("../../../../..")).patientPayments.v2.PatientPaymentSource
+        async () => (await import("../../../../..")).patientPayments.v3.PatientPaymentSource
     ),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
     paymentTimestamp: core.serialization.property("payment_timestamp", core.serialization.date().optional()),
     status: core.serialization
-        .lazy(async () => (await import("../../../../..")).patientPayments.v2.PatientPaymentStatus)
+        .lazy(async () => (await import("../../../../..")).patientPayments.v3.PatientPaymentStatus)
         .optional(),
     paymentName: core.serialization.property("payment_name", core.serialization.string().optional()),
     paymentNote: core.serialization.property("payment_note", core.serialization.string().optional()),
@@ -33,9 +33,9 @@ export const PatientPayment: core.serialization.ObjectSchema<
         "patient_external_id",
         core.serialization.lazy(async () => (await import("../../../../..")).PatientExternalId).optional()
     ),
-    encounterId: core.serialization.property(
-        "encounter_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).EncounterId).optional()
+    encounterExternalId: core.serialization.property(
+        "encounter_external_id",
+        core.serialization.lazy(async () => (await import("../../../../..")).EncounterExternalId).optional()
     ),
     serviceLineId: core.serialization.property(
         "service_line_id",
@@ -45,17 +45,17 @@ export const PatientPayment: core.serialization.ObjectSchema<
 
 export declare namespace PatientPayment {
     interface Raw {
-        patient_payment_id: serializers.patientPayments.v2.PatientPaymentId.Raw;
+        patient_payment_id: serializers.patientPayments.v3.PatientPaymentId.Raw;
         organization_id: serializers.OrganizationId.Raw;
         source_internal_id: string;
-        source: serializers.patientPayments.v2.PatientPaymentSource.Raw;
+        source: serializers.patientPayments.v3.PatientPaymentSource.Raw;
         amount_cents: number;
         payment_timestamp?: string | null;
-        status?: serializers.patientPayments.v2.PatientPaymentStatus.Raw | null;
+        status?: serializers.patientPayments.v3.PatientPaymentStatus.Raw | null;
         payment_name?: string | null;
         payment_note?: string | null;
         patient_external_id?: serializers.PatientExternalId.Raw | null;
-        encounter_id?: serializers.EncounterId.Raw | null;
+        encounter_external_id?: serializers.EncounterExternalId.Raw | null;
         service_line_id?: serializers.ServiceLineId.Raw | null;
     }
 }

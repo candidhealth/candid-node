@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../../..";
 
 export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     patient: CandidApi.PatientCreate;
+    patientIsSelfGuarantor?: boolean;
     billingProvider: CandidApi.encounterProviders.v2.BillingProvider;
     renderingProvider: CandidApi.encounterProviders.v2.RenderingProvider;
     /**
@@ -53,4 +54,9 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     serviceLines?: CandidApi.ServiceLineCreate[];
+    /**
+     * Personal and contact info for the guarantor of the patient responsibility.
+     *
+     */
+    guarantor?: CandidApi.guarantor.v1.GuarantorCreate;
 }

@@ -87,7 +87,7 @@ export const Encounter: core.serialization.ObjectSchema<
             "patient_payments",
             core.serialization.list(
                 core.serialization.lazyObject(
-                    async () => (await import("../../../../..")).patientPayments.v2.PatientPayment
+                    async () => (await import("../../../../..")).patientPayments.v3.PatientPayment
                 )
             )
         ),
@@ -125,7 +125,7 @@ export declare namespace Encounter {
         place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
         place_of_service_code_as_submitted?: serializers.FacilityTypeCode.Raw | null;
         patient_histories: serializers.encounters.v4.PatientHistoryCategory.Raw[];
-        patient_payments: serializers.patientPayments.v2.PatientPayment.Raw[];
+        patient_payments: serializers.patientPayments.v3.PatientPayment.Raw[];
         tags: serializers.Tag.Raw[];
         coding_attribution?: serializers.encounters.v4.CodingAttributionType.Raw | null;
         work_queue?: serializers.workQueues.v1.WorkQueue.Raw | null;

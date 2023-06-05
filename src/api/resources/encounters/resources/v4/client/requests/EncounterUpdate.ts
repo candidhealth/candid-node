@@ -32,4 +32,11 @@ export interface EncounterUpdate {
     tagIds?: CandidApi.TagId[];
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
     payToAddress?: CandidApi.StreetAddressLongZip;
+    patientIsSelfGuarantor?: boolean;
+    /**
+     * If a patient is no longer a self-guarantor, a newly-created guarantor object can be passed
+     * via this field. Note that patient_is_self_guarantor should be toggled to False
+     *
+     */
+    guarantorId?: CandidApi.guarantor.v1.GuarantorId;
 }

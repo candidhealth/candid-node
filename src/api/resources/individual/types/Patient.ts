@@ -4,6 +4,6 @@
 
 import * as CandidApi from "../../..";
 
-export interface Patient extends CandidApi.PatientCreate {
+export interface Patient extends CandidApi.PatientBase {
     individualId: CandidApi.IndividualId;
 }

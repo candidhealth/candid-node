@@ -8,20 +8,9 @@ import * as core from "../../../../core";
 
 export const PatientCreate: core.serialization.ObjectSchema<serializers.PatientCreate.Raw, CandidApi.PatientCreate> =
     core.serialization
-        .object({
-            externalId: core.serialization.property("external_id", core.serialization.string()),
-            dateOfBirth: core.serialization.property(
-                "date_of_birth",
-                core.serialization.lazy(async () => (await import("../../..")).Date_)
-            ),
-            address: core.serialization.lazyObject(async () => (await import("../../..")).StreetAddressShortZip),
-        })
-        .extend(core.serialization.lazyObject(async () => (await import("../../..")).IndividualBase));
+        .object({})
+        .extend(core.serialization.lazyObject(async () => (await import("../../..")).PatientBase));
 
 export declare namespace PatientCreate {
-    interface Raw extends serializers.IndividualBase.Raw {
-        external_id: string;
-        date_of_birth: serializers.Date_.Raw;
-        address: serializers.StreetAddressShortZip.Raw;
-    }
+    interface Raw extends serializers.PatientBase.Raw {}
 }
