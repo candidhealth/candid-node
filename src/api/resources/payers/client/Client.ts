@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as CandidApi from "../../..";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import URLSearchParams from "@ungap/url-search-params";
 
 export declare namespace Payers {
@@ -19,18 +19,20 @@ export declare namespace Payers {
 export class Payers {
     constructor(protected readonly options: Payers.Options) {}
 
-    public async get(payerUuid: string): Promise<core.APIResponse<CandidApi.Payer, CandidApi.payers.get.Error>> {
+    public async get(
+        payerUuid: CandidApi.PayerUuid
+    ): Promise<core.APIResponse<CandidApi.Payer, CandidApi.payers.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/payers/v3/${payerUuid}`
+                `/api/payers/v3/${await serializers.PayerUuid.jsonOrThrow(payerUuid)}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.2.0",
+                "X-Fern-SDK-Version": "0.2.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -77,7 +79,7 @@ export class Payers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.2.0",
+                "X-Fern-SDK-Version": "0.2.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

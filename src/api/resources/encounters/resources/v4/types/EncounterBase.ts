@@ -52,7 +52,7 @@ export interface EncounterBase {
      */
     providerAcceptsAssignment: boolean;
     /**
-     * Human-readable description of the appointment time (ex: "Acupuncture - Headaches")
+     * Human-readable description of the appointment type (ex: "Acupuncture - Headaches")
      *
      */
     appointmentType?: string;

@@ -6,13 +6,13 @@ import * as serializers from "../../..";
 import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
-export const Auth0Id: core.serialization.Schema<serializers.Auth0Id.Raw, CandidApi.Auth0Id> = core.serialization
+export const PayerUuid: core.serialization.Schema<serializers.PayerUuid.Raw, CandidApi.PayerUuid> = core.serialization
     .string()
     .transform({
-        transform: CandidApi.Auth0Id,
+        transform: CandidApi.PayerUuid,
         untransform: (value) => value,
     });
 
-export declare namespace Auth0Id {
+export declare namespace PayerUuid {
     type Raw = string;
 }

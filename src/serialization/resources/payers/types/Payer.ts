@@ -8,7 +8,10 @@ import * as core from "../../../../core";
 
 export const Payer: core.serialization.ObjectSchema<serializers.Payer.Raw, CandidApi.Payer> = core.serialization.object(
     {
-        payerUuid: core.serialization.property("payer_uuid", core.serialization.string().optional()),
+        payerUuid: core.serialization.property(
+            "payer_uuid",
+            core.serialization.lazy(async () => (await import("../../..")).PayerUuid)
+        ),
         payerId: core.serialization.property("payer_id", core.serialization.string()),
         payerName: core.serialization.property("payer_name", core.serialization.string()),
     }
@@ -16,7 +19,7 @@ export const Payer: core.serialization.ObjectSchema<serializers.Payer.Raw, Candi
 
 export declare namespace Payer {
     interface Raw {
-        payer_uuid?: string | null;
+        payer_uuid: serializers.PayerUuid.Raw;
         payer_id: string;
         payer_name: string;
     }
