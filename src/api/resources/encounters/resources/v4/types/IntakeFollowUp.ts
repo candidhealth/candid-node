@@ -7,5 +7,5 @@ import * as CandidApi from "../../../../..";
 export interface IntakeFollowUp {
     id: CandidApi.encounters.v4.IntakeFollowUpId;
     text: string;
-    response: string;
+    response?: string;
 }

@@ -39,4 +39,10 @@ export interface EncounterUpdate {
      *
      */
     guarantorId?: CandidApi.guarantor.v1.GuarantorId;
+    providerAcceptsAssignment?: boolean;
+    benefitsAssignedToProvider?: boolean;
+    synchronicity?: CandidApi.encounters.v4.SynchronicityType;
+    placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    appointmentType?: string;
+    endDateOfService?: CandidApi.Date_;
 }

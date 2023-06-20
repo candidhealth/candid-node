@@ -12,13 +12,13 @@ export const IntakeFollowUp: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.lazy(async () => (await import("../../../../..")).encounters.v4.IntakeFollowUpId),
     text: core.serialization.string(),
-    response: core.serialization.string(),
+    response: core.serialization.string().optional(),
 });
 
 export declare namespace IntakeFollowUp {
     interface Raw {
         id: serializers.encounters.v4.IntakeFollowUpId.Raw;
         text: string;
-        response: string;
+        response?: string | null;
     }
 }

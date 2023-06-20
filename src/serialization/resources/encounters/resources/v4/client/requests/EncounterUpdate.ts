@@ -58,6 +58,26 @@ export const EncounterUpdate: core.serialization.Schema<
         "guarantor_id",
         core.serialization.lazy(async () => (await import("../../../../../..")).guarantor.v1.GuarantorId).optional()
     ),
+    providerAcceptsAssignment: core.serialization.property(
+        "provider_accepts_assignment",
+        core.serialization.boolean().optional()
+    ),
+    benefitsAssignedToProvider: core.serialization.property(
+        "benefits_assigned_to_provider",
+        core.serialization.boolean().optional()
+    ),
+    synchronicity: core.serialization
+        .lazy(async () => (await import("../../../../../..")).encounters.v4.SynchronicityType)
+        .optional(),
+    placeOfServiceCode: core.serialization.property(
+        "place_of_service_code",
+        core.serialization.lazy(async () => (await import("../../../../../..")).FacilityTypeCode).optional()
+    ),
+    appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
+    endDateOfService: core.serialization.property(
+        "end_date_of_service",
+        core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+    ),
 });
 
 export declare namespace EncounterUpdate {
@@ -71,5 +91,11 @@ export declare namespace EncounterUpdate {
         pay_to_address?: serializers.StreetAddressLongZip.Raw | null;
         patient_is_self_guarantor?: boolean | null;
         guarantor_id?: serializers.guarantor.v1.GuarantorId.Raw | null;
+        provider_accepts_assignment?: boolean | null;
+        benefits_assigned_to_provider?: boolean | null;
+        synchronicity?: serializers.encounters.v4.SynchronicityType.Raw | null;
+        place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
+        appointment_type?: string | null;
+        end_date_of_service?: serializers.Date_.Raw | null;
     }
 }

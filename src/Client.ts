@@ -7,6 +7,7 @@ import * as core from "./core";
 import { Auth } from "./api/resources/auth/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
+import { Tasks } from "./api/resources/tasks/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
@@ -37,6 +38,12 @@ export class CandidApiClient {
 
     public get guarantor(): Guarantor {
         return (this._guarantor ??= new Guarantor(this.options));
+    }
+
+    protected _tasks: Tasks | undefined;
+
+    public get tasks(): Tasks {
+        return (this._tasks ??= new Tasks(this.options));
     }
 
     protected _billingNotes: BillingNotes | undefined;

@@ -8,25 +8,25 @@ import * as CandidApi from "../../../../..";
 import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 
-export declare namespace V2 {
+export declare namespace V3 {
     interface Options {
         environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 }
 
-export class V2 {
-    constructor(protected readonly options: V2.Options) {}
+export class V3 {
+    constructor(protected readonly options: V3.Options) {}
 
-    public async getToken(
-        request: CandidApi.auth.v2.AuthGetTokenRequest
-    ): Promise<core.APIResponse<CandidApi.auth.v2.AuthGetTokenResponse, CandidApi.auth.v2.getToken.Error>> {
+    public async getActions(
+        taskId: CandidApi.TaskId
+    ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskActions, CandidApi.tasks.v3.getActions.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.CandidApiEnvironment.Production,
-                "/api/auth/v2/token"
+                `/api/tasks/v3/${await serializers.TaskId.jsonOrThrow(taskId)}/actions`
             ),
-            method: "POST",
+            method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
@@ -34,15 +34,12 @@ export class V2 {
                 "X-Fern-SDK-Version": "0.3.0",
             },
             contentType: "application/json",
-            body: await serializers.auth.v2.AuthGetTokenRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
             timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.auth.v2.AuthGetTokenResponse.parseOrThrow(_response.body, {
+                body: await serializers.tasks.v3.TaskActions.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -51,27 +48,9 @@ export class V2 {
             };
         }
 
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.auth.v2.getToken.Error.Raw)?.errorName) {
-                case "TooManyRequestsError":
-                    return {
-                        ok: false,
-                        error: await serializers.auth.v2.getToken.Error.parseOrThrow(
-                            _response.error.body as serializers.auth.v2.getToken.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            }
-                        ),
-                    };
-            }
-        }
-
         return {
             ok: false,
-            error: CandidApi.auth.v2.getToken.Error._unknown(_response.error),
+            error: CandidApi.tasks.v3.getActions.Error._unknown(_response.error),
         };
     }
 
