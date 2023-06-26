@@ -6,4 +6,8 @@ import * as CandidApi from "../../../../..";
 
 export interface Guarantor extends CandidApi.guarantor.v1.GuarantorBase {
     guarantorId: CandidApi.guarantor.v1.GuarantorId;
+    phoneNumbers: CandidApi.PhoneNumber[];
+    phoneConsent: boolean;
+    email?: CandidApi.Email;
+    emailConsent: boolean;
 }

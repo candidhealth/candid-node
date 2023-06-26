@@ -4,4 +4,11 @@
 
 import * as CandidApi from "../../../../..";
 
-export interface GuarantorCreate extends CandidApi.guarantor.v1.GuarantorBase {}
+export interface GuarantorCreate extends CandidApi.guarantor.v1.GuarantorBase {
+    phoneNumbers?: CandidApi.PhoneNumber[];
+    /** Defaults to false */
+    phoneConsent?: boolean;
+    email?: CandidApi.Email;
+    /** Defaults to false */
+    emailConsent?: boolean;
+}

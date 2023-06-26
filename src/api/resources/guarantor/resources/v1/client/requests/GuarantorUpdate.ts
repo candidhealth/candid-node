@@ -8,7 +8,10 @@ export interface GuarantorUpdate {
     firstName?: string;
     lastName?: string;
     externalId?: string;
-    dateOfBirth: string;
-    address?: CandidApi.StreetAddressLongZip;
-    contactInfo?: CandidApi.ContactInfo;
+    dateOfBirth?: string;
+    address?: CandidApi.StreetAddressShortZip;
+    phoneNumbers?: CandidApi.PhoneNumber[];
+    phoneConsent?: boolean;
+    email?: CandidApi.Email;
+    emailConsent?: boolean;
 }

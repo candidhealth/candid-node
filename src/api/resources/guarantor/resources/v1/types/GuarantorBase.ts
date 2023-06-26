@@ -9,6 +9,5 @@ export interface GuarantorBase {
     lastName: string;
     externalId: string;
     dateOfBirth: string;
-    address: CandidApi.StreetAddressLongZip;
-    contactInfo: CandidApi.ContactInfo;
+    address: CandidApi.StreetAddressShortZip;
 }

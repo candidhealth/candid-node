@@ -5,9 +5,16 @@
 import * as CandidApi from "../../../../..";
 import * as core from "../../../../../../core";
 
-export type Error = CandidApi.guarantor.v1.create.Error._Unknown;
+export type Error =
+    | CandidApi.guarantor.v1.create.Error.EncounterHasExistingGuarantorError
+    | CandidApi.guarantor.v1.create.Error._Unknown;
 
 export declare namespace Error {
+    interface EncounterHasExistingGuarantorError extends _Utils {
+        errorName: "EncounterHasExistingGuarantorError";
+        content: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -18,11 +25,29 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
+        encounterHasExistingGuarantorError: (
+            value: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    encounterHasExistingGuarantorError: (
+        value: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType
+    ): CandidApi.guarantor.v1.create.Error.EncounterHasExistingGuarantorError => {
+        return {
+            content: value,
+            errorName: "EncounterHasExistingGuarantorError",
+            _visit: function <_Result>(
+                this: CandidApi.guarantor.v1.create.Error.EncounterHasExistingGuarantorError,
+                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.guarantor.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.guarantor.v1.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -41,6 +66,8 @@ export const Error = {
         visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
+            case "EncounterHasExistingGuarantorError":
+                return visitor.encounterHasExistingGuarantorError(value.content);
             default:
                 return visitor._other(value as any);
         }

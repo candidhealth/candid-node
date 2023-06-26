@@ -15,5 +15,4 @@ export interface PatientBase extends CandidApi.IndividualBase {
     dateOfBirth: CandidApi.Date_;
     /** Box 5 on the CMS-1500 claim form. */
     address: CandidApi.StreetAddressShortZip;
-    contactInfo?: CandidApi.ContactInfo;
 }

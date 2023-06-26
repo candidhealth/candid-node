@@ -8,6 +8,7 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     encounterId: CandidApi.EncounterId;
     claims: CandidApi.Claim[];
     patient: CandidApi.Patient;
+    guarantor?: CandidApi.guarantor.v1.Guarantor;
     billingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
     renderingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
     referringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;

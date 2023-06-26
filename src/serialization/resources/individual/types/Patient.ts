@@ -12,11 +12,22 @@ export const Patient: core.serialization.ObjectSchema<serializers.Patient.Raw, C
             "individual_id",
             core.serialization.lazy(async () => (await import("../../..")).IndividualId)
         ),
+        phoneNumbers: core.serialization.property(
+            "phone_numbers",
+            core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).PhoneNumber))
+        ),
+        phoneConsent: core.serialization.property("phone_consent", core.serialization.boolean()),
+        email: core.serialization.lazy(async () => (await import("../../..")).Email).optional(),
+        emailConsent: core.serialization.property("email_consent", core.serialization.boolean()),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).PatientBase));
 
 export declare namespace Patient {
     interface Raw extends serializers.PatientBase.Raw {
         individual_id: serializers.IndividualId.Raw;
+        phone_numbers: serializers.PhoneNumber.Raw[];
+        phone_consent: boolean;
+        email?: serializers.Email.Raw | null;
+        email_consent: boolean;
     }
 }

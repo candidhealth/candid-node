@@ -10,7 +10,7 @@ export const UserV2: core.serialization.ObjectSchema<serializers.users.v2.UserV2
     core.serialization.object({
         userId: core.serialization.property(
             "user_id",
-            core.serialization.lazy(async () => (await import("../../../../..")).users.v2.UserId)
+            core.serialization.lazy(async () => (await import("../../../../..")).UserId)
         ),
         idpMetadata: core.serialization.property(
             "idp_metadata",
@@ -36,7 +36,7 @@ export const UserV2: core.serialization.ObjectSchema<serializers.users.v2.UserV2
 
 export declare namespace UserV2 {
     interface Raw {
-        user_id: serializers.users.v2.UserId.Raw;
+        user_id: serializers.UserId.Raw;
         idp_metadata: serializers.users.v2.IdpUserMetadata.Raw[];
         primary_organization_id: serializers.OrganizationId.Raw;
         user_metadata: serializers.users.v2.UserMetadata.Raw;

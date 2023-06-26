@@ -18,6 +18,10 @@ export const InsuranceCardCreate: core.serialization.ObjectSchema<
         rxPcn: core.serialization.property("rx_pcn", core.serialization.string().optional()),
         imageUrlFront: core.serialization.property("image_url_front", core.serialization.string().optional()),
         imageUrlBack: core.serialization.property("image_url_back", core.serialization.string().optional()),
+        emrPayerCrosswalk: core.serialization.property(
+            "emr_payer_crosswalk",
+            core.serialization.lazy(async () => (await import("../../..")).EmrPayerCrosswalk).optional()
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).InsuranceCardBase));
 
@@ -30,5 +34,6 @@ export declare namespace InsuranceCardCreate {
         rx_pcn?: string | null;
         image_url_front?: string | null;
         image_url_back?: string | null;
+        emr_payer_crosswalk?: serializers.EmrPayerCrosswalk.Raw | null;
     }
 }

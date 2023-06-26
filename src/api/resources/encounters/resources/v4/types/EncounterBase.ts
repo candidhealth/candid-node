@@ -11,7 +11,7 @@ export interface EncounterBase {
      * This field should not contain PHI.
      *
      */
-    externalId?: CandidApi.EncounterExternalId;
+    externalId: CandidApi.EncounterExternalId;
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
      * This date must be the local date in the timezone where the service occurred.
@@ -56,12 +56,6 @@ export interface EncounterBase {
      *
      */
     appointmentType?: string;
-    /**
-     * Should be set to true if Candid should not create or submit a claim but you'd
-     * like us to track this encounter anyway (ex: patient is paying cash)
-     *
-     */
-    doNotBill?: boolean;
     existingMedications?: CandidApi.encounters.v4.Medication[];
     vitals?: CandidApi.encounters.v4.Vitals;
     interventions?: CandidApi.encounters.v4.Intervention[];
@@ -75,4 +69,16 @@ export interface EncounterBase {
      *
      */
     synchronicity?: CandidApi.encounters.v4.SynchronicityType;
+    /**
+     * Defines if the Encounter is to be billed by Candid to the responsible_party.
+     * Examples for when this should be set to NOT_BILLABLE include
+     * if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party.
+     *
+     */
+    billableStatus: CandidApi.encounters.v4.BillableStatusType;
+    /**
+     * Defines the party to be billed with the initial balance owed on the claim.
+     *
+     */
+    responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType;
 }

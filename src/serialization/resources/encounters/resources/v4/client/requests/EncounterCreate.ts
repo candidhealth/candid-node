@@ -12,10 +12,6 @@ export const EncounterCreate: core.serialization.Schema<
 > = core.serialization
     .object({
         patient: core.serialization.lazyObject(async () => (await import("../../../../../..")).PatientCreate),
-        patientIsSelfGuarantor: core.serialization.property(
-            "patient_is_self_guarantor",
-            core.serialization.boolean().optional()
-        ),
         billingProvider: core.serialization.property(
             "billing_provider",
             core.serialization.lazyObject(
@@ -96,7 +92,6 @@ export const EncounterCreate: core.serialization.Schema<
 export declare namespace EncounterCreate {
     interface Raw extends serializers.encounters.v4.EncounterBase.Raw {
         patient: serializers.PatientCreate.Raw;
-        patient_is_self_guarantor?: boolean | null;
         billing_provider: serializers.encounterProviders.v2.BillingProvider.Raw;
         rendering_provider: serializers.encounterProviders.v2.RenderingProvider.Raw;
         referring_provider?: serializers.encounterProviders.v2.ReferringProvider.Raw | null;

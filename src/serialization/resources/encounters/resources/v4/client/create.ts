@@ -16,22 +16,36 @@ export const Error: core.serialization.Schema<
                 async () => (await import("../../../../..")).encounters.v4.EncounterExternalIdUniquenessErrorType
             ),
         }),
+        EncounterGuarantorMissingContactInfoError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).encounters.v4.EncounterGuarantorMissingContactInfoErrorType
+            ),
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "EncounterExternalIdUniquenessError":
                     return CandidApi.encounters.v4.create.Error.encounterExternalIdUniquenessError(value.content);
+                case "EncounterGuarantorMissingContactInfoError":
+                    return CandidApi.encounters.v4.create.Error.encounterGuarantorMissingContactInfoError(
+                        value.content
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.EncounterExternalIdUniquenessError;
+    type Raw = Error.EncounterExternalIdUniquenessError | Error.EncounterGuarantorMissingContactInfoError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: serializers.encounters.v4.EncounterExternalIdUniquenessErrorType.Raw;
+    }
+
+    interface EncounterGuarantorMissingContactInfoError {
+        errorName: "EncounterGuarantorMissingContactInfoError";
+        content: serializers.encounters.v4.EncounterGuarantorMissingContactInfoErrorType.Raw;
     }
 }

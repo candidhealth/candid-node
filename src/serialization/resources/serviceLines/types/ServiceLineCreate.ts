@@ -12,7 +12,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
-        quantity: core.serialization.string(),
+        quantity: core.serialization.lazy(async () => (await import("../../..")).Decimal),
         units: core.serialization.lazy(async () => (await import("../../..")).ServiceLineUnits),
         chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
         diagnosisPointers: core.serialization.property(
@@ -29,7 +29,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
 export declare namespace ServiceLineCreate {
     interface Raw extends serializers.ServiceLineBase.Raw {
         procedure_code: string;
-        quantity: string;
+        quantity: serializers.Decimal.Raw;
         units: serializers.ServiceLineUnits.Raw;
         charge_amount_cents?: number | null;
         diagnosis_pointers: number[];

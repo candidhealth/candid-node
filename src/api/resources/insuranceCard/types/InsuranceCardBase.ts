@@ -10,5 +10,5 @@ export interface InsuranceCardBase {
     /** Box 11c on the CMS-1500 claim form. */
     planName?: string;
     planType?: CandidApi.SourceOfPaymentCode;
-    insuranceType?: string;
+    insuranceType?: CandidApi.InsuranceTypeCode;
 }

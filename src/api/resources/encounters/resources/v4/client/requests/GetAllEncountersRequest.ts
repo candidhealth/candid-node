@@ -38,6 +38,7 @@ export interface GetAllEncountersRequest {
      */
     diagnosesUpdatedSince?: Date;
     tagIds?: CandidApi.TagId | CandidApi.TagId[];
-    doNotBill?: boolean;
     workQueueId?: CandidApi.WorkQueueId;
+    billableStatus?: CandidApi.encounters.v4.BillableStatusType;
+    responsibleParty?: CandidApi.encounters.v4.ResponsiblePartyType;
 }

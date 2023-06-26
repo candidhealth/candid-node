@@ -6,7 +6,13 @@ import * as CandidApi from "../../..";
 
 export interface ServiceLineCreate extends CandidApi.ServiceLineBase {
     procedureCode: string;
-    quantity: string;
+    /**
+     * String representation of a Decimal that can be parsed by most libraries.
+     * A ServiceLine quantity cannot contain more than one digit of precision.
+     * Example: 1.1 is valid, 1.11 is not.
+     *
+     */
+    quantity: CandidApi.Decimal;
     units: CandidApi.ServiceLineUnits;
     /**
      * The total amount charged for this service line taking quantity into account. For example, if a single unit

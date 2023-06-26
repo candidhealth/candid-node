@@ -1,5 +1,4 @@
 export * from "./HumanUserMetadata";
-export * from "./UserId";
 export * from "./MachineUserMetadata";
 export * from "./UserMetadata";
 export * from "./AuthZeroMetadata";

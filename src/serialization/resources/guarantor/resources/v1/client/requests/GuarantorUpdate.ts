@@ -13,14 +13,19 @@ export const GuarantorUpdate: core.serialization.Schema<
     firstName: core.serialization.property("first_name", core.serialization.string().optional()),
     lastName: core.serialization.property("last_name", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string()),
+    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string().optional()),
     address: core.serialization
-        .lazyObject(async () => (await import("../../../../../..")).StreetAddressLongZip)
+        .lazyObject(async () => (await import("../../../../../..")).StreetAddressShortZip)
         .optional(),
-    contactInfo: core.serialization.property(
-        "contact_info",
-        core.serialization.lazyObject(async () => (await import("../../../../../..")).ContactInfo).optional()
+    phoneNumbers: core.serialization.property(
+        "phone_numbers",
+        core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../../../../..")).PhoneNumber))
+            .optional()
     ),
+    phoneConsent: core.serialization.property("phone_consent", core.serialization.boolean().optional()),
+    email: core.serialization.lazy(async () => (await import("../../../../../..")).Email).optional(),
+    emailConsent: core.serialization.property("email_consent", core.serialization.boolean().optional()),
 });
 
 export declare namespace GuarantorUpdate {
@@ -28,8 +33,11 @@ export declare namespace GuarantorUpdate {
         first_name?: string | null;
         last_name?: string | null;
         external_id?: string | null;
-        date_of_birth: string;
-        address?: serializers.StreetAddressLongZip.Raw | null;
-        contact_info?: serializers.ContactInfo.Raw | null;
+        date_of_birth?: string | null;
+        address?: serializers.StreetAddressShortZip.Raw | null;
+        phone_numbers?: serializers.PhoneNumber.Raw[] | null;
+        phone_consent?: boolean | null;
+        email?: serializers.Email.Raw | null;
+        email_consent?: boolean | null;
     }
 }

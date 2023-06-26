@@ -19,19 +19,20 @@ export class V1 {
     constructor(protected readonly options: V1.Options) {}
 
     public async create(
+        encounterId: CandidApi.EncounterId,
         request: CandidApi.guarantor.v1.GuarantorCreate
     ): Promise<core.APIResponse<CandidApi.guarantor.v1.Guarantor, CandidApi.guarantor.v1.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.CandidApiEnvironment.Production,
-                "/api/guarantors/v1"
+                `/api/guarantors/v1/${await serializers.EncounterId.jsonOrThrow(encounterId)}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.3.0",
+                "X-Fern-SDK-Version": "0.3.1",
             },
             contentType: "application/json",
             body: await serializers.guarantor.v1.GuarantorCreate.jsonOrThrow(request, {
@@ -49,6 +50,24 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.guarantor.v1.create.Error.Raw)?.errorName) {
+                case "EncounterHasExistingGuarantorError":
+                    return {
+                        ok: false,
+                        error: await serializers.guarantor.v1.create.Error.parseOrThrow(
+                            _response.error.body as serializers.guarantor.v1.create.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -70,7 +89,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.3.0",
+                "X-Fern-SDK-Version": "0.3.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -95,7 +114,7 @@ export class V1 {
 
     public async update(
         guarantorId: CandidApi.guarantor.v1.GuarantorId,
-        request: CandidApi.guarantor.v1.GuarantorUpdate
+        request: CandidApi.guarantor.v1.GuarantorUpdate = {}
     ): Promise<core.APIResponse<CandidApi.guarantor.v1.Guarantor, CandidApi.guarantor.v1.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -107,7 +126,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.3.0",
+                "X-Fern-SDK-Version": "0.3.1",
             },
             contentType: "application/json",
             body: await serializers.guarantor.v1.GuarantorUpdate.jsonOrThrow(request, {

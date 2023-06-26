@@ -14,11 +14,15 @@ export const ServiceLine: core.serialization.ObjectSchema<serializers.ServiceLin
                 core.serialization.lazy(async () => (await import("../../..")).ServiceLineId)
             ),
             procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
-            quantity: core.serialization.string(),
+            quantity: core.serialization.lazy(async () => (await import("../../..")).Decimal),
             units: core.serialization.lazy(async () => (await import("../../..")).ServiceLineUnits),
             claimId: core.serialization.property(
                 "claim_id",
                 core.serialization.lazy(async () => (await import("../../..")).ClaimId)
+            ),
+            dateOfServiceRange: core.serialization.property(
+                "date_of_service_range",
+                core.serialization.lazyObject(async () => (await import("../../..")).DateRangeOptionalEnd)
             ),
         })
         .extend(core.serialization.lazyObject(async () => (await import("../../..")).ServiceLineBaseWithOptionals));
@@ -27,8 +31,9 @@ export declare namespace ServiceLine {
     interface Raw extends serializers.ServiceLineBaseWithOptionals.Raw {
         service_line_id: serializers.ServiceLineId.Raw;
         procedure_code: string;
-        quantity: string;
+        quantity: serializers.Decimal.Raw;
         units: serializers.ServiceLineUnits.Raw;
         claim_id: serializers.ClaimId.Raw;
+        date_of_service_range: serializers.DateRangeOptionalEnd.Raw;
     }
 }

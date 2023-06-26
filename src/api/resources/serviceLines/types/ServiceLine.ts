@@ -7,7 +7,19 @@ import * as CandidApi from "../../..";
 export interface ServiceLine extends CandidApi.ServiceLineBaseWithOptionals {
     serviceLineId: CandidApi.ServiceLineId;
     procedureCode: string;
-    quantity: string;
+    /**
+     * String representation of a Decimal that can be parsed by most libraries.
+     * A ServiceLine quantity cannot contain more than one digit of precision.
+     * Example: 1.1 is valid, 1.11 is not.
+     *
+     */
+    quantity: CandidApi.Decimal;
     units: CandidApi.ServiceLineUnits;
     claimId: CandidApi.ClaimId;
+    /**
+     * A range of dates of service for this service line. If the service line is for a single date, the end date
+     * will be empty.
+     *
+     */
+    dateOfServiceRange: CandidApi.DateRangeOptionalEnd;
 }

@@ -16,7 +16,10 @@ export const InsuranceCardBase: core.serialization.ObjectSchema<
         "plan_type",
         core.serialization.lazy(async () => (await import("../../..")).SourceOfPaymentCode).optional()
     ),
-    insuranceType: core.serialization.property("insurance_type", core.serialization.string().optional()),
+    insuranceType: core.serialization.property(
+        "insurance_type",
+        core.serialization.lazy(async () => (await import("../../..")).InsuranceTypeCode).optional()
+    ),
 });
 
 export declare namespace InsuranceCardBase {
@@ -24,6 +27,6 @@ export declare namespace InsuranceCardBase {
         group_number?: string | null;
         plan_name?: string | null;
         plan_type?: serializers.SourceOfPaymentCode.Raw | null;
-        insurance_type?: string | null;
+        insurance_type?: serializers.InsuranceTypeCode.Raw | null;
     }
 }

@@ -4,4 +4,11 @@
 
 import * as CandidApi from "../../..";
 
-export interface PatientCreate extends CandidApi.PatientBase {}
+export interface PatientCreate extends CandidApi.PatientBase {
+    phoneNumbers?: CandidApi.PhoneNumber[];
+    /** Defaults to false */
+    phoneConsent?: boolean;
+    email?: CandidApi.Email;
+    /** Defaults to false */
+    emailConsent?: boolean;
+}

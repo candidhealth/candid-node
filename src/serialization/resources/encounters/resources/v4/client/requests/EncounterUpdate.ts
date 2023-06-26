@@ -50,13 +50,17 @@ export const EncounterUpdate: core.serialization.Schema<
         "pay_to_address",
         core.serialization.lazyObject(async () => (await import("../../../../../..")).StreetAddressLongZip).optional()
     ),
-    patientIsSelfGuarantor: core.serialization.property(
-        "patient_is_self_guarantor",
-        core.serialization.boolean().optional()
+    billableStatus: core.serialization.property(
+        "billable_status",
+        core.serialization
+            .lazy(async () => (await import("../../../../../..")).encounters.v4.BillableStatusType)
+            .optional()
     ),
-    guarantorId: core.serialization.property(
-        "guarantor_id",
-        core.serialization.lazy(async () => (await import("../../../../../..")).guarantor.v1.GuarantorId).optional()
+    responsibleParty: core.serialization.property(
+        "responsible_party",
+        core.serialization
+            .lazy(async () => (await import("../../../../../..")).encounters.v4.ResponsiblePartyType)
+            .optional()
     ),
     providerAcceptsAssignment: core.serialization.property(
         "provider_accepts_assignment",
@@ -89,8 +93,8 @@ export declare namespace EncounterUpdate {
         tag_ids?: serializers.TagId.Raw[] | null;
         clinical_notes?: serializers.encounters.v4.ClinicalNoteCategoryCreate.Raw[] | null;
         pay_to_address?: serializers.StreetAddressLongZip.Raw | null;
-        patient_is_self_guarantor?: boolean | null;
-        guarantor_id?: serializers.guarantor.v1.GuarantorId.Raw | null;
+        billable_status?: serializers.encounters.v4.BillableStatusType.Raw | null;
+        responsible_party?: serializers.encounters.v4.ResponsiblePartyType.Raw | null;
         provider_accepts_assignment?: boolean | null;
         benefits_assigned_to_provider?: boolean | null;
         synchronicity?: serializers.encounters.v4.SynchronicityType.Raw | null;

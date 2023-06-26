@@ -6,4 +6,8 @@ import * as CandidApi from "../../..";
 
 export interface Patient extends CandidApi.PatientBase {
     individualId: CandidApi.IndividualId;
+    phoneNumbers: CandidApi.PhoneNumber[];
+    phoneConsent: boolean;
+    email?: CandidApi.Email;
+    emailConsent: boolean;
 }

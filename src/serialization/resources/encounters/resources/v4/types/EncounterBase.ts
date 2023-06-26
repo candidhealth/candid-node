@@ -12,7 +12,7 @@ export const EncounterBase: core.serialization.ObjectSchema<
 > = core.serialization.object({
     externalId: core.serialization.property(
         "external_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).EncounterExternalId).optional()
+        core.serialization.lazy(async () => (await import("../../../../..")).EncounterExternalId)
     ),
     dateOfService: core.serialization.property(
         "date_of_service",
@@ -35,7 +35,6 @@ export const EncounterBase: core.serialization.ObjectSchema<
     ),
     providerAcceptsAssignment: core.serialization.property("provider_accepts_assignment", core.serialization.boolean()),
     appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
-    doNotBill: core.serialization.property("do_not_bill", core.serialization.boolean().optional()),
     existingMedications: core.serialization.property(
         "existing_medications",
         core.serialization
@@ -53,11 +52,19 @@ export const EncounterBase: core.serialization.ObjectSchema<
     synchronicity: core.serialization
         .lazy(async () => (await import("../../../../..")).encounters.v4.SynchronicityType)
         .optional(),
+    billableStatus: core.serialization.property(
+        "billable_status",
+        core.serialization.lazy(async () => (await import("../../../../..")).encounters.v4.BillableStatusType)
+    ),
+    responsibleParty: core.serialization.property(
+        "responsible_party",
+        core.serialization.lazy(async () => (await import("../../../../..")).encounters.v4.ResponsiblePartyType)
+    ),
 });
 
 export declare namespace EncounterBase {
     interface Raw {
-        external_id?: serializers.EncounterExternalId.Raw | null;
+        external_id: serializers.EncounterExternalId.Raw;
         date_of_service: serializers.Date_.Raw;
         end_date_of_service?: serializers.Date_.Raw | null;
         prior_authorization_number?: serializers.encounters.v4.PriorAuthorizationNumber.Raw | null;
@@ -65,11 +72,12 @@ export declare namespace EncounterBase {
         benefits_assigned_to_provider: boolean;
         provider_accepts_assignment: boolean;
         appointment_type?: string | null;
-        do_not_bill?: boolean | null;
         existing_medications?: serializers.encounters.v4.Medication.Raw[] | null;
         vitals?: serializers.encounters.v4.Vitals.Raw | null;
         interventions?: serializers.encounters.v4.Intervention.Raw[] | null;
         pay_to_address?: serializers.StreetAddressLongZip.Raw | null;
         synchronicity?: serializers.encounters.v4.SynchronicityType.Raw | null;
+        billable_status: serializers.encounters.v4.BillableStatusType.Raw;
+        responsible_party: serializers.encounters.v4.ResponsiblePartyType.Raw;
     }
 }

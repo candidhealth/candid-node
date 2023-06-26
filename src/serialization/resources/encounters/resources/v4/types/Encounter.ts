@@ -19,6 +19,9 @@ export const Encounter: core.serialization.ObjectSchema<
             core.serialization.lazyObject(async () => (await import("../../../../..")).Claim)
         ),
         patient: core.serialization.lazyObject(async () => (await import("../../../../..")).Patient),
+        guarantor: core.serialization
+            .lazyObject(async () => (await import("../../../../..")).guarantor.v1.Guarantor)
+            .optional(),
         billingProvider: core.serialization.property(
             "billing_provider",
             core.serialization.lazyObject(
@@ -112,6 +115,7 @@ export declare namespace Encounter {
         encounter_id: serializers.EncounterId.Raw;
         claims: serializers.Claim.Raw[];
         patient: serializers.Patient.Raw;
+        guarantor?: serializers.guarantor.v1.Guarantor.Raw | null;
         billing_provider: serializers.encounterProviders.v2.EncounterProvider.Raw;
         rendering_provider: serializers.encounterProviders.v2.EncounterProvider.Raw;
         referring_provider?: serializers.encounterProviders.v2.EncounterProvider.Raw | null;
