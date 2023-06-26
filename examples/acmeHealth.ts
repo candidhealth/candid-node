@@ -15,8 +15,10 @@ const client = new CandidApiClient({
 const createEncounter = async () => {
     // Create a new encounter for patient Loki Laufeyson
     const createEncounterResponse = await client.encounters.v4.create({
-        externalId: CandidApi.EncounterExternalId("emr-claim-id-abc"),
+        externalId: CandidApi.EncounterExternalId("emr-claim-id-abcd"),
         dateOfService: CandidApi.Date_("2023-05-23"),
+        billableStatus: "BILLABLE", // or "NOT_BILLABLE
+        responsibleParty: "INSURANCE_PAY", // or "SELF_PAY"
         patient: {
             externalId: "emr-patient-id-123",
             firstName: "Loki",
@@ -60,7 +62,7 @@ const createEncounter = async () => {
             {
                 procedureCode: "99212",
                 modifiers: [],
-                quantity: "1",
+                quantity: CandidApi.Decimal("1.0"),
                 units: "UN",
                 chargeAmountCents: 1500,
                 diagnosisPointers: [0, 1],
