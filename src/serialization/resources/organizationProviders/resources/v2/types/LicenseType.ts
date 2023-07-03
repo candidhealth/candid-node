@@ -31,6 +31,18 @@ export const LicenseType: core.serialization.Schema<
     "OTHER_MASTERS",
     "BCBA",
     "UNKNOWN",
+    "RPH",
+    "PHT",
+    "LAC",
+    "LMT",
+    "DC",
+    "ND",
+    "MA",
+    "PT",
+    "IBCLC",
+    "RN",
+    "DPT",
+    "LCMHC",
 ]);
 
 export declare namespace LicenseType {
@@ -55,5 +67,17 @@ export declare namespace LicenseType {
         | "LMHC"
         | "OTHER_MASTERS"
         | "BCBA"
-        | "UNKNOWN";
+        | "UNKNOWN"
+        | "RPH"
+        | "PHT"
+        | "LAC"
+        | "LMT"
+        | "DC"
+        | "ND"
+        | "MA"
+        | "PT"
+        | "IBCLC"
+        | "RN"
+        | "DPT"
+        | "LCMHC";
 }

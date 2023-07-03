@@ -23,7 +23,19 @@ export type LicenseType =
     | "LMHC"
     | "OTHER_MASTERS"
     | "BCBA"
-    | "UNKNOWN";
+    | "UNKNOWN"
+    | "RPH"
+    | "PHT"
+    | "LAC"
+    | "LMT"
+    | "DC"
+    | "ND"
+    | "MA"
+    | "PT"
+    | "IBCLC"
+    | "RN"
+    | "DPT"
+    | "LCMHC";
 
 export const LicenseType = {
     Md: "MD",
@@ -47,4 +59,16 @@ export const LicenseType = {
     OtherMasters: "OTHER_MASTERS",
     Bcba: "BCBA",
     Unknown: "UNKNOWN",
+    Rph: "RPH",
+    Pht: "PHT",
+    Lac: "LAC",
+    Lmt: "LMT",
+    Dc: "DC",
+    Nd: "ND",
+    Ma: "MA",
+    Pt: "PT",
+    Ibclc: "IBCLC",
+    Rn: "RN",
+    Dpt: "DPT",
+    Lcmhc: "LCMHC",
 } as const;

@@ -22,7 +22,7 @@ export const WorkQueue: core.serialization.ObjectSchema<
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     createdBy: core.serialization.property(
         "created_by",
-        core.serialization.lazyObject(async () => (await import("../../../../..")).users.v2.UserV2)
+        core.serialization.lazy(async () => (await import("../../../../..")).UserId)
     ),
 });
 
@@ -33,6 +33,6 @@ export declare namespace WorkQueue {
         description?: string | null;
         category: serializers.workQueues.v1.WorkQueueCategory.Raw;
         created_at: string;
-        created_by: serializers.users.v2.UserV2.Raw;
+        created_by: serializers.UserId.Raw;
     }
 }

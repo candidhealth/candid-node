@@ -10,5 +10,5 @@ export interface WorkQueue {
     description?: string;
     category: CandidApi.workQueues.v1.WorkQueueCategory;
     createdAt: Date;
-    createdBy: CandidApi.users.v2.UserV2;
+    createdBy: CandidApi.UserId;
 }
