@@ -13,8 +13,10 @@ export const GuarantorBase: core.serialization.ObjectSchema<
     firstName: core.serialization.property("first_name", core.serialization.string()),
     lastName: core.serialization.property("last_name", core.serialization.string()),
     externalId: core.serialization.property("external_id", core.serialization.string()),
-    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string()),
-    address: core.serialization.lazyObject(async () => (await import("../../../../..")).StreetAddressShortZip),
+    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string().optional()),
+    address: core.serialization
+        .lazyObject(async () => (await import("../../../../..")).StreetAddressShortZip)
+        .optional(),
 });
 
 export declare namespace GuarantorBase {
@@ -22,7 +24,7 @@ export declare namespace GuarantorBase {
         first_name: string;
         last_name: string;
         external_id: string;
-        date_of_birth: string;
-        address: serializers.StreetAddressShortZip.Raw;
+        date_of_birth?: string | null;
+        address?: serializers.StreetAddressShortZip.Raw | null;
     }
 }

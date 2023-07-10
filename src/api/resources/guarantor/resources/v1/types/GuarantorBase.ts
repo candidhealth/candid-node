@@ -8,6 +8,6 @@ export interface GuarantorBase {
     firstName: string;
     lastName: string;
     externalId: string;
-    dateOfBirth: string;
-    address: CandidApi.StreetAddressShortZip;
+    dateOfBirth?: string;
+    address?: CandidApi.StreetAddressShortZip;
 }
