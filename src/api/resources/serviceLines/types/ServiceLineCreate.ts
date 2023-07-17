@@ -24,4 +24,5 @@ export interface ServiceLineCreate extends CandidApi.ServiceLineBase {
     /** Indices (zero-indexed) of all the diagnoses this service line references */
     diagnosisPointers: number[];
     drugIdentification?: CandidApi.DrugIdentification;
+    placeOfServiceCode?: CandidApi.FacilityTypeCode;
 }

@@ -23,6 +23,10 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
             "drug_identification",
             core.serialization.lazyObject(async () => (await import("../../..")).DrugIdentification).optional()
         ),
+        placeOfServiceCode: core.serialization.property(
+            "place_of_service_code",
+            core.serialization.lazy(async () => (await import("../../..")).FacilityTypeCode).optional()
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).ServiceLineBase));
 
@@ -34,5 +38,6 @@ export declare namespace ServiceLineCreate {
         charge_amount_cents?: number | null;
         diagnosis_pointers: number[];
         drug_identification?: serializers.DrugIdentification.Raw | null;
+        place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
     }
 }
