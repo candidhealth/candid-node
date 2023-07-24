@@ -16,22 +16,62 @@ export const Error: core.serialization.Schema<
                 async () => (await import("../../../../..")).encounters.v4.EncounterExternalIdUniquenessErrorType
             ),
         }),
+        EntityNotFoundError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).EntityNotFoundErrorMessage
+            ),
+        }),
+        UnauthorizedError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).UnauthorizedErrorMessage
+            ),
+        }),
+        HttpRequestValidationsError: core.serialization.object({
+            content: core.serialization.list(
+                core.serialization.lazyObject(async () => (await import("../../../../..")).RequestValidationError)
+            ),
+        }),
     })
     .transform<CandidApi.encounters.v4.update.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "EncounterExternalIdUniquenessError":
                     return CandidApi.encounters.v4.update.Error.encounterExternalIdUniquenessError(value.content);
+                case "EntityNotFoundError":
+                    return CandidApi.encounters.v4.update.Error.entityNotFoundError(value.content);
+                case "UnauthorizedError":
+                    return CandidApi.encounters.v4.update.Error.unauthorizedError(value.content);
+                case "HttpRequestValidationsError":
+                    return CandidApi.encounters.v4.update.Error.httpRequestValidationsError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.EncounterExternalIdUniquenessError;
+    type Raw =
+        | Error.EncounterExternalIdUniquenessError
+        | Error.EntityNotFoundError
+        | Error.UnauthorizedError
+        | Error.HttpRequestValidationsError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: serializers.encounters.v4.EncounterExternalIdUniquenessErrorType.Raw;
+    }
+
+    interface EntityNotFoundError {
+        errorName: "EntityNotFoundError";
+        content: serializers.EntityNotFoundErrorMessage.Raw;
+    }
+
+    interface UnauthorizedError {
+        errorName: "UnauthorizedError";
+        content: serializers.UnauthorizedErrorMessage.Raw;
+    }
+
+    interface HttpRequestValidationsError {
+        errorName: "HttpRequestValidationsError";
+        content: serializers.RequestValidationError.Raw[];
     }
 }

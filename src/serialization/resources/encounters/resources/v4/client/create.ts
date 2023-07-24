@@ -16,9 +16,19 @@ export const Error: core.serialization.Schema<
                 async () => (await import("../../../../..")).encounters.v4.EncounterExternalIdUniquenessErrorType
             ),
         }),
+        EntityNotFoundError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).EntityNotFoundErrorMessage
+            ),
+        }),
         EncounterGuarantorMissingContactInfoError: core.serialization.object({
             content: core.serialization.lazyObject(
                 async () => (await import("../../../../..")).encounters.v4.EncounterGuarantorMissingContactInfoErrorType
+            ),
+        }),
+        HttpRequestValidationsError: core.serialization.object({
+            content: core.serialization.list(
+                core.serialization.lazyObject(async () => (await import("../../../../..")).RequestValidationError)
             ),
         }),
     })
@@ -27,25 +37,43 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "EncounterExternalIdUniquenessError":
                     return CandidApi.encounters.v4.create.Error.encounterExternalIdUniquenessError(value.content);
+                case "EntityNotFoundError":
+                    return CandidApi.encounters.v4.create.Error.entityNotFoundError(value.content);
                 case "EncounterGuarantorMissingContactInfoError":
                     return CandidApi.encounters.v4.create.Error.encounterGuarantorMissingContactInfoError(
                         value.content
                     );
+                case "HttpRequestValidationsError":
+                    return CandidApi.encounters.v4.create.Error.httpRequestValidationsError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.EncounterExternalIdUniquenessError | Error.EncounterGuarantorMissingContactInfoError;
+    type Raw =
+        | Error.EncounterExternalIdUniquenessError
+        | Error.EntityNotFoundError
+        | Error.EncounterGuarantorMissingContactInfoError
+        | Error.HttpRequestValidationsError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: serializers.encounters.v4.EncounterExternalIdUniquenessErrorType.Raw;
     }
 
+    interface EntityNotFoundError {
+        errorName: "EntityNotFoundError";
+        content: serializers.EntityNotFoundErrorMessage.Raw;
+    }
+
     interface EncounterGuarantorMissingContactInfoError {
         errorName: "EncounterGuarantorMissingContactInfoError";
         content: serializers.encounters.v4.EncounterGuarantorMissingContactInfoErrorType.Raw;
+    }
+
+    interface HttpRequestValidationsError {
+        errorName: "HttpRequestValidationsError";
+        content: serializers.RequestValidationError.Raw[];
     }
 }

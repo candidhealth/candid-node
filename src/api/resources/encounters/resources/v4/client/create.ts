@@ -7,7 +7,9 @@ import * as core from "../../../../../../core";
 
 export type Error =
     | CandidApi.encounters.v4.create.Error.EncounterExternalIdUniquenessError
+    | CandidApi.encounters.v4.create.Error.EntityNotFoundError
     | CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError
+    | CandidApi.encounters.v4.create.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.create.Error._Unknown;
 
 export declare namespace Error {
@@ -16,9 +18,19 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType;
     }
 
+    interface EntityNotFoundError extends _Utils {
+        errorName: "EntityNotFoundError";
+        content: CandidApi.EntityNotFoundErrorMessage;
+    }
+
     interface EncounterGuarantorMissingContactInfoError extends _Utils {
         errorName: "EncounterGuarantorMissingContactInfoError";
         content: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType;
+    }
+
+    interface HttpRequestValidationsError extends _Utils {
+        errorName: "HttpRequestValidationsError";
+        content: CandidApi.RequestValidationError[];
     }
 
     interface _Unknown extends _Utils {
@@ -34,9 +46,11 @@ export declare namespace Error {
         encounterExternalIdUniquenessError: (
             value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
         ) => _Result;
+        entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         encounterGuarantorMissingContactInfoError: (
             value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType
         ) => _Result;
+        httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -57,6 +71,21 @@ export const Error = {
         };
     },
 
+    entityNotFoundError: (
+        value: CandidApi.EntityNotFoundErrorMessage
+    ): CandidApi.encounters.v4.create.Error.EntityNotFoundError => {
+        return {
+            content: value,
+            errorName: "EntityNotFoundError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.EntityNotFoundError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     encounterGuarantorMissingContactInfoError: (
         value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType
     ): CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError => {
@@ -65,6 +94,21 @@ export const Error = {
             errorName: "EncounterGuarantorMissingContactInfoError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    httpRequestValidationsError: (
+        value: CandidApi.RequestValidationError[]
+    ): CandidApi.encounters.v4.create.Error.HttpRequestValidationsError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationsError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.HttpRequestValidationsError,
                 visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
@@ -92,8 +136,12 @@ export const Error = {
         switch (value.errorName) {
             case "EncounterExternalIdUniquenessError":
                 return visitor.encounterExternalIdUniquenessError(value.content);
+            case "EntityNotFoundError":
+                return visitor.entityNotFoundError(value.content);
             case "EncounterGuarantorMissingContactInfoError":
                 return visitor.encounterGuarantorMissingContactInfoError(value.content);
+            case "HttpRequestValidationsError":
+                return visitor.httpRequestValidationsError(value.content);
             default:
                 return visitor._other(value as any);
         }

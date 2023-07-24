@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const CodingAttributionType: core.serialization.Schema<
     serializers.encounters.v4.CodingAttributionType.Raw,
     CandidApi.encounters.v4.CodingAttributionType
-> = core.serialization.enum_(["CANDID", "CUSTOMER", "TCN"]);
+> = core.serialization.enum_(["CANDID", "CUSTOMER", "TCN", "PJF"]);
 
 export declare namespace CodingAttributionType {
-    type Raw = "CANDID" | "CUSTOMER" | "TCN";
+    type Raw = "CANDID" | "CUSTOMER" | "TCN" | "PJF";
 }

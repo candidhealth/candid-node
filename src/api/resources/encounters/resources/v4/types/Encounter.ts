@@ -31,5 +31,5 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     patientPayments: CandidApi.patientPayments.v3.PatientPayment[];
     tags: CandidApi.Tag[];
     codingAttribution?: CandidApi.encounters.v4.CodingAttributionType;
-    workQueue?: CandidApi.workQueues.v1.WorkQueue;
+    workQueueId?: CandidApi.WorkQueueId;
 }

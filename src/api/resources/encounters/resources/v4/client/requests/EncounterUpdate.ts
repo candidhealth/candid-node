@@ -40,4 +40,5 @@ export interface EncounterUpdate {
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     appointmentType?: string;
     endDateOfService?: CandidApi.Date_;
+    subscriberSecondary?: CandidApi.SubscriberCreate;
 }

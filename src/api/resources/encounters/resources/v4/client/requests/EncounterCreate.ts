@@ -19,14 +19,14 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     referringProvider?: CandidApi.encounterProviders.v2.ReferringProvider;
     serviceFacility?: CandidApi.EncounterServiceFacilityBase;
     /**
-     * Subscriber_primary is required when do_not_bill is False (i.e. when the claim should be billed to insurance).
-     * These are not required fields when do_not_bill is True (i.e. when the claim should not be billed to insurance, like in the example of Cash Pay visits).
-     * However, if you collect this for patients, even cash pay, we recommend including it when sending encounters to Candid.
+     * Subscriber_primary is required when responsible_party is INSURANCE_PAY (i.e. when the claim should be billed to insurance).
+     * These are not required fields when responsible_party is SELF_PAY (i.e. when the claim should be billed to the patient).
+     * However, if you collect this for patients, even self-pay, we recommend including it when sending encounters to Candid.
      *
      */
     subscriberPrimary?: CandidApi.SubscriberCreate;
     /**
-     * Please always include this when you have it, even for cash-only claims
+     * Please always include this when you have it, even for self-pay claims
      *
      */
     subscriberSecondary?: CandidApi.SubscriberCreate;

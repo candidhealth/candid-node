@@ -13,6 +13,14 @@ export const ServiceLineBaseWithOptionals: core.serialization.ObjectSchema<
     .object({
         chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
         allowedAmountCents: core.serialization.property("allowed_amount_cents", core.serialization.number().optional()),
+        insuranceBalanceCents: core.serialization.property(
+            "insurance_balance_cents",
+            core.serialization.number().optional()
+        ),
+        patientBalanceCents: core.serialization.property(
+            "patient_balance_cents",
+            core.serialization.number().optional()
+        ),
         paidAmountCents: core.serialization.property("paid_amount_cents", core.serialization.number().optional()),
         patientResponsibilityCents: core.serialization.property(
             "patient_responsibility_cents",
@@ -65,6 +73,8 @@ export declare namespace ServiceLineBaseWithOptionals {
     interface Raw extends serializers.ServiceLineBase.Raw {
         charge_amount_cents?: number | null;
         allowed_amount_cents?: number | null;
+        insurance_balance_cents?: number | null;
+        patient_balance_cents?: number | null;
         paid_amount_cents?: number | null;
         patient_responsibility_cents?: number | null;
         diagnosis_id_zero?: serializers.DiagnosisId.Raw | null;

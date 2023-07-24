@@ -101,11 +101,9 @@ export const Encounter: core.serialization.ObjectSchema<
                 .lazy(async () => (await import("../../../../..")).encounters.v4.CodingAttributionType)
                 .optional()
         ),
-        workQueue: core.serialization.property(
-            "work_queue",
-            core.serialization
-                .lazyObject(async () => (await import("../../../../..")).workQueues.v1.WorkQueue)
-                .optional()
+        workQueueId: core.serialization.property(
+            "work_queue_id",
+            core.serialization.lazy(async () => (await import("../../../../..")).WorkQueueId).optional()
         ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../..")).encounters.v4.EncounterBase));
@@ -132,6 +130,6 @@ export declare namespace Encounter {
         patient_payments: serializers.patientPayments.v3.PatientPayment.Raw[];
         tags: serializers.Tag.Raw[];
         coding_attribution?: serializers.encounters.v4.CodingAttributionType.Raw | null;
-        work_queue?: serializers.workQueues.v1.WorkQueue.Raw | null;
+        work_queue_id?: serializers.WorkQueueId.Raw | null;
     }
 }

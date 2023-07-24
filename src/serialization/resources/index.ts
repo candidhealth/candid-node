@@ -5,7 +5,6 @@ export * as guarantor from "./guarantor";
 export * as organizationProviders from "./organizationProviders";
 export * as patientPayments from "./patientPayments";
 export * as tasks from "./tasks";
-export * as workQueues from "./workQueues";
 export * as billingNotes from "./billingNotes";
 export * from "./billingNotes/types";
 export * as claims from "./claims";

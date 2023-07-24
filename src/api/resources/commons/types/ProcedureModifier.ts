@@ -1155,7 +1155,16 @@ export type ProcedureModifier =
     | "UR"
     /**
      * Six patients served */
-    | "US";
+    | "US"
+    /**
+     * One patient visit in a month */
+    | "V1"
+    /**
+     * Two patient visits in a month */
+    | "V2"
+    /**
+     * Three patient visits in a month */
+    | "V3";
 
 export const ProcedureModifier = {
     TwentyTwo: "22",
@@ -1541,4 +1550,7 @@ export const ProcedureModifier = {
     Uq: "UQ",
     Ur: "UR",
     Us: "US",
+    V1: "V1",
+    V2: "V2",
+    V3: "V3",
 } as const;

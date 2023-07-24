@@ -7,6 +7,8 @@ import * as CandidApi from "../../..";
 export interface ServiceLineBaseWithOptionals extends CandidApi.ServiceLineBase {
     chargeAmountCents?: number;
     allowedAmountCents?: number;
+    insuranceBalanceCents?: number;
+    patientBalanceCents?: number;
     paidAmountCents?: number;
     patientResponsibilityCents?: number;
     diagnosisIdZero?: CandidApi.DiagnosisId;

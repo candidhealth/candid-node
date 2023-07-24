@@ -7,12 +7,30 @@ import * as core from "../../../../../../core";
 
 export type Error =
     | CandidApi.encounters.v4.update.Error.EncounterExternalIdUniquenessError
+    | CandidApi.encounters.v4.update.Error.EntityNotFoundError
+    | CandidApi.encounters.v4.update.Error.UnauthorizedError
+    | CandidApi.encounters.v4.update.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.update.Error._Unknown;
 
 export declare namespace Error {
     interface EncounterExternalIdUniquenessError extends _Utils {
         errorName: "EncounterExternalIdUniquenessError";
         content: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType;
+    }
+
+    interface EntityNotFoundError extends _Utils {
+        errorName: "EntityNotFoundError";
+        content: CandidApi.EntityNotFoundErrorMessage;
+    }
+
+    interface UnauthorizedError extends _Utils {
+        errorName: "UnauthorizedError";
+        content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    interface HttpRequestValidationsError extends _Utils {
+        errorName: "HttpRequestValidationsError";
+        content: CandidApi.RequestValidationError[];
     }
 
     interface _Unknown extends _Utils {
@@ -28,6 +46,9 @@ export declare namespace Error {
         encounterExternalIdUniquenessError: (
             value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
         ) => _Result;
+        entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
+        unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -41,6 +62,51 @@ export const Error = {
             errorName: "EncounterExternalIdUniquenessError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.update.Error.EncounterExternalIdUniquenessError,
+                visitor: CandidApi.encounters.v4.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    entityNotFoundError: (
+        value: CandidApi.EntityNotFoundErrorMessage
+    ): CandidApi.encounters.v4.update.Error.EntityNotFoundError => {
+        return {
+            content: value,
+            errorName: "EntityNotFoundError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.update.Error.EntityNotFoundError,
+                visitor: CandidApi.encounters.v4.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unauthorizedError: (
+        value: CandidApi.UnauthorizedErrorMessage
+    ): CandidApi.encounters.v4.update.Error.UnauthorizedError => {
+        return {
+            content: value,
+            errorName: "UnauthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.update.Error.UnauthorizedError,
+                visitor: CandidApi.encounters.v4.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    httpRequestValidationsError: (
+        value: CandidApi.RequestValidationError[]
+    ): CandidApi.encounters.v4.update.Error.HttpRequestValidationsError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationsError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.update.Error.HttpRequestValidationsError,
                 visitor: CandidApi.encounters.v4.update.Error._Visitor<_Result>
             ) {
                 return CandidApi.encounters.v4.update.Error._visit(this, visitor);
@@ -68,6 +134,12 @@ export const Error = {
         switch (value.errorName) {
             case "EncounterExternalIdUniquenessError":
                 return visitor.encounterExternalIdUniquenessError(value.content);
+            case "EntityNotFoundError":
+                return visitor.entityNotFoundError(value.content);
+            case "UnauthorizedError":
+                return visitor.unauthorizedError(value.content);
+            case "HttpRequestValidationsError":
+                return visitor.httpRequestValidationsError(value.content);
             default:
                 return visitor._other(value as any);
         }
