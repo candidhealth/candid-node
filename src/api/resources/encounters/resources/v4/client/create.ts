@@ -10,6 +10,7 @@ export type Error =
     | CandidApi.encounters.v4.create.Error.EntityNotFoundError
     | CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError
     | CandidApi.encounters.v4.create.Error.HttpRequestValidationsError
+    | CandidApi.encounters.v4.create.Error.CashPayPayerError
     | CandidApi.encounters.v4.create.Error._Unknown;
 
 export declare namespace Error {
@@ -33,6 +34,11 @@ export declare namespace Error {
         content: CandidApi.RequestValidationError[];
     }
 
+    interface CashPayPayerError extends _Utils {
+        errorName: "CashPayPayerError";
+        content: CandidApi.encounters.v4.CashPayPayerErrorMessage;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -51,6 +57,7 @@ export declare namespace Error {
             value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType
         ) => _Result;
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
+        cashPayPayerError: (value: CandidApi.encounters.v4.CashPayPayerErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -116,6 +123,21 @@ export const Error = {
         };
     },
 
+    cashPayPayerError: (
+        value: CandidApi.encounters.v4.CashPayPayerErrorMessage
+    ): CandidApi.encounters.v4.create.Error.CashPayPayerError => {
+        return {
+            content: value,
+            errorName: "CashPayPayerError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.CashPayPayerError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -142,6 +164,8 @@ export const Error = {
                 return visitor.encounterGuarantorMissingContactInfoError(value.content);
             case "HttpRequestValidationsError":
                 return visitor.httpRequestValidationsError(value.content);
+            case "CashPayPayerError":
+                return visitor.cashPayPayerError(value.content);
             default:
                 return visitor._other(value as any);
         }

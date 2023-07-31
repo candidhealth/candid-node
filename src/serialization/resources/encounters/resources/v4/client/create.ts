@@ -31,6 +31,11 @@ export const Error: core.serialization.Schema<
                 core.serialization.lazyObject(async () => (await import("../../../../..")).RequestValidationError)
             ),
         }),
+        CashPayPayerError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).encounters.v4.CashPayPayerErrorMessage
+            ),
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
@@ -45,6 +50,8 @@ export const Error: core.serialization.Schema<
                     );
                 case "HttpRequestValidationsError":
                     return CandidApi.encounters.v4.create.Error.httpRequestValidationsError(value.content);
+                case "CashPayPayerError":
+                    return CandidApi.encounters.v4.create.Error.cashPayPayerError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -55,7 +62,8 @@ export declare namespace Error {
         | Error.EncounterExternalIdUniquenessError
         | Error.EntityNotFoundError
         | Error.EncounterGuarantorMissingContactInfoError
-        | Error.HttpRequestValidationsError;
+        | Error.HttpRequestValidationsError
+        | Error.CashPayPayerError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -75,5 +83,10 @@ export declare namespace Error {
     interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: serializers.RequestValidationError.Raw[];
+    }
+
+    interface CashPayPayerError {
+        errorName: "CashPayPayerError";
+        content: serializers.encounters.v4.CashPayPayerErrorMessage.Raw;
     }
 }

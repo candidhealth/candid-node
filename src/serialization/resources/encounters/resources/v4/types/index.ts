@@ -40,3 +40,4 @@ export * from "./IntakeQuestionId";
 export * from "./IntakeFollowUpId";
 export * from "./EncounterExternalIdUniquenessErrorType";
 export * from "./EncounterGuarantorMissingContactInfoErrorType";
+export * from "./CashPayPayerErrorMessage";

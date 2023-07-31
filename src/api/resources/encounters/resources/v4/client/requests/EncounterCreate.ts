@@ -22,6 +22,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      * Subscriber_primary is required when responsible_party is INSURANCE_PAY (i.e. when the claim should be billed to insurance).
      * These are not required fields when responsible_party is SELF_PAY (i.e. when the claim should be billed to the patient).
      * However, if you collect this for patients, even self-pay, we recommend including it when sending encounters to Candid.
+     * Note: Cash Pay is no longer a valid payer_id in v4, please use responsible party to define self-pay claims
      *
      */
     subscriberPrimary?: CandidApi.SubscriberCreate;
