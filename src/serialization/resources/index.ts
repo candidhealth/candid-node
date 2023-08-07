@@ -35,6 +35,5 @@ export * as serviceLines from "./serviceLines";
 export * from "./serviceLines/types";
 export * as tags from "./tags";
 export * from "./tags/types";
-export * from "./tasks/types";
 export * from "./billingNotes/client/requests";
 export * from "./expectedNetworkStatus/client/requests";
