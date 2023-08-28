@@ -10,6 +10,6 @@ export interface Claim {
     clearinghouse?: string;
     clearinghouseClaimId?: string;
     payerClaimId?: string;
-    serviceLines: CandidApi.ServiceLine[];
+    serviceLines: CandidApi.serviceLines.v2.ServiceLine[];
     eras: CandidApi.Era[];
 }

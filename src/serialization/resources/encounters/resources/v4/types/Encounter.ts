@@ -105,6 +105,16 @@ export const Encounter: core.serialization.ObjectSchema<
             "work_queue_id",
             core.serialization.lazy(async () => (await import("../../../../..")).WorkQueueId).optional()
         ),
+        workQueueMembershipActivatedAt: core.serialization.property(
+            "work_queue_membership_activated_at",
+            core.serialization.date().optional()
+        ),
+        ownerOfNextAction: core.serialization.property(
+            "owner_of_next_action",
+            core.serialization.lazy(
+                async () => (await import("../../../../..")).encounters.v4.EncounterOwnerOfNextActionType
+            )
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../..")).encounters.v4.EncounterBase));
 
@@ -131,5 +141,7 @@ export declare namespace Encounter {
         tags: serializers.Tag.Raw[];
         coding_attribution?: serializers.encounters.v4.CodingAttributionType.Raw | null;
         work_queue_id?: serializers.WorkQueueId.Raw | null;
+        work_queue_membership_activated_at?: string | null;
+        owner_of_next_action: serializers.encounters.v4.EncounterOwnerOfNextActionType.Raw;
     }
 }

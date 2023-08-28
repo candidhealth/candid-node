@@ -53,7 +53,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      * in bounds of the diagnoses list field
      *
      */
-    serviceLines?: CandidApi.ServiceLineCreate[];
+    serviceLines?: CandidApi.serviceLines.v2.ServiceLineCreate[];
     /**
      * Personal and contact info for the guarantor of the patient responsibility.
      *

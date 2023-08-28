@@ -18,6 +18,7 @@ export * from "./NoteCategory";
 export * from "./ClinicalNote";
 export * from "./ResponsiblePartyType";
 export * from "./BillableStatusType";
+export * from "./EncounterOwnerOfNextActionType";
 export * from "./SynchronicityType";
 export * from "./CodingAttributionType";
 export * from "./AttachmentId";

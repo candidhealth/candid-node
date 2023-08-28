@@ -41,4 +41,5 @@ export interface GetAllEncountersRequest {
     workQueueId?: CandidApi.WorkQueueId;
     billableStatus?: CandidApi.encounters.v4.BillableStatusType;
     responsibleParty?: CandidApi.encounters.v4.ResponsiblePartyType;
+    ownerOfNextAction?: CandidApi.encounters.v4.EncounterOwnerOfNextActionType;
 }

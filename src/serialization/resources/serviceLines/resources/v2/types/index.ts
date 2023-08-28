@@ -1,5 +1,3 @@
-export * from "./ServiceLineBase";
-export * from "./ServiceLineBaseWithOptionals";
 export * from "./ServiceLineCreate";
 export * from "./ServiceLine";
 export * from "./ServiceLineEraData";

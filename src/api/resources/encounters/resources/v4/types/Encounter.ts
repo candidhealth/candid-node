@@ -32,4 +32,7 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     tags: CandidApi.Tag[];
     codingAttribution?: CandidApi.encounters.v4.CodingAttributionType;
     workQueueId?: CandidApi.WorkQueueId;
+    workQueueMembershipActivatedAt?: Date;
+    /** The party who is responsible for taking the next action on an Encounter, as defined by ownership of open Tasks. */
+    ownerOfNextAction: CandidApi.encounters.v4.EncounterOwnerOfNextActionType;
 }
