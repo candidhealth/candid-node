@@ -6,10 +6,10 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { Auth } from "./api/resources/auth/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
+import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
-import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
 
 export declare namespace CandidApiClient {
@@ -34,6 +34,12 @@ export class CandidApiClient {
         return (this._encounters ??= new Encounters(this.options));
     }
 
+    protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
+
+    public get expectedNetworkStatus(): ExpectedNetworkStatus {
+        return (this._expectedNetworkStatus ??= new ExpectedNetworkStatus(this.options));
+    }
+
     protected _guarantor: Guarantor | undefined;
 
     public get guarantor(): Guarantor {
@@ -50,12 +56,6 @@ export class CandidApiClient {
 
     public get billingNotes(): BillingNotes {
         return (this._billingNotes ??= new BillingNotes(this.options));
-    }
-
-    protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
-
-    public get expectedNetworkStatus(): ExpectedNetworkStatus {
-        return (this._expectedNetworkStatus ??= new ExpectedNetworkStatus(this.options));
     }
 
     protected _payers: Payers | undefined;

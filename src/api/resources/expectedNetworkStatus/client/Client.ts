@@ -4,9 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as CandidApi from "../../..";
-import * as serializers from "../../../../serialization";
-import urlJoin from "url-join";
+import { V1 } from "../resources/v1/client/Client";
 
 export declare namespace ExpectedNetworkStatus {
     interface Options {
@@ -18,53 +16,9 @@ export declare namespace ExpectedNetworkStatus {
 export class ExpectedNetworkStatus {
     constructor(protected readonly options: ExpectedNetworkStatus.Options) {}
 
-    public async compute(
-        request: CandidApi.ExpectedNetworkStatusRequest
-    ): Promise<
-        core.APIResponse<CandidApi.ExpectedNetworkStatusResponse, CandidApi.expectedNetworkStatus.compute.Error>
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                "/api/expected-network-status/v1"
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.8",
-            },
-            contentType: "application/json",
-            body: await serializers.ExpectedNetworkStatusRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: await serializers.ExpectedNetworkStatusResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
+    protected _v1: V1 | undefined;
 
-        return {
-            ok: false,
-            error: CandidApi.expectedNetworkStatus.compute.Error._unknown(_response.error),
-        };
-    }
-
-    protected async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
-        if (bearer != null) {
-            return `Bearer ${bearer}`;
-        }
-
-        return undefined;
+    public get v1(): V1 {
+        return (this._v1 ??= new V1(this.options));
     }
 }
