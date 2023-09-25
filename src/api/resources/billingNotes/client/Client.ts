@@ -31,7 +31,7 @@ export class BillingNotes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
+                "X-Fern-SDK-Version": "0.5.0",
             },
             contentType: "application/json",
             body: await serializers.StandaloneBillingNoteCreate.jsonOrThrow(request, {

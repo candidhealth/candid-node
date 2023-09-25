@@ -116,7 +116,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
+                "X-Fern-SDK-Version": "0.5.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -153,7 +153,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
+                "X-Fern-SDK-Version": "0.5.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -189,7 +189,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
+                "X-Fern-SDK-Version": "0.5.0",
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, {
@@ -251,7 +251,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
+                "X-Fern-SDK-Version": "0.5.0",
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, {
@@ -295,172 +295,6 @@ export class V4 {
         return {
             ok: false,
             error: CandidApi.encounters.v4.update.Error._unknown(_response.error),
-        };
-    }
-
-    public async getAttachments(
-        encounterId: CandidApi.EncounterId
-    ): Promise<
-        core.APIResponse<CandidApi.encounters.v4.EncounterAttachment[], CandidApi.encounters.v4.getAttachments.Error>
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/encounters/v4/${await serializers.EncounterId.jsonOrThrow(encounterId)}/attachments`
-            ),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
-            },
-            contentType: "application/json",
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: await serializers.encounters.v4.getAttachments.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.getAttachments.Error._unknown(_response.error),
-        };
-    }
-
-    public async generateClinicalNotesPdf(
-        encounterId: CandidApi.EncounterId
-    ): Promise<
-        core.APIResponse<
-            CandidApi.encounters.v4.GenerateClinicalNotesPdfResponse,
-            CandidApi.encounters.v4.generateClinicalNotesPdf.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/encounters/v4/${await serializers.EncounterId.jsonOrThrow(
-                    encounterId
-                )}/clinical-notes-pdf/generate`
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
-            },
-            contentType: "application/json",
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: await serializers.encounters.v4.GenerateClinicalNotesPdfResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.generateClinicalNotesPdf.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * Initiates a re-calculation of the contracting status
-     */
-    public async recomputeNetworkStatusResults(
-        encounterId: CandidApi.EncounterId
-    ): Promise<
-        core.APIResponse<
-            CandidApi.encounters.v4.NetworkStatusComputationResults,
-            CandidApi.encounters.v4.recomputeNetworkStatusResults.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/encounters/v4/${await serializers.EncounterId.jsonOrThrow(encounterId)}/network-status-results`
-            ),
-            method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
-            },
-            contentType: "application/json",
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: await serializers.encounters.v4.NetworkStatusComputationResults.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.recomputeNetworkStatusResults.Error._unknown(_response.error),
-        };
-    }
-
-    public async markAsNotBillable(
-        encounterId: CandidApi.EncounterId
-    ): Promise<
-        core.APIResponse<
-            CandidApi.encounters.v4.MarkAsNotBillableResponse,
-            CandidApi.encounters.v4.markAsNotBillable.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/encounters/v4/${await serializers.EncounterId.jsonOrThrow(encounterId)}/mark-as-not-billable`
-            ),
-            method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.4.9",
-            },
-            contentType: "application/json",
-            timeoutMs: 60000,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: await serializers.encounters.v4.MarkAsNotBillableResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.markAsNotBillable.Error._unknown(_response.error),
         };
     }
 

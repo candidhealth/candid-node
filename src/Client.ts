@@ -7,7 +7,9 @@ import * as core from "./core";
 import { Auth } from "./api/resources/auth/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
+import { Exports } from "./api/resources/exports/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
+import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
@@ -40,10 +42,22 @@ export class CandidApiClient {
         return (this._expectedNetworkStatus ??= new ExpectedNetworkStatus(this.options));
     }
 
+    protected _exports: Exports | undefined;
+
+    public get exports(): Exports {
+        return (this._exports ??= new Exports(this.options));
+    }
+
     protected _guarantor: Guarantor | undefined;
 
     public get guarantor(): Guarantor {
         return (this._guarantor ??= new Guarantor(this.options));
+    }
+
+    protected _organizationProviders: OrganizationProviders | undefined;
+
+    public get organizationProviders(): OrganizationProviders {
+        return (this._organizationProviders ??= new OrganizationProviders(this.options));
     }
 
     protected _tasks: Tasks | undefined;
