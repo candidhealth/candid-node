@@ -5,6 +5,7 @@
 import * as environments from "./environments";
 import * as core from "./core";
 import { Auth } from "./api/resources/auth/client/Client";
+import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
@@ -28,6 +29,12 @@ export class CandidApiClient {
 
     public get auth(): Auth {
         return (this._auth ??= new Auth(this.options));
+    }
+
+    protected _eligibility: Eligibility | undefined;
+
+    public get eligibility(): Eligibility {
+        return (this._eligibility ??= new Eligibility(this.options));
     }
 
     protected _encounters: Encounters | undefined;

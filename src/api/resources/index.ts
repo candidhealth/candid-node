@@ -34,5 +34,6 @@ export * as serviceFacility from "./serviceFacility";
 export * from "./serviceFacility/types";
 export * as tags from "./tags";
 export * from "./tags/types";
+export * as eligibility from "./eligibility";
 export * from "./billingNotes/client/requests";
 export * from "./payers/client/requests";

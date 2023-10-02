@@ -28,6 +28,7 @@ export * from "./EmrPayerCrosswalk";
 export * from "./ErrorMessage";
 export * from "./EntityNotFoundErrorMessage";
 export * from "./UnauthorizedErrorMessage";
+export * from "./HttpServiceUnavailableErrorMessage";
 export * from "./RequestValidationError";
 export * from "./PhoneNumber";
 export * from "./PhoneNumberType";
