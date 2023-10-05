@@ -44,7 +44,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      * in the billing process.
      *
      */
-    billingNotes?: CandidApi.BillingNoteBase[];
+    billingNotes?: CandidApi.billingNotes.v2.BillingNoteBase[];
     placeOfServiceCode: CandidApi.FacilityTypeCode;
     patientHistories?: CandidApi.encounters.v4.PatientHistoryCategory[];
     /**

@@ -67,7 +67,11 @@ export const Encounter: core.serialization.ObjectSchema<
         billingNotes: core.serialization.property(
             "billing_notes",
             core.serialization
-                .list(core.serialization.lazyObject(async () => (await import("../../../../..")).BillingNote))
+                .list(
+                    core.serialization.lazyObject(
+                        async () => (await import("../../../../..")).billingNotes.v2.BillingNote
+                    )
+                )
                 .optional()
         ),
         placeOfServiceCode: core.serialization.property(
@@ -133,7 +137,7 @@ export declare namespace Encounter {
         url: serializers.LinkUrl.Raw;
         diagnoses: serializers.Diagnosis.Raw[];
         clinical_notes: serializers.encounters.v4.ClinicalNoteCategory.Raw[];
-        billing_notes?: serializers.BillingNote.Raw[] | null;
+        billing_notes?: serializers.billingNotes.v2.BillingNote.Raw[] | null;
         place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
         place_of_service_code_as_submitted?: serializers.FacilityTypeCode.Raw | null;
         patient_histories: serializers.encounters.v4.PatientHistoryCategory.Raw[];

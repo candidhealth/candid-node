@@ -6,7 +6,6 @@ export * from "./PatientExternalId";
 export * from "./EncounterExternalId";
 export * from "./Npi";
 export * from "./WorkQueueId";
-export * from "./TaskId";
 export * from "./LinkUrl";
 export * from "./PageToken";
 export * from "./Date_";

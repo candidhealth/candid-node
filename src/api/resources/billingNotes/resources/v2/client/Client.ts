@@ -8,28 +8,23 @@ import * as CandidApi from "../../../../..";
 import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 
-export declare namespace V1 {
+export declare namespace V2 {
     interface Options {
         environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 }
 
-export class V1 {
-    constructor(protected readonly options: V1.Options) {}
+export class V2 {
+    constructor(protected readonly options: V2.Options) {}
 
-    public async compute(
-        request: CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest
-    ): Promise<
-        core.APIResponse<
-            CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusResponse,
-            CandidApi.expectedNetworkStatus.v1.compute.Error
-        >
-    > {
+    public async create(
+        request: CandidApi.billingNotes.v2.StandaloneBillingNoteCreate
+    ): Promise<core.APIResponse<CandidApi.billingNotes.v2.BillingNote, CandidApi.billingNotes.v2.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.CandidApiEnvironment.Production,
-                "/api/expected-network-status/v1"
+                "/api/billing_notes/v2"
             ),
             method: "POST",
             headers: {
@@ -39,7 +34,7 @@ export class V1 {
                 "X-Fern-SDK-Version": "0.6.1",
             },
             contentType: "application/json",
-            body: await serializers.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest.jsonOrThrow(request, {
+            body: await serializers.billingNotes.v2.StandaloneBillingNoteCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: 60000,
@@ -47,21 +42,18 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.expectedNetworkStatus.v1.ExpectedNetworkStatusResponse.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    }
-                ),
+                body: await serializers.billingNotes.v2.BillingNote.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
             };
         }
 
         return {
             ok: false,
-            error: CandidApi.expectedNetworkStatus.v1.compute.Error._unknown(_response.error),
+            error: CandidApi.billingNotes.v2.create.Error._unknown(_response.error),
         };
     }
 

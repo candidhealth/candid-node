@@ -18,6 +18,20 @@ export declare namespace V2 {
 export class V2 {
     constructor(protected readonly options: V2.Options) {}
 
+    /**
+     * Authenticating with the Candid Health API.
+     *
+     * Candid Health utilizes the [OAuth 2.0 bearer token authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) in our auth flow. You obtain the bearer token for all
+     * subsequent API requests via the `/auth/token` endpoint defined below, which requires you to provide your `client_id` and `client_secret`. Your `client_id` and `client_secret` are provided to you during the Candid onboarding process.
+     *
+     * The bearer token should be provided in the `Authorization` header for all subsequent API calls.
+     *
+     * **Warning:**
+     *
+     * The bearer token expires 5 hours after it has been created. After it has expired, the client will receive an "HTTP 401
+     * Unauthorized" error, at which point the client should generate a new token. It is important that tokens be reused between requests; if the client attempts to generate a token too often, it will be rate-limited and will receive an "HTTP 429 Too Many Requests" error.
+     *
+     */
     public async getToken(
         request: CandidApi.auth.v2.AuthGetTokenRequest
     ): Promise<core.APIResponse<CandidApi.auth.v2.AuthGetTokenResponse, CandidApi.auth.v2.getToken.Error>> {
@@ -31,7 +45,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.6.0",
+                "X-Fern-SDK-Version": "0.6.1",
             },
             contentType: "application/json",
             body: await serializers.auth.v2.AuthGetTokenRequest.jsonOrThrow(request, {

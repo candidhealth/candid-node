@@ -60,7 +60,11 @@ export const EncounterCreate: core.serialization.Schema<
         billingNotes: core.serialization.property(
             "billing_notes",
             core.serialization
-                .list(core.serialization.lazyObject(async () => (await import("../../../../../..")).BillingNoteBase))
+                .list(
+                    core.serialization.lazyObject(
+                        async () => (await import("../../../../../..")).billingNotes.v2.BillingNoteBase
+                    )
+                )
                 .optional()
         ),
         placeOfServiceCode: core.serialization.property(
@@ -104,7 +108,7 @@ export declare namespace EncounterCreate {
         subscriber_secondary?: serializers.SubscriberCreate.Raw | null;
         diagnoses: serializers.DiagnosisCreate.Raw[];
         clinical_notes?: serializers.encounters.v4.ClinicalNoteCategoryCreate.Raw[] | null;
-        billing_notes?: serializers.BillingNoteBase.Raw[] | null;
+        billing_notes?: serializers.billingNotes.v2.BillingNoteBase.Raw[] | null;
         place_of_service_code: serializers.FacilityTypeCode.Raw;
         patient_histories?: serializers.encounters.v4.PatientHistoryCategory.Raw[] | null;
         service_lines?: serializers.serviceLines.v2.ServiceLineCreate.Raw[] | null;
