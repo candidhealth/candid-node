@@ -3,6 +3,8 @@
  */
 
 export interface AuthGetTokenRequest {
+    /** Your application's Client ID. */
     clientId: string;
+    /** Your application's Client Secret. */
     clientSecret: string;
 }

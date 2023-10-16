@@ -35,7 +35,41 @@ export type LicenseType =
     | "IBCLC"
     | "RN"
     | "DPT"
-    | "LCMHC";
+    | "LCMHC"
+    | "CNM"
+    | "RNFA"
+    | "ACSW"
+    | "APC"
+    | "BCABA"
+    | "BHA"
+    | "OD"
+    | "DPM"
+    | "DA"
+    | "DDS"
+    | "DEH"
+    | "DMD"
+    | "PTA"
+    | "LCADC"
+    | "LCAT"
+    | "LCMHCS"
+    | "LCMHCA"
+    | "LCSWA"
+    | "LICSW"
+    | "LISW"
+    | "LMFTS"
+    | "LMFTA"
+    | "LPCI"
+    | "LSCSW"
+    | "MHCA"
+    | "MHT"
+    | "RBT"
+    | "RCSWI"
+    | "RHMCI"
+    | "LPN"
+    | "OTD"
+    | "OMS"
+    | "MFTA"
+    | "APCC";
 
 export const LicenseType = {
     Md: "MD",
@@ -71,4 +105,38 @@ export const LicenseType = {
     Rn: "RN",
     Dpt: "DPT",
     Lcmhc: "LCMHC",
+    Cnm: "CNM",
+    Rnfa: "RNFA",
+    Acsw: "ACSW",
+    Apc: "APC",
+    Bcaba: "BCABA",
+    Bha: "BHA",
+    Od: "OD",
+    Dpm: "DPM",
+    Da: "DA",
+    Dds: "DDS",
+    Deh: "DEH",
+    Dmd: "DMD",
+    Pta: "PTA",
+    Lcadc: "LCADC",
+    Lcat: "LCAT",
+    Lcmhcs: "LCMHCS",
+    Lcmhca: "LCMHCA",
+    Lcswa: "LCSWA",
+    Licsw: "LICSW",
+    Lisw: "LISW",
+    Lmfts: "LMFTS",
+    Lmfta: "LMFTA",
+    Lpci: "LPCI",
+    Lscsw: "LSCSW",
+    Mhca: "MHCA",
+    Mht: "MHT",
+    Rbt: "RBT",
+    Rcswi: "RCSWI",
+    Rhmci: "RHMCI",
+    Lpn: "LPN",
+    Otd: "OTD",
+    Oms: "OMS",
+    Mfta: "MFTA",
+    Apcc: "APCC",
 } as const;

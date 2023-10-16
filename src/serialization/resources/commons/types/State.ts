@@ -12,6 +12,7 @@ export const State: core.serialization.Schema<serializers.State.Raw, CandidApi.S
     "AP",
     "AL",
     "AK",
+    "AS",
     "AZ",
     "AR",
     "CA",
@@ -20,7 +21,9 @@ export const State: core.serialization.Schema<serializers.State.Raw, CandidApi.S
     "DC",
     "DE",
     "FL",
+    "FM",
     "GA",
+    "GU",
     "HI",
     "ID",
     "IL",
@@ -32,8 +35,10 @@ export const State: core.serialization.Schema<serializers.State.Raw, CandidApi.S
     "ME",
     "MD",
     "MA",
+    "MH",
     "MI",
     "MN",
+    "MP",
     "MS",
     "MO",
     "MT",
@@ -50,12 +55,14 @@ export const State: core.serialization.Schema<serializers.State.Raw, CandidApi.S
     "OR",
     "PA",
     "PR",
+    "PW",
     "RI",
     "SC",
     "SD",
     "TN",
     "TX",
     "UT",
+    "VI",
     "VT",
     "VA",
     "WA",
@@ -71,6 +78,7 @@ export declare namespace State {
         | "AP"
         | "AL"
         | "AK"
+        | "AS"
         | "AZ"
         | "AR"
         | "CA"
@@ -79,7 +87,9 @@ export declare namespace State {
         | "DC"
         | "DE"
         | "FL"
+        | "FM"
         | "GA"
+        | "GU"
         | "HI"
         | "ID"
         | "IL"
@@ -91,8 +101,10 @@ export declare namespace State {
         | "ME"
         | "MD"
         | "MA"
+        | "MH"
         | "MI"
         | "MN"
+        | "MP"
         | "MS"
         | "MO"
         | "MT"
@@ -109,12 +121,14 @@ export declare namespace State {
         | "OR"
         | "PA"
         | "PR"
+        | "PW"
         | "RI"
         | "SC"
         | "SD"
         | "TN"
         | "TX"
         | "UT"
+        | "VI"
         | "VT"
         | "VA"
         | "WA"

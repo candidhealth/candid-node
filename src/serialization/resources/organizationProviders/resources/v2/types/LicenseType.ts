@@ -43,6 +43,40 @@ export const LicenseType: core.serialization.Schema<
     "RN",
     "DPT",
     "LCMHC",
+    "CNM",
+    "RNFA",
+    "ACSW",
+    "APC",
+    "BCABA",
+    "BHA",
+    "OD",
+    "DPM",
+    "DA",
+    "DDS",
+    "DEH",
+    "DMD",
+    "PTA",
+    "LCADC",
+    "LCAT",
+    "LCMHCS",
+    "LCMHCA",
+    "LCSWA",
+    "LICSW",
+    "LISW",
+    "LMFTS",
+    "LMFTA",
+    "LPCI",
+    "LSCSW",
+    "MHCA",
+    "MHT",
+    "RBT",
+    "RCSWI",
+    "RHMCI",
+    "LPN",
+    "OTD",
+    "OMS",
+    "MFTA",
+    "APCC",
 ]);
 
 export declare namespace LicenseType {
@@ -79,5 +113,39 @@ export declare namespace LicenseType {
         | "IBCLC"
         | "RN"
         | "DPT"
-        | "LCMHC";
+        | "LCMHC"
+        | "CNM"
+        | "RNFA"
+        | "ACSW"
+        | "APC"
+        | "BCABA"
+        | "BHA"
+        | "OD"
+        | "DPM"
+        | "DA"
+        | "DDS"
+        | "DEH"
+        | "DMD"
+        | "PTA"
+        | "LCADC"
+        | "LCAT"
+        | "LCMHCS"
+        | "LCMHCA"
+        | "LCSWA"
+        | "LICSW"
+        | "LISW"
+        | "LMFTS"
+        | "LMFTA"
+        | "LPCI"
+        | "LSCSW"
+        | "MHCA"
+        | "MHT"
+        | "RBT"
+        | "RCSWI"
+        | "RHMCI"
+        | "LPN"
+        | "OTD"
+        | "OMS"
+        | "MFTA"
+        | "APCC";
 }

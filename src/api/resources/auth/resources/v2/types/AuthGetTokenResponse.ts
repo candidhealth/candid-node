@@ -4,6 +4,7 @@
 
 export interface AuthGetTokenResponse {
     accessToken: string;
+    /** Time in seconds. */
     expiresIn: number;
     tokenType: string;
 }

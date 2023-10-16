@@ -9,55 +9,155 @@
  *
  */
 export type FacilityTypeCode =
+    /**
+     * Pharmacy */
     | "01"
+    /**
+     * Telehealth */
     | "02"
+    /**
+     * School */
     | "03"
+    /**
+     * Homeless Shelter */
     | "04"
+    /**
+     * Indian Health Service (Free Standing) */
     | "05"
+    /**
+     * Indian Health Service (Provider Based) */
     | "06"
+    /**
+     * Tribal Free Standing */
     | "07"
+    /**
+     * Tribal Provider Based */
     | "08"
+    /**
+     * Prison or Correctional Facility */
     | "09"
+    /**
+     * Telehealth Patient Home */
     | "10"
+    /**
+     * Office */
     | "11"
+    /**
+     * Home */
     | "12"
+    /**
+     * Assisted Living Facility */
     | "13"
+    /**
+     * Group Home */
     | "14"
+    /**
+     * Mobile Unit */
     | "15"
+    /**
+     * Temporary Lodging */
     | "16"
+    /**
+     * Walk-in Retail Health Clinic */
     | "17"
+    /**
+     * Place of Employment Worksite */
     | "18"
+    /**
+     * Off Campus Outpatient Hospital */
     | "19"
+    /**
+     * Urgent Care Facility */
     | "20"
+    /**
+     * Inpatient Hospital */
     | "21"
+    /**
+     * Outpatient Hospital */
     | "22"
+    /**
+     * Emergency Room Hospital */
     | "23"
+    /**
+     * Ambulatory Surgical Center */
     | "24"
+    /**
+     * Birthing Center */
     | "25"
+    /**
+     * Military Treatment Facility */
     | "26"
+    /**
+     * Skilled Nursing Facility */
     | "31"
+    /**
+     * Nursing Facility */
     | "32"
+    /**
+     * Custodial Care Facility */
     | "33"
+    /**
+     * Hospice */
     | "34"
+    /**
+     * Ambulance (Land) */
     | "41"
+    /**
+     * Ambulance (Air or Water) */
     | "42"
+    /**
+     * Independent Clinic */
     | "49"
+    /**
+     * Federally Qualified Health Center */
     | "50"
+    /**
+     * Inpatient Psychiatric Facility */
     | "51"
+    /**
+     * Psychiatric Facility (Partial Hospitalization) */
     | "52"
+    /**
+     * Community Mental Health Center */
     | "53"
+    /**
+     * Intermediate Care Facility/Individuals with Intellectual Disabilities */
     | "54"
+    /**
+     * Residential Substance Abuse Treatment Facility */
     | "55"
+    /**
+     * Psychiatric Residential Treatment Center */
     | "56"
+    /**
+     * Non-residential Substance Abuse Treatment Facility */
     | "57"
+    /**
+     * Non-residential Opioid Treatment Facility */
     | "58"
+    /**
+     * Mass Immunization Center */
     | "60"
+    /**
+     * Comprehensive Inpatient Rehabilitation Facility */
     | "61"
+    /**
+     * Comprehensive Outpatient Rehabilitation Facility */
     | "62"
+    /**
+     * End Stage Renal Disease Treatment Facility */
     | "65"
+    /**
+     * State or Local Public Health Clinic */
     | "71"
+    /**
+     * Rural Health Clinic */
     | "72"
+    /**
+     * Independent Laboratory */
     | "81"
+    /**
+     * Other Unlisted Facility */
     | "99";
 
 export const FacilityTypeCode = {

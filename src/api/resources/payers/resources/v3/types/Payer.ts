@@ -5,10 +5,10 @@
 import * as CandidApi from "../../../../..";
 
 export interface Payer {
-    /** Auto-generated ID set on creation */
+    /** Auto-generated ID set on creation. */
     payerUuid: CandidApi.payers.v3.PayerUuid;
-    /** The primary national payer ID of the payer */
+    /** The primary national payer ID of the payer. */
     payerId: string;
-    /** The primary display name of the payer */
+    /** The primary display name of the payer. */
     payerName: string;
 }

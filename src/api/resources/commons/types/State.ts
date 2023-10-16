@@ -8,6 +8,7 @@ export type State =
     | "AP"
     | "AL"
     | "AK"
+    | "AS"
     | "AZ"
     | "AR"
     | "CA"
@@ -16,7 +17,9 @@ export type State =
     | "DC"
     | "DE"
     | "FL"
+    | "FM"
     | "GA"
+    | "GU"
     | "HI"
     | "ID"
     | "IL"
@@ -28,8 +31,10 @@ export type State =
     | "ME"
     | "MD"
     | "MA"
+    | "MH"
     | "MI"
     | "MN"
+    | "MP"
     | "MS"
     | "MO"
     | "MT"
@@ -46,12 +51,14 @@ export type State =
     | "OR"
     | "PA"
     | "PR"
+    | "PW"
     | "RI"
     | "SC"
     | "SD"
     | "TN"
     | "TX"
     | "UT"
+    | "VI"
     | "VT"
     | "VA"
     | "WA"
@@ -65,6 +72,7 @@ export const State = {
     Ap: "AP",
     Al: "AL",
     Ak: "AK",
+    As: "AS",
     Az: "AZ",
     Ar: "AR",
     Ca: "CA",
@@ -73,7 +81,9 @@ export const State = {
     Dc: "DC",
     De: "DE",
     Fl: "FL",
+    Fm: "FM",
     Ga: "GA",
+    Gu: "GU",
     Hi: "HI",
     Id: "ID",
     Il: "IL",
@@ -85,8 +95,10 @@ export const State = {
     Me: "ME",
     Md: "MD",
     Ma: "MA",
+    Mh: "MH",
     Mi: "MI",
     Mn: "MN",
+    Mp: "MP",
     Ms: "MS",
     Mo: "MO",
     Mt: "MT",
@@ -103,12 +115,14 @@ export const State = {
     Or: "OR",
     Pa: "PA",
     Pr: "PR",
+    Pw: "PW",
     Ri: "RI",
     Sc: "SC",
     Sd: "SD",
     Tn: "TN",
     Tx: "TX",
     Ut: "UT",
+    Vi: "VI",
     Vt: "VT",
     Va: "VA",
     Wa: "WA",

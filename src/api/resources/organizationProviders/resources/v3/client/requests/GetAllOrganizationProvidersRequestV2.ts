@@ -10,27 +10,27 @@ export interface GetAllOrganizationProvidersRequestV2 {
      */
     limit?: number;
     /**
-     * Filter to a name or a part of a name
+     * Filter to a name or a part of a name.
      */
     searchTerm?: string;
     /**
-     * Filter to a specific NPI
+     * Filter to a specific NPI.
      */
     npi?: string;
     /**
-     * Filter to only rendering providers
+     * Filter to only rendering providers.
      */
     isRendering?: boolean;
     /**
-     * Filter to only billing providers
+     * Filter to only billing providers.
      */
     isBilling?: boolean;
     /**
-     * The page token to continue paging through a previous request
+     * The page token to continue paging through a previous request.
      */
     pageToken?: CandidApi.PageToken;
     /**
-     * Defaults to PROVIDER_NAME_ASC
+     * Defaults to PROVIDER_NAME_ASC.
      */
     sort?: CandidApi.organizationProviders.v2.OrganizationProviderSortOptions;
 }

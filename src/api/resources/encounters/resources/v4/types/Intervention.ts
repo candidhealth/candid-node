@@ -12,8 +12,8 @@ export interface Intervention {
      *
      */
     description?: string;
-    /** Required when `type` is `allopathic` */
+    /** Required when `type` is `allopathic`. */
     medication?: CandidApi.encounters.v4.Medication;
-    /** Required when `type` is `tests` */
+    /** Required when `type` is `tests`. */
     labs?: CandidApi.encounters.v4.Lab[];
 }

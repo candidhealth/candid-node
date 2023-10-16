@@ -3,29 +3,77 @@
  */
 
 export type PatientRelationshipToInsuredCodeAll =
+    /**
+     * Spouse */
     | "01"
+    /**
+     * Grandparent */
     | "04"
+    /**
+     * Grandchild */
     | "05"
+    /**
+     * Niece/Nephew */
     | "07"
+    /**
+     * Foster Child */
     | "10"
+    /**
+     * Ward of the Court */
     | "15"
+    /**
+     * Stepchild */
     | "17"
+    /**
+     * Self */
     | "18"
+    /**
+     * Child */
     | "19"
+    /**
+     * Employee */
     | "20"
+    /**
+     * Unknown */
     | "21"
+    /**
+     * Handicapped Dependent */
     | "22"
+    /**
+     * Sponsored Dependent */
     | "23"
+    /**
+     * Dependent of Minor Dependent */
     | "24"
+    /**
+     * Significant Other */
     | "29"
+    /**
+     * Mother */
     | "32"
+    /**
+     * Father */
     | "33"
+    /**
+     * Emancipated Minor */
     | "36"
+    /**
+     * Organ Donor */
     | "39"
+    /**
+     * Cadaver Donor */
     | "40"
+    /**
+     * Injured Plaintiff */
     | "41"
+    /**
+     * Child (No Financial Responsibility) */
     | "43"
+    /**
+     * Life Partner */
     | "53"
+    /**
+     * Other Relationship */
     | "G8";
 
 export const PatientRelationshipToInsuredCodeAll = {

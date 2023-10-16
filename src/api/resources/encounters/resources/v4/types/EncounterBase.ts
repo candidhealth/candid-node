@@ -52,13 +52,14 @@ export interface EncounterBase {
      */
     providerAcceptsAssignment: boolean;
     /**
-     * Human-readable description of the appointment type (ex: "Acupuncture - Headaches")
+     * Human-readable description of the appointment type (ex: "Acupuncture - Headaches").
      *
      */
     appointmentType?: string;
     existingMedications?: CandidApi.encounters.v4.Medication[];
     vitals?: CandidApi.encounters.v4.Vitals;
     interventions?: CandidApi.encounters.v4.Intervention[];
+    /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressLongZip;
     /**
      * Whether or not this was a synchronous or asynchronous encounter.

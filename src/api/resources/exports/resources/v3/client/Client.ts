@@ -31,7 +31,7 @@ export class V3 {
      * **SLA guarantees:** Files for a given date are guaranteed to be available after 3 business days. For example, Friday's file will be
      * available by Wednesday at the latest. If file generation is still in progress upon request before 3 business days have passed, the
      * caller will receive a 422 response. If the file has already been generated, it will be served. Please email
-     * support@joincandidhealth.com with any data requests outside of these stated guarantees.
+     * our [Support team](mailto:support@joincandidhealth.com) with any data requests outside of these stated guarantees.
      *
      */
     public async getExports(
@@ -48,7 +48,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.6.2",
+                "X-Fern-SDK-Version": "0.6.3",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

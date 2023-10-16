@@ -37,8 +37,8 @@ export interface OrganizationProviderV2 {
     employmentStartDate?: string;
     /** The employment termination date for the provider. */
     employmentTerminationDate?: string;
-    /** Auto-generated ID set on creation */
+    /** Auto-generated ID set on creation. */
     organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId;
-    /** Qualification given to a provider (PTAN, Medicaid Provider Id etc.) */
+    /** Qualification given to a provider (PTAN, Medicaid Provider Id etc.). */
     qualifications: CandidApi.Identifier[];
 }

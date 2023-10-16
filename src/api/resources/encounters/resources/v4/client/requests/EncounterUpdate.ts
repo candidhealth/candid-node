@@ -29,16 +29,55 @@ export interface EncounterUpdate {
      *
      */
     diagnosisIds?: CandidApi.DiagnosisId[];
+    /** Names of tags that should be on the encounter. */
     tagIds?: CandidApi.TagId[];
+    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
+    /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressLongZip;
+    /**
+     * Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party.
+     *
+     */
     billableStatus?: CandidApi.encounters.v4.BillableStatusType;
+    /**
+     * Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay.
+     *
+     */
     responsibleParty?: CandidApi.encounters.v4.ResponsiblePartyType;
+    /**
+     * Whether you have accepted the patient's authorization for insurance payments to be made to you, not them. Box 27 on the CMS-1500 claim form.
+     *
+     */
     providerAcceptsAssignment?: boolean;
+    /**
+     * Whether this patient has authorized insurance payments to be made to you, not them. If false, patient may receive reimbursement. Box 13 on the CMS-1500 claim form.
+     *
+     */
     benefitsAssignedToProvider?: boolean;
+    /**
+     * Whether or not this was a synchronous or asynchronous encounter. Asynchronous encounters occur when providers and patients communicate online using forms, instant messaging, or other pre-recorded digital mediums. Synchronous encounters occur in live, real-time settings where the patient interacts directly with the provider, such as over video or a phone call.
+     *
+     */
     synchronicity?: CandidApi.encounters.v4.SynchronicityType;
+    /**
+     * Box 24B on the CMS-1500 claim form. Line-level place of service is not currently supported. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set).
+     *
+     */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    /**
+     * Human-readable description of the appointment type (ex: "Acupuncture - Headaches").
+     *
+     */
     appointmentType?: string;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
+     * This date must be the local date in the timezone where the service occurred.
+     * If omitted, the Encounter is assumed to be for a single day.
+     * Must not be temporally before the date_of_service field.
+     *
+     */
     endDateOfService?: CandidApi.Date_;
+    /** Contains details of the secondary insurance subscriber. */
     subscriberSecondary?: CandidApi.SubscriberCreate;
 }
