@@ -4,6 +4,13 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         number: "1234567890",
+ *         type: CandidApi.PhoneNumberType.Home
+ *     }
+ */
 export interface PhoneNumber {
     number: string;
     type: CandidApi.PhoneNumberType;

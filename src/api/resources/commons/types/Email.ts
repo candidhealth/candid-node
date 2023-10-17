@@ -4,6 +4,10 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     CandidApi.Email("johndoe@joincandidhealth.com")
+ */
 export type Email = string & {
     Email: void;
 };

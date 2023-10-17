@@ -4,6 +4,16 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         items: [{
+ *                 payerUuid: CandidApi.payers.v3.PayerUuid("A6431FD2-0712-4714-B1B1-DD094DAF9F42"),
+ *                 payerId: "12345",
+ *                 payerName: "Payer Name"
+ *             }]
+ *     }
+ */
 export interface PayerPage extends CandidApi.ResourcePage {
     items: CandidApi.payers.v3.Payer[];
 }

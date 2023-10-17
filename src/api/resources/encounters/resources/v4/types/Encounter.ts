@@ -4,6 +4,374 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         encounterId: CandidApi.EncounterId("B2506E84-4470-4CBA-8A68-6883367739E1"),
+ *         claims: [{
+ *                 claimId: CandidApi.ClaimId("DD9D7F82-37B5-449D-AA63-26925398335B"),
+ *                 status: CandidApi.ClaimStatus.BillerReceived,
+ *                 clearinghouse: "Change Healthcare",
+ *                 clearinghouseClaimId: "5BA7C3AB-2BC2-496C-8B10-6CAC73D0729D",
+ *                 payerClaimId: "9BB9F259-9756-4F16-8F53-9DBB9F7EB1BB",
+ *                 serviceLines: [{
+ *                         modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+ *                         chargeAmountCents: 10000,
+ *                         allowedAmountCents: 8000,
+ *                         insuranceBalanceCents: 0,
+ *                         patientBalanceCents: 2000,
+ *                         paidAmountCents: 8000,
+ *                         patientResponsibilityCents: 2000,
+ *                         diagnosisIdZero: CandidApi.DiagnosisId("4AC84BCD-12F5-4F86-A57B-E06749127C98"),
+ *                         diagnosisIdOne: CandidApi.DiagnosisId("EEA5CA5A-8B43-45FD-8CBD-C6CC1103E759"),
+ *                         diagnosisIdTwo: CandidApi.DiagnosisId("5C4AA029-2DB9-4202-916E-E93C708F65FF"),
+ *                         diagnosisIdThree: CandidApi.DiagnosisId("81795126-A3AC-443C-B47E-7259A16AB4A2"),
+ *                         serviceLineEraData: {
+ *                             serviceLineAdjustments: [{
+ *                                     createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                                     adjustmentGroupCode: "CO",
+ *                                     adjustmentReasonCode: "CO",
+ *                                     adjustmentAmountCents: 1000,
+ *                                     adjustmentNote: "test_note"
+ *                                 }],
+ *                             remittanceAdviceRemarkCodes: ["N362"]
+ *                         },
+ *                         serviceLineManualAdjustments: [{
+ *                                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                                 adjustmentGroupCode: "CO",
+ *                                 adjustmentReasonCode: "CO",
+ *                                 adjustmentAmountCents: 1000,
+ *                                 adjustmentNote: "test_note"
+ *                             }],
+ *                         relatedInvoices: [{
+ *                                 id: CandidApi.InvoiceId("901BE2F1-41BC-456E-9987-4FE2F84F9D75"),
+ *                                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                                 updatedAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                                 organzationId: CandidApi.OrganizationId("F13F73D4-4344-46EA-9D93-33BCFFBB9F36"),
+ *                                 sourceId: "9B626577-8808-4F28-9ED1-F0DFF0D49BBC",
+ *                                 sourceCustomerId: "624D1972-8C69-4C2F-AEFA-10856F734DB3",
+ *                                 patientExternalId: CandidApi.PatientExternalId("10FED4D6-4C5A-48DF-838A-EEF45A74788D"),
+ *                                 note: "test_note",
+ *                                 dueDate: CandidApi.Date_("2023-10-10"),
+ *                                 status: CandidApi.InvoiceStatus.Draft,
+ *                                 url: "https://example.com",
+ *                                 customerInvoiceUrl: "https://example.com",
+ *                                 items: [{
+ *                                         serviceLineId: CandidApi.ServiceLineId("CED00F23-6E68-4678-9DBC-F5AA2969A565"),
+ *                                         amountCents: 500
+ *                                     }]
+ *                             }],
+ *                         denialReason: {
+ *                             reason: CandidApi.serviceLines.v2.DenialReasonContent.AuthorizationRequired
+ *                         },
+ *                         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+ *                         serviceLineId: CandidApi.ServiceLineId("CED00F23-6E68-4678-9DBC-F5AA2969A565"),
+ *                         procedureCode: "99213",
+ *                         quantity: CandidApi.Decimal("1"),
+ *                         units: CandidApi.ServiceLineUnits.Mj,
+ *                         claimId: CandidApi.ClaimId("026A1FB8-748E-4859-A2D7-3EA9E07D25AE"),
+ *                         dateOfServiceRange: {
+ *                             startDate: CandidApi.Date_("2023-01-01"),
+ *                             endDate: CandidApi.Date_("2023-01-03")
+ *                         }
+ *                     }],
+ *                 eras: [{
+ *                         eraId: CandidApi.EraId("4D844EF1-2253-43CD-A4F1-6DB7E65CB54B"),
+ *                         checkNumber: "CHK12345",
+ *                         checkDate: CandidApi.Date_("2023-10-12")
+ *                     }]
+ *             }],
+ *         patient: {
+ *             individualId: CandidApi.IndividualId("93DDBEBF-4956-4482-9A6C-21499B7E4E5D"),
+ *             phoneNumbers: [{
+ *                     number: "1234567890",
+ *                     type: CandidApi.PhoneNumberType.Home
+ *                 }],
+ *             phoneConsent: true,
+ *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *             emailConsent: true,
+ *             externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
+ *             dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             gender: CandidApi.Gender.Male
+ *         },
+ *         guarantor: {
+ *             guarantorId: CandidApi.guarantor.v1.GuarantorId("8BBDBE63-58D3-4D40-98C9-40403C050977"),
+ *             phoneNumbers: [{
+ *                     number: "1234567890",
+ *                     type: CandidApi.PhoneNumberType.Home
+ *                 }],
+ *             phoneConsent: true,
+ *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *             emailConsent: true,
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
+ *             dateOfBirth: "2000-01-01",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             }
+ *         },
+ *         billingProvider: {
+ *             providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             taxId: "123456789",
+ *             npi: "1234567890",
+ *             taxonomyCode: "207Q00000X",
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             organizationName: "Organization Name"
+ *         },
+ *         renderingProvider: {
+ *             providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             taxId: "123456789",
+ *             npi: "1234567890",
+ *             taxonomyCode: "207Q00000X",
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             organizationName: "Organization Name"
+ *         },
+ *         referringProvider: {
+ *             providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             taxId: "123456789",
+ *             npi: "1234567890",
+ *             taxonomyCode: "207Q00000X",
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             organizationName: "Organization Name"
+ *         },
+ *         serviceFacility: {
+ *             serviceFacilityId: CandidApi.ServiceFacilityId("2861487B-232C-4DED-A874-616A5DB0688F"),
+ *             organizationName: "Test Organization",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             }
+ *         },
+ *         subscriberPrimary: {
+ *             individualId: CandidApi.IndividualId("797348A9-E7E8-4E59-8628-95390D079C0B"),
+ *             insuranceCard: {
+ *                 insuranceCardId: CandidApi.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
+ *                 memberId: "E85313B4-0FFC-4119-8042-8161A4ECFF0A",
+ *                 payerName: "John Doe",
+ *                 payerId: "836DDAA6-863F-4020-ACCA-205A689F0002",
+ *                 rxBin: "610014",
+ *                 rxPcn: "MEDDPRIME",
+ *                 imageUrlFront: "https://s3.amazonaws.com/front.jpg",
+ *                 imageUrlBack: "https://s3.amazonaws.com/back.jpg",
+ *                 groupNumber: "ABC12345",
+ *                 planName: "Silver PPO Plan",
+ *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+ *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+ *             },
+ *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+ *             dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             gender: CandidApi.Gender.Male
+ *         },
+ *         subscriberSecondary: {
+ *             individualId: CandidApi.IndividualId("797348A9-E7E8-4E59-8628-95390D079C0B"),
+ *             insuranceCard: {
+ *                 insuranceCardId: CandidApi.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
+ *                 memberId: "E85313B4-0FFC-4119-8042-8161A4ECFF0A",
+ *                 payerName: "John Doe",
+ *                 payerId: "836DDAA6-863F-4020-ACCA-205A689F0002",
+ *                 rxBin: "610014",
+ *                 rxPcn: "MEDDPRIME",
+ *                 imageUrlFront: "https://s3.amazonaws.com/front.jpg",
+ *                 imageUrlBack: "https://s3.amazonaws.com/back.jpg",
+ *                 groupNumber: "ABC12345",
+ *                 planName: "Silver PPO Plan",
+ *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+ *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+ *             },
+ *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+ *             dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "John",
+ *             lastName: "Doe",
+ *             gender: CandidApi.Gender.Male
+ *         },
+ *         url: CandidApi.LinkUrl("https://example.com"),
+ *         diagnoses: [{
+ *                 diagnosisId: CandidApi.DiagnosisId("5C770E00-4BBF-42AF-A73F-99C5E91FC0DB"),
+ *                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                 updatedAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                 encounterId: CandidApi.EncounterId("3F63985B-51A4-4DD4-9418-7D50B2520792"),
+ *                 name: "John Doe",
+ *                 codeType: CandidApi.DiagnosisTypeCode.Abf,
+ *                 code: "I10"
+ *             }],
+ *         clinicalNotes: [{
+ *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
+ *                 notes: ["Patient complained of mild chest pain."],
+ *                 notesStructured: [{
+ *                         text: "Mild chest pain since morning.",
+ *                         authorName: "John Doe",
+ *                         authorNpi: CandidApi.Npi("1234567890"),
+ *                         timestamp: new Date("2023-01-01T00:00:00.000Z")
+ *                     }]
+ *             }],
+ *         billingNotes: [{
+ *                 billingNoteId: CandidApi.billingNotes.v2.BillingNoteId("99882EEA-936F-4E71-BC4F-520E4D14E3E2"),
+ *                 encounterId: CandidApi.EncounterId("8BCFB6A8-2876-4111-9E3F-602B541FCF62"),
+ *                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                 authorAuth0Id: "F0DE3BF9-F9A1-4FA7-BF6B-28C0B46BADD8",
+ *                 authorName: "John Doe",
+ *                 text: "Patient was billed for an MRI."
+ *             }],
+ *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+ *         placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy,
+ *         patientHistories: [{
+ *                 category: CandidApi.encounters.v4.PatientHistoryCategoryEnum.PresentIllness,
+ *                 questions: [{
+ *                         id: CandidApi.encounters.v4.IntakeQuestionId("6E7FBCE4-A8EA-46D0-A8D8-FF83CA3BB176"),
+ *                         text: "Do you have any allergies?",
+ *                         responses: [{
+ *                                 response: "No allergies",
+ *                                 followUps: [{
+ *                                         id: CandidApi.encounters.v4.IntakeFollowUpId("4F3D57F9-AC94-49D6-87E4-E804B709917A"),
+ *                                         text: "Do you have any allergies?",
+ *                                         response: "No allergies"
+ *                                     }]
+ *                             }]
+ *                     }]
+ *             }],
+ *         patientPayments: [{
+ *                 patientPaymentId: CandidApi.patientPayments.v3.PatientPaymentId("CF237BE1-E793-4BBF-8958-61D5179D1D0D"),
+ *                 organizationId: CandidApi.OrganizationId("0788CA2A-B20D-4B8E-B8D4-07FA0B3B4907"),
+ *                 sourceInternalId: "D1A76039-D5C5-4323-A2FC-B7C8B6AEF6A4",
+ *                 source: CandidApi.patientPayments.v3.PatientPaymentSource.ManualEntry,
+ *                 amountCents: 2000,
+ *                 paymentTimestamp: new Date("2023-01-01T00:00:00.000Z"),
+ *                 status: CandidApi.patientPayments.v3.PatientPaymentStatus.Pending,
+ *                 paymentName: "John Doe",
+ *                 paymentNote: "test payment note",
+ *                 patientExternalId: CandidApi.PatientExternalId("B7437260-D6B4-48CF-B9D7-753C09F34E76"),
+ *                 encounterExternalId: CandidApi.EncounterExternalId("0F26B9C3-199F-4CBB-A166-B87EA7C631BB"),
+ *                 serviceLineId: CandidApi.ServiceLineId("B557DC86-C629-478C-850A-02D45AC11783")
+ *             }],
+ *         tags: [{
+ *                 creatorId: "00EB5A46-35C6-441B-9751-AF307AEF5888",
+ *                 tagId: CandidApi.TagId("void-claim-submitted"),
+ *                 description: "to indicate claims where a void claim has been submitted",
+ *                 color: CandidApi.TagColorEnum.Black
+ *             }],
+ *         codingAttribution: CandidApi.encounters.v4.CodingAttributionType.Candid,
+ *         workQueueId: CandidApi.WorkQueueId("000856FE-1024-418F-BF96-2E7347AB4520"),
+ *         workQueueMembershipActivatedAt: new Date("2023-01-01T00:00:00.000Z"),
+ *         ownerOfNextAction: CandidApi.encounters.v4.EncounterOwnerOfNextActionType.Candid,
+ *         externalId: CandidApi.EncounterExternalId("5C21490F-A9C0-45F4-B5DB-136E3AEC617A"),
+ *         dateOfService: CandidApi.Date_("2023-01-01"),
+ *         endDateOfService: CandidApi.Date_("2023-01-05"),
+ *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("PA1234567"),
+ *         patientAuthorizedRelease: true,
+ *         benefitsAssignedToProvider: true,
+ *         providerAcceptsAssignment: true,
+ *         appointmentType: "Routine Checkup",
+ *         existingMedications: [{
+ *                 name: "Lisinopril",
+ *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
+ *                 dosage: "10mg",
+ *                 dosageForm: "Tablet",
+ *                 frequency: "Once Daily",
+ *                 asNeeded: true
+ *             }],
+ *         vitals: {
+ *             heightIn: 70,
+ *             weightLbs: 165,
+ *             bloodPressureSystolicMmhg: 115,
+ *             bloodPressureDiastolicMmhg: 85,
+ *             bodyTemperatureF: 98
+ *         },
+ *         interventions: [{
+ *                 name: "Physical Therapy Session",
+ *                 category: CandidApi.encounters.v4.InterventionCategory.Lifestyle,
+ *                 description: "A session focused on improving muscular strength, flexibility, and range of motion post-injury.",
+ *                 medication: {
+ *                     name: "Lisinopril",
+ *                     rxCui: CandidApi.encounters.v4.RxCui("860975"),
+ *                     dosage: "10mg",
+ *                     dosageForm: "Tablet",
+ *                     frequency: "Once Daily",
+ *                     asNeeded: true
+ *                 },
+ *                 labs: [{
+ *                         name: "Genetic Health Labs",
+ *                         code: "GH12345",
+ *                         codeType: CandidApi.encounters.v4.LabCodeType.Quest
+ *                     }]
+ *             }],
+ *         payToAddress: {
+ *             address1: "123 Main St",
+ *             address2: "Apt 1",
+ *             city: "New York",
+ *             state: CandidApi.State.Ny,
+ *             zipCode: "10001",
+ *             zipPlusFourCode: "1234"
+ *         },
+ *         synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
+ *         billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
+ *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay
+ *     }
+ */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     encounterId: CandidApi.EncounterId;
     claims: CandidApi.Claim[];

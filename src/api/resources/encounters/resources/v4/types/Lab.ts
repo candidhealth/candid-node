@@ -4,6 +4,14 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         name: "Genetic Health Labs",
+ *         code: "GH12345",
+ *         codeType: CandidApi.encounters.v4.LabCodeType.Quest
+ *     }
+ */
 export interface Lab {
     name: string;
     code?: string;

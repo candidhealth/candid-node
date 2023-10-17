@@ -4,6 +4,39 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         individualId: CandidApi.IndividualId("797348A9-E7E8-4E59-8628-95390D079C0B"),
+ *         insuranceCard: {
+ *             insuranceCardId: CandidApi.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
+ *             memberId: "E85313B4-0FFC-4119-8042-8161A4ECFF0A",
+ *             payerName: "John Doe",
+ *             payerId: "836DDAA6-863F-4020-ACCA-205A689F0002",
+ *             rxBin: "610014",
+ *             rxPcn: "MEDDPRIME",
+ *             imageUrlFront: "https://s3.amazonaws.com/front.jpg",
+ *             imageUrlBack: "https://s3.amazonaws.com/back.jpg",
+ *             groupNumber: "ABC12345",
+ *             planName: "Silver PPO Plan",
+ *             planType: CandidApi.SourceOfPaymentCode.SelfPay,
+ *             insuranceType: CandidApi.InsuranceTypeCode.C01
+ *         },
+ *         patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+ *         dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *         address: {
+ *             address1: "123 Main St",
+ *             address2: "Apt 1",
+ *             city: "New York",
+ *             state: CandidApi.State.Ny,
+ *             zipCode: "10001",
+ *             zipPlusFourCode: "1234"
+ *         },
+ *         firstName: "John",
+ *         lastName: "Doe",
+ *         gender: CandidApi.Gender.Male
+ *     }
+ */
 export interface Subscriber extends CandidApi.SubscriberBase {
     individualId: CandidApi.IndividualId;
     insuranceCard: CandidApi.InsuranceCard;

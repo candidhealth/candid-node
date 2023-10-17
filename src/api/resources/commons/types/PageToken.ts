@@ -4,6 +4,10 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
+ */
 export type PageToken = string & {
     PageToken: void;
 };

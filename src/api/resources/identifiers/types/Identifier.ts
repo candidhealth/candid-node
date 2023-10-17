@@ -4,6 +4,18 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         identifierId: CandidApi.IdentifierId("123e4567-e89b-12d3-a456-426614174000"),
+ *         identifierCode: CandidApi.IdentifierCode.Mcr,
+ *         identifierValue: {
+ *             type: "medicare_provider_identifier",
+ *             state: CandidApi.State.Ca,
+ *             providerNumber: "1234567890"
+ *         }
+ *     }
+ */
 export interface Identifier extends CandidApi.IdentifierBase {
     identifierId: CandidApi.IdentifierId;
 }

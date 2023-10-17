@@ -4,6 +4,19 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         category: CandidApi.encounters.v4.NoteCategory.Clinical,
+ *         notes: ["Patient complained of mild chest pain."],
+ *         notesStructured: [{
+ *                 text: "Mild chest pain since morning.",
+ *                 authorName: "John Doe",
+ *                 authorNpi: CandidApi.Npi("1234567890"),
+ *                 timestamp: new Date("2023-01-01T00:00:00.000Z")
+ *             }]
+ *     }
+ */
 export interface ClinicalNoteCategory {
     category: CandidApi.encounters.v4.NoteCategory;
     notes: string[];

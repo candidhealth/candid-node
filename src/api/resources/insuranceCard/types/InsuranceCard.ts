@@ -4,6 +4,23 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         insuranceCardId: CandidApi.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
+ *         memberId: "E85313B4-0FFC-4119-8042-8161A4ECFF0A",
+ *         payerName: "John Doe",
+ *         payerId: "836DDAA6-863F-4020-ACCA-205A689F0002",
+ *         rxBin: "610014",
+ *         rxPcn: "MEDDPRIME",
+ *         imageUrlFront: "https://s3.amazonaws.com/front.jpg",
+ *         imageUrlBack: "https://s3.amazonaws.com/back.jpg",
+ *         groupNumber: "ABC12345",
+ *         planName: "Silver PPO Plan",
+ *         planType: CandidApi.SourceOfPaymentCode.SelfPay,
+ *         insuranceType: CandidApi.InsuranceTypeCode.C01
+ *     }
+ */
 export interface InsuranceCard extends CandidApi.InsuranceCardBase {
     insuranceCardId: CandidApi.InsuranceCardId;
     memberId: string;

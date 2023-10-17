@@ -4,6 +4,31 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         guarantorId: CandidApi.guarantor.v1.GuarantorId("8BBDBE63-58D3-4D40-98C9-40403C050977"),
+ *         phoneNumbers: [{
+ *                 number: "1234567890",
+ *                 type: CandidApi.PhoneNumberType.Home
+ *             }],
+ *         phoneConsent: true,
+ *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *         emailConsent: true,
+ *         firstName: "John",
+ *         lastName: "Doe",
+ *         externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
+ *         dateOfBirth: "2000-01-01",
+ *         address: {
+ *             address1: "123 Main St",
+ *             address2: "Apt 1",
+ *             city: "New York",
+ *             state: CandidApi.State.Ny,
+ *             zipCode: "10001",
+ *             zipPlusFourCode: "1234"
+ *         }
+ *     }
+ */
 export interface Guarantor extends CandidApi.guarantor.v1.GuarantorBase {
     guarantorId: CandidApi.guarantor.v1.GuarantorId;
     phoneNumbers: CandidApi.PhoneNumber[];

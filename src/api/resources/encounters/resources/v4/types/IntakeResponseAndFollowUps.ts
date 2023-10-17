@@ -4,6 +4,17 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         response: "No allergies",
+ *         followUps: [{
+ *                 id: CandidApi.encounters.v4.IntakeFollowUpId("4F3D57F9-AC94-49D6-87E4-E804B709917A"),
+ *                 text: "Do you have any allergies?",
+ *                 response: "No allergies"
+ *             }]
+ *     }
+ */
 export interface IntakeResponseAndFollowUps {
     response?: string;
     followUps?: CandidApi.encounters.v4.IntakeFollowUp[];

@@ -4,6 +4,15 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         creatorId: "00EB5A46-35C6-441B-9751-AF307AEF5888",
+ *         tagId: CandidApi.TagId("void-claim-submitted"),
+ *         description: "to indicate claims where a void claim has been submitted",
+ *         color: CandidApi.TagColorEnum.Black
+ *     }
+ */
 export interface Tag extends CandidApi.TagCreate {
     creatorId: string;
 }

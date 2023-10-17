@@ -4,6 +4,17 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         name: "Lisinopril",
+ *         rxCui: CandidApi.encounters.v4.RxCui("860975"),
+ *         dosage: "10mg",
+ *         dosageForm: "Tablet",
+ *         frequency: "Once Daily",
+ *         asNeeded: true
+ *     }
+ */
 export interface Medication {
     name: string;
     rxCui?: CandidApi.encounters.v4.RxCui;

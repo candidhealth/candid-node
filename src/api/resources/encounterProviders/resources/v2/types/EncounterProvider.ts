@@ -4,6 +4,26 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         address: {
+ *             address1: "123 Main St",
+ *             address2: "Apt 1",
+ *             city: "New York",
+ *             state: CandidApi.State.Ny,
+ *             zipCode: "10001",
+ *             zipPlusFourCode: "1234"
+ *         },
+ *         taxId: "123456789",
+ *         npi: "1234567890",
+ *         taxonomyCode: "207Q00000X",
+ *         firstName: "John",
+ *         lastName: "Doe",
+ *         organizationName: "Organization Name"
+ *     }
+ */
 export interface EncounterProvider extends CandidApi.encounterProviders.v2.EncounterProviderBase {
     providerId: CandidApi.encounterProviders.v2.ProviderId;
     address: CandidApi.StreetAddressLongZip;

@@ -4,6 +4,17 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         address1: "123 Main St",
+ *         address2: "Apt 1",
+ *         city: "New York",
+ *         state: CandidApi.State.Ny,
+ *         zipCode: "10001",
+ *         zipPlusFourCode: "1234"
+ *     }
+ */
 export interface StreetAddressShortZip extends CandidApi.StreetAddressBase {
     /** 4-digit zip add-on code https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4 */
     zipPlusFourCode?: string;

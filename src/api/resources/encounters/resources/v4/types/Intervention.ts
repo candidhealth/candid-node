@@ -4,6 +4,27 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         name: "Physical Therapy Session",
+ *         category: CandidApi.encounters.v4.InterventionCategory.Lifestyle,
+ *         description: "A session focused on improving muscular strength, flexibility, and range of motion post-injury.",
+ *         medication: {
+ *             name: "Lisinopril",
+ *             rxCui: CandidApi.encounters.v4.RxCui("860975"),
+ *             dosage: "10mg",
+ *             dosageForm: "Tablet",
+ *             frequency: "Once Daily",
+ *             asNeeded: true
+ *         },
+ *         labs: [{
+ *                 name: "Genetic Health Labs",
+ *                 code: "GH12345",
+ *                 codeType: CandidApi.encounters.v4.LabCodeType.Quest
+ *             }]
+ *     }
+ */
 export interface Intervention {
     name: string;
     category: CandidApi.encounters.v4.InterventionCategory;

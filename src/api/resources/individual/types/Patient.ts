@@ -4,6 +4,32 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         individualId: CandidApi.IndividualId("93DDBEBF-4956-4482-9A6C-21499B7E4E5D"),
+ *         phoneNumbers: [{
+ *                 number: "1234567890",
+ *                 type: CandidApi.PhoneNumberType.Home
+ *             }],
+ *         phoneConsent: true,
+ *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *         emailConsent: true,
+ *         externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
+ *         dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *         address: {
+ *             address1: "123 Main St",
+ *             address2: "Apt 1",
+ *             city: "New York",
+ *             state: CandidApi.State.Ny,
+ *             zipCode: "10001",
+ *             zipPlusFourCode: "1234"
+ *         },
+ *         firstName: "John",
+ *         lastName: "Doe",
+ *         gender: CandidApi.Gender.Male
+ *     }
+ */
 export interface Patient extends CandidApi.PatientBase {
     individualId: CandidApi.IndividualId;
     phoneNumbers: CandidApi.PhoneNumber[];

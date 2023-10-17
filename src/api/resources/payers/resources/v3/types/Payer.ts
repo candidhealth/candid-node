@@ -4,6 +4,14 @@
 
 import * as CandidApi from "../../../../..";
 
+/**
+ * @example
+ *     {
+ *         payerUuid: CandidApi.payers.v3.PayerUuid("A6431FD2-0712-4714-B1B1-DD094DAF9F42"),
+ *         payerId: "12345",
+ *         payerName: "Payer Name"
+ *     }
+ */
 export interface Payer {
     /** Auto-generated ID set on creation. */
     payerUuid: CandidApi.payers.v3.PayerUuid;
