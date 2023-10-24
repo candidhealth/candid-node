@@ -396,6 +396,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "V1",
     "V2",
     "V3",
+    "XE",
 ]);
 
 export declare namespace ProcedureModifier {
@@ -785,5 +786,6 @@ export declare namespace ProcedureModifier {
         | "US"
         | "V1"
         | "V2"
-        | "V3";
+        | "V3"
+        | "XE";
 }

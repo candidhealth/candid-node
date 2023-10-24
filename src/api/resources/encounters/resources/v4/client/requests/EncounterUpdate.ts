@@ -80,4 +80,10 @@ export interface EncounterUpdate {
     endDateOfService?: CandidApi.Date_;
     /** Contains details of the secondary insurance subscriber. */
     subscriberSecondary?: CandidApi.SubscriberCreate;
+    /**
+     * Defines additional information on the claim needed by the payer.
+     * Box 19 on the CMS-1500 claim form.
+     *
+     */
+    additionalInformation?: string;
 }

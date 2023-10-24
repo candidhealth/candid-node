@@ -86,6 +86,10 @@ export const EncounterUpdate: core.serialization.Schema<
         "subscriber_secondary",
         core.serialization.lazyObject(async () => (await import("../../../../../..")).SubscriberCreate).optional()
     ),
+    additionalInformation: core.serialization.property(
+        "additional_information",
+        core.serialization.string().optional()
+    ),
 });
 
 export declare namespace EncounterUpdate {
@@ -106,5 +110,6 @@ export declare namespace EncounterUpdate {
         appointment_type?: string | null;
         end_date_of_service?: serializers.Date_.Raw | null;
         subscriber_secondary?: serializers.SubscriberCreate.Raw | null;
+        additional_information?: string | null;
     }
 }

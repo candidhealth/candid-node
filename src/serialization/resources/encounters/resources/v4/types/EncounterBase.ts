@@ -60,6 +60,10 @@ export const EncounterBase: core.serialization.ObjectSchema<
         "responsible_party",
         core.serialization.lazy(async () => (await import("../../../../..")).encounters.v4.ResponsiblePartyType)
     ),
+    additionalInformation: core.serialization.property(
+        "additional_information",
+        core.serialization.string().optional()
+    ),
 });
 
 export declare namespace EncounterBase {
@@ -79,5 +83,6 @@ export declare namespace EncounterBase {
         synchronicity?: serializers.encounters.v4.SynchronicityType.Raw | null;
         billable_status: serializers.encounters.v4.BillableStatusType.Raw;
         responsible_party: serializers.encounters.v4.ResponsiblePartyType.Raw;
+        additional_information?: string | null;
     }
 }

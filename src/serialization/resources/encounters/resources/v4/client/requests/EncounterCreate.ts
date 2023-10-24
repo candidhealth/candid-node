@@ -94,6 +94,14 @@ export const EncounterCreate: core.serialization.Schema<
         guarantor: core.serialization
             .lazyObject(async () => (await import("../../../../../..")).guarantor.v1.GuarantorCreate)
             .optional(),
+        externalClaimSubmission: core.serialization.property(
+            "external_claim_submission",
+            core.serialization
+                .lazyObject(
+                    async () => (await import("../../../../../..")).claimSubmission.v1.ExternalClaimSubmissionCreate
+                )
+                .optional()
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../../..")).encounters.v4.EncounterBase));
 
@@ -113,5 +121,6 @@ export declare namespace EncounterCreate {
         patient_histories?: serializers.encounters.v4.PatientHistoryCategory.Raw[] | null;
         service_lines?: serializers.serviceLines.v2.ServiceLineCreate.Raw[] | null;
         guarantor?: serializers.guarantor.v1.GuarantorCreate.Raw | null;
+        external_claim_submission?: serializers.claimSubmission.v1.ExternalClaimSubmissionCreate.Raw | null;
     }
 }

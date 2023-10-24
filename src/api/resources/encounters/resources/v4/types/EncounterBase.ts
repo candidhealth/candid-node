@@ -82,4 +82,10 @@ export interface EncounterBase {
      *
      */
     responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType;
+    /**
+     * Defines additional information on the claim needed by the payer.
+     * Box 19 on the CMS-1500 claim form.
+     *
+     */
+    additionalInformation?: string;
 }

@@ -204,7 +204,7 @@ import * as CandidApi from "../../../../..";
  *                         groupNumber: "ABC12345",
  *                         planName: "Silver PPO Plan",
  *                         planType: CandidApi.SourceOfPaymentCode.SelfPay,
- *                         insuranceType: CandidApi.InsuranceTypeCode.C01
+ *                         insuranceType: CandidApi.InsuranceTypeCode.C12
  *                     },
  *                     patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
  *                     dateOfBirth: CandidApi.Date_("2000-01-01"),
@@ -234,7 +234,7 @@ import * as CandidApi from "../../../../..";
  *                         groupNumber: "ABC12345",
  *                         planName: "Silver PPO Plan",
  *                         planType: CandidApi.SourceOfPaymentCode.SelfPay,
- *                         insuranceType: CandidApi.InsuranceTypeCode.C01
+ *                         insuranceType: CandidApi.InsuranceTypeCode.C12
  *                     },
  *                     patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
  *                     dateOfBirth: CandidApi.Date_("2000-01-01"),

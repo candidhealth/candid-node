@@ -11,8 +11,13 @@ import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
+import { InsuranceAdjudication } from "./api/resources/insuranceAdjudication/client/Client";
+import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
+import { PatientPayments } from "./api/resources/patientPayments/client/Client";
+import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
+import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 
 export declare namespace CandidApiClient {
     interface Options {
@@ -66,15 +71,45 @@ export class CandidApiClient {
         return (this._guarantor ??= new Guarantor(this.options));
     }
 
+    protected _insuranceAdjudication: InsuranceAdjudication | undefined;
+
+    public get insuranceAdjudication(): InsuranceAdjudication {
+        return (this._insuranceAdjudication ??= new InsuranceAdjudication(this.options));
+    }
+
+    protected _insuranceRefunds: InsuranceRefunds | undefined;
+
+    public get insuranceRefunds(): InsuranceRefunds {
+        return (this._insuranceRefunds ??= new InsuranceRefunds(this.options));
+    }
+
     protected _organizationProviders: OrganizationProviders | undefined;
 
     public get organizationProviders(): OrganizationProviders {
         return (this._organizationProviders ??= new OrganizationProviders(this.options));
     }
 
+    protected _patientPayments: PatientPayments | undefined;
+
+    public get patientPayments(): PatientPayments {
+        return (this._patientPayments ??= new PatientPayments(this.options));
+    }
+
+    protected _patientRefunds: PatientRefunds | undefined;
+
+    public get patientRefunds(): PatientRefunds {
+        return (this._patientRefunds ??= new PatientRefunds(this.options));
+    }
+
     protected _payers: Payers | undefined;
 
     public get payers(): Payers {
         return (this._payers ??= new Payers(this.options));
+    }
+
+    protected _writeOffs: WriteOffs | undefined;
+
+    public get writeOffs(): WriteOffs {
+        return (this._writeOffs ??= new WriteOffs(this.options));
     }
 }

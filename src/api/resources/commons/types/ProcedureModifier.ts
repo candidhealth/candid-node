@@ -1164,7 +1164,10 @@ export type ProcedureModifier =
     | "V2"
     /**
      * Three patient visits in a month */
-    | "V3";
+    | "V3"
+    /**
+     * Two or more separate patient visits on the same date of service */
+    | "XE";
 
 export const ProcedureModifier = {
     TwentyTwo: "22",
@@ -1553,4 +1556,5 @@ export const ProcedureModifier = {
     V1: "V1",
     V2: "V2",
     V3: "V3",
+    Xe: "XE",
 } as const;

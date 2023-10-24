@@ -18,7 +18,7 @@ import * as CandidApi from "../../..";
  *         groupNumber: "ABC12345",
  *         planName: "Silver PPO Plan",
  *         planType: CandidApi.SourceOfPaymentCode.SelfPay,
- *         insuranceType: CandidApi.InsuranceTypeCode.C01
+ *         insuranceType: CandidApi.InsuranceTypeCode.C12
  *     }
  */
 export interface InsuranceCard extends CandidApi.InsuranceCardBase {
