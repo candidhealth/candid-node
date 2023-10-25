@@ -19,6 +19,11 @@ export const Error: core.serialization.Schema<
                 async () => (await import("../../../../..")).EntityNotFoundErrorMessage
             ),
         }),
+        UpdatesDisabledDueToExternalSystemIntegrationError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).UpdatesDisabledDueToExternalSystemIntegrationErrorMessage
+            ),
+        }),
     })
     .transform<CandidApi.organizationProviders.v3.update.Error>({
         transform: (value) => {
@@ -27,13 +32,20 @@ export const Error: core.serialization.Schema<
                     return CandidApi.organizationProviders.v3.update.Error.httpRequestValidationError(value.content);
                 case "EntityNotFoundError":
                     return CandidApi.organizationProviders.v3.update.Error.entityNotFoundError(value.content);
+                case "UpdatesDisabledDueToExternalSystemIntegrationError":
+                    return CandidApi.organizationProviders.v3.update.Error.updatesDisabledDueToExternalSystemIntegrationError(
+                        value.content
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.HttpRequestValidationError | Error.EntityNotFoundError;
+    type Raw =
+        | Error.HttpRequestValidationError
+        | Error.EntityNotFoundError
+        | Error.UpdatesDisabledDueToExternalSystemIntegrationError;
 
     interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
@@ -43,5 +55,10 @@ export declare namespace Error {
     interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: serializers.EntityNotFoundErrorMessage.Raw;
+    }
+
+    interface UpdatesDisabledDueToExternalSystemIntegrationError {
+        errorName: "UpdatesDisabledDueToExternalSystemIntegrationError";
+        content: serializers.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage.Raw;
     }
 }

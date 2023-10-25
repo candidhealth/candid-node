@@ -19,6 +19,7 @@ export class V4 {
     constructor(protected readonly options: V4.Options) {}
 
     /**
+     * **This endpoint is incubating.**
      * Retrieves a previously created patient payment by its `patient_payment_id`.
      *
      */
@@ -37,7 +38,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -61,6 +62,7 @@ export class V4 {
     }
 
     /**
+     * **This endpoint is incubating.**
      * Creates a new patient payment record and returns the newly created PatientPayment object.
      * The allocations can describe whether the payment is being applied toward a specific service line,
      * claim, or billing provider.
@@ -81,7 +83,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
@@ -108,6 +110,7 @@ export class V4 {
     }
 
     /**
+     * **This endpoint is incubating.**
      * Deletes the patient payment record matching the provided patient_payment_id.
      *
      */
@@ -126,7 +129,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

@@ -7,12 +7,18 @@ import * as core from "../../../../../../core";
 
 export type Error =
     | CandidApi.organizationProviders.v3.create.Error.HttpRequestValidationError
+    | CandidApi.organizationProviders.v3.create.Error.UpdatesDisabledDueToExternalSystemIntegrationError
     | CandidApi.organizationProviders.v3.create.Error._Unknown;
 
 export declare namespace Error {
     interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
+    }
+
+    interface UpdatesDisabledDueToExternalSystemIntegrationError extends _Utils {
+        errorName: "UpdatesDisabledDueToExternalSystemIntegrationError";
+        content: CandidApi.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage;
     }
 
     interface _Unknown extends _Utils {
@@ -26,6 +32,9 @@ export declare namespace Error {
 
     interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
+        updatesDisabledDueToExternalSystemIntegrationError: (
+            value: CandidApi.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -39,6 +48,21 @@ export const Error = {
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.organizationProviders.v3.create.Error.HttpRequestValidationError,
+                visitor: CandidApi.organizationProviders.v3.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.organizationProviders.v3.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    updatesDisabledDueToExternalSystemIntegrationError: (
+        value: CandidApi.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage
+    ): CandidApi.organizationProviders.v3.create.Error.UpdatesDisabledDueToExternalSystemIntegrationError => {
+        return {
+            content: value,
+            errorName: "UpdatesDisabledDueToExternalSystemIntegrationError",
+            _visit: function <_Result>(
+                this: CandidApi.organizationProviders.v3.create.Error.UpdatesDisabledDueToExternalSystemIntegrationError,
                 visitor: CandidApi.organizationProviders.v3.create.Error._Visitor<_Result>
             ) {
                 return CandidApi.organizationProviders.v3.create.Error._visit(this, visitor);
@@ -66,6 +90,8 @@ export const Error = {
         switch (value.errorName) {
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
+            case "UpdatesDisabledDueToExternalSystemIntegrationError":
+                return visitor.updatesDisabledDueToExternalSystemIntegrationError(value.content);
             default:
                 return visitor._other(value as any);
         }

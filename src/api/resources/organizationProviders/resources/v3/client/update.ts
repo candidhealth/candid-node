@@ -8,6 +8,7 @@ import * as core from "../../../../../../core";
 export type Error =
     | CandidApi.organizationProviders.v3.update.Error.HttpRequestValidationError
     | CandidApi.organizationProviders.v3.update.Error.EntityNotFoundError
+    | CandidApi.organizationProviders.v3.update.Error.UpdatesDisabledDueToExternalSystemIntegrationError
     | CandidApi.organizationProviders.v3.update.Error._Unknown;
 
 export declare namespace Error {
@@ -19,6 +20,11 @@ export declare namespace Error {
     interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
+    }
+
+    interface UpdatesDisabledDueToExternalSystemIntegrationError extends _Utils {
+        errorName: "UpdatesDisabledDueToExternalSystemIntegrationError";
+        content: CandidApi.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage;
     }
 
     interface _Unknown extends _Utils {
@@ -33,6 +39,9 @@ export declare namespace Error {
     interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
+        updatesDisabledDueToExternalSystemIntegrationError: (
+            value: CandidApi.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -68,6 +77,21 @@ export const Error = {
         };
     },
 
+    updatesDisabledDueToExternalSystemIntegrationError: (
+        value: CandidApi.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage
+    ): CandidApi.organizationProviders.v3.update.Error.UpdatesDisabledDueToExternalSystemIntegrationError => {
+        return {
+            content: value,
+            errorName: "UpdatesDisabledDueToExternalSystemIntegrationError",
+            _visit: function <_Result>(
+                this: CandidApi.organizationProviders.v3.update.Error.UpdatesDisabledDueToExternalSystemIntegrationError,
+                visitor: CandidApi.organizationProviders.v3.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.organizationProviders.v3.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.organizationProviders.v3.update.Error._Unknown => {
         return {
             errorName: undefined,
@@ -90,6 +114,8 @@ export const Error = {
                 return visitor.httpRequestValidationError(value.content);
             case "EntityNotFoundError":
                 return visitor.entityNotFoundError(value.content);
+            case "UpdatesDisabledDueToExternalSystemIntegrationError":
+                return visitor.updatesDisabledDueToExternalSystemIntegrationError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -39,7 +39,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -128,7 +128,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -173,7 +173,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             body: await serializers.organizationProviders.v3.OrganizationProviderCreateV2.jsonOrThrow(request, {
@@ -196,6 +196,7 @@ export class V3 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.organizationProviders.v3.create.Error.Raw)?.errorName) {
                 case "HttpRequestValidationError":
+                case "UpdatesDisabledDueToExternalSystemIntegrationError":
                     return {
                         ok: false,
                         error: await serializers.organizationProviders.v3.create.Error.parseOrThrow(
@@ -238,7 +239,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             body: await serializers.organizationProviders.v3.OrganizationProviderUpdateV2.jsonOrThrow(request, {
@@ -262,6 +263,7 @@ export class V3 {
             switch ((_response.error.body as serializers.organizationProviders.v3.update.Error.Raw)?.errorName) {
                 case "HttpRequestValidationError":
                 case "EntityNotFoundError":
+                case "UpdatesDisabledDueToExternalSystemIntegrationError":
                     return {
                         ok: false,
                         error: await serializers.organizationProviders.v3.update.Error.parseOrThrow(

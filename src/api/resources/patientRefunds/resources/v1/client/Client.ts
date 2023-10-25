@@ -19,6 +19,7 @@ export class V1 {
     constructor(protected readonly options: V1.Options) {}
 
     /**
+     * **This endpoint is incubating.**
      * Retrieves a previously created patient refund by its `patient_refund_id`.
      *
      */
@@ -37,7 +38,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -61,6 +62,7 @@ export class V1 {
     }
 
     /**
+     * **This endpoint is incubating.**
      * Creates a new patient refund record and returns the newly created PatientRefund object.
      * The allocations can describe whether the refund is being applied toward a specific service line,
      * claim, or billing provider.
@@ -79,7 +81,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             body: await serializers.patientRefunds.v1.PatientRefundCreate.jsonOrThrow(request, {
@@ -106,6 +108,7 @@ export class V1 {
     }
 
     /**
+     * **This endpoint is incubating.**
      * Deletes the patient refund record matching the provided patient_refund_id.
      *
      */
@@ -124,7 +127,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

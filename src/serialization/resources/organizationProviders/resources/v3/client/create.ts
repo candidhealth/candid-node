@@ -14,22 +14,36 @@ export const Error: core.serialization.Schema<
         HttpRequestValidationError: core.serialization.object({
             content: core.serialization.lazyObject(async () => (await import("../../../../..")).RequestValidationError),
         }),
+        UpdatesDisabledDueToExternalSystemIntegrationError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).UpdatesDisabledDueToExternalSystemIntegrationErrorMessage
+            ),
+        }),
     })
     .transform<CandidApi.organizationProviders.v3.create.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "HttpRequestValidationError":
                     return CandidApi.organizationProviders.v3.create.Error.httpRequestValidationError(value.content);
+                case "UpdatesDisabledDueToExternalSystemIntegrationError":
+                    return CandidApi.organizationProviders.v3.create.Error.updatesDisabledDueToExternalSystemIntegrationError(
+                        value.content
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.HttpRequestValidationError;
+    type Raw = Error.HttpRequestValidationError | Error.UpdatesDisabledDueToExternalSystemIntegrationError;
 
     interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: serializers.RequestValidationError.Raw;
+    }
+
+    interface UpdatesDisabledDueToExternalSystemIntegrationError {
+        errorName: "UpdatesDisabledDueToExternalSystemIntegrationError";
+        content: serializers.UpdatesDisabledDueToExternalSystemIntegrationErrorMessage.Raw;
     }
 }

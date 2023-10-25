@@ -19,6 +19,7 @@ export class V1 {
     constructor(protected readonly options: V1.Options) {}
 
     /**
+     * **This endpoint is incubating.**
      * Retrieves a previously created insurance refund by its `insurance_refund_id`.
      * If the refund does not exist, a `403` will be thrown.
      *
@@ -40,7 +41,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -64,6 +65,7 @@ export class V1 {
     }
 
     /**
+     * **This endpoint is incubating.**
      * Creates a new insurance refund record and returns the newly created `InsuranceRefund` object.
      * The allocations can describe whether the refund is being applied toward a specific service line,
      * claim, or billing provider.
@@ -84,7 +86,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceRefunds.v1.InsuranceRefundCreate.jsonOrThrow(request, {
@@ -111,6 +113,7 @@ export class V1 {
     }
 
     /**
+     * **This endpoint is incubating.**
      * Deletes the insurance refund record matching the provided `insurance_refund_id`.
      * If the matching record's organization_id does not match the authenticated user's
      * current organization_id, then a response code of `403` will be returned.
@@ -131,7 +134,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.7.0",
+                "X-Fern-SDK-Version": "0.7.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
