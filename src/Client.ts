@@ -13,6 +13,7 @@ import { Exports } from "./api/resources/exports/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
 import { InsuranceAdjudication } from "./api/resources/insuranceAdjudication/client/Client";
 import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
+import { OrganizationServiceFacilities } from "./api/resources/organizationServiceFacilities/client/Client";
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
 import { PatientPayments } from "./api/resources/patientPayments/client/Client";
 import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
@@ -81,6 +82,12 @@ export class CandidApiClient {
 
     public get insuranceRefunds(): InsuranceRefunds {
         return (this._insuranceRefunds ??= new InsuranceRefunds(this.options));
+    }
+
+    protected _organizationServiceFacilities: OrganizationServiceFacilities | undefined;
+
+    public get organizationServiceFacilities(): OrganizationServiceFacilities {
+        return (this._organizationServiceFacilities ??= new OrganizationServiceFacilities(this.options));
     }
 
     protected _organizationProviders: OrganizationProviders | undefined;

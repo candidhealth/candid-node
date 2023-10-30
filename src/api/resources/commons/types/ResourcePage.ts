@@ -4,6 +4,13 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * @example
+ *     {
+ *         prevPageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+ *         nextPageToken: CandidApi.PageToken("eyAiZm9vIjogImJhciJ9o8dj3FU83fFJe8dalz4A")
+ *     }
+ */
 export interface ResourcePage {
     prevPageToken?: CandidApi.PageToken;
     nextPageToken?: CandidApi.PageToken;

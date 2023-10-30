@@ -8,6 +8,7 @@ export * as exports from "./exports";
 export * as guarantor from "./guarantor";
 export * as insuranceAdjudication from "./insuranceAdjudication";
 export * as insuranceRefunds from "./insuranceRefunds";
+export * as organizationServiceFacilities from "./organizationServiceFacilities";
 export * as organizationProviders from "./organizationProviders";
 export * as patientPayments from "./patientPayments";
 export * as patientRefunds from "./patientRefunds";
