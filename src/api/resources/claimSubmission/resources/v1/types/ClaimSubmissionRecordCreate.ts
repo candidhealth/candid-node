@@ -24,6 +24,6 @@ import * as CandidApi from "../../../../..";
 export interface ClaimSubmissionRecordCreate {
     /** When the claim was submitted to the payer. */
     submittedAt: Date;
-    claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode;
-    payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType;
+    claimFrequencyCode?: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode;
+    payerResponsibility?: CandidApi.ClaimSubmissionPayerResponsibilityType;
 }

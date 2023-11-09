@@ -11,7 +11,7 @@ import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
-import { InsuranceAdjudication } from "./api/resources/insuranceAdjudication/client/Client";
+import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
 import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
 import { OrganizationServiceFacilities } from "./api/resources/organizationServiceFacilities/client/Client";
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
@@ -72,10 +72,10 @@ export class CandidApiClient {
         return (this._guarantor ??= new Guarantor(this.options));
     }
 
-    protected _insuranceAdjudication: InsuranceAdjudication | undefined;
+    protected _insuranceAdjudications: InsuranceAdjudications | undefined;
 
-    public get insuranceAdjudication(): InsuranceAdjudication {
-        return (this._insuranceAdjudication ??= new InsuranceAdjudication(this.options));
+    public get insuranceAdjudications(): InsuranceAdjudications {
+        return (this._insuranceAdjudications ??= new InsuranceAdjudications(this.options));
     }
 
     protected _insuranceRefunds: InsuranceRefunds | undefined;

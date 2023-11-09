@@ -16,7 +16,7 @@ export const WriteOffCreate: core.serialization.ObjectSchema<
         "write_off_reason",
         core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffReason)
     ),
-    allocation: core.serialization.lazyObject(async () => (await import("../../../../..")).Allocation),
+    allocation: core.serialization.lazyObject(async () => (await import("../../../../..")).AllocationCreate),
 });
 
 export declare namespace WriteOffCreate {
@@ -24,6 +24,6 @@ export declare namespace WriteOffCreate {
         write_off_timestamp: string;
         write_off_note?: string | null;
         write_off_reason: serializers.writeOffs.v1.WriteOffReason.Raw;
-        allocation: serializers.Allocation.Raw;
+        allocation: serializers.AllocationCreate.Raw;
     }
 }

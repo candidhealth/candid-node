@@ -5,6 +5,7 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import { V1 } from "../resources/v1/client/Client";
+import { V2 } from "../resources/v2/client/Client";
 
 export declare namespace ExpectedNetworkStatus {
     interface Options {
@@ -20,5 +21,11 @@ export class ExpectedNetworkStatus {
 
     public get v1(): V1 {
         return (this._v1 ??= new V1(this.options));
+    }
+
+    protected _v2: V2 | undefined;
+
+    public get v2(): V2 {
+        return (this._v2 ??= new V2(this.options));
     }
 }

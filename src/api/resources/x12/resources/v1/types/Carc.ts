@@ -183,6 +183,8 @@ export type Carc =
     | "239"
     | "240"
     | "241"
+    | "242"
+    | "243"
     | "245"
     | "246"
     | "247"
@@ -241,6 +243,8 @@ export type Carc =
     | "301"
     | "302"
     | "303"
+    | "304"
+    | "305"
     | "A0"
     | "A1"
     | "A5"
@@ -261,6 +265,29 @@ export type Carc =
     | "B20"
     | "B22"
     | "B23"
+    | "P1"
+    | "P2"
+    | "P3"
+    | "P4"
+    | "P5"
+    | "P6"
+    | "P7"
+    | "P8"
+    | "P9"
+    | "P10"
+    | "P11"
+    | "P12"
+    | "P13"
+    | "P14"
+    | "P15"
+    | "P16"
+    | "P17"
+    | "P18"
+    | "P19"
+    | "P20"
+    | "P21"
+    | "P22"
+    | "P23"
     | "P24"
     | "P25"
     | "P26"
@@ -268,7 +295,8 @@ export type Carc =
     | "P28"
     | "P29"
     | "P30"
-    | "P31";
+    | "P31"
+    | "P32";
 
 export const Carc = {
     Carc1: "1",
@@ -451,6 +479,8 @@ export const Carc = {
     Carc239: "239",
     Carc240: "240",
     Carc241: "241",
+    Carc242: "242",
+    Carc243: "243",
     Carc245: "245",
     Carc246: "246",
     Carc247: "247",
@@ -509,6 +539,8 @@ export const Carc = {
     Carc301: "301",
     Carc302: "302",
     Carc303: "303",
+    Carc304: "304",
+    Carc305: "305",
     CarcA0: "A0",
     CarcA1: "A1",
     CarcA5: "A5",
@@ -529,6 +561,29 @@ export const Carc = {
     CarcB20: "B20",
     CarcB22: "B22",
     CarcB23: "B23",
+    CarcP1: "P1",
+    CarcP2: "P2",
+    CarcP3: "P3",
+    CarcP4: "P4",
+    CarcP5: "P5",
+    CarcP6: "P6",
+    CarcP7: "P7",
+    CarcP8: "P8",
+    CarcP9: "P9",
+    CarcP10: "P10",
+    CarcP11: "P11",
+    CarcP12: "P12",
+    CarcP13: "P13",
+    CarcP14: "P14",
+    CarcP15: "P15",
+    CarcP16: "P16",
+    CarcP17: "P17",
+    CarcP18: "P18",
+    CarcP19: "P19",
+    CarcP20: "P20",
+    CarcP21: "P21",
+    CarcP22: "P22",
+    CarcP23: "P23",
     CarcP24: "P24",
     CarcP25: "P25",
     CarcP26: "P26",
@@ -537,4 +592,5 @@ export const Carc = {
     CarcP29: "P29",
     CarcP30: "P30",
     CarcP31: "P31",
+    CarcP32: "P32",
 } as const;

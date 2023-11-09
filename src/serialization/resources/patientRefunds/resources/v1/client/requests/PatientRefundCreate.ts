@@ -15,12 +15,16 @@ export const PatientRefundCreate: core.serialization.Schema<
     refundNote: core.serialization.property("refund_note", core.serialization.string().optional()),
     patientExternalId: core.serialization.property(
         "patient_external_id",
-        core.serialization.lazy(async () => (await import("../../../../../..")).PatientExternalId).optional()
+        core.serialization.lazy(async () => (await import("../../../../../..")).PatientExternalId)
     ),
     allocations: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../../../../../..")).RefundAllocation)
+        core.serialization.lazyObject(async () => (await import("../../../../../..")).AllocationCreate)
     ),
     invoice: core.serialization.lazy(async () => (await import("../../../../../..")).InvoiceId).optional(),
+    refundReason: core.serialization.property(
+        "refund_reason",
+        core.serialization.lazy(async () => (await import("../../../../../..")).RefundReason).optional()
+    ),
 });
 
 export declare namespace PatientRefundCreate {
@@ -28,8 +32,9 @@ export declare namespace PatientRefundCreate {
         amount_cents: number;
         refund_timestamp?: string | null;
         refund_note?: string | null;
-        patient_external_id?: serializers.PatientExternalId.Raw | null;
-        allocations: serializers.RefundAllocation.Raw[];
+        patient_external_id: serializers.PatientExternalId.Raw;
+        allocations: serializers.AllocationCreate.Raw[];
         invoice?: serializers.InvoiceId.Raw | null;
+        refund_reason?: serializers.RefundReason.Raw | null;
     }
 }

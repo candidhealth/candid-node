@@ -6,7 +6,7 @@ export * as encounters from "./encounters";
 export * as expectedNetworkStatus from "./expectedNetworkStatus";
 export * as exports from "./exports";
 export * as guarantor from "./guarantor";
-export * as insuranceAdjudication from "./insuranceAdjudication";
+export * as insuranceAdjudications from "./insuranceAdjudications";
 export * as insuranceRefunds from "./insuranceRefunds";
 export * as organizationServiceFacilities from "./organizationServiceFacilities";
 export * as organizationProviders from "./organizationProviders";

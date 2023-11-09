@@ -8,5 +8,6 @@ export interface InsuranceRefundCreate {
     amountCents: number;
     refundTimestamp?: Date;
     refundNote?: string;
-    refundAllocations: CandidApi.RefundAllocationCreate[];
+    allocations: CandidApi.AllocationCreate[];
+    refundReason?: CandidApi.RefundReason;
 }

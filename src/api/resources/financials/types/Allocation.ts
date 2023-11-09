@@ -6,5 +6,5 @@ import * as CandidApi from "../../..";
 
 export interface Allocation {
     amountCents: number;
-    recipient: CandidApi.AllocationRecipient;
+    target: CandidApi.AllocationTarget;
 }

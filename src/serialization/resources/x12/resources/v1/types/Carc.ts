@@ -188,6 +188,8 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "239",
         "240",
         "241",
+        "242",
+        "243",
         "245",
         "246",
         "247",
@@ -246,6 +248,8 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "301",
         "302",
         "303",
+        "304",
+        "305",
         "A0",
         "A1",
         "A5",
@@ -266,6 +270,29 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "B20",
         "B22",
         "B23",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "P9",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14",
+        "P15",
+        "P16",
+        "P17",
+        "P18",
+        "P19",
+        "P20",
+        "P21",
+        "P22",
+        "P23",
         "P24",
         "P25",
         "P26",
@@ -274,6 +301,7 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "P29",
         "P30",
         "P31",
+        "P32",
     ]);
 
 export declare namespace Carc {
@@ -458,6 +486,8 @@ export declare namespace Carc {
         | "239"
         | "240"
         | "241"
+        | "242"
+        | "243"
         | "245"
         | "246"
         | "247"
@@ -516,6 +546,8 @@ export declare namespace Carc {
         | "301"
         | "302"
         | "303"
+        | "304"
+        | "305"
         | "A0"
         | "A1"
         | "A5"
@@ -536,6 +568,29 @@ export declare namespace Carc {
         | "B20"
         | "B22"
         | "B23"
+        | "P1"
+        | "P2"
+        | "P3"
+        | "P4"
+        | "P5"
+        | "P6"
+        | "P7"
+        | "P8"
+        | "P9"
+        | "P10"
+        | "P11"
+        | "P12"
+        | "P13"
+        | "P14"
+        | "P15"
+        | "P16"
+        | "P17"
+        | "P18"
+        | "P19"
+        | "P20"
+        | "P21"
+        | "P22"
+        | "P23"
         | "P24"
         | "P25"
         | "P26"
@@ -543,5 +598,6 @@ export declare namespace Carc {
         | "P28"
         | "P29"
         | "P30"
-        | "P31";
+        | "P31"
+        | "P32";
 }

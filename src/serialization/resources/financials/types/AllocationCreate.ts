@@ -11,12 +11,12 @@ export const AllocationCreate: core.serialization.ObjectSchema<
     CandidApi.AllocationCreate
 > = core.serialization.object({
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
-    recipient: core.serialization.lazy(async () => (await import("../../..")).AllocationRecipientCreate),
+    target: core.serialization.lazy(async () => (await import("../../..")).AllocationTargetCreate),
 });
 
 export declare namespace AllocationCreate {
     interface Raw {
         amount_cents: number;
-        recipient: serializers.AllocationRecipientCreate.Raw;
+        target: serializers.AllocationTargetCreate.Raw;
     }
 }

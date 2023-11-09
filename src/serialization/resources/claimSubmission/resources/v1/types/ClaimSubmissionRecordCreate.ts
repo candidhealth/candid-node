@@ -13,18 +13,22 @@ export const ClaimSubmissionRecordCreate: core.serialization.ObjectSchema<
     submittedAt: core.serialization.property("submitted_at", core.serialization.date()),
     claimFrequencyCode: core.serialization.property(
         "claim_frequency_code",
-        core.serialization.lazy(async () => (await import("../../../../..")).claimSubmission.v1.ClaimFrequencyTypeCode)
+        core.serialization
+            .lazy(async () => (await import("../../../../..")).claimSubmission.v1.ClaimFrequencyTypeCode)
+            .optional()
     ),
     payerResponsibility: core.serialization.property(
         "payer_responsibility",
-        core.serialization.lazy(async () => (await import("../../../../..")).ClaimSubmissionPayerResponsibilityType)
+        core.serialization
+            .lazy(async () => (await import("../../../../..")).ClaimSubmissionPayerResponsibilityType)
+            .optional()
     ),
 });
 
 export declare namespace ClaimSubmissionRecordCreate {
     interface Raw {
         submitted_at: string;
-        claim_frequency_code: serializers.claimSubmission.v1.ClaimFrequencyTypeCode.Raw;
-        payer_responsibility: serializers.ClaimSubmissionPayerResponsibilityType.Raw;
+        claim_frequency_code?: serializers.claimSubmission.v1.ClaimFrequencyTypeCode.Raw | null;
+        payer_responsibility?: serializers.ClaimSubmissionPayerResponsibilityType.Raw | null;
     }
 }

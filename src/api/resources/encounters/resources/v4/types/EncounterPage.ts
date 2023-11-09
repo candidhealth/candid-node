@@ -319,6 +319,7 @@ import * as CandidApi from "../../../../..";
  *                 workQueueId: CandidApi.WorkQueueId("000856FE-1024-418F-BF96-2E7347AB4520"),
  *                 workQueueMembershipActivatedAt: new Date("2023-01-01T00:00:00.000Z"),
  *                 ownerOfNextAction: CandidApi.encounters.v4.EncounterOwnerOfNextActionType.Candid,
+ *                 submissionOrigin: CandidApi.encounters.v4.EncounterSubmissionOriginType.Candid,
  *                 externalId: CandidApi.EncounterExternalId("5C21490F-A9C0-45F4-B5DB-136E3AEC617A"),
  *                 dateOfService: CandidApi.Date_("2023-01-01"),
  *                 endDateOfService: CandidApi.Date_("2023-01-05"),

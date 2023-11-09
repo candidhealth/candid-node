@@ -8,7 +8,7 @@ export interface PatientPaymentCreate {
     amountCents: number;
     paymentTimestamp?: Date;
     paymentNote?: string;
-    patientExternalId?: CandidApi.PatientExternalId;
-    allocations: CandidApi.Allocation[];
+    patientExternalId: CandidApi.PatientExternalId;
+    allocations: CandidApi.AllocationCreate[];
     invoice?: CandidApi.InvoiceId;
 }

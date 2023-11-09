@@ -9,6 +9,7 @@ export interface PatientPayment {
     organizationId: CandidApi.OrganizationId;
     sourceInternalId: string;
     amountCents: number;
+    patientExternalId: CandidApi.PatientExternalId;
     paymentTimestamp?: Date;
     paymentNote?: string;
     allocations: CandidApi.Allocation[];

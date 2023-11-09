@@ -13,11 +13,12 @@ export const InsuranceRefundCreate: core.serialization.ObjectSchema<
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
     refundTimestamp: core.serialization.property("refund_timestamp", core.serialization.date().optional()),
     refundNote: core.serialization.property("refund_note", core.serialization.string().optional()),
-    refundAllocations: core.serialization.property(
-        "refund_allocations",
-        core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("../../../../..")).RefundAllocationCreate)
-        )
+    allocations: core.serialization.list(
+        core.serialization.lazyObject(async () => (await import("../../../../..")).AllocationCreate)
+    ),
+    refundReason: core.serialization.property(
+        "refund_reason",
+        core.serialization.lazy(async () => (await import("../../../../..")).RefundReason).optional()
     ),
 });
 
@@ -26,6 +27,7 @@ export declare namespace InsuranceRefundCreate {
         amount_cents: number;
         refund_timestamp?: string | null;
         refund_note?: string | null;
-        refund_allocations: serializers.RefundAllocationCreate.Raw[];
+        allocations: serializers.AllocationCreate.Raw[];
+        refund_reason?: serializers.RefundReason.Raw | null;
     }
 }

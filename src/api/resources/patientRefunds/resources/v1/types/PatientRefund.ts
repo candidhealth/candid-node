@@ -9,8 +9,10 @@ export interface PatientRefund {
     organizationId: CandidApi.OrganizationId;
     sourceInternalId: string;
     amountCents: number;
+    patientExternalId: CandidApi.PatientExternalId;
     refundTimestamp?: Date;
     refundNote?: string;
     allocations: CandidApi.Allocation[];
     invoice?: CandidApi.InvoiceId;
+    refundReason?: CandidApi.RefundReason;
 }

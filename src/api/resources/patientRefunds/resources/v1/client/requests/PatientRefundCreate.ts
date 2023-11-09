@@ -8,7 +8,8 @@ export interface PatientRefundCreate {
     amountCents: number;
     refundTimestamp?: Date;
     refundNote?: string;
-    patientExternalId?: CandidApi.PatientExternalId;
-    allocations: CandidApi.RefundAllocation[];
+    patientExternalId: CandidApi.PatientExternalId;
+    allocations: CandidApi.AllocationCreate[];
     invoice?: CandidApi.InvoiceId;
+    refundReason?: CandidApi.RefundReason;
 }

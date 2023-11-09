@@ -9,12 +9,12 @@ import * as core from "../../../../core";
 export const Allocation: core.serialization.ObjectSchema<serializers.Allocation.Raw, CandidApi.Allocation> =
     core.serialization.object({
         amountCents: core.serialization.property("amount_cents", core.serialization.number()),
-        recipient: core.serialization.lazy(async () => (await import("../../..")).AllocationRecipient),
+        target: core.serialization.lazy(async () => (await import("../../..")).AllocationTarget),
     });
 
 export declare namespace Allocation {
     interface Raw {
         amount_cents: number;
-        recipient: serializers.AllocationRecipient.Raw;
+        target: serializers.AllocationTarget.Raw;
     }
 }

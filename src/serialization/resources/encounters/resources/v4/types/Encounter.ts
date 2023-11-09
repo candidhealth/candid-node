@@ -119,6 +119,12 @@ export const Encounter: core.serialization.ObjectSchema<
                 async () => (await import("../../../../..")).encounters.v4.EncounterOwnerOfNextActionType
             )
         ),
+        submissionOrigin: core.serialization.property(
+            "submission_origin",
+            core.serialization.lazy(
+                async () => (await import("../../../../..")).encounters.v4.EncounterSubmissionOriginType
+            )
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../..")).encounters.v4.EncounterBase));
 
@@ -147,5 +153,6 @@ export declare namespace Encounter {
         work_queue_id?: serializers.WorkQueueId.Raw | null;
         work_queue_membership_activated_at?: string | null;
         owner_of_next_action: serializers.encounters.v4.EncounterOwnerOfNextActionType.Raw;
+        submission_origin: serializers.encounters.v4.EncounterSubmissionOriginType.Raw;
     }
 }

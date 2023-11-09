@@ -20,6 +20,10 @@ export const PatientPayment: core.serialization.ObjectSchema<
     ),
     sourceInternalId: core.serialization.property("source_internal_id", core.serialization.string()),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
+    patientExternalId: core.serialization.property(
+        "patient_external_id",
+        core.serialization.lazy(async () => (await import("../../../../..")).PatientExternalId)
+    ),
     paymentTimestamp: core.serialization.property("payment_timestamp", core.serialization.date().optional()),
     paymentNote: core.serialization.property("payment_note", core.serialization.string().optional()),
     allocations: core.serialization.list(
@@ -34,6 +38,7 @@ export declare namespace PatientPayment {
         organization_id: serializers.OrganizationId.Raw;
         source_internal_id: string;
         amount_cents: number;
+        patient_external_id: serializers.PatientExternalId.Raw;
         payment_timestamp?: string | null;
         payment_note?: string | null;
         allocations: serializers.Allocation.Raw[];

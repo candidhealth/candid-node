@@ -8,5 +8,5 @@ export interface WriteOffCreate {
     writeOffTimestamp: Date;
     writeOffNote?: string;
     writeOffReason: CandidApi.writeOffs.v1.WriteOffReason;
-    allocation: CandidApi.Allocation;
+    allocation: CandidApi.AllocationCreate;
 }
