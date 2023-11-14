@@ -18,6 +18,7 @@ import { OrganizationProviders } from "./api/resources/organizationProviders/cli
 import { PatientPayments } from "./api/resources/patientPayments/client/Client";
 import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
+import { Tasks } from "./api/resources/tasks/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 
 export declare namespace CandidApiClient {
@@ -112,6 +113,12 @@ export class CandidApiClient {
 
     public get payers(): Payers {
         return (this._payers ??= new Payers(this.options));
+    }
+
+    protected _tasks: Tasks | undefined;
+
+    public get tasks(): Tasks {
+        return (this._tasks ??= new Tasks(this.options));
     }
 
     protected _writeOffs: WriteOffs | undefined;

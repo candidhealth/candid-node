@@ -14,6 +14,7 @@ export * as patientPayments from "./patientPayments";
 export * as patientRefunds from "./patientRefunds";
 export * as payers from "./payers";
 export * as serviceLines from "./serviceLines";
+export * as tasks from "./tasks";
 export * as writeOffs from "./writeOffs";
 export * as x12 from "./x12";
 export * as claims from "./claims";

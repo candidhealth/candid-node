@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../..";
 
 export interface InsuranceRefund {
     insuranceRefundId: CandidApi.insuranceRefunds.v1.InsuranceRefundId;
+    payerId: CandidApi.payers.v3.PayerId;
     amountCents: number;
     refundTimestamp?: Date;
     refundNote?: string;
