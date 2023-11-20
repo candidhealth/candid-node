@@ -20,6 +20,7 @@ export const AllocationTargetCreate: core.serialization.Schema<
         billing_provider_by_id: core.serialization.object({
             value: core.serialization.lazy(async () => (await import("../../..")).ProviderId),
         }),
+        unattributed: core.serialization.object({}),
     })
     .transform<CandidApi.AllocationTargetCreate>({
         transform: (value) => value,
@@ -30,7 +31,8 @@ export declare namespace AllocationTargetCreate {
     type Raw =
         | AllocationTargetCreate.ServiceLineById
         | AllocationTargetCreate.ClaimById
-        | AllocationTargetCreate.BillingProviderById;
+        | AllocationTargetCreate.BillingProviderById
+        | AllocationTargetCreate.Unattributed;
 
     interface ServiceLineById {
         type: "service_line_by_id";
@@ -45,5 +47,9 @@ export declare namespace AllocationTargetCreate {
     interface BillingProviderById {
         type: "billing_provider_by_id";
         value: serializers.ProviderId.Raw;
+    }
+
+    interface Unattributed {
+        type: "unattributed";
     }
 }

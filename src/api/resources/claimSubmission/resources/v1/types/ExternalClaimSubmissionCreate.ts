@@ -19,6 +19,13 @@ import * as CandidApi from "../../../../..";
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary
  *             }]
  *     }
+ *
+ * @example
+ *     {
+ *         claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
+ *         patientControlNumber: "PATIENT_CONTROL_NUMBER",
+ *         submissionRecords: []
+ *     }
  */
 export interface ExternalClaimSubmissionCreate {
     /** When the claim was created in the external system. */
@@ -27,7 +34,7 @@ export interface ExternalClaimSubmissionCreate {
     patientControlNumber: string;
     /**
      * A successful claim submission record will be created for each value provided.
-     * Must contain at least one item.
+     * An empty list may be provided for cases where the claim originated in an external system but was never submitted to a payer.
      *
      */
     submissionRecords: CandidApi.claimSubmission.v1.ClaimSubmissionRecordCreate[];

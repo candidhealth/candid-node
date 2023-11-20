@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../..";
 
 export interface OutOfNetworkStatus {
-    explanation: string;
+    explanation: CandidApi.expectedNetworkStatus.v2.Explanation;
     routedPayerUuid: CandidApi.payers.v3.PayerUuid;
     routedBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId;
 }

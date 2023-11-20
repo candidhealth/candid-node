@@ -10,9 +10,9 @@ export const InsuranceRefundCreate: core.serialization.ObjectSchema<
     serializers.insuranceRefunds.v1.InsuranceRefundCreate.Raw,
     CandidApi.insuranceRefunds.v1.InsuranceRefundCreate
 > = core.serialization.object({
-    payerId: core.serialization.property(
-        "payer_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerId)
+    payerIdentifier: core.serialization.property(
+        "payer_identifier",
+        core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerIdentifier)
     ),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
     refundTimestamp: core.serialization.property("refund_timestamp", core.serialization.date().optional()),
@@ -28,7 +28,7 @@ export const InsuranceRefundCreate: core.serialization.ObjectSchema<
 
 export declare namespace InsuranceRefundCreate {
     interface Raw {
-        payer_id: serializers.payers.v3.PayerId.Raw;
+        payer_identifier: serializers.payers.v3.PayerIdentifier.Raw;
         amount_cents: number;
         refund_timestamp?: string | null;
         refund_note?: string | null;

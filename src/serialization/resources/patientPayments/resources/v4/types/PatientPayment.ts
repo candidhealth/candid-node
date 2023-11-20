@@ -18,7 +18,11 @@ export const PatientPayment: core.serialization.ObjectSchema<
         "organization_id",
         core.serialization.lazy(async () => (await import("../../../../..")).OrganizationId)
     ),
-    sourceInternalId: core.serialization.property("source_internal_id", core.serialization.string()),
+    sourceInternalId: core.serialization.property("source_internal_id", core.serialization.string().optional()),
+    paymentSource: core.serialization.property(
+        "payment_source",
+        core.serialization.lazy(async () => (await import("../../../../..")).PatientTransactionSource)
+    ),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
     patientExternalId: core.serialization.property(
         "patient_external_id",
@@ -36,7 +40,8 @@ export declare namespace PatientPayment {
     interface Raw {
         patient_payment_id: serializers.patientPayments.v4.PatientPaymentId.Raw;
         organization_id: serializers.OrganizationId.Raw;
-        source_internal_id: string;
+        source_internal_id?: string | null;
+        payment_source: serializers.PatientTransactionSource.Raw;
         amount_cents: number;
         patient_external_id: serializers.PatientExternalId.Raw;
         payment_timestamp?: string | null;

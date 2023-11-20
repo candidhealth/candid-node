@@ -19,10 +19,6 @@ export declare namespace V3 {
 export class V3 {
     constructor(protected readonly options: V3.Options) {}
 
-    /**
-     * **This endpoint is incubating.**
-     *
-     */
     public async getActions(
         taskId: CandidApi.TaskId
     ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskActions, CandidApi.tasks.v3.getActions.Error>> {
@@ -36,7 +32,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -59,10 +55,6 @@ export class V3 {
         };
     }
 
-    /**
-     * **This endpoint is incubating.**
-     *
-     */
     public async getMulti(
         request: CandidApi.tasks.v3.GetAllTasksRequest = {}
     ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskPage, CandidApi.tasks.v3.getMulti.Error>> {
@@ -141,7 +133,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -183,10 +175,6 @@ export class V3 {
         };
     }
 
-    /**
-     * **This endpoint is incubating.**
-     *
-     */
     public async get(
         taskId: CandidApi.TaskId
     ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.get.Error>> {
@@ -200,7 +188,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -242,10 +230,6 @@ export class V3 {
         };
     }
 
-    /**
-     * **This endpoint is incubating.**
-     *
-     */
     public async create(
         request: CandidApi.tasks.v3.TaskCreateV3
     ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.create.Error>> {
@@ -256,7 +240,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             body: await serializers.tasks.v3.TaskCreateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -280,10 +264,6 @@ export class V3 {
         };
     }
 
-    /**
-     * **This endpoint is incubating.**
-     *
-     */
     public async update(
         taskId: CandidApi.TaskId,
         request: CandidApi.tasks.v3.TaskUpdateV3
@@ -298,7 +278,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             body: await serializers.tasks.v3.TaskUpdateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),

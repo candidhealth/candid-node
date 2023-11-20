@@ -9,5 +9,6 @@ export interface WriteOff {
     writeOffTimestamp: Date;
     writeOffNote?: string;
     writeOffReason: CandidApi.writeOffs.v1.WriteOffReason;
-    allocation: CandidApi.Allocation;
+    serviceLineId: CandidApi.ServiceLineId;
+    amountCents: number;
 }

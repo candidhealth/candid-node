@@ -16,7 +16,8 @@ export type ClaimStatus =
     | "paid_incorrectly"
     | "finalized_paid"
     | "finalized_denied"
-    | "held_by_customer";
+    | "held_by_customer"
+    | "era_requires_review";
 
 export const ClaimStatus = {
     BillerReceived: "biller_received",
@@ -33,4 +34,5 @@ export const ClaimStatus = {
     FinalizedPaid: "finalized_paid",
     FinalizedDenied: "finalized_denied",
     HeldByCustomer: "held_by_customer",
+    EraRequiresReview: "era_requires_review",
 } as const;

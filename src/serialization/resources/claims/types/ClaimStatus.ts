@@ -22,6 +22,7 @@ export const ClaimStatus: core.serialization.Schema<serializers.ClaimStatus.Raw,
         "finalized_paid",
         "finalized_denied",
         "held_by_customer",
+        "era_requires_review",
     ]);
 
 export declare namespace ClaimStatus {
@@ -39,5 +40,6 @@ export declare namespace ClaimStatus {
         | "paid_incorrectly"
         | "finalized_paid"
         | "finalized_denied"
-        | "held_by_customer";
+        | "held_by_customer"
+        | "era_requires_review";
 }

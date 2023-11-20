@@ -82,7 +82,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      */
     guarantor?: CandidApi.guarantor.v1.GuarantorCreate;
     /**
-     * ***This field is incubating.***
+     * ***This field is in beta.***
      * To be included for claims that have been submitted outside of Candid.
      * Candid supports posting remits and payments to these claims and working them in-platform (e.g. editing, resubmitting).
      *

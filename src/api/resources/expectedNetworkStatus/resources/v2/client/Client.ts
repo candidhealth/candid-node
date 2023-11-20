@@ -22,7 +22,6 @@ export class V2 {
      * Computes the expected network status for a given rendering provider.
      * This endpoint is not available to all customers. Reach out to the Candid sales team
      * to discuss enabling this endpoint if it is not available for your organization.
-     * **This endpoint is incubating.**
      *
      */
     public async computeForRenderingProvider(
@@ -46,7 +45,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2.jsonOrThrow(request, {
@@ -102,7 +101,6 @@ export class V2 {
      * Computes all the in network providers for a given set of inputs.
      * This endpoint is not available to all customers. Reach out to the Candid sales team
      * to discuss enabling this endpoint if it is not available for your organization.
-     * **This endpoint is incubating.**
      *
      */
     public async computeAllInNetworkProviders(
@@ -123,7 +121,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest.jsonOrThrow(request, {

@@ -16,7 +16,11 @@ export const WriteOffCreate: core.serialization.ObjectSchema<
         "write_off_reason",
         core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffReason)
     ),
-    allocation: core.serialization.lazyObject(async () => (await import("../../../../..")).AllocationCreate),
+    serviceLineId: core.serialization.property(
+        "service_line_id",
+        core.serialization.lazy(async () => (await import("../../../../..")).ServiceLineId)
+    ),
+    amountCents: core.serialization.property("amount_cents", core.serialization.number()),
 });
 
 export declare namespace WriteOffCreate {
@@ -24,6 +28,7 @@ export declare namespace WriteOffCreate {
         write_off_timestamp: string;
         write_off_note?: string | null;
         write_off_reason: serializers.writeOffs.v1.WriteOffReason.Raw;
-        allocation: serializers.AllocationCreate.Raw;
+        service_line_id: serializers.ServiceLineId.Raw;
+        amount_cents: number;
     }
 }

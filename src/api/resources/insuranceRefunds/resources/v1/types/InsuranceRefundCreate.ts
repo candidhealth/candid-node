@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../..";
 
 export interface InsuranceRefundCreate {
-    payerId: CandidApi.payers.v3.PayerId;
+    payerIdentifier: CandidApi.payers.v3.PayerIdentifier;
     amountCents: number;
     refundTimestamp?: Date;
     refundNote?: string;

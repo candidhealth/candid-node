@@ -7,7 +7,8 @@ import * as CandidApi from "../../..";
 export type AllocationTargetCreate =
     | CandidApi.AllocationTargetCreate.ServiceLineById
     | CandidApi.AllocationTargetCreate.ClaimById
-    | CandidApi.AllocationTargetCreate.BillingProviderById;
+    | CandidApi.AllocationTargetCreate.BillingProviderById
+    | CandidApi.AllocationTargetCreate.Unattributed;
 
 export declare namespace AllocationTargetCreate {
     interface ServiceLineById {
@@ -23,5 +24,9 @@ export declare namespace AllocationTargetCreate {
     interface BillingProviderById {
         type: "billing_provider_by_id";
         value: CandidApi.ProviderId;
+    }
+
+    interface Unattributed {
+        type: "unattributed";
     }
 }

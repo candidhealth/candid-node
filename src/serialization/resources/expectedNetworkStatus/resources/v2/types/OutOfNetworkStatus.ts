@@ -10,7 +10,9 @@ export const OutOfNetworkStatus: core.serialization.ObjectSchema<
     serializers.expectedNetworkStatus.v2.OutOfNetworkStatus.Raw,
     CandidApi.expectedNetworkStatus.v2.OutOfNetworkStatus
 > = core.serialization.object({
-    explanation: core.serialization.string(),
+    explanation: core.serialization.lazy(
+        async () => (await import("../../../../..")).expectedNetworkStatus.v2.Explanation
+    ),
     routedPayerUuid: core.serialization.property(
         "routed_payer_uuid",
         core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerUuid)
@@ -25,7 +27,7 @@ export const OutOfNetworkStatus: core.serialization.ObjectSchema<
 
 export declare namespace OutOfNetworkStatus {
     interface Raw {
-        explanation: string;
+        explanation: serializers.expectedNetworkStatus.v2.Explanation.Raw;
         routed_payer_uuid: serializers.payers.v3.PayerUuid.Raw;
         routed_billing_provider_id: serializers.organizationProviders.v2.OrganizationProviderId.Raw;
     }

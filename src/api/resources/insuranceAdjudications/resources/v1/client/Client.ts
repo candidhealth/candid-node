@@ -19,7 +19,6 @@ export class V1 {
     constructor(protected readonly options: V1.Options) {}
 
     /**
-     * **This endpoint is incubating.**
      * Retrieves a previously created insurance adjudication by its `insurance_adjudication_id`.
      *
      */
@@ -43,7 +42,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -67,7 +66,6 @@ export class V1 {
     }
 
     /**
-     * **This endpoint is incubating.**
      * Creates a new insurance adjudication record and returns the newly created InsuranceAdjudication object.
      *
      */
@@ -89,7 +87,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.jsonOrThrow(request, {
@@ -116,7 +114,6 @@ export class V1 {
     }
 
     /**
-     * **This endpoint is incubating.**
      * Deletes the insurance adjudication record matching the provided insurance_adjudication_id.
      *
      */
@@ -135,7 +132,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.0",
+                "X-Fern-SDK-Version": "0.10.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

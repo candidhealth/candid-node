@@ -7,7 +7,8 @@ import * as CandidApi from "../../../../..";
 export interface PatientRefund {
     patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId;
     organizationId: CandidApi.OrganizationId;
-    sourceInternalId: string;
+    sourceInternalId?: string;
+    refundSource: CandidApi.PatientTransactionSource;
     amountCents: number;
     patientExternalId: CandidApi.PatientExternalId;
     refundTimestamp?: Date;

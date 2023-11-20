@@ -16,13 +16,15 @@ export const InsuranceType: core.serialization.ObjectSchema<
     ),
     insuranceTypeCodes: core.serialization.property(
         "insurance_type_codes",
-        core.serialization.list(core.serialization.lazy(async () => (await import("../../../../..")).InsuranceTypeCode))
+        core.serialization.lazy(
+            async () => (await import("../../../../..")).expectedNetworkStatus.v2.InsuranceTypeCodes
+        )
     ),
 });
 
 export declare namespace InsuranceType {
     interface Raw {
         line_of_business: serializers.expectedNetworkStatus.v2.LineOfBusiness.Raw;
-        insurance_type_codes: serializers.InsuranceTypeCode.Raw[];
+        insurance_type_codes: serializers.expectedNetworkStatus.v2.InsuranceTypeCodes.Raw;
     }
 }

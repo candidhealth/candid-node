@@ -14,10 +14,7 @@ export const InsuranceRefund: core.serialization.ObjectSchema<
         "insurance_refund_id",
         core.serialization.lazy(async () => (await import("../../../../..")).insuranceRefunds.v1.InsuranceRefundId)
     ),
-    payerId: core.serialization.property(
-        "payer_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerId)
-    ),
+    payer: core.serialization.lazyObject(async () => (await import("../../../../..")).payers.v3.Payer),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
     refundTimestamp: core.serialization.property("refund_timestamp", core.serialization.date().optional()),
     refundNote: core.serialization.property("refund_note", core.serialization.string().optional()),
@@ -33,7 +30,7 @@ export const InsuranceRefund: core.serialization.ObjectSchema<
 export declare namespace InsuranceRefund {
     interface Raw {
         insurance_refund_id: serializers.insuranceRefunds.v1.InsuranceRefundId.Raw;
-        payer_id: serializers.payers.v3.PayerId.Raw;
+        payer: serializers.payers.v3.Payer.Raw;
         amount_cents: number;
         refund_timestamp?: string | null;
         refund_note?: string | null;

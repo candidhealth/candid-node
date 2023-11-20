@@ -10,7 +10,10 @@ export const IndeterminateNetworkStatus: core.serialization.ObjectSchema<
     serializers.expectedNetworkStatus.v2.IndeterminateNetworkStatus.Raw,
     CandidApi.expectedNetworkStatus.v2.IndeterminateNetworkStatus
 > = core.serialization.object({
-    explanation: core.serialization.string(),
+    error: core.serialization.string(),
+    explanation: core.serialization.lazy(
+        async () => (await import("../../../../..")).expectedNetworkStatus.v2.Explanation
+    ),
     routedPayerUuid: core.serialization.property(
         "routed_payer_uuid",
         core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerUuid).optional()
@@ -25,7 +28,8 @@ export const IndeterminateNetworkStatus: core.serialization.ObjectSchema<
 
 export declare namespace IndeterminateNetworkStatus {
     interface Raw {
-        explanation: string;
+        error: string;
+        explanation: serializers.expectedNetworkStatus.v2.Explanation.Raw;
         routed_payer_uuid?: serializers.payers.v3.PayerUuid.Raw | null;
         routed_billing_provider_id?: serializers.organizationProviders.v2.OrganizationProviderId.Raw | null;
     }
