@@ -5,8 +5,9 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
+import * as serializers from "../../../../../../serialization";
 
 export declare namespace V4 {
     interface Options {
@@ -17,6 +18,104 @@ export declare namespace V4 {
 
 export class V4 {
     constructor(protected readonly options: V4.Options) {}
+
+    /**
+     * Returns all patient payments satisfying the search criteria AND whose organization_id matches
+     * the current organization_id of the authenticated user.
+     *
+     */
+    public async getMulti(
+        request: CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest = {}
+    ): Promise<
+        core.APIResponse<CandidApi.patientPayments.v4.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error>
+    > {
+        const {
+            limit,
+            patientExternalId,
+            claimId,
+            serviceLineId,
+            billingProviderId,
+            sources,
+            sort,
+            sortDirection,
+            pageToken,
+        } = request;
+        const _queryParams = new URLSearchParams();
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
+        }
+
+        if (patientExternalId != null) {
+            _queryParams.append("patient_external_id", patientExternalId);
+        }
+
+        if (claimId != null) {
+            _queryParams.append("claim_id", claimId);
+        }
+
+        if (serviceLineId != null) {
+            _queryParams.append("service_line_id", serviceLineId);
+        }
+
+        if (billingProviderId != null) {
+            _queryParams.append("billing_provider_id", billingProviderId);
+        }
+
+        if (sources != null) {
+            if (Array.isArray(sources)) {
+                for (const _item of sources) {
+                    _queryParams.append("sources", _item);
+                }
+            } else {
+                _queryParams.append("sources", sources);
+            }
+        }
+
+        if (sort != null) {
+            _queryParams.append("sort", sort);
+        }
+
+        if (sortDirection != null) {
+            _queryParams.append("sort_direction", sortDirection);
+        }
+
+        if (pageToken != null) {
+            _queryParams.append("page_token", pageToken);
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                "/api/patient-payments/v4"
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.11.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: 60000,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: await serializers.patientPayments.v4.PatientPaymentsPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.patientPayments.v4.getMulti.Error._unknown(_response.error),
+        };
+    }
 
     /**
      * Retrieves a previously created patient payment by its `patient_payment_id`.
@@ -37,7 +136,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.1",
+                "X-Fern-SDK-Version": "0.11.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -81,7 +180,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.1",
+                "X-Fern-SDK-Version": "0.11.0",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
@@ -126,7 +225,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.10.1",
+                "X-Fern-SDK-Version": "0.11.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,

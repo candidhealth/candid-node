@@ -10,12 +10,12 @@ export const InsuranceAdjudicationCreate: core.serialization.ObjectSchema<
     serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.Raw,
     CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationCreate
 > = core.serialization.object({
-    payerUuid: core.serialization.property(
-        "payer_uuid",
-        core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerUuid)
+    payerIdentifier: core.serialization.property(
+        "payer_identifier",
+        core.serialization.lazy(async () => (await import("../../../../..")).payers.v3.PayerIdentifier)
     ),
+    payee: core.serialization.lazyObject(async () => (await import("../../../../..")).remits.v1.Payee),
     postDate: core.serialization.property("post_date", core.serialization.string().optional()),
-    payerClaimNumber: core.serialization.property("payer_claim_number", core.serialization.string()),
     checkNumber: core.serialization.property("check_number", core.serialization.string().optional()),
     checkDate: core.serialization.property("check_date", core.serialization.string()),
     note: core.serialization.string().optional(),
@@ -29,9 +29,9 @@ export const InsuranceAdjudicationCreate: core.serialization.ObjectSchema<
 
 export declare namespace InsuranceAdjudicationCreate {
     interface Raw {
-        payer_uuid: serializers.payers.v3.PayerUuid.Raw;
+        payer_identifier: serializers.payers.v3.PayerIdentifier.Raw;
+        payee: serializers.remits.v1.Payee.Raw;
         post_date?: string | null;
-        payer_claim_number: string;
         check_number?: string | null;
         check_date: string;
         note?: string | null;

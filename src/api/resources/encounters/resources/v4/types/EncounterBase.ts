@@ -88,4 +88,40 @@ export interface EncounterBase {
      *
      */
     additionalInformation?: string;
+    /**
+     * 837p Loop2300 REF*4N
+     * Required when mandated by government law or regulation to obtain authorization for specific service(s) but, for the
+     * reasons listed in one of the enum values of ServiceAuthorizationExceptionCode, the service was performed without
+     * obtaining the authorization.
+     *
+     */
+    serviceAuthorizationExceptionCode?: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode;
+    /**
+     * 837p Loop2300 DTP*435, CMS-1500 Box 18
+     * Required on all ambulance claims when the patient was known to be admitted to the hospital.
+     * OR
+     * Required on all claims involving inpatient medical visits.
+     *
+     */
+    admissionDate?: CandidApi.Date_;
+    /**
+     * 837p Loop2300 DTP*096, CMS-1500 Box 18
+     * Required for inpatient claims when the patient was discharged from the facility and the discharge date is known.
+     *
+     */
+    dischargeDate?: CandidApi.Date_;
+    /**
+     * 837p Loop2300 DTP*431, CMS-1500 Box 14
+     * Required for the initial medical service or visit performed in response to a medical emergency when the date is available and is different than the date of service.
+     * OR
+     * This date is the onset of acute symptoms for the current illness or condition.
+     *
+     */
+    onsetOfCurrentIllnessOrSymptomDate?: CandidApi.Date_;
+    /**
+     * 837p Loop2300 DTP*484, CMS-1500 Box 14
+     * Required when, in the judgment of the provider, the services on this claim are related to the patient's pregnancy.
+     *
+     */
+    lastMenstrualPeriodDate?: CandidApi.Date_;
 }

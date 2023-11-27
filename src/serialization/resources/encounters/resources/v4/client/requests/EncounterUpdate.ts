@@ -90,6 +90,28 @@ export const EncounterUpdate: core.serialization.Schema<
         "additional_information",
         core.serialization.string().optional()
     ),
+    serviceAuthorizationExceptionCode: core.serialization.property(
+        "service_authorization_exception_code",
+        core.serialization
+            .lazy(async () => (await import("../../../../../..")).encounters.v4.ServiceAuthorizationExceptionCode)
+            .optional()
+    ),
+    admissionDate: core.serialization.property(
+        "admission_date",
+        core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+    ),
+    dischargeDate: core.serialization.property(
+        "discharge_date",
+        core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+    ),
+    onsetOfCurrentIllnessOrSymptomDate: core.serialization.property(
+        "onset_of_current_illness_or_symptom_date",
+        core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+    ),
+    lastMenstrualPeriodDate: core.serialization.property(
+        "last_menstrual_period_date",
+        core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+    ),
 });
 
 export declare namespace EncounterUpdate {
@@ -111,5 +133,10 @@ export declare namespace EncounterUpdate {
         end_date_of_service?: serializers.Date_.Raw | null;
         subscriber_secondary?: serializers.SubscriberCreate.Raw | null;
         additional_information?: string | null;
+        service_authorization_exception_code?: serializers.encounters.v4.ServiceAuthorizationExceptionCode.Raw | null;
+        admission_date?: serializers.Date_.Raw | null;
+        discharge_date?: serializers.Date_.Raw | null;
+        onset_of_current_illness_or_symptom_date?: serializers.Date_.Raw | null;
+        last_menstrual_period_date?: serializers.Date_.Raw | null;
     }
 }

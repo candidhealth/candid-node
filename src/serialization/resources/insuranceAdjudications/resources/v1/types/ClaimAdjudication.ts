@@ -27,6 +27,7 @@ export const ClaimAdjudication: core.serialization.ObjectSchema<
             )
         )
     ),
+    payerClaimNumber: core.serialization.property("payer_claim_number", core.serialization.string().optional()),
     carcs: core.serialization.list(
         core.serialization.lazyObject(
             async () => (await import("../../../../..")).insuranceAdjudications.v1.ClaimAdjustmentReasonCode
@@ -42,6 +43,7 @@ export declare namespace ClaimAdjudication {
             serializers.ServiceLineId.Raw,
             serializers.insuranceAdjudications.v1.ServiceLineAdjudication.Raw
         >;
+        payer_claim_number?: string | null;
         carcs: serializers.insuranceAdjudications.v1.ClaimAdjustmentReasonCode.Raw[];
     }
 }

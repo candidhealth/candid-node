@@ -8,7 +8,6 @@ export interface InsuranceAdjudication {
     insuranceAdjudicationId: CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId;
     payerUuid: CandidApi.payers.v3.PayerUuid;
     postDate?: string;
-    payerClaimNumber: string;
     checkNumber?: string;
     checkDate: string;
     note?: string;

@@ -80,42 +80,7 @@ import * as CandidApi from "../../../../..";
  *                                 eraId: CandidApi.EraId("4D844EF1-2253-43CD-A4F1-6DB7E65CB54B"),
  *                                 checkNumber: "CHK12345",
  *                                 checkDate: CandidApi.Date_("2023-10-12")
- *                             }],
- *                         activeJob: {
- *                             jobId: CandidApi.jobs.v1.JobId("1503a782-35f6-45a7-b5c3-53ca2ebe8887"),
- *                             status: CandidApi.jobs.v1.JobStatus.Queued,
- *                             summary: "Resubmitting claim",
- *                             creatorUser: {
- *                                 userId: CandidApi.UserId("1503a782-35f6-45a7-b5c3-53ca2ebe8887"),
- *                                 idpMetadata: [{
- *                                         type: "auth_zero_metadata",
- *                                         auth0Id: "auth0|5f9b3b5a7b0b0d006a2b0b0b"
- *                                     }],
- *                                 primaryOrganizationId: CandidApi.OrganizationId("83a2a782-35f6-45a7-b5c3-53ca2ebe8887"),
- *                                 userMetadata: {
- *                                     type: "human_user_metadata",
- *                                     firstName: "John",
- *                                     lastName: "Doe"
- *                                 },
- *                                 accessibleOrganizationIds: [CandidApi.OrganizationId("83a2a782-35f6-45a7-b5c3-53ca2ebe8887")]
- *                             },
- *                             jobMetadata: {
- *                                 type: "claim_job_metadata",
- *                                 action: {
- *                                     type: "resubmit_fresh_claim_action"
- *                                 },
- *                                 workQueueId: CandidApi.WorkQueueId("1503a782-35f6-45a7-b5c3-53ca2ebe8887"),
- *                                 claimId: CandidApi.ClaimId("92215dff-4a79-4dd7-af02-59c16f99cdba"),
- *                                 claimMetadata: {
- *                                     encounterId: CandidApi.EncounterId("2132a68b-7acb-46c2-ba93-852b5daa1f98"),
- *                                     patientFirstName: "John",
- *                                     patientLastName: "Doe",
- *                                     dateOfService: "2021-01-01",
- *                                     claimStatus: CandidApi.ClaimStatus.Paid
- *                                 }
- *                             },
- *                             createdAt: new Date("2021-01-01T00:00:00.000Z")
- *                         }
+ *                             }]
  *                     }],
  *                 patient: {
  *                     individualId: CandidApi.IndividualId("93DDBEBF-4956-4482-9A6C-21499B7E4E5D"),
@@ -406,7 +371,11 @@ import * as CandidApi from "../../../../..";
  *                 },
  *                 synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
  *                 billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
- *                 responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay
+ *                 responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
+ *                 serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
+ *                 admissionDate: CandidApi.Date_("2023-01-01"),
+ *                 dischargeDate: CandidApi.Date_("2023-01-05"),
+ *                 onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("2023-01-01")
  *             }]
  *     }
  */

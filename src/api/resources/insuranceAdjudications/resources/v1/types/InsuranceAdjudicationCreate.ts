@@ -5,9 +5,9 @@
 import * as CandidApi from "../../../../..";
 
 export interface InsuranceAdjudicationCreate {
-    payerUuid: CandidApi.payers.v3.PayerUuid;
+    payerIdentifier: CandidApi.payers.v3.PayerIdentifier;
+    payee: CandidApi.remits.v1.Payee;
     postDate?: string;
-    payerClaimNumber: string;
     checkNumber?: string;
     checkDate: string;
     note?: string;

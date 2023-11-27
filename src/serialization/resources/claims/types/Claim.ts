@@ -26,10 +26,6 @@ export const Claim: core.serialization.ObjectSchema<serializers.Claim.Raw, Candi
             )
         ),
         eras: core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).Era)),
-        activeJob: core.serialization.property(
-            "active_job",
-            core.serialization.lazyObject(async () => (await import("../../..")).jobs.v1.Job).optional()
-        ),
     }
 );
 
@@ -42,6 +38,5 @@ export declare namespace Claim {
         payer_claim_id?: string | null;
         service_lines: serializers.serviceLines.v2.ServiceLine.Raw[];
         eras: serializers.Era.Raw[];
-        active_job?: serializers.jobs.v1.Job.Raw | null;
     }
 }
