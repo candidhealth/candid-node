@@ -116,7 +116,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -153,7 +153,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -189,7 +189,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, {
@@ -212,6 +212,7 @@ export class V4 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.encounters.v4.create.Error.Raw)?.errorName) {
                 case "EncounterExternalIdUniquenessError":
+                case "EncounterPatientControlNumberUniquenessError":
                 case "EntityNotFoundError":
                 case "EncounterGuarantorMissingContactInfoError":
                 case "HttpRequestValidationsError":
@@ -251,7 +252,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, {

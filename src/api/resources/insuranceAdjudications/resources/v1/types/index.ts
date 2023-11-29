@@ -6,5 +6,3 @@ export * from "./ClaimAdjudicationCreate";
 export * from "./ClaimAdjudication";
 export * from "./ServiceLineAdjudicationCreate";
 export * from "./ServiceLineAdjudication";
-export * from "./ClaimAdjustmentReasonCode";
-export * from "./RemittanceAdviceRemarkCode";

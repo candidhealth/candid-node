@@ -12,6 +12,6 @@ export interface ServiceLineAdjudicationCreate {
     deductibleAmountCents?: number;
     coinsuranceAmountCents?: number;
     copayAmountCents?: number;
-    carcs: CandidApi.insuranceAdjudications.v1.ClaimAdjustmentReasonCode[];
-    rarcs: CandidApi.insuranceAdjudications.v1.RemittanceAdviceRemarkCode[];
+    carcs: CandidApi.x12.v1.ClaimAdjustmentReasonCode[];
+    rarcs: CandidApi.x12.v1.RemittanceAdviceRemarkCode[];
 }

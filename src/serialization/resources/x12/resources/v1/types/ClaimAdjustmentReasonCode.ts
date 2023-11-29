@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const ClaimAdjustmentReasonCode: core.serialization.ObjectSchema<
-    serializers.insuranceAdjudications.v1.ClaimAdjustmentReasonCode.Raw,
-    CandidApi.insuranceAdjudications.v1.ClaimAdjustmentReasonCode
+    serializers.x12.v1.ClaimAdjustmentReasonCode.Raw,
+    CandidApi.x12.v1.ClaimAdjustmentReasonCode
 > = core.serialization.object({
     groupCode: core.serialization.property(
         "group_code",

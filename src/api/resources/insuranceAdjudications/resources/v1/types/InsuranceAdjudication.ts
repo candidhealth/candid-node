@@ -11,5 +11,5 @@ export interface InsuranceAdjudication {
     checkNumber?: string;
     checkDate: string;
     note?: string;
-    claims: Record<CandidApi.ServiceLineId, CandidApi.insuranceAdjudications.v1.ClaimAdjudication>;
+    claims: Record<CandidApi.ClaimId, CandidApi.insuranceAdjudications.v1.ClaimAdjudication>;
 }

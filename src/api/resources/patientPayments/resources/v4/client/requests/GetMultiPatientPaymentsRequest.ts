@@ -13,6 +13,7 @@ export interface GetMultiPatientPaymentsRequest {
     claimId?: CandidApi.ClaimId;
     serviceLineId?: CandidApi.ServiceLineId;
     billingProviderId?: CandidApi.ProviderId;
+    invoiceId?: CandidApi.InvoiceId;
     sources?: CandidApi.PatientTransactionSource | CandidApi.PatientTransactionSource[];
     /**
      * Defaults to payment_timestamp

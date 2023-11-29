@@ -10,6 +10,10 @@ export const ClaimAdjudication: core.serialization.ObjectSchema<
     serializers.insuranceAdjudications.v1.ClaimAdjudication.Raw,
     CandidApi.insuranceAdjudications.v1.ClaimAdjudication
 > = core.serialization.object({
+    claimId: core.serialization.property(
+        "claim_id",
+        core.serialization.lazy(async () => (await import("../../../../..")).ClaimId)
+    ),
     insuranceAllowedAmountCents: core.serialization.property(
         "insurance_allowed_amount_cents",
         core.serialization.number().optional()
@@ -18,6 +22,7 @@ export const ClaimAdjudication: core.serialization.ObjectSchema<
         "insurance_paid_amount_cents",
         core.serialization.number().optional()
     ),
+    chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
     serviceLines: core.serialization.property(
         "service_lines",
         core.serialization.record(
@@ -29,21 +34,21 @@ export const ClaimAdjudication: core.serialization.ObjectSchema<
     ),
     payerClaimNumber: core.serialization.property("payer_claim_number", core.serialization.string().optional()),
     carcs: core.serialization.list(
-        core.serialization.lazyObject(
-            async () => (await import("../../../../..")).insuranceAdjudications.v1.ClaimAdjustmentReasonCode
-        )
+        core.serialization.lazyObject(async () => (await import("../../../../..")).x12.v1.ClaimAdjustmentReasonCode)
     ),
 });
 
 export declare namespace ClaimAdjudication {
     interface Raw {
+        claim_id: serializers.ClaimId.Raw;
         insurance_allowed_amount_cents?: number | null;
         insurance_paid_amount_cents?: number | null;
+        charge_amount_cents?: number | null;
         service_lines: Record<
             serializers.ServiceLineId.Raw,
             serializers.insuranceAdjudications.v1.ServiceLineAdjudication.Raw
         >;
         payer_claim_number?: string | null;
-        carcs: serializers.insuranceAdjudications.v1.ClaimAdjustmentReasonCode.Raw[];
+        carcs: serializers.x12.v1.ClaimAdjustmentReasonCode.Raw[];
     }
 }

@@ -7,6 +7,7 @@ import * as core from "../../../../../../core";
 
 export type Error =
     | CandidApi.encounters.v4.create.Error.EncounterExternalIdUniquenessError
+    | CandidApi.encounters.v4.create.Error.EncounterPatientControlNumberUniquenessError
     | CandidApi.encounters.v4.create.Error.EntityNotFoundError
     | CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError
     | CandidApi.encounters.v4.create.Error.HttpRequestValidationsError
@@ -17,6 +18,11 @@ export declare namespace Error {
     interface EncounterExternalIdUniquenessError extends _Utils {
         errorName: "EncounterExternalIdUniquenessError";
         content: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType;
+    }
+
+    interface EncounterPatientControlNumberUniquenessError extends _Utils {
+        errorName: "EncounterPatientControlNumberUniquenessError";
+        content: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType;
     }
 
     interface EntityNotFoundError extends _Utils {
@@ -52,6 +58,9 @@ export declare namespace Error {
         encounterExternalIdUniquenessError: (
             value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
         ) => _Result;
+        encounterPatientControlNumberUniquenessError: (
+            value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+        ) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         encounterGuarantorMissingContactInfoError: (
             value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType
@@ -71,6 +80,21 @@ export const Error = {
             errorName: "EncounterExternalIdUniquenessError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.EncounterExternalIdUniquenessError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    encounterPatientControlNumberUniquenessError: (
+        value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+    ): CandidApi.encounters.v4.create.Error.EncounterPatientControlNumberUniquenessError => {
+        return {
+            content: value,
+            errorName: "EncounterPatientControlNumberUniquenessError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.EncounterPatientControlNumberUniquenessError,
                 visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
@@ -158,6 +182,8 @@ export const Error = {
         switch (value.errorName) {
             case "EncounterExternalIdUniquenessError":
                 return visitor.encounterExternalIdUniquenessError(value.content);
+            case "EncounterPatientControlNumberUniquenessError":
+                return visitor.encounterPatientControlNumberUniquenessError(value.content);
             case "EntityNotFoundError":
                 return visitor.entityNotFoundError(value.content);
             case "EncounterGuarantorMissingContactInfoError":

@@ -16,6 +16,12 @@ export const Error: core.serialization.Schema<
                 async () => (await import("../../../../..")).encounters.v4.EncounterExternalIdUniquenessErrorType
             ),
         }),
+        EncounterPatientControlNumberUniquenessError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () =>
+                    (await import("../../../../..")).encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+            ),
+        }),
         EntityNotFoundError: core.serialization.object({
             content: core.serialization.lazyObject(
                 async () => (await import("../../../../..")).EntityNotFoundErrorMessage
@@ -42,6 +48,10 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "EncounterExternalIdUniquenessError":
                     return CandidApi.encounters.v4.create.Error.encounterExternalIdUniquenessError(value.content);
+                case "EncounterPatientControlNumberUniquenessError":
+                    return CandidApi.encounters.v4.create.Error.encounterPatientControlNumberUniquenessError(
+                        value.content
+                    );
                 case "EntityNotFoundError":
                     return CandidApi.encounters.v4.create.Error.entityNotFoundError(value.content);
                 case "EncounterGuarantorMissingContactInfoError":
@@ -60,6 +70,7 @@ export const Error: core.serialization.Schema<
 export declare namespace Error {
     type Raw =
         | Error.EncounterExternalIdUniquenessError
+        | Error.EncounterPatientControlNumberUniquenessError
         | Error.EntityNotFoundError
         | Error.EncounterGuarantorMissingContactInfoError
         | Error.HttpRequestValidationsError
@@ -68,6 +79,11 @@ export declare namespace Error {
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: serializers.encounters.v4.EncounterExternalIdUniquenessErrorType.Raw;
+    }
+
+    interface EncounterPatientControlNumberUniquenessError {
+        errorName: "EncounterPatientControlNumberUniquenessError";
+        content: serializers.encounters.v4.EncounterPatientControlNumberUniquenessErrorType.Raw;
     }
 
     interface EntityNotFoundError {

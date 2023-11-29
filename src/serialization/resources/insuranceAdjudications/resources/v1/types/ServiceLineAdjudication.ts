@@ -40,14 +40,10 @@ export const ServiceLineAdjudication: core.serialization.ObjectSchema<
     ),
     copayAmountCents: core.serialization.property("copay_amount_cents", core.serialization.number().optional()),
     carcs: core.serialization.list(
-        core.serialization.lazyObject(
-            async () => (await import("../../../../..")).insuranceAdjudications.v1.ClaimAdjustmentReasonCode
-        )
+        core.serialization.lazyObject(async () => (await import("../../../../..")).x12.v1.ClaimAdjustmentReasonCode)
     ),
     rarcs: core.serialization.list(
-        core.serialization.lazyObject(
-            async () => (await import("../../../../..")).insuranceAdjudications.v1.RemittanceAdviceRemarkCode
-        )
+        core.serialization.lazyObject(async () => (await import("../../../../..")).x12.v1.RemittanceAdviceRemarkCode)
     ),
 });
 
@@ -60,7 +56,7 @@ export declare namespace ServiceLineAdjudication {
         deductible_amount_cents?: number | null;
         coinsurance_amount_cents?: number | null;
         copay_amount_cents?: number | null;
-        carcs: serializers.insuranceAdjudications.v1.ClaimAdjustmentReasonCode.Raw[];
-        rarcs: serializers.insuranceAdjudications.v1.RemittanceAdviceRemarkCode.Raw[];
+        carcs: serializers.x12.v1.ClaimAdjustmentReasonCode.Raw[];
+        rarcs: serializers.x12.v1.RemittanceAdviceRemarkCode.Raw[];
     }
 }

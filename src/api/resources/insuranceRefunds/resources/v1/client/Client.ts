@@ -5,8 +5,9 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
+import * as serializers from "../../../../../../serialization";
 
 export declare namespace V1 {
     interface Options {
@@ -17,6 +18,87 @@ export declare namespace V1 {
 
 export class V1 {
     constructor(protected readonly options: V1.Options) {}
+
+    /**
+     * Returns all insurance refunds satisfying the search criteria AND whose organization_id matches
+     * the current organization_id of the authenticated user.
+     *
+     */
+    public async getMulti(
+        request: CandidApi.insuranceRefunds.v1.GetMultiInsuranceRefundsRequest = {}
+    ): Promise<
+        core.APIResponse<
+            CandidApi.insuranceRefunds.v1.InsuranceRefundsPage,
+            CandidApi.insuranceRefunds.v1.getMulti.Error
+        >
+    > {
+        const { limit, payerUuid, claimId, serviceLineId, billingProviderId, sort, sortDirection, pageToken } = request;
+        const _queryParams = new URLSearchParams();
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
+        }
+
+        if (payerUuid != null) {
+            _queryParams.append("payer_uuid", payerUuid);
+        }
+
+        if (claimId != null) {
+            _queryParams.append("claim_id", claimId);
+        }
+
+        if (serviceLineId != null) {
+            _queryParams.append("service_line_id", serviceLineId);
+        }
+
+        if (billingProviderId != null) {
+            _queryParams.append("billing_provider_id", billingProviderId);
+        }
+
+        if (sort != null) {
+            _queryParams.append("sort", sort);
+        }
+
+        if (sortDirection != null) {
+            _queryParams.append("sort_direction", sortDirection);
+        }
+
+        if (pageToken != null) {
+            _queryParams.append("page_token", pageToken);
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                "/api/insurance-refunds/v1"
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.12.0",
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: 60000,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: await serializers.insuranceRefunds.v1.InsuranceRefundsPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.insuranceRefunds.v1.getMulti.Error._unknown(_response.error),
+        };
+    }
 
     /**
      * Retrieves a previously created insurance refund by its `insurance_refund_id`.
@@ -40,7 +122,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -84,7 +166,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             body: await serializers.insuranceRefunds.v1.InsuranceRefundCreate.jsonOrThrow(request, {
@@ -131,7 +213,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.11.0",
+                "X-Fern-SDK-Version": "0.12.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,

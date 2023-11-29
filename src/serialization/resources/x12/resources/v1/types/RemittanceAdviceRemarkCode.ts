@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const RemittanceAdviceRemarkCode: core.serialization.ObjectSchema<
-    serializers.insuranceAdjudications.v1.RemittanceAdviceRemarkCode.Raw,
-    CandidApi.insuranceAdjudications.v1.RemittanceAdviceRemarkCode
+    serializers.x12.v1.RemittanceAdviceRemarkCode.Raw,
+    CandidApi.x12.v1.RemittanceAdviceRemarkCode
 > = core.serialization.object({
     reasonCode: core.serialization.property(
         "reason_code",

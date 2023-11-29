@@ -5,9 +5,11 @@
 import * as CandidApi from "../../../../..";
 
 export interface ClaimAdjudication {
+    claimId: CandidApi.ClaimId;
     insuranceAllowedAmountCents?: number;
     insurancePaidAmountCents?: number;
+    chargeAmountCents?: number;
     serviceLines: Record<CandidApi.ServiceLineId, CandidApi.insuranceAdjudications.v1.ServiceLineAdjudication>;
     payerClaimNumber?: string;
-    carcs: CandidApi.insuranceAdjudications.v1.ClaimAdjustmentReasonCode[];
+    carcs: CandidApi.x12.v1.ClaimAdjustmentReasonCode[];
 }

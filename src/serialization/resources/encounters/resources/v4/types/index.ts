@@ -28,6 +28,7 @@ export * from "./RxCui";
 export * from "./IntakeQuestionId";
 export * from "./IntakeFollowUpId";
 export * from "./EncounterExternalIdUniquenessErrorType";
+export * from "./EncounterPatientControlNumberUniquenessErrorType";
 export * from "./EncounterGuarantorMissingContactInfoErrorType";
 export * from "./CashPayPayerErrorMessage";
 export * from "./ServiceAuthorizationExceptionCode";

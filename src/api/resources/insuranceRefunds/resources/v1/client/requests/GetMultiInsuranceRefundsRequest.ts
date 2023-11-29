@@ -4,21 +4,19 @@
 
 import * as CandidApi from "../../../../../..";
 
-export interface GetMultiPatientRefundsRequest {
+export interface GetMultiInsuranceRefundsRequest {
     /**
      * Defaults to 100. The value must be greater than 0 and less than 1000.
      */
     limit?: number;
-    patientExternalId?: CandidApi.PatientExternalId;
+    payerUuid?: CandidApi.payers.v3.PayerUuid;
     claimId?: CandidApi.ClaimId;
     serviceLineId?: CandidApi.ServiceLineId;
     billingProviderId?: CandidApi.ProviderId;
-    invoiceId?: CandidApi.InvoiceId;
-    sources?: CandidApi.PatientTransactionSource | CandidApi.PatientTransactionSource[];
     /**
      * Defaults to refund_timestamp
      */
-    sort?: CandidApi.patientRefunds.v1.PatientRefundSortField;
+    sort?: CandidApi.insuranceRefunds.v1.InsuranceRefundSortField;
     /**
      * Sort direction. Defaults to descending order if not provided.
      */
