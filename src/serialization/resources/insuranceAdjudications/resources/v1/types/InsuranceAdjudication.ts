@@ -26,8 +26,10 @@ export const InsuranceAdjudication: core.serialization.ObjectSchema<
     note: core.serialization.string().optional(),
     claims: core.serialization.record(
         core.serialization.lazy(async () => (await import("../../../../..")).ClaimId),
-        core.serialization.lazyObject(
-            async () => (await import("../../../../..")).insuranceAdjudications.v1.ClaimAdjudication
+        core.serialization.list(
+            core.serialization.lazyObject(
+                async () => (await import("../../../../..")).insuranceAdjudications.v1.ClaimAdjudication
+            )
         )
     ),
 });
@@ -40,6 +42,6 @@ export declare namespace InsuranceAdjudication {
         check_number?: string | null;
         check_date: string;
         note?: string | null;
-        claims: Record<serializers.ClaimId.Raw, serializers.insuranceAdjudications.v1.ClaimAdjudication.Raw>;
+        claims: Record<serializers.ClaimId.Raw, serializers.insuranceAdjudications.v1.ClaimAdjudication.Raw[]>;
     }
 }

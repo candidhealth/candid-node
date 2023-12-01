@@ -1,6 +1,7 @@
 export * as auth from "./auth";
 export * as billingNotes from "./billingNotes";
 export * as claimSubmission from "./claimSubmission";
+export * as contracts from "./contracts";
 export * as encounterProviders from "./encounterProviders";
 export * as encounters from "./encounters";
 export * as expectedNetworkStatus from "./expectedNetworkStatus";
@@ -22,8 +23,6 @@ export * as claims from "./claims";
 export * from "./claims/types";
 export * as commons from "./commons";
 export * from "./commons/types";
-export * as contracts from "./contracts";
-export * from "./contracts/types";
 export * as diagnoses from "./diagnoses";
 export * from "./diagnoses/types";
 export * as era from "./era";

@@ -9,7 +9,7 @@ export interface ClaimAdjudication {
     insuranceAllowedAmountCents?: number;
     insurancePaidAmountCents?: number;
     chargeAmountCents?: number;
-    serviceLines: Record<CandidApi.ServiceLineId, CandidApi.insuranceAdjudications.v1.ServiceLineAdjudication>;
+    serviceLines: Record<CandidApi.ServiceLineId, CandidApi.insuranceAdjudications.v1.ServiceLineAdjudication[]>;
     payerClaimNumber?: string;
     carcs: CandidApi.x12.v1.ClaimAdjustmentReasonCode[];
 }

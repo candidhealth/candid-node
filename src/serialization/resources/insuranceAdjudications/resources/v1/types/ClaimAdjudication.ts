@@ -27,8 +27,10 @@ export const ClaimAdjudication: core.serialization.ObjectSchema<
         "service_lines",
         core.serialization.record(
             core.serialization.lazy(async () => (await import("../../../../..")).ServiceLineId),
-            core.serialization.lazyObject(
-                async () => (await import("../../../../..")).insuranceAdjudications.v1.ServiceLineAdjudication
+            core.serialization.list(
+                core.serialization.lazyObject(
+                    async () => (await import("../../../../..")).insuranceAdjudications.v1.ServiceLineAdjudication
+                )
             )
         )
     ),
@@ -46,7 +48,7 @@ export declare namespace ClaimAdjudication {
         charge_amount_cents?: number | null;
         service_lines: Record<
             serializers.ServiceLineId.Raw,
-            serializers.insuranceAdjudications.v1.ServiceLineAdjudication.Raw
+            serializers.insuranceAdjudications.v1.ServiceLineAdjudication.Raw[]
         >;
         payer_claim_number?: string | null;
         carcs: serializers.x12.v1.ClaimAdjustmentReasonCode.Raw[];

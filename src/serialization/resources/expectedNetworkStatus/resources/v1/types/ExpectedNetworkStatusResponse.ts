@@ -19,7 +19,7 @@ export const ExpectedNetworkStatusResponse: core.serialization.ObjectSchema<
     explanation: core.serialization.string(),
     contractId: core.serialization.property(
         "contract_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).ContractId).optional()
+        core.serialization.lazy(async () => (await import("../../../../..")).contracts.v2.ContractId).optional()
     ),
 });
 
@@ -27,6 +27,6 @@ export declare namespace ExpectedNetworkStatusResponse {
     interface Raw {
         expected_network_status: serializers.expectedNetworkStatus.v1.ExpectedNetworkStatus.Raw;
         explanation: string;
-        contract_id?: serializers.ContractId.Raw | null;
+        contract_id?: serializers.contracts.v2.ContractId.Raw | null;
     }
 }

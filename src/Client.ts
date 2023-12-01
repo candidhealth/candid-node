@@ -6,6 +6,7 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { Auth } from "./api/resources/auth/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
+import { Contracts } from "./api/resources/contracts/client/Client";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
@@ -41,6 +42,12 @@ export class CandidApiClient {
 
     public get billingNotes(): BillingNotes {
         return (this._billingNotes ??= new BillingNotes(this.options));
+    }
+
+    protected _contracts: Contracts | undefined;
+
+    public get contracts(): Contracts {
+        return (this._contracts ??= new Contracts(this.options));
     }
 
     protected _eligibility: Eligibility | undefined;

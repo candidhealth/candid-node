@@ -10,10 +10,6 @@ export const ClaimAdjudicationCreate: core.serialization.ObjectSchema<
     serializers.insuranceAdjudications.v1.ClaimAdjudicationCreate.Raw,
     CandidApi.insuranceAdjudications.v1.ClaimAdjudicationCreate
 > = core.serialization.object({
-    insuranceAllowedAmountCents: core.serialization.property(
-        "insurance_allowed_amount_cents",
-        core.serialization.number().optional()
-    ),
     insurancePaidAmountCents: core.serialization.property(
         "insurance_paid_amount_cents",
         core.serialization.number().optional()
@@ -23,8 +19,10 @@ export const ClaimAdjudicationCreate: core.serialization.ObjectSchema<
         "service_lines",
         core.serialization.record(
             core.serialization.lazy(async () => (await import("../../../../..")).ServiceLineId),
-            core.serialization.lazyObject(
-                async () => (await import("../../../../..")).insuranceAdjudications.v1.ServiceLineAdjudicationCreate
+            core.serialization.list(
+                core.serialization.lazyObject(
+                    async () => (await import("../../../../..")).insuranceAdjudications.v1.ServiceLineAdjudicationCreate
+                )
             )
         )
     ),
@@ -36,12 +34,11 @@ export const ClaimAdjudicationCreate: core.serialization.ObjectSchema<
 
 export declare namespace ClaimAdjudicationCreate {
     interface Raw {
-        insurance_allowed_amount_cents?: number | null;
         insurance_paid_amount_cents?: number | null;
         charge_amount_cents?: number | null;
         service_lines: Record<
             serializers.ServiceLineId.Raw,
-            serializers.insuranceAdjudications.v1.ServiceLineAdjudicationCreate.Raw
+            serializers.insuranceAdjudications.v1.ServiceLineAdjudicationCreate.Raw[]
         >;
         payer_claim_number?: string | null;
         carcs: serializers.x12.v1.ClaimAdjustmentReasonCode.Raw[];

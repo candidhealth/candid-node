@@ -8,5 +8,5 @@ export interface ExpectedNetworkStatusResponse {
     /** The anticipated classification of a healthcare provider within the insurance plan's network. */
     expectedNetworkStatus: CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatus;
     explanation: string;
-    contractId?: CandidApi.ContractId;
+    contractId?: CandidApi.contracts.v2.ContractId;
 }
