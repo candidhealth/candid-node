@@ -192,7 +192,7 @@ import * as CandidApi from "../../../../..";
  *         subscriberPrimary: {
  *             individualId: CandidApi.IndividualId("797348A9-E7E8-4E59-8628-95390D079C0B"),
  *             insuranceCard: {
- *                 insuranceCardId: CandidApi.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
+ *                 insuranceCardId: CandidApi.insuranceCards.v2.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
  *                 memberId: "E85313B4-0FFC-4119-8042-8161A4ECFF0A",
  *                 payerName: "John Doe",
  *                 payerId: "836DDAA6-863F-4020-ACCA-205A689F0002",
@@ -222,7 +222,7 @@ import * as CandidApi from "../../../../..";
  *         subscriberSecondary: {
  *             individualId: CandidApi.IndividualId("797348A9-E7E8-4E59-8628-95390D079C0B"),
  *             insuranceCard: {
- *                 insuranceCardId: CandidApi.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
+ *                 insuranceCardId: CandidApi.insuranceCards.v2.InsuranceCardId("CA5B7711-4419-4161-9B7C-3494AC40C8D4"),
  *                 memberId: "E85313B4-0FFC-4119-8042-8161A4ECFF0A",
  *                 payerName: "John Doe",
  *                 payerId: "836DDAA6-863F-4020-ACCA-205A689F0002",

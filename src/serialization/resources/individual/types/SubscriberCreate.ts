@@ -13,13 +13,13 @@ export const SubscriberCreate: core.serialization.ObjectSchema<
     .object({
         insuranceCard: core.serialization.property(
             "insurance_card",
-            core.serialization.lazyObject(async () => (await import("../../..")).InsuranceCardCreate)
+            core.serialization.lazyObject(async () => (await import("../../..")).insuranceCards.v2.InsuranceCardCreate)
         ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../..")).SubscriberBase));
 
 export declare namespace SubscriberCreate {
     interface Raw extends serializers.SubscriberBase.Raw {
-        insurance_card: serializers.InsuranceCardCreate.Raw;
+        insurance_card: serializers.insuranceCards.v2.InsuranceCardCreate.Raw;
     }
 }

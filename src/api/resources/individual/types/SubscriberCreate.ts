@@ -5,5 +5,5 @@
 import * as CandidApi from "../../..";
 
 export interface SubscriberCreate extends CandidApi.SubscriberBase {
-    insuranceCard: CandidApi.InsuranceCardCreate;
+    insuranceCard: CandidApi.insuranceCards.v2.InsuranceCardCreate;
 }

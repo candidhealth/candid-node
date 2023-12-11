@@ -69,7 +69,8 @@ export type LicenseType =
     | "OTD"
     | "OMS"
     | "MFTA"
-    | "APCC";
+    | "APCC"
+    | "DNP";
 
 export const LicenseType = {
     Md: "MD",
@@ -139,4 +140,5 @@ export const LicenseType = {
     Oms: "OMS",
     Mfta: "MFTA",
     Apcc: "APCC",
+    Dnp: "DNP",
 } as const;

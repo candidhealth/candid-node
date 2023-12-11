@@ -98,7 +98,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -141,7 +141,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -185,7 +185,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
@@ -212,6 +212,54 @@ export class V4 {
     }
 
     /**
+     * Updates the patient payment record matching the provided patient_payment_id.
+     *
+     */
+    public async update(
+        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
+        request: CandidApi.patientPayments.v4.PatientPaymentUpdate = {}
+    ): Promise<
+        core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.update.Error>
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-payments/v4/${await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(
+                    patientPaymentId
+                )}`
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.14.0",
+            },
+            contentType: "application/json",
+            body: await serializers.patientPayments.v4.PatientPaymentUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: 60000,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: await serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.patientPayments.v4.update.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * Deletes the patient payment record matching the provided patient_payment_id.
      *
      */
@@ -230,7 +278,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,

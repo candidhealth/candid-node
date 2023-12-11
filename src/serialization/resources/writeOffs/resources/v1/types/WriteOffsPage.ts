@@ -12,7 +12,7 @@ export const WriteOffsPage: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         items: core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("../../../../..")).writeOffs.v1.WriteOff)
+            core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOff)
         ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../..")).ResourcePage));

@@ -6,29 +6,31 @@ import * as serializers from "../../../../..";
 import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
-export const WriteOffCreate: core.serialization.ObjectSchema<
+export const WriteOffCreate: core.serialization.Schema<
     serializers.writeOffs.v1.WriteOffCreate.Raw,
     CandidApi.writeOffs.v1.WriteOffCreate
-> = core.serialization.object({
-    writeOffTimestamp: core.serialization.property("write_off_timestamp", core.serialization.date()),
-    writeOffNote: core.serialization.property("write_off_note", core.serialization.string().optional()),
-    writeOffReason: core.serialization.property(
-        "write_off_reason",
-        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffReason)
-    ),
-    serviceLineId: core.serialization.property(
-        "service_line_id",
-        core.serialization.lazy(async () => (await import("../../../../..")).ServiceLineId)
-    ),
-    amountCents: core.serialization.property("amount_cents", core.serialization.number()),
-});
+> = core.serialization
+    .union("type", {
+        patient: core.serialization.lazyObject(
+            async () => (await import("../../../../..")).writeOffs.v1.PatientWriteOffCreate
+        ),
+        insurance: core.serialization.lazyObject(
+            async () => (await import("../../../../..")).writeOffs.v1.InsuranceWriteOffCreate
+        ),
+    })
+    .transform<CandidApi.writeOffs.v1.WriteOffCreate>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WriteOffCreate {
-    interface Raw {
-        write_off_timestamp: string;
-        write_off_note?: string | null;
-        write_off_reason: serializers.writeOffs.v1.WriteOffReason.Raw;
-        service_line_id: serializers.ServiceLineId.Raw;
-        amount_cents: number;
+    type Raw = WriteOffCreate.Patient | WriteOffCreate.Insurance;
+
+    interface Patient extends serializers.writeOffs.v1.PatientWriteOffCreate.Raw {
+        type: "patient";
+    }
+
+    interface Insurance extends serializers.writeOffs.v1.InsuranceWriteOffCreate.Raw {
+        type: "insurance";
     }
 }

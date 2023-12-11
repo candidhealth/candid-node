@@ -13,7 +13,7 @@ export const CreateWriteOffsResponse: core.serialization.ObjectSchema<
     writeOffs: core.serialization.property(
         "write_offs",
         core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("../../../../..")).writeOffs.v1.WriteOff)
+            core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOff)
         )
     ),
 });

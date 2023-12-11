@@ -98,7 +98,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -141,7 +141,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -183,7 +183,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             body: await serializers.patientRefunds.v1.PatientRefundCreate.jsonOrThrow(request, {
@@ -210,6 +210,52 @@ export class V1 {
     }
 
     /**
+     * Updates the patient refund record matching the provided patient_refund_id.
+     *
+     */
+    public async update(
+        patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
+        request: CandidApi.patientRefunds.v1.PatientRefundUpdate = {}
+    ): Promise<core.APIResponse<CandidApi.patientRefunds.v1.PatientRefund, CandidApi.patientRefunds.v1.update.Error>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-refunds/v1/${await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(
+                    patientRefundId
+                )}`
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.14.0",
+            },
+            contentType: "application/json",
+            body: await serializers.patientRefunds.v1.PatientRefundUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: 60000,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: await serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.patientRefunds.v1.update.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * Deletes the patient refund record matching the provided patient_refund_id.
      *
      */
@@ -228,7 +274,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,

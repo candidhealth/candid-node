@@ -77,6 +77,7 @@ export const LicenseType: core.serialization.Schema<
     "OMS",
     "MFTA",
     "APCC",
+    "DNP",
 ]);
 
 export declare namespace LicenseType {
@@ -147,5 +148,6 @@ export declare namespace LicenseType {
         | "OTD"
         | "OMS"
         | "MFTA"
-        | "APCC";
+        | "APCC"
+        | "DNP";
 }

@@ -15,7 +15,7 @@ export const Subscriber: core.serialization.ObjectSchema<serializers.Subscriber.
             ),
             insuranceCard: core.serialization.property(
                 "insurance_card",
-                core.serialization.lazyObject(async () => (await import("../../..")).InsuranceCard)
+                core.serialization.lazyObject(async () => (await import("../../..")).insuranceCards.v2.InsuranceCard)
             ),
         })
         .extend(core.serialization.lazyObject(async () => (await import("../../..")).SubscriberBase));
@@ -23,6 +23,6 @@ export const Subscriber: core.serialization.ObjectSchema<serializers.Subscriber.
 export declare namespace Subscriber {
     interface Raw extends serializers.SubscriberBase.Raw {
         individual_id: serializers.IndividualId.Raw;
-        insurance_card: serializers.InsuranceCard.Raw;
+        insurance_card: serializers.insuranceCards.v2.InsuranceCard.Raw;
     }
 }

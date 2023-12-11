@@ -4,11 +4,14 @@
 
 import * as CandidApi from "../../../../..";
 
-export interface WriteOff {
-    writeOffId: CandidApi.writeOffs.v1.WriteOffId;
-    writeOffTimestamp: Date;
-    writeOffNote?: string;
-    writeOffReason: CandidApi.writeOffs.v1.WriteOffReason;
-    serviceLineId: CandidApi.ServiceLineId;
-    amountCents: number;
+export type WriteOff = CandidApi.writeOffs.v1.WriteOff.Patient | CandidApi.writeOffs.v1.WriteOff.Insurance;
+
+export declare namespace WriteOff {
+    interface Patient extends CandidApi.writeOffs.v1.PatientWriteOff {
+        type: "patient";
+    }
+
+    interface Insurance extends CandidApi.writeOffs.v1.InsuranceWriteOff {
+        type: "insurance";
+    }
 }

@@ -10,7 +10,10 @@ export interface GetMultiWriteOffsRequest {
      */
     limit?: number;
     patientExternalId?: CandidApi.PatientExternalId;
+    payerUuid?: CandidApi.payers.v3.PayerUuid;
     serviceLineId?: CandidApi.ServiceLineId;
+    claimId?: CandidApi.ClaimId;
+    billingProviderId?: CandidApi.ProviderId;
     /**
      * Defaults to write_off_timestamp
      */
@@ -20,4 +23,8 @@ export interface GetMultiWriteOffsRequest {
      */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
+    /**
+     * Filters the returned values to include only the provided account types.
+     */
+    accountTypes?: CandidApi.AccountType | CandidApi.AccountType[];
 }

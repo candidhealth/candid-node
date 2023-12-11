@@ -20,14 +20,24 @@ export class V1 {
     constructor(protected readonly options: V1.Options) {}
 
     /**
-     * Returns all write-offs satisfying the search criteria AND whose organization_id matches
-     * the current organization_id of the authenticated user.
+     * Returns all write-offs satisfying the search criteria.
      *
      */
     public async getMulti(
         request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {}
     ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error>> {
-        const { limit, patientExternalId, serviceLineId, sort, sortDirection, pageToken } = request;
+        const {
+            limit,
+            patientExternalId,
+            payerUuid,
+            serviceLineId,
+            claimId,
+            billingProviderId,
+            sort,
+            sortDirection,
+            pageToken,
+            accountTypes,
+        } = request;
         const _queryParams = new URLSearchParams();
         if (limit != null) {
             _queryParams.append("limit", limit.toString());
@@ -37,8 +47,20 @@ export class V1 {
             _queryParams.append("patient_external_id", patientExternalId);
         }
 
+        if (payerUuid != null) {
+            _queryParams.append("payer_uuid", payerUuid);
+        }
+
         if (serviceLineId != null) {
             _queryParams.append("service_line_id", serviceLineId);
+        }
+
+        if (claimId != null) {
+            _queryParams.append("claim_id", claimId);
+        }
+
+        if (billingProviderId != null) {
+            _queryParams.append("billing_provider_id", billingProviderId);
         }
 
         if (sort != null) {
@@ -53,6 +75,16 @@ export class V1 {
             _queryParams.append("page_token", pageToken);
         }
 
+        if (accountTypes != null) {
+            if (Array.isArray(accountTypes)) {
+                for (const _item of accountTypes) {
+                    _queryParams.append("account_types", _item);
+                }
+            } else {
+                _queryParams.append("account_types", accountTypes);
+            }
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.CandidApiEnvironment.Production,
@@ -63,7 +95,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -104,7 +136,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -146,7 +178,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             body: await serializers.writeOffs.v1.CreateWriteOffsRequest.jsonOrThrow(request, {
@@ -189,7 +221,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.13.0",
+                "X-Fern-SDK-Version": "0.14.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
