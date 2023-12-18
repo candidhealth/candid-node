@@ -76,7 +76,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.0",
+                "X-Fern-SDK-Version": "0.14.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -122,7 +122,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.0",
+                "X-Fern-SDK-Version": "0.14.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -166,7 +166,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.0",
+                "X-Fern-SDK-Version": "0.14.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceRefunds.v1.InsuranceRefundCreate.jsonOrThrow(request, {
@@ -199,7 +199,7 @@ export class V1 {
      */
     public async update(
         insuranceRefundId: CandidApi.insuranceRefunds.v1.InsuranceRefundId,
-        request: CandidApi.insuranceRefunds.v1.InsuranceRefundUpdate
+        request: CandidApi.insuranceRefunds.v1.InsuranceRefundUpdate = {}
     ): Promise<
         core.APIResponse<CandidApi.insuranceRefunds.v1.InsuranceRefund, CandidApi.insuranceRefunds.v1.update.Error>
     > {
@@ -215,7 +215,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.0",
+                "X-Fern-SDK-Version": "0.14.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceRefunds.v1.InsuranceRefundUpdate.jsonOrThrow(request, {
@@ -262,7 +262,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.0",
+                "X-Fern-SDK-Version": "0.14.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

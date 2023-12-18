@@ -23,7 +23,15 @@ export const InsuranceWriteOff: core.serialization.ObjectSchema<
     writeOffNote: core.serialization.property("write_off_note", core.serialization.string().optional()),
     writeOffReason: core.serialization.property(
         "write_off_reason",
-        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffReason)
+        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.InsuranceWriteOffReason)
+    ),
+    revertsWriteOffId: core.serialization.property(
+        "reverts_write_off_id",
+        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffId).optional()
+    ),
+    revertedByWriteOffId: core.serialization.property(
+        "reverted_by_write_off_id",
+        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffId).optional()
     ),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
 });
@@ -35,7 +43,9 @@ export declare namespace InsuranceWriteOff {
         write_off_target: serializers.writeOffs.v1.InsuranceWriteOffTarget.Raw;
         write_off_timestamp: string;
         write_off_note?: string | null;
-        write_off_reason: serializers.writeOffs.v1.WriteOffReason.Raw;
+        write_off_reason: serializers.writeOffs.v1.InsuranceWriteOffReason.Raw;
+        reverts_write_off_id?: serializers.writeOffs.v1.WriteOffId.Raw | null;
+        reverted_by_write_off_id?: serializers.writeOffs.v1.WriteOffId.Raw | null;
         amount_cents: number;
     }
 }

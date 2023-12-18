@@ -17,12 +17,11 @@ export const InsuranceRefundUpdate: core.serialization.Schema<
     ),
     payerIdentifier: core.serialization.property(
         "payer_identifier",
-        core.serialization.lazy(async () => (await import("../../../../../..")).payers.v3.PayerIdentifier)
+        core.serialization.lazy(async () => (await import("../../../../../..")).payers.v3.PayerIdentifier).optional()
     ),
     allocations: core.serialization
         .lazyObject(async () => (await import("../../../../../..")).AllocationAmountUpdate)
         .optional(),
-    invoice: core.serialization.lazy(async () => (await import("../../../../../..")).InvoiceUpdate).optional(),
     refundReason: core.serialization.property(
         "refund_reason",
         core.serialization.lazy(async () => (await import("../../../../../..")).RefundReasonUpdate).optional()
@@ -33,9 +32,8 @@ export declare namespace InsuranceRefundUpdate {
     interface Raw {
         refund_timestamp?: string | null;
         refund_note?: serializers.NoteUpdate.Raw | null;
-        payer_identifier: serializers.payers.v3.PayerIdentifier.Raw;
+        payer_identifier?: serializers.payers.v3.PayerIdentifier.Raw | null;
         allocations?: serializers.AllocationAmountUpdate.Raw | null;
-        invoice?: serializers.InvoiceUpdate.Raw | null;
         refund_reason?: serializers.RefundReasonUpdate.Raw | null;
     }
 }

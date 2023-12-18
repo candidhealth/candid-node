@@ -14,7 +14,7 @@ export const PatientWriteOffCreate: core.serialization.ObjectSchema<
     writeOffNote: core.serialization.property("write_off_note", core.serialization.string().optional()),
     writeOffReason: core.serialization.property(
         "write_off_reason",
-        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.WriteOffReason)
+        core.serialization.lazy(async () => (await import("../../../../..")).writeOffs.v1.PatientWriteOffReason)
     ),
     serviceLineId: core.serialization.property(
         "service_line_id",
@@ -27,7 +27,7 @@ export declare namespace PatientWriteOffCreate {
     interface Raw {
         write_off_timestamp: string;
         write_off_note?: string | null;
-        write_off_reason: serializers.writeOffs.v1.WriteOffReason.Raw;
+        write_off_reason: serializers.writeOffs.v1.PatientWriteOffReason.Raw;
         service_line_id: serializers.ServiceLineId.Raw;
         amount_cents: number;
     }

@@ -7,7 +7,7 @@ import * as CandidApi from "../../../../..";
 export interface PatientWriteOffCreate {
     writeOffTimestamp: Date;
     writeOffNote?: string;
-    writeOffReason: CandidApi.writeOffs.v1.WriteOffReason;
+    writeOffReason: CandidApi.writeOffs.v1.PatientWriteOffReason;
     serviceLineId: CandidApi.ServiceLineId;
     amountCents: number;
 }

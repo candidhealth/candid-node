@@ -9,6 +9,6 @@ export interface InsuranceWriteOffCreate {
     writeOffTarget: CandidApi.writeOffs.v1.InsuranceWriteOffTarget;
     writeOffTimestamp: Date;
     writeOffNote?: string;
-    writeOffReason: CandidApi.writeOffs.v1.WriteOffReason;
+    writeOffReason: CandidApi.writeOffs.v1.InsuranceWriteOffReason;
     amountCents: number;
 }
