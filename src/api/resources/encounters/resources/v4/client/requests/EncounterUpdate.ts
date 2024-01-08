@@ -78,6 +78,8 @@ export interface EncounterUpdate {
      *
      */
     endDateOfService?: CandidApi.Date_;
+    /** Contains details of the primary insurance subscriber. */
+    subscriberPrimary?: CandidApi.SubscriberCreate;
     /** Contains details of the secondary insurance subscriber. */
     subscriberSecondary?: CandidApi.SubscriberCreate;
     /**

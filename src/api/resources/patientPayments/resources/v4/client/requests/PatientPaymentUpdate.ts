@@ -8,6 +8,5 @@ export interface PatientPaymentUpdate {
     paymentTimestamp?: Date;
     paymentNote?: CandidApi.NoteUpdate;
     patientExternalId?: CandidApi.PatientExternalId;
-    allocations?: CandidApi.AllocationAmountUpdate;
     invoice?: CandidApi.InvoiceUpdate;
 }

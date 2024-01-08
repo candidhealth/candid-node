@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const WriteOffSortField: core.serialization.Schema<
     serializers.writeOffs.v1.WriteOffSortField.Raw,
     CandidApi.writeOffs.v1.WriteOffSortField
-> = core.serialization.enum_(["amount_cents", "write_off_timestamp", "write_off_note", "write_off_reason"]);
+> = core.serialization.enum_(["amount_cents", "write_off_timestamp", "write_off_note"]);
 
 export declare namespace WriteOffSortField {
-    type Raw = "amount_cents" | "write_off_timestamp" | "write_off_note" | "write_off_reason";
+    type Raw = "amount_cents" | "write_off_timestamp" | "write_off_note";
 }

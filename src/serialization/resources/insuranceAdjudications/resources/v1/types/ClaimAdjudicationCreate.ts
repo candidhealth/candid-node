@@ -10,6 +10,10 @@ export const ClaimAdjudicationCreate: core.serialization.ObjectSchema<
     serializers.insuranceAdjudications.v1.ClaimAdjudicationCreate.Raw,
     CandidApi.insuranceAdjudications.v1.ClaimAdjudicationCreate
 > = core.serialization.object({
+    claimStatusCode: core.serialization.property(
+        "claim_status_code",
+        core.serialization.lazy(async () => (await import("../../../../..")).ClaimStatusCodeCreate)
+    ),
     insurancePaidAmountCents: core.serialization.property(
         "insurance_paid_amount_cents",
         core.serialization.number().optional()
@@ -34,6 +38,7 @@ export const ClaimAdjudicationCreate: core.serialization.ObjectSchema<
 
 export declare namespace ClaimAdjudicationCreate {
     interface Raw {
+        claim_status_code: serializers.ClaimStatusCodeCreate.Raw;
         insurance_paid_amount_cents?: number | null;
         charge_amount_cents?: number | null;
         service_lines: Record<

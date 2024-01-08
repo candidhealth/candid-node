@@ -19,9 +19,6 @@ export const PatientRefundUpdate: core.serialization.Schema<
         "patient_external_id",
         core.serialization.lazy(async () => (await import("../../../../../..")).PatientExternalId).optional()
     ),
-    allocations: core.serialization
-        .lazyObject(async () => (await import("../../../../../..")).AllocationAmountUpdate)
-        .optional(),
     invoice: core.serialization.lazy(async () => (await import("../../../../../..")).InvoiceUpdate).optional(),
     refundReason: core.serialization.property(
         "refund_reason",
@@ -34,7 +31,6 @@ export declare namespace PatientRefundUpdate {
         refund_timestamp?: string | null;
         refund_note?: serializers.NoteUpdate.Raw | null;
         patient_external_id?: serializers.PatientExternalId.Raw | null;
-        allocations?: serializers.AllocationAmountUpdate.Raw | null;
         invoice?: serializers.InvoiceUpdate.Raw | null;
         refund_reason?: serializers.RefundReasonUpdate.Raw | null;
     }

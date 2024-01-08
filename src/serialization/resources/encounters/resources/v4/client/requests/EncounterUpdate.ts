@@ -82,6 +82,10 @@ export const EncounterUpdate: core.serialization.Schema<
         "end_date_of_service",
         core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
     ),
+    subscriberPrimary: core.serialization.property(
+        "subscriber_primary",
+        core.serialization.lazyObject(async () => (await import("../../../../../..")).SubscriberCreate).optional()
+    ),
     subscriberSecondary: core.serialization.property(
         "subscriber_secondary",
         core.serialization.lazyObject(async () => (await import("../../../../../..")).SubscriberCreate).optional()
@@ -131,6 +135,7 @@ export declare namespace EncounterUpdate {
         place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
         appointment_type?: string | null;
         end_date_of_service?: serializers.Date_.Raw | null;
+        subscriber_primary?: serializers.SubscriberCreate.Raw | null;
         subscriber_secondary?: serializers.SubscriberCreate.Raw | null;
         additional_information?: string | null;
         service_authorization_exception_code?: serializers.encounters.v4.ServiceAuthorizationExceptionCode.Raw | null;

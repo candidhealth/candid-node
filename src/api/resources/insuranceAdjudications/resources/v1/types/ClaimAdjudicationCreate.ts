@@ -5,6 +5,7 @@
 import * as CandidApi from "../../../../..";
 
 export interface ClaimAdjudicationCreate {
+    claimStatusCode: CandidApi.ClaimStatusCodeCreate;
     insurancePaidAmountCents?: number;
     chargeAmountCents?: number;
     serviceLines: Record<CandidApi.ServiceLineId, CandidApi.insuranceAdjudications.v1.ServiceLineAdjudicationCreate[]>;

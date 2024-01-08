@@ -5,7 +5,6 @@ export * from "./AllocationTarget";
 export * from "./AllocationCreate";
 export * from "./AllocationTargetCreate";
 export * from "./AccountType";
-export * from "./AllocationAmountUpdate";
 export * from "./NoteUpdate";
 export * from "./InvoiceUpdate";
 export * from "./RefundReasonUpdate";
