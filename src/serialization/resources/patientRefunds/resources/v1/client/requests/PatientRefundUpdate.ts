@@ -15,10 +15,6 @@ export const PatientRefundUpdate: core.serialization.Schema<
         "refund_note",
         core.serialization.lazy(async () => (await import("../../../../../..")).NoteUpdate).optional()
     ),
-    patientExternalId: core.serialization.property(
-        "patient_external_id",
-        core.serialization.lazy(async () => (await import("../../../../../..")).PatientExternalId).optional()
-    ),
     invoice: core.serialization.lazy(async () => (await import("../../../../../..")).InvoiceUpdate).optional(),
     refundReason: core.serialization.property(
         "refund_reason",
@@ -30,7 +26,6 @@ export declare namespace PatientRefundUpdate {
     interface Raw {
         refund_timestamp?: string | null;
         refund_note?: serializers.NoteUpdate.Raw | null;
-        patient_external_id?: serializers.PatientExternalId.Raw | null;
         invoice?: serializers.InvoiceUpdate.Raw | null;
         refund_reason?: serializers.RefundReasonUpdate.Raw | null;
     }

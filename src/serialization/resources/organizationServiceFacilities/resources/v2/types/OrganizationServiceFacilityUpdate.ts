@@ -13,6 +13,7 @@ export const OrganizationServiceFacilityUpdate: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     aliases: core.serialization.list(core.serialization.string()).optional(),
     description: core.serialization.string().optional(),
+    npi: core.serialization.string().optional(),
     status: core.serialization
         .lazy(async () => (await import("../../../../..")).organizationServiceFacilities.v2.ServiceFacilityStatus)
         .optional(),
@@ -51,6 +52,7 @@ export declare namespace OrganizationServiceFacilityUpdate {
         name?: string | null;
         aliases?: string[] | null;
         description?: string | null;
+        npi?: string | null;
         status?: serializers.organizationServiceFacilities.v2.ServiceFacilityStatus.Raw | null;
         operational_status?: serializers.organizationServiceFacilities.v2.ServiceFacilityOperationalStatus.Raw | null;
         mode?: serializers.organizationServiceFacilities.v2.ServiceFacilityMode.Raw | null;

@@ -7,6 +7,5 @@ import * as CandidApi from "../../../../../..";
 export interface InsuranceRefundUpdate {
     refundTimestamp?: Date;
     refundNote?: CandidApi.NoteUpdate;
-    payerIdentifier?: CandidApi.payers.v3.PayerIdentifier;
     refundReason?: CandidApi.RefundReasonUpdate;
 }

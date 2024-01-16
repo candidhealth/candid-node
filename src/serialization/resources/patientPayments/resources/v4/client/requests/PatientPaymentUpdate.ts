@@ -15,10 +15,6 @@ export const PatientPaymentUpdate: core.serialization.Schema<
         "payment_note",
         core.serialization.lazy(async () => (await import("../../../../../..")).NoteUpdate).optional()
     ),
-    patientExternalId: core.serialization.property(
-        "patient_external_id",
-        core.serialization.lazy(async () => (await import("../../../../../..")).PatientExternalId).optional()
-    ),
     invoice: core.serialization.lazy(async () => (await import("../../../../../..")).InvoiceUpdate).optional(),
 });
 
@@ -26,7 +22,6 @@ export declare namespace PatientPaymentUpdate {
     interface Raw {
         payment_timestamp?: string | null;
         payment_note?: serializers.NoteUpdate.Raw | null;
-        patient_external_id?: serializers.PatientExternalId.Raw | null;
         invoice?: serializers.InvoiceUpdate.Raw | null;
     }
 }

@@ -35,6 +35,12 @@ export interface OrganizationServiceFacility {
     aliases: string[];
     /** A description of the service facility. */
     description?: string;
+    /**
+     * An NPI specific to the service facility if applicable, i.e. if it has one and is not under the billing provider's NPI.
+     * Box 32 section (a) of the CMS-1500 claim form.
+     *
+     */
+    npi?: string;
     /** The status of the service facility. */
     status?: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus;
     /** The operational status of the service facility. */

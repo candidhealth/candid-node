@@ -48,7 +48,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.2",
+                "X-Fern-SDK-Version": "0.14.3",
             },
             contentType: "application/json",
             body: request,
