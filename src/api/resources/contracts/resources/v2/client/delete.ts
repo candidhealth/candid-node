@@ -5,9 +5,16 @@
 import * as CandidApi from "../../../../..";
 import * as core from "../../../../../../core";
 
-export type Error = CandidApi.contracts.v2.delete.Error._Unknown;
+export type Error =
+    | CandidApi.contracts.v2.delete.Error.ContractIsLinkedToFeeScheduleHttpError
+    | CandidApi.contracts.v2.delete.Error._Unknown;
 
 export declare namespace Error {
+    interface ContractIsLinkedToFeeScheduleHttpError extends _Utils {
+        errorName: "ContractIsLinkedToFeeScheduleHttpError";
+        content: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -18,11 +25,29 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
+        contractIsLinkedToFeeScheduleHttpError: (
+            value: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    contractIsLinkedToFeeScheduleHttpError: (
+        value: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError
+    ): CandidApi.contracts.v2.delete.Error.ContractIsLinkedToFeeScheduleHttpError => {
+        return {
+            content: value,
+            errorName: "ContractIsLinkedToFeeScheduleHttpError",
+            _visit: function <_Result>(
+                this: CandidApi.contracts.v2.delete.Error.ContractIsLinkedToFeeScheduleHttpError,
+                visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>
+            ) {
+                return CandidApi.contracts.v2.delete.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.contracts.v2.delete.Error._Unknown => {
         return {
             errorName: undefined,
@@ -41,6 +66,8 @@ export const Error = {
         visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
+            case "ContractIsLinkedToFeeScheduleHttpError":
+                return visitor.contractIsLinkedToFeeScheduleHttpError(value.content);
             default:
                 return visitor._other(value as any);
         }

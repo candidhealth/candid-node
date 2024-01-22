@@ -28,5 +28,9 @@ export interface EncounterServiceFacility {
      *
      */
     npi?: string;
+    /**
+     * zip_plus_four_code is required for service facility address. When the zip_plus_four_code is not available use "9998" as per CMS documentation.
+     *
+     */
     address: CandidApi.StreetAddressLongZip;
 }

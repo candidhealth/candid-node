@@ -32,7 +32,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -132,7 +132,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -169,7 +169,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
             },
             contentType: "application/json",
             body: await serializers.contracts.v2.ContractCreate.jsonOrThrow(request, {
@@ -208,7 +208,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -218,6 +218,24 @@ export class V2 {
                 ok: true,
                 body: undefined,
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.contracts.v2.delete.Error.Raw)?.errorName) {
+                case "ContractIsLinkedToFeeScheduleHttpError":
+                    return {
+                        ok: false,
+                        error: await serializers.contracts.v2.delete.Error.parseOrThrow(
+                            _response.error.body as serializers.contracts.v2.delete.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -240,7 +258,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
             },
             contentType: "application/json",
             body: await serializers.contracts.v2.ContractUpdate.jsonOrThrow(request, {

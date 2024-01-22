@@ -1,3 +1,4 @@
+export * from "./ContractIsLinkedToFeeScheduleError";
 export * from "./ContractId";
 export * from "./ContractingProviderId";
 export * from "./RenderingProviderid";
