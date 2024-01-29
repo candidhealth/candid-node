@@ -21,6 +21,7 @@ import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
+import { ServiceFacility } from "./api/resources/serviceFacility/client/Client";
 
 export declare namespace CandidApiClient {
     interface Options {
@@ -132,5 +133,11 @@ export class CandidApiClient {
 
     public get writeOffs(): WriteOffs {
         return (this._writeOffs ??= new WriteOffs(this.options));
+    }
+
+    protected _serviceFacility: ServiceFacility | undefined;
+
+    public get serviceFacility(): ServiceFacility {
+        return (this._serviceFacility ??= new ServiceFacility(this.options));
     }
 }

@@ -1,0 +1,1 @@
+export { EncounterServiceFacilityUpdate } from "./EncounterServiceFacilityUpdate";
