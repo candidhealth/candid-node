@@ -13,6 +13,10 @@ export interface GetMultiPatientPaymentsRequest {
     claimId?: CandidApi.ClaimId;
     serviceLineId?: CandidApi.ServiceLineId;
     billingProviderId?: CandidApi.ProviderId;
+    /**
+     * returns payments with unattributed allocations if set to true
+     */
+    unattributed?: boolean;
     invoiceId?: CandidApi.InvoiceId;
     sources?: CandidApi.PatientTransactionSource | CandidApi.PatientTransactionSource[];
     /**

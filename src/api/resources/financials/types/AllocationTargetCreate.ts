@@ -4,6 +4,11 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * Allocation targets describe whether the portion of a payment is being applied toward a specific service line,
+ * claim, billing provider, or is unallocated.
+ *
+ */
 export type AllocationTargetCreate =
     | CandidApi.AllocationTargetCreate.ServiceLineById
     | CandidApi.AllocationTargetCreate.ClaimById

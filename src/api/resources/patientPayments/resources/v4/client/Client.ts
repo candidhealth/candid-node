@@ -35,6 +35,7 @@ export class V4 {
             claimId,
             serviceLineId,
             billingProviderId,
+            unattributed,
             invoiceId,
             sources,
             sort,
@@ -60,6 +61,10 @@ export class V4 {
 
         if (billingProviderId != null) {
             _queryParams.append("billing_provider_id", billingProviderId);
+        }
+
+        if (unattributed != null) {
+            _queryParams.append("unattributed", unattributed.toString());
         }
 
         if (invoiceId != null) {
@@ -98,7 +103,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.15.0",
+                "X-Fern-SDK-Version": "0.16.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -141,7 +146,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.15.0",
+                "X-Fern-SDK-Version": "0.16.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -185,7 +190,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.15.0",
+                "X-Fern-SDK-Version": "0.16.0",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
@@ -233,7 +238,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.15.0",
+                "X-Fern-SDK-Version": "0.16.0",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentUpdate.jsonOrThrow(request, {
@@ -278,7 +283,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.15.0",
+                "X-Fern-SDK-Version": "0.16.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,

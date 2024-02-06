@@ -89,6 +89,7 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "119",
         "121",
         "122",
+        "125",
         "128",
         "129",
         "130",
@@ -387,6 +388,7 @@ export declare namespace Carc {
         | "119"
         | "121"
         | "122"
+        | "125"
         | "128"
         | "129"
         | "130"

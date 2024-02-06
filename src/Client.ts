@@ -13,6 +13,7 @@ import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/cli
 import { Exports } from "./api/resources/exports/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
 import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
+import { InsurancePayments } from "./api/resources/insurancePayments/client/Client";
 import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
 import { OrganizationServiceFacilities } from "./api/resources/organizationServiceFacilities/client/Client";
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
@@ -85,6 +86,12 @@ export class CandidApiClient {
 
     public get insuranceAdjudications(): InsuranceAdjudications {
         return (this._insuranceAdjudications ??= new InsuranceAdjudications(this.options));
+    }
+
+    protected _insurancePayments: InsurancePayments | undefined;
+
+    public get insurancePayments(): InsurancePayments {
+        return (this._insurancePayments ??= new InsurancePayments(this.options));
     }
 
     protected _insuranceRefunds: InsuranceRefunds | undefined;

@@ -4,6 +4,11 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * Allocation targets describe whether the portion of a payment is being applied toward a specific service line,
+ * claim, billing provider, or is unallocated.
+ *
+ */
 export type AllocationTarget =
     | CandidApi.AllocationTarget.ServiceLine
     | CandidApi.AllocationTarget.Claim
@@ -11,19 +16,16 @@ export type AllocationTarget =
     | CandidApi.AllocationTarget.Unattributed;
 
 export declare namespace AllocationTarget {
-    interface ServiceLine {
+    interface ServiceLine extends CandidApi.ServiceLineAllocationTarget {
         type: "service_line";
-        value: CandidApi.ServiceLineId;
     }
 
-    interface Claim {
+    interface Claim extends CandidApi.ClaimAllocationTarget {
         type: "claim";
-        value: CandidApi.ClaimId;
     }
 
-    interface BillingProviderId {
+    interface BillingProviderId extends CandidApi.BillingProviderAllocationTarget {
         type: "billing_provider_id";
-        value: CandidApi.ProviderId;
     }
 
     interface Unattributed {

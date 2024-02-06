@@ -9,6 +9,7 @@ export * as exports from "./exports";
 export * as guarantor from "./guarantor";
 export * as insuranceAdjudications from "./insuranceAdjudications";
 export * as insuranceCards from "./insuranceCards";
+export * as insurancePayments from "./insurancePayments";
 export * as insuranceRefunds from "./insuranceRefunds";
 export * as organizationServiceFacilities from "./organizationServiceFacilities";
 export * as organizationProviders from "./organizationProviders";

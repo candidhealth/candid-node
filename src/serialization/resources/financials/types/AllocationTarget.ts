@@ -9,15 +9,13 @@ import * as core from "../../../../core";
 export const AllocationTarget: core.serialization.Schema<serializers.AllocationTarget.Raw, CandidApi.AllocationTarget> =
     core.serialization
         .union("type", {
-            service_line: core.serialization.object({
-                value: core.serialization.lazy(async () => (await import("../../..")).ServiceLineId),
-            }),
-            claim: core.serialization.object({
-                value: core.serialization.lazy(async () => (await import("../../..")).ClaimId),
-            }),
-            billing_provider_id: core.serialization.object({
-                value: core.serialization.lazy(async () => (await import("../../..")).ProviderId),
-            }),
+            service_line: core.serialization.lazyObject(
+                async () => (await import("../../..")).ServiceLineAllocationTarget
+            ),
+            claim: core.serialization.lazyObject(async () => (await import("../../..")).ClaimAllocationTarget),
+            billing_provider_id: core.serialization.lazyObject(
+                async () => (await import("../../..")).BillingProviderAllocationTarget
+            ),
             unattributed: core.serialization.object({}),
         })
         .transform<CandidApi.AllocationTarget>({
@@ -32,19 +30,16 @@ export declare namespace AllocationTarget {
         | AllocationTarget.BillingProviderId
         | AllocationTarget.Unattributed;
 
-    interface ServiceLine {
+    interface ServiceLine extends serializers.ServiceLineAllocationTarget.Raw {
         type: "service_line";
-        value: serializers.ServiceLineId.Raw;
     }
 
-    interface Claim {
+    interface Claim extends serializers.ClaimAllocationTarget.Raw {
         type: "claim";
-        value: serializers.ClaimId.Raw;
     }
 
-    interface BillingProviderId {
+    interface BillingProviderId extends serializers.BillingProviderAllocationTarget.Raw {
         type: "billing_provider_id";
-        value: serializers.ProviderId.Raw;
     }
 
     interface Unattributed {

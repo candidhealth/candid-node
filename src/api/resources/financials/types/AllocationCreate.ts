@@ -4,6 +4,11 @@
 
 import * as CandidApi from "../../..";
 
+/**
+ * Allocations are portions of payments that are applied to specific resources, known as targets. Each allocation has
+ * and amount, defined in cents, and a target.
+ *
+ */
 export interface AllocationCreate {
     amountCents: number;
     target: CandidApi.AllocationTargetCreate;
