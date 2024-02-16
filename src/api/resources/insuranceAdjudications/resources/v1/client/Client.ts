@@ -42,7 +42,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.16.0",
+                "X-Fern-SDK-Version": "0.16.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -87,7 +87,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.16.0",
+                "X-Fern-SDK-Version": "0.16.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.jsonOrThrow(request, {
@@ -105,6 +105,24 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.insuranceAdjudications.v1.create.Error.Raw)?.errorName) {
+                case "EraNotFullyProcessedError":
+                    return {
+                        ok: false,
+                        error: await serializers.insuranceAdjudications.v1.create.Error.parseOrThrow(
+                            _response.error.body as serializers.insuranceAdjudications.v1.create.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -132,7 +150,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.16.0",
+                "X-Fern-SDK-Version": "0.16.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
