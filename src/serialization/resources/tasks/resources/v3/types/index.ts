@@ -2,6 +2,7 @@ export * from "./Task";
 export * from "./TaskNote";
 export * from "./TaskAssignment";
 export * from "./TaskSortOptions";
+export * from "./TaskActionType";
 export * from "./TaskActionExecutionMethod";
 export * from "./TaskActions";
 export * from "./TaskAction";

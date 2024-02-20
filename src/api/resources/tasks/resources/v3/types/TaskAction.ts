@@ -7,4 +7,5 @@ import * as CandidApi from "../../../../..";
 export interface TaskAction {
     displayName: string;
     executionMethod: CandidApi.tasks.v3.TaskActionExecutionMethod;
+    type: CandidApi.tasks.v3.TaskActionType;
 }

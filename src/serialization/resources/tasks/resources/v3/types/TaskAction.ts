@@ -15,11 +15,13 @@ export const TaskAction: core.serialization.ObjectSchema<
         "execution_method",
         core.serialization.lazy(async () => (await import("../../../../..")).tasks.v3.TaskActionExecutionMethod)
     ),
+    type: core.serialization.lazy(async () => (await import("../../../../..")).tasks.v3.TaskActionType),
 });
 
 export declare namespace TaskAction {
     interface Raw {
         display_name: string;
         execution_method: serializers.tasks.v3.TaskActionExecutionMethod.Raw;
+        type: serializers.tasks.v3.TaskActionType.Raw;
     }
 }
