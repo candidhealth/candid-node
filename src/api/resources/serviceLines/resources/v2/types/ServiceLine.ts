@@ -102,4 +102,6 @@ export interface ServiceLine {
      *
      */
     dateOfServiceRange: CandidApi.DateRangeOptionalEnd;
+    /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */
+    description?: string;
 }

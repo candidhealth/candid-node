@@ -31,6 +31,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
         "place_of_service_code",
         core.serialization.lazy(async () => (await import("../../../../..")).FacilityTypeCode).optional()
     ),
+    description: core.serialization.string().optional(),
 });
 
 export declare namespace ServiceLineCreate {
@@ -43,5 +44,6 @@ export declare namespace ServiceLineCreate {
         diagnosis_pointers: number[];
         drug_identification?: serializers.serviceLines.v2.DrugIdentification.Raw | null;
         place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
+        description?: string | null;
     }
 }

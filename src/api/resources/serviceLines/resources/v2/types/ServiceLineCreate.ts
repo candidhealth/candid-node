@@ -26,4 +26,6 @@ export interface ServiceLineCreate {
     diagnosisPointers: number[];
     drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */
+    description?: string;
 }

@@ -41,7 +41,8 @@ export type TaskCategory =
     | "transient_server_error"
     | "missing_remittance_enrollment"
     | "missing_claims_enrollment"
-    | "held_by_customer";
+    | "held_by_customer"
+    | "pending_manual_remit_posting";
 
 export const TaskCategory = {
     Other: "other",
@@ -83,4 +84,5 @@ export const TaskCategory = {
     MissingRemittanceEnrollment: "missing_remittance_enrollment",
     MissingClaimsEnrollment: "missing_claims_enrollment",
     HeldByCustomer: "held_by_customer",
+    PendingManualRemitPosting: "pending_manual_remit_posting",
 } as const;
