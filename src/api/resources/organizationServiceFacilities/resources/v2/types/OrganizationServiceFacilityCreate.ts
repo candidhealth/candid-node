@@ -36,7 +36,6 @@ export interface OrganizationServiceFacilityCreate {
     /**
      * An NPI specific to the service facility if applicable, i.e. if it has one and is not under the billing provider's NPI.
      * Box 32 section (a) of the CMS-1500 claim form.
-     *
      */
     npi?: string;
     /** The status of the service facility. */

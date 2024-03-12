@@ -10,8 +10,7 @@ export type ServiceIdQualifier =
      * EAN/UCC - 8 */
     | "EO"
     /**
-     * HIBC (Health Care Industry Bar Code) Supplier Labeling Standard Primary Data Message
-     *  */
+     * HIBC (Health Care Industry Bar Code) Supplier Labeling Standard Primary Data Message */
     | "HI"
     /**
      * National Drug Code in 5-4-2 Format */

@@ -20,7 +20,6 @@ export class V1 {
 
     /**
      * Retrieves a previously created insurance adjudication by its `insurance_adjudication_id`.
-     *
      */
     public async get(
         insuranceAdjudicationId: CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId
@@ -42,7 +41,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -67,7 +66,6 @@ export class V1 {
 
     /**
      * Creates a new insurance adjudication record and returns the newly created InsuranceAdjudication object.
-     *
      */
     public async create(
         request: CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationCreate
@@ -87,7 +85,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.jsonOrThrow(request, {
@@ -133,7 +131,6 @@ export class V1 {
 
     /**
      * Deletes the insurance adjudication record matching the provided insurance_adjudication_id.
-     *
      */
     public async delete(
         insuranceAdjudicationId: CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId
@@ -150,7 +147,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

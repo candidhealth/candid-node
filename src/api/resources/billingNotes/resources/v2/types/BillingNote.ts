@@ -21,7 +21,6 @@ export interface BillingNote extends CandidApi.billingNotes.v2.BillingNoteBase {
     /**
      * An [RFC 3339, section 5.6 datetime](https://ijmacd.github.io/rfc3339-iso8601/).
      * For example, 2017-07-21T17:32:28Z.
-     *
      */
     createdAt: Date;
     authorAuth0Id?: string;

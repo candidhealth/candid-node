@@ -11,7 +11,6 @@ export interface ServiceLineCreate {
      * String representation of a Decimal that can be parsed by most libraries.
      * A ServiceLine quantity cannot contain more than one digit of precision.
      * Example: 1.1 is valid, 1.11 is not.
-     *
      */
     quantity: CandidApi.Decimal;
     units: CandidApi.ServiceLineUnits;
@@ -19,7 +18,6 @@ export interface ServiceLineCreate {
      * The total amount charged for this service line taking quantity into account. For example, if a single unit
      * costs 100 cents and 2 units were rendered, the charge_amount_cents should be 200. Should be greater than or
      * equal to 0.
-     *
      */
     chargeAmountCents?: number;
     /** Indices (zero-indexed) of all the diagnoses this service line references */

@@ -3,19 +3,10 @@
  */
 
 export interface EncounterProviderBase {
-    /**
-     * If the provider is an individual, this should be set instead of organization name
-     *
-     */
+    /** If the provider is an individual, this should be set instead of organization name */
     firstName?: string;
-    /**
-     * If the provider is an individual, this should be set instead of organization name
-     *
-     */
+    /** If the provider is an individual, this should be set instead of organization name */
     lastName?: string;
-    /**
-     * If the provider is an organization, this should be set instead of first + last name
-     *
-     */
+    /** If the provider is an organization, this should be set instead of first + last name */
     organizationName?: string;
 }

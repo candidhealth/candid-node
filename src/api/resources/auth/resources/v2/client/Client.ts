@@ -30,7 +30,6 @@ export class V2 {
      *
      * The bearer token expires 5 hours after it has been created. After it has expired, the client will receive an "HTTP 401
      * Unauthorized" error, at which point the client should generate a new token. It is important that tokens be reused between requests; if the client attempts to generate a token too often, it will be rate-limited and will receive an "HTTP 429 Too Many Requests" error.
-     *
      */
     public async getToken(
         request: CandidApi.auth.v2.AuthGetTokenRequest
@@ -45,7 +44,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.auth.v2.AuthGetTokenRequest.jsonOrThrow(request, {

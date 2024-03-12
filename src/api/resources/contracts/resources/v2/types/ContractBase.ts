@@ -12,24 +12,14 @@ export interface ContractBase {
     /**
      * The state(s) to which the contract's coverage extends.
      * It may also be set to "national" for the entirety of the US.
-     *
      */
     regions: CandidApi.Regions;
     contractStatus?: CandidApi.contracts.v2.ContractStatus;
     authorizedSignatory?: CandidApi.contracts.v2.AuthorizedSignatory;
-    /**
-     * The commercial plan insurance types this contract applies.
-     *
-     */
+    /** The commercial plan insurance types this contract applies. */
     commercialInsuranceTypes: CandidApi.contracts.v2.InsuranceTypes;
-    /**
-     * The Medicare plan insurance types this contract applies.
-     *
-     */
+    /** The Medicare plan insurance types this contract applies. */
     medicareInsuranceTypes: CandidApi.contracts.v2.InsuranceTypes;
-    /**
-     * The Medicaid plan insurance types this contract applies.
-     *
-     */
+    /** The Medicaid plan insurance types this contract applies. */
     medicaidInsuranceTypes: CandidApi.contracts.v2.InsuranceTypes;
 }

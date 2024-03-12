@@ -48,3 +48,4 @@ export * from "./OrganizationNotAuthorizedErrorMessage";
 export * from "./PhoneNumber";
 export * from "./PhoneNumberType";
 export * from "./Email";
+export * from "./DelayReasonCode";

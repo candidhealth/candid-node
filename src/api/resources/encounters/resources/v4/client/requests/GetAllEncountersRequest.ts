@@ -20,12 +20,10 @@ export interface GetAllEncountersRequest {
     pageToken?: CandidApi.PageToken;
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
-     *
      */
     dateOfServiceMin?: CandidApi.Date_;
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
-     *
      */
     dateOfServiceMax?: CandidApi.Date_;
     /**
@@ -36,7 +34,6 @@ export interface GetAllEncountersRequest {
      * Filter by any of the following fields: encounter_id, claim_id, patient external_id,
      * patient date of birth, patient first name, patient last name,
      * or encounter external id.
-     *
      */
     searchTerm?: string;
     /**
@@ -45,7 +42,6 @@ export interface GetAllEncountersRequest {
     externalId?: CandidApi.EncounterExternalId;
     /**
      * ISO 8601 timestamp; ideally in UTC (although not required): 2019-08-24T14:15:22Z.
-     *
      */
     diagnosesUpdatedSince?: Date;
     /**
@@ -55,12 +51,10 @@ export interface GetAllEncountersRequest {
     workQueueId?: CandidApi.WorkQueueId;
     /**
      * Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party.
-     *
      */
     billableStatus?: CandidApi.encounters.v4.BillableStatusType;
     /**
      * Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay.
-     *
      */
     responsibleParty?: CandidApi.encounters.v4.ResponsiblePartyType;
     /**

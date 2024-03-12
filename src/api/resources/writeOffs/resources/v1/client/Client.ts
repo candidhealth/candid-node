@@ -21,7 +21,6 @@ export class V1 {
 
     /**
      * Returns all write-offs satisfying the search criteria.
-     *
      */
     public async getMulti(
         request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {}
@@ -95,7 +94,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -121,7 +120,6 @@ export class V1 {
 
     /**
      * Retrieves a previously created write off by its `write_off_id`.
-     *
      */
     public async get(
         writeOffId: CandidApi.writeOffs.v1.WriteOffId
@@ -136,7 +134,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -163,7 +161,6 @@ export class V1 {
      * Creates one or many write-offs given a specific set of allocations.
      * The allocations can describe whether the refund is being applied toward a specific service line,
      * claim, or billing provider.
-     *
      */
     public async create(
         request: CandidApi.writeOffs.v1.CreateWriteOffsRequest
@@ -178,7 +175,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.writeOffs.v1.CreateWriteOffsRequest.jsonOrThrow(request, {
@@ -206,7 +203,6 @@ export class V1 {
 
     /**
      * Reverts a write off given a `write_off_id`.
-     *
      */
     public async revert(
         writeOffId: CandidApi.writeOffs.v1.WriteOffId
@@ -221,7 +217,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

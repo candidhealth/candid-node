@@ -148,12 +148,10 @@ export type ProcedureModifier =
      * Anesthesia services performed personally by anesthesiologist */
     | "AA"
     /**
-     * Audiology service furnished personally by an audiologist without a physician/npp order for non-acute hearing assessment ...
-     *  */
+     * Audiology service furnished personally by an audiologist without a physician/npp order for non-acute hearing assessment ... */
     | "AB"
     /**
-     * Medical supervision by a physician: more than four concurrent anesthesia procedures
-     *  */
+     * Medical supervision by a physician: more than four concurrent anesthesia procedures */
     | "AD"
     /**
      * Registered dietician */
@@ -903,15 +901,13 @@ export type ProcedureModifier =
      * CLIA waived */
     | "QW"
     /**
-     * CRNA service: with medical direction by a physician
-     *  */
+     * CRNA service: with medical direction by a physician */
     | "QX"
     /**
      * Medical direction of one certified registered nurse anesthetist (CRNA) by an anesthesiologist */
     | "QY"
     /**
-     * CRNA service: without medical direction by a physician
-     *  */
+     * CRNA service: without medical direction by a physician */
     | "QZ"
     /**
      * Replacement of a DME, orthotic or prosthetic item */

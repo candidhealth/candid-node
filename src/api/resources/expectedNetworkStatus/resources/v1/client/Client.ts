@@ -20,7 +20,6 @@ export class V1 {
 
     /**
      * Computes the expected network status given the provided information.
-     *
      */
     public async compute(
         request: CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest
@@ -40,7 +39,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest.jsonOrThrow(request, {

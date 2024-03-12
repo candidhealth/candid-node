@@ -20,7 +20,6 @@ export class V1 {
 
     /**
      * Creates a new guarantor and returns the newly created Guarantor object.
-     *
      */
     public async create(
         encounterId: CandidApi.EncounterId,
@@ -36,7 +35,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.guarantor.v1.GuarantorCreate.jsonOrThrow(request, {
@@ -82,7 +81,6 @@ export class V1 {
 
     /**
      * Retrieves a guarantor by its `guarantor_id`.
-     *
      */
     public async get(
         guarantorId: CandidApi.guarantor.v1.GuarantorId
@@ -97,7 +95,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -122,7 +120,6 @@ export class V1 {
 
     /**
      * Updates a guarantor by its `guarantor_id`.
-     *
      */
     public async update(
         guarantorId: CandidApi.guarantor.v1.GuarantorId,
@@ -138,7 +135,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.guarantor.v1.GuarantorUpdate.jsonOrThrow(request, {

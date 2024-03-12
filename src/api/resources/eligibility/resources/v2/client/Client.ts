@@ -33,7 +33,6 @@ export class V2 {
      * - [Change Healthcare - Guides: Using Test Payers in the Sandbox](https://developers.changehealthcare.com/eligibilityandclaims/docs/use-the-test-payers-in-the-sandbox-api)
      *
      * A schema of the response object can be found here: [Change Healthcare Docs](https://developers.changehealthcare.com/eligibilityandclaims/reference/medicaleligibility)
-     *
      */
     public async submitEligibilityCheck(
         request?: unknown
@@ -48,7 +47,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: request,
@@ -86,14 +85,16 @@ export class V2 {
     }
 
     /**
+     * If you'd like access to this endpoint, please reach out to support@joincandidhealth.com with the subject line "Action: Activate Availity Eligibility API Endpoint
+     *
      * This API is a wrapper around Availity's coverages API. Below are some helpful documentation links:
      *
      * - [Availity - Coverages 1.0.0 API](https://developer.availity.com/partner/documentation#c_coverages_references)
      * - [Candid Availity Eligibility Integration Guide](https://support.joincandidhealth.com/hc/en-us/articles/24218441631892--Availity-Eligibility-Integration-Guide)
      *
      * A schema of the response object can be found here: [Availity Docs](https://developer.availity.com/partner/product/191210/api/190898#/Coverages_100/operation/%2Fcoverages/get)
-     * * Note Availity requires a free developer account to access this documentation.
      *
+     * - Note Availity requires a free developer account to access this documentation.
      */
     public async submitEligibilityCheckAvaility(): Promise<
         core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>
@@ -108,7 +109,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

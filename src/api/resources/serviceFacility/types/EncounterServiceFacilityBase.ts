@@ -12,19 +12,14 @@ import * as CandidApi from "../../..";
  * Box 32 on the CMS-1500 claim form.
  * Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims
  * must match what was provided to the payer during the credentialing process.
- *
  */
 export interface EncounterServiceFacilityBase {
     organizationName: string;
     /**
      * An NPI specific to the service facility if applicable, i.e. if it has one and is not under the billing provider's NPI.
      * Box 32 section (a) of the CMS-1500 claim form.
-     *
      */
     npi?: string;
-    /**
-     * zip_plus_four_code is required for service facility address. When the zip_plus_four_code is not available use "9998" as per CMS documentation.
-     *
-     */
+    /** zip_plus_four_code is required for service facility address. When the zip_plus_four_code is not available use "9998" as per CMS documentation. */
     address: CandidApi.StreetAddressLongZip;
 }

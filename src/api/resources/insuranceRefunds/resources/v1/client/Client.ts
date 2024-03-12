@@ -22,7 +22,6 @@ export class V1 {
     /**
      * Returns all insurance refunds satisfying the search criteria AND whose organization_id matches
      * the current organization_id of the authenticated user.
-     *
      */
     public async getMulti(
         request: CandidApi.insuranceRefunds.v1.GetMultiInsuranceRefundsRequest = {}
@@ -76,7 +75,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -103,7 +102,6 @@ export class V1 {
     /**
      * Retrieves a previously created insurance refund by its `insurance_refund_id`.
      * If the refund does not exist, a `403` will be thrown.
-     *
      */
     public async get(
         insuranceRefundId: CandidApi.insuranceRefunds.v1.InsuranceRefundId
@@ -122,7 +120,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -149,7 +147,6 @@ export class V1 {
      * Creates a new insurance refund record and returns the newly created `InsuranceRefund` object.
      * The allocations can describe whether the refund is being applied toward a specific service line,
      * claim, or billing provider.
-     *
      */
     public async create(
         request: CandidApi.insuranceRefunds.v1.InsuranceRefundCreate
@@ -166,7 +163,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceRefunds.v1.InsuranceRefundCreate.jsonOrThrow(request, {
@@ -195,7 +192,6 @@ export class V1 {
     /**
      * Updates the patient refund record matching the provided insurance_refund_id. If updating the refund amount,
      * then the allocations must be appropriately updated as well.
-     *
      */
     public async update(
         insuranceRefundId: CandidApi.insuranceRefunds.v1.InsuranceRefundId,
@@ -215,7 +211,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.insuranceRefunds.v1.InsuranceRefundUpdate.jsonOrThrow(request, {
@@ -245,7 +241,6 @@ export class V1 {
      * Deletes the insurance refund record matching the provided `insurance_refund_id`.
      * If the matching record's organization_id does not match the authenticated user's
      * current organization_id, then a response code of `403` will be returned.
-     *
      */
     public async delete(
         insuranceRefundId: CandidApi.insuranceRefunds.v1.InsuranceRefundId
@@ -262,7 +257,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

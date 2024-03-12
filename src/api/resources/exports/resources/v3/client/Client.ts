@@ -32,7 +32,6 @@ export class V3 {
      * available by Wednesday at the latest. If file generation is still in progress upon request before 3 business days have passed, the
      * caller will receive a 422 response. If the file has already been generated, it will be served. Please email
      * our [Support team](mailto:support@joincandidhealth.com) with any data requests outside of these stated guarantees.
-     *
      */
     public async getExports(
         request: CandidApi.exports.v3.GetExportsRequest
@@ -48,7 +47,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

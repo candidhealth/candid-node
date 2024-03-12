@@ -33,13 +33,11 @@ export interface ExternalClaimSubmissionCreate {
     /**
      * The Patient Control Number sent on the claim to the payer. To guarantee compatibility with all payers, this field must consist
      * only of uppercase letters and numbers and be no more than 14 characters long.
-     *
      */
     patientControlNumber: string;
     /**
      * A successful claim submission record will be created for each value provided.
      * An empty list may be provided for cases where the claim originated in an external system but was never submitted to a payer.
-     *
      */
     submissionRecords: CandidApi.claimSubmission.v1.ClaimSubmissionRecordCreate[];
 }

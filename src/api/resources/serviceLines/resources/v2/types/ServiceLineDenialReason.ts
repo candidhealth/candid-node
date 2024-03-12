@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../..";
 /**
  * The reason a given service line was denied within a given time range.
  * A service line may be denied for different reasons over time, but only one reason at a time.
- *
  */
 export interface ServiceLineDenialReason {
     /** Text of the denial reason */

@@ -13,14 +13,10 @@ import * as CandidApi from "../../../../..";
  * tax ID (TIN) that the provider gave to the payer during contracting.
  * In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID.
  * Box 33 on the CMS-1500 claim form.
- *
  */
 export interface BillingProvider extends CandidApi.encounterProviders.v2.EncounterProviderBase {
     address: CandidApi.StreetAddressLongZip;
-    /**
-     * If the provider has a contract with insurance, this must be the same tax ID given to the payer on an IRS W-9 form completed during contracting.
-     *
-     */
+    /** If the provider has a contract with insurance, this must be the same tax ID given to the payer on an IRS W-9 form completed during contracting. */
     taxId: string;
     npi: string;
     taxonomyCode?: string;

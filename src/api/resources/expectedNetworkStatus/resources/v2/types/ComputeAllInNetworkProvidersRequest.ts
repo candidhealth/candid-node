@@ -14,15 +14,11 @@ export interface ComputeAllInNetworkProvidersRequest {
      * (see “Inputs: Service Type” in the appendix for list of qualifying CPT codes and behavioral health routing logic).
      * Since CPT codes are not available pre-appointment, the service type input is used to determine whether the appointment is expected
      * to qualify as behavioral health.
-     *
      */
     serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType;
     /** Expected place of service */
     placeOfServiceCode: CandidApi.FacilityTypeCode;
-    /**
-     * Information present on the patient's insurance card
-     *
-     */
+    /** Information present on the patient's insurance card */
     subscriberInformation: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusSubscriberInformation;
     patientAddress: CandidApi.StreetAddressShortZip;
     billingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId;

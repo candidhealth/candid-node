@@ -28,10 +28,7 @@ import * as CandidApi from "../../../../..";
 export interface Intervention {
     name: string;
     category: CandidApi.encounters.v4.InterventionCategory;
-    /**
-     * "Examples: 'Birth Control LAC', 'Tracking', 'Stress Management', 'Supplement', 'Labs'"
-     *
-     */
+    /** "Examples: 'Birth Control LAC', 'Tracking', 'Stress Management', 'Supplement', 'Labs'" */
     description?: string;
     /** Required when `type` is `allopathic`. */
     medication?: CandidApi.encounters.v4.Medication;

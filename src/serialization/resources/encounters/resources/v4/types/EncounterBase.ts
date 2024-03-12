@@ -86,6 +86,10 @@ export const EncounterBase: core.serialization.ObjectSchema<
         "last_menstrual_period_date",
         core.serialization.lazy(async () => (await import("../../../../..")).Date_).optional()
     ),
+    delayReasonCode: core.serialization.property(
+        "delay_reason_code",
+        core.serialization.lazy(async () => (await import("../../../../..")).DelayReasonCode).optional()
+    ),
 });
 
 export declare namespace EncounterBase {
@@ -111,5 +115,6 @@ export declare namespace EncounterBase {
         discharge_date?: serializers.Date_.Raw | null;
         onset_of_current_illness_or_symptom_date?: serializers.Date_.Raw | null;
         last_menstrual_period_date?: serializers.Date_.Raw | null;
+        delay_reason_code?: serializers.DelayReasonCode.Raw | null;
     }
 }

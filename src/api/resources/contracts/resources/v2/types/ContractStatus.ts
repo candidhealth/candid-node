@@ -4,17 +4,14 @@
 
 export type ContractStatus =
     /**
-     * Contract is still in the works and has not been signed and counter-signed yet
-     *  */
+     * Contract is still in the works and has not been signed and counter-signed yet */
     | "pending"
     /**
      * Contract is active and in effect (claims will need to
-     * be submitted under effective contracts)
-     *  */
+     * be submitted under effective contracts) */
     | "effective"
     /**
-     * Contract is no longer effective but kept around for historical documentation
-     *  */
+     * Contract is no longer effective but kept around for historical documentation */
     | "cancelled";
 
 export const ContractStatus = {

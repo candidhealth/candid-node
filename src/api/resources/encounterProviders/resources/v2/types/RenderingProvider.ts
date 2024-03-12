@@ -9,7 +9,6 @@ export interface RenderingProvider extends CandidApi.encounterProviders.v2.Encou
     /**
      * A National Provider Identifier is a unique 10-digit identification
      * number issued to health care providers in the United States
-     *
      */
     npi: string;
     taxonomyCode?: string;

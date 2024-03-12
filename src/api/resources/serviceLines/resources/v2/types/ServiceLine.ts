@@ -91,7 +91,6 @@ export interface ServiceLine {
      * String representation of a Decimal that can be parsed by most libraries.
      * A ServiceLine quantity cannot contain more than one digit of precision.
      * Example: 1.1 is valid, 1.11 is not.
-     *
      */
     quantity: CandidApi.Decimal;
     units: CandidApi.ServiceLineUnits;
@@ -99,7 +98,6 @@ export interface ServiceLine {
     /**
      * A range of dates of service for this service line. If the service line is for a single date, the end date
      * will be empty.
-     *
      */
     dateOfServiceRange: CandidApi.DateRangeOptionalEnd;
     /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */

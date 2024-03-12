@@ -22,7 +22,6 @@ export class V4 {
     /**
      * Returns all patient payments satisfying the search criteria AND whose organization_id matches
      * the current organization_id of the authenticated user.
-     *
      */
     public async getMulti(
         request: CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest = {}
@@ -103,7 +102,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -129,7 +128,6 @@ export class V4 {
 
     /**
      * Retrieves a previously created patient payment by its `patient_payment_id`.
-     *
      */
     public async get(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId
@@ -146,7 +144,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -173,7 +171,6 @@ export class V4 {
      * Creates a new patient payment record and returns the newly created PatientPayment object.
      * The allocations can describe whether the payment is being applied toward a specific service line,
      * claim, or billing provider.
-     *
      */
     public async create(
         request: CandidApi.patientPayments.v4.PatientPaymentCreate
@@ -190,7 +187,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
@@ -218,7 +215,6 @@ export class V4 {
 
     /**
      * Updates the patient payment record matching the provided patient_payment_id.
-     *
      */
     public async update(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
@@ -238,7 +234,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentUpdate.jsonOrThrow(request, {
@@ -266,7 +262,6 @@ export class V4 {
 
     /**
      * Deletes the patient payment record matching the provided patient_payment_id.
-     *
      */
     public async delete(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId
@@ -283,7 +278,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

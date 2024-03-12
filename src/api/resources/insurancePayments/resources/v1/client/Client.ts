@@ -21,7 +21,6 @@ export class V1 {
 
     /**
      * Returns all non-ERA originated insurance payments satisfying the search criteria
-     *
      */
     public async getMulti(
         request: CandidApi.insurancePayments.v1.GetMultiInsurancePaymentRequest = {}
@@ -75,7 +74,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -121,7 +120,6 @@ export class V1 {
     /**
      * Retrieves a previously created insurance payment by its `insurance_payment_id`.
      * If the payment does not exist, a `403` will be thrown.
-     *
      */
     public async get(
         insurancePaymentId: CandidApi.insurancePayments.v1.InsurancePaymentId
@@ -140,7 +138,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -186,7 +184,6 @@ export class V1 {
      * Creates a new insurance payment record and returns the newly created `InsurancePayment` object. This endpoint
      * should only be used for insurance payments that do not have a corresponding ERA (for example: a settlement check
      * from a payer). If the payment is an ERA, then you should used the insurance-adjudications API.
-     *
      */
     public async create(
         request: CandidApi.insurancePayments.v1.InsurancePaymentCreate
@@ -203,7 +200,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.insurancePayments.v1.InsurancePaymentCreate.jsonOrThrow(request, {
@@ -250,7 +247,6 @@ export class V1 {
     /**
      * Updates the patient payment record matching the provided insurance_payment_id. If updating the payment amount,
      * then the allocations must be appropriately updated as well.
-     *
      */
     public async update(
         insurancePaymentId: CandidApi.insurancePayments.v1.InsurancePaymentId,
@@ -270,7 +266,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             body: await serializers.insurancePayments.v1.InsurancePaymentUpdate.jsonOrThrow(request, {
@@ -319,7 +315,6 @@ export class V1 {
      * Deletes the insurance payment record matching the provided `insurance_payment_id`.
      * If the matching record's organization_id does not match the authenticated user's
      * current organization_id, then a response code of `403` will be returned.
-     *
      */
     public async delete(
         insurancePaymentId: CandidApi.insurancePayments.v1.InsurancePaymentId
@@ -336,7 +331,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.0",
+                "X-Fern-SDK-Version": "0.17.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

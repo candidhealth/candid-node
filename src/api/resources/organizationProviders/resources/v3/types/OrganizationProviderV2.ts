@@ -44,15 +44,9 @@ export interface OrganizationProviderV2 {
     lastName?: string;
     /** The name of the provider, if the provider is an organization. */
     organizationName?: string;
-    /**
-     * Whether the provider is an individual (NPPES Type 1) or organization (NPPES Type 2) provider.
-     *
-     */
+    /** Whether the provider is an individual (NPPES Type 1) or organization (NPPES Type 2) provider. */
     providerType: CandidApi.organizationProviders.v2.ProviderType;
-    /**
-     * If the provider has a contract with insurance, this must be the same tax ID given to the payer on an IRS W-9 form completed during contracting.
-     *
-     */
+    /** If the provider has a contract with insurance, this must be the same tax ID given to the payer on an IRS W-9 form completed during contracting. */
     taxId?: string;
     /** A code designating classification and specialization. */
     taxonomyCode?: string;

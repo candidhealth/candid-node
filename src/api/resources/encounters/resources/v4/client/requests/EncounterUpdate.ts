@@ -124,4 +124,10 @@ export interface EncounterUpdate {
      *
      */
     lastMenstrualPeriodDate?: CandidApi.Date_;
+    /**
+     * 837i Loop2300, CLM-1300 Box 20
+     * Code indicating the reason why a request was delayed
+     *
+     */
+    delayReasonCode?: CandidApi.DelayReasonCode;
 }

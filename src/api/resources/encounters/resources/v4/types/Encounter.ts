@@ -380,64 +380,43 @@ import * as CandidApi from "../../../../..";
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     encounterId: CandidApi.EncounterId;
     claims: CandidApi.Claim[];
-    /**
-     * Contains the identification information of the individual receiving medical services.
-     *
-     */
+    /** Contains the identification information of the individual receiving medical services. */
     patient: CandidApi.Patient;
     /** Personal and contact info for the guarantor of the patient responsibility. */
     guarantor?: CandidApi.guarantor.v1.Guarantor;
-    /**
-     * The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form.
-     *
-     */
+    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form. */
     billingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
     /**
      * The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service.
      * For telehealth services, the rendering provider performs the visit, asynchronous communication, or other service. The rendering provider address should generally be the same as the service facility address.
-     *
      */
     renderingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
     referringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
-    /**
-     * Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process.
-     *
-     */
+    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process. */
     serviceFacility: CandidApi.EncounterServiceFacility;
     /**
      * Subscriber_primary is required when responsible_party is INSURANCE_PAY (i.e. when the claim should be billed to insurance).
      * These are not required fields when responsible_party is SELF_PAY (i.e. when the claim should be billed to the patient).
      * However, if you collect this for patients, even self-pay, we recommend including it when sending encounters to Candid.
      * Note: Cash Pay is no longer a valid payer_id in v4, please use responsible party to define self-pay claims.
-     *
      */
     subscriberPrimary?: CandidApi.Subscriber;
     /** Contains details of the secondary insurance subscriber. */
     subscriberSecondary?: CandidApi.Subscriber;
     /** URL that links directly to the claim created in Candid. */
     url: CandidApi.LinkUrl;
-    /**
-     * Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses may be submitted at this time, and coders will later prioritize the 12 that will be submitted to the payor.
-     *
-     */
+    /** Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses may be submitted at this time, and coders will later prioritize the 12 that will be submitted to the payor. */
     diagnoses: CandidApi.Diagnosis[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
     clinicalNotes: CandidApi.encounters.v4.ClinicalNoteCategory[];
     /**
      * Spot to store misc, human-readable, notes about this encounter to be
      * used in the billing process.
-     *
      */
     billingNotes?: CandidApi.billingNotes.v2.BillingNote[];
-    /**
-     * Box 24B on the CMS-1500 claim form. Line-level place of service is not currently supported. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set).
-     *
-     */
+    /** Box 24B on the CMS-1500 claim form. Line-level place of service is not currently supported. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
-    /**
-     * Box 24B on the CMS-1500 claim form. Line-level place of service is not currently supported. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set).
-     *
-     */
+    /** Box 24B on the CMS-1500 claim form. Line-level place of service is not currently supported. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     patientHistories: CandidApi.encounters.v4.PatientHistoryCategory[];
     patientPayments: CandidApi.patientPayments.v3.PatientPayment[];
@@ -452,7 +431,6 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
      * The party who originally submitted the Claim.
      * For Claims originating in Candid, this will be EncounterSubmissionOriginType.CANDID.
      * For Encounters created with an external_claim_submission object, this will be EncounterSubmissionOriginType.EXTERNAL.
-     *
      */
     submissionOrigin: CandidApi.encounters.v4.EncounterSubmissionOriginType;
 }

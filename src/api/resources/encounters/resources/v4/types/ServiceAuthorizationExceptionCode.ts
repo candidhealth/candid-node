@@ -5,7 +5,6 @@
 /**
  * Required when mandated by government law or regulation to obtain authorization for specific service(s) but, for the
  * reasons listed in one of the enum values, the service was performed without obtaining the authorization.
- *
  */
 export type ServiceAuthorizationExceptionCode =
     /**
