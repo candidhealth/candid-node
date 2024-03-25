@@ -8,6 +8,7 @@ import * as core from "../../../../../../core";
 export type Error =
     | CandidApi.insurancePayments.v1.delete.Error.EntityNotFoundError
     | CandidApi.insurancePayments.v1.delete.Error.UnauthorizedError
+    | CandidApi.insurancePayments.v1.delete.Error.UnprocessableEntityError
     | CandidApi.insurancePayments.v1.delete.Error._Unknown;
 
 export declare namespace Error {
@@ -19,6 +20,11 @@ export declare namespace Error {
     interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
     interface _Unknown extends _Utils {
@@ -33,6 +39,7 @@ export declare namespace Error {
     interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -68,6 +75,21 @@ export const Error = {
         };
     },
 
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage
+    ): CandidApi.insurancePayments.v1.delete.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.insurancePayments.v1.delete.Error.UnprocessableEntityError,
+                visitor: CandidApi.insurancePayments.v1.delete.Error._Visitor<_Result>
+            ) {
+                return CandidApi.insurancePayments.v1.delete.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.insurancePayments.v1.delete.Error._Unknown => {
         return {
             errorName: undefined,
@@ -90,6 +112,8 @@ export const Error = {
                 return visitor.entityNotFoundError(value.content);
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             default:
                 return visitor._other(value as any);
         }

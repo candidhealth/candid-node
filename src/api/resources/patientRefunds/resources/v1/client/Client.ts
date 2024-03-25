@@ -102,7 +102,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.3",
+                "X-Fern-SDK-Version": "0.17.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -118,6 +118,25 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.patientRefunds.v1.getMulti.Error.Raw)?.errorName) {
+                case "UnauthorizedError":
+                case "UnprocessableEntityError":
+                    return {
+                        ok: false,
+                        error: await serializers.patientRefunds.v1.getMulti.Error.parseOrThrow(
+                            _response.error.body as serializers.patientRefunds.v1.getMulti.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -144,7 +163,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.3",
+                "X-Fern-SDK-Version": "0.17.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -159,6 +178,25 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.patientRefunds.v1.get.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: await serializers.patientRefunds.v1.get.Error.parseOrThrow(
+                            _response.error.body as serializers.patientRefunds.v1.get.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -185,7 +223,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.3",
+                "X-Fern-SDK-Version": "0.17.4",
             },
             contentType: "application/json",
             body: await serializers.patientRefunds.v1.PatientRefundCreate.jsonOrThrow(request, {
@@ -203,6 +241,26 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.patientRefunds.v1.create.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "UnprocessableEntityError":
+                    return {
+                        ok: false,
+                        error: await serializers.patientRefunds.v1.create.Error.parseOrThrow(
+                            _response.error.body as serializers.patientRefunds.v1.create.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -230,7 +288,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.3",
+                "X-Fern-SDK-Version": "0.17.4",
             },
             contentType: "application/json",
             body: await serializers.patientRefunds.v1.PatientRefundUpdate.jsonOrThrow(request, {
@@ -248,6 +306,26 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.patientRefunds.v1.update.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "UnprocessableEntityError":
+                    return {
+                        ok: false,
+                        error: await serializers.patientRefunds.v1.update.Error.parseOrThrow(
+                            _response.error.body as serializers.patientRefunds.v1.update.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -274,7 +352,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.3",
+                "X-Fern-SDK-Version": "0.17.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -284,6 +362,26 @@ export class V1 {
                 ok: true,
                 body: undefined,
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.patientRefunds.v1.delete.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "UnprocessableEntityError":
+                    return {
+                        ok: false,
+                        error: await serializers.patientRefunds.v1.delete.Error.parseOrThrow(
+                            _response.error.body as serializers.patientRefunds.v1.delete.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {

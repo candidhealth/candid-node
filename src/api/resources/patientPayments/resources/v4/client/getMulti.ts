@@ -5,9 +5,22 @@
 import * as CandidApi from "../../../../..";
 import * as core from "../../../../../../core";
 
-export type Error = CandidApi.patientPayments.v4.getMulti.Error._Unknown;
+export type Error =
+    | CandidApi.patientPayments.v4.getMulti.Error.UnauthorizedError
+    | CandidApi.patientPayments.v4.getMulti.Error.UnprocessableEntityError
+    | CandidApi.patientPayments.v4.getMulti.Error._Unknown;
 
 export declare namespace Error {
+    interface UnauthorizedError extends _Utils {
+        errorName: "UnauthorizedError";
+        content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -18,11 +31,43 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
+        unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    unauthorizedError: (
+        value: CandidApi.UnauthorizedErrorMessage
+    ): CandidApi.patientPayments.v4.getMulti.Error.UnauthorizedError => {
+        return {
+            content: value,
+            errorName: "UnauthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.patientPayments.v4.getMulti.Error.UnauthorizedError,
+                visitor: CandidApi.patientPayments.v4.getMulti.Error._Visitor<_Result>
+            ) {
+                return CandidApi.patientPayments.v4.getMulti.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage
+    ): CandidApi.patientPayments.v4.getMulti.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.patientPayments.v4.getMulti.Error.UnprocessableEntityError,
+                visitor: CandidApi.patientPayments.v4.getMulti.Error._Visitor<_Result>
+            ) {
+                return CandidApi.patientPayments.v4.getMulti.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.patientPayments.v4.getMulti.Error._Unknown => {
         return {
             errorName: undefined,
@@ -41,6 +86,10 @@ export const Error = {
         visitor: CandidApi.patientPayments.v4.getMulti.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
+            case "UnauthorizedError":
+                return visitor.unauthorizedError(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const Error: core.serialization.Schema<
-    serializers.insurancePayments.v1.delete.Error.Raw,
-    CandidApi.insurancePayments.v1.delete.Error
+    serializers.insuranceRefunds.v1.update.Error.Raw,
+    CandidApi.insuranceRefunds.v1.update.Error
 > = core.serialization
     .union("errorName", {
         EntityNotFoundError: core.serialization.object({
@@ -27,15 +27,15 @@ export const Error: core.serialization.Schema<
             ),
         }),
     })
-    .transform<CandidApi.insurancePayments.v1.delete.Error>({
+    .transform<CandidApi.insuranceRefunds.v1.update.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "EntityNotFoundError":
-                    return CandidApi.insurancePayments.v1.delete.Error.entityNotFoundError(value.content);
+                    return CandidApi.insuranceRefunds.v1.update.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
-                    return CandidApi.insurancePayments.v1.delete.Error.unauthorizedError(value.content);
+                    return CandidApi.insuranceRefunds.v1.update.Error.unauthorizedError(value.content);
                 case "UnprocessableEntityError":
-                    return CandidApi.insurancePayments.v1.delete.Error.unprocessableEntityError(value.content);
+                    return CandidApi.insuranceRefunds.v1.update.Error.unprocessableEntityError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,

@@ -21,6 +21,11 @@ export const Error: core.serialization.Schema<
                 async () => (await import("../../../../..")).UnauthorizedErrorMessage
             ),
         }),
+        UnprocessableEntityError: core.serialization.object({
+            content: core.serialization.lazyObject(
+                async () => (await import("../../../../..")).UnprocessableEntityErrorMessage
+            ),
+        }),
     })
     .transform<CandidApi.insurancePayments.v1.update.Error>({
         transform: (value) => {
@@ -29,13 +34,15 @@ export const Error: core.serialization.Schema<
                     return CandidApi.insurancePayments.v1.update.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
                     return CandidApi.insurancePayments.v1.update.Error.unauthorizedError(value.content);
+                case "UnprocessableEntityError":
+                    return CandidApi.insurancePayments.v1.update.Error.unprocessableEntityError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError;
+    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.UnprocessableEntityError;
 
     interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -45,5 +52,10 @@ export declare namespace Error {
     interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: serializers.UnauthorizedErrorMessage.Raw;
+    }
+
+    interface UnprocessableEntityError {
+        errorName: "UnprocessableEntityError";
+        content: serializers.UnprocessableEntityErrorMessage.Raw;
     }
 }

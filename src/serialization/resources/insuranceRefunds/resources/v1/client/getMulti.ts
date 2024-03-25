@@ -7,15 +7,10 @@ import * as CandidApi from "../../../../../../api";
 import * as core from "../../../../../../core";
 
 export const Error: core.serialization.Schema<
-    serializers.insurancePayments.v1.delete.Error.Raw,
-    CandidApi.insurancePayments.v1.delete.Error
+    serializers.insuranceRefunds.v1.getMulti.Error.Raw,
+    CandidApi.insuranceRefunds.v1.getMulti.Error
 > = core.serialization
     .union("errorName", {
-        EntityNotFoundError: core.serialization.object({
-            content: core.serialization.lazyObject(
-                async () => (await import("../../../../..")).EntityNotFoundErrorMessage
-            ),
-        }),
         UnauthorizedError: core.serialization.object({
             content: core.serialization.lazyObject(
                 async () => (await import("../../../../..")).UnauthorizedErrorMessage
@@ -27,27 +22,20 @@ export const Error: core.serialization.Schema<
             ),
         }),
     })
-    .transform<CandidApi.insurancePayments.v1.delete.Error>({
+    .transform<CandidApi.insuranceRefunds.v1.getMulti.Error>({
         transform: (value) => {
             switch (value.errorName) {
-                case "EntityNotFoundError":
-                    return CandidApi.insurancePayments.v1.delete.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
-                    return CandidApi.insurancePayments.v1.delete.Error.unauthorizedError(value.content);
+                    return CandidApi.insuranceRefunds.v1.getMulti.Error.unauthorizedError(value.content);
                 case "UnprocessableEntityError":
-                    return CandidApi.insurancePayments.v1.delete.Error.unprocessableEntityError(value.content);
+                    return CandidApi.insuranceRefunds.v1.getMulti.Error.unprocessableEntityError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.UnprocessableEntityError;
-
-    interface EntityNotFoundError {
-        errorName: "EntityNotFoundError";
-        content: serializers.EntityNotFoundErrorMessage.Raw;
-    }
+    type Raw = Error.UnauthorizedError | Error.UnprocessableEntityError;
 
     interface UnauthorizedError {
         errorName: "UnauthorizedError";

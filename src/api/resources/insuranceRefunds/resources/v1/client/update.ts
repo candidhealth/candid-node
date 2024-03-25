@@ -5,9 +5,28 @@
 import * as CandidApi from "../../../../..";
 import * as core from "../../../../../../core";
 
-export type Error = CandidApi.insuranceRefunds.v1.update.Error._Unknown;
+export type Error =
+    | CandidApi.insuranceRefunds.v1.update.Error.EntityNotFoundError
+    | CandidApi.insuranceRefunds.v1.update.Error.UnauthorizedError
+    | CandidApi.insuranceRefunds.v1.update.Error.UnprocessableEntityError
+    | CandidApi.insuranceRefunds.v1.update.Error._Unknown;
 
 export declare namespace Error {
+    interface EntityNotFoundError extends _Utils {
+        errorName: "EntityNotFoundError";
+        content: CandidApi.EntityNotFoundErrorMessage;
+    }
+
+    interface UnauthorizedError extends _Utils {
+        errorName: "UnauthorizedError";
+        content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -18,11 +37,59 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
+        entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
+        unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    entityNotFoundError: (
+        value: CandidApi.EntityNotFoundErrorMessage
+    ): CandidApi.insuranceRefunds.v1.update.Error.EntityNotFoundError => {
+        return {
+            content: value,
+            errorName: "EntityNotFoundError",
+            _visit: function <_Result>(
+                this: CandidApi.insuranceRefunds.v1.update.Error.EntityNotFoundError,
+                visitor: CandidApi.insuranceRefunds.v1.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.insuranceRefunds.v1.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unauthorizedError: (
+        value: CandidApi.UnauthorizedErrorMessage
+    ): CandidApi.insuranceRefunds.v1.update.Error.UnauthorizedError => {
+        return {
+            content: value,
+            errorName: "UnauthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.insuranceRefunds.v1.update.Error.UnauthorizedError,
+                visitor: CandidApi.insuranceRefunds.v1.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.insuranceRefunds.v1.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage
+    ): CandidApi.insuranceRefunds.v1.update.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.insuranceRefunds.v1.update.Error.UnprocessableEntityError,
+                visitor: CandidApi.insuranceRefunds.v1.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.insuranceRefunds.v1.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.insuranceRefunds.v1.update.Error._Unknown => {
         return {
             errorName: undefined,
@@ -41,6 +108,12 @@ export const Error = {
         visitor: CandidApi.insuranceRefunds.v1.update.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
+            case "EntityNotFoundError":
+                return visitor.entityNotFoundError(value.content);
+            case "UnauthorizedError":
+                return visitor.unauthorizedError(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             default:
                 return visitor._other(value as any);
         }

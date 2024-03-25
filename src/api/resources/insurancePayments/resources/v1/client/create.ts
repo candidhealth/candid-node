@@ -6,13 +6,25 @@ import * as CandidApi from "../../../../..";
 import * as core from "../../../../../../core";
 
 export type Error =
+    | CandidApi.insurancePayments.v1.create.Error.EntityNotFoundError
     | CandidApi.insurancePayments.v1.create.Error.UnauthorizedError
+    | CandidApi.insurancePayments.v1.create.Error.UnprocessableEntityError
     | CandidApi.insurancePayments.v1.create.Error._Unknown;
 
 export declare namespace Error {
+    interface EntityNotFoundError extends _Utils {
+        errorName: "EntityNotFoundError";
+        content: CandidApi.EntityNotFoundErrorMessage;
+    }
+
     interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
     interface _Unknown extends _Utils {
@@ -25,12 +37,29 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
+        entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    entityNotFoundError: (
+        value: CandidApi.EntityNotFoundErrorMessage
+    ): CandidApi.insurancePayments.v1.create.Error.EntityNotFoundError => {
+        return {
+            content: value,
+            errorName: "EntityNotFoundError",
+            _visit: function <_Result>(
+                this: CandidApi.insurancePayments.v1.create.Error.EntityNotFoundError,
+                visitor: CandidApi.insurancePayments.v1.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.insurancePayments.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     unauthorizedError: (
         value: CandidApi.UnauthorizedErrorMessage
     ): CandidApi.insurancePayments.v1.create.Error.UnauthorizedError => {
@@ -39,6 +68,21 @@ export const Error = {
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.insurancePayments.v1.create.Error.UnauthorizedError,
+                visitor: CandidApi.insurancePayments.v1.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.insurancePayments.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage
+    ): CandidApi.insurancePayments.v1.create.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.insurancePayments.v1.create.Error.UnprocessableEntityError,
                 visitor: CandidApi.insurancePayments.v1.create.Error._Visitor<_Result>
             ) {
                 return CandidApi.insurancePayments.v1.create.Error._visit(this, visitor);
@@ -64,8 +108,12 @@ export const Error = {
         visitor: CandidApi.insurancePayments.v1.create.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
+            case "EntityNotFoundError":
+                return visitor.entityNotFoundError(value.content);
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             default:
                 return visitor._other(value as any);
         }
