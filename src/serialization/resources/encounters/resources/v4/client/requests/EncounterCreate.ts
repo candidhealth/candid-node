@@ -11,6 +11,14 @@ export const EncounterCreate: core.serialization.Schema<
     CandidApi.encounters.v4.EncounterCreate
 > = core.serialization
     .object({
+        dateOfService: core.serialization.property(
+            "date_of_service",
+            core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+        ),
+        endDateOfService: core.serialization.property(
+            "end_date_of_service",
+            core.serialization.lazy(async () => (await import("../../../../../..")).Date_).optional()
+        ),
         patient: core.serialization.lazyObject(async () => (await import("../../../../../..")).PatientCreate),
         billingProvider: core.serialization.property(
             "billing_provider",
@@ -107,6 +115,8 @@ export const EncounterCreate: core.serialization.Schema<
 
 export declare namespace EncounterCreate {
     interface Raw extends serializers.encounters.v4.EncounterBase.Raw {
+        date_of_service?: serializers.Date_.Raw | null;
+        end_date_of_service?: serializers.Date_.Raw | null;
         patient: serializers.PatientCreate.Raw;
         billing_provider: serializers.encounterProviders.v2.BillingProvider.Raw;
         rendering_provider: serializers.encounterProviders.v2.RenderingProvider.Raw;

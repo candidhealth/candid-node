@@ -11,20 +11,6 @@ export interface EncounterBase {
      * This field should not contain PHI.
      */
     externalId: CandidApi.EncounterExternalId;
-    /**
-     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
-     * This date must be the local date in the timezone where the service occurred.
-     * Box 24a on the CMS-1500 claim form.
-     * If service occurred over a range of dates, this should be the start date.
-     */
-    dateOfService: CandidApi.Date_;
-    /**
-     * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
-     * This date must be the local date in the timezone where the service occurred.
-     * If omitted, the Encounter is assumed to be for a single day.
-     * Must not be temporally before the date_of_service field.
-     */
-    endDateOfService?: CandidApi.Date_;
     /** Box 23 on the CMS-1500 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
     /**

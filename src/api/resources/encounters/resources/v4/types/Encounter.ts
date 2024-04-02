@@ -73,7 +73,9 @@ import * as CandidApi from "../../../../..";
  *                         dateOfServiceRange: {
  *                             startDate: CandidApi.Date_("2023-01-01"),
  *                             endDate: CandidApi.Date_("2023-01-03")
- *                         }
+ *                         },
+ *                         dateOfService: "2023-01-01",
+ *                         endDateOfService: "2023-01-03"
  *                     }],
  *                 eras: [{
  *                         eraId: CandidApi.EraId("4D844EF1-2253-43CD-A4F1-6DB7E65CB54B"),
@@ -378,6 +380,21 @@ import * as CandidApi from "../../../../..";
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     * Box 24a on the CMS-1500 claim form.
+     * If service occurred over a range of dates, this should be the start date.
+     * date_of_service must be defined on either the encounter or the service lines but not both.
+     */
+    dateOfService: CandidApi.Date_;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
+     * This date must be the local date in the timezone where the service occurred.
+     * If omitted, the Encounter is assumed to be for a single day.
+     * Must not be temporally before the date_of_service field.
+     */
+    endDateOfService?: CandidApi.Date_;
     encounterId: CandidApi.EncounterId;
     claims: CandidApi.Claim[];
     /** Contains the identification information of the individual receiving medical services. */

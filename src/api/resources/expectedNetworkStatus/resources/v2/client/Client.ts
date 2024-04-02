@@ -44,7 +44,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2.jsonOrThrow(request, {
@@ -119,7 +119,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest.jsonOrThrow(request, {

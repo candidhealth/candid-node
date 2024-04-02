@@ -61,4 +61,8 @@ export interface GetAllEncountersRequest {
      * The party who is responsible for taking the next action on an Encounter, as defined by ownership of open Tasks.
      */
     ownerOfNextAction?: CandidApi.encounters.v4.EncounterOwnerOfNextActionType;
+    /**
+     * The patient ID from the external EMR platform for the patient
+     */
+    patientExternalId?: string;
 }

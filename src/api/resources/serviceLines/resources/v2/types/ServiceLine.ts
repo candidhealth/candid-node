@@ -65,7 +65,9 @@ import * as CandidApi from "../../../../..";
  *         dateOfServiceRange: {
  *             startDate: CandidApi.Date_("2023-01-01"),
  *             endDate: CandidApi.Date_("2023-01-03")
- *         }
+ *         },
+ *         dateOfService: "2023-01-01",
+ *         endDateOfService: "2023-01-03"
  *     }
  */
 export interface ServiceLine {
@@ -102,4 +104,6 @@ export interface ServiceLine {
     dateOfServiceRange: CandidApi.DateRangeOptionalEnd;
     /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */
     description?: string;
+    dateOfService: string;
+    endDateOfService?: string;
 }

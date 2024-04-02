@@ -19,6 +19,7 @@ export interface EncounterUpdate {
      * This date must be the local date in the timezone where the service occurred.
      * Box 24a on the CMS-1500 claim form.
      * If service occurred over a range of dates, this should be the start date.
+     * If service lines have distinct date_of_service values, updating the encounter's date_of_service will fail. If all service line date_of_service values are the same, updating the encounter's date_of_service will update all service line date_of_service values.
      *
      */
     dateOfService?: CandidApi.Date_;
@@ -75,6 +76,7 @@ export interface EncounterUpdate {
      * This date must be the local date in the timezone where the service occurred.
      * If omitted, the Encounter is assumed to be for a single day.
      * Must not be temporally before the date_of_service field.
+     * If service lines have distinct end_date_of_service values, updating the encounter's end_date_of_service will fail. If all service line end_date_of_service values are the same, updating the encounter's end_date_of_service will update all service line date_of_service values.
      *
      */
     endDateOfService?: CandidApi.Date_;

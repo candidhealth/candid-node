@@ -14,14 +14,6 @@ export const EncounterBase: core.serialization.ObjectSchema<
         "external_id",
         core.serialization.lazy(async () => (await import("../../../../..")).EncounterExternalId)
     ),
-    dateOfService: core.serialization.property(
-        "date_of_service",
-        core.serialization.lazy(async () => (await import("../../../../..")).Date_)
-    ),
-    endDateOfService: core.serialization.property(
-        "end_date_of_service",
-        core.serialization.lazy(async () => (await import("../../../../..")).Date_).optional()
-    ),
     priorAuthorizationNumber: core.serialization.property(
         "prior_authorization_number",
         core.serialization
@@ -95,8 +87,6 @@ export const EncounterBase: core.serialization.ObjectSchema<
 export declare namespace EncounterBase {
     interface Raw {
         external_id: serializers.EncounterExternalId.Raw;
-        date_of_service: serializers.Date_.Raw;
-        end_date_of_service?: serializers.Date_.Raw | null;
         prior_authorization_number?: serializers.encounters.v4.PriorAuthorizationNumber.Raw | null;
         patient_authorized_release: boolean;
         benefits_assigned_to_provider: boolean;

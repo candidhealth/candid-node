@@ -38,6 +38,7 @@ export class V4 {
             billableStatus,
             responsibleParty,
             ownerOfNextAction,
+            patientExternalId,
         } = request;
         const _queryParams = new URLSearchParams();
         if (limit != null) {
@@ -106,6 +107,10 @@ export class V4 {
             _queryParams.append("owner_of_next_action", ownerOfNextAction);
         }
 
+        if (patientExternalId != null) {
+            _queryParams.append("patient_external_id", patientExternalId);
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.CandidApiEnvironment.Production,
@@ -116,7 +121,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -153,7 +158,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -189,7 +194,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, {
@@ -252,7 +257,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, {

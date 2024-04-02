@@ -89,6 +89,8 @@ export const ServiceLine: core.serialization.ObjectSchema<
         core.serialization.lazyObject(async () => (await import("../../../../..")).DateRangeOptionalEnd)
     ),
     description: core.serialization.string().optional(),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string()),
+    endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
 });
 
 export declare namespace ServiceLine {
@@ -116,5 +118,7 @@ export declare namespace ServiceLine {
         claim_id: serializers.ClaimId.Raw;
         date_of_service_range: serializers.DateRangeOptionalEnd.Raw;
         description?: string | null;
+        date_of_service: string;
+        end_date_of_service?: string | null;
     }
 }

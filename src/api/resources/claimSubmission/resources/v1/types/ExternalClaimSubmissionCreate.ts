@@ -15,7 +15,7 @@ import * as CandidApi from "../../../../..";
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary
  *             }, {
  *                 submittedAt: new Date("2023-01-04T12:00:00.000Z"),
- *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Corrected,
+ *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary
  *             }]
  *     }

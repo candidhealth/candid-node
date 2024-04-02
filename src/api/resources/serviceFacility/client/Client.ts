@@ -32,7 +32,7 @@ export class ServiceFacility {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.4",
+                "X-Fern-SDK-Version": "0.17.5",
             },
             contentType: "application/json",
             body: await serializers.EncounterServiceFacilityUpdate.jsonOrThrow(request, {

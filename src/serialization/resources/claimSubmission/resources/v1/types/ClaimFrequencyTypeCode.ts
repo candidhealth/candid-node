@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const ClaimFrequencyTypeCode: core.serialization.Schema<
     serializers.claimSubmission.v1.ClaimFrequencyTypeCode.Raw,
     CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode
-> = core.serialization.enum_(["1", "6", "7", "8"]);
+> = core.serialization.enum_(["1", "7", "8"]);
 
 export declare namespace ClaimFrequencyTypeCode {
-    type Raw = "1" | "6" | "7" | "8";
+    type Raw = "1" | "7" | "8";
 }
