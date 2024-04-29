@@ -71,7 +71,10 @@ export type SourceOfPaymentCode =
     | "VA"
     /**
      * Workers' Compensation Health Claim */
-    | "WC";
+    | "WC"
+    /**
+     * Mutually Defined */
+    | "ZZ";
 
 export const SourceOfPaymentCode = {
     SelfPay: "09",
@@ -97,4 +100,5 @@ export const SourceOfPaymentCode = {
     TitleV: "TV",
     VeteransAffairsPlan: "VA",
     WorkersCompHealthClaim: "WC",
+    MutuallyDefined: "ZZ",
 } as const;

@@ -47,7 +47,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.5",
+                "X-Fern-SDK-Version": "0.18.0",
             },
             contentType: "application/json",
             body: request,
@@ -92,7 +92,7 @@ export class V2 {
      * - [Availity - Coverages 1.0.0 API](https://developer.availity.com/partner/documentation#c_coverages_references)
      * - [Candid Availity Eligibility Integration Guide](https://support.joincandidhealth.com/hc/en-us/articles/24218441631892--Availity-Eligibility-Integration-Guide)
      *
-     * A schema of the response object can be found here: [Availity Docs](https://developer.availity.com/partner/product/191210/api/190898#/Coverages_100/operation/%2Fcoverages/get)
+     * A schema of the response object can be found here: [Availity Docs](https://developer.availity.com/partner/product/191210/api/190898#/Coverages_100/operation/%2Fcoverages%2F{id}/get)
      *
      * - Note Availity requires a free developer account to access this documentation.
      */
@@ -109,7 +109,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.17.5",
+                "X-Fern-SDK-Version": "0.18.0",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -119,6 +119,26 @@ export class V2 {
                 ok: true,
                 body: _response.body,
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.Raw)?.errorName
+            ) {
+                case "HttpRequestValidationError":
+                    return {
+                        ok: false,
+                        error: await serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.parseOrThrow(
+                            _response.error.body as serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {

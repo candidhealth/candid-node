@@ -22,7 +22,7 @@ export const Contract: core.serialization.ObjectSchema<
             )
         ),
         providerCount: core.serialization.property("provider_count", core.serialization.number()),
-        payer: core.serialization.lazyObject(async () => (await import("../../../../..")).payers.v3.Payer).optional(),
+        payer: core.serialization.lazyObject(async () => (await import("../../../../..")).payers.v3.Payer),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../..")).contracts.v2.ContractBase));
 
@@ -31,6 +31,6 @@ export declare namespace Contract {
         contract_id: serializers.contracts.v2.ContractId.Raw;
         contracting_provider: serializers.organizationProviders.v2.OrganizationProvider.Raw;
         provider_count: number;
-        payer?: serializers.payers.v3.Payer.Raw | null;
+        payer: serializers.payers.v3.Payer.Raw;
     }
 }

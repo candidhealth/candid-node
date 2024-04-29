@@ -11,5 +11,5 @@ export interface Contract extends CandidApi.contracts.v2.ContractBase {
     /** The number of linked providers who can render medical services under this contract */
     providerCount: number;
     /** The insurance company under contract */
-    payer?: CandidApi.payers.v3.Payer;
+    payer: CandidApi.payers.v3.Payer;
 }

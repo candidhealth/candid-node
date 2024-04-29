@@ -11,6 +11,7 @@ import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
+import { FeeSchedules } from "./api/resources/feeSchedules/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
 import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
 import { InsurancePayments } from "./api/resources/insurancePayments/client/Client";
@@ -74,6 +75,12 @@ export class CandidApiClient {
 
     public get exports(): Exports {
         return (this._exports ??= new Exports(this.options));
+    }
+
+    protected _feeSchedules: FeeSchedules | undefined;
+
+    public get feeSchedules(): FeeSchedules {
+        return (this._feeSchedules ??= new FeeSchedules(this.options));
     }
 
     protected _guarantor: Guarantor | undefined;

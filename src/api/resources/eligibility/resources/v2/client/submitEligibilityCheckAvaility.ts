@@ -5,9 +5,16 @@
 import * as CandidApi from "../../../../..";
 import * as core from "../../../../../../core";
 
-export type Error = CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Unknown;
+export type Error =
+    | CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error.HttpRequestValidationError
+    | CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Unknown;
 
 export declare namespace Error {
+    interface HttpRequestValidationError extends _Utils {
+        errorName: "HttpRequestValidationError";
+        content: CandidApi.RequestValidationError;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -20,11 +27,27 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
+        httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    httpRequestValidationError: (
+        value: CandidApi.RequestValidationError
+    ): CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error.HttpRequestValidationError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationError",
+            _visit: function <_Result>(
+                this: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error.HttpRequestValidationError,
+                visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>
+            ) {
+                return CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (
         fetcherError: core.Fetcher.Error
     ): CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Unknown => {
@@ -45,6 +68,8 @@ export const Error = {
         visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
+            case "HttpRequestValidationError":
+                return visitor.httpRequestValidationError(value.content);
             default:
                 return visitor._other(value as any);
         }

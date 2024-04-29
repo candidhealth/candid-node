@@ -33,6 +33,7 @@ export const SourceOfPaymentCode: core.serialization.Schema<
     "TV",
     "VA",
     "WC",
+    "ZZ",
 ]);
 
 export declare namespace SourceOfPaymentCode {
@@ -59,5 +60,6 @@ export declare namespace SourceOfPaymentCode {
         | "OF"
         | "TV"
         | "VA"
-        | "WC";
+        | "WC"
+        | "ZZ";
 }

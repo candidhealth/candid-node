@@ -12,11 +12,13 @@ import * as CandidApi from "../../../../..";
  *         submissionRecords: [{
  *                 submittedAt: new Date("2023-01-01T13:00:00.000Z"),
  *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
- *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary
+ *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
+ *                 intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
  *             }, {
  *                 submittedAt: new Date("2023-01-04T12:00:00.000Z"),
  *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
- *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary
+ *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
+ *                 intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
  *             }]
  *     }
  *

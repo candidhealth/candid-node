@@ -23,6 +23,10 @@ export const ClaimSubmissionRecordCreate: core.serialization.ObjectSchema<
             .lazy(async () => (await import("../../../../..")).ClaimSubmissionPayerResponsibilityType)
             .optional()
     ),
+    intendedSubmissionMedium: core.serialization.property(
+        "intended_submission_medium",
+        core.serialization.lazy(async () => (await import("../../../../..")).IntendedSubmissionMedium).optional()
+    ),
 });
 
 export declare namespace ClaimSubmissionRecordCreate {
@@ -30,5 +34,6 @@ export declare namespace ClaimSubmissionRecordCreate {
         submitted_at: string;
         claim_frequency_code?: serializers.claimSubmission.v1.ClaimFrequencyTypeCode.Raw | null;
         payer_responsibility?: serializers.ClaimSubmissionPayerResponsibilityType.Raw | null;
+        intended_submission_medium?: serializers.IntendedSubmissionMedium.Raw | null;
     }
 }
