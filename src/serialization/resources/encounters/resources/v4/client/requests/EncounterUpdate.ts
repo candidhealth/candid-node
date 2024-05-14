@@ -120,6 +120,10 @@ export const EncounterUpdate: core.serialization.Schema<
         "delay_reason_code",
         core.serialization.lazy(async () => (await import("../../../../../..")).DelayReasonCode).optional()
     ),
+    patientAuthorizedRelease: core.serialization.property(
+        "patient_authorized_release",
+        core.serialization.boolean().optional()
+    ),
 });
 
 export declare namespace EncounterUpdate {
@@ -148,5 +152,6 @@ export declare namespace EncounterUpdate {
         onset_of_current_illness_or_symptom_date?: serializers.Date_.Raw | null;
         last_menstrual_period_date?: serializers.Date_.Raw | null;
         delay_reason_code?: serializers.DelayReasonCode.Raw | null;
+        patient_authorized_release?: boolean | null;
     }
 }

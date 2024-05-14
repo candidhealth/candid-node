@@ -107,4 +107,6 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     externalClaimSubmission?: CandidApi.claimSubmission.v1.ExternalClaimSubmissionCreate;
+    /** Names of tags that should be on the encounter. */
+    tagIds?: CandidApi.TagId[];
 }

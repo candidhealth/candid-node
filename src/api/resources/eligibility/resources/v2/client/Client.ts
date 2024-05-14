@@ -47,7 +47,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.18.0",
+                "X-Fern-SDK-Version": "0.18.1",
             },
             contentType: "application/json",
             body: request,
@@ -95,6 +95,10 @@ export class V2 {
      * A schema of the response object can be found here: [Availity Docs](https://developer.availity.com/partner/product/191210/api/190898#/Coverages_100/operation/%2Fcoverages%2F{id}/get)
      *
      * - Note Availity requires a free developer account to access this documentation.
+     *
+     * Check connection status of Availity API and partners here:
+     *
+     * - [Availity Trading Partner Connection Status](https://www.availity.com/status/)
      */
     public async submitEligibilityCheckAvaility(): Promise<
         core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>
@@ -109,7 +113,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.18.0",
+                "X-Fern-SDK-Version": "0.18.1",
             },
             contentType: "application/json",
             timeoutMs: 60000,

@@ -11,6 +11,10 @@ export const Encounter: core.serialization.ObjectSchema<
     CandidApi.encounters.v4.Encounter
 > = core.serialization
     .object({
+        patientControlNumber: core.serialization.property(
+            "patient_control_number",
+            core.serialization.string().optional()
+        ),
         dateOfService: core.serialization.property(
             "date_of_service",
             core.serialization.lazy(async () => (await import("../../../../..")).Date_)
@@ -138,6 +142,7 @@ export const Encounter: core.serialization.ObjectSchema<
 
 export declare namespace Encounter {
     interface Raw extends serializers.encounters.v4.EncounterBase.Raw {
+        patient_control_number?: string | null;
         date_of_service: serializers.Date_.Raw;
         end_date_of_service?: serializers.Date_.Raw | null;
         encounter_id: serializers.EncounterId.Raw;

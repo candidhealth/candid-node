@@ -30,7 +30,7 @@ export interface EncounterUpdate {
      *
      */
     diagnosisIds?: CandidApi.DiagnosisId[];
-    /** Names of tags that should be on the encounter. */
+    /** Names of tags that should be on the encounter.  Note all tags on encounter will be overriden with this list. */
     tagIds?: CandidApi.TagId[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
@@ -132,4 +132,11 @@ export interface EncounterUpdate {
      *
      */
     delayReasonCode?: CandidApi.DelayReasonCode;
+    /**
+     * Whether this patient has authorized the release of medical information
+     * for billing purpose.
+     * Box 12 on the CMS-1500 claim form.
+     *
+     */
+    patientAuthorizedRelease?: boolean;
 }

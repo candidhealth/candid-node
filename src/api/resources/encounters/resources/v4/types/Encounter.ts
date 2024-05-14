@@ -381,6 +381,11 @@ import * as CandidApi from "../../../../..";
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     /**
+     * A patient control number (PCN) is a unique identifier assigned to a patient within a healthcare system or facility.
+     * It's used to track and manage a patient's medical records, treatments, and other healthcare-related information.
+     */
+    patientControlNumber?: string;
+    /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
      * This date must be the local date in the timezone where the service occurred.
      * Box 24a on the CMS-1500 claim form.

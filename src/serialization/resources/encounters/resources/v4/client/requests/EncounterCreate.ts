@@ -110,6 +110,12 @@ export const EncounterCreate: core.serialization.Schema<
                 )
                 .optional()
         ),
+        tagIds: core.serialization.property(
+            "tag_ids",
+            core.serialization
+                .list(core.serialization.lazy(async () => (await import("../../../../../..")).TagId))
+                .optional()
+        ),
     })
     .extend(core.serialization.lazyObject(async () => (await import("../../../../../..")).encounters.v4.EncounterBase));
 
@@ -132,5 +138,6 @@ export declare namespace EncounterCreate {
         service_lines?: serializers.serviceLines.v2.ServiceLineCreate.Raw[] | null;
         guarantor?: serializers.guarantor.v1.GuarantorCreate.Raw | null;
         external_claim_submission?: serializers.claimSubmission.v1.ExternalClaimSubmissionCreate.Raw | null;
+        tag_ids?: serializers.TagId.Raw[] | null;
     }
 }
