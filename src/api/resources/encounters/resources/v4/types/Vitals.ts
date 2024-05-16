@@ -13,9 +13,9 @@
  *     }
  */
 export interface Vitals {
-    heightIn: number;
-    weightLbs: number;
-    bloodPressureSystolicMmhg: number;
-    bloodPressureDiastolicMmhg: number;
+    heightIn?: number;
+    weightLbs?: number;
+    bloodPressureSystolicMmhg?: number;
+    bloodPressureDiastolicMmhg?: number;
     bodyTemperatureF?: number;
 }

@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../api";
 import * as core from "../../../../core";
 
 export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.Raw, CandidApi.InvoiceStatus> =
-    core.serialization.enum_(["draft", "open", "paid", "void", "uncollectible"]);
+    core.serialization.enum_(["draft", "open", "paid", "void", "uncollectible", "held"]);
 
 export declare namespace InvoiceStatus {
-    type Raw = "draft" | "open" | "paid" | "void" | "uncollectible";
+    type Raw = "draft" | "open" | "paid" | "void" | "uncollectible" | "held";
 }

@@ -404,7 +404,8 @@ export type Carc =
     | "W9"
     | "Y1"
     | "Y2"
-    | "Y3";
+    | "Y3"
+    | "UNKNOWN";
 
 export const Carc = {
     Carc1: "1",
@@ -809,4 +810,5 @@ export const Carc = {
     CarcY1: "Y1",
     CarcY2: "Y2",
     CarcY3: "Y3",
+    Unknown: "UNKNOWN",
 } as const;

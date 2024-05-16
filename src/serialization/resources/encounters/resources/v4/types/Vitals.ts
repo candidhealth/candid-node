@@ -10,22 +10,25 @@ export const Vitals: core.serialization.ObjectSchema<
     serializers.encounters.v4.Vitals.Raw,
     CandidApi.encounters.v4.Vitals
 > = core.serialization.object({
-    heightIn: core.serialization.property("height_in", core.serialization.number()),
-    weightLbs: core.serialization.property("weight_lbs", core.serialization.number()),
-    bloodPressureSystolicMmhg: core.serialization.property("blood_pressure_systolic_mmhg", core.serialization.number()),
+    heightIn: core.serialization.property("height_in", core.serialization.number().optional()),
+    weightLbs: core.serialization.property("weight_lbs", core.serialization.number().optional()),
+    bloodPressureSystolicMmhg: core.serialization.property(
+        "blood_pressure_systolic_mmhg",
+        core.serialization.number().optional()
+    ),
     bloodPressureDiastolicMmhg: core.serialization.property(
         "blood_pressure_diastolic_mmhg",
-        core.serialization.number()
+        core.serialization.number().optional()
     ),
     bodyTemperatureF: core.serialization.property("body_temperature_f", core.serialization.number().optional()),
 });
 
 export declare namespace Vitals {
     interface Raw {
-        height_in: number;
-        weight_lbs: number;
-        blood_pressure_systolic_mmhg: number;
-        blood_pressure_diastolic_mmhg: number;
+        height_in?: number | null;
+        weight_lbs?: number | null;
+        blood_pressure_systolic_mmhg?: number | null;
+        blood_pressure_diastolic_mmhg?: number | null;
         body_temperature_f?: number | null;
     }
 }

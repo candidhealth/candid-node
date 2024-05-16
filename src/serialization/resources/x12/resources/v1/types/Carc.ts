@@ -410,6 +410,7 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "Y1",
         "Y2",
         "Y3",
+        "UNKNOWN",
     ]);
 
 export declare namespace Carc {
@@ -815,5 +816,6 @@ export declare namespace Carc {
         | "W9"
         | "Y1"
         | "Y2"
-        | "Y3";
+        | "Y3"
+        | "UNKNOWN";
 }
