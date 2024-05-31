@@ -88,6 +88,7 @@ export interface Claim {
     clearinghouse?: string;
     clearinghouseClaimId?: string;
     payerClaimId?: string;
+    cliaNumber?: string;
     serviceLines: CandidApi.serviceLines.v2.ServiceLine[];
     eras: CandidApi.Era[];
 }

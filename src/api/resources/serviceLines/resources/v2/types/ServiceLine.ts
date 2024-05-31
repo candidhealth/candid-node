@@ -85,6 +85,7 @@ export interface ServiceLine {
     serviceLineEraData?: CandidApi.serviceLines.v2.ServiceLineEraData;
     serviceLineManualAdjustments?: CandidApi.serviceLines.v2.ServiceLineAdjustment[];
     relatedInvoices?: CandidApi.Invoice[];
+    relatedInvoiceInfo?: CandidApi.invoices.v2.InvoiceInfo[];
     denialReason?: CandidApi.serviceLines.v2.ServiceLineDenialReason;
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     serviceLineId: CandidApi.ServiceLineId;

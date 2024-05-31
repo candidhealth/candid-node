@@ -19,6 +19,7 @@ export const Claim: core.serialization.ObjectSchema<serializers.Claim.Raw, Candi
             core.serialization.string().optional()
         ),
         payerClaimId: core.serialization.property("payer_claim_id", core.serialization.string().optional()),
+        cliaNumber: core.serialization.property("clia_number", core.serialization.string().optional()),
         serviceLines: core.serialization.property(
             "service_lines",
             core.serialization.list(
@@ -36,6 +37,7 @@ export declare namespace Claim {
         clearinghouse?: string | null;
         clearinghouse_claim_id?: string | null;
         payer_claim_id?: string | null;
+        clia_number?: string | null;
         service_lines: serializers.serviceLines.v2.ServiceLine.Raw[];
         eras: serializers.Era.Raw[];
     }

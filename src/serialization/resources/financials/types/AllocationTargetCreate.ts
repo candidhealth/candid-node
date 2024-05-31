@@ -17,6 +17,9 @@ export const AllocationTargetCreate: core.serialization.Schema<
         claim_by_id: core.serialization.object({
             value: core.serialization.lazy(async () => (await import("../../..")).ClaimId),
         }),
+        claim_by_encounter_external_id: core.serialization.object({
+            value: core.serialization.lazy(async () => (await import("../../..")).EncounterExternalId),
+        }),
         billing_provider_by_id: core.serialization.object({
             value: core.serialization.lazy(async () => (await import("../../..")).ProviderId),
         }),
@@ -31,6 +34,7 @@ export declare namespace AllocationTargetCreate {
     type Raw =
         | AllocationTargetCreate.ServiceLineById
         | AllocationTargetCreate.ClaimById
+        | AllocationTargetCreate.ClaimByEncounterExternalId
         | AllocationTargetCreate.BillingProviderById
         | AllocationTargetCreate.Unattributed;
 
@@ -42,6 +46,11 @@ export declare namespace AllocationTargetCreate {
     interface ClaimById {
         type: "claim_by_id";
         value: serializers.ClaimId.Raw;
+    }
+
+    interface ClaimByEncounterExternalId {
+        type: "claim_by_encounter_external_id";
+        value: serializers.EncounterExternalId.Raw;
     }
 
     interface BillingProviderById {

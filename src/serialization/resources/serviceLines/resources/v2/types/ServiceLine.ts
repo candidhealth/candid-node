@@ -63,6 +63,12 @@ export const ServiceLine: core.serialization.ObjectSchema<
             .list(core.serialization.lazyObject(async () => (await import("../../../../..")).Invoice))
             .optional()
     ),
+    relatedInvoiceInfo: core.serialization.property(
+        "related_invoice_info",
+        core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../../../..")).invoices.v2.InvoiceInfo))
+            .optional()
+    ),
     denialReason: core.serialization.property(
         "denial_reason",
         core.serialization
@@ -109,6 +115,7 @@ export declare namespace ServiceLine {
         service_line_era_data?: serializers.serviceLines.v2.ServiceLineEraData.Raw | null;
         service_line_manual_adjustments?: serializers.serviceLines.v2.ServiceLineAdjustment.Raw[] | null;
         related_invoices?: serializers.Invoice.Raw[] | null;
+        related_invoice_info?: serializers.invoices.v2.InvoiceInfo.Raw[] | null;
         denial_reason?: serializers.serviceLines.v2.ServiceLineDenialReason.Raw | null;
         place_of_service_code?: serializers.FacilityTypeCode.Raw | null;
         service_line_id: serializers.ServiceLineId.Raw;

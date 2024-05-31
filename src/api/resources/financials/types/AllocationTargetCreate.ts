@@ -11,6 +11,7 @@ import * as CandidApi from "../../..";
 export type AllocationTargetCreate =
     | CandidApi.AllocationTargetCreate.ServiceLineById
     | CandidApi.AllocationTargetCreate.ClaimById
+    | CandidApi.AllocationTargetCreate.ClaimByEncounterExternalId
     | CandidApi.AllocationTargetCreate.BillingProviderById
     | CandidApi.AllocationTargetCreate.Unattributed;
 
@@ -23,6 +24,11 @@ export declare namespace AllocationTargetCreate {
     interface ClaimById {
         type: "claim_by_id";
         value: CandidApi.ClaimId;
+    }
+
+    interface ClaimByEncounterExternalId {
+        type: "claim_by_encounter_external_id";
+        value: CandidApi.EncounterExternalId;
     }
 
     interface BillingProviderById {
