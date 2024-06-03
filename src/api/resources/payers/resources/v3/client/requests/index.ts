@@ -1,1 +1,1 @@
-export { GetAllPayersRequest } from "./GetAllPayersRequest";
+export { type GetAllPayersRequest } from "./GetAllPayersRequest";

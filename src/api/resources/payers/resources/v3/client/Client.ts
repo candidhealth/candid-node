@@ -4,38 +4,55 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as CandidApi from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
-import URLSearchParams from "@ungap/url-search-params";
 
 export declare namespace V3 {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class V3 {
-    constructor(protected readonly options: V3.Options) {}
+    constructor(protected readonly _options: V3.Options = {}) {}
 
+    /**
+     * @param {CandidApi.payers.v3.PayerUuid} payerUuid
+     * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.payers.v3.get(CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
     public async get(
-        payerUuid: CandidApi.payers.v3.PayerUuid
+        payerUuid: CandidApi.payers.v3.PayerUuid,
+        requestOptions?: V3.RequestOptions
     ): Promise<core.APIResponse<CandidApi.payers.v3.Payer, CandidApi.payers.v3.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/payers/v3/${await serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid)}`
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                `/api/payers/v3/${encodeURIComponent(await serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21166",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -55,35 +72,54 @@ export class V3 {
         };
     }
 
+    /**
+     * @param {CandidApi.payers.v3.GetAllPayersRequest} request
+     * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.payers.v3.getAll({
+     *         limit: 100,
+     *         searchTerm: "john",
+     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
+     *     })
+     */
     public async getAll(
-        request: CandidApi.payers.v3.GetAllPayersRequest = {}
+        request: CandidApi.payers.v3.GetAllPayersRequest = {},
+        requestOptions?: V3.RequestOptions
     ): Promise<core.APIResponse<CandidApi.payers.v3.PayerPage, CandidApi.payers.v3.getAll.Error>> {
         const { limit, searchTerm, pageToken } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (searchTerm != null) {
-            _queryParams.append("search_term", searchTerm);
+            _queryParams["search_term"] = searchTerm;
         }
 
         if (pageToken != null) {
-            _queryParams.append("page_token", pageToken);
+            _queryParams["page_token"] = pageToken;
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.CandidApiEnvironment.Production, "/api/payers/v3"),
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                "/api/payers/v3"
+            ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21166",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -103,8 +139,8 @@ export class V3 {
         };
     }
 
-    protected async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
+    protected async _getAuthorizationHeader(): Promise<string | undefined> {
+        const bearer = await core.Supplier.get(this._options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

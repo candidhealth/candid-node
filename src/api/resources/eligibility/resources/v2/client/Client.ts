@@ -4,19 +4,25 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../..";
+import * as CandidApi from "../../../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../../../serialization";
+import * as serializers from "../../../../../../serialization/index";
 
 export declare namespace V2 {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class V2 {
-    constructor(protected readonly options: V2.Options) {}
+    constructor(protected readonly _options: V2.Options = {}) {}
 
     /**
      * This API is a wrapper around Change Healthcare's eligibility API. Below are some helpful documentation links:
@@ -33,13 +39,22 @@ export class V2 {
      * - [Change Healthcare - Guides: Using Test Payers in the Sandbox](https://developers.changehealthcare.com/eligibilityandclaims/docs/use-the-test-payers-in-the-sandbox-api)
      *
      * A schema of the response object can be found here: [Change Healthcare Docs](https://developers.changehealthcare.com/eligibilityandclaims/reference/medicaleligibility)
+     *
+     * @param {unknown} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.eligibility.v2.submitEligibilityCheck({
+     *         "key": "value"
+     *     })
      */
     public async submitEligibilityCheck(
-        request?: unknown
+        request?: unknown,
+        requestOptions?: V2.RequestOptions
     ): Promise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheck.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
                 "/api/eligibility/v2"
             ),
             method: "POST",
@@ -47,11 +62,15 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21166",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: request,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -99,13 +118,18 @@ export class V2 {
      * Check connection status of Availity API and partners here:
      *
      * - [Availity Trading Partner Connection Status](https://www.availity.com/status/)
+     *
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.eligibility.v2.submitEligibilityCheckAvaility()
      */
-    public async submitEligibilityCheckAvaility(): Promise<
-        core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>
-    > {
+    public async submitEligibilityCheckAvaility(
+        requestOptions?: V2.RequestOptions
+    ): Promise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
                 "/api/eligibility/v2/availity"
             ),
             method: "GET",
@@ -113,10 +137,14 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21166",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -166,13 +194,22 @@ export class V2 {
      * Check connection status of Availity API and partners here:
      *
      * - [Availity Trading Partner Connection Status](https://www.availity.com/status/)
+     *
+     * @param {unknown} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.eligibility.v2.submitEligibilityCheckAvailityPost({
+     *         "key": "value"
+     *     })
      */
     public async submitEligibilityCheckAvailityPost(
-        request?: unknown
+        request?: unknown,
+        requestOptions?: V2.RequestOptions
     ): Promise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
                 "/api/eligibility/v2/availity"
             ),
             method: "POST",
@@ -180,11 +217,15 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21166",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: request,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -221,8 +262,8 @@ export class V2 {
         };
     }
 
-    protected async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
+    protected async _getAuthorizationHeader(): Promise<string | undefined> {
+        const bearer = await core.Supplier.get(this._options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }
