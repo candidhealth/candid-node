@@ -4,51 +4,27 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
+import * as CandidApi from "../../../../..";
+import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
-import * as serializers from "../../../../../../serialization/index";
+import * as serializers from "../../../../../../serialization";
 
 export declare namespace V4 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V4 {
-    constructor(protected readonly _options: V4.Options = {}) {}
+    constructor(protected readonly options: V4.Options) {}
 
     /**
      * Returns all patient payments satisfying the search criteria AND whose organization_id matches
      * the current organization_id of the authenticated user.
-     *
-     * @param {CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest} request
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientPayments.v4.getMulti({
-     *         limit: 1,
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         unattributed: true,
-     *         invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         sources: CandidApi.PatientTransactionSource.ManualEntry,
-     *         sort: CandidApi.patientPayments.v4.PatientPaymentSortField.PaymentSource,
-     *         sortDirection: CandidApi.SortDirection.Asc,
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
-     *     })
      */
     public async getMulti(
-        request: CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest = {},
-        requestOptions?: V4.RequestOptions
+        request: CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest = {}
     ): Promise<
         core.APIResponse<CandidApi.patientPayments.v4.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error>
     > {
@@ -65,58 +41,60 @@ export class V4 {
             sortDirection,
             pageToken,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams = new URLSearchParams();
         if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+            _queryParams.append("limit", limit.toString());
         }
 
         if (patientExternalId != null) {
-            _queryParams["patient_external_id"] = patientExternalId;
+            _queryParams.append("patient_external_id", patientExternalId);
         }
 
         if (claimId != null) {
-            _queryParams["claim_id"] = claimId;
+            _queryParams.append("claim_id", claimId);
         }
 
         if (serviceLineId != null) {
-            _queryParams["service_line_id"] = serviceLineId;
+            _queryParams.append("service_line_id", serviceLineId);
         }
 
         if (billingProviderId != null) {
-            _queryParams["billing_provider_id"] = billingProviderId;
+            _queryParams.append("billing_provider_id", billingProviderId);
         }
 
         if (unattributed != null) {
-            _queryParams["unattributed"] = unattributed.toString();
+            _queryParams.append("unattributed", unattributed.toString());
         }
 
         if (invoiceId != null) {
-            _queryParams["invoice_id"] = invoiceId;
+            _queryParams.append("invoice_id", invoiceId);
         }
 
         if (sources != null) {
             if (Array.isArray(sources)) {
-                _queryParams["sources"] = sources.map((item) => item);
+                for (const _item of sources) {
+                    _queryParams.append("sources", _item);
+                }
             } else {
-                _queryParams["sources"] = sources;
+                _queryParams.append("sources", sources);
             }
         }
 
         if (sort != null) {
-            _queryParams["sort"] = sort;
+            _queryParams.append("sort", sort);
         }
 
         if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
+            _queryParams.append("sort_direction", sortDirection);
         }
 
         if (pageToken != null) {
-            _queryParams["page_token"] = pageToken;
+            _queryParams.append("page_token", pageToken);
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/patient-payments/v4"
             ),
             method: "GET",
@@ -124,15 +102,11 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -173,22 +147,15 @@ export class V4 {
 
     /**
      * Retrieves a previously created patient payment by its `patient_payment_id`.
-     *
-     * @param {CandidApi.patientPayments.v4.PatientPaymentId} patientPaymentId
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientPayments.v4.get(CandidApi.patientPayments.v4.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
-        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
-        requestOptions?: V4.RequestOptions
+        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId
     ): Promise<core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/patient-payments/v4/${encodeURIComponent(
-                    await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(patientPaymentId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-payments/v4/${await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(
+                    patientPaymentId
                 )}`
             ),
             method: "GET",
@@ -196,14 +163,10 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -246,35 +209,15 @@ export class V4 {
      * Creates a new patient payment record and returns the newly created PatientPayment object.
      * The allocations can describe whether the payment is being applied toward a specific service line,
      * claim, or billing provider.
-     *
-     * @param {CandidApi.patientPayments.v4.PatientPaymentCreate} request
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientPayments.v4.create({
-     *         amountCents: 1,
-     *         paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         paymentNote: "string",
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         allocations: [{
-     *                 amountCents: 1,
-     *                 target: {
-     *                     type: "service_line_by_id",
-     *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *                 }
-     *             }],
-     *         invoice: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *     })
      */
     public async create(
-        request: CandidApi.patientPayments.v4.PatientPaymentCreate,
-        requestOptions?: V4.RequestOptions
+        request: CandidApi.patientPayments.v4.PatientPaymentCreate
     ): Promise<
         core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.create.Error>
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/patient-payments/v4"
             ),
             method: "POST",
@@ -282,17 +225,13 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -334,36 +273,18 @@ export class V4 {
 
     /**
      * Updates the patient payment record matching the provided patient_payment_id.
-     *
-     * @param {CandidApi.patientPayments.v4.PatientPaymentId} patientPaymentId
-     * @param {CandidApi.patientPayments.v4.PatientPaymentUpdate} request
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientPayments.v4.update(CandidApi.patientPayments.v4.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         paymentNote: {
-     *             type: "set",
-     *             value: "string"
-     *         },
-     *         invoice: {
-     *             type: "set",
-     *             value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *         }
-     *     })
      */
     public async update(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
-        request: CandidApi.patientPayments.v4.PatientPaymentUpdate = {},
-        requestOptions?: V4.RequestOptions
+        request: CandidApi.patientPayments.v4.PatientPaymentUpdate = {}
     ): Promise<
         core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.update.Error>
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/patient-payments/v4/${encodeURIComponent(
-                    await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(patientPaymentId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-payments/v4/${await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(
+                    patientPaymentId
                 )}`
             ),
             method: "PATCH",
@@ -371,17 +292,13 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.patientPayments.v4.PatientPaymentUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -423,22 +340,15 @@ export class V4 {
 
     /**
      * Deletes the patient payment record matching the provided patient_payment_id.
-     *
-     * @param {CandidApi.patientPayments.v4.PatientPaymentId} patientPaymentId
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientPayments.v4.delete(CandidApi.patientPayments.v4.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async delete(
-        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
-        requestOptions?: V4.RequestOptions
+        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId
     ): Promise<core.APIResponse<void, CandidApi.patientPayments.v4.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/patient-payments/v4/${encodeURIComponent(
-                    await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(patientPaymentId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-payments/v4/${await serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(
+                    patientPaymentId
                 )}`
             ),
             method: "DELETE",
@@ -446,14 +356,10 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -488,8 +394,8 @@ export class V4 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

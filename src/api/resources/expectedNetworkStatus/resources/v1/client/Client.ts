@@ -4,49 +4,25 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as CandidApi from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 
 export declare namespace V1 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    constructor(protected readonly options: V1.Options) {}
 
     /**
      * Computes the expected network status given the provided information.
-     *
-     * @param {CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.expectedNetworkStatus.v1.compute({
-     *         externalPatientId: "string",
-     *         subscriberPayerId: "string",
-     *         subscriberPayerName: "string",
-     *         subscriberInsuranceType: CandidApi.InsuranceTypeCode.C01,
-     *         subscriberPlanName: "string",
-     *         billingProviderNpi: "string",
-     *         billingProviderTin: "string",
-     *         renderingProviderNpi: "string",
-     *         contractedState: CandidApi.State.Aa,
-     *         dateOfService: CandidApi.Date_("string")
-     *     })
      */
     public async compute(
-        request: CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest,
-        requestOptions?: V1.RequestOptions
+        request: CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest
     ): Promise<
         core.APIResponse<
             CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusResponse,
@@ -55,7 +31,7 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/expected-network-status/v1"
             ),
             method: "POST",
@@ -63,17 +39,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -96,8 +68,8 @@ export class V1 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

@@ -4,51 +4,27 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
+import * as CandidApi from "../../../../..";
+import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
-import * as serializers from "../../../../../../serialization/index";
+import * as serializers from "../../../../../../serialization";
 
 export declare namespace V1 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    constructor(protected readonly options: V1.Options) {}
 
     /**
      * Returns all patient refunds satisfying the search criteria AND whose organization_id matches
      * the current organization_id of the authenticated user.
-     *
-     * @param {CandidApi.patientRefunds.v1.GetMultiPatientRefundsRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientRefunds.v1.getMulti({
-     *         limit: 1,
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         unattributed: true,
-     *         invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         sources: CandidApi.PatientTransactionSource.ManualEntry,
-     *         sort: CandidApi.patientRefunds.v1.PatientRefundSortField.RefundSource,
-     *         sortDirection: CandidApi.SortDirection.Asc,
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
-     *     })
      */
     public async getMulti(
-        request: CandidApi.patientRefunds.v1.GetMultiPatientRefundsRequest = {},
-        requestOptions?: V1.RequestOptions
+        request: CandidApi.patientRefunds.v1.GetMultiPatientRefundsRequest = {}
     ): Promise<
         core.APIResponse<CandidApi.patientRefunds.v1.PatientRefundsPage, CandidApi.patientRefunds.v1.getMulti.Error>
     > {
@@ -65,58 +41,60 @@ export class V1 {
             sortDirection,
             pageToken,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams = new URLSearchParams();
         if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+            _queryParams.append("limit", limit.toString());
         }
 
         if (patientExternalId != null) {
-            _queryParams["patient_external_id"] = patientExternalId;
+            _queryParams.append("patient_external_id", patientExternalId);
         }
 
         if (claimId != null) {
-            _queryParams["claim_id"] = claimId;
+            _queryParams.append("claim_id", claimId);
         }
 
         if (serviceLineId != null) {
-            _queryParams["service_line_id"] = serviceLineId;
+            _queryParams.append("service_line_id", serviceLineId);
         }
 
         if (billingProviderId != null) {
-            _queryParams["billing_provider_id"] = billingProviderId;
+            _queryParams.append("billing_provider_id", billingProviderId);
         }
 
         if (unattributed != null) {
-            _queryParams["unattributed"] = unattributed.toString();
+            _queryParams.append("unattributed", unattributed.toString());
         }
 
         if (invoiceId != null) {
-            _queryParams["invoice_id"] = invoiceId;
+            _queryParams.append("invoice_id", invoiceId);
         }
 
         if (sources != null) {
             if (Array.isArray(sources)) {
-                _queryParams["sources"] = sources.map((item) => item);
+                for (const _item of sources) {
+                    _queryParams.append("sources", _item);
+                }
             } else {
-                _queryParams["sources"] = sources;
+                _queryParams.append("sources", sources);
             }
         }
 
         if (sort != null) {
-            _queryParams["sort"] = sort;
+            _queryParams.append("sort", sort);
         }
 
         if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
+            _queryParams.append("sort_direction", sortDirection);
         }
 
         if (pageToken != null) {
-            _queryParams["page_token"] = pageToken;
+            _queryParams.append("page_token", pageToken);
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/patient-refunds/v1"
             ),
             method: "GET",
@@ -124,15 +102,11 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -173,22 +147,15 @@ export class V1 {
 
     /**
      * Retrieves a previously created patient refund by its `patient_refund_id`.
-     *
-     * @param {CandidApi.patientRefunds.v1.PatientRefundId} patientRefundId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientRefunds.v1.get(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
-        patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
-        requestOptions?: V1.RequestOptions
+        patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId
     ): Promise<core.APIResponse<CandidApi.patientRefunds.v1.PatientRefund, CandidApi.patientRefunds.v1.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/patient-refunds/v1/${encodeURIComponent(
-                    await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-refunds/v1/${await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(
+                    patientRefundId
                 )}`
             ),
             method: "GET",
@@ -196,14 +163,10 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -246,34 +209,13 @@ export class V1 {
      * Creates a new patient refund record and returns the newly created PatientRefund object.
      * The allocations can describe whether the refund is being applied toward a specific service line,
      * claim, or billing provider.
-     *
-     * @param {CandidApi.patientRefunds.v1.PatientRefundCreate} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientRefunds.v1.create({
-     *         amountCents: 1,
-     *         refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         refundNote: "string",
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         allocations: [{
-     *                 amountCents: 1,
-     *                 target: {
-     *                     type: "service_line_by_id",
-     *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *                 }
-     *             }],
-     *         invoice: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         refundReason: CandidApi.RefundReason.Overcharged
-     *     })
      */
     public async create(
-        request: CandidApi.patientRefunds.v1.PatientRefundCreate,
-        requestOptions?: V1.RequestOptions
+        request: CandidApi.patientRefunds.v1.PatientRefundCreate
     ): Promise<core.APIResponse<CandidApi.patientRefunds.v1.PatientRefund, CandidApi.patientRefunds.v1.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/patient-refunds/v1"
             ),
             method: "POST",
@@ -281,17 +223,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.patientRefunds.v1.PatientRefundCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -333,38 +271,16 @@ export class V1 {
 
     /**
      * Updates the patient refund record matching the provided patient_refund_id.
-     *
-     * @param {CandidApi.patientRefunds.v1.PatientRefundId} patientRefundId
-     * @param {CandidApi.patientRefunds.v1.PatientRefundUpdate} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientRefunds.v1.update(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         refundNote: {
-     *             type: "set",
-     *             value: "string"
-     *         },
-     *         invoice: {
-     *             type: "set",
-     *             value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *         },
-     *         refundReason: {
-     *             type: "set",
-     *             value: CandidApi.RefundReason.Overcharged
-     *         }
-     *     })
      */
     public async update(
         patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
-        request: CandidApi.patientRefunds.v1.PatientRefundUpdate = {},
-        requestOptions?: V1.RequestOptions
+        request: CandidApi.patientRefunds.v1.PatientRefundUpdate = {}
     ): Promise<core.APIResponse<CandidApi.patientRefunds.v1.PatientRefund, CandidApi.patientRefunds.v1.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/patient-refunds/v1/${encodeURIComponent(
-                    await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-refunds/v1/${await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(
+                    patientRefundId
                 )}`
             ),
             method: "PATCH",
@@ -372,17 +288,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.patientRefunds.v1.PatientRefundUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -424,22 +336,15 @@ export class V1 {
 
     /**
      * Deletes the patient refund record matching the provided patient_refund_id.
-     *
-     * @param {CandidApi.patientRefunds.v1.PatientRefundId} patientRefundId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.patientRefunds.v1.delete(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async delete(
-        patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
-        requestOptions?: V1.RequestOptions
+        patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId
     ): Promise<core.APIResponse<void, CandidApi.patientRefunds.v1.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/patient-refunds/v1/${encodeURIComponent(
-                    await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/patient-refunds/v1/${await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(
+                    patientRefundId
                 )}`
             ),
             method: "DELETE",
@@ -447,14 +352,10 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -489,8 +390,8 @@ export class V1 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

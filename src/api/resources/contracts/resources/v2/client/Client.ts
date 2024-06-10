@@ -4,57 +4,38 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as CandidApi from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
+import URLSearchParams from "@ungap/url-search-params";
 
 export declare namespace V2 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    constructor(protected readonly options: V2.Options) {}
 
-    /**
-     * @param {CandidApi.contracts.v2.ContractId} contractId
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.contracts.v2.get(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
-     */
     public async get(
-        contractId: CandidApi.contracts.v2.ContractId,
-        requestOptions?: V2.RequestOptions
+        contractId: CandidApi.contracts.v2.ContractId
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/contracts/v2/${encodeURIComponent(
-                    await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)
-                )}`
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/contracts/v2/${await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -92,87 +73,70 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.contracts.v2.GetMultiContractsRequest} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.contracts.v2.getMulti({
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         limit: 1,
-     *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         renderingProviderIds: CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         payerNames: "string",
-     *         states: CandidApi.State.Aa,
-     *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending
-     *     })
-     */
     public async getMulti(
-        request: CandidApi.contracts.v2.GetMultiContractsRequest = {},
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.contracts.v2.GetMultiContractsRequest = {}
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractsPage, CandidApi.contracts.v2.getMulti.Error>> {
         const { pageToken, limit, contractingProviderId, renderingProviderIds, payerNames, states, contractStatus } =
             request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams = new URLSearchParams();
         if (pageToken != null) {
-            _queryParams["page_token"] = pageToken;
+            _queryParams.append("page_token", pageToken);
         }
 
         if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+            _queryParams.append("limit", limit.toString());
         }
 
         if (contractingProviderId != null) {
-            _queryParams["contracting_provider_id"] = contractingProviderId;
+            _queryParams.append("contracting_provider_id", contractingProviderId);
         }
 
         if (renderingProviderIds != null) {
             if (Array.isArray(renderingProviderIds)) {
-                _queryParams["rendering_provider_ids"] = renderingProviderIds.map((item) => item);
+                for (const _item of renderingProviderIds) {
+                    _queryParams.append("rendering_provider_ids", _item);
+                }
             } else {
-                _queryParams["rendering_provider_ids"] = renderingProviderIds;
+                _queryParams.append("rendering_provider_ids", renderingProviderIds);
             }
         }
 
         if (payerNames != null) {
             if (Array.isArray(payerNames)) {
-                _queryParams["payer_names"] = payerNames.map((item) => item);
+                for (const _item of payerNames) {
+                    _queryParams.append("payer_names", _item);
+                }
             } else {
-                _queryParams["payer_names"] = payerNames;
+                _queryParams.append("payer_names", payerNames);
             }
         }
 
         if (states != null) {
             if (Array.isArray(states)) {
-                _queryParams["states"] = states.map((item) => item);
+                for (const _item of states) {
+                    _queryParams.append("states", _item);
+                }
             } else {
-                _queryParams["states"] = states;
+                _queryParams.append("states", states);
             }
         }
 
         if (contractStatus != null) {
-            _queryParams["contract_status"] = contractStatus;
+            _queryParams.append("contract_status", contractStatus);
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                "/api/contracts/v2"
-            ),
+            url: urlJoin(this.options.environment ?? environments.CandidApiEnvironment.Production, "/api/contracts/v2"),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -194,58 +158,24 @@ export class V2 {
 
     /**
      * Creates a new contract within the user's current organization
-     *
-     * @param {CandidApi.contracts.v2.ContractCreate} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.contracts.v2.create({
-     *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-     *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-     *         effectiveDate: CandidApi.Date_("string"),
-     *         expirationDate: CandidApi.Date_("string"),
-     *         regions: {
-     *             type: "states"
-     *         },
-     *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
-     *         authorizedSignatory: {},
-     *         commercialInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicareInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicaidInsuranceTypes: {
-     *             type: "allApply"
-     *         }
-     *     })
      */
     public async create(
-        request: CandidApi.contracts.v2.ContractCreate,
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.contracts.v2.ContractCreate
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.create.Error>> {
         const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                "/api/contracts/v2"
-            ),
+            url: urlJoin(this.options.environment ?? environments.CandidApiEnvironment.Production, "/api/contracts/v2"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.contracts.v2.ContractCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -265,37 +195,23 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.contracts.v2.ContractId} contractId
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.contracts.v2.delete(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
-     */
     public async delete(
-        contractId: CandidApi.contracts.v2.ContractId,
-        requestOptions?: V2.RequestOptions
+        contractId: CandidApi.contracts.v2.ContractId
     ): Promise<core.APIResponse<void, CandidApi.contracts.v2.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/contracts/v2/${encodeURIComponent(
-                    await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)
-                )}`
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/contracts/v2/${await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -328,75 +244,27 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.contracts.v2.ContractId} contractId
-     * @param {CandidApi.contracts.v2.ContractUpdate} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.contracts.v2.update(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-     *         effectiveDate: CandidApi.Date_("string"),
-     *         expirationDate: {
-     *             type: "set",
-     *             value: CandidApi.Date_("string")
-     *         },
-     *         regions: {
-     *             type: "set",
-     *             value: {
-     *                 type: "states",
-     *                 states: [CandidApi.State.Aa]
-     *             }
-     *         },
-     *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
-     *         authorizedSignatory: {
-     *             type: "set",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             title: "string",
-     *             email: "string",
-     *             phone: "string",
-     *             fax: "string"
-     *         },
-     *         commercialInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicareInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicaidInsuranceTypes: {
-     *             type: "allApply"
-     *         }
-     *     })
-     */
     public async update(
         contractId: CandidApi.contracts.v2.ContractId,
-        request: CandidApi.contracts.v2.ContractUpdate = {},
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.contracts.v2.ContractUpdate = {}
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/contracts/v2/${encodeURIComponent(
-                    await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)
-                )}`
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/contracts/v2/${await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.contracts.v2.ContractUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -434,8 +302,8 @@ export class V2 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

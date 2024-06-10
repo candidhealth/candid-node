@@ -1,4 +1,4 @@
-export { type GetMultiRequest } from "./GetMultiRequest";
-export { type GetUniqueDimensionValuesRequest } from "./GetUniqueDimensionValuesRequest";
-export { type FeeScheduleUploadRequest } from "./FeeScheduleUploadRequest";
-export { type PayerThresholdGetRequest } from "./PayerThresholdGetRequest";
+export { GetMultiRequest } from "./GetMultiRequest";
+export { GetUniqueDimensionValuesRequest } from "./GetUniqueDimensionValuesRequest";
+export { FeeScheduleUploadRequest } from "./FeeScheduleUploadRequest";
+export { PayerThresholdGetRequest } from "./PayerThresholdGetRequest";

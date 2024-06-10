@@ -4,57 +4,28 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as CandidApi from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    constructor(protected readonly options: V2.Options) {}
 
     /**
      * Computes the expected network status for a given rendering provider.
      * This endpoint is not available to all customers. Reach out to the Candid sales team
      * to discuss enabling this endpoint if it is not available for your organization.
-     *
-     * @param {CandidApi.organizationProviders.v2.OrganizationProviderId} renderingProviderId
-     * @param {CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.expectedNetworkStatus.v2.computeForRenderingProvider(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
-     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *         subscriberInformation: {},
-     *         patientAddress: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: CandidApi.State.Ny,
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         billingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"),
-     *         dateOfService: "2023-01-15"
-     *     })
      */
     public async computeForRenderingProvider(
         renderingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId,
-        request: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2,
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2
     ): Promise<
         core.APIResponse<
             CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusResponseV2,
@@ -63,9 +34,9 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/expected-network-status/v2/compute/${encodeURIComponent(
-                    await serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(renderingProviderId)
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/expected-network-status/v2/compute/${await serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(
+                    renderingProviderId
                 )}`
             ),
             method: "POST",
@@ -73,17 +44,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -133,31 +100,9 @@ export class V2 {
      * Computes all the in network providers for a given set of inputs.
      * This endpoint is not available to all customers. Reach out to the Candid sales team
      * to discuss enabling this endpoint if it is not available for your organization.
-     *
-     * @param {CandidApi.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.expectedNetworkStatus.v2.computeAllInNetworkProviders({
-     *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
-     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *         subscriberInformation: {},
-     *         patientAddress: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: CandidApi.State.Ny,
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         billingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"),
-     *         dateOfService: "2023-01-15"
-     *     })
      */
     public async computeAllInNetworkProviders(
-        request: CandidApi.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest,
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest
     ): Promise<
         core.APIResponse<
             CandidApi.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersResponse,
@@ -166,7 +111,7 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/expected-network-status/v2/compute"
             ),
             method: "POST",
@@ -174,17 +119,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -230,8 +171,8 @@ export class V2 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

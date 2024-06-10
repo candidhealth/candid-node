@@ -1,1 +1,1 @@
-export { type GetAllTasksRequest } from "./GetAllTasksRequest";
+export { GetAllTasksRequest } from "./GetAllTasksRequest";

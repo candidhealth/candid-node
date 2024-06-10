@@ -1,1 +1,1 @@
-export { type ExpectedNetworkStatusRequest } from "./ExpectedNetworkStatusRequest";
+export { ExpectedNetworkStatusRequest } from "./ExpectedNetworkStatusRequest";

@@ -1,2 +1,2 @@
-export { type GetMultiWriteOffsRequest } from "./GetMultiWriteOffsRequest";
-export { type CreateWriteOffsRequest } from "./CreateWriteOffsRequest";
+export { GetMultiWriteOffsRequest } from "./GetMultiWriteOffsRequest";
+export { CreateWriteOffsRequest } from "./CreateWriteOffsRequest";

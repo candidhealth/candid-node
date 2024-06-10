@@ -4,73 +4,41 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as CandidApi from "../../../index";
-import * as serializers from "../../../../serialization/index";
+import * as CandidApi from "../../..";
+import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
 
 export declare namespace ServiceFacility {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class ServiceFacility {
-    constructor(protected readonly _options: ServiceFacility.Options = {}) {}
+    constructor(protected readonly options: ServiceFacility.Options) {}
 
-    /**
-     * @param {CandidApi.ServiceFacilityId} serviceFacilityId
-     * @param {CandidApi.EncounterServiceFacilityUpdate} request
-     * @param {ServiceFacility.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         organizationName: "string",
-     *         npi: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: CandidApi.State.Ny,
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         }
-     *     })
-     */
     public async update(
         serviceFacilityId: CandidApi.ServiceFacilityId,
-        request: CandidApi.EncounterServiceFacilityUpdate = {},
-        requestOptions?: ServiceFacility.RequestOptions
+        request: CandidApi.EncounterServiceFacilityUpdate = {}
     ): Promise<core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/service_facility/v2/${encodeURIComponent(
-                    await serializers.ServiceFacilityId.jsonOrThrow(serviceFacilityId)
-                )}`
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/service_facility/v2/${await serializers.ServiceFacilityId.jsonOrThrow(serviceFacilityId)}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.EncounterServiceFacilityUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -90,8 +58,8 @@ export class ServiceFacility {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

@@ -4,43 +4,26 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as CandidApi from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    constructor(protected readonly options: V2.Options) {}
 
-    /**
-     * @param {CandidApi.billingNotes.v2.StandaloneBillingNoteCreate} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.billingNotes.v2.create({
-     *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         text: "string"
-     *     })
-     */
     public async create(
-        request: CandidApi.billingNotes.v2.StandaloneBillingNoteCreate,
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.billingNotes.v2.StandaloneBillingNoteCreate
     ): Promise<core.APIResponse<CandidApi.billingNotes.v2.BillingNote, CandidApi.billingNotes.v2.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/billing_notes/v2"
             ),
             method: "POST",
@@ -48,17 +31,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.billingNotes.v2.StandaloneBillingNoteCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -78,8 +57,8 @@ export class V2 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

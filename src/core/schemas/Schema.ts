@@ -17,7 +17,6 @@ export const SchemaType = {
     ENUM: "enum",
     LIST: "list",
     STRING_LITERAL: "stringLiteral",
-    BOOLEAN_LITERAL: "booleanLiteral",
     OBJECT: "object",
     ANY: "any",
     BOOLEAN: "boolean",

@@ -1,1 +1,1 @@
-export { type GetAllOrganizationServiceFacilitiesRequest } from "./GetAllOrganizationServiceFacilitiesRequest";
+export { GetAllOrganizationServiceFacilitiesRequest } from "./GetAllOrganizationServiceFacilitiesRequest";
