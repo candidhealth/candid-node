@@ -8,17 +8,23 @@ import { V4 } from "../resources/v4/client/Client";
 
 export declare namespace Encounters {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Encounters {
-    constructor(protected readonly options: Encounters.Options) {}
+    constructor(protected readonly _options: Encounters.Options = {}) {}
 
     protected _v4: V4 | undefined;
 
     public get v4(): V4 {
-        return (this._v4 ??= new V4(this.options));
+        return (this._v4 ??= new V4(this._options));
     }
 }
