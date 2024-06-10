@@ -6,11 +6,11 @@ if (process.env.clientId == null || process.env.clientSecret == null) {
     throw Error("Need a client ID and secret to use Candid API!");
 }
 
-const client = new CandidApiClient({
+const client = await CandidApiClient.factory({
     environment: CandidApiEnvironment.Staging,
     clientId: process.env.clientId,
     clientSecret: process.env.clientSecret,
-});
+})
 
 const createEncounter = async () => {
     // Create a new encounter for patient Loki Laufeyson
