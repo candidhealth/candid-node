@@ -4,36 +4,23 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
-import * as serializers from "../../../../../../serialization/index";
+import * as CandidApi from "../../../../..";
+import * as serializers from "../../../../../../serialization";
 import urlJoin from "url-join";
+import URLSearchParams from "@ungap/url-search-params";
 
 export declare namespace V2 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    constructor(protected readonly options: V2.Options) {}
 
-    /**
-     * @param {CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId} organizationServiceFacilityId
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.organizationServiceFacilities.v2.get(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
-     */
     public async get(
-        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
-        requestOptions?: V2.RequestOptions
+        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
@@ -42,11 +29,9 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
-                        organizationServiceFacilityId
-                    )
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/organization-service-facilities/v2/${await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
+                    organizationServiceFacilityId
                 )}`
             ),
             method: "GET",
@@ -54,14 +39,10 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -102,20 +83,8 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.organizationServiceFacilities.v2.getMulti({
-     *         limit: 100,
-     *         name: "Test Service Facility",
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
-     *     })
-     */
     public async getMulti(
-        request: CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest = {},
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest = {}
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityPage,
@@ -123,22 +92,22 @@ export class V2 {
         >
     > {
         const { limit, name, pageToken } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams = new URLSearchParams();
         if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+            _queryParams.append("limit", limit.toString());
         }
 
         if (name != null) {
-            _queryParams["name"] = name;
+            _queryParams.append("name", name);
         }
 
         if (pageToken != null) {
-            _queryParams["page_token"] = pageToken;
+            _queryParams.append("page_token", pageToken);
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/organization-service-facilities/v2"
             ),
             method: "GET",
@@ -146,15 +115,11 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -177,34 +142,8 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.organizationServiceFacilities.v2.create({
-     *         name: "Test Service Facility",
-     *         aliases: ["Test Service Facility Alias"],
-     *         description: "Test Service Facility Description",
-     *         status: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus.Active,
-     *         operationalStatus: CandidApi.organizationServiceFacilities.v2.ServiceFacilityOperationalStatus.Closed,
-     *         mode: CandidApi.organizationServiceFacilities.v2.ServiceFacilityMode.Instance,
-     *         type: CandidApi.organizationServiceFacilities.v2.ServiceFacilityType.DiagnosticsOrTherapeuticsUnit,
-     *         physicalType: CandidApi.organizationServiceFacilities.v2.ServiceFacilityPhysicalType.Site,
-     *         telecoms: ["555-555-5555"],
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: CandidApi.State.Ny,
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         }
-     *     })
-     */
     public async create(
-        request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate,
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
@@ -213,7 +152,7 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/organization-service-facilities/v2"
             ),
             method: "POST",
@@ -221,18 +160,14 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate.jsonOrThrow(
                 request,
                 { unrecognizedObjectKeys: "strip" }
             ),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -275,36 +210,9 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId} organizationServiceFacilityId
-     * @param {CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.organizationServiceFacilities.v2.update(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"), {
-     *         name: "Test Service Facility",
-     *         aliases: ["Test Service Facility Alias"],
-     *         description: "Test Service Facility Description",
-     *         status: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus.Active,
-     *         operationalStatus: CandidApi.organizationServiceFacilities.v2.ServiceFacilityOperationalStatus.Closed,
-     *         mode: CandidApi.organizationServiceFacilities.v2.ServiceFacilityMode.Instance,
-     *         type: CandidApi.organizationServiceFacilities.v2.ServiceFacilityType.DiagnosticsOrTherapeuticsUnit,
-     *         physicalType: CandidApi.organizationServiceFacilities.v2.ServiceFacilityPhysicalType.Site,
-     *         telecoms: ["555-555-5555"],
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: CandidApi.State.Ny,
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         }
-     *     })
-     */
     public async update(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
-        request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate,
-        requestOptions?: V2.RequestOptions
+        request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
@@ -313,11 +221,9 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
-                        organizationServiceFacilityId
-                    )
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/organization-service-facilities/v2/${await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
+                    organizationServiceFacilityId
                 )}`
             ),
             method: "PATCH",
@@ -325,18 +231,14 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate.jsonOrThrow(
                 request,
                 { unrecognizedObjectKeys: "strip" }
             ),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -380,24 +282,14 @@ export class V2 {
         };
     }
 
-    /**
-     * @param {CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId} organizationServiceFacilityId
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.organizationServiceFacilities.v2.delete(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
-     */
     public async delete(
-        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
-        requestOptions?: V2.RequestOptions
+        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId
     ): Promise<core.APIResponse<void, CandidApi.organizationServiceFacilities.v2.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
-                        organizationServiceFacilityId
-                    )
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/organization-service-facilities/v2/${await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
+                    organizationServiceFacilityId
                 )}`
             ),
             method: "DELETE",
@@ -405,14 +297,10 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -447,8 +335,8 @@ export class V2 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

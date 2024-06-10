@@ -1,2 +1,2 @@
-export { type GetMultiInsuranceRefundsRequest } from "./GetMultiInsuranceRefundsRequest";
-export { type InsuranceRefundUpdate } from "./InsuranceRefundUpdate";
+export { GetMultiInsuranceRefundsRequest } from "./GetMultiInsuranceRefundsRequest";
+export { InsuranceRefundUpdate } from "./InsuranceRefundUpdate";

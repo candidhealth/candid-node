@@ -1,1 +1,1 @@
-export { type GetAllOrganizationProvidersRequestV2 } from "./GetAllOrganizationProvidersRequestV2";
+export { GetAllOrganizationProvidersRequestV2 } from "./GetAllOrganizationProvidersRequestV2";

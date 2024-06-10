@@ -1,3 +1,3 @@
-export { type GetAllEncountersRequest } from "./GetAllEncountersRequest";
-export { type EncounterCreate } from "./EncounterCreate";
-export { type EncounterUpdate } from "./EncounterUpdate";
+export { GetAllEncountersRequest } from "./GetAllEncountersRequest";
+export { EncounterCreate } from "./EncounterCreate";
+export { EncounterUpdate } from "./EncounterUpdate";

@@ -9,29 +9,23 @@ import { V2 } from "../resources/v2/client/Client";
 
 export declare namespace ExpectedNetworkStatus {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class ExpectedNetworkStatus {
-    constructor(protected readonly _options: ExpectedNetworkStatus.Options = {}) {}
+    constructor(protected readonly options: ExpectedNetworkStatus.Options) {}
 
     protected _v1: V1 | undefined;
 
     public get v1(): V1 {
-        return (this._v1 ??= new V1(this._options));
+        return (this._v1 ??= new V1(this.options));
     }
 
     protected _v2: V2 | undefined;
 
     public get v2(): V2 {
-        return (this._v2 ??= new V2(this._options));
+        return (this._v2 ??= new V2(this.options));
     }
 }

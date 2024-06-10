@@ -1,3 +1,3 @@
-export { type GetMultiContractsRequest } from "./GetMultiContractsRequest";
-export { type ContractCreate } from "./ContractCreate";
-export { type ContractUpdate } from "./ContractUpdate";
+export { GetMultiContractsRequest } from "./GetMultiContractsRequest";
+export { ContractCreate } from "./ContractCreate";
+export { ContractUpdate } from "./ContractUpdate";

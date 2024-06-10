@@ -4,49 +4,26 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../../index";
+import * as CandidApi from "../../../../..";
+import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
-import * as serializers from "../../../../../../serialization/index";
+import * as serializers from "../../../../../../serialization";
 
 export declare namespace V1 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    constructor(protected readonly options: V1.Options) {}
 
     /**
      * Returns all write-offs satisfying the search criteria.
-     *
-     * @param {CandidApi.writeOffs.v1.GetMultiWriteOffsRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.writeOffs.v1.getMulti({
-     *         limit: 1,
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         sort: CandidApi.writeOffs.v1.WriteOffSortField.AmountCents,
-     *         sortDirection: CandidApi.SortDirection.Asc,
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         accountTypes: CandidApi.AccountType.Patient
-     *     })
      */
     public async getMulti(
-        request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {},
-        requestOptions?: V1.RequestOptions
+        request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {}
     ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error>> {
         const {
             limit,
@@ -60,54 +37,56 @@ export class V1 {
             pageToken,
             accountTypes,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams = new URLSearchParams();
         if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+            _queryParams.append("limit", limit.toString());
         }
 
         if (patientExternalId != null) {
-            _queryParams["patient_external_id"] = patientExternalId;
+            _queryParams.append("patient_external_id", patientExternalId);
         }
 
         if (payerUuid != null) {
-            _queryParams["payer_uuid"] = payerUuid;
+            _queryParams.append("payer_uuid", payerUuid);
         }
 
         if (serviceLineId != null) {
-            _queryParams["service_line_id"] = serviceLineId;
+            _queryParams.append("service_line_id", serviceLineId);
         }
 
         if (claimId != null) {
-            _queryParams["claim_id"] = claimId;
+            _queryParams.append("claim_id", claimId);
         }
 
         if (billingProviderId != null) {
-            _queryParams["billing_provider_id"] = billingProviderId;
+            _queryParams.append("billing_provider_id", billingProviderId);
         }
 
         if (sort != null) {
-            _queryParams["sort"] = sort;
+            _queryParams.append("sort", sort);
         }
 
         if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
+            _queryParams.append("sort_direction", sortDirection);
         }
 
         if (pageToken != null) {
-            _queryParams["page_token"] = pageToken;
+            _queryParams.append("page_token", pageToken);
         }
 
         if (accountTypes != null) {
             if (Array.isArray(accountTypes)) {
-                _queryParams["account_types"] = accountTypes.map((item) => item);
+                for (const _item of accountTypes) {
+                    _queryParams.append("account_types", _item);
+                }
             } else {
-                _queryParams["account_types"] = accountTypes;
+                _queryParams.append("account_types", accountTypes);
             }
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/write-offs/v1"
             ),
             method: "GET",
@@ -115,15 +94,11 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -145,37 +120,24 @@ export class V1 {
 
     /**
      * Retrieves a previously created write off by its `write_off_id`.
-     *
-     * @param {CandidApi.writeOffs.v1.WriteOffId} writeOffId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.writeOffs.v1.get(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
-        writeOffId: CandidApi.writeOffs.v1.WriteOffId,
-        requestOptions?: V1.RequestOptions
+        writeOffId: CandidApi.writeOffs.v1.WriteOffId
     ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/write-offs/v1/${encodeURIComponent(
-                    await serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)
-                )}`
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/write-offs/v1/${await serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -199,29 +161,13 @@ export class V1 {
      * Creates one or many write-offs given a specific set of allocations.
      * The allocations can describe whether the refund is being applied toward a specific service line,
      * claim, or billing provider.
-     *
-     * @param {CandidApi.writeOffs.v1.CreateWriteOffsRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.writeOffs.v1.create({
-     *         writeOffs: [{
-     *                 type: "patient",
-     *                 writeOffTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *                 writeOffNote: "string",
-     *                 writeOffReason: CandidApi.writeOffs.v1.PatientWriteOffReason.SmallBalance,
-     *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *                 amountCents: 1
-     *             }]
-     *     })
      */
     public async create(
-        request: CandidApi.writeOffs.v1.CreateWriteOffsRequest,
-        requestOptions?: V1.RequestOptions
+        request: CandidApi.writeOffs.v1.CreateWriteOffsRequest
     ): Promise<core.APIResponse<CandidApi.writeOffs.v1.CreateWriteOffsResponse, CandidApi.writeOffs.v1.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
                 "/api/write-offs/v1"
             ),
             method: "POST",
@@ -229,17 +175,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
             body: await serializers.writeOffs.v1.CreateWriteOffsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -261,37 +203,24 @@ export class V1 {
 
     /**
      * Reverts a write off given a `write_off_id`.
-     *
-     * @param {CandidApi.writeOffs.v1.WriteOffId} writeOffId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await candidApi.writeOffs.v1.revert(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async revert(
-        writeOffId: CandidApi.writeOffs.v1.WriteOffId,
-        requestOptions?: V1.RequestOptions
+        writeOffId: CandidApi.writeOffs.v1.WriteOffId
     ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revert.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
-                `/api/write-offs/v1/${encodeURIComponent(
-                    await serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)
-                )}/revert`
+                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                `/api/write-offs/v1/${await serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)}/revert`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.21270",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                "X-Fern-SDK-Version": "0.19.0",
             },
             contentType: "application/json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+            timeoutMs: 60000,
         });
         if (_response.ok) {
             return {
@@ -311,8 +240,8 @@ export class V1 {
         };
     }
 
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
+    protected async _getAuthorizationHeader() {
+        const bearer = await core.Supplier.get(this.options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

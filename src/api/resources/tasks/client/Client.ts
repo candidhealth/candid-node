@@ -8,23 +8,17 @@ import { V3 } from "../resources/v3/client/Client";
 
 export declare namespace Tasks {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: environments.CandidApiEnvironment | string;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    interface RequestOptions {
-        timeoutInSeconds?: number;
-        maxRetries?: number;
-        abortSignal?: AbortSignal;
     }
 }
 
 export class Tasks {
-    constructor(protected readonly _options: Tasks.Options = {}) {}
+    constructor(protected readonly options: Tasks.Options) {}
 
     protected _v3: V3 | undefined;
 
     public get v3(): V3 {
-        return (this._v3 ??= new V3(this._options));
+        return (this._v3 ??= new V3(this.options));
     }
 }

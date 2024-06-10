@@ -1,1 +1,1 @@
-export { type GuarantorUpdate } from "./GuarantorUpdate";
+export { GuarantorUpdate } from "./GuarantorUpdate";
