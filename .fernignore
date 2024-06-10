@@ -3,7 +3,3 @@
 # Top-level files and folders
 README.md
 examples
-
-# Re-declared files to make it easier to use
-src/index.ts
-src/CandidApiClient.ts
