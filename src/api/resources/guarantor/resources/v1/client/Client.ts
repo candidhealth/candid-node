@@ -4,44 +4,82 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as CandidApi from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V1 {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class V1 {
-    constructor(protected readonly options: V1.Options) {}
+    constructor(protected readonly _options: V1.Options = {}) {}
 
     /**
      * Creates a new guarantor and returns the newly created Guarantor object.
+     *
+     * @param {CandidApi.EncounterId} encounterId
+     * @param {CandidApi.guarantor.v1.GuarantorCreate} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.guarantor.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         phoneNumbers: [{
+     *                 number: "1234567890",
+     *                 type: CandidApi.PhoneNumberType.Home
+     *             }],
+     *         phoneConsent: true,
+     *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
+     *         emailConsent: true,
+     *         firstName: "string",
+     *         lastName: "string",
+     *         externalId: "string",
+     *         dateOfBirth: "2023-01-15",
+     *         address: {
+     *             address1: "123 Main St",
+     *             address2: "Apt 1",
+     *             city: "New York",
+     *             state: CandidApi.State.Ny,
+     *             zipCode: "10001",
+     *             zipPlusFourCode: "1234"
+     *         }
+     *     })
      */
     public async create(
         encounterId: CandidApi.EncounterId,
-        request: CandidApi.guarantor.v1.GuarantorCreate
+        request: CandidApi.guarantor.v1.GuarantorCreate,
+        requestOptions?: V1.RequestOptions
     ): Promise<core.APIResponse<CandidApi.guarantor.v1.Guarantor, CandidApi.guarantor.v1.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/guarantors/v1/${await serializers.EncounterId.jsonOrThrow(encounterId)}`
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                `/api/guarantors/v1/${encodeURIComponent(await serializers.EncounterId.jsonOrThrow(encounterId))}`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.guarantor.v1.GuarantorCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -81,24 +119,37 @@ export class V1 {
 
     /**
      * Retrieves a guarantor by its `guarantor_id`.
+     *
+     * @param {CandidApi.guarantor.v1.GuarantorId} guarantorId
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.guarantor.v1.get(CandidApi.guarantor.v1.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
-        guarantorId: CandidApi.guarantor.v1.GuarantorId
+        guarantorId: CandidApi.guarantor.v1.GuarantorId,
+        requestOptions?: V1.RequestOptions
     ): Promise<core.APIResponse<CandidApi.guarantor.v1.Guarantor, CandidApi.guarantor.v1.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/guarantors/v1/${await serializers.guarantor.v1.GuarantorId.jsonOrThrow(guarantorId)}`
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                `/api/guarantors/v1/${encodeURIComponent(
+                    await serializers.guarantor.v1.GuarantorId.jsonOrThrow(guarantorId)
+                )}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -120,28 +171,62 @@ export class V1 {
 
     /**
      * Updates a guarantor by its `guarantor_id`.
+     *
+     * @param {CandidApi.guarantor.v1.GuarantorId} guarantorId
+     * @param {CandidApi.guarantor.v1.GuarantorUpdate} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.guarantor.v1.update(CandidApi.guarantor.v1.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         firstName: "string",
+     *         lastName: "string",
+     *         externalId: "string",
+     *         dateOfBirth: "2023-01-15",
+     *         address: {
+     *             address1: "123 Main St",
+     *             address2: "Apt 1",
+     *             city: "New York",
+     *             state: CandidApi.State.Ny,
+     *             zipCode: "10001",
+     *             zipPlusFourCode: "1234"
+     *         },
+     *         phoneNumbers: [{
+     *                 number: "1234567890",
+     *                 type: CandidApi.PhoneNumberType.Home
+     *             }],
+     *         phoneConsent: true,
+     *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
+     *         emailConsent: true
+     *     })
      */
     public async update(
         guarantorId: CandidApi.guarantor.v1.GuarantorId,
-        request: CandidApi.guarantor.v1.GuarantorUpdate = {}
+        request: CandidApi.guarantor.v1.GuarantorUpdate = {},
+        requestOptions?: V1.RequestOptions
     ): Promise<core.APIResponse<CandidApi.guarantor.v1.Guarantor, CandidApi.guarantor.v1.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/guarantors/v1/${await serializers.guarantor.v1.GuarantorId.jsonOrThrow(guarantorId)}`
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                `/api/guarantors/v1/${encodeURIComponent(
+                    await serializers.guarantor.v1.GuarantorId.jsonOrThrow(guarantorId)
+                )}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.guarantor.v1.GuarantorUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -161,8 +246,8 @@ export class V1 {
         };
     }
 
-    protected async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
+    protected async _getAuthorizationHeader(): Promise<string | undefined> {
+        const bearer = await core.Supplier.get(this._options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

@@ -1,1 +1,1 @@
-export { EncounterServiceFacilityUpdate } from "./EncounterServiceFacilityUpdate";
+export { type EncounterServiceFacilityUpdate } from "./EncounterServiceFacilityUpdate";

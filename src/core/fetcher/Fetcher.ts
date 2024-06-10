@@ -1,8 +1,8 @@
-import URLSearchParams from "@ungap/url-search-params";
-import axios, { AxiosAdapter, AxiosError } from "axios";
+import qs from "qs";
+import { RUNTIME } from "../runtime";
 import { APIResponse } from "./APIResponse";
 
-export type FetchFunction = (args: Fetcher.Args) => Promise<APIResponse<unknown, Fetcher.Error>>;
+export type FetchFunction = <R = unknown>(args: Fetcher.Args) => Promise<APIResponse<R, Fetcher.Error>>;
 
 export declare namespace Fetcher {
     export interface Args {
@@ -10,12 +10,13 @@ export declare namespace Fetcher {
         method: string;
         contentType?: string;
         headers?: Record<string, string | undefined>;
-        queryParameters?: URLSearchParams;
+        queryParameters?: Record<string, string | string[] | object | object[]>;
         body?: unknown;
         timeoutMs?: number;
+        maxRetries?: number;
         withCredentials?: boolean;
-        adapter?: AxiosAdapter;
-        onUploadProgress?: (event: ProgressEvent) => void;
+        abortSignal?: AbortSignal;
+        responseType?: "json" | "blob" | "streaming" | "text";
     }
 
     export type Error = FailedStatusCodeError | NonJsonError | TimeoutError | UnknownError;
@@ -42,7 +43,11 @@ export declare namespace Fetcher {
     }
 }
 
-export const fetcher: FetchFunction = async (args) => {
+const INITIAL_RETRY_DELAY = 1;
+const MAX_RETRY_DELAY = 60;
+const DEFAULT_MAX_RETRIES = 2;
+
+async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIResponse<R, Fetcher.Error>> {
     const headers: Record<string, string> = {};
     if (args.body !== undefined && args.contentType != null) {
         headers["Content-Type"] = args.contentType;
@@ -56,46 +61,129 @@ export const fetcher: FetchFunction = async (args) => {
         }
     }
 
-    try {
-        const response = await axios({
-            url: args.url,
-            params: args.queryParameters,
+    const url =
+        Object.keys(args.queryParameters ?? {}).length > 0
+            ? `${args.url}?${qs.stringify(args.queryParameters, { arrayFormat: "repeat" })}`
+            : args.url;
+
+    let body: BodyInit | undefined = undefined;
+    const maybeStringifyBody = (body: any) => {
+        if (body instanceof Uint8Array) {
+            return body;
+        } else if (args.contentType === "application/x-www-form-urlencoded" && typeof args.body === "string") {
+            return args.body;
+        } else {
+            return JSON.stringify(body);
+        }
+    };
+
+    if (RUNTIME.type === "node") {
+        if (args.body instanceof (await import("formdata-node")).FormData) {
+            // @ts-expect-error
+            body = args.body;
+        } else {
+            body = maybeStringifyBody(args.body);
+        }
+    } else {
+        if (args.body instanceof (await import("form-data")).default) {
+            // @ts-expect-error
+            body = args.body;
+        } else {
+            body = maybeStringifyBody(args.body);
+        }
+    }
+
+    // In Node.js environments, the SDK always uses`node-fetch`.
+    // If not in Node.js the SDK uses global fetch if available,
+    // and falls back to node-fetch.
+    const fetchFn =
+        RUNTIME.type === "node"
+            ? // `.default` is required due to this issue:
+              // https://github.com/node-fetch/node-fetch/issues/450#issuecomment-387045223
+              ((await import("node-fetch")).default as any)
+            : typeof fetch == "function"
+            ? fetch
+            : ((await import("node-fetch")).default as any);
+
+    const makeRequest = async (): Promise<Response> => {
+        const signals: AbortSignal[] = [];
+
+        // Add timeout signal
+        let timeoutAbortId: NodeJS.Timeout | undefined = undefined;
+        if (args.timeoutMs != null) {
+            const { signal, abortId } = getTimeoutSignal(args.timeoutMs);
+            timeoutAbortId = abortId;
+            signals.push(signal);
+        }
+
+        // Add arbitrary signal
+        if (args.abortSignal != null) {
+            signals.push(args.abortSignal);
+        }
+
+        const response = await fetchFn(url, {
             method: args.method,
             headers,
-            data: args.body,
-            validateStatus: () => true,
-            transformResponse: (response) => response,
-            timeout: args.timeoutMs,
-            transitional: {
-                clarifyTimeoutError: true,
-            },
-            withCredentials: args.withCredentials,
-            adapter: args.adapter,
-            onUploadProgress: args.onUploadProgress,
-            maxBodyLength: Infinity,
-            maxContentLength: Infinity,
+            body,
+            signal: anySignal(signals),
+            credentials: args.withCredentials ? "include" : undefined,
         });
 
-        let body: unknown;
-        if (response.data != null && response.data.length > 0) {
-            try {
-                body = JSON.parse(response.data) ?? undefined;
-            } catch {
-                return {
-                    ok: false,
-                    error: {
-                        reason: "non-json",
-                        statusCode: response.status,
-                        rawBody: response.data,
-                    },
-                };
+        if (timeoutAbortId != null) {
+            clearTimeout(timeoutAbortId);
+        }
+
+        return response;
+    };
+
+    try {
+        let response = await makeRequest();
+
+        for (let i = 0; i < (args.maxRetries ?? DEFAULT_MAX_RETRIES); ++i) {
+            if (
+                response.status === 408 ||
+                response.status === 409 ||
+                response.status === 429 ||
+                response.status >= 500
+            ) {
+                const delay = Math.min(INITIAL_RETRY_DELAY * Math.pow(i, 2), MAX_RETRY_DELAY);
+                await new Promise((resolve) => setTimeout(resolve, delay));
+                response = await makeRequest();
+            } else {
+                break;
             }
         }
 
-        if (response.status >= 200 && response.status < 300) {
+        let body: unknown;
+        if (response.body != null && args.responseType === "blob") {
+            body = await response.blob();
+        } else if (response.body != null && args.responseType === "streaming") {
+            body = response.body;
+        } else if (response.body != null && args.responseType === "text") {
+            body = await response.text();
+        } else {
+            const text = await response.text();
+            if (text.length > 0) {
+                try {
+                    body = JSON.parse(text);
+                } catch (err) {
+                    return {
+                        ok: false,
+                        error: {
+                            reason: "non-json",
+                            statusCode: response.status,
+                            rawBody: text,
+                        },
+                    };
+                }
+            }
+        }
+
+        if (response.status >= 200 && response.status < 400) {
             return {
                 ok: true,
-                body,
+                body: body as R,
+                headers: response.headers,
             };
         } else {
             return {
@@ -108,11 +196,27 @@ export const fetcher: FetchFunction = async (args) => {
             };
         }
     } catch (error) {
-        if ((error as AxiosError).code === "ETIMEDOUT") {
+        if (args.abortSignal != null && args.abortSignal.aborted) {
+            return {
+                ok: false,
+                error: {
+                    reason: "unknown",
+                    errorMessage: "The user aborted a request",
+                },
+            };
+        } else if (error instanceof Error && error.name === "AbortError") {
             return {
                 ok: false,
                 error: {
                     reason: "timeout",
+                },
+            };
+        } else if (error instanceof Error) {
+            return {
+                ok: false,
+                error: {
+                    reason: "unknown",
+                    errorMessage: error.message,
                 },
             };
         }
@@ -121,8 +225,49 @@ export const fetcher: FetchFunction = async (args) => {
             ok: false,
             error: {
                 reason: "unknown",
-                errorMessage: (error as AxiosError).message,
+                errorMessage: JSON.stringify(error),
             },
         };
     }
-};
+}
+
+const TIMEOUT = "timeout";
+
+function getTimeoutSignal(timeoutMs: number): { signal: AbortSignal; abortId: NodeJS.Timeout } {
+    const controller = new AbortController();
+    const abortId = setTimeout(() => controller.abort(TIMEOUT), timeoutMs);
+    return { signal: controller.signal, abortId };
+}
+
+/**
+ * Returns an abort signal that is getting aborted when
+ * at least one of the specified abort signals is aborted.
+ *
+ * Requires at least node.js 18.
+ */
+function anySignal(...args: AbortSignal[] | [AbortSignal[]]): AbortSignal {
+    // Allowing signals to be passed either as array
+    // of signals or as multiple arguments.
+    const signals = <AbortSignal[]>(args.length === 1 && Array.isArray(args[0]) ? args[0] : args);
+
+    const controller = new AbortController();
+
+    for (const signal of signals) {
+        if (signal.aborted) {
+            // Exiting early if one of the signals
+            // is already aborted.
+            controller.abort((signal as any)?.reason);
+            break;
+        }
+
+        // Listening for signals and removing the listeners
+        // when at least one symbol is aborted.
+        signal.addEventListener("abort", () => controller.abort((signal as any)?.reason), {
+            signal: controller.signal,
+        });
+    }
+
+    return controller.signal;
+}
+
+export const fetcher: FetchFunction = fetcherImpl;
