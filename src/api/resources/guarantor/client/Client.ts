@@ -8,17 +8,23 @@ import { V1 } from "../resources/v1/client/Client";
 
 export declare namespace Guarantor {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Guarantor {
-    constructor(protected readonly options: Guarantor.Options) {}
+    constructor(protected readonly _options: Guarantor.Options = {}) {}
 
     protected _v1: V1 | undefined;
 
     public get v1(): V1 {
-        return (this._v1 ??= new V1(this.options));
+        return (this._v1 ??= new V1(this._options));
     }
 }

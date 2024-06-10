@@ -4,19 +4,25 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../..";
-import * as serializers from "../../../../../../serialization";
+import * as CandidApi from "../../../../../index";
+import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class V2 {
-    constructor(protected readonly options: V2.Options) {}
+    constructor(protected readonly _options: V2.Options = {}) {}
 
     /**
      * Authenticating with the Candid Health API.
@@ -30,13 +36,23 @@ export class V2 {
      *
      * The bearer token expires 5 hours after it has been created. After it has expired, the client will receive an "HTTP 401
      * Unauthorized" error, at which point the client should generate a new token. It is important that tokens be reused between requests; if the client attempts to generate a token too often, it will be rate-limited and will receive an "HTTP 429 Too Many Requests" error.
+     *
+     * @param {CandidApi.auth.v2.AuthGetTokenRequest} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.auth.v2.getToken({
+     *         clientId: "YOUR_CLIENT_ID",
+     *         clientSecret: "YOUR_CLIENT_SECRET"
+     *     })
      */
     public async getToken(
-        request: CandidApi.auth.v2.AuthGetTokenRequest
+        request: CandidApi.auth.v2.AuthGetTokenRequest,
+        requestOptions?: V2.RequestOptions
     ): Promise<core.APIResponse<CandidApi.auth.v2.AuthGetTokenResponse, CandidApi.auth.v2.getToken.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
                 "/api/auth/v2/token"
             ),
             method: "POST",
@@ -44,13 +60,17 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.auth.v2.AuthGetTokenRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -88,8 +108,8 @@ export class V2 {
         };
     }
 
-    protected async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
+    protected async _getAuthorizationHeader(): Promise<string | undefined> {
+        const bearer = await core.Supplier.get(this._options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

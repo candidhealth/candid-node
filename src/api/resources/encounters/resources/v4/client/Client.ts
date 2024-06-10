@@ -4,23 +4,47 @@
 
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
-import * as CandidApi from "../../../../..";
-import URLSearchParams from "@ungap/url-search-params";
+import * as CandidApi from "../../../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../../../serialization";
+import * as serializers from "../../../../../../serialization/index";
 
 export declare namespace V4 {
     interface Options {
-        environment?: environments.CandidApiEnvironment | string;
+        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class V4 {
-    constructor(protected readonly options: V4.Options) {}
+    constructor(protected readonly _options: V4.Options = {}) {}
 
+    /**
+     * @param {CandidApi.encounters.v4.GetAllEncountersRequest} request
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.encounters.v4.getAll({
+     *         limit: 100,
+     *         claimStatus: CandidApi.ClaimStatus.BillerReceived,
+     *         sort: CandidApi.encounters.v4.EncounterSortOptions.CreatedAtAsc,
+     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+     *         dateOfServiceMin: CandidApi.Date_("2019-08-24"),
+     *         dateOfServiceMax: CandidApi.Date_("2019-08-25"),
+     *         primaryPayerNames: "Medicare,Medicaid",
+     *         searchTerm: "doe",
+     *         externalId: CandidApi.EncounterExternalId("123456"),
+     *         diagnosesUpdatedSince: new Date("2019-08-24T14:15:22.000Z")
+     *     })
+     */
     public async getAll(
-        request: CandidApi.encounters.v4.GetAllEncountersRequest = {}
+        request: CandidApi.encounters.v4.GetAllEncountersRequest = {},
+        requestOptions?: V4.RequestOptions
     ): Promise<core.APIResponse<CandidApi.encounters.v4.EncounterPage, CandidApi.encounters.v4.getAll.Error>> {
         const {
             limit,
@@ -40,80 +64,78 @@ export class V4 {
             ownerOfNextAction,
             patientExternalId,
         } = request;
-        const _queryParams = new URLSearchParams();
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (limit != null) {
-            _queryParams.append("limit", limit.toString());
+            _queryParams["limit"] = limit.toString();
         }
 
         if (claimStatus != null) {
-            _queryParams.append("claim_status", claimStatus);
+            _queryParams["claim_status"] = claimStatus;
         }
 
         if (sort != null) {
-            _queryParams.append("sort", sort);
+            _queryParams["sort"] = sort;
         }
 
         if (pageToken != null) {
-            _queryParams.append("page_token", pageToken);
+            _queryParams["page_token"] = pageToken;
         }
 
         if (dateOfServiceMin != null) {
-            _queryParams.append("date_of_service_min", dateOfServiceMin);
+            _queryParams["date_of_service_min"] = dateOfServiceMin;
         }
 
         if (dateOfServiceMax != null) {
-            _queryParams.append("date_of_service_max", dateOfServiceMax);
+            _queryParams["date_of_service_max"] = dateOfServiceMax;
         }
 
         if (primaryPayerNames != null) {
-            _queryParams.append("primary_payer_names", primaryPayerNames);
+            _queryParams["primary_payer_names"] = primaryPayerNames;
         }
 
         if (searchTerm != null) {
-            _queryParams.append("search_term", searchTerm);
+            _queryParams["search_term"] = searchTerm;
         }
 
         if (externalId != null) {
-            _queryParams.append("external_id", externalId);
+            _queryParams["external_id"] = externalId;
         }
 
         if (diagnosesUpdatedSince != null) {
-            _queryParams.append("diagnoses_updated_since", diagnosesUpdatedSince.toISOString());
+            _queryParams["diagnoses_updated_since"] = diagnosesUpdatedSince.toISOString();
         }
 
         if (tagIds != null) {
             if (Array.isArray(tagIds)) {
-                for (const _item of tagIds) {
-                    _queryParams.append("tag_ids", _item);
-                }
+                _queryParams["tag_ids"] = tagIds.map((item) => item);
             } else {
-                _queryParams.append("tag_ids", tagIds);
+                _queryParams["tag_ids"] = tagIds;
             }
         }
 
         if (workQueueId != null) {
-            _queryParams.append("work_queue_id", workQueueId);
+            _queryParams["work_queue_id"] = workQueueId;
         }
 
         if (billableStatus != null) {
-            _queryParams.append("billable_status", billableStatus);
+            _queryParams["billable_status"] = billableStatus;
         }
 
         if (responsibleParty != null) {
-            _queryParams.append("responsible_party", responsibleParty);
+            _queryParams["responsible_party"] = responsibleParty;
         }
 
         if (ownerOfNextAction != null) {
-            _queryParams.append("owner_of_next_action", ownerOfNextAction);
+            _queryParams["owner_of_next_action"] = ownerOfNextAction;
         }
 
         if (patientExternalId != null) {
-            _queryParams.append("patient_external_id", patientExternalId);
+            _queryParams["patient_external_id"] = patientExternalId;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
                 "/api/encounters/v4"
             ),
             method: "GET",
@@ -121,11 +143,15 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -145,23 +171,35 @@ export class V4 {
         };
     }
 
+    /**
+     * @param {CandidApi.EncounterId} encounterId
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
     public async get(
-        encounterId: CandidApi.EncounterId
+        encounterId: CandidApi.EncounterId,
+        requestOptions?: V4.RequestOptions
     ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/encounters/v4/${await serializers.EncounterId.jsonOrThrow(encounterId)}`
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                `/api/encounters/v4/${encodeURIComponent(await serializers.EncounterId.jsonOrThrow(encounterId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -181,12 +219,296 @@ export class V4 {
         };
     }
 
+    /**
+     * @param {CandidApi.encounters.v4.EncounterCreate} request
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.encounters.v4.create({
+     *         dateOfService: CandidApi.Date_("string"),
+     *         endDateOfService: CandidApi.Date_("string"),
+     *         patient: {
+     *             phoneNumbers: [{
+     *                     number: "1234567890",
+     *                     type: CandidApi.PhoneNumberType.Home
+     *                 }],
+     *             phoneConsent: true,
+     *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+     *             emailConsent: true,
+     *             externalId: "string",
+     *             dateOfBirth: CandidApi.Date_("string"),
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             gender: CandidApi.Gender.Male
+     *         },
+     *         billingProvider: {
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             taxId: "string",
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         renderingProvider: {
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         referringProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         serviceFacility: {
+     *             organizationName: "string",
+     *             npi: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             }
+     *         },
+     *         subscriberPrimary: {
+     *             insuranceCard: {
+     *                 memberId: "string",
+     *                 payerName: "string",
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *             },
+     *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+     *             dateOfBirth: CandidApi.Date_("string"),
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             gender: CandidApi.Gender.Male
+     *         },
+     *         subscriberSecondary: {
+     *             insuranceCard: {
+     *                 memberId: "string",
+     *                 payerName: "string",
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *             },
+     *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+     *             dateOfBirth: CandidApi.Date_("string"),
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             gender: CandidApi.Gender.Male
+     *         },
+     *         diagnoses: [{
+     *                 name: "string",
+     *                 codeType: CandidApi.DiagnosisTypeCode.Abf,
+     *                 code: "string"
+     *             }],
+     *         clinicalNotes: [{
+     *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
+     *                 notes: [{}]
+     *             }],
+     *         billingNotes: [{
+     *                 text: "string"
+     *             }],
+     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *         patientHistories: [{
+     *                 category: CandidApi.encounters.v4.PatientHistoryCategoryEnum.PresentIllness,
+     *                 questions: [{
+     *                         id: CandidApi.encounters.v4.IntakeQuestionId("6E7FBCE4-A8EA-46D0-A8D8-FF83CA3BB176"),
+     *                         text: "Do you have any allergies?",
+     *                         responses: [{
+     *                                 response: "No allergies",
+     *                                 followUps: [{
+     *                                         id: CandidApi.encounters.v4.IntakeFollowUpId("4F3D57F9-AC94-49D6-87E4-E804B709917A"),
+     *                                         text: "Do you have any allergies?",
+     *                                         response: "No allergies"
+     *                                     }]
+     *                             }]
+     *                     }]
+     *             }],
+     *         serviceLines: [{
+     *                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+     *                 procedureCode: "string",
+     *                 quantity: CandidApi.Decimal("string"),
+     *                 units: CandidApi.ServiceLineUnits.Mj,
+     *                 chargeAmountCents: 1,
+     *                 diagnosisPointers: [1],
+     *                 drugIdentification: {},
+     *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *                 description: "string",
+     *                 dateOfService: "2023-01-15",
+     *                 endDateOfService: "2023-01-15"
+     *             }],
+     *         guarantor: {
+     *             phoneNumbers: [{
+     *                     number: "1234567890",
+     *                     type: CandidApi.PhoneNumberType.Home
+     *                 }],
+     *             phoneConsent: true,
+     *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+     *             emailConsent: true,
+     *             firstName: "string",
+     *             lastName: "string",
+     *             externalId: "string",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             }
+     *         },
+     *         externalClaimSubmission: {
+     *             claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
+     *             patientControlNumber: "PATIENT_CONTROL_NUMBER",
+     *             submissionRecords: [{
+     *                     submittedAt: new Date("2023-01-01T13:00:00.000Z"),
+     *                     claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
+     *                     payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
+     *                     intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
+     *                 }, {
+     *                     submittedAt: new Date("2023-01-04T12:00:00.000Z"),
+     *                     claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
+     *                     payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
+     *                     intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
+     *                 }]
+     *         },
+     *         tagIds: [CandidApi.TagId("string")],
+     *         externalId: CandidApi.EncounterExternalId("string"),
+     *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
+     *         patientAuthorizedRelease: true,
+     *         benefitsAssignedToProvider: true,
+     *         providerAcceptsAssignment: true,
+     *         appointmentType: "string",
+     *         existingMedications: [{
+     *                 name: "Lisinopril",
+     *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
+     *                 dosage: "10mg",
+     *                 dosageForm: "Tablet",
+     *                 frequency: "Once Daily",
+     *                 asNeeded: true
+     *             }],
+     *         vitals: {
+     *             heightIn: 70,
+     *             weightLbs: 165,
+     *             bloodPressureSystolicMmhg: 115,
+     *             bloodPressureDiastolicMmhg: 85,
+     *             bodyTemperatureF: 98
+     *         },
+     *         interventions: [{
+     *                 name: "Physical Therapy Session",
+     *                 category: CandidApi.encounters.v4.InterventionCategory.Lifestyle,
+     *                 description: "A session focused on improving muscular strength, flexibility, and range of motion post-injury.",
+     *                 medication: {
+     *                     name: "Lisinopril",
+     *                     rxCui: CandidApi.encounters.v4.RxCui("860975"),
+     *                     dosage: "10mg",
+     *                     dosageForm: "Tablet",
+     *                     frequency: "Once Daily",
+     *                     asNeeded: true
+     *                 },
+     *                 labs: [{
+     *                         name: "Genetic Health Labs",
+     *                         code: "GH12345",
+     *                         codeType: CandidApi.encounters.v4.LabCodeType.Quest
+     *                     }]
+     *             }],
+     *         payToAddress: {
+     *             address1: "123 Main St",
+     *             address2: "Apt 1",
+     *             city: "New York",
+     *             state: CandidApi.State.Ny,
+     *             zipCode: "10001",
+     *             zipPlusFourCode: "1234"
+     *         },
+     *         synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
+     *         billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
+     *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
+     *         additionalInformation: "string",
+     *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
+     *         admissionDate: CandidApi.Date_("string"),
+     *         dischargeDate: CandidApi.Date_("string"),
+     *         onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("string"),
+     *         lastMenstrualPeriodDate: CandidApi.Date_("string"),
+     *         delayReasonCode: CandidApi.DelayReasonCode.C1
+     *     })
+     */
     public async create(
-        request: CandidApi.encounters.v4.EncounterCreate
+        request: CandidApi.encounters.v4.EncounterCreate,
+        requestOptions?: V4.RequestOptions
     ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
                 "/api/encounters/v4"
             ),
             method: "POST",
@@ -194,13 +516,17 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -243,27 +569,132 @@ export class V4 {
         };
     }
 
+    /**
+     * @param {CandidApi.EncounterId} encounterId
+     * @param {CandidApi.encounters.v4.EncounterUpdate} request
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
+     *         externalId: CandidApi.EncounterExternalId("string"),
+     *         dateOfService: CandidApi.Date_("string"),
+     *         diagnosisIds: [CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+     *         tagIds: [CandidApi.TagId("string")],
+     *         clinicalNotes: [{
+     *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
+     *                 notes: [{}]
+     *             }],
+     *         payToAddress: {
+     *             address1: "123 Main St",
+     *             address2: "Apt 1",
+     *             city: "New York",
+     *             state: CandidApi.State.Ny,
+     *             zipCode: "10001",
+     *             zipPlusFourCode: "1234"
+     *         },
+     *         billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
+     *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
+     *         providerAcceptsAssignment: true,
+     *         benefitsAssignedToProvider: true,
+     *         synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
+     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *         appointmentType: "string",
+     *         endDateOfService: CandidApi.Date_("string"),
+     *         subscriberPrimary: {
+     *             insuranceCard: {
+     *                 memberId: "string",
+     *                 payerName: "string",
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *             },
+     *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+     *             dateOfBirth: CandidApi.Date_("string"),
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             gender: CandidApi.Gender.Male
+     *         },
+     *         subscriberSecondary: {
+     *             insuranceCard: {
+     *                 memberId: "string",
+     *                 payerName: "string",
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *             },
+     *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+     *             dateOfBirth: CandidApi.Date_("string"),
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             gender: CandidApi.Gender.Male
+     *         },
+     *         additionalInformation: "string",
+     *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
+     *         admissionDate: CandidApi.Date_("string"),
+     *         dischargeDate: CandidApi.Date_("string"),
+     *         onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("string"),
+     *         lastMenstrualPeriodDate: CandidApi.Date_("string"),
+     *         delayReasonCode: CandidApi.DelayReasonCode.C1,
+     *         patientAuthorizedRelease: true
+     *     })
+     */
     public async update(
         encounterId: CandidApi.EncounterId,
-        request: CandidApi.encounters.v4.EncounterUpdate = {}
+        request: CandidApi.encounters.v4.EncounterUpdate = {},
+        requestOptions?: V4.RequestOptions
     ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.CandidApiEnvironment.Production,
-                `/api/encounters/v4/${await serializers.EncounterId.jsonOrThrow(encounterId)}`
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                `/api/encounters/v4/${encodeURIComponent(await serializers.EncounterId.jsonOrThrow(encounterId))}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.19.0",
+                "X-Fern-SDK-Version": "0.0.21286",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             body: await serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            timeoutMs: 60000,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
@@ -304,8 +735,8 @@ export class V4 {
         };
     }
 
-    protected async _getAuthorizationHeader() {
-        const bearer = await core.Supplier.get(this.options.token);
+    protected async _getAuthorizationHeader(): Promise<string | undefined> {
+        const bearer = await core.Supplier.get(this._options.token);
         if (bearer != null) {
             return `Bearer ${bearer}`;
         }

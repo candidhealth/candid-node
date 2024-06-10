@@ -8,7 +8,6 @@
  * @example
  *     {
  *         startDate: "2024-4-11",
- *         endDate: undefined,
  *         rateCents: 33000,
  *         isDeactivated: false
  *     }
