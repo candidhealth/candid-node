@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const InvoiceDestination: core.serialization.Schema<
     serializers.invoices.v2.InvoiceDestination.Raw,
     CandidApi.invoices.v2.InvoiceDestination
-> = core.serialization.enum_(["STRIPE", "CEDAR", "HEALTHIE"]);
+> = core.serialization.enum_(["STRIPE", "CEDAR", "HEALTHIE", "COLLECTLY"]);
 
 export declare namespace InvoiceDestination {
-    type Raw = "STRIPE" | "CEDAR" | "HEALTHIE";
+    type Raw = "STRIPE" | "CEDAR" | "HEALTHIE" | "COLLECTLY";
 }
