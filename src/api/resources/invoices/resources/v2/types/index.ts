@@ -3,6 +3,8 @@ export * from "./InvoiceStatus";
 export * from "./InvoiceDestinationMetadata";
 export * from "./Invoice";
 export * from "./InvoiceInfo";
+export * from "./InvoiceItemAttributionCreate";
+export * from "./InvoiceItemCreate";
 export * from "./ServiceLineInvoiceItem";
 export * from "./ClaimInvoiceItem";
 export * from "./ClaimInvoiceItemInfo";

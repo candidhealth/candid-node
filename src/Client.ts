@@ -14,6 +14,7 @@ import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/cli
 import { Exports } from "./api/resources/exports/client/Client";
 import { FeeSchedules } from "./api/resources/feeSchedules/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
+import { ImportInvoice } from "./api/resources/importInvoice/client/Client";
 import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
 import { InsurancePayments } from "./api/resources/insurancePayments/client/Client";
 import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
@@ -129,6 +130,15 @@ export class CandidApiClient {
 
     public get guarantor(): Guarantor {
         return (this._guarantor ??= new Guarantor({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _importInvoice: ImportInvoice | undefined;
+
+    public get importInvoice(): ImportInvoice {
+        return (this._importInvoice ??= new ImportInvoice({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
