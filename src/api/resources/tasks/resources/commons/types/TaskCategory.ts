@@ -42,7 +42,8 @@ export type TaskCategory =
     | "missing_remittance_enrollment"
     | "missing_claims_enrollment"
     | "held_by_customer"
-    | "pending_manual_remit_posting";
+    | "pending_manual_remit_posting"
+    | "incorrect_referring_provider_info";
 
 export const TaskCategory = {
     Other: "other",
@@ -85,4 +86,5 @@ export const TaskCategory = {
     MissingClaimsEnrollment: "missing_claims_enrollment",
     HeldByCustomer: "held_by_customer",
     PendingManualRemitPosting: "pending_manual_remit_posting",
+    IncorrectReferringProviderInfo: "incorrect_referring_provider_info",
 } as const;

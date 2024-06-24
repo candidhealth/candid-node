@@ -69,7 +69,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.20.0",
+                "X-Fern-SDK-Version": "0.20.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -96,6 +96,7 @@ export class V1 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.guarantor.v1.create.Error.Raw)?.errorName) {
                 case "EncounterHasExistingGuarantorError":
+                case "HttpRequestValidationsError":
                     return {
                         ok: false,
                         error: await serializers.guarantor.v1.create.Error.parseOrThrow(
@@ -142,7 +143,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.20.0",
+                "X-Fern-SDK-Version": "0.20.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -216,7 +217,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.20.0",
+                "X-Fern-SDK-Version": "0.20.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
