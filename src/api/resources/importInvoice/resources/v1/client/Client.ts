@@ -58,7 +58,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.20.1",
+                "X-Fern-SDK-Version": "0.21.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -89,6 +89,127 @@ export class V1 {
     }
 
     /**
+     * Returns all Invoices for the authenticated user's organziation with all filters applied.
+     *
+     * @param {CandidApi.importInvoice.v1.SearchImportedInvoicesRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await candidApi.importInvoice.v1.getMulti({
+     *         patientExternalId: CandidApi.PatientExternalId("string"),
+     *         encounterExternalId: CandidApi.EncounterExternalId("string"),
+     *         note: "string",
+     *         dueDateBefore: "2023-01-15",
+     *         dueDateAfter: "2023-01-15",
+     *         status: CandidApi.invoices.v2.InvoiceStatus.Draft,
+     *         limit: 1,
+     *         sort: CandidApi.invoices.v2.InvoiceSortField.CreatedAt,
+     *         sortDirection: CandidApi.SortDirection.Asc,
+     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
+     *     })
+     */
+    public async getMulti(
+        request: CandidApi.importInvoice.v1.SearchImportedInvoicesRequest = {},
+        requestOptions?: V1.RequestOptions
+    ): Promise<
+        core.APIResponse<CandidApi.importInvoice.v1.ImportInvoicesPage, CandidApi.importInvoice.v1.getMulti.Error>
+    > {
+        const {
+            patientExternalId,
+            encounterExternalId,
+            note,
+            dueDateBefore,
+            dueDateAfter,
+            status,
+            limit,
+            sort,
+            sortDirection,
+            pageToken,
+        } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (patientExternalId != null) {
+            _queryParams["patient_external_id"] = patientExternalId;
+        }
+
+        if (encounterExternalId != null) {
+            _queryParams["encounter_external_id"] = encounterExternalId;
+        }
+
+        if (note != null) {
+            _queryParams["note"] = note;
+        }
+
+        if (dueDateBefore != null) {
+            _queryParams["due_date_before"] = dueDateBefore;
+        }
+
+        if (dueDateAfter != null) {
+            _queryParams["due_date_after"] = dueDateAfter;
+        }
+
+        if (status != null) {
+            if (Array.isArray(status)) {
+                _queryParams["status"] = status.map((item) => item);
+            } else {
+                _queryParams["status"] = status;
+            }
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        if (sort != null) {
+            _queryParams["sort"] = sort;
+        }
+
+        if (sortDirection != null) {
+            _queryParams["sort_direction"] = sortDirection;
+        }
+
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                "/api/import-invoice/v1"
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: await serializers.importInvoice.v1.ImportInvoicesPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.importInvoice.v1.getMulti.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * Retrieve and view an import invoice
      *
      * @param {CandidApi.InvoiceId} invoiceId - InvoiceId to be returned
@@ -111,7 +232,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.20.1",
+                "X-Fern-SDK-Version": "0.21.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -190,7 +311,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.20.1",
+                "X-Fern-SDK-Version": "0.21.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

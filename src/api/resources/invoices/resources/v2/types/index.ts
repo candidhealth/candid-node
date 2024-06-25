@@ -1,3 +1,4 @@
+export * from "./InvoiceSortField";
 export * from "./InvoiceDestination";
 export * from "./InvoiceStatus";
 export * from "./InvoiceDestinationMetadata";
