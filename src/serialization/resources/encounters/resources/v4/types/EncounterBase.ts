@@ -15,7 +15,6 @@ import { SynchronicityType } from "./SynchronicityType";
 import { BillableStatusType } from "./BillableStatusType";
 import { ResponsiblePartyType } from "./ResponsiblePartyType";
 import { ServiceAuthorizationExceptionCode } from "./ServiceAuthorizationExceptionCode";
-import { Date_ } from "../../../../commons/types/Date_";
 import { DelayReasonCode } from "../../../../commons/types/DelayReasonCode";
 
 export const EncounterBase: core.serialization.ObjectSchema<
@@ -52,13 +51,16 @@ export const EncounterBase: core.serialization.ObjectSchema<
         "service_authorization_exception_code",
         ServiceAuthorizationExceptionCode.optional()
     ),
-    admissionDate: core.serialization.property("admission_date", Date_.optional()),
-    dischargeDate: core.serialization.property("discharge_date", Date_.optional()),
+    admissionDate: core.serialization.property("admission_date", core.serialization.string().optional()),
+    dischargeDate: core.serialization.property("discharge_date", core.serialization.string().optional()),
     onsetOfCurrentIllnessOrSymptomDate: core.serialization.property(
         "onset_of_current_illness_or_symptom_date",
-        Date_.optional()
+        core.serialization.string().optional()
     ),
-    lastMenstrualPeriodDate: core.serialization.property("last_menstrual_period_date", Date_.optional()),
+    lastMenstrualPeriodDate: core.serialization.property(
+        "last_menstrual_period_date",
+        core.serialization.string().optional()
+    ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
 });
 
@@ -79,10 +81,10 @@ export declare namespace EncounterBase {
         responsible_party: ResponsiblePartyType.Raw;
         additional_information?: string | null;
         service_authorization_exception_code?: ServiceAuthorizationExceptionCode.Raw | null;
-        admission_date?: Date_.Raw | null;
-        discharge_date?: Date_.Raw | null;
-        onset_of_current_illness_or_symptom_date?: Date_.Raw | null;
-        last_menstrual_period_date?: Date_.Raw | null;
+        admission_date?: string | null;
+        discharge_date?: string | null;
+        onset_of_current_illness_or_symptom_date?: string | null;
+        last_menstrual_period_date?: string | null;
         delay_reason_code?: DelayReasonCode.Raw | null;
     }
 }

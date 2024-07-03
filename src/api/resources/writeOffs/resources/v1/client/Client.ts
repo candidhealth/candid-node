@@ -115,7 +115,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -168,7 +168,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -196,8 +196,7 @@ export class V1 {
     }
 
     /**
-     * Creates one or many write-offs given a specific set of allocations.
-     * The allocations can describe whether the refund is being applied toward a specific service line,
+     * Creates one or many write-offs applied toward a specific service line,
      * claim, or billing provider.
      *
      * @param {CandidApi.writeOffs.v1.CreateWriteOffsRequest} request
@@ -229,7 +228,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -284,7 +283,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

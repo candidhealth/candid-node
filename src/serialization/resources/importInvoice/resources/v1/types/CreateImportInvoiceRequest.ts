@@ -5,6 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { PaymentAccountConfigId } from "../../../../paymentAccountConfigs/types/PaymentAccountConfigId";
 import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
 import { InvoiceItemCreate } from "../../../../invoices/resources/v2/types/InvoiceItemCreate";
 import { InvoiceStatus } from "../../../../invoices/resources/v2/types/InvoiceStatus";
@@ -13,6 +14,10 @@ export const CreateImportInvoiceRequest: core.serialization.ObjectSchema<
     serializers.importInvoice.v1.CreateImportInvoiceRequest.Raw,
     CandidApi.importInvoice.v1.CreateImportInvoiceRequest
 > = core.serialization.object({
+    externalPaymentAccountConfigId: core.serialization.property(
+        "external_payment_account_config_id",
+        PaymentAccountConfigId
+    ),
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
     externalCustomerIdentifier: core.serialization.property(
         "external_customer_identifier",
@@ -28,6 +33,7 @@ export const CreateImportInvoiceRequest: core.serialization.ObjectSchema<
 
 export declare namespace CreateImportInvoiceRequest {
     interface Raw {
+        external_payment_account_config_id: PaymentAccountConfigId.Raw;
         patient_external_id: PatientExternalId.Raw;
         external_customer_identifier: string;
         note?: string | null;

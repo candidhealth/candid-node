@@ -9,7 +9,7 @@ import * as CandidApi from "../../../../../../index";
  *     {
  *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
  *         externalId: CandidApi.EncounterExternalId("string"),
- *         dateOfService: CandidApi.Date_("string"),
+ *         dateOfService: "2023-01-15",
  *         diagnosisIds: [CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
  *         tagIds: [CandidApi.TagId("string")],
  *         clinicalNotes: [{
@@ -30,8 +30,9 @@ import * as CandidApi from "../../../../../../index";
  *         benefitsAssignedToProvider: true,
  *         synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
  *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+ *         placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy,
  *         appointmentType: "string",
- *         endDateOfService: CandidApi.Date_("string"),
+ *         endDateOfService: "2023-01-15",
  *         subscriberPrimary: {
  *             insuranceCard: {
  *                 memberId: "string",
@@ -48,7 +49,7 @@ import * as CandidApi from "../../../../../../index";
  *                 insuranceType: CandidApi.InsuranceTypeCode.C01
  *             },
  *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *             dateOfBirth: CandidApi.Date_("string"),
+ *             dateOfBirth: "2023-01-15",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -77,7 +78,7 @@ import * as CandidApi from "../../../../../../index";
  *                 insuranceType: CandidApi.InsuranceTypeCode.C01
  *             },
  *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *             dateOfBirth: CandidApi.Date_("string"),
+ *             dateOfBirth: "2023-01-15",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -92,10 +93,10 @@ import * as CandidApi from "../../../../../../index";
  *         },
  *         additionalInformation: "string",
  *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
- *         admissionDate: CandidApi.Date_("string"),
- *         dischargeDate: CandidApi.Date_("string"),
- *         onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("string"),
- *         lastMenstrualPeriodDate: CandidApi.Date_("string"),
+ *         admissionDate: "2023-01-15",
+ *         dischargeDate: "2023-01-15",
+ *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
+ *         lastMenstrualPeriodDate: "2023-01-15",
  *         delayReasonCode: CandidApi.DelayReasonCode.C1,
  *         patientAuthorizedRelease: true
  *     }
@@ -118,7 +119,7 @@ export interface EncounterUpdate {
      * If service lines have distinct date_of_service values, updating the encounter's date_of_service will fail. If all service line date_of_service values are the same, updating the encounter's date_of_service will update all service line date_of_service values.
      *
      */
-    dateOfService?: CandidApi.Date_;
+    dateOfService?: string;
     /**
      * Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses
      * may be submitted at this time, and coders will later prioritize the 12 that will be
@@ -163,6 +164,11 @@ export interface EncounterUpdate {
      */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     /**
+     * Box 24B on the CMS-1500 claim form. Line-level place of service is not currently supported. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set).
+     *
+     */
+    placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
+    /**
      * Human-readable description of the appointment type (ex: "Acupuncture - Headaches").
      *
      */
@@ -175,7 +181,7 @@ export interface EncounterUpdate {
      * If service lines have distinct end_date_of_service values, updating the encounter's end_date_of_service will fail. If all service line end_date_of_service values are the same, updating the encounter's end_date_of_service will update all service line date_of_service values.
      *
      */
-    endDateOfService?: CandidApi.Date_;
+    endDateOfService?: string;
     /** Contains details of the primary insurance subscriber. */
     subscriberPrimary?: CandidApi.SubscriberCreate;
     /** Contains details of the secondary insurance subscriber. */
@@ -201,13 +207,13 @@ export interface EncounterUpdate {
      * Required on all claims involving inpatient medical visits.
      *
      */
-    admissionDate?: CandidApi.Date_;
+    admissionDate?: string;
     /**
      * 837p Loop2300 DTP*096, CMS-1500 Box 18
      * Required for inpatient claims when the patient was discharged from the facility and the discharge date is known.
      *
      */
-    dischargeDate?: CandidApi.Date_;
+    dischargeDate?: string;
     /**
      * 837p Loop2300 DTP*431, CMS-1500 Box 14
      * Required for the initial medical service or visit performed in response to a medical emergency when the date is available and is different than the date of service.
@@ -215,13 +221,13 @@ export interface EncounterUpdate {
      * This date is the onset of acute symptoms for the current illness or condition.
      *
      */
-    onsetOfCurrentIllnessOrSymptomDate?: CandidApi.Date_;
+    onsetOfCurrentIllnessOrSymptomDate?: string;
     /**
      * 837p Loop2300 DTP*484, CMS-1500 Box 14
      * Required when, in the judgment of the provider, the services on this claim are related to the patient's pregnancy.
      *
      */
-    lastMenstrualPeriodDate?: CandidApi.Date_;
+    lastMenstrualPeriodDate?: string;
     /**
      * 837i Loop2300, CLM-1300 Box 20
      * Code indicating the reason why a request was delayed

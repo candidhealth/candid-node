@@ -5,6 +5,7 @@
 import * as CandidApi from "../../../../../index";
 
 export interface CreateImportInvoiceRequest {
+    externalPaymentAccountConfigId: CandidApi.PaymentAccountConfigId;
     patientExternalId: CandidApi.PatientExternalId;
     /** Id of the customer in the source system */
     externalCustomerIdentifier: string;

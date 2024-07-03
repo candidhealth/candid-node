@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
 import { PriorAuthorizationNumber } from "../../types/PriorAuthorizationNumber";
 import { EncounterExternalId } from "../../../../../commons/types/EncounterExternalId";
-import { Date_ } from "../../../../../commons/types/Date_";
 import { DiagnosisId } from "../../../../../diagnoses/types/DiagnosisId";
 import { TagId } from "../../../../../tags/types/TagId";
 import { ClinicalNoteCategoryCreate } from "../../types/ClinicalNoteCategoryCreate";
@@ -29,7 +28,7 @@ export const EncounterUpdate: core.serialization.Schema<
         PriorAuthorizationNumber.optional()
     ),
     externalId: core.serialization.property("external_id", EncounterExternalId.optional()),
-    dateOfService: core.serialization.property("date_of_service", Date_.optional()),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     diagnosisIds: core.serialization.property("diagnosis_ids", core.serialization.list(DiagnosisId).optional()),
     tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
     clinicalNotes: core.serialization.property(
@@ -49,8 +48,12 @@ export const EncounterUpdate: core.serialization.Schema<
     ),
     synchronicity: SynchronicityType.optional(),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
+    placeOfServiceCodeAsSubmitted: core.serialization.property(
+        "place_of_service_code_as_submitted",
+        FacilityTypeCode.optional()
+    ),
     appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
-    endDateOfService: core.serialization.property("end_date_of_service", Date_.optional()),
+    endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
     subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
     additionalInformation: core.serialization.property(
@@ -61,13 +64,16 @@ export const EncounterUpdate: core.serialization.Schema<
         "service_authorization_exception_code",
         ServiceAuthorizationExceptionCode.optional()
     ),
-    admissionDate: core.serialization.property("admission_date", Date_.optional()),
-    dischargeDate: core.serialization.property("discharge_date", Date_.optional()),
+    admissionDate: core.serialization.property("admission_date", core.serialization.string().optional()),
+    dischargeDate: core.serialization.property("discharge_date", core.serialization.string().optional()),
     onsetOfCurrentIllnessOrSymptomDate: core.serialization.property(
         "onset_of_current_illness_or_symptom_date",
-        Date_.optional()
+        core.serialization.string().optional()
     ),
-    lastMenstrualPeriodDate: core.serialization.property("last_menstrual_period_date", Date_.optional()),
+    lastMenstrualPeriodDate: core.serialization.property(
+        "last_menstrual_period_date",
+        core.serialization.string().optional()
+    ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
     patientAuthorizedRelease: core.serialization.property(
         "patient_authorized_release",
@@ -79,7 +85,7 @@ export declare namespace EncounterUpdate {
     interface Raw {
         prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
         external_id?: EncounterExternalId.Raw | null;
-        date_of_service?: Date_.Raw | null;
+        date_of_service?: string | null;
         diagnosis_ids?: DiagnosisId.Raw[] | null;
         tag_ids?: TagId.Raw[] | null;
         clinical_notes?: ClinicalNoteCategoryCreate.Raw[] | null;
@@ -90,16 +96,17 @@ export declare namespace EncounterUpdate {
         benefits_assigned_to_provider?: boolean | null;
         synchronicity?: SynchronicityType.Raw | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
+        place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
         appointment_type?: string | null;
-        end_date_of_service?: Date_.Raw | null;
+        end_date_of_service?: string | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;
         additional_information?: string | null;
         service_authorization_exception_code?: ServiceAuthorizationExceptionCode.Raw | null;
-        admission_date?: Date_.Raw | null;
-        discharge_date?: Date_.Raw | null;
-        onset_of_current_illness_or_symptom_date?: Date_.Raw | null;
-        last_menstrual_period_date?: Date_.Raw | null;
+        admission_date?: string | null;
+        discharge_date?: string | null;
+        onset_of_current_illness_or_symptom_date?: string | null;
+        last_menstrual_period_date?: string | null;
         delay_reason_code?: DelayReasonCode.Raw | null;
         patient_authorized_release?: boolean | null;
     }

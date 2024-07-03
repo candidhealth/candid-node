@@ -88,6 +88,7 @@ export interface ServiceLine {
     relatedInvoiceInfo?: CandidApi.invoices.v2.InvoiceInfo[];
     denialReason?: CandidApi.serviceLines.v2.ServiceLineDenialReason;
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     serviceLineId: CandidApi.ServiceLineId;
     procedureCode: string;
     /**

@@ -11,8 +11,8 @@ import * as CandidApi from "../../../../../../index";
  *         claimStatus: CandidApi.ClaimStatus.BillerReceived,
  *         sort: CandidApi.encounters.v4.EncounterSortOptions.CreatedAtAsc,
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
- *         dateOfServiceMin: CandidApi.Date_("2019-08-24"),
- *         dateOfServiceMax: CandidApi.Date_("2019-08-25"),
+ *         dateOfServiceMin: "2019-08-24",
+ *         dateOfServiceMax: "2019-08-25",
  *         primaryPayerNames: "Medicare,Medicaid",
  *         searchTerm: "doe",
  *         externalId: CandidApi.EncounterExternalId("123456"),
@@ -36,11 +36,11 @@ export interface GetAllEncountersRequest {
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
      */
-    dateOfServiceMin?: CandidApi.Date_;
+    dateOfServiceMin?: string;
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
      */
-    dateOfServiceMax?: CandidApi.Date_;
+    dateOfServiceMax?: string;
     /**
      * Comma delimited string.
      */

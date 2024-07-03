@@ -12,6 +12,7 @@ import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
+import { ExternalPaymentAccountConfig } from "./api/resources/externalPaymentAccountConfig/client/Client";
 import { FeeSchedules } from "./api/resources/feeSchedules/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
 import { ImportInvoice } from "./api/resources/importInvoice/client/Client";
@@ -112,6 +113,15 @@ export class CandidApiClient {
 
     public get exports(): Exports {
         return (this._exports ??= new Exports({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _externalPaymentAccountConfig: ExternalPaymentAccountConfig | undefined;
+
+    public get externalPaymentAccountConfig(): ExternalPaymentAccountConfig {
+        return (this._externalPaymentAccountConfig ??= new ExternalPaymentAccountConfig({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

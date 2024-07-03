@@ -72,24 +72,24 @@ export interface EncounterBase {
      * OR
      * Required on all claims involving inpatient medical visits.
      */
-    admissionDate?: CandidApi.Date_;
+    admissionDate?: string;
     /**
      * 837p Loop2300 DTP\*096, CMS-1500 Box 18
      * Required for inpatient claims when the patient was discharged from the facility and the discharge date is known.
      */
-    dischargeDate?: CandidApi.Date_;
+    dischargeDate?: string;
     /**
      * 837p Loop2300 DTP\*431, CMS-1500 Box 14
      * Required for the initial medical service or visit performed in response to a medical emergency when the date is available and is different than the date of service.
      * OR
      * This date is the onset of acute symptoms for the current illness or condition.
      */
-    onsetOfCurrentIllnessOrSymptomDate?: CandidApi.Date_;
+    onsetOfCurrentIllnessOrSymptomDate?: string;
     /**
      * 837p Loop2300 DTP\*484, CMS-1500 Box 14
      * Required when, in the judgment of the provider, the services on this claim are related to the patient's pregnancy.
      */
-    lastMenstrualPeriodDate?: CandidApi.Date_;
+    lastMenstrualPeriodDate?: string;
     /**
      * 837i Loop2300, CLM-1300 Box 20
      * Code indicating the reason why a request was delayed

@@ -16,7 +16,7 @@ import * as CandidApi from "../../../index";
  *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *         emailConsent: true,
  *         externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
- *         dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *         dateOfBirth: "2000-01-01",
  *         address: {
  *             address1: "123 Main St",
  *             address2: "Apt 1",

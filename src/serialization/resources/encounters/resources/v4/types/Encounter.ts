@@ -5,7 +5,6 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { Date_ } from "../../../../commons/types/Date_";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { Claim } from "../../../../claims/types/Claim";
 import { Patient } from "../../../../individual/types/Patient";
@@ -36,8 +35,8 @@ export const Encounter: core.serialization.ObjectSchema<
             "patient_control_number",
             core.serialization.string().optional()
         ),
-        dateOfService: core.serialization.property("date_of_service", Date_),
-        endDateOfService: core.serialization.property("end_date_of_service", Date_.optional()),
+        dateOfService: core.serialization.property("date_of_service", core.serialization.string()),
+        endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
         encounterId: core.serialization.property("encounter_id", EncounterId),
         claims: core.serialization.list(Claim),
         patient: Patient,
@@ -77,8 +76,8 @@ export const Encounter: core.serialization.ObjectSchema<
 export declare namespace Encounter {
     interface Raw extends EncounterBase.Raw {
         patient_control_number?: string | null;
-        date_of_service: Date_.Raw;
-        end_date_of_service?: Date_.Raw | null;
+        date_of_service: string;
+        end_date_of_service?: string | null;
         encounter_id: EncounterId.Raw;
         claims: Claim.Raw[];
         patient: Patient.Raw;

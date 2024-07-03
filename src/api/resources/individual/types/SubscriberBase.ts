@@ -6,6 +6,6 @@ import * as CandidApi from "../../../index";
 
 export interface SubscriberBase extends CandidApi.IndividualBase {
     patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll;
-    dateOfBirth?: CandidApi.Date_;
+    dateOfBirth?: string;
     address?: CandidApi.StreetAddressShortZip;
 }

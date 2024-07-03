@@ -34,8 +34,8 @@ export class V4 {
      *         claimStatus: CandidApi.ClaimStatus.BillerReceived,
      *         sort: CandidApi.encounters.v4.EncounterSortOptions.CreatedAtAsc,
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         dateOfServiceMin: CandidApi.Date_("2019-08-24"),
-     *         dateOfServiceMax: CandidApi.Date_("2019-08-25"),
+     *         dateOfServiceMin: "2019-08-24",
+     *         dateOfServiceMax: "2019-08-25",
      *         primaryPayerNames: "Medicare,Medicaid",
      *         searchTerm: "doe",
      *         externalId: CandidApi.EncounterExternalId("123456"),
@@ -143,7 +143,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -192,7 +192,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -225,8 +225,8 @@ export class V4 {
      *
      * @example
      *     await candidApi.encounters.v4.create({
-     *         dateOfService: CandidApi.Date_("string"),
-     *         endDateOfService: CandidApi.Date_("string"),
+     *         dateOfService: "2023-01-15",
+     *         endDateOfService: "2023-01-15",
      *         patient: {
      *             phoneNumbers: [{
      *                     number: "1234567890",
@@ -236,7 +236,7 @@ export class V4 {
      *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
      *             emailConsent: true,
      *             externalId: "string",
-     *             dateOfBirth: CandidApi.Date_("string"),
+     *             dateOfBirth: "2023-01-15",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -323,7 +323,7 @@ export class V4 {
      *                 insuranceType: CandidApi.InsuranceTypeCode.C01
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: CandidApi.Date_("string"),
+     *             dateOfBirth: "2023-01-15",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -352,7 +352,7 @@ export class V4 {
      *                 insuranceType: CandidApi.InsuranceTypeCode.C01
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: CandidApi.Date_("string"),
+     *             dateOfBirth: "2023-01-15",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -495,10 +495,10 @@ export class V4 {
      *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
      *         additionalInformation: "string",
      *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
-     *         admissionDate: CandidApi.Date_("string"),
-     *         dischargeDate: CandidApi.Date_("string"),
-     *         onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("string"),
-     *         lastMenstrualPeriodDate: CandidApi.Date_("string"),
+     *         admissionDate: "2023-01-15",
+     *         dischargeDate: "2023-01-15",
+     *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
+     *         lastMenstrualPeriodDate: "2023-01-15",
      *         delayReasonCode: CandidApi.DelayReasonCode.C1
      *     })
      */
@@ -516,7 +516,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -578,7 +578,7 @@ export class V4 {
      *     await candidApi.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
      *         externalId: CandidApi.EncounterExternalId("string"),
-     *         dateOfService: CandidApi.Date_("string"),
+     *         dateOfService: "2023-01-15",
      *         diagnosisIds: [CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
      *         tagIds: [CandidApi.TagId("string")],
      *         clinicalNotes: [{
@@ -599,8 +599,9 @@ export class V4 {
      *         benefitsAssignedToProvider: true,
      *         synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *         placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy,
      *         appointmentType: "string",
-     *         endDateOfService: CandidApi.Date_("string"),
+     *         endDateOfService: "2023-01-15",
      *         subscriberPrimary: {
      *             insuranceCard: {
      *                 memberId: "string",
@@ -617,7 +618,7 @@ export class V4 {
      *                 insuranceType: CandidApi.InsuranceTypeCode.C01
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: CandidApi.Date_("string"),
+     *             dateOfBirth: "2023-01-15",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -646,7 +647,7 @@ export class V4 {
      *                 insuranceType: CandidApi.InsuranceTypeCode.C01
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: CandidApi.Date_("string"),
+     *             dateOfBirth: "2023-01-15",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -661,10 +662,10 @@ export class V4 {
      *         },
      *         additionalInformation: "string",
      *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
-     *         admissionDate: CandidApi.Date_("string"),
-     *         dischargeDate: CandidApi.Date_("string"),
-     *         onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("string"),
-     *         lastMenstrualPeriodDate: CandidApi.Date_("string"),
+     *         admissionDate: "2023-01-15",
+     *         dischargeDate: "2023-01-15",
+     *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
+     *         lastMenstrualPeriodDate: "2023-01-15",
      *         delayReasonCode: CandidApi.DelayReasonCode.C1,
      *         patientAuthorizedRelease: true
      *     })
@@ -684,7 +685,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.21.0",
+                "X-Fern-SDK-Version": "0.22.0-1f8567c",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

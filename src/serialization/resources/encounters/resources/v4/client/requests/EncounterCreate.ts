@@ -5,7 +5,6 @@
 import * as serializers from "../../../../../../index";
 import * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
-import { Date_ } from "../../../../../commons/types/Date_";
 import { PatientCreate } from "../../../../../individual/types/PatientCreate";
 import { BillingProvider } from "../../../../../encounterProviders/resources/v2/types/BillingProvider";
 import { RenderingProvider } from "../../../../../encounterProviders/resources/v2/types/RenderingProvider";
@@ -28,8 +27,8 @@ export const EncounterCreate: core.serialization.Schema<
     CandidApi.encounters.v4.EncounterCreate
 > = core.serialization
     .object({
-        dateOfService: core.serialization.property("date_of_service", Date_.optional()),
-        endDateOfService: core.serialization.property("end_date_of_service", Date_.optional()),
+        dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
+        endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
         patient: PatientCreate,
         billingProvider: core.serialization.property("billing_provider", BillingProvider),
         renderingProvider: core.serialization.property("rendering_provider", RenderingProvider),
@@ -63,8 +62,8 @@ export const EncounterCreate: core.serialization.Schema<
 
 export declare namespace EncounterCreate {
     interface Raw extends EncounterBase.Raw {
-        date_of_service?: Date_.Raw | null;
-        end_date_of_service?: Date_.Raw | null;
+        date_of_service?: string | null;
+        end_date_of_service?: string | null;
         patient: PatientCreate.Raw;
         billing_provider: BillingProvider.Raw;
         rendering_provider: RenderingProvider.Raw;

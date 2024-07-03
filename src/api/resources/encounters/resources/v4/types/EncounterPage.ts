@@ -94,7 +94,7 @@ import * as CandidApi from "../../../../../index";
  *                     email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *                     emailConsent: true,
  *                     externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
- *                     dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *                     dateOfBirth: "2000-01-01",
  *                     address: {
  *                         address1: "123 Main St",
  *                         address2: "Apt 1",
@@ -209,7 +209,7 @@ import * as CandidApi from "../../../../../index";
  *                         insuranceType: CandidApi.InsuranceTypeCode.C12
  *                     },
  *                     patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *                     dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *                     dateOfBirth: "2000-01-01",
  *                     address: {
  *                         address1: "123 Main St",
  *                         address2: "Apt 1",
@@ -239,7 +239,7 @@ import * as CandidApi from "../../../../../index";
  *                         insuranceType: CandidApi.InsuranceTypeCode.C12
  *                     },
  *                     patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *                     dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *                     dateOfBirth: "2000-01-01",
  *                     address: {
  *                         address1: "123 Main St",
  *                         address2: "Apt 1",
@@ -323,8 +323,8 @@ import * as CandidApi from "../../../../../index";
  *                 ownerOfNextAction: CandidApi.encounters.v4.EncounterOwnerOfNextActionType.Candid,
  *                 submissionOrigin: CandidApi.encounters.v4.EncounterSubmissionOriginType.Candid,
  *                 externalId: CandidApi.EncounterExternalId("5C21490F-A9C0-45F4-B5DB-136E3AEC617A"),
- *                 dateOfService: CandidApi.Date_("2023-01-01"),
- *                 endDateOfService: CandidApi.Date_("2023-01-05"),
+ *                 dateOfService: "2023-01-01",
+ *                 endDateOfService: "2023-01-05",
  *                 priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("PA1234567"),
  *                 patientAuthorizedRelease: true,
  *                 benefitsAssignedToProvider: true,
@@ -375,9 +375,9 @@ import * as CandidApi from "../../../../../index";
  *                 billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
  *                 responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
  *                 serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
- *                 admissionDate: CandidApi.Date_("2023-01-01"),
- *                 dischargeDate: CandidApi.Date_("2023-01-05"),
- *                 onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("2023-01-01")
+ *                 admissionDate: "2023-01-01",
+ *                 dischargeDate: "2023-01-05",
+ *                 onsetOfCurrentIllnessOrSymptomDate: "2023-01-01"
  *             }]
  *     }
  */

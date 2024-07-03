@@ -23,7 +23,7 @@ import * as CandidApi from "../../../index";
  *             insuranceType: CandidApi.InsuranceTypeCode.C12
  *         },
  *         patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *         dateOfBirth: CandidApi.Date_("2000-01-01"),
+ *         dateOfBirth: "2000-01-01",
  *         address: {
  *             address1: "123 Main St",
  *             address2: "Apt 1",

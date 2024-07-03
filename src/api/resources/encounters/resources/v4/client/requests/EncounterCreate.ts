@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         dateOfService: CandidApi.Date_("string"),
- *         endDateOfService: CandidApi.Date_("string"),
+ *         dateOfService: "2023-01-15",
+ *         endDateOfService: "2023-01-15",
  *         patient: {
  *             phoneNumbers: [{
  *                     number: "1234567890",
@@ -18,7 +18,7 @@ import * as CandidApi from "../../../../../../index";
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *             emailConsent: true,
  *             externalId: "string",
- *             dateOfBirth: CandidApi.Date_("string"),
+ *             dateOfBirth: "2023-01-15",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -105,7 +105,7 @@ import * as CandidApi from "../../../../../../index";
  *                 insuranceType: CandidApi.InsuranceTypeCode.C01
  *             },
  *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *             dateOfBirth: CandidApi.Date_("string"),
+ *             dateOfBirth: "2023-01-15",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -134,7 +134,7 @@ import * as CandidApi from "../../../../../../index";
  *                 insuranceType: CandidApi.InsuranceTypeCode.C01
  *             },
  *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
- *             dateOfBirth: CandidApi.Date_("string"),
+ *             dateOfBirth: "2023-01-15",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -277,10 +277,10 @@ import * as CandidApi from "../../../../../../index";
  *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
  *         additionalInformation: "string",
  *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
- *         admissionDate: CandidApi.Date_("string"),
- *         dischargeDate: CandidApi.Date_("string"),
- *         onsetOfCurrentIllnessOrSymptomDate: CandidApi.Date_("string"),
- *         lastMenstrualPeriodDate: CandidApi.Date_("string"),
+ *         admissionDate: "2023-01-15",
+ *         dischargeDate: "2023-01-15",
+ *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
+ *         lastMenstrualPeriodDate: "2023-01-15",
  *         delayReasonCode: CandidApi.DelayReasonCode.C1
  *     }
  */
@@ -294,7 +294,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      * If there are greater than zero service lines, it is recommended to specify date_of_service on the service_line instead of on the encounter to prepare for future API versions.
      *
      */
-    dateOfService?: CandidApi.Date_;
+    dateOfService?: string;
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
      * This date must be the local date in the timezone where the service occurred.
@@ -303,7 +303,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      * If there are greater than zero service lines, it is recommended to specify end_date_of_service on the service_line instead of on the encounter to prepare for future API versions.
      *
      */
-    endDateOfService?: CandidApi.Date_;
+    endDateOfService?: string;
     /**
      * Contains the identification information of the individual receiving medical services.
      *

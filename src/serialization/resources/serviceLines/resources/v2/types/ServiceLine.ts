@@ -52,6 +52,10 @@ export const ServiceLine: core.serialization.ObjectSchema<
     ),
     denialReason: core.serialization.property("denial_reason", ServiceLineDenialReason.optional()),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
+    placeOfServiceCodeAsSubmitted: core.serialization.property(
+        "place_of_service_code_as_submitted",
+        FacilityTypeCode.optional()
+    ),
     serviceLineId: core.serialization.property("service_line_id", ServiceLineId),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
     quantity: Decimal,
@@ -82,6 +86,7 @@ export declare namespace ServiceLine {
         related_invoice_info?: InvoiceInfo.Raw[] | null;
         denial_reason?: ServiceLineDenialReason.Raw | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
+        place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
         service_line_id: ServiceLineId.Raw;
         procedure_code: string;
         quantity: Decimal.Raw;
