@@ -44,6 +44,12 @@ export const Encounter: core.serialization.ObjectSchema<
         billingProvider: core.serialization.property("billing_provider", EncounterProvider),
         renderingProvider: core.serialization.property("rendering_provider", EncounterProvider),
         referringProvider: core.serialization.property("referring_provider", EncounterProvider.optional()),
+        initialReferringProvider: core.serialization.property(
+            "initial_referring_provider",
+            EncounterProvider.optional()
+        ),
+        supervisingProvider: core.serialization.property("supervising_provider", EncounterProvider.optional()),
+        orderingProvider: core.serialization.property("ordering_provider", EncounterProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacility),
         subscriberPrimary: core.serialization.property("subscriber_primary", Subscriber.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", Subscriber.optional()),
@@ -85,6 +91,9 @@ export declare namespace Encounter {
         billing_provider: EncounterProvider.Raw;
         rendering_provider: EncounterProvider.Raw;
         referring_provider?: EncounterProvider.Raw | null;
+        initial_referring_provider?: EncounterProvider.Raw | null;
+        supervising_provider?: EncounterProvider.Raw | null;
+        ordering_provider?: EncounterProvider.Raw | null;
         service_facility: EncounterServiceFacility.Raw;
         subscriber_primary?: Subscriber.Raw | null;
         subscriber_secondary?: Subscriber.Raw | null;

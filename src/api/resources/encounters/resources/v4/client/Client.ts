@@ -143,7 +143,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.22.2-15e24b1",
+                "X-Fern-SDK-Version": "0.23.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -192,7 +192,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.22.2-15e24b1",
+                "X-Fern-SDK-Version": "0.23.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -281,6 +281,52 @@ export class V4 {
      *             organizationName: "string"
      *         },
      *         referringProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         initialReferringProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             qualifier: CandidApi.QualifierCode.Dq,
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         supervisingProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         orderingProvider: {
      *             npi: "string",
      *             taxonomyCode: "string",
      *             address: {
@@ -404,7 +450,68 @@ export class V4 {
      *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
      *                 description: "string",
      *                 dateOfService: "2023-01-15",
-     *                 endDateOfService: "2023-01-15"
+     *                 endDateOfService: "2023-01-15",
+     *                 referringProvider: {
+     *                     npi: "string",
+     *                     taxonomyCode: "string",
+     *                     address: {
+     *                         address1: "123 Main St",
+     *                         address2: "Apt 1",
+     *                         city: "New York",
+     *                         state: CandidApi.State.Ny,
+     *                         zipCode: "10001",
+     *                         zipPlusFourCode: "1234"
+     *                     },
+     *                     firstName: "string",
+     *                     lastName: "string",
+     *                     organizationName: "string"
+     *                 },
+     *                 initialReferringProvider: {
+     *                     npi: "string",
+     *                     taxonomyCode: "string",
+     *                     address: {
+     *                         address1: "123 Main St",
+     *                         address2: "Apt 1",
+     *                         city: "New York",
+     *                         state: CandidApi.State.Ny,
+     *                         zipCode: "10001",
+     *                         zipPlusFourCode: "1234"
+     *                     },
+     *                     qualifier: CandidApi.QualifierCode.Dq,
+     *                     firstName: "string",
+     *                     lastName: "string",
+     *                     organizationName: "string"
+     *                 },
+     *                 supervisingProvider: {
+     *                     npi: "string",
+     *                     taxonomyCode: "string",
+     *                     address: {
+     *                         address1: "123 Main St",
+     *                         address2: "Apt 1",
+     *                         city: "New York",
+     *                         state: CandidApi.State.Ny,
+     *                         zipCode: "10001",
+     *                         zipPlusFourCode: "1234"
+     *                     },
+     *                     firstName: "string",
+     *                     lastName: "string",
+     *                     organizationName: "string"
+     *                 },
+     *                 orderingProvider: {
+     *                     npi: "string",
+     *                     taxonomyCode: "string",
+     *                     address: {
+     *                         address1: "123 Main St",
+     *                         address2: "Apt 1",
+     *                         city: "New York",
+     *                         state: CandidApi.State.Ny,
+     *                         zipCode: "10001",
+     *                         zipPlusFourCode: "1234"
+     *                     },
+     *                     firstName: "string",
+     *                     lastName: "string",
+     *                     organizationName: "string"
+     *                 }
      *             }],
      *         guarantor: {
      *             phoneNumbers: [{
@@ -516,7 +623,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.22.2-15e24b1",
+                "X-Fern-SDK-Version": "0.23.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -685,7 +792,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.22.2-15e24b1",
+                "X-Fern-SDK-Version": "0.23.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

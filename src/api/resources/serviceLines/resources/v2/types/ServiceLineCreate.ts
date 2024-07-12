@@ -28,4 +28,20 @@ export interface ServiceLineCreate {
     description?: string;
     dateOfService?: string;
     endDateOfService?: string;
+    /**
+     * The final provider who referred the services that were rendered.
+     * All physicians who order services or refer Medicare beneficiaries must
+     * report this data.
+     */
+    referringProvider?: CandidApi.encounterProviders.v2.ReferringProvider;
+    /**
+     * The first provider who referred the services that were rendered.
+     * All physicians who order services or refer Medicare beneficiaries must
+     * report this data. This field cannot be populated unless referring_provider is first populated.
+     */
+    initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProvider;
+    /** The provider who is supervising the rendering provider. */
+    supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProvider;
+    /** The provider who ordered the services that were rendered. */
+    orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
 }

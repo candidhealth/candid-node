@@ -27,6 +27,7 @@ import { Payers } from "./api/resources/payers/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 import { ServiceFacility } from "./api/resources/serviceFacility/client/Client";
+import { PreEncounter } from "./api/resources/preEncounter/client/Client";
 
 export declare namespace CandidApiClient {
     interface Options {
@@ -248,6 +249,15 @@ export class CandidApiClient {
 
     public get serviceFacility(): ServiceFacility {
         return (this._serviceFacility ??= new ServiceFacility({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _preEncounter: PreEncounter | undefined;
+
+    public get preEncounter(): PreEncounter {
+        return (this._preEncounter ??= new PreEncounter({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

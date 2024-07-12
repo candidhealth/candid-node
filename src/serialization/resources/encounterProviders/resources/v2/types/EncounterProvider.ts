@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { ProviderId } from "./ProviderId";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
+import { QualifierCode } from "../../../../commons/types/QualifierCode";
 import { EncounterProviderBase } from "./EncounterProviderBase";
 
 export const EncounterProvider: core.serialization.ObjectSchema<
@@ -19,6 +20,7 @@ export const EncounterProvider: core.serialization.ObjectSchema<
         taxId: core.serialization.property("tax_id", core.serialization.string().optional()),
         npi: core.serialization.string(),
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
+        qualifier: QualifierCode.optional(),
     })
     .extend(EncounterProviderBase);
 
@@ -29,5 +31,6 @@ export declare namespace EncounterProvider {
         tax_id?: string | null;
         npi: string;
         taxonomy_code?: string | null;
+        qualifier?: QualifierCode.Raw | null;
     }
 }

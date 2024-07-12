@@ -9,6 +9,9 @@ import { PatientCreate } from "../../../../../individual/types/PatientCreate";
 import { BillingProvider } from "../../../../../encounterProviders/resources/v2/types/BillingProvider";
 import { RenderingProvider } from "../../../../../encounterProviders/resources/v2/types/RenderingProvider";
 import { ReferringProvider } from "../../../../../encounterProviders/resources/v2/types/ReferringProvider";
+import { InitialReferringProvider } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProvider";
+import { SupervisingProvider } from "../../../../../encounterProviders/resources/v2/types/SupervisingProvider";
+import { OrderingProvider } from "../../../../../encounterProviders/resources/v2/types/OrderingProvider";
 import { EncounterServiceFacilityBase } from "../../../../../serviceFacility/types/EncounterServiceFacilityBase";
 import { SubscriberCreate } from "../../../../../individual/types/SubscriberCreate";
 import { DiagnosisCreate } from "../../../../../diagnoses/types/DiagnosisCreate";
@@ -33,6 +36,12 @@ export const EncounterCreate: core.serialization.Schema<
         billingProvider: core.serialization.property("billing_provider", BillingProvider),
         renderingProvider: core.serialization.property("rendering_provider", RenderingProvider),
         referringProvider: core.serialization.property("referring_provider", ReferringProvider.optional()),
+        initialReferringProvider: core.serialization.property(
+            "initial_referring_provider",
+            InitialReferringProvider.optional()
+        ),
+        supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
+        orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
         subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
@@ -68,6 +77,9 @@ export declare namespace EncounterCreate {
         billing_provider: BillingProvider.Raw;
         rendering_provider: RenderingProvider.Raw;
         referring_provider?: ReferringProvider.Raw | null;
+        initial_referring_provider?: InitialReferringProvider.Raw | null;
+        supervising_provider?: SupervisingProvider.Raw | null;
+        ordering_provider?: OrderingProvider.Raw | null;
         service_facility?: EncounterServiceFacilityBase.Raw | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;

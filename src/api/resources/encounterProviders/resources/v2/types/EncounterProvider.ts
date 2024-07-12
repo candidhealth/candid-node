@@ -30,4 +30,5 @@ export interface EncounterProvider extends CandidApi.encounterProviders.v2.Encou
     taxId?: string;
     npi: string;
     taxonomyCode?: string;
+    qualifier?: CandidApi.QualifierCode;
 }

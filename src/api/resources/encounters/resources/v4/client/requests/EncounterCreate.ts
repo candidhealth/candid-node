@@ -77,6 +77,52 @@ import * as CandidApi from "../../../../../../index";
  *             lastName: "string",
  *             organizationName: "string"
  *         },
+ *         initialReferringProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             qualifier: CandidApi.QualifierCode.Dq,
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
+ *         supervisingProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
+ *         orderingProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
  *         serviceFacility: {
  *             organizationName: "string",
  *             npi: "string",
@@ -186,7 +232,68 @@ import * as CandidApi from "../../../../../../index";
  *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
  *                 description: "string",
  *                 dateOfService: "2023-01-15",
- *                 endDateOfService: "2023-01-15"
+ *                 endDateOfService: "2023-01-15",
+ *                 referringProvider: {
+ *                     npi: "string",
+ *                     taxonomyCode: "string",
+ *                     address: {
+ *                         address1: "123 Main St",
+ *                         address2: "Apt 1",
+ *                         city: "New York",
+ *                         state: CandidApi.State.Ny,
+ *                         zipCode: "10001",
+ *                         zipPlusFourCode: "1234"
+ *                     },
+ *                     firstName: "string",
+ *                     lastName: "string",
+ *                     organizationName: "string"
+ *                 },
+ *                 initialReferringProvider: {
+ *                     npi: "string",
+ *                     taxonomyCode: "string",
+ *                     address: {
+ *                         address1: "123 Main St",
+ *                         address2: "Apt 1",
+ *                         city: "New York",
+ *                         state: CandidApi.State.Ny,
+ *                         zipCode: "10001",
+ *                         zipPlusFourCode: "1234"
+ *                     },
+ *                     qualifier: CandidApi.QualifierCode.Dq,
+ *                     firstName: "string",
+ *                     lastName: "string",
+ *                     organizationName: "string"
+ *                 },
+ *                 supervisingProvider: {
+ *                     npi: "string",
+ *                     taxonomyCode: "string",
+ *                     address: {
+ *                         address1: "123 Main St",
+ *                         address2: "Apt 1",
+ *                         city: "New York",
+ *                         state: CandidApi.State.Ny,
+ *                         zipCode: "10001",
+ *                         zipPlusFourCode: "1234"
+ *                     },
+ *                     firstName: "string",
+ *                     lastName: "string",
+ *                     organizationName: "string"
+ *                 },
+ *                 orderingProvider: {
+ *                     npi: "string",
+ *                     taxonomyCode: "string",
+ *                     address: {
+ *                         address1: "123 Main St",
+ *                         address2: "Apt 1",
+ *                         city: "New York",
+ *                         state: CandidApi.State.Ny,
+ *                         zipCode: "10001",
+ *                         zipPlusFourCode: "1234"
+ *                     },
+ *                     firstName: "string",
+ *                     lastName: "string",
+ *                     organizationName: "string"
+ *                 }
  *             }],
  *         guarantor: {
  *             phoneNumbers: [{
@@ -321,14 +428,29 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      */
     renderingProvider: CandidApi.encounterProviders.v2.RenderingProvider;
     /**
-     * The provider who referred the services that were rendered.
+     * The final provider who referred the services that were rendered.
      * All physicians who order services or refer Medicare beneficiaries must
      * report this data.
-     * If a claim involves multiple referring physicians, create a separate
-     * encounter for each physician.
      *
      */
     referringProvider?: CandidApi.encounterProviders.v2.ReferringProvider;
+    /**
+     * The first provider who referred the services that were rendered.
+     * All physicians who order services or refer Medicare beneficiaries must
+     * report this data. This field cannot be populated unless referring_provider is first populated.
+     *
+     */
+    initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProvider;
+    /**
+     * The provider who is supervising the rendering provider.
+     *
+     */
+    supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProvider;
+    /**
+     * The provider who ordered the services that were rendered.
+     *
+     */
+    orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
     /**
      * Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process.
      *
