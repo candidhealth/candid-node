@@ -16,7 +16,7 @@ export const Address: core.serialization.ObjectSchema<
     line: core.serialization.list(core.serialization.string()),
     city: core.serialization.string(),
     state: core.serialization.string(),
-    postalCode: core.serialization.string(),
+    postalCode: core.serialization.property("postal_code", core.serialization.string()),
     country: core.serialization.string(),
     period: Period.optional(),
 });
@@ -27,7 +27,7 @@ export declare namespace Address {
         line: string[];
         city: string;
         state: string;
-        postalCode: string;
+        postal_code: string;
         country: string;
         period?: Period.Raw | null;
     }

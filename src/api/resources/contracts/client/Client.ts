@@ -8,7 +8,7 @@ import { V2 } from "../resources/v2/client/Client";
 
 export declare namespace Contracts {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 

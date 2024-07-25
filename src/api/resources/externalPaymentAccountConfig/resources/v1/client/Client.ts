@@ -10,7 +10,7 @@ import * as serializers from "../../../../../../serialization/index";
 
 export declare namespace V1 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
@@ -60,7 +60,8 @@ export class V1 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/external-payment-account-config/v1"
             ),
             method: "GET",
@@ -68,7 +69,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

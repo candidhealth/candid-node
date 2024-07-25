@@ -13,13 +13,13 @@ export const VersionConflictErrorBody: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         code: core.serialization.stringLiteral("VERSION_CONFLICT"),
-        latestVersion: core.serialization.number(),
+        latestVersion: core.serialization.property("latest_version", core.serialization.number()),
     })
     .extend(ErrorBase);
 
 export declare namespace VersionConflictErrorBody {
     interface Raw extends ErrorBase.Raw {
         code: "VERSION_CONFLICT";
-        latestVersion: number;
+        latest_version: number;
     }
 }

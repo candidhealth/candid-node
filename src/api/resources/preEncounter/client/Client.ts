@@ -9,7 +9,7 @@ import { Patients } from "../resources/patients/client/Client";
 
 export declare namespace PreEncounter {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 

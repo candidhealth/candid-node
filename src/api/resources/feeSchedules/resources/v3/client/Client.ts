@@ -10,7 +10,7 @@ import urlJoin from "url-join";
 
 export declare namespace V3 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
@@ -41,7 +41,8 @@ export class V3 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/fee-schedules/v3/service-line/${encodeURIComponent(
                     await serializers.ServiceLineId.jsonOrThrow(serviceLineId)
                 )}/match`
@@ -51,7 +52,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -114,7 +115,8 @@ export class V3 {
     ): Promise<core.APIResponse<CandidApi.feeSchedules.v3.MatchTestResult, CandidApi.feeSchedules.v3.testMatch.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/fee-schedules/v3/service-line/${encodeURIComponent(
                     await serializers.ServiceLineId.jsonOrThrow(serviceLineId)
                 )}/match/${encodeURIComponent(await serializers.RateId.jsonOrThrow(rateId))}`
@@ -124,7 +126,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -285,7 +287,8 @@ export class V3 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/fee-schedules/v3"
             ),
             method: "GET",
@@ -293,7 +296,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -438,7 +441,8 @@ export class V3 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/fee-schedules/v3/unique-dimension-values"
             ),
             method: "GET",
@@ -446,7 +450,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -489,7 +493,8 @@ export class V3 {
     ): Promise<core.APIResponse<CandidApi.feeSchedules.v3.Rate[], CandidApi.feeSchedules.v3.getRateHistory.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/fee-schedules/v3/${encodeURIComponent(await serializers.RateId.jsonOrThrow(rateId))}/history`
             ),
             method: "GET",
@@ -497,7 +502,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -578,7 +583,8 @@ export class V3 {
     ): Promise<core.APIResponse<CandidApi.feeSchedules.v3.Rate[], CandidApi.feeSchedules.v3.uploadFeeSchedule.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/fee-schedules/v3"
             ),
             method: "POST",
@@ -586,7 +592,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -651,7 +657,8 @@ export class V3 {
     ): Promise<core.APIResponse<void, CandidApi.feeSchedules.v3.deleteRate.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/fee-schedules/v3/${encodeURIComponent(
                     await serializers.RateId.jsonOrThrow(rateId)
                 )}/${encodeURIComponent(version)}`
@@ -661,7 +668,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -720,7 +727,8 @@ export class V3 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/fee-schedules/v3/payer-threshold/default"
             ),
             method: "GET",
@@ -728,7 +736,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -785,7 +793,8 @@ export class V3 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/fee-schedules/v3/payer-threshold"
             ),
             method: "GET",
@@ -793,7 +802,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -844,7 +853,8 @@ export class V3 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/fee-schedules/v3/payer-threshold/${encodeURIComponent(
                     await serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid)
                 )}`
@@ -854,7 +864,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

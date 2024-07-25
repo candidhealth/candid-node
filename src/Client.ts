@@ -31,7 +31,7 @@ import { PreEncounter } from "./api/resources/preEncounter/client/Client";
 
 export declare namespace CandidApiClient {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         clientId: core.Supplier<string>;
         clientSecret: core.Supplier<string>;
     }

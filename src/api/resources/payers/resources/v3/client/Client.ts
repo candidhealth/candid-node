@@ -10,7 +10,7 @@ import urlJoin from "url-join";
 
 export declare namespace V3 {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
@@ -37,7 +37,8 @@ export class V3 {
     ): Promise<core.APIResponse<CandidApi.payers.v3.Payer, CandidApi.payers.v3.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/payers/v3/${encodeURIComponent(await serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid))}`
             ),
             method: "GET",
@@ -45,7 +46,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -103,7 +104,8 @@ export class V3 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 "/api/payers/v3"
             ),
             method: "GET",
@@ -111,7 +113,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

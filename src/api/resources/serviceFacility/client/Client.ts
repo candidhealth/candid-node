@@ -10,7 +10,7 @@ import urlJoin from "url-join";
 
 export declare namespace ServiceFacility {
     interface Options {
-        environment?: core.Supplier<environments.CandidApiEnvironment | string>;
+        environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
@@ -50,7 +50,8 @@ export class ServiceFacility {
     ): Promise<core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
                 `/api/service_facility/v2/${encodeURIComponent(
                     await serializers.ServiceFacilityId.jsonOrThrow(serviceFacilityId)
                 )}`
@@ -60,7 +61,7 @@ export class ServiceFacility {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.23.0",
+                "X-Fern-SDK-Version": "0.24.0-2a6d412",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

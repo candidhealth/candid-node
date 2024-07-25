@@ -35,13 +35,19 @@ export interface ServiceLineCreate {
      */
     referringProvider?: CandidApi.encounterProviders.v2.ReferringProvider;
     /**
-     * The first provider who referred the services that were rendered.
-     * All physicians who order services or refer Medicare beneficiaries must
-     * report this data. This field cannot be populated unless referring_provider is first populated.
+     * The second iteration of Loop ID-2310. Use code "P3 - Primary Care Provider" in this loop to
+     * indicate the initial referral from the primary care provider or whatever provider wrote the initial referral for this patient's episode of care being billed/reported in this transaction.
+     * Information in Loop ID-2310 applies to the entire claim unless overridden on a service line by the presence of Loop ID-2420 with the same value in NM101.
      */
     initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProvider;
-    /** The provider who is supervising the rendering provider. */
+    /**
+     * Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send.
+     * Information in Loop ID-2310 applies to the entire claim unless overridden on a service line by the presence of Loop ID-2420 with the same value in NM101.
+     */
     supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProvider;
-    /** The provider who ordered the services that were rendered. */
+    /**
+     * Required when the service or supply was ordered by a provider who is different than the rendering provider for this service line.
+     * If not required by this implementation guide, do not send.
+     */
     orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
 }
