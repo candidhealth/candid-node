@@ -15,8 +15,11 @@ export declare namespace ServiceFacility {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -30,7 +33,7 @@ export class ServiceFacility {
      * @param {ServiceFacility.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         organizationName: "string",
      *         npi: "string",
      *         address: {
@@ -53,7 +56,7 @@ export class ServiceFacility {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/service_facility/v2/${encodeURIComponent(
-                    await serializers.ServiceFacilityId.jsonOrThrow(serviceFacilityId)
+                    serializers.ServiceFacilityId.jsonOrThrow(serviceFacilityId)
                 )}`
             ),
             method: "PATCH",
@@ -61,14 +64,13 @@ export class ServiceFacility {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.EncounterServiceFacilityUpdate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.EncounterServiceFacilityUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -76,7 +78,7 @@ export class ServiceFacility {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.EncounterServiceFacility.parseOrThrow(_response.body, {
+                body: serializers.EncounterServiceFacility.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

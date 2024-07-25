@@ -15,8 +15,11 @@ export declare namespace V3 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -29,7 +32,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.payers.v3.get(CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.payers.v3.get(CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         payerUuid: CandidApi.payers.v3.PayerUuid,
@@ -39,18 +42,19 @@ export class V3 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/payers/v3/${encodeURIComponent(await serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid))}`
+                `/api/payers/v3/${encodeURIComponent(serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -58,7 +62,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.payers.v3.Payer.parseOrThrow(_response.body, {
+                body: serializers.payers.v3.Payer.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -78,7 +82,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.payers.v3.getAll({
+     *     await client.payers.v3.getAll({
      *         limit: 100,
      *         searchTerm: "john",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
@@ -113,12 +117,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -126,7 +131,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.payers.v3.PayerPage.parseOrThrow(_response.body, {
+                body: serializers.payers.v3.PayerPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

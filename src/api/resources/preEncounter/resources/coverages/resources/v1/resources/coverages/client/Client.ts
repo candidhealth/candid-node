@@ -15,8 +15,11 @@ export declare namespace Coverages {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -31,7 +34,7 @@ export class Coverages {
      * @param {Coverages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.coverages.v1.coverages.create({
+     *     await client.preEncounter.coverages.v1.coverages.create({
      *         status: CandidApi.preEncounter.coverages.v1.CoverageStatus.Active,
      *         subscriber: {
      *             name: {
@@ -81,12 +84,13 @@ export class Coverages {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.preEncounter.coverages.v1.MutableCoverage.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.preEncounter.coverages.v1.MutableCoverage.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -96,7 +100,7 @@ export class Coverages {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -120,7 +124,7 @@ export class Coverages {
      * @param {Coverages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.coverages.v1.coverages.update(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), 1, {
+     *     await client.preEncounter.coverages.v1.coverages.update(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), 1, {
      *         status: CandidApi.preEncounter.coverages.v1.CoverageStatus.Active,
      *         subscriber: {
      *             name: {
@@ -166,7 +170,7 @@ export class Coverages {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/coverages/v1/${encodeURIComponent(
-                    await serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
+                    serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "PUT",
@@ -174,12 +178,13 @@ export class Coverages {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.preEncounter.coverages.v1.MutableCoverage.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.preEncounter.coverages.v1.MutableCoverage.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -189,7 +194,7 @@ export class Coverages {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -206,7 +211,7 @@ export class Coverages {
                 case "VersionConflictError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.coverages.v1.coverages.update.Error.parseOrThrow(
+                        error: serializers.preEncounter.coverages.v1.coverages.update.Error.parseOrThrow(
                             _response.error.body as serializers.preEncounter.coverages.v1.coverages.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -232,7 +237,7 @@ export class Coverages {
      * @param {Coverages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.coverages.v1.coverages.get(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.preEncounter.coverages.v1.coverages.get(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         id: CandidApi.preEncounter.coverages.v1.CoverageId,
@@ -247,20 +252,19 @@ export class Coverages {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/coverages/v1/${encodeURIComponent(
-                    await serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
-                )}`
+                `/coverages/v1/${encodeURIComponent(serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -268,7 +272,7 @@ export class Coverages {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -290,7 +294,7 @@ export class Coverages {
      * @param {Coverages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.coverages.v1.coverages.getHistory(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.preEncounter.coverages.v1.coverages.getHistory(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async getHistory(
         id: CandidApi.preEncounter.coverages.v1.CoverageId,
@@ -306,7 +310,7 @@ export class Coverages {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/coverages/v1/${encodeURIComponent(
-                    await serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
+                    serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
                 )}/history`
             ),
             method: "GET",
@@ -314,11 +318,12 @@ export class Coverages {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -326,15 +331,12 @@ export class Coverages {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.coverages.v1.coverages.getHistory.Response.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    }
-                ),
+                body: serializers.preEncounter.coverages.v1.coverages.getHistory.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
             };
         }
 
@@ -346,7 +348,7 @@ export class Coverages {
                 case "NotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.coverages.v1.coverages.getHistory.Error.parseOrThrow(
+                        error: serializers.preEncounter.coverages.v1.coverages.getHistory.Error.parseOrThrow(
                             _response.error
                                 .body as serializers.preEncounter.coverages.v1.coverages.getHistory.Error.Raw,
                             {
@@ -373,7 +375,7 @@ export class Coverages {
      * @param {Coverages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.coverages.v1.coverages.getMulti({
+     *     await client.preEncounter.coverages.v1.coverages.getMulti({
      *         patientId: "string"
      *     })
      */
@@ -403,12 +405,13 @@ export class Coverages {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -416,15 +419,12 @@ export class Coverages {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.coverages.v1.coverages.getMulti.Response.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    }
-                ),
+                body: serializers.preEncounter.coverages.v1.coverages.getMulti.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
             };
         }
 
@@ -441,7 +441,7 @@ export class Coverages {
      * @param {Coverages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.coverages.v1.coverages.scan({
+     *     await client.preEncounter.coverages.v1.coverages.scan({
      *         since: new Date("2024-01-15T09:30:00.000Z")
      *     })
      */
@@ -468,12 +468,13 @@ export class Coverages {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -481,7 +482,7 @@ export class Coverages {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.coverages.v1.coverages.scan.Response.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.coverages.v1.coverages.scan.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

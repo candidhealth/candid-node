@@ -15,8 +15,11 @@ export declare namespace V1 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -31,7 +34,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.insuranceAdjudications.v1.get(CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.insuranceAdjudications.v1.get(CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         insuranceAdjudicationId: CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId,
@@ -47,9 +50,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/insurance-adjudications/v1/${encodeURIComponent(
-                    await serializers.insuranceAdjudications.v1.InsuranceAdjudicationId.jsonOrThrow(
-                        insuranceAdjudicationId
-                    )
+                    serializers.insuranceAdjudications.v1.InsuranceAdjudicationId.jsonOrThrow(insuranceAdjudicationId)
                 )}`
             ),
             method: "GET",
@@ -57,11 +58,12 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -69,7 +71,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.insuranceAdjudications.v1.InsuranceAdjudication.parseOrThrow(_response.body, {
+                body: serializers.insuranceAdjudications.v1.InsuranceAdjudication.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -91,7 +93,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.insuranceAdjudications.v1.create({
+     *     await client.insuranceAdjudications.v1.create({
      *         payerIdentifier: {
      *             type: "payer_info"
      *         },
@@ -125,12 +127,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -140,7 +143,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.insuranceAdjudications.v1.InsuranceAdjudication.parseOrThrow(_response.body, {
+                body: serializers.insuranceAdjudications.v1.InsuranceAdjudication.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -154,7 +157,7 @@ export class V1 {
                 case "EraNotFullyProcessedError":
                     return {
                         ok: false,
-                        error: await serializers.insuranceAdjudications.v1.create.Error.parseOrThrow(
+                        error: serializers.insuranceAdjudications.v1.create.Error.parseOrThrow(
                             _response.error.body as serializers.insuranceAdjudications.v1.create.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -180,7 +183,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.insuranceAdjudications.v1.delete(CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.insuranceAdjudications.v1.delete(CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async delete(
         insuranceAdjudicationId: CandidApi.insuranceAdjudications.v1.InsuranceAdjudicationId,
@@ -191,9 +194,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/insurance-adjudications/v1/${encodeURIComponent(
-                    await serializers.insuranceAdjudications.v1.InsuranceAdjudicationId.jsonOrThrow(
-                        insuranceAdjudicationId
-                    )
+                    serializers.insuranceAdjudications.v1.InsuranceAdjudicationId.jsonOrThrow(insuranceAdjudicationId)
                 )}`
             ),
             method: "DELETE",
@@ -201,11 +202,12 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

@@ -15,8 +15,11 @@ export declare namespace V2 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -29,7 +32,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.organizationServiceFacilities.v2.get(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
+     *     await client.organizationServiceFacilities.v2.get(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
      */
     public async get(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
@@ -45,7 +48,7 @@ export class V2 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
+                    serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
                         organizationServiceFacilityId
                     )
                 )}`
@@ -55,11 +58,12 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -67,7 +71,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",
@@ -84,7 +88,7 @@ export class V2 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.organizationServiceFacilities.v2.get.Error.parseOrThrow(
+                        error: serializers.organizationServiceFacilities.v2.get.Error.parseOrThrow(
                             _response.error.body as serializers.organizationServiceFacilities.v2.get.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -108,7 +112,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.organizationServiceFacilities.v2.getMulti({
+     *     await client.organizationServiceFacilities.v2.getMulti({
      *         limit: 100,
      *         name: "Test Service Facility",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
@@ -148,12 +152,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -161,7 +166,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityPage.parseOrThrow(
+                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityPage.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",
@@ -184,7 +189,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.organizationServiceFacilities.v2.create({
+     *     await client.organizationServiceFacilities.v2.create({
      *         name: "Test Service Facility",
      *         aliases: ["Test Service Facility Alias"],
      *         description: "Test Service Facility Description",
@@ -224,15 +229,15 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate.jsonOrThrow(
-                request,
-                { unrecognizedObjectKeys: "strip" }
-            ),
+            requestType: "json",
+            body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -240,7 +245,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",
@@ -259,7 +264,7 @@ export class V2 {
                 case "HttpRequestValidationError":
                     return {
                         ok: false,
-                        error: await serializers.organizationServiceFacilities.v2.create.Error.parseOrThrow(
+                        error: serializers.organizationServiceFacilities.v2.create.Error.parseOrThrow(
                             _response.error.body as serializers.organizationServiceFacilities.v2.create.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -284,7 +289,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.organizationServiceFacilities.v2.update(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"), {
+     *     await client.organizationServiceFacilities.v2.update(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"), {
      *         name: "Test Service Facility",
      *         aliases: ["Test Service Facility Alias"],
      *         description: "Test Service Facility Description",
@@ -319,7 +324,7 @@ export class V2 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
+                    serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
                         organizationServiceFacilityId
                     )
                 )}`
@@ -329,15 +334,15 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate.jsonOrThrow(
-                request,
-                { unrecognizedObjectKeys: "strip" }
-            ),
+            requestType: "json",
+            body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -345,7 +350,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",
@@ -365,7 +370,7 @@ export class V2 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.organizationServiceFacilities.v2.update.Error.parseOrThrow(
+                        error: serializers.organizationServiceFacilities.v2.update.Error.parseOrThrow(
                             _response.error.body as serializers.organizationServiceFacilities.v2.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -389,7 +394,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.organizationServiceFacilities.v2.delete(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
+     *     await client.organizationServiceFacilities.v2.delete(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
      */
     public async delete(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
@@ -400,7 +405,7 @@ export class V2 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    await serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
+                    serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
                         organizationServiceFacilityId
                     )
                 )}`
@@ -410,11 +415,12 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -433,7 +439,7 @@ export class V2 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.organizationServiceFacilities.v2.delete.Error.parseOrThrow(
+                        error: serializers.organizationServiceFacilities.v2.delete.Error.parseOrThrow(
                             _response.error.body as serializers.organizationServiceFacilities.v2.delete.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

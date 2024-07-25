@@ -15,8 +15,11 @@ export declare namespace Patients {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -31,7 +34,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.create({
+     *     await client.preEncounter.patients.v1.patients.create({
      *         name: {
      *             family: "string",
      *             given: ["string"],
@@ -171,12 +174,13 @@ export class Patients {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -186,7 +190,7 @@ export class Patients {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -202,7 +206,7 @@ export class Patients {
                 case "VersionConflictError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.patients.v1.patients.create.Error.parseOrThrow(
+                        error: serializers.preEncounter.patients.v1.patients.create.Error.parseOrThrow(
                             _response.error.body as serializers.preEncounter.patients.v1.patients.create.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -228,7 +232,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.get(CandidApi.preEncounter.patients.v1.PatientId("string"))
+     *     await client.preEncounter.patients.v1.patients.get(CandidApi.preEncounter.patients.v1.PatientId("string"))
      */
     public async get(
         id: CandidApi.preEncounter.patients.v1.PatientId,
@@ -243,20 +247,19 @@ export class Patients {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/patients/v1/${encodeURIComponent(
-                    await serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
-                )}`
+                `/patients/v1/${encodeURIComponent(serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -264,7 +267,7 @@ export class Patients {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -278,7 +281,7 @@ export class Patients {
                 case "NotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.patients.v1.patients.get.Error.parseOrThrow(
+                        error: serializers.preEncounter.patients.v1.patients.get.Error.parseOrThrow(
                             _response.error.body as serializers.preEncounter.patients.v1.patients.get.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -304,7 +307,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.getHistory(CandidApi.preEncounter.patients.v1.PatientId("string"))
+     *     await client.preEncounter.patients.v1.patients.getHistory(CandidApi.preEncounter.patients.v1.PatientId("string"))
      */
     public async getHistory(
         id: CandidApi.preEncounter.patients.v1.PatientId,
@@ -320,7 +323,7 @@ export class Patients {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/patients/v1/${encodeURIComponent(
-                    await serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
+                    serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
                 )}/history`
             ),
             method: "GET",
@@ -328,11 +331,12 @@ export class Patients {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -340,15 +344,12 @@ export class Patients {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.patients.v1.patients.getHistory.Response.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    }
-                ),
+                body: serializers.preEncounter.patients.v1.patients.getHistory.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
             };
         }
 
@@ -359,7 +360,7 @@ export class Patients {
                 case "NotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.patients.v1.patients.getHistory.Error.parseOrThrow(
+                        error: serializers.preEncounter.patients.v1.patients.getHistory.Error.parseOrThrow(
                             _response.error.body as serializers.preEncounter.patients.v1.patients.getHistory.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -387,7 +388,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.update(CandidApi.preEncounter.patients.v1.PatientId("string"), 1, {
+     *     await client.preEncounter.patients.v1.patients.update(CandidApi.preEncounter.patients.v1.PatientId("string"), 1, {
      *         name: {
      *             family: "string",
      *             given: ["string"],
@@ -523,7 +524,7 @@ export class Patients {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/patients/v1/${encodeURIComponent(
-                    await serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
+                    serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "PUT",
@@ -531,12 +532,13 @@ export class Patients {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -546,7 +548,7 @@ export class Patients {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -563,7 +565,7 @@ export class Patients {
                 case "VersionConflictError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.patients.v1.patients.update.Error.parseOrThrow(
+                        error: serializers.preEncounter.patients.v1.patients.update.Error.parseOrThrow(
                             _response.error.body as serializers.preEncounter.patients.v1.patients.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -590,7 +592,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.deactivate(CandidApi.preEncounter.patients.v1.PatientId("string"), 1)
+     *     await client.preEncounter.patients.v1.patients.deactivate(CandidApi.preEncounter.patients.v1.PatientId("string"), 1)
      */
     public async deactivate(
         id: CandidApi.preEncounter.patients.v1.PatientId,
@@ -602,7 +604,7 @@ export class Patients {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/patients/v1/${encodeURIComponent(
-                    await serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
+                    serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "DELETE",
@@ -610,11 +612,12 @@ export class Patients {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -634,7 +637,7 @@ export class Patients {
                 case "VersionConflictError":
                     return {
                         ok: false,
-                        error: await serializers.preEncounter.patients.v1.patients.deactivate.Error.parseOrThrow(
+                        error: serializers.preEncounter.patients.v1.patients.deactivate.Error.parseOrThrow(
                             _response.error.body as serializers.preEncounter.patients.v1.patients.deactivate.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -660,7 +663,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.search({
+     *     await client.preEncounter.patients.v1.patients.search({
      *         nameContains: "string"
      *     })
      */
@@ -690,12 +693,13 @@ export class Patients {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -703,7 +707,7 @@ export class Patients {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.patients.v1.patients.search.Response.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.patients.v1.patients.search.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -725,7 +729,7 @@ export class Patients {
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.preEncounter.patients.v1.patients.scan({
+     *     await client.preEncounter.patients.v1.patients.scan({
      *         since: new Date("2024-01-15T09:30:00.000Z")
      *     })
      */
@@ -752,12 +756,13 @@ export class Patients {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -765,7 +770,7 @@ export class Patients {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.preEncounter.patients.v1.patients.scan.Response.parseOrThrow(_response.body, {
+                body: serializers.preEncounter.patients.v1.patients.scan.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

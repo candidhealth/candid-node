@@ -15,8 +15,11 @@ export declare namespace V3 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -31,7 +34,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.getMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.feeSchedules.v3.getMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async getMatch(
         serviceLineId: CandidApi.ServiceLineId,
@@ -44,7 +47,7 @@ export class V3 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/fee-schedules/v3/service-line/${encodeURIComponent(
-                    await serializers.ServiceLineId.jsonOrThrow(serviceLineId)
+                    serializers.ServiceLineId.jsonOrThrow(serviceLineId)
                 )}/match`
             ),
             method: "GET",
@@ -52,11 +55,12 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -64,7 +68,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.getMatch.Response.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.getMatch.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -79,7 +83,7 @@ export class V3 {
                 case "FailedToBuildServiceLineDimensions":
                     return {
                         ok: false,
-                        error: await serializers.feeSchedules.v3.getMatch.Error.parseOrThrow(
+                        error: serializers.feeSchedules.v3.getMatch.Error.parseOrThrow(
                             _response.error.body as serializers.feeSchedules.v3.getMatch.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -106,7 +110,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.testMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.feeSchedules.v3.testMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async testMatch(
         serviceLineId: CandidApi.ServiceLineId,
@@ -118,19 +122,20 @@ export class V3 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/fee-schedules/v3/service-line/${encodeURIComponent(
-                    await serializers.ServiceLineId.jsonOrThrow(serviceLineId)
-                )}/match/${encodeURIComponent(await serializers.RateId.jsonOrThrow(rateId))}`
+                    serializers.ServiceLineId.jsonOrThrow(serviceLineId)
+                )}/match/${encodeURIComponent(serializers.RateId.jsonOrThrow(rateId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -138,7 +143,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.MatchTestResult.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.MatchTestResult.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -153,7 +158,7 @@ export class V3 {
                 case "FailedToBuildServiceLineDimensions":
                     return {
                         ok: false,
-                        error: await serializers.feeSchedules.v3.testMatch.Error.parseOrThrow(
+                        error: serializers.feeSchedules.v3.testMatch.Error.parseOrThrow(
                             _response.error.body as serializers.feeSchedules.v3.testMatch.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -179,7 +184,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.getMulti({
+     *     await client.feeSchedules.v3.getMulti({
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         limit: 1,
      *         activeDate: "2023-01-15",
@@ -296,12 +301,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -309,7 +315,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.RatesPage.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.RatesPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -331,7 +337,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.getUniqueValuesForDimension({
+     *     await client.feeSchedules.v3.getUniqueValuesForDimension({
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         limit: 1,
      *         pivotDimension: CandidApi.feeSchedules.v3.DimensionName.PayerUuid,
@@ -450,12 +456,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -463,7 +470,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.DimensionsPage.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.DimensionsPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -485,7 +492,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async getRateHistory(
         rateId: CandidApi.RateId,
@@ -495,18 +502,19 @@ export class V3 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/fee-schedules/v3/${encodeURIComponent(await serializers.RateId.jsonOrThrow(rateId))}/history`
+                `/api/fee-schedules/v3/${encodeURIComponent(serializers.RateId.jsonOrThrow(rateId))}/history`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -514,7 +522,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.getRateHistory.Response.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.getRateHistory.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -528,7 +536,7 @@ export class V3 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.feeSchedules.v3.getRateHistory.Error.parseOrThrow(
+                        error: serializers.feeSchedules.v3.getRateHistory.Error.parseOrThrow(
                             _response.error.body as serializers.feeSchedules.v3.getRateHistory.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -554,7 +562,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.uploadFeeSchedule({
+     *     await client.feeSchedules.v3.uploadFeeSchedule({
      *         dryRun: true,
      *         rates: [{
      *                 type: "new_rate",
@@ -592,12 +600,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.feeSchedules.v3.FeeScheduleUploadRequest.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.feeSchedules.v3.FeeScheduleUploadRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -607,7 +616,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.uploadFeeSchedule.Response.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.uploadFeeSchedule.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -621,7 +630,7 @@ export class V3 {
                 case "FeeScheduleValidationHttpError":
                     return {
                         ok: false,
-                        error: await serializers.feeSchedules.v3.uploadFeeSchedule.Error.parseOrThrow(
+                        error: serializers.feeSchedules.v3.uploadFeeSchedule.Error.parseOrThrow(
                             _response.error.body as serializers.feeSchedules.v3.uploadFeeSchedule.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -648,7 +657,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.deleteRate(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), 1)
+     *     await client.feeSchedules.v3.deleteRate(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), 1)
      */
     public async deleteRate(
         rateId: CandidApi.RateId,
@@ -660,7 +669,7 @@ export class V3 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/fee-schedules/v3/${encodeURIComponent(
-                    await serializers.RateId.jsonOrThrow(rateId)
+                    serializers.RateId.jsonOrThrow(rateId)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "DELETE",
@@ -668,11 +677,12 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -690,7 +700,7 @@ export class V3 {
                 case "EntityConflictError":
                     return {
                         ok: false,
-                        error: await serializers.feeSchedules.v3.deleteRate.Error.parseOrThrow(
+                        error: serializers.feeSchedules.v3.deleteRate.Error.parseOrThrow(
                             _response.error.body as serializers.feeSchedules.v3.deleteRate.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -715,7 +725,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.getPayerThresholdsDefault()
+     *     await client.feeSchedules.v3.getPayerThresholdsDefault()
      */
     public async getPayerThresholdsDefault(
         requestOptions?: V3.RequestOptions
@@ -736,11 +746,12 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -748,7 +759,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.PayerThreshold.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.PayerThreshold.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -770,7 +781,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.getPayerThresholds({
+     *     await client.feeSchedules.v3.getPayerThresholds({
      *         payerUuids: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *     })
      */
@@ -802,12 +813,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -815,7 +827,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.PayerThresholdsPage.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.PayerThresholdsPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -838,7 +850,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.feeSchedules.v3.setPayerThreshold(CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.feeSchedules.v3.setPayerThreshold(CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         upperThresholdCents: 1,
      *         lowerThresholdCents: 1,
      *         disablePaidIncorrectly: true
@@ -856,7 +868,7 @@ export class V3 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/fee-schedules/v3/payer-threshold/${encodeURIComponent(
-                    await serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid)
+                    serializers.payers.v3.PayerUuid.jsonOrThrow(payerUuid)
                 )}`
             ),
             method: "PUT",
@@ -864,14 +876,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.feeSchedules.v3.PayerThreshold.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.feeSchedules.v3.PayerThreshold.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -879,7 +890,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.feeSchedules.v3.PayerThreshold.parseOrThrow(_response.body, {
+                body: serializers.feeSchedules.v3.PayerThreshold.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -893,7 +904,7 @@ export class V3 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.feeSchedules.v3.setPayerThreshold.Error.parseOrThrow(
+                        error: serializers.feeSchedules.v3.setPayerThreshold.Error.parseOrThrow(
                             _response.error.body as serializers.feeSchedules.v3.setPayerThreshold.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

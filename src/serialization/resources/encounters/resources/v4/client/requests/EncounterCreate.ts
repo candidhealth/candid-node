@@ -11,7 +11,6 @@ import { RenderingProvider } from "../../../../../encounterProviders/resources/v
 import { ReferringProvider } from "../../../../../encounterProviders/resources/v2/types/ReferringProvider";
 import { InitialReferringProvider } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProvider";
 import { SupervisingProvider } from "../../../../../encounterProviders/resources/v2/types/SupervisingProvider";
-import { OrderingProvider } from "../../../../../encounterProviders/resources/v2/types/OrderingProvider";
 import { EncounterServiceFacilityBase } from "../../../../../serviceFacility/types/EncounterServiceFacilityBase";
 import { SubscriberCreate } from "../../../../../individual/types/SubscriberCreate";
 import { DiagnosisCreate } from "../../../../../diagnoses/types/DiagnosisCreate";
@@ -41,7 +40,6 @@ export const EncounterCreate: core.serialization.Schema<
             InitialReferringProvider.optional()
         ),
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
-        orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
         subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
@@ -79,7 +77,6 @@ export declare namespace EncounterCreate {
         referring_provider?: ReferringProvider.Raw | null;
         initial_referring_provider?: InitialReferringProvider.Raw | null;
         supervising_provider?: SupervisingProvider.Raw | null;
-        ordering_provider?: OrderingProvider.Raw | null;
         service_facility?: EncounterServiceFacilityBase.Raw | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;

@@ -15,8 +15,11 @@ export declare namespace V3 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -29,7 +32,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async getActions(
         taskId: CandidApi.TaskId,
@@ -39,18 +42,19 @@ export class V3 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/tasks/v3/${encodeURIComponent(await serializers.TaskId.jsonOrThrow(taskId))}/actions`
+                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}/actions`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -58,7 +62,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.tasks.v3.TaskActions.parseOrThrow(_response.body, {
+                body: serializers.tasks.v3.TaskActions.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -78,7 +82,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.tasks.v3.getMulti({
+     *     await client.tasks.v3.getMulti({
      *         limit: 1,
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         status: CandidApi.tasks.TaskStatus.Finished,
@@ -177,12 +181,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -190,7 +195,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.tasks.v3.TaskPage.parseOrThrow(_response.body, {
+                body: serializers.tasks.v3.TaskPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -204,7 +209,7 @@ export class V3 {
                 case "UnprocessableEntityError":
                     return {
                         ok: false,
-                        error: await serializers.tasks.v3.getMulti.Error.parseOrThrow(
+                        error: serializers.tasks.v3.getMulti.Error.parseOrThrow(
                             _response.error.body as serializers.tasks.v3.getMulti.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -228,7 +233,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.tasks.v3.get(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.tasks.v3.get(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         taskId: CandidApi.TaskId,
@@ -238,18 +243,19 @@ export class V3 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/tasks/v3/${encodeURIComponent(await serializers.TaskId.jsonOrThrow(taskId))}`
+                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -257,7 +263,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.tasks.v3.Task.parseOrThrow(_response.body, {
+                body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -272,7 +278,7 @@ export class V3 {
                 case "UnauthorizedError":
                     return {
                         ok: false,
-                        error: await serializers.tasks.v3.get.Error.parseOrThrow(
+                        error: serializers.tasks.v3.get.Error.parseOrThrow(
                             _response.error.body as serializers.tasks.v3.get.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -296,7 +302,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.tasks.v3.create({
+     *     await client.tasks.v3.create({
      *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         taskType: CandidApi.tasks.TaskType.CustomerDataRequest,
      *         description: "string",
@@ -321,12 +327,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.tasks.v3.TaskCreateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.tasks.v3.TaskCreateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -334,7 +341,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.tasks.v3.Task.parseOrThrow(_response.body, {
+                body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -355,7 +362,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         status: CandidApi.tasks.TaskStatus.Finished,
      *         assigneeUserId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         blocksClaimSubmission: true
@@ -370,19 +377,20 @@ export class V3 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/tasks/v3/${encodeURIComponent(await serializers.TaskId.jsonOrThrow(taskId))}`
+                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.tasks.v3.TaskUpdateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "json",
+            body: serializers.tasks.v3.TaskUpdateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -390,7 +398,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.tasks.v3.Task.parseOrThrow(_response.body, {
+                body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -406,7 +414,7 @@ export class V3 {
                 case "TaskUpdatedToDeprecatedStatusError":
                     return {
                         ok: false,
-                        error: await serializers.tasks.v3.update.Error.parseOrThrow(
+                        error: serializers.tasks.v3.update.Error.parseOrThrow(
                             _response.error.body as serializers.tasks.v3.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

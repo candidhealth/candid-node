@@ -15,8 +15,11 @@ export declare namespace V2 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -29,7 +32,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.contracts.v2.get(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.contracts.v2.get(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         contractId: CandidApi.contracts.v2.ContractId,
@@ -39,20 +42,19 @@ export class V2 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/contracts/v2/${encodeURIComponent(
-                    await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)
-                )}`
+                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -60,7 +62,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
+                body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -74,7 +76,7 @@ export class V2 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.contracts.v2.get.Error.parseOrThrow(
+                        error: serializers.contracts.v2.get.Error.parseOrThrow(
                             _response.error.body as serializers.contracts.v2.get.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -98,7 +100,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.contracts.v2.getMulti({
+     *     await client.contracts.v2.getMulti({
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         limit: 1,
      *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -166,12 +168,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -179,7 +182,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.contracts.v2.ContractsPage.parseOrThrow(_response.body, {
+                body: serializers.contracts.v2.ContractsPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -201,7 +204,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.contracts.v2.create({
+     *     await client.contracts.v2.create({
      *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
      *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -238,14 +241,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.contracts.v2.ContractCreate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.contracts.v2.ContractCreate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -253,7 +255,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
+                body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -273,7 +275,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.contracts.v2.delete(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.contracts.v2.delete(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async delete(
         contractId: CandidApi.contracts.v2.ContractId,
@@ -283,20 +285,19 @@ export class V2 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/contracts/v2/${encodeURIComponent(
-                    await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)
-                )}`
+                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -313,7 +314,7 @@ export class V2 {
                 case "ContractIsLinkedToFeeScheduleHttpError":
                     return {
                         ok: false,
-                        error: await serializers.contracts.v2.delete.Error.parseOrThrow(
+                        error: serializers.contracts.v2.delete.Error.parseOrThrow(
                             _response.error.body as serializers.contracts.v2.delete.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -338,7 +339,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.contracts.v2.update(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.contracts.v2.update(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
      *         effectiveDate: CandidApi.Date_("string"),
      *         expirationDate: {
@@ -382,23 +383,20 @@ export class V2 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/contracts/v2/${encodeURIComponent(
-                    await serializers.contracts.v2.ContractId.jsonOrThrow(contractId)
-                )}`
+                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.contracts.v2.ContractUpdate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.contracts.v2.ContractUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -406,7 +404,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
+                body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -420,7 +418,7 @@ export class V2 {
                 case "UnprocessableEntityError":
                     return {
                         ok: false,
-                        error: await serializers.contracts.v2.update.Error.parseOrThrow(
+                        error: serializers.contracts.v2.update.Error.parseOrThrow(
                             _response.error.body as serializers.contracts.v2.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

@@ -15,8 +15,11 @@ export declare namespace V4 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -29,7 +32,7 @@ export class V4 {
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.encounters.v4.getAll({
+     *     await client.encounters.v4.getAll({
      *         limit: 100,
      *         claimStatus: CandidApi.ClaimStatus.BillerReceived,
      *         sort: CandidApi.encounters.v4.EncounterSortOptions.CreatedAtAsc,
@@ -144,12 +147,13 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -157,7 +161,7 @@ export class V4 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.encounters.v4.EncounterPage.parseOrThrow(_response.body, {
+                body: serializers.encounters.v4.EncounterPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -177,7 +181,7 @@ export class V4 {
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         encounterId: CandidApi.EncounterId,
@@ -187,18 +191,19 @@ export class V4 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/encounters/v4/${encodeURIComponent(await serializers.EncounterId.jsonOrThrow(encounterId))}`
+                `/api/encounters/v4/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -206,7 +211,7 @@ export class V4 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -226,7 +231,7 @@ export class V4 {
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.encounters.v4.create({
+     *     await client.encounters.v4.create({
      *         dateOfService: "2023-01-15",
      *         endDateOfService: "2023-01-15",
      *         patient: {
@@ -314,21 +319,6 @@ export class V4 {
      *             organizationName: "string"
      *         },
      *         supervisingProvider: {
-     *             npi: "string",
-     *             taxonomyCode: "string",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
-     *         },
-     *         orderingProvider: {
      *             npi: "string",
      *             taxonomyCode: "string",
      *             address: {
@@ -626,14 +616,13 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -641,7 +630,7 @@ export class V4 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -660,7 +649,7 @@ export class V4 {
                 case "CashPayPayerError":
                     return {
                         ok: false,
-                        error: await serializers.encounters.v4.create.Error.parseOrThrow(
+                        error: serializers.encounters.v4.create.Error.parseOrThrow(
                             _response.error.body as serializers.encounters.v4.create.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -685,7 +674,7 @@ export class V4 {
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
      *         externalId: CandidApi.EncounterExternalId("string"),
      *         dateOfService: "2023-01-15",
@@ -789,21 +778,20 @@ export class V4 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/encounters/v4/${encodeURIComponent(await serializers.EncounterId.jsonOrThrow(encounterId))}`
+                `/api/encounters/v4/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -811,7 +799,7 @@ export class V4 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -828,7 +816,7 @@ export class V4 {
                 case "HttpRequestValidationsError":
                     return {
                         ok: false,
-                        error: await serializers.encounters.v4.update.Error.parseOrThrow(
+                        error: serializers.encounters.v4.update.Error.parseOrThrow(
                             _response.error.body as serializers.encounters.v4.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

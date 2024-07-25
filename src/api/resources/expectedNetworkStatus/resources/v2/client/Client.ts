@@ -15,8 +15,11 @@ export declare namespace V2 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -34,7 +37,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.expectedNetworkStatus.v2.computeForRenderingProvider(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.expectedNetworkStatus.v2.computeForRenderingProvider(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
      *         subscriberInformation: {},
@@ -66,7 +69,7 @@ export class V2 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/expected-network-status/v2/compute/${encodeURIComponent(
-                    await serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(renderingProviderId)
+                    serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(renderingProviderId)
                 )}`
             ),
             method: "POST",
@@ -74,12 +77,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -89,7 +93,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusResponseV2.parseOrThrow(
+                body: serializers.expectedNetworkStatus.v2.ExpectedNetworkStatusResponseV2.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",
@@ -110,7 +114,7 @@ export class V2 {
                 case "OrganizationNotAuthorizedError":
                     return {
                         ok: false,
-                        error: await serializers.expectedNetworkStatus.v2.computeForRenderingProvider.Error.parseOrThrow(
+                        error: serializers.expectedNetworkStatus.v2.computeForRenderingProvider.Error.parseOrThrow(
                             _response.error
                                 .body as serializers.expectedNetworkStatus.v2.computeForRenderingProvider.Error.Raw,
                             {
@@ -139,7 +143,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.expectedNetworkStatus.v2.computeAllInNetworkProviders({
+     *     await client.expectedNetworkStatus.v2.computeAllInNetworkProviders({
      *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
      *         subscriberInformation: {},
@@ -176,12 +180,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -191,7 +196,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersResponse.parseOrThrow(
+                body: serializers.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersResponse.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",
@@ -212,7 +217,7 @@ export class V2 {
                 case "OrganizationNotAuthorizedError":
                     return {
                         ok: false,
-                        error: await serializers.expectedNetworkStatus.v2.computeAllInNetworkProviders.Error.parseOrThrow(
+                        error: serializers.expectedNetworkStatus.v2.computeAllInNetworkProviders.Error.parseOrThrow(
                             _response.error
                                 .body as serializers.expectedNetworkStatus.v2.computeAllInNetworkProviders.Error.Raw,
                             {

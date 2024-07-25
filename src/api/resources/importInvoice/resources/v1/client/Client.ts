@@ -15,8 +15,11 @@ export declare namespace V1 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -31,7 +34,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.importInvoice.v1.importInvoice({
+     *     await client.importInvoice.v1.importInvoice({
      *         externalPaymentAccountConfigId: CandidApi.PaymentAccountConfigId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         patientExternalId: CandidApi.PatientExternalId("string"),
      *         externalCustomerIdentifier: "string",
@@ -60,12 +63,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.importInvoice.v1.CreateImportInvoiceRequest.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.importInvoice.v1.CreateImportInvoiceRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -75,7 +79,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.importInvoice.v1.ImportInvoice.parseOrThrow(_response.body, {
+                body: serializers.importInvoice.v1.ImportInvoice.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -97,7 +101,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.importInvoice.v1.getMulti({
+     *     await client.importInvoice.v1.getMulti({
      *         patientExternalId: CandidApi.PatientExternalId("string"),
      *         encounterExternalId: CandidApi.EncounterExternalId("string"),
      *         note: "string",
@@ -184,12 +188,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -197,7 +202,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.importInvoice.v1.ImportInvoicesPage.parseOrThrow(_response.body, {
+                body: serializers.importInvoice.v1.ImportInvoicesPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -219,7 +224,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.importInvoice.v1.get(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.importInvoice.v1.get(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         invoiceId: CandidApi.InvoiceId,
@@ -229,18 +234,19 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/import-invoice/v1/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}`
+                `/api/import-invoice/v1/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -248,7 +254,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.importInvoice.v1.ImportInvoice.parseOrThrow(_response.body, {
+                body: serializers.importInvoice.v1.ImportInvoice.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -262,7 +268,7 @@ export class V1 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.importInvoice.v1.get.Error.parseOrThrow(
+                        error: serializers.importInvoice.v1.get.Error.parseOrThrow(
                             _response.error.body as serializers.importInvoice.v1.get.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -289,7 +295,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         customerInvoiceUrl: "string",
      *         status: CandidApi.invoices.v2.InvoiceStatus.Draft,
      *         note: "string",
@@ -309,19 +315,20 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/import-invoice/v1/${encodeURIComponent(await serializers.InvoiceId.jsonOrThrow(invoiceId))}`
+                `/api/import-invoice/v1/${encodeURIComponent(serializers.InvoiceId.jsonOrThrow(invoiceId))}`
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.importInvoice.v1.ImportInvoiceUpdateRequest.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.importInvoice.v1.ImportInvoiceUpdateRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -331,7 +338,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.importInvoice.v1.ImportInvoice.parseOrThrow(_response.body, {
+                body: serializers.importInvoice.v1.ImportInvoice.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -345,7 +352,7 @@ export class V1 {
                 case "EntityNotFoundError":
                     return {
                         ok: false,
-                        error: await serializers.importInvoice.v1.update.Error.parseOrThrow(
+                        error: serializers.importInvoice.v1.update.Error.parseOrThrow(
                             _response.error.body as serializers.importInvoice.v1.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

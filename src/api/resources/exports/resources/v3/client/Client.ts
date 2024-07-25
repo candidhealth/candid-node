@@ -15,8 +15,11 @@ export declare namespace V3 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -42,7 +45,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.exports.v3.getExports({
+     *     await client.exports.v3.getExports({
      *         startDate: "2023-10-01",
      *         endDate: "2023-10-02"
      *     })
@@ -66,12 +69,13 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -79,7 +83,7 @@ export class V3 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.exports.v3.GetExportsResponse.parseOrThrow(_response.body, {
+                body: serializers.exports.v3.GetExportsResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -97,7 +101,7 @@ export class V3 {
                 case "ExportDateTooEarlyError":
                     return {
                         ok: false,
-                        error: await serializers.exports.v3.getExports.Error.parseOrThrow(
+                        error: serializers.exports.v3.getExports.Error.parseOrThrow(
                             _response.error.body as serializers.exports.v3.getExports.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

@@ -15,8 +15,11 @@ export declare namespace V1 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -32,7 +35,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.patientRefunds.v1.getMulti({
+     *     await client.patientRefunds.v1.getMulti({
      *         limit: 1,
      *         patientExternalId: CandidApi.PatientExternalId("string"),
      *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -125,12 +128,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -138,7 +142,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.patientRefunds.v1.PatientRefundsPage.parseOrThrow(_response.body, {
+                body: serializers.patientRefunds.v1.PatientRefundsPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -153,7 +157,7 @@ export class V1 {
                 case "UnprocessableEntityError":
                     return {
                         ok: false,
-                        error: await serializers.patientRefunds.v1.getMulti.Error.parseOrThrow(
+                        error: serializers.patientRefunds.v1.getMulti.Error.parseOrThrow(
                             _response.error.body as serializers.patientRefunds.v1.getMulti.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -179,7 +183,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.patientRefunds.v1.get(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.patientRefunds.v1.get(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
@@ -190,7 +194,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/patient-refunds/v1/${encodeURIComponent(
-                    await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
+                    serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
                 )}`
             ),
             method: "GET",
@@ -198,11 +202,12 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -210,7 +215,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
+                body: serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -225,7 +230,7 @@ export class V1 {
                 case "UnauthorizedError":
                     return {
                         ok: false,
-                        error: await serializers.patientRefunds.v1.get.Error.parseOrThrow(
+                        error: serializers.patientRefunds.v1.get.Error.parseOrThrow(
                             _response.error.body as serializers.patientRefunds.v1.get.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -253,7 +258,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.patientRefunds.v1.create({
+     *     await client.patientRefunds.v1.create({
      *         amountCents: 1,
      *         refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
      *         refundNote: "string",
@@ -284,12 +289,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.patientRefunds.v1.PatientRefundCreate.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.patientRefunds.v1.PatientRefundCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -299,7 +305,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
+                body: serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -315,7 +321,7 @@ export class V1 {
                 case "UnprocessableEntityError":
                     return {
                         ok: false,
-                        error: await serializers.patientRefunds.v1.create.Error.parseOrThrow(
+                        error: serializers.patientRefunds.v1.create.Error.parseOrThrow(
                             _response.error.body as serializers.patientRefunds.v1.create.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -342,7 +348,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.patientRefunds.v1.update(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.patientRefunds.v1.update(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
      *         refundNote: {
      *             type: "set",
@@ -368,7 +374,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/patient-refunds/v1/${encodeURIComponent(
-                    await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
+                    serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
                 )}`
             ),
             method: "PATCH",
@@ -376,12 +382,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.patientRefunds.v1.PatientRefundUpdate.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.patientRefunds.v1.PatientRefundUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -391,7 +398,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
+                body: serializers.patientRefunds.v1.PatientRefund.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -407,7 +414,7 @@ export class V1 {
                 case "UnprocessableEntityError":
                     return {
                         ok: false,
-                        error: await serializers.patientRefunds.v1.update.Error.parseOrThrow(
+                        error: serializers.patientRefunds.v1.update.Error.parseOrThrow(
                             _response.error.body as serializers.patientRefunds.v1.update.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
@@ -433,7 +440,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.patientRefunds.v1.delete(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.patientRefunds.v1.delete(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async delete(
         patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
@@ -444,7 +451,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/patient-refunds/v1/${encodeURIComponent(
-                    await serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
+                    serializers.patientRefunds.v1.PatientRefundId.jsonOrThrow(patientRefundId)
                 )}`
             ),
             method: "DELETE",
@@ -452,11 +459,12 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -475,7 +483,7 @@ export class V1 {
                 case "UnprocessableEntityError":
                     return {
                         ok: false,
-                        error: await serializers.patientRefunds.v1.delete.Error.parseOrThrow(
+                        error: serializers.patientRefunds.v1.delete.Error.parseOrThrow(
                             _response.error.body as serializers.patientRefunds.v1.delete.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

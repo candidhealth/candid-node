@@ -108,21 +108,6 @@ import * as CandidApi from "../../../../../../index";
  *             lastName: "string",
  *             organizationName: "string"
  *         },
- *         orderingProvider: {
- *             npi: "string",
- *             taxonomyCode: "string",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: CandidApi.State.Ny,
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
- *         },
  *         serviceFacility: {
  *             organizationName: "string",
  *             npi: "string",
@@ -447,12 +432,6 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProvider;
-    /**
-     * Required when the service or supply was ordered by a provider who is different than the rendering provider for this service line.
-     * If not required by this implementation guide, do not send.
-     *
-     */
-    orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
     /**
      * Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process.
      *

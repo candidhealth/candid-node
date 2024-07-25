@@ -15,8 +15,11 @@ export declare namespace V2 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -47,7 +50,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.auth.v2.getToken({
+     *     await client.auth.v2.getToken({
      *         clientId: "YOUR_CLIENT_ID",
      *         clientSecret: "YOUR_CLIENT_SECRET"
      *     })
@@ -67,14 +70,13 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.auth.v2.AuthGetTokenRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            requestType: "json",
+            body: serializers.auth.v2.AuthGetTokenRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -82,7 +84,7 @@ export class V2 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.auth.v2.AuthGetTokenResponse.parseOrThrow(_response.body, {
+                body: serializers.auth.v2.AuthGetTokenResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -96,7 +98,7 @@ export class V2 {
                 case "TooManyRequestsError":
                     return {
                         ok: false,
-                        error: await serializers.auth.v2.getToken.Error.parseOrThrow(
+                        error: serializers.auth.v2.getToken.Error.parseOrThrow(
                             _response.error.body as serializers.auth.v2.getToken.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",

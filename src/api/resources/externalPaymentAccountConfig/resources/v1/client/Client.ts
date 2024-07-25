@@ -15,8 +15,11 @@ export declare namespace V1 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -34,7 +37,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.externalPaymentAccountConfig.v1.getMulti({
+     *     await client.externalPaymentAccountConfig.v1.getMulti({
      *         limit: 1,
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
      *     })
@@ -69,12 +72,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -82,7 +86,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.externalPaymentAccountConfig.v1.ExternalPaymentAccountConfigPage.parseOrThrow(
+                body: serializers.externalPaymentAccountConfig.v1.ExternalPaymentAccountConfigPage.parseOrThrow(
                     _response.body,
                     {
                         unrecognizedObjectKeys: "passthrough",

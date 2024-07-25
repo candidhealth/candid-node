@@ -15,8 +15,11 @@ export declare namespace V1 {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -31,7 +34,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.writeOffs.v1.getMulti({
+     *     await client.writeOffs.v1.getMulti({
      *         limit: 1,
      *         patientExternalId: CandidApi.PatientExternalId("string"),
      *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -116,12 +119,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -129,7 +133,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.writeOffs.v1.WriteOffsPage.parseOrThrow(_response.body, {
+                body: serializers.writeOffs.v1.WriteOffsPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -151,7 +155,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.writeOffs.v1.get(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.writeOffs.v1.get(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
         writeOffId: CandidApi.writeOffs.v1.WriteOffId,
@@ -161,20 +165,19 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
-                `/api/write-offs/v1/${encodeURIComponent(
-                    await serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)
-                )}`
+                `/api/write-offs/v1/${encodeURIComponent(serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -182,7 +185,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
+                body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -205,7 +208,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.writeOffs.v1.create({
+     *     await client.writeOffs.v1.create({
      *         writeOffs: [{
      *                 type: "patient",
      *                 writeOffTimestamp: new Date("2024-01-15T09:30:00.000Z"),
@@ -231,12 +234,13 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            body: await serializers.writeOffs.v1.CreateWriteOffsRequest.jsonOrThrow(request, {
+            requestType: "json",
+            body: serializers.writeOffs.v1.CreateWriteOffsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -246,7 +250,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.writeOffs.v1.CreateWriteOffsResponse.parseOrThrow(_response.body, {
+                body: serializers.writeOffs.v1.CreateWriteOffsResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -268,7 +272,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await candidApi.writeOffs.v1.revert(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.writeOffs.v1.revert(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async revert(
         writeOffId: CandidApi.writeOffs.v1.WriteOffId,
@@ -279,7 +283,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .candidApi,
                 `/api/write-offs/v1/${encodeURIComponent(
-                    await serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)
+                    serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId)
                 )}/revert`
             ),
             method: "POST",
@@ -287,11 +291,12 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.0-2a6d412",
+                "X-Fern-SDK-Version": "0.24.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -299,7 +304,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: await serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
+                body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
