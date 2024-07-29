@@ -22,6 +22,7 @@ import { ServiceLineCreate } from "../../../../../serviceLines/resources/v2/type
 import { GuarantorCreate } from "../../../../../guarantor/resources/v1/types/GuarantorCreate";
 import { ExternalClaimSubmissionCreate } from "../../../../../claimSubmission/resources/v1/types/ExternalClaimSubmissionCreate";
 import { TagId } from "../../../../../tags/types/TagId";
+import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { EncounterBase } from "../../types/EncounterBase";
 
 export const EncounterCreate: core.serialization.Schema<
@@ -64,6 +65,10 @@ export const EncounterCreate: core.serialization.Schema<
             ExternalClaimSubmissionCreate.optional()
         ),
         tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
+        schemaInstances: core.serialization.property(
+            "schema_instances",
+            core.serialization.list(SchemaInstance).optional()
+        ),
     })
     .extend(EncounterBase);
 
@@ -89,5 +94,6 @@ export declare namespace EncounterCreate {
         guarantor?: GuarantorCreate.Raw | null;
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;
         tag_ids?: TagId.Raw[] | null;
+        schema_instances?: SchemaInstance.Raw[] | null;
     }
 }

@@ -11,6 +11,7 @@ import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotF
 import { EncounterGuarantorMissingContactInfoErrorType } from "../types/EncounterGuarantorMissingContactInfoErrorType";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { CashPayPayerErrorMessage } from "../types/CashPayPayerErrorMessage";
+import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.create.Error.Raw,
@@ -35,6 +36,9 @@ export const Error: core.serialization.Schema<
         CashPayPayerError: core.serialization.object({
             content: CashPayPayerErrorMessage,
         }),
+        SchemaInstanceValidationHttpFailure: core.serialization.object({
+            content: SchemaInstanceValidationFailure,
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
@@ -55,6 +59,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.httpRequestValidationsError(value.content);
                 case "CashPayPayerError":
                     return CandidApi.encounters.v4.create.Error.cashPayPayerError(value.content);
+                case "SchemaInstanceValidationHttpFailure":
+                    return CandidApi.encounters.v4.create.Error.schemaInstanceValidationHttpFailure(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -67,7 +73,8 @@ export declare namespace Error {
         | Error.EntityNotFoundError
         | Error.EncounterGuarantorMissingContactInfoError
         | Error.HttpRequestValidationsError
-        | Error.CashPayPayerError;
+        | Error.CashPayPayerError
+        | Error.SchemaInstanceValidationHttpFailure;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -97,5 +104,10 @@ export declare namespace Error {
     interface CashPayPayerError {
         errorName: "CashPayPayerError";
         content: CashPayPayerErrorMessage.Raw;
+    }
+
+    interface SchemaInstanceValidationHttpFailure {
+        errorName: "SchemaInstanceValidationHttpFailure";
+        content: SchemaInstanceValidationFailure.Raw;
     }
 }

@@ -317,6 +317,15 @@ import * as CandidApi from "../../../../../../index";
  *                 }]
  *         },
  *         tagIds: [CandidApi.TagId("string")],
+ *         schemaInstances: [{
+ *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+ *                 content: {
+ *                     "provider_category": "internist",
+ *                     "is_urgent_care": true,
+ *                     "bmi": 24.2,
+ *                     "age": 38
+ *                 }
+ *             }],
  *         externalId: CandidApi.EncounterExternalId("string"),
  *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
  *         patientAuthorizedRelease: true,
@@ -492,4 +501,10 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     externalClaimSubmission?: CandidApi.claimSubmission.v1.ExternalClaimSubmissionCreate;
     /** Names of tags that should be on the encounter. */
     tagIds?: CandidApi.TagId[];
+    /**
+     * Key-value pairs that must adhere to a schema created via the Custom Schema API. Multiple schema
+     * instances cannot be created for the same schema on an encounter.
+     *
+     */
+    schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
 }

@@ -12,6 +12,7 @@ export type Error =
     | CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError
     | CandidApi.encounters.v4.create.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.create.Error.CashPayPayerError
+    | CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure
     | CandidApi.encounters.v4.create.Error._Unknown;
 
 export declare namespace Error {
@@ -45,6 +46,11 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.CashPayPayerErrorMessage;
     }
 
+    interface SchemaInstanceValidationHttpFailure extends _Utils {
+        errorName: "SchemaInstanceValidationHttpFailure";
+        content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -67,6 +73,9 @@ export declare namespace Error {
         ) => _Result;
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         cashPayPayerError: (value: CandidApi.encounters.v4.CashPayPayerErrorMessage) => _Result;
+        schemaInstanceValidationHttpFailure: (
+            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -162,6 +171,21 @@ export const Error = {
         };
     },
 
+    schemaInstanceValidationHttpFailure: (
+        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+    ): CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure => {
+        return {
+            content: value,
+            errorName: "SchemaInstanceValidationHttpFailure",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -192,6 +216,8 @@ export const Error = {
                 return visitor.httpRequestValidationsError(value.content);
             case "CashPayPayerError":
                 return visitor.cashPayPayerError(value.content);
+            case "SchemaInstanceValidationHttpFailure":
+                return visitor.schemaInstanceValidationHttpFailure(value.content);
             default:
                 return visitor._other(value as any);
         }

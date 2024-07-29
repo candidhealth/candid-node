@@ -377,7 +377,16 @@ import * as CandidApi from "../../../../../index";
  *                 serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
  *                 admissionDate: "2023-01-01",
  *                 dischargeDate: "2023-01-05",
- *                 onsetOfCurrentIllnessOrSymptomDate: "2023-01-01"
+ *                 onsetOfCurrentIllnessOrSymptomDate: "2023-01-01",
+ *                 schemaInstances: [{
+ *                         schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+ *                         content: {
+ *                             "provider_category": "internist",
+ *                             "is_urgent_care": true,
+ *                             "bmi": 24.2,
+ *                             "age": 38
+ *                         }
+ *                     }]
  *             }]
  *     }
  */

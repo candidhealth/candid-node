@@ -24,6 +24,7 @@ import { CodingAttributionType } from "./CodingAttributionType";
 import { WorkQueueId } from "../../../../commons/types/WorkQueueId";
 import { EncounterOwnerOfNextActionType } from "./EncounterOwnerOfNextActionType";
 import { EncounterSubmissionOriginType } from "./EncounterSubmissionOriginType";
+import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { EncounterBase } from "./EncounterBase";
 
 export const Encounter: core.serialization.ObjectSchema<
@@ -75,6 +76,7 @@ export const Encounter: core.serialization.ObjectSchema<
         ),
         ownerOfNextAction: core.serialization.property("owner_of_next_action", EncounterOwnerOfNextActionType),
         submissionOrigin: core.serialization.property("submission_origin", EncounterSubmissionOriginType),
+        schemaInstances: core.serialization.property("schema_instances", core.serialization.list(SchemaInstance)),
     })
     .extend(EncounterBase);
 
@@ -109,5 +111,6 @@ export declare namespace Encounter {
         work_queue_membership_activated_at?: string | null;
         owner_of_next_action: EncounterOwnerOfNextActionType.Raw;
         submission_origin: EncounterSubmissionOriginType.Raw;
+        schema_instances: SchemaInstance.Raw[];
     }
 }

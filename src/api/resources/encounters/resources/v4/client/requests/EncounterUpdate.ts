@@ -98,7 +98,16 @@ import * as CandidApi from "../../../../../../index";
  *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
  *         lastMenstrualPeriodDate: "2023-01-15",
  *         delayReasonCode: CandidApi.DelayReasonCode.C1,
- *         patientAuthorizedRelease: true
+ *         patientAuthorizedRelease: true,
+ *         schemaInstances: [{
+ *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+ *                 content: {
+ *                     "provider_category": "internist",
+ *                     "is_urgent_care": true,
+ *                     "bmi": 24.2,
+ *                     "age": 38
+ *                 }
+ *             }]
  *     }
  */
 export interface EncounterUpdate {
@@ -241,4 +250,12 @@ export interface EncounterUpdate {
      *
      */
     patientAuthorizedRelease?: boolean;
+    /**
+     * Key-value pairs that must adhere to a schema created via the Custom Schema API. Multiple schema
+     * instances cannot be created for the same schema on an encounter. Updating schema instances utilizes PUT
+     * semantics, so the schema instances on the encounter will be set to whatever inputs are provided. If null
+     * is provided as an input, then the encounter's schema instances will be cleared.
+     *
+     */
+    schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
 }

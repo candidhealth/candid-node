@@ -462,6 +462,279 @@ await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
+## CustomSchemas V1
+
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">getMulti</a>() -> core.APIResponse<CandidApi.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all custom schemas.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customSchemas.v1.getMulti();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">get</a>(schemaId) -> core.APIResponse<CandidApi.Schema, CandidApi.customSchemas.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Return a custom schema with a given ID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customSchemas.v1.get(CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**schemaId:** `CandidApi.SchemaId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Schema, CandidApi.customSchemas.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a custom schema. Schema keys can be referenced as inputs in user-configurable rules in the Rules
+Engine, and key-value pairs can be attached to claims via the Encounters API.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customSchemas.v1.create({
+    name: "string",
+    description: "string",
+    fields: [
+        {
+            key: "string",
+            type: CandidApi.Primitive.Boolean,
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.customSchemas.v1.SchemaCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">update</a>(schemaId, { ...params }) -> core.APIResponse<CandidApi.Schema, CandidApi.customSchemas.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the name, description, or keys on a preexisting schema.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customSchemas.v1.update(CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    name: "string",
+    description: "string",
+    fieldsToAdd: [
+        {
+            key: "string",
+            type: CandidApi.Primitive.Boolean,
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**schemaId:** `CandidApi.SchemaId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.customSchemas.v1.SchemaUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Eligibility V2
 
 <details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheck</a>({ ...params }) -> core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheck.Error></code></summary>
@@ -1146,6 +1419,17 @@ await client.encounters.v4.create({
         ],
     },
     tagIds: [CandidApi.TagId("string")],
+    schemaInstances: [
+        {
+            schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+            content: {
+                provider_category: "internist",
+                is_urgent_care: true,
+                bmi: 24.2,
+                age: 38,
+            },
+        },
+    ],
     externalId: CandidApi.EncounterExternalId("string"),
     priorAuthorizationNumber: CandidApi.PriorAuthorizationNumber("string"),
     patientAuthorizedRelease: true,
@@ -1353,6 +1637,17 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
     lastMenstrualPeriodDate: "2023-01-15",
     delayReasonCode: CandidApi.DelayReasonCode.C1,
     patientAuthorizedRelease: true,
+    schemaInstances: [
+        {
+            schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+            content: {
+                provider_category: "internist",
+                is_urgent_care: true,
+                bmi: 24.2,
+                age: 38,
+            },
+        },
+    ],
 });
 ```
 

@@ -376,7 +376,16 @@ import * as CandidApi from "../../../../../index";
  *         serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
  *         admissionDate: "2023-01-01",
  *         dischargeDate: "2023-01-05",
- *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-01"
+ *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-01",
+ *         schemaInstances: [{
+ *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+ *                 content: {
+ *                     "provider_category": "internist",
+ *                     "is_urgent_care": true,
+ *                     "bmi": 24.2,
+ *                     "age": 38
+ *                 }
+ *             }]
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
@@ -457,4 +466,9 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
      * For Encounters created with an external_claim_submission object, this will be EncounterSubmissionOriginType.EXTERNAL.
      */
     submissionOrigin: CandidApi.encounters.v4.EncounterSubmissionOriginType;
+    /**
+     * Key-value pairs that must adhere to a schema created via the Custom Schema API. Multiple schema
+     * instances cannot be created for the same schema on an encounter.
+     */
+    schemaInstances: CandidApi.customSchemas.v1.SchemaInstance[];
 }

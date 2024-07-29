@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.2",
+                "X-Fern-SDK-Version": "0.24.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.2",
+                "X-Fern-SDK-Version": "0.24.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -542,6 +542,15 @@ export class V4 {
      *                 }]
      *         },
      *         tagIds: [CandidApi.TagId("string")],
+     *         schemaInstances: [{
+     *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+     *                 content: {
+     *                     "provider_category": "internist",
+     *                     "is_urgent_care": true,
+     *                     "bmi": 24.2,
+     *                     "age": 38
+     *                 }
+     *             }],
      *         externalId: CandidApi.EncounterExternalId("string"),
      *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
      *         patientAuthorizedRelease: true,
@@ -616,7 +625,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.2",
+                "X-Fern-SDK-Version": "0.24.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -647,6 +656,7 @@ export class V4 {
                 case "EncounterGuarantorMissingContactInfoError":
                 case "HttpRequestValidationsError":
                 case "CashPayPayerError":
+                case "SchemaInstanceValidationHttpFailure":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.create.Error.parseOrThrow(
@@ -766,7 +776,16 @@ export class V4 {
      *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
      *         lastMenstrualPeriodDate: "2023-01-15",
      *         delayReasonCode: CandidApi.DelayReasonCode.C1,
-     *         patientAuthorizedRelease: true
+     *         patientAuthorizedRelease: true,
+     *         schemaInstances: [{
+     *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+     *                 content: {
+     *                     "provider_category": "internist",
+     *                     "is_urgent_care": true,
+     *                     "bmi": 24.2,
+     *                     "age": 38
+     *                 }
+     *             }]
      *     })
      */
     public async update(
@@ -785,7 +804,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.2",
+                "X-Fern-SDK-Version": "0.24.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -814,6 +833,7 @@ export class V4 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                 case "HttpRequestValidationsError":
+                case "SchemaInstanceValidationHttpFailure":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.update.Error.parseOrThrow(

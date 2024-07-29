@@ -9,6 +9,7 @@ import { EncounterExternalIdUniquenessErrorType } from "../types/EncounterExtern
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
+import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.update.Error.Raw,
@@ -27,6 +28,9 @@ export const Error: core.serialization.Schema<
         HttpRequestValidationsError: core.serialization.object({
             content: core.serialization.list(RequestValidationError),
         }),
+        SchemaInstanceValidationHttpFailure: core.serialization.object({
+            content: SchemaInstanceValidationFailure,
+        }),
     })
     .transform<CandidApi.encounters.v4.update.Error>({
         transform: (value) => {
@@ -39,6 +43,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.update.Error.unauthorizedError(value.content);
                 case "HttpRequestValidationsError":
                     return CandidApi.encounters.v4.update.Error.httpRequestValidationsError(value.content);
+                case "SchemaInstanceValidationHttpFailure":
+                    return CandidApi.encounters.v4.update.Error.schemaInstanceValidationHttpFailure(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -49,7 +55,8 @@ export declare namespace Error {
         | Error.EncounterExternalIdUniquenessError
         | Error.EntityNotFoundError
         | Error.UnauthorizedError
-        | Error.HttpRequestValidationsError;
+        | Error.HttpRequestValidationsError
+        | Error.SchemaInstanceValidationHttpFailure;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -69,5 +76,10 @@ export declare namespace Error {
     interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
+    }
+
+    interface SchemaInstanceValidationHttpFailure {
+        errorName: "SchemaInstanceValidationHttpFailure";
+        content: SchemaInstanceValidationFailure.Raw;
     }
 }
