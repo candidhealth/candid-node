@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 
 export const Gender: core.serialization.Schema<serializers.preEncounter.Gender.Raw, CandidApi.preEncounter.Gender> =
-    core.serialization.enum_(["FEMALE", "MALE", "OTHER", "UNKNOWN"]);
+    core.serialization.enum_(["MAN", "WOMAN", "NON_BINARY", "TWO_SPIRIT", "OTHER", "UNKNOWN", "REFUSED"]);
 
 export declare namespace Gender {
-    type Raw = "FEMALE" | "MALE" | "OTHER" | "UNKNOWN";
+    type Raw = "MAN" | "WOMAN" | "NON_BINARY" | "TWO_SPIRIT" | "OTHER" | "UNKNOWN" | "REFUSED";
 }
