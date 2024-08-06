@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 
 export const AccountType: core.serialization.Schema<serializers.AccountType.Raw, CandidApi.AccountType> =
-    core.serialization.enum_(["PATIENT", "INSURANCE"]);
+    core.serialization.enum_(["PATIENT", "INSURANCE", "THIRD_PARTY_PAYER"]);
 
 export declare namespace AccountType {
-    type Raw = "PATIENT" | "INSURANCE";
+    type Raw = "PATIENT" | "INSURANCE" | "THIRD_PARTY_PAYER";
 }

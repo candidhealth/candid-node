@@ -33,6 +33,18 @@ export const ServiceLine: core.serialization.ObjectSchema<
     ),
     patientBalanceCents: core.serialization.property("patient_balance_cents", core.serialization.number().optional()),
     paidAmountCents: core.serialization.property("paid_amount_cents", core.serialization.number().optional()),
+    primaryPaidAmountCents: core.serialization.property(
+        "primary_paid_amount_cents",
+        core.serialization.number().optional()
+    ),
+    secondaryPaidAmountCents: core.serialization.property(
+        "secondary_paid_amount_cents",
+        core.serialization.number().optional()
+    ),
+    tertiaryPaidAmountCents: core.serialization.property(
+        "tertiary_paid_amount_cents",
+        core.serialization.number().optional()
+    ),
     patientResponsibilityCents: core.serialization.property(
         "patient_responsibility_cents",
         core.serialization.number().optional()
@@ -80,6 +92,9 @@ export declare namespace ServiceLine {
         insurance_balance_cents?: number | null;
         patient_balance_cents?: number | null;
         paid_amount_cents?: number | null;
+        primary_paid_amount_cents?: number | null;
+        secondary_paid_amount_cents?: number | null;
+        tertiary_paid_amount_cents?: number | null;
         patient_responsibility_cents?: number | null;
         diagnosis_id_zero?: DiagnosisId.Raw | null;
         diagnosis_id_one?: DiagnosisId.Raw | null;

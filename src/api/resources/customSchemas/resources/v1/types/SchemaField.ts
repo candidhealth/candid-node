@@ -4,6 +4,37 @@
 
 import * as CandidApi from "../../../../../index";
 
+/**
+ * @example
+ *     {
+ *         key: "provider_category",
+ *         type: CandidApi.Primitive.String
+ *     }
+ *
+ * @example
+ *     {
+ *         key: "visit_type",
+ *         type: CandidApi.Primitive.String
+ *     }
+ *
+ * @example
+ *     {
+ *         key: "is_urgent_care",
+ *         type: CandidApi.Primitive.Boolean
+ *     }
+ *
+ * @example
+ *     {
+ *         key: "bmi",
+ *         type: CandidApi.Primitive.Double
+ *     }
+ *
+ * @example
+ *     {
+ *         key: "age",
+ *         type: CandidApi.Primitive.Integer
+ *     }
+ */
 export interface SchemaField {
     key: string;
     type: CandidApi.Primitive;

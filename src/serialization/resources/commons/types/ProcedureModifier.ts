@@ -100,6 +100,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "CT",
     "CO",
     "CQ",
+    "DA",
     "E1",
     "E2",
     "E3",
@@ -491,6 +492,7 @@ export declare namespace ProcedureModifier {
         | "CT"
         | "CO"
         | "CQ"
+        | "DA"
         | "E1"
         | "E2"
         | "E3"

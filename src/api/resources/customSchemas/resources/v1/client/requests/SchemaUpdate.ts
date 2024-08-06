@@ -7,11 +7,11 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         name: "string",
- *         description: "string",
+ *         name: "General Medicine and Health",
+ *         description: "Values collected during all visits",
  *         fieldsToAdd: [{
- *                 key: "string",
- *                 type: CandidApi.Primitive.Boolean
+ *                 key: "visit_type",
+ *                 type: CandidApi.Primitive.String
  *             }]
  *     }
  */

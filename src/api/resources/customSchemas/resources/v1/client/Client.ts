@@ -51,7 +51,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.4",
+                "X-Fern-SDK-Version": "0.24.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -104,7 +104,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.customSchemas.v1.get(CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.customSchemas.v1.get(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"))
      */
     public async get(
         schemaId: CandidApi.SchemaId,
@@ -121,7 +121,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.4",
+                "X-Fern-SDK-Version": "0.24.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -169,7 +169,7 @@ export class V1 {
     }
 
     /**
-     * Create a custom schema. Schema keys can be referenced as inputs in user-configurable rules in the Rules
+     * Create custom schema with a set of typed keys. Schema keys can be referenced as inputs in user-configurable rules in the Rules
      * Engine, and key-value pairs can be attached to claims via the Encounters API.
      *
      * @param {CandidApi.customSchemas.v1.SchemaCreate} request
@@ -177,11 +177,20 @@ export class V1 {
      *
      * @example
      *     await client.customSchemas.v1.create({
-     *         name: "string",
-     *         description: "string",
+     *         name: "General Medicine",
+     *         description: "Values associated with a generic visit",
      *         fields: [{
-     *                 key: "string",
+     *                 key: "provider_category",
+     *                 type: CandidApi.Primitive.String
+     *             }, {
+     *                 key: "is_urgent_care",
      *                 type: CandidApi.Primitive.Boolean
+     *             }, {
+     *                 key: "bmi",
+     *                 type: CandidApi.Primitive.Double
+     *             }, {
+     *                 key: "age",
+     *                 type: CandidApi.Primitive.Integer
      *             }]
      *     })
      */
@@ -200,7 +209,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.4",
+                "X-Fern-SDK-Version": "0.24.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -255,12 +264,12 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.customSchemas.v1.update(CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         name: "string",
-     *         description: "string",
+     *     await client.customSchemas.v1.update(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"), {
+     *         name: "General Medicine and Health",
+     *         description: "Values collected during all visits",
      *         fieldsToAdd: [{
-     *                 key: "string",
-     *                 type: CandidApi.Primitive.Boolean
+     *                 key: "visit_type",
+     *                 type: CandidApi.Primitive.String
      *             }]
      *     })
      */
@@ -280,7 +289,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.4",
+                "X-Fern-SDK-Version": "0.24.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

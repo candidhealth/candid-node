@@ -274,6 +274,9 @@ export type ProcedureModifier =
      * Outpatient physical therapy services furnished in whole or in part by a physical therapist assistant */
     | "CQ"
     /**
+     * Oral health assessment by a licensed health professional other than a dentist */
+    | "DA"
+    /**
      * Upper left, eyelid */
     | "E1"
     /**
@@ -1256,6 +1259,7 @@ export const ProcedureModifier = {
     Ct: "CT",
     Co: "CO",
     Cq: "CQ",
+    Da: "DA",
     E1: "E1",
     E2: "E2",
     E3: "E3",

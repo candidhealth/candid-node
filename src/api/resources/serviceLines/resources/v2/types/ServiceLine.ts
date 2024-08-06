@@ -77,6 +77,9 @@ export interface ServiceLine {
     insuranceBalanceCents?: number;
     patientBalanceCents?: number;
     paidAmountCents?: number;
+    primaryPaidAmountCents?: number;
+    secondaryPaidAmountCents?: number;
+    tertiaryPaidAmountCents?: number;
     patientResponsibilityCents?: number;
     diagnosisIdZero?: CandidApi.DiagnosisId;
     diagnosisIdOne?: CandidApi.DiagnosisId;
