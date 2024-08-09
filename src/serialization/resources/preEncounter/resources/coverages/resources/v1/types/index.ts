@@ -5,3 +5,4 @@ export * from "./NetworkType";
 export * from "./InsurancePlan";
 export * from "./MutableCoverage";
 export * from "./Coverage";
+export * from "./InsuranceTypeCode";

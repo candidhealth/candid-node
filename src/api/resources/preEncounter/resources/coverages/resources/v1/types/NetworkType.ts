@@ -4,6 +4,12 @@
 
 export type NetworkType =
     /**
+     * Self-pay */
+    | "09"
+    /**
+     * Other Non-Federal Programs */
+    | "11"
+    /**
      * Preferred Provider Organization (PPO) */
     | "12"
     /**
@@ -25,11 +31,20 @@ export type NetworkType =
      * Automobile Medical */
     | "AM"
     /**
+     * Blue Cross/Blue Shield */
+    | "BL"
+    /**
      * CHAMPUS */
     | "CH"
     /**
+     * Commercial Insurance Co. */
+    | "CI"
+    /**
      * Disability */
     | "DS"
+    /**
+     * Federal Employees Program */
+    | "FI"
     /**
      * Health Maintenance Organization (HMO) */
     | "HM"
@@ -62,6 +77,8 @@ export type NetworkType =
     | "ZZ";
 
 export const NetworkType = {
+    SelfPay: "09",
+    OtherNonFederalPrograms: "11",
     Ppo: "12",
     Pos: "13",
     Epo: "14",
@@ -69,8 +86,11 @@ export const NetworkType = {
     HmoMedicareRisk: "16",
     Dmo: "17",
     Auto: "AM",
+    BlueCrossBlueShield: "BL",
     Champus: "CH",
+    CommercialInsuranceCo: "CI",
     Disability: "DS",
+    FederalEmployees: "FI",
     Hmo: "HM",
     Liability: "LM",
     MedicarePartA: "MA",

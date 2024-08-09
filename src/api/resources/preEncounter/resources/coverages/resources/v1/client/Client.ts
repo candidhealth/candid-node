@@ -39,7 +39,7 @@ export class V1 {
      *         subscriber: {
      *             name: {},
      *             dateOfBirth: "2023-01-15",
-     *             gender: CandidApi.preEncounter.Gender.Man
+     *             biologicalSex: CandidApi.preEncounter.Sex.Female
      *         },
      *         relationship: CandidApi.preEncounter.Relationship.Self,
      *         patient: CandidApi.preEncounter.patients.v1.PatientId("string"),
@@ -49,7 +49,8 @@ export class V1 {
      *             payerName: "string",
      *             groupNumber: "string",
      *             name: "string",
-     *             type: CandidApi.preEncounter.coverages.v1.NetworkType.Ppo,
+     *             planType: CandidApi.preEncounter.coverages.v1.NetworkType.SelfPay,
+     *             type: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode.C01,
      *             period: {},
      *             insuranceCardImageLocator: "string"
      *         },
@@ -73,7 +74,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.5",
+                "X-Fern-SDK-Version": "0.24.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -118,7 +119,7 @@ export class V1 {
      *         subscriber: {
      *             name: {},
      *             dateOfBirth: "2023-01-15",
-     *             gender: CandidApi.preEncounter.Gender.Man
+     *             biologicalSex: CandidApi.preEncounter.Sex.Female
      *         },
      *         relationship: CandidApi.preEncounter.Relationship.Self,
      *         patient: CandidApi.preEncounter.patients.v1.PatientId("string"),
@@ -128,7 +129,8 @@ export class V1 {
      *             payerName: "string",
      *             groupNumber: "string",
      *             name: "string",
-     *             type: CandidApi.preEncounter.coverages.v1.NetworkType.Ppo,
+     *             planType: CandidApi.preEncounter.coverages.v1.NetworkType.SelfPay,
+     *             type: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode.C01,
      *             period: {},
      *             insuranceCardImageLocator: "string"
      *         },
@@ -156,7 +158,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.5",
+                "X-Fern-SDK-Version": "0.24.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -232,7 +234,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.5",
+                "X-Fern-SDK-Version": "0.24.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -291,7 +293,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.5",
+                "X-Fern-SDK-Version": "0.24.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -374,7 +376,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.5",
+                "X-Fern-SDK-Version": "0.24.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -434,7 +436,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.24.5",
+                "X-Fern-SDK-Version": "0.24.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

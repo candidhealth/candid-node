@@ -6,7 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { HumanName } from "../../../../common/types/HumanName";
-import { Gender } from "../../../../common/types/Gender";
+import { Sex } from "../../../../common/types/Sex";
 
 export const Subscriber: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.Subscriber.Raw,
@@ -14,13 +14,13 @@ export const Subscriber: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: HumanName,
     dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string()),
-    gender: Gender,
+    biologicalSex: core.serialization.property("biological_sex", Sex),
 });
 
 export declare namespace Subscriber {
     interface Raw {
         name: HumanName.Raw;
         date_of_birth: string;
-        gender: Gender.Raw;
+        biological_sex: Sex.Raw;
     }
 }

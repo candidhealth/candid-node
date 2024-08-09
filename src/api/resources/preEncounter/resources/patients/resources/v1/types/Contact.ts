@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../../../../index";
 export interface Contact {
     relationship: CandidApi.preEncounter.Relationship[];
     name: CandidApi.preEncounter.HumanName;
-    gender?: CandidApi.preEncounter.Gender;
     telecoms: CandidApi.preEncounter.ContactPoint[];
     addresses: CandidApi.preEncounter.Address[];
     period?: CandidApi.preEncounter.Period;

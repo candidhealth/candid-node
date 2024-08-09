@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { Relationship } from "../../../../common/types/Relationship";
 import { HumanName } from "../../../../common/types/HumanName";
-import { Gender } from "../../../../common/types/Gender";
 import { ContactPoint } from "../../../../common/types/ContactPoint";
 import { Address } from "../../../../common/types/Address";
 import { Period } from "../../../../common/types/Period";
@@ -18,7 +17,6 @@ export const Contact: core.serialization.ObjectSchema<
 > = core.serialization.object({
     relationship: core.serialization.list(Relationship),
     name: HumanName,
-    gender: Gender.optional(),
     telecoms: core.serialization.list(ContactPoint),
     addresses: core.serialization.list(Address),
     period: Period.optional(),
@@ -28,7 +26,6 @@ export declare namespace Contact {
     interface Raw {
         relationship: Relationship.Raw[];
         name: HumanName.Raw;
-        gender?: Gender.Raw | null;
         telecoms: ContactPoint.Raw[];
         addresses: Address.Raw[];
         period?: Period.Raw | null;

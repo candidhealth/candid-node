@@ -10,6 +10,8 @@ export const NetworkType: core.serialization.Schema<
     serializers.preEncounter.coverages.v1.NetworkType.Raw,
     CandidApi.preEncounter.coverages.v1.NetworkType
 > = core.serialization.enum_([
+    "09",
+    "11",
     "12",
     "13",
     "14",
@@ -17,8 +19,11 @@ export const NetworkType: core.serialization.Schema<
     "16",
     "17",
     "AM",
+    "BL",
     "CH",
+    "CI",
     "DS",
+    "FI",
     "HM",
     "LM",
     "MA",
@@ -33,6 +38,8 @@ export const NetworkType: core.serialization.Schema<
 
 export declare namespace NetworkType {
     type Raw =
+        | "09"
+        | "11"
         | "12"
         | "13"
         | "14"
@@ -40,8 +47,11 @@ export declare namespace NetworkType {
         | "16"
         | "17"
         | "AM"
+        | "BL"
         | "CH"
+        | "CI"
         | "DS"
+        | "FI"
         | "HM"
         | "LM"
         | "MA"

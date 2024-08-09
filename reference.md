@@ -6244,7 +6244,7 @@ await client.preEncounter.coverages.v1.create({
     subscriber: {
         name: {},
         dateOfBirth: "2023-01-15",
-        gender: CandidApi.Gender.Man,
+        biologicalSex: CandidApi.Sex.Female,
     },
     relationship: CandidApi.Relationship.Self,
     patient: CandidApi.PatientId("string"),
@@ -6254,7 +6254,8 @@ await client.preEncounter.coverages.v1.create({
         payerName: "string",
         groupNumber: "string",
         name: "string",
-        type: CandidApi.NetworkType.Ppo,
+        planType: CandidApi.NetworkType.SelfPay,
+        type: CandidApi.InsuranceTypeCode.C01,
         period: {},
         insuranceCardImageLocator: "string",
     },
@@ -6327,7 +6328,7 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
     subscriber: {
         name: {},
         dateOfBirth: "2023-01-15",
-        gender: CandidApi.Gender.Man,
+        biologicalSex: CandidApi.Sex.Female,
     },
     relationship: CandidApi.Relationship.Self,
     patient: CandidApi.PatientId("string"),
@@ -6337,7 +6338,8 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
         payerName: "string",
         groupNumber: "string",
         name: "string",
-        type: CandidApi.NetworkType.Ppo,
+        planType: CandidApi.NetworkType.SelfPay,
+        type: CandidApi.InsuranceTypeCode.C01,
         period: {},
         insuranceCardImageLocator: "string",
     },
@@ -6709,21 +6711,12 @@ await client.preEncounter.patients.v1.create({
         {
             relationship: [CandidApi.Relationship.Self],
             name: {},
-            gender: CandidApi.Gender.Man,
             telecoms: [{}],
             addresses: [{}],
             period: {},
         },
     ],
-    generalPractitioners: [
-        {
-            name: {},
-            npi: "string",
-            telecoms: [{}],
-            addresses: [{}],
-            period: {},
-        },
-    ],
+    generalPractitioners: [{}],
     filingOrder: {
         coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
     },
@@ -6946,21 +6939,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
         {
             relationship: [CandidApi.Relationship.Self],
             name: {},
-            gender: CandidApi.Gender.Man,
             telecoms: [{}],
             addresses: [{}],
             period: {},
         },
     ],
-    generalPractitioners: [
-        {
-            name: {},
-            npi: "string",
-            telecoms: [{}],
-            addresses: [{}],
-            period: {},
-        },
-    ],
+    generalPractitioners: [{}],
     filingOrder: {
         coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
     },

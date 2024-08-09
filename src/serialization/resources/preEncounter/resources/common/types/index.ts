@@ -18,3 +18,5 @@ export * from "./ContactPoint";
 export * from "./ErrorBase";
 export * from "./NotFoundErrorBody";
 export * from "./VersionConflictErrorBody";
+export * from "./ExternalProviderType";
+export * from "./ExternalProvider";

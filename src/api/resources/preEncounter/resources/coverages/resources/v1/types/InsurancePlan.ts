@@ -10,7 +10,8 @@ export interface InsurancePlan {
     payerName: string;
     groupNumber?: string;
     name?: string;
-    type?: CandidApi.preEncounter.coverages.v1.NetworkType;
+    planType?: CandidApi.preEncounter.coverages.v1.NetworkType;
+    type?: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode;
     period?: CandidApi.preEncounter.Period;
     insuranceCardImageLocator?: string;
 }

@@ -11,11 +11,11 @@ export interface MutablePatient {
     name: CandidApi.preEncounter.HumanName;
     /** Other names for the patient. */
     otherNames: CandidApi.preEncounter.HumanName[];
-    gender: CandidApi.preEncounter.Gender;
+    gender?: CandidApi.preEncounter.Gender;
     birthDate: string;
     socialSecurityNumber?: string;
-    /** The biological sex of the patient. */
-    biologicalSex?: CandidApi.preEncounter.Sex;
+    /** The biological sex of the patient. This corresponds to the HL7 AdministrativeGender https://www.hl7.org/fhir/valueset-administrative-gender.html */
+    biologicalSex: CandidApi.preEncounter.Sex;
     /** The sexual orientation of the patient. */
     sexualOrientation?: CandidApi.preEncounter.SexualOrientation;
     race?: CandidApi.preEncounter.Race;
@@ -42,6 +42,6 @@ export interface MutablePatient {
     externalProvenance?: CandidApi.preEncounter.patients.v1.ExternalProvenance;
     /** Contacts for the patient. */
     contacts: CandidApi.preEncounter.patients.v1.Contact[];
-    generalPractitioners: CandidApi.preEncounter.patients.v1.ExternalProvider[];
+    generalPractitioners: CandidApi.preEncounter.ExternalProvider[];
     filingOrder: CandidApi.preEncounter.patients.v1.FilingOrder;
 }

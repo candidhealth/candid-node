@@ -17,7 +17,7 @@ import { Address } from "../../../../common/types/Address";
 import { ContactPoint } from "../../../../common/types/ContactPoint";
 import { ExternalProvenance } from "./ExternalProvenance";
 import { Contact } from "./Contact";
-import { ExternalProvider } from "./ExternalProvider";
+import { ExternalProvider } from "../../../../common/types/ExternalProvider";
 import { FilingOrder } from "./FilingOrder";
 
 export const MutablePatient: core.serialization.ObjectSchema<
@@ -26,10 +26,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: HumanName,
     otherNames: core.serialization.property("other_names", core.serialization.list(HumanName)),
-    gender: Gender,
+    gender: Gender.optional(),
     birthDate: core.serialization.property("birth_date", core.serialization.string()),
     socialSecurityNumber: core.serialization.property("social_security_number", core.serialization.string().optional()),
-    biologicalSex: core.serialization.property("biological_sex", Sex.optional()),
+    biologicalSex: core.serialization.property("biological_sex", Sex),
     sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
     race: Race.optional(),
     ethnicity: Ethnicity.optional(),
@@ -61,10 +61,10 @@ export declare namespace MutablePatient {
     interface Raw {
         name: HumanName.Raw;
         other_names: HumanName.Raw[];
-        gender: Gender.Raw;
+        gender?: Gender.Raw | null;
         birth_date: string;
         social_security_number?: string | null;
-        biological_sex?: Sex.Raw | null;
+        biological_sex: Sex.Raw;
         sexual_orientation?: SexualOrientation.Raw | null;
         race?: Race.Raw | null;
         ethnicity?: Ethnicity.Raw | null;
