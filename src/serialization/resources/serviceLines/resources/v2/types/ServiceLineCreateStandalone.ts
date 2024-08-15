@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { DiagnosisId } from "../../../../diagnoses/types/DiagnosisId";
-import { ServiceLineAdjustment } from "./ServiceLineAdjustment";
 import { ServiceLineDenialReason } from "./ServiceLineDenialReason";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { Decimal } from "../../../../commons/types/Decimal";
@@ -20,42 +19,12 @@ export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
 > = core.serialization.object({
     modifiers: core.serialization.list(ProcedureModifier).optional(),
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
-    allowedAmountCents: core.serialization.property("allowed_amount_cents", core.serialization.number().optional()),
-    insuranceBalanceCents: core.serialization.property(
-        "insurance_balance_cents",
-        core.serialization.number().optional()
-    ),
-    patientBalanceCents: core.serialization.property("patient_balance_cents", core.serialization.number().optional()),
-    primaryPaidAmountCents: core.serialization.property(
-        "primary_paid_amount_cents",
-        core.serialization.number().optional()
-    ),
-    secondaryPaidAmountCents: core.serialization.property(
-        "secondary_paid_amount_cents",
-        core.serialization.number().optional()
-    ),
-    tertiaryPaidAmountCents: core.serialization.property(
-        "tertiary_paid_amount_cents",
-        core.serialization.number().optional()
-    ),
-    patientResponsibilityCents: core.serialization.property(
-        "patient_responsibility_cents",
-        core.serialization.number().optional()
-    ),
     diagnosisIdZero: core.serialization.property("diagnosis_id_zero", DiagnosisId.optional()),
     diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
     diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
     diagnosisIdThree: core.serialization.property("diagnosis_id_three", DiagnosisId.optional()),
-    serviceLineManualAdjustments: core.serialization.property(
-        "service_line_manual_adjustments",
-        core.serialization.list(ServiceLineAdjustment).optional()
-    ),
     denialReason: core.serialization.property("denial_reason", ServiceLineDenialReason.optional()),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
-    placeOfServiceCodeAsSubmitted: core.serialization.property(
-        "place_of_service_code_as_submitted",
-        FacilityTypeCode.optional()
-    ),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
     quantity: Decimal,
     units: ServiceLineUnits,
@@ -69,21 +38,12 @@ export declare namespace ServiceLineCreateStandalone {
     interface Raw {
         modifiers?: ProcedureModifier.Raw[] | null;
         charge_amount_cents?: number | null;
-        allowed_amount_cents?: number | null;
-        insurance_balance_cents?: number | null;
-        patient_balance_cents?: number | null;
-        primary_paid_amount_cents?: number | null;
-        secondary_paid_amount_cents?: number | null;
-        tertiary_paid_amount_cents?: number | null;
-        patient_responsibility_cents?: number | null;
         diagnosis_id_zero?: DiagnosisId.Raw | null;
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;
         diagnosis_id_three?: DiagnosisId.Raw | null;
-        service_line_manual_adjustments?: ServiceLineAdjustment.Raw[] | null;
         denial_reason?: ServiceLineDenialReason.Raw | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
-        place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
         procedure_code: string;
         quantity: Decimal.Raw;
         units: ServiceLineUnits.Raw;

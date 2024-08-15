@@ -47,7 +47,6 @@ export * as identifiers from "./identifiers";
 export * from "./identifiers/types";
 export * as individual from "./individual";
 export * from "./individual/types";
-export * from "./invoices/types";
 export * as paymentAccountConfigs from "./paymentAccountConfigs";
 export * from "./paymentAccountConfigs/types";
 export * as serviceFacility from "./serviceFacility";

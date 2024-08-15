@@ -7,21 +7,12 @@ import * as CandidApi from "../../../../../index";
 export interface ServiceLineCreateStandalone {
     modifiers?: CandidApi.ProcedureModifier[];
     chargeAmountCents?: number;
-    allowedAmountCents?: number;
-    insuranceBalanceCents?: number;
-    patientBalanceCents?: number;
-    primaryPaidAmountCents?: number;
-    secondaryPaidAmountCents?: number;
-    tertiaryPaidAmountCents?: number;
-    patientResponsibilityCents?: number;
     diagnosisIdZero?: CandidApi.DiagnosisId;
     diagnosisIdOne?: CandidApi.DiagnosisId;
     diagnosisIdTwo?: CandidApi.DiagnosisId;
     diagnosisIdThree?: CandidApi.DiagnosisId;
-    serviceLineManualAdjustments?: CandidApi.serviceLines.v2.ServiceLineAdjustment[];
     denialReason?: CandidApi.serviceLines.v2.ServiceLineDenialReason;
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
-    placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     procedureCode: string;
     /**
      * String representation of a Decimal that can be parsed by most libraries.

@@ -2,7 +2,6 @@ export * from "./ServiceLineCreate";
 export * from "./ServiceLineCreateStandalone";
 export * from "./ServiceLineUpdate";
 export * from "./ServiceLine";
-export * from "./ServiceLineEraData";
 export * from "./ServiceLineAdjustment";
 export * from "./ServiceLineDenialReason";
 export * from "./DenialReasonContent";

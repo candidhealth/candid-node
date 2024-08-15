@@ -7,9 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { DiagnosisId } from "../../../../diagnoses/types/DiagnosisId";
-import { ServiceLineEraData } from "./ServiceLineEraData";
 import { ServiceLineAdjustment } from "./ServiceLineAdjustment";
-import { Invoice } from "../../../../invoices/types/Invoice";
 import { InvoiceInfo } from "../../../../invoices/resources/v2/types/InvoiceInfo";
 import { ServiceLineDenialReason } from "./ServiceLineDenialReason";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
@@ -27,11 +25,6 @@ export const ServiceLine: core.serialization.ObjectSchema<
     modifiers: core.serialization.list(ProcedureModifier).optional(),
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
     allowedAmountCents: core.serialization.property("allowed_amount_cents", core.serialization.number().optional()),
-    insuranceBalanceCents: core.serialization.property(
-        "insurance_balance_cents",
-        core.serialization.number().optional()
-    ),
-    patientBalanceCents: core.serialization.property("patient_balance_cents", core.serialization.number().optional()),
     paidAmountCents: core.serialization.property("paid_amount_cents", core.serialization.number().optional()),
     primaryPaidAmountCents: core.serialization.property(
         "primary_paid_amount_cents",
@@ -53,12 +46,10 @@ export const ServiceLine: core.serialization.ObjectSchema<
     diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
     diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
     diagnosisIdThree: core.serialization.property("diagnosis_id_three", DiagnosisId.optional()),
-    serviceLineEraData: core.serialization.property("service_line_era_data", ServiceLineEraData.optional()),
     serviceLineManualAdjustments: core.serialization.property(
         "service_line_manual_adjustments",
         core.serialization.list(ServiceLineAdjustment).optional()
     ),
-    relatedInvoices: core.serialization.property("related_invoices", core.serialization.list(Invoice).optional()),
     relatedInvoiceInfo: core.serialization.property(
         "related_invoice_info",
         core.serialization.list(InvoiceInfo).optional()
@@ -89,8 +80,6 @@ export declare namespace ServiceLine {
         modifiers?: ProcedureModifier.Raw[] | null;
         charge_amount_cents?: number | null;
         allowed_amount_cents?: number | null;
-        insurance_balance_cents?: number | null;
-        patient_balance_cents?: number | null;
         paid_amount_cents?: number | null;
         primary_paid_amount_cents?: number | null;
         secondary_paid_amount_cents?: number | null;
@@ -100,9 +89,7 @@ export declare namespace ServiceLine {
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;
         diagnosis_id_three?: DiagnosisId.Raw | null;
-        service_line_era_data?: ServiceLineEraData.Raw | null;
         service_line_manual_adjustments?: ServiceLineAdjustment.Raw[] | null;
-        related_invoices?: Invoice.Raw[] | null;
         related_invoice_info?: InvoiceInfo.Raw[] | null;
         denial_reason?: ServiceLineDenialReason.Raw | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
