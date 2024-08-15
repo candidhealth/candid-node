@@ -1,0 +1,1 @@
+export { UpdateThirdPartyPayerPaymentRequest } from "./UpdateThirdPartyPayerPaymentRequest";

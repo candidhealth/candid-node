@@ -27,6 +27,9 @@ import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
 import { ServiceLines } from "./api/resources/serviceLines/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
+import { ThirdPartyPayerPayments } from "./api/resources/thirdPartyPayerPayments/client/Client";
+import { ThirdPartyPayerRefunds } from "./api/resources/thirdPartyPayerRefunds/client/Client";
+import { ThirdPartyPayers } from "./api/resources/thirdPartyPayers/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 import { PreEncounter } from "./api/resources/preEncounter/client/Client";
 import { ServiceFacility } from "./api/resources/serviceFacility/client/Client";
@@ -254,6 +257,33 @@ export class CandidApiClient {
 
     public get tasks(): Tasks {
         return (this._tasks ??= new Tasks({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _thirdPartyPayerPayments: ThirdPartyPayerPayments | undefined;
+
+    public get thirdPartyPayerPayments(): ThirdPartyPayerPayments {
+        return (this._thirdPartyPayerPayments ??= new ThirdPartyPayerPayments({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _thirdPartyPayerRefunds: ThirdPartyPayerRefunds | undefined;
+
+    public get thirdPartyPayerRefunds(): ThirdPartyPayerRefunds {
+        return (this._thirdPartyPayerRefunds ??= new ThirdPartyPayerRefunds({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _thirdPartyPayers: ThirdPartyPayers | undefined;
+
+    public get thirdPartyPayers(): ThirdPartyPayers {
+        return (this._thirdPartyPayers ??= new ThirdPartyPayers({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

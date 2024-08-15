@@ -6088,6 +6088,1023 @@ await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ff
 </dl>
 </details>
 
+## ThirdPartyPayerPayments V1
+
+<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPaymentsPage, CandidApi.thirdPartyPayerPayments.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all third party payer payments
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerPayments.v1.getMulti({
+    limit: 1,
+    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    checkNumber: "string",
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    sort: CandidApi.ThirdPartyPayerPaymentSortField.AmountCents,
+    sortDirection: CandidApi.SortDirection.Asc,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.thirdPartyPayerPayments.v1.GetMultiThirdPartyPayerPaymentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">get</a>(thirdPartyPayerPaymentId) -> core.APIResponse<CandidApi.ThirdPartyPayerPayment, CandidApi.thirdPartyPayerPayments.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a previously created third party payer payment by its `third_party_payer_payment_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerPayments.v1.get(CandidApi.ThirdPartyPayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerPaymentId:** `CandidApi.ThirdPartyPayerPaymentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPayment, CandidApi.thirdPartyPayerPayments.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerPayments.v1.create({
+    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    amountCents: 1,
+    paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    paymentNote: "string",
+    checkNumber: "string",
+    allocations: [{}],
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ThirdPartyPayerPaymentCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">update</a>(thirdPartyPayerPaymentId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPayment, CandidApi.thirdPartyPayerPayments.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerPayments.v1.update(
+    CandidApi.ThirdPartyPayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+        paymentNote: {
+            type: "set",
+            value: "string",
+        },
+        invoiceId: {
+            type: "set",
+            value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        },
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerPaymentId:** `CandidApi.ThirdPartyPayerPaymentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.thirdPartyPayerPayments.v1.UpdateThirdPartyPayerPaymentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">delete</a>(thirdPartyPayerPaymentId) -> core.APIResponse<void, CandidApi.thirdPartyPayerPayments.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the third party payer payment record matching the provided `third_party_payer_payment_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerPayments.v1.delete(
+    CandidApi.ThirdPartyPayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerPaymentId:** `CandidApi.ThirdPartyPayerPaymentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## ThirdPartyPayerRefunds V1
+
+<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerRefundsPage, CandidApi.thirdPartyPayerRefunds.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all third party payer refunds satisfying the search criteria
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerRefunds.v1.getMulti({
+    limit: 1,
+    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    checkNumber: "string",
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    sort: CandidApi.ThirdPartyPayerRefundSortField.AmountCents,
+    sortDirection: CandidApi.SortDirection.Asc,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.thirdPartyPayerRefunds.v1.GetMultiThirdPartyPayerRefundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">get</a>(thirdPartyPayerRefundId) -> core.APIResponse<CandidApi.ThirdPartyPayerRefund, CandidApi.thirdPartyPayerRefunds.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a previously created third party payer refund by its `third_party_payer_refund_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerRefunds.v1.get(CandidApi.ThirdPartyPayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerRefundId:** `CandidApi.ThirdPartyPayerRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerRefund, CandidApi.thirdPartyPayerRefunds.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new third party payer refund record and returns the newly created `ThirdPartyPayerRefund` object.
+The allocations can describe whether the refund is being applied toward a specific service line,
+claim, or billing provider.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerRefunds.v1.create({
+    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    amountCents: 1,
+    refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    refundNote: "string",
+    allocations: [{}],
+    refundReason: CandidApi.RefundReason.Overcharged,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ThirdPartyPayerRefundCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">update</a>(thirdPartyPayerRefundId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerRefund, CandidApi.thirdPartyPayerRefunds.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates the third party payer refund record matching the provided third_party_payer_refund_id. If updating the refund amount,
+then the allocations must be appropriately updated as well.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerRefunds.v1.update(
+    CandidApi.ThirdPartyPayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+        refundNote: {
+            type: "set",
+            value: "string",
+        },
+        refundReason: {
+            type: "set",
+            value: CandidApi.RefundReason.Overcharged,
+        },
+        invoiceId: {
+            type: "set",
+            value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        },
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerRefundId:** `CandidApi.ThirdPartyPayerRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.thirdPartyPayerRefunds.v1.ThirdPartyPayerRefundUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">delete</a>(thirdPartyPayerRefundId) -> core.APIResponse<void, CandidApi.thirdPartyPayerRefunds.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the third party payer refund record matching the provided `third_party_payer_refund_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayerRefunds.v1.delete(
+    CandidApi.ThirdPartyPayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerRefundId:** `CandidApi.ThirdPartyPayerRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## ThirdPartyPayers V1
+
+<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayers.v1.create({
+    name: "string",
+    description: "string",
+    category: "string",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.CreateThirdPartyPayerRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">toggleEnablement</a>(thirdPartyPayerId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.toggleEnablement.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayers.v1.toggleEnablement(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    enabled: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ToggleThirdPartyPayerEnablementRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPage, CandidApi.thirdPartyPayers.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayers.v1.getMulti({
+    name: "string",
+    category: "string",
+    enabled: true,
+    sort: CandidApi.ThirdPartyPayerSortField.Name,
+    sortDirection: CandidApi.SortDirection.Asc,
+    limit: 1,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.thirdPartyPayers.v1.GetMultiThirdPartyPayersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">get</a>(thirdPartyPayerId) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayers.v1.get(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">update</a>(thirdPartyPayerId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayers.v1.update(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    name: "string",
+    description: {
+        type: "remove",
+    },
+    category: {
+        type: "remove",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ThirdPartyPayerUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">delete</a>(thirdPartyPayerId) -> core.APIResponse<void, CandidApi.thirdPartyPayers.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.thirdPartyPayers.v1.delete(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## WriteOffs V1
 
 <details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error></code></summary>
