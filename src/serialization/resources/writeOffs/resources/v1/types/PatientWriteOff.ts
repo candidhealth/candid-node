@@ -7,6 +7,8 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { WriteOffId } from "./WriteOffId";
 import { PatientWriteOffReason } from "./PatientWriteOffReason";
+import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
+import { ClaimId } from "../../../../commons/types/ClaimId";
 import { ServiceLineId } from "../../../../commons/types/ServiceLineId";
 
 export const PatientWriteOff: core.serialization.ObjectSchema<
@@ -17,6 +19,8 @@ export const PatientWriteOff: core.serialization.ObjectSchema<
     writeOffTimestamp: core.serialization.property("write_off_timestamp", core.serialization.date()),
     writeOffNote: core.serialization.property("write_off_note", core.serialization.string().optional()),
     writeOffReason: core.serialization.property("write_off_reason", PatientWriteOffReason),
+    patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
+    claimId: core.serialization.property("claim_id", ClaimId),
     serviceLineId: core.serialization.property("service_line_id", ServiceLineId),
     revertsWriteOffId: core.serialization.property("reverts_write_off_id", WriteOffId.optional()),
     revertedByWriteOffId: core.serialization.property("reverted_by_write_off_id", WriteOffId.optional()),
@@ -29,6 +33,8 @@ export declare namespace PatientWriteOff {
         write_off_timestamp: string;
         write_off_note?: string | null;
         write_off_reason: PatientWriteOffReason.Raw;
+        patient_external_id: PatientExternalId.Raw;
+        claim_id: ClaimId.Raw;
         service_line_id: ServiceLineId.Raw;
         reverts_write_off_id?: WriteOffId.Raw | null;
         reverted_by_write_off_id?: WriteOffId.Raw | null;

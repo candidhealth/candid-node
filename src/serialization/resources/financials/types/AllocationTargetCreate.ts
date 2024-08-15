@@ -9,6 +9,7 @@ import { ServiceLineId } from "../../commons/types/ServiceLineId";
 import { ClaimId } from "../../commons/types/ClaimId";
 import { EncounterExternalId } from "../../commons/types/EncounterExternalId";
 import { ProviderId } from "../../commons/types/ProviderId";
+import { AppointmentId } from "../../commons/types/AppointmentId";
 
 export const AllocationTargetCreate: core.serialization.Schema<
     serializers.AllocationTargetCreate.Raw,
@@ -27,6 +28,9 @@ export const AllocationTargetCreate: core.serialization.Schema<
         billing_provider_by_id: core.serialization.object({
             value: ProviderId,
         }),
+        appointment_by_id: core.serialization.object({
+            value: AppointmentId,
+        }),
         unattributed: core.serialization.object({}),
     })
     .transform<CandidApi.AllocationTargetCreate>({
@@ -40,6 +44,7 @@ export declare namespace AllocationTargetCreate {
         | AllocationTargetCreate.ClaimById
         | AllocationTargetCreate.ClaimByEncounterExternalId
         | AllocationTargetCreate.BillingProviderById
+        | AllocationTargetCreate.AppointmentById
         | AllocationTargetCreate.Unattributed;
 
     interface ServiceLineById {
@@ -60,6 +65,11 @@ export declare namespace AllocationTargetCreate {
     interface BillingProviderById {
         type: "billing_provider_by_id";
         value: ProviderId.Raw;
+    }
+
+    interface AppointmentById {
+        type: "appointment_by_id";
+        value: AppointmentId.Raw;
     }
 
     interface Unattributed {

@@ -1,6 +1,7 @@
 export * from "./EncounterId";
 export * from "./OrganizationId";
 export * from "./ClaimId";
+export * from "./AppointmentId";
 export * from "./ServiceLineId";
 export * from "./PatientExternalId";
 export * from "./EncounterExternalId";

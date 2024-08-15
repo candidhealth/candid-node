@@ -25,6 +25,7 @@ import { OrganizationProviders } from "./api/resources/organizationProviders/cli
 import { PatientPayments } from "./api/resources/patientPayments/client/Client";
 import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
+import { ServiceLines } from "./api/resources/serviceLines/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 import { PreEncounter } from "./api/resources/preEncounter/client/Client";
@@ -235,6 +236,15 @@ export class CandidApiClient {
 
     public get payers(): Payers {
         return (this._payers ??= new Payers({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _serviceLines: ServiceLines | undefined;
+
+    public get serviceLines(): ServiceLines {
+        return (this._serviceLines ??= new ServiceLines({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

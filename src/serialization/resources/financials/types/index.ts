@@ -4,6 +4,7 @@ export * from "./Allocation";
 export * from "./ServiceLineAllocationTarget";
 export * from "./ClaimAllocationTarget";
 export * from "./BillingProviderAllocationTarget";
+export * from "./AppointmentAllocationTarget";
 export * from "./AllocationTarget";
 export * from "./AllocationCreate";
 export * from "./AllocationTargetCreate";

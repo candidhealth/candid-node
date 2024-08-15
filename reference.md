@@ -5656,6 +5656,162 @@ await client.payers.v3.getAll({
 </dl>
 </details>
 
+## ServiceLines V2
+
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.serviceLines.v2.create({
+    modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+    chargeAmountCents: 1,
+    allowedAmountCents: 1,
+    insuranceBalanceCents: 1,
+    patientBalanceCents: 1,
+    primaryPaidAmountCents: 1,
+    secondaryPaidAmountCents: 1,
+    tertiaryPaidAmountCents: 1,
+    patientResponsibilityCents: 1,
+    diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    serviceLineManualAdjustments: [{}],
+    denialReason: {},
+    placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+    placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy,
+    procedureCode: "string",
+    quantity: CandidApi.Decimal("string"),
+    units: CandidApi.ServiceLineUnits.Mj,
+    claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    description: "string",
+    dateOfService: "2023-01-15",
+    endDateOfService: "2023-01-15",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ServiceLineCreateStandalone`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">update</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    editReason: "string",
+    modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+    chargeAmountCents: 1,
+    allowedAmountCents: 1,
+    insuranceBalanceCents: 1,
+    patientBalanceCents: 1,
+    primaryPaidAmountCents: 1,
+    secondaryPaidAmountCents: 1,
+    tertiaryPaidAmountCents: 1,
+    patientResponsibilityCents: 1,
+    diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    serviceLineManualAdjustments: [{}],
+    denialReason: {},
+    placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+    placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy,
+    units: CandidApi.ServiceLineUnits.Mj,
+    procedureCode: "string",
+    quantity: CandidApi.Decimal("string"),
+    description: "string",
+    dateOfService: "2023-01-15",
+    endDateOfService: "2023-01-15",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**serviceLineId:** `CandidApi.ServiceLineId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ServiceLineUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Tasks V3
 
 <details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getActions</a>(taskId) -> core.APIResponse<CandidApi.TaskActions, CandidApi.tasks.v3.getActions.Error></code></summary>

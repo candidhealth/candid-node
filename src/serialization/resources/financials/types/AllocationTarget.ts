@@ -8,6 +8,7 @@ import * as core from "../../../../core";
 import { ServiceLineAllocationTarget } from "./ServiceLineAllocationTarget";
 import { ClaimAllocationTarget } from "./ClaimAllocationTarget";
 import { BillingProviderAllocationTarget } from "./BillingProviderAllocationTarget";
+import { AppointmentAllocationTarget } from "./AppointmentAllocationTarget";
 
 export const AllocationTarget: core.serialization.Schema<serializers.AllocationTarget.Raw, CandidApi.AllocationTarget> =
     core.serialization
@@ -15,6 +16,7 @@ export const AllocationTarget: core.serialization.Schema<serializers.AllocationT
             service_line: ServiceLineAllocationTarget,
             claim: ClaimAllocationTarget,
             billing_provider_id: BillingProviderAllocationTarget,
+            appointment: AppointmentAllocationTarget,
             unattributed: core.serialization.object({}),
         })
         .transform<CandidApi.AllocationTarget>({
@@ -27,6 +29,7 @@ export declare namespace AllocationTarget {
         | AllocationTarget.ServiceLine
         | AllocationTarget.Claim
         | AllocationTarget.BillingProviderId
+        | AllocationTarget.Appointment
         | AllocationTarget.Unattributed;
 
     interface ServiceLine extends ServiceLineAllocationTarget.Raw {
@@ -39,6 +42,10 @@ export declare namespace AllocationTarget {
 
     interface BillingProviderId extends BillingProviderAllocationTarget.Raw {
         type: "billing_provider_id";
+    }
+
+    interface Appointment extends AppointmentAllocationTarget.Raw {
+        type: "appointment";
     }
 
     interface Unattributed {

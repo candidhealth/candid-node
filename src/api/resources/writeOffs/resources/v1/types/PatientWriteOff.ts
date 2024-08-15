@@ -9,6 +9,8 @@ export interface PatientWriteOff {
     writeOffTimestamp: Date;
     writeOffNote?: string;
     writeOffReason: CandidApi.writeOffs.v1.PatientWriteOffReason;
+    patientExternalId: CandidApi.PatientExternalId;
+    claimId: CandidApi.ClaimId;
     serviceLineId: CandidApi.ServiceLineId;
     revertsWriteOffId?: CandidApi.writeOffs.v1.WriteOffId;
     revertedByWriteOffId?: CandidApi.writeOffs.v1.WriteOffId;
