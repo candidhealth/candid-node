@@ -10,6 +10,8 @@ import { Subscriber } from "./Subscriber";
 import { Relationship } from "../../../../common/types/Relationship";
 import { PatientId } from "../../../../patients/resources/v1/types/PatientId";
 import { InsurancePlan } from "./InsurancePlan";
+import { EligibilityCheckMetadata } from "./EligibilityCheckMetadata";
+import { CoverageBenefits } from "./CoverageBenefits";
 
 export const MutableCoverage: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.MutableCoverage.Raw,
@@ -21,6 +23,11 @@ export const MutableCoverage: core.serialization.ObjectSchema<
     patient: PatientId,
     insurancePlan: core.serialization.property("insurance_plan", InsurancePlan),
     verified: core.serialization.boolean(),
+    eligibilityChecks: core.serialization.property(
+        "eligibility_checks",
+        core.serialization.list(EligibilityCheckMetadata).optional()
+    ),
+    benefits: CoverageBenefits.optional(),
 });
 
 export declare namespace MutableCoverage {
@@ -31,5 +38,7 @@ export declare namespace MutableCoverage {
         patient: PatientId.Raw;
         insurance_plan: InsurancePlan.Raw;
         verified: boolean;
+        eligibility_checks?: EligibilityCheckMetadata.Raw[] | null;
+        benefits?: CoverageBenefits.Raw | null;
     }
 }

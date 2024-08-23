@@ -7412,6 +7412,458 @@ await client.writeOffs.v1.revert(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
+## PreEncounter Appointments V1
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds an appointment. VersionConflictError is returned when the placer_appointment_id is already in use.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.create({
+    patientId: CandidApi.PatientId("string"),
+    checkedIn: true,
+    assignedPatientLocation: "string",
+    attendingDoctor: {},
+    referringDoctor: {},
+    startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    serviceDuration: 1,
+    services: [
+        {
+            universalServiceIdentifier: CandidApi.UniversalServiceIdentifier.MdVisit,
+            startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+        },
+    ],
+    placerAppointmentId: "string",
+    appointmentReason: CandidApi.AppointmentReason.Checkup,
+    appointmentType: CandidApi.AppointmentType.Complete,
+    locationResourceId: "string",
+    workQueue: CandidApi.AppointmentWorkQueue.EmergentIssue,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableAppointment`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets an appointment.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.get(CandidApi.AppointmentId("string"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.AppointmentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse<CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.getHistory.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets an appointment along with it's full history. The return list is ordered by version ascending.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.getHistory(CandidApi.AppointmentId("string"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.AppointmentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an appointment. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("string"), "string", {
+    patientId: CandidApi.PatientId("string"),
+    checkedIn: true,
+    assignedPatientLocation: "string",
+    attendingDoctor: {},
+    referringDoctor: {},
+    startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    serviceDuration: 1,
+    services: [
+        {
+            universalServiceIdentifier: CandidApi.UniversalServiceIdentifier.MdVisit,
+            startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+        },
+    ],
+    placerAppointmentId: "string",
+    appointmentReason: CandidApi.AppointmentReason.Checkup,
+    appointmentType: CandidApi.AppointmentType.Complete,
+    locationResourceId: "string",
+    workQueue: CandidApi.AppointmentWorkQueue.EmergentIssue,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.AppointmentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableAppointment`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.appointments.v1.deactivate.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sets an appointment as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.deactivate(CandidApi.AppointmentId("string"), "string");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.AppointmentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for appointments that match the query parameters.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.getMulti({
+    checkedIn: true,
+    patientId: CandidApi.PatientId("string"),
+    minStartTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    maxStartTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    placerAppointmentId: "string",
+    workQueue: CandidApi.AppointmentWorkQueue.EmergentIssue,
+    sortField: CandidApi.AppointmentSortField.StartTimestamp,
+    sortDirection: CandidApi.SortDirection.Asc,
+    limit: 1,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.appointments.v1.AppointmentsSearchRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## PreEncounter Coverages V1
 
 <details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.create.Error></code></summary>
@@ -7463,6 +7915,19 @@ await client.preEncounter.coverages.v1.create({
         insuranceCardImageLocator: "string",
     },
     verified: true,
+    eligibilityChecks: [
+        {
+            checkId: "string",
+            serviceCode: CandidApi.ServiceTypeCode.MedicalCare,
+            status: CandidApi.EligibilityCheckStatus.Created,
+            initiatedBy: CandidApi.UserId("string"),
+            initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+        },
+    ],
+    benefits: {
+        planCoverage: {},
+        serviceSpecificCoverage: [{}],
+    },
 });
 ```
 
@@ -7510,7 +7975,7 @@ await client.preEncounter.coverages.v1.create({
 <dl>
 <dd>
 
-Updates a Coverage. The path must contain the most recent version to prevent races. Updating historic versions is not supported.
+Updates a Coverage. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
 
 </dd>
 </dl>
@@ -7547,6 +8012,19 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
         insuranceCardImageLocator: "string",
     },
     verified: true,
+    eligibilityChecks: [
+        {
+            checkId: "string",
+            serviceCode: CandidApi.ServiceTypeCode.MedicalCare,
+            status: CandidApi.EligibilityCheckStatus.Created,
+            initiatedBy: CandidApi.UserId("string"),
+            initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+        },
+    ],
+    benefits: {
+        planCoverage: {},
+        serviceSpecificCoverage: [{}],
+    },
 });
 ```
 
@@ -7736,7 +8214,7 @@ await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f
 <dl>
 <dd>
 
-returns a list of Coverages based on the search criteria
+Returns a list of Coverages based on the search criteria.
 
 </dd>
 </dl>
@@ -7770,7 +8248,7 @@ await client.preEncounter.coverages.v1.getMulti({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.coverages.v1.GetAllCoveragesRequest`
+**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiRequest`
 
 </dd>
 </dl>
@@ -7854,6 +8332,155 @@ await client.preEncounter.coverages.v1.scan({
 </dl>
 </details>
 
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">checkEligibility</a>(id, { ...params }) -> core.APIResponse<CandidApi.EligibilityCheckMetadata, CandidApi.preEncounter.coverages.v1.checkEligibility.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Initiates an eligibility check. Returns the metadata of the check if successfully initiated.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.coverages.v1.checkEligibility(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    serviceCode: CandidApi.ServiceTypeCode.MedicalCare,
+    dateOfService: "2023-01-15",
+    npi: "string",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.CoverageId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getEligibility</a>(id, checkId) -> core.APIResponse<CandidApi.CoverageEligibilityCheckResponse, CandidApi.preEncounter.coverages.v1.getEligibility.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets the eligibility of a patient for a specific coverage if successful.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.coverages.v1.getEligibility(
+    CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    "string"
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.CoverageId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**checkId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## PreEncounter Patients V1
 
 <details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.create.Error></code></summary>
@@ -7917,6 +8544,7 @@ await client.preEncounter.patients.v1.create({
             telecoms: [{}],
             addresses: [{}],
             period: {},
+            hipaaAuthorization: true,
         },
     ],
     generalPractitioners: [{}],
@@ -7940,6 +8568,74 @@ await client.preEncounter.patients.v1.create({
 <dd>
 
 **request:** `CandidApi.MutablePatient`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPage, CandidApi.preEncounter.patients.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for patients that match the query parameters.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.getMulti({
+    pageToken: CandidApi.PageToken("string"),
+    limit: 1,
+    sortField: CandidApi.PatientSortField("string"),
+    sortDirection: CandidApi.SortDirection.Asc,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated`
 
 </dd>
 </dl>
@@ -8096,7 +8792,7 @@ await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("string"));
 <dl>
 <dd>
 
-Updates a patient. The path must contain the most recent version to prevent races. Updating historic versions is not supported.
+Updates a patient. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
 
 </dd>
 </dl>
@@ -8145,6 +8841,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             telecoms: [{}],
             addresses: [{}],
             period: {},
+            hipaaAuthorization: true,
         },
     ],
     generalPractitioners: [{}],
@@ -8214,7 +8911,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
 <dl>
 <dd>
 
-Sets a patient as deactivated. The path must contain the most recent version to prevent races. Dactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
+Sets a patient as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
 
 </dd>
 </dl>
@@ -8285,7 +8982,7 @@ await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("string"), 
 <dl>
 <dd>
 
-Searches for patients that match the query parameters.
+Returns a list of Patients based on the search criteria.
 
 </dd>
 </dl>
@@ -8302,7 +8999,8 @@ Searches for patients that match the query parameters.
 
 ```typescript
 await client.preEncounter.patients.v1.search({
-    nameContains: "string",
+    mrn: "string",
+    similarNameOrdering: "string",
 });
 ```
 
@@ -8319,7 +9017,7 @@ await client.preEncounter.patients.v1.search({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.PatientsSearchRequest`
+**request:** `CandidApi.preEncounter.patients.v1.PatientGetMultiRequest`
 
 </dd>
 </dl>

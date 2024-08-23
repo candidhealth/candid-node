@@ -4,6 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
+import { Appointments } from "../resources/appointments/client/Client";
 import { Coverages } from "../resources/coverages/client/Client";
 import { Patients } from "../resources/patients/client/Client";
 
@@ -25,6 +26,12 @@ export declare namespace PreEncounter {
 
 export class PreEncounter {
     constructor(protected readonly _options: PreEncounter.Options = {}) {}
+
+    protected _appointments: Appointments | undefined;
+
+    public get appointments(): Appointments {
+        return (this._appointments ??= new Appointments(this._options));
+    }
 
     protected _coverages: Coverages | undefined;
 

@@ -181,9 +181,6 @@ export type InsuranceTypeCode =
      * Other */
     | "OT"
     /**
-     * Property Insurance - Personal */
-    | "PE"
-    /**
      * Personal */
     | "PL"
     /**
@@ -276,7 +273,6 @@ export const InsuranceTypeCode = {
     Cmv: "MV",
     Coa: "OA",
     Cot: "OT",
-    Cpe: "PE",
     Cpl: "PL",
     Cpp: "PP",
     Cpr: "PR",

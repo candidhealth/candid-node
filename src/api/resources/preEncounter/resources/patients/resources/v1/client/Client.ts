@@ -65,7 +65,8 @@ export class V1 {
      *                 name: {},
      *                 telecoms: [{}],
      *                 addresses: [{}],
-     *                 period: {}
+     *                 period: {},
+     *                 hipaaAuthorization: true
      *             }],
      *         generalPractitioners: [{}],
      *         filingOrder: {
@@ -90,7 +91,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -140,6 +141,87 @@ export class V1 {
     }
 
     /**
+     * Searches for patients that match the query parameters.
+     *
+     * @param {CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.patients.v1.getMulti({
+     *         pageToken: CandidApi.preEncounter.PageToken("string"),
+     *         limit: 1,
+     *         sortField: CandidApi.preEncounter.patients.v1.PatientSortField("string"),
+     *         sortDirection: CandidApi.preEncounter.SortDirection.Asc
+     *     })
+     */
+    public async getMulti(
+        request: CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated = {},
+        requestOptions?: V1.RequestOptions
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.patients.v1.PatientPage,
+            CandidApi.preEncounter.patients.v1.getMulti.Error
+        >
+    > {
+        const { pageToken, limit, sortField, sortDirection } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        if (sortField != null) {
+            _queryParams["sort_field"] = sortField;
+        }
+
+        if (sortDirection != null) {
+            _queryParams["sort_direction"] = sortDirection;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .preEncounter,
+                "/patients/v1/get_multi"
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.28.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.patients.v1.PatientPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.patients.v1.getMulti.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * Gets a patient.
      *
      * @param {CandidApi.preEncounter.patients.v1.PatientId} id
@@ -165,7 +247,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -242,7 +324,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -289,7 +371,7 @@ export class V1 {
     }
 
     /**
-     * Updates a patient. The path must contain the most recent version to prevent races. Updating historic versions is not supported.
+     * Updates a patient. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.patients.v1.PatientId} id
      * @param {string} version
@@ -328,7 +410,8 @@ export class V1 {
      *                 name: {},
      *                 telecoms: [{}],
      *                 addresses: [{}],
-     *                 period: {}
+     *                 period: {},
+     *                 hipaaAuthorization: true
      *             }],
      *         generalPractitioners: [{}],
      *         filingOrder: {
@@ -357,7 +440,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -408,7 +491,7 @@ export class V1 {
     }
 
     /**
-     * Sets a patient as deactivated. The path must contain the most recent version to prevent races. Dactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
+     * Sets a patient as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
      *
      * @param {CandidApi.preEncounter.patients.v1.PatientId} id
      * @param {string} version
@@ -435,7 +518,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -478,26 +561,31 @@ export class V1 {
     }
 
     /**
-     * Searches for patients that match the query parameters.
+     * Returns a list of Patients based on the search criteria.
      *
-     * @param {CandidApi.preEncounter.patients.v1.PatientsSearchRequest} request
+     * @param {CandidApi.preEncounter.patients.v1.PatientGetMultiRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.patients.v1.search({
-     *         nameContains: "string"
+     *         mrn: "string",
+     *         similarNameOrdering: "string"
      *     })
      */
     public async search(
-        request: CandidApi.preEncounter.patients.v1.PatientsSearchRequest = {},
+        request: CandidApi.preEncounter.patients.v1.PatientGetMultiRequest = {},
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<CandidApi.preEncounter.patients.v1.Patient[], CandidApi.preEncounter.patients.v1.search.Error>
     > {
-        const { nameContains } = request;
+        const { mrn, similarNameOrdering } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (nameContains != null) {
-            _queryParams["name_contains"] = nameContains;
+        if (mrn != null) {
+            _queryParams["mrn"] = mrn;
+        }
+
+        if (similarNameOrdering != null) {
+            _queryParams["similar_name_ordering"] = similarNameOrdering;
         }
 
         const _response = await core.fetcher({
@@ -511,7 +599,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -571,7 +659,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.27.0",
+                "X-Fern-SDK-Version": "0.28.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

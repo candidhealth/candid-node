@@ -5,9 +5,9 @@
 /**
  * @example
  *     {
- *         nameContains: "string"
+ *         patientId: "string"
  *     }
  */
-export interface PatientsSearchRequest {
-    nameContains?: string;
+export interface CoverageGetMultiRequest {
+    patientId?: string;
 }

@@ -11,4 +11,5 @@ export interface ExternalProvider {
     telecoms: CandidApi.preEncounter.ContactPoint[];
     addresses: CandidApi.preEncounter.Address[];
     period?: CandidApi.preEncounter.Period;
+    canonicalId?: CandidApi.preEncounter.CanonicalProviderId;
 }

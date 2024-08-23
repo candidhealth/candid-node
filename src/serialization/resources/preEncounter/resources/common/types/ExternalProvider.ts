@@ -10,6 +10,7 @@ import { ExternalProviderType } from "./ExternalProviderType";
 import { ContactPoint } from "./ContactPoint";
 import { Address } from "./Address";
 import { Period } from "./Period";
+import { CanonicalProviderId } from "./CanonicalProviderId";
 
 export const ExternalProvider: core.serialization.ObjectSchema<
     serializers.preEncounter.ExternalProvider.Raw,
@@ -21,6 +22,7 @@ export const ExternalProvider: core.serialization.ObjectSchema<
     telecoms: core.serialization.list(ContactPoint),
     addresses: core.serialization.list(Address),
     period: Period.optional(),
+    canonicalId: core.serialization.property("canonical_id", CanonicalProviderId.optional()),
 });
 
 export declare namespace ExternalProvider {
@@ -31,5 +33,6 @@ export declare namespace ExternalProvider {
         telecoms: ContactPoint.Raw[];
         addresses: Address.Raw[];
         period?: Period.Raw | null;
+        canonical_id?: CanonicalProviderId.Raw | null;
     }
 }

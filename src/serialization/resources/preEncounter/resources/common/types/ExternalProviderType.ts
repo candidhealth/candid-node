@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const ExternalProviderType: core.serialization.Schema<
     serializers.preEncounter.ExternalProviderType.Raw,
     CandidApi.preEncounter.ExternalProviderType
-> = core.serialization.enum_(["PRIMARY", "REFERRING"]);
+> = core.serialization.enum_(["PRIMARY", "REFERRING", "ATTENDING"]);
 
 export declare namespace ExternalProviderType {
-    type Raw = "PRIMARY" | "REFERRING";
+    type Raw = "PRIMARY" | "REFERRING" | "ATTENDING";
 }

@@ -5,3 +5,5 @@ export * as get from "./get";
 export * as getHistory from "./getHistory";
 export * as getMulti from "./getMulti";
 export * as scan from "./scan";
+export * as checkEligibility from "./checkEligibility";
+export * as getEligibility from "./getEligibility";

@@ -10,4 +10,5 @@ export interface Contact {
     telecoms: CandidApi.preEncounter.ContactPoint[];
     addresses: CandidApi.preEncounter.Address[];
     period?: CandidApi.preEncounter.Period;
+    hipaaAuthorization?: boolean;
 }

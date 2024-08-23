@@ -20,6 +20,7 @@ export const Contact: core.serialization.ObjectSchema<
     telecoms: core.serialization.list(ContactPoint),
     addresses: core.serialization.list(Address),
     period: Period.optional(),
+    hipaaAuthorization: core.serialization.property("hipaa_authorization", core.serialization.boolean().optional()),
 });
 
 export declare namespace Contact {
@@ -29,5 +30,6 @@ export declare namespace Contact {
         telecoms: ContactPoint.Raw[];
         addresses: Address.Raw[];
         period?: Period.Raw | null;
+        hipaa_authorization?: boolean | null;
     }
 }
