@@ -9,7 +9,7 @@ export interface ExternalProvider {
     type?: CandidApi.preEncounter.ExternalProviderType;
     npi?: string;
     telecoms: CandidApi.preEncounter.ContactPoint[];
-    addresses: CandidApi.preEncounter.Address[];
+    addresses?: CandidApi.preEncounter.Address[];
     period?: CandidApi.preEncounter.Period;
     canonicalId?: CandidApi.preEncounter.CanonicalProviderId;
 }

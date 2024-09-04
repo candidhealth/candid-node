@@ -8,6 +8,8 @@ export * from "./PlanCoverage";
 export * from "./PlanCoverageDetails";
 export * from "./ServiceCoverage";
 export * from "./ServiceCoverageDetails";
+export * from "./PlanMetadata";
+export * from "./EligibilityStatus";
 export * from "./CoverageId";
 export * from "./Subscriber";
 export * from "./CoverageStatus";

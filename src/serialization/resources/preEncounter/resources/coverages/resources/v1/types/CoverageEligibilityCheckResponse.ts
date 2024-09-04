@@ -13,14 +13,12 @@ export const CoverageEligibilityCheckResponse: core.serialization.ObjectSchema<
     CandidApi.preEncounter.coverages.v1.CoverageEligibilityCheckResponse
 > = core.serialization.object({
     metadata: EligibilityCheckMetadata,
-    error: core.serialization.string().optional(),
     check: EligibilityCheck.optional(),
 });
 
 export declare namespace CoverageEligibilityCheckResponse {
     interface Raw {
         metadata: EligibilityCheckMetadata.Raw;
-        error?: string | null;
         check?: EligibilityCheck.Raw | null;
     }
 }

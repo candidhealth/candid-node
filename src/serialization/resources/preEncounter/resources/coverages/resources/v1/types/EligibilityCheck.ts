@@ -5,16 +5,27 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
+import { EligibilityStatus } from "./EligibilityStatus";
+import { PlanMetadata } from "./PlanMetadata";
+import { CoverageBenefits } from "./CoverageBenefits";
 
 export const EligibilityCheck: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.EligibilityCheck.Raw,
     CandidApi.preEncounter.coverages.v1.EligibilityCheck
 > = core.serialization.object({
     rawJson: core.serialization.property("raw_json", core.serialization.unknown()),
+    errors: core.serialization.unknown().optional(),
+    eligibilityStatus: core.serialization.property("eligibility_status", EligibilityStatus),
+    planMetadata: core.serialization.property("plan_metadata", PlanMetadata.optional()),
+    benefits: CoverageBenefits.optional(),
 });
 
 export declare namespace EligibilityCheck {
     interface Raw {
         raw_json?: unknown;
+        errors?: unknown | null;
+        eligibility_status: EligibilityStatus.Raw;
+        plan_metadata?: PlanMetadata.Raw | null;
+        benefits?: CoverageBenefits.Raw | null;
     }
 }

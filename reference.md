@@ -8279,7 +8279,7 @@ await client.preEncounter.coverages.v1.getMulti({
 <dl>
 <dd>
 
-Scans up to 100 coverage updates. The since query parameter is inclusive, and the result list is ordered by updatedAt descending.
+Scans up to 100 coverage updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
 
 </dd>
 </dl>
@@ -8586,6 +8586,109 @@ await client.preEncounter.patients.v1.create({
 </dl>
 </details>
 
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">createNoDuplicateCheck</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.createNoDuplicateCheck.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds a patient without checking for duplicates.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.createNoDuplicateCheck({
+    name: {},
+    otherNames: [{}],
+    gender: CandidApi.Gender.Man,
+    birthDate: "2023-01-15",
+    socialSecurityNumber: "string",
+    biologicalSex: CandidApi.Sex.Female,
+    sexualOrientation: CandidApi.SexualOrientation.Heterosexual,
+    race: CandidApi.Race.AmericanIndianOrAlaskaNative,
+    ethnicity: CandidApi.Ethnicity.HispanicOrLatino,
+    disabilityStatus: CandidApi.DisabilityStatus.Disabled,
+    maritalStatus: CandidApi.MaritalStatus.Annulled,
+    deceased: new Date("2024-01-15T09:30:00.000Z"),
+    multipleBirth: 1,
+    primaryAddress: {},
+    otherAddresses: [{}],
+    primaryTelecom: {},
+    otherTelecoms: [{}],
+    email: "string",
+    electronicCommunicationOptIn: true,
+    photo: "string",
+    language: "string",
+    externalProvenance: {
+        externalId: "string",
+        systemName: "string",
+    },
+    contacts: [
+        {
+            relationship: [CandidApi.Relationship.Self],
+            name: {},
+            telecoms: [{}],
+            addresses: [{}],
+            period: {},
+            hipaaAuthorization: true,
+        },
+    ],
+    generalPractitioners: [{}],
+    filingOrder: {
+        coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutablePatient`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPage, CandidApi.preEncounter.patients.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -8615,8 +8718,9 @@ Searches for patients that match the query parameters.
 
 ```typescript
 await client.preEncounter.patients.v1.getMulti({
-    pageToken: CandidApi.PageToken("string"),
     limit: 1,
+    mrn: "string",
+    pageToken: CandidApi.PageToken("string"),
     sortField: CandidApi.PatientSortField("string"),
     sortDirection: CandidApi.SortDirection.Asc,
 });
@@ -9048,7 +9152,7 @@ await client.preEncounter.patients.v1.search({
 <dl>
 <dd>
 
-Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt descending.
+Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
 
 </dd>
 </dl>

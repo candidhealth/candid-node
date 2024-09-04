@@ -7,15 +7,17 @@ import * as CandidApi from "../../../../../../../../index";
 /**
  * @example
  *     {
- *         pageToken: CandidApi.preEncounter.PageToken("string"),
  *         limit: 1,
+ *         mrn: "string",
+ *         pageToken: CandidApi.preEncounter.PageToken("string"),
  *         sortField: CandidApi.preEncounter.patients.v1.PatientSortField("string"),
  *         sortDirection: CandidApi.preEncounter.SortDirection.Asc
  *     }
  */
 export interface PatientsSearchRequestPaginated {
-    pageToken?: CandidApi.preEncounter.PageToken;
     limit?: number;
+    mrn?: string;
+    pageToken?: CandidApi.preEncounter.PageToken;
     sortField?: CandidApi.preEncounter.patients.v1.PatientSortField;
     /**
      * Defaults to ascending.
