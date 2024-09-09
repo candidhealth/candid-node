@@ -21,6 +21,8 @@ export const Vitals: core.serialization.ObjectSchema<
         core.serialization.number().optional()
     ),
     bodyTemperatureF: core.serialization.property("body_temperature_f", core.serialization.number().optional()),
+    hemoglobinGdl: core.serialization.property("hemoglobin_gdl", core.serialization.number().optional()),
+    hematocritPct: core.serialization.property("hematocrit_pct", core.serialization.number().optional()),
 });
 
 export declare namespace Vitals {
@@ -30,5 +32,7 @@ export declare namespace Vitals {
         blood_pressure_systolic_mmhg?: number | null;
         blood_pressure_diastolic_mmhg?: number | null;
         body_temperature_f?: number | null;
+        hemoglobin_gdl?: number | null;
+        hematocrit_pct?: number | null;
     }
 }

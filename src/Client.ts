@@ -20,6 +20,9 @@ import { ImportInvoice } from "./api/resources/importInvoice/client/Client";
 import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
 import { InsurancePayments } from "./api/resources/insurancePayments/client/Client";
 import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
+import { NonInsurancePayerPayments } from "./api/resources/nonInsurancePayerPayments/client/Client";
+import { NonInsurancePayerRefunds } from "./api/resources/nonInsurancePayerRefunds/client/Client";
+import { NonInsurancePayers } from "./api/resources/nonInsurancePayers/client/Client";
 import { OrganizationServiceFacilities } from "./api/resources/organizationServiceFacilities/client/Client";
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
 import { PatientPayments } from "./api/resources/patientPayments/client/Client";
@@ -194,6 +197,33 @@ export class CandidApiClient {
 
     public get insuranceRefunds(): InsuranceRefunds {
         return (this._insuranceRefunds ??= new InsuranceRefunds({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _nonInsurancePayerPayments: NonInsurancePayerPayments | undefined;
+
+    public get nonInsurancePayerPayments(): NonInsurancePayerPayments {
+        return (this._nonInsurancePayerPayments ??= new NonInsurancePayerPayments({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _nonInsurancePayerRefunds: NonInsurancePayerRefunds | undefined;
+
+    public get nonInsurancePayerRefunds(): NonInsurancePayerRefunds {
+        return (this._nonInsurancePayerRefunds ??= new NonInsurancePayerRefunds({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _nonInsurancePayers: NonInsurancePayers | undefined;
+
+    public get nonInsurancePayers(): NonInsurancePayers {
+        return (this._nonInsurancePayers ??= new NonInsurancePayers({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

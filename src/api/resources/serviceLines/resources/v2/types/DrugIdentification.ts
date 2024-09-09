@@ -11,4 +11,5 @@ export interface DrugIdentification {
     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode;
     linkSequenceNumber?: string;
     pharmacyPrescriptionNumber?: string;
+    conversionFormula?: string;
 }

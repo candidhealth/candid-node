@@ -9,7 +9,9 @@
  *         weightLbs: 165,
  *         bloodPressureSystolicMmhg: 115,
  *         bloodPressureDiastolicMmhg: 85,
- *         bodyTemperatureF: 98
+ *         bodyTemperatureF: 98,
+ *         hemoglobinGdl: 15.1,
+ *         hematocritPct: 51.2
  *     }
  */
 export interface Vitals {
@@ -18,4 +20,6 @@ export interface Vitals {
     bloodPressureSystolicMmhg?: number;
     bloodPressureDiastolicMmhg?: number;
     bodyTemperatureF?: number;
+    hemoglobinGdl?: number;
+    hematocritPct?: number;
 }

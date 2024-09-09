@@ -1464,6 +1464,8 @@ await client.encounters.v4.create({
         bloodPressureSystolicMmhg: 115,
         bloodPressureDiastolicMmhg: 85,
         bodyTemperatureF: 98,
+        hemoglobinGdl: 15.1,
+        hematocritPct: 51.2,
     },
     interventions: [
         {
@@ -4236,6 +4238,1030 @@ await client.insuranceRefunds.v1.delete(CandidApi.InsuranceRefundId("d5e9c84f-c2
 <dd>
 
 **insuranceRefundId:** `CandidApi.InsuranceRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## NonInsurancePayerPayments V1
+
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPaymentsPage, CandidApi.nonInsurancePayerPayments.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all non-insurance payer payments
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerPayments.v1.getMulti({
+    limit: 1,
+    nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    checkNumber: "string",
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    sort: CandidApi.NonInsurancePayerPaymentSortField.AmountCents,
+    sortDirection: CandidApi.SortDirection.Asc,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayerPayments.v1.GetMultiNonInsurancePayerPaymentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">get</a>(nonInsurancePayerPaymentId) -> core.APIResponse<CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a previously created non-insurance payer payment by its `non_insurance_payer_payment_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerPayments.v1.get(
+    CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerPayments.v1.create({
+    nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    amountCents: 1,
+    paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    paymentNote: "string",
+    checkNumber: "string",
+    allocations: [{}],
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.NonInsurancePayerPaymentCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">update</a>(nonInsurancePayerPaymentId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerPayments.v1.update(
+    CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+        paymentNote: {
+            type: "set",
+            value: "string",
+        },
+        invoiceId: {
+            type: "set",
+            value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        },
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayerPayments.v1.UpdateNonInsurancePayerPaymentRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerPaymentId) -> core.APIResponse<void, CandidApi.nonInsurancePayerPayments.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the non-insurance payer payment record matching the provided `non_insurance_payer_payment_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerPayments.v1.delete(
+    CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## NonInsurancePayerRefunds V1
+
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefundsPage, CandidApi.nonInsurancePayerRefunds.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all non-insurance payer refunds satisfying the search criteria
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerRefunds.v1.getMulti({
+    limit: 1,
+    nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    checkNumber: "string",
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    sort: CandidApi.NonInsurancePayerRefundSortField.AmountCents,
+    sortDirection: CandidApi.SortDirection.Asc,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayerRefunds.v1.GetMultiNonInsurancePayerRefundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">get</a>(nonInsurancePayerRefundId) -> core.APIResponse<CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a previously created non-insurance payer refund by its `non_insurance_payer_refund_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerRefunds.v1.get(
+    CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new non-insurance payer refund record and returns the newly created `NonInsurancePayerRefund` object.
+The allocations can describe whether the refund is being applied toward a specific service line,
+claim, or billing provider.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerRefunds.v1.create({
+    nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    amountCents: 1,
+    refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+    refundNote: "string",
+    allocations: [{}],
+    refundReason: CandidApi.RefundReason.Overcharged,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.NonInsurancePayerRefundCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">update</a>(nonInsurancePayerRefundId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates the non-insurance payer refund record matching the provided non_insurance_payer_refund_id. If updating the refund amount,
+then the allocations must be appropriately updated as well.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerRefunds.v1.update(
+    CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+        refundNote: {
+            type: "set",
+            value: "string",
+        },
+        refundReason: {
+            type: "set",
+            value: CandidApi.RefundReason.Overcharged,
+        },
+        invoiceId: {
+            type: "set",
+            value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        },
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayerRefunds.v1.NonInsurancePayerRefundUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerRefundId) -> core.APIResponse<void, CandidApi.nonInsurancePayerRefunds.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the non-insurance payer refund record matching the provided `non_insurance_payer_refund_id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayerRefunds.v1.delete(
+    CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## NonInsurancePayers V1
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.create({
+    name: "string",
+    description: "string",
+    category: "string",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.CreateNonInsurancePayerRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">toggleEnablement</a>(nonInsurancePayerId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.toggleEnablement.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.toggleEnablement(
+    CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        enabled: true,
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ToggleNonInsurancePayerEnablementRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPage, CandidApi.nonInsurancePayers.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.getMulti({
+    name: "string",
+    category: "string",
+    enabled: true,
+    sort: CandidApi.NonInsurancePayerSortField.Name,
+    sortDirection: CandidApi.SortDirection.Asc,
+    limit: 1,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayers.v1.GetMultiNonInsurancePayersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">get</a>(nonInsurancePayerId) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.get(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">update</a>(nonInsurancePayerId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.update(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    name: "string",
+    description: {
+        type: "remove",
+    },
+    category: {
+        type: "remove",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.NonInsurancePayerUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerId) -> core.APIResponse<void, CandidApi.nonInsurancePayers.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.delete(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
 
 </dd>
 </dl>

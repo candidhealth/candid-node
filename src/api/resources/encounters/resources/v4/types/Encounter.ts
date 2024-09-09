@@ -342,7 +342,9 @@ import * as CandidApi from "../../../../../index";
  *             weightLbs: 165,
  *             bloodPressureSystolicMmhg: 115,
  *             bloodPressureDiastolicMmhg: 85,
- *             bodyTemperatureF: 98
+ *             bodyTemperatureF: 98,
+ *             hemoglobinGdl: 15.1,
+ *             hematocritPct: 51.2
  *         },
  *         interventions: [{
  *                 name: "Physical Therapy Session",
