@@ -19,6 +19,7 @@ import { SubscriberCreate } from "../../../../../individual/types/SubscriberCrea
 import { ServiceAuthorizationExceptionCode } from "../../types/ServiceAuthorizationExceptionCode";
 import { DelayReasonCode } from "../../../../../commons/types/DelayReasonCode";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
+import { VitalsUpdate } from "../../types/VitalsUpdate";
 
 export const EncounterUpdate: core.serialization.Schema<
     serializers.encounters.v4.EncounterUpdate.Raw,
@@ -84,6 +85,7 @@ export const EncounterUpdate: core.serialization.Schema<
         "schema_instances",
         core.serialization.list(SchemaInstance).optional()
     ),
+    vitals: VitalsUpdate.optional(),
 });
 
 export declare namespace EncounterUpdate {
@@ -115,5 +117,6 @@ export declare namespace EncounterUpdate {
         delay_reason_code?: DelayReasonCode.Raw | null;
         patient_authorized_release?: boolean | null;
         schema_instances?: SchemaInstance.Raw[] | null;
+        vitals?: VitalsUpdate.Raw | null;
     }
 }

@@ -85,6 +85,7 @@ export interface ServiceLine {
     diagnosisIdOne?: CandidApi.DiagnosisId;
     diagnosisIdTwo?: CandidApi.DiagnosisId;
     diagnosisIdThree?: CandidApi.DiagnosisId;
+    drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
     serviceLineEraData?: CandidApi.serviceLines.v2.ServiceLineEraData;
     serviceLineManualAdjustments?: CandidApi.serviceLines.v2.ServiceLineAdjustment[];
     relatedInvoices?: CandidApi.Invoice[];

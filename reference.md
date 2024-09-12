@@ -1662,6 +1662,15 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
             },
         },
     ],
+    vitals: {
+        heightIn: 70,
+        weightLbs: 165,
+        bloodPressureSystolicMmhg: 115,
+        bloodPressureDiastolicMmhg: 85,
+        bodyTemperatureF: 98,
+        hemoglobinGdl: 15.1,
+        hematocritPct: 51.2,
+    },
 });
 ```
 
@@ -4256,6 +4265,66 @@ await client.insuranceRefunds.v1.delete(CandidApi.InsuranceRefundId("d5e9c84f-c2
 </dl>
 </details>
 
+## MedicationDispense V1
+
+<details><summary><code>client.medicationDispense.v1.<a href="/src/api/resources/medicationDispense/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.medicationDispense.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.medicationDispense.v1.create({
+    medicationDispenseExternalId: "string",
+    patientExternalId: "string",
+    procedureCode: "string",
+    quantity: CandidApi.Decimal("string"),
+    units: CandidApi.ServiceLineUnits.Mj,
+    dateOfService: "2023-01-15",
+    drugIdentification: {},
+    description: "string",
+    modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MedicationDispenseCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## NonInsurancePayerPayments V1
 
 <details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPaymentsPage, CandidApi.nonInsurancePayerPayments.v1.getMulti.Error></code></summary>
@@ -6769,6 +6838,7 @@ await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
     diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    drugIdentification: {},
     denialReason: {},
     placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
     units: CandidApi.ServiceLineUnits.Mj,

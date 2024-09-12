@@ -3,6 +3,7 @@ export * from "./Encounter";
 export * from "./EncounterSortOptions";
 export * from "./Medication";
 export * from "./Vitals";
+export * from "./VitalsUpdate";
 export * from "./Intervention";
 export * from "./InterventionCategory";
 export * from "./Lab";

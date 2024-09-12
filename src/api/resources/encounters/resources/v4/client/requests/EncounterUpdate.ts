@@ -107,7 +107,16 @@ import * as CandidApi from "../../../../../../index";
  *                     "bmi": 24.2,
  *                     "age": 38
  *                 }
- *             }]
+ *             }],
+ *         vitals: {
+ *             heightIn: 70,
+ *             weightLbs: 165,
+ *             bloodPressureSystolicMmhg: 115,
+ *             bloodPressureDiastolicMmhg: 85,
+ *             bodyTemperatureF: 98,
+ *             hemoglobinGdl: 15.1,
+ *             hematocritPct: 51.2
+ *         }
  *     }
  */
 export interface EncounterUpdate {
@@ -258,4 +267,10 @@ export interface EncounterUpdate {
      *
      */
     schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
+    /**
+     * If a vitals entity already exists for the encounter, then all values will be updated to the provided values.
+     * Otherwise, a new vitals object will be created for the encounter.
+     *
+     */
+    vitals?: CandidApi.encounters.v4.VitalsUpdate;
 }

@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { DiagnosisId } from "../../../../diagnoses/types/DiagnosisId";
+import { DrugIdentification } from "./DrugIdentification";
 import { ServiceLineEraData } from "./ServiceLineEraData";
 import { ServiceLineAdjustment } from "./ServiceLineAdjustment";
 import { Invoice } from "../../../../invoices/types/Invoice";
@@ -53,6 +54,7 @@ export const ServiceLine: core.serialization.ObjectSchema<
     diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
     diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
     diagnosisIdThree: core.serialization.property("diagnosis_id_three", DiagnosisId.optional()),
+    drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
     serviceLineEraData: core.serialization.property("service_line_era_data", ServiceLineEraData.optional()),
     serviceLineManualAdjustments: core.serialization.property(
         "service_line_manual_adjustments",
@@ -100,6 +102,7 @@ export declare namespace ServiceLine {
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;
         diagnosis_id_three?: DiagnosisId.Raw | null;
+        drug_identification?: DrugIdentification.Raw | null;
         service_line_era_data?: ServiceLineEraData.Raw | null;
         service_line_manual_adjustments?: ServiceLineAdjustment.Raw[] | null;
         related_invoices?: Invoice.Raw[] | null;

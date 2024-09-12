@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { DiagnosisId } from "../../../../diagnoses/types/DiagnosisId";
+import { DrugIdentification } from "./DrugIdentification";
 import { ServiceLineDenialReason } from "./ServiceLineDenialReason";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
@@ -23,6 +24,7 @@ export const ServiceLineUpdate: core.serialization.ObjectSchema<
     diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
     diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
     diagnosisIdThree: core.serialization.property("diagnosis_id_three", DiagnosisId.optional()),
+    drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
     denialReason: core.serialization.property("denial_reason", ServiceLineDenialReason.optional()),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
     units: ServiceLineUnits.optional(),
@@ -42,6 +44,7 @@ export declare namespace ServiceLineUpdate {
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;
         diagnosis_id_three?: DiagnosisId.Raw | null;
+        drug_identification?: DrugIdentification.Raw | null;
         denial_reason?: ServiceLineDenialReason.Raw | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
         units?: ServiceLineUnits.Raw | null;

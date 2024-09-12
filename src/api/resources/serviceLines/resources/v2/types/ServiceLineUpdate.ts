@@ -12,6 +12,7 @@ export interface ServiceLineUpdate {
     diagnosisIdOne?: CandidApi.DiagnosisId;
     diagnosisIdTwo?: CandidApi.DiagnosisId;
     diagnosisIdThree?: CandidApi.DiagnosisId;
+    drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
     denialReason?: CandidApi.serviceLines.v2.ServiceLineDenialReason;
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     units?: CandidApi.ServiceLineUnits;

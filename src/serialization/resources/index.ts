@@ -18,6 +18,7 @@ export * as insuranceCards from "./insuranceCards";
 export * as insurancePayments from "./insurancePayments";
 export * as insuranceRefunds from "./insuranceRefunds";
 export * as invoices from "./invoices";
+export * as medicationDispense from "./medicationDispense";
 export * as nonInsurancePayerPayments from "./nonInsurancePayerPayments";
 export * as nonInsurancePayerRefunds from "./nonInsurancePayerRefunds";
 export * as nonInsurancePayers from "./nonInsurancePayers";

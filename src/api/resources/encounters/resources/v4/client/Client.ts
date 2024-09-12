@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.30.0",
+                "X-Fern-SDK-Version": "0.31.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.30.0",
+                "X-Fern-SDK-Version": "0.31.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -627,7 +627,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.30.0",
+                "X-Fern-SDK-Version": "0.31.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -787,7 +787,16 @@ export class V4 {
      *                     "bmi": 24.2,
      *                     "age": 38
      *                 }
-     *             }]
+     *             }],
+     *         vitals: {
+     *             heightIn: 70,
+     *             weightLbs: 165,
+     *             bloodPressureSystolicMmhg: 115,
+     *             bloodPressureDiastolicMmhg: 85,
+     *             bodyTemperatureF: 98,
+     *             hemoglobinGdl: 15.1,
+     *             hematocritPct: 51.2
+     *         }
      *     })
      */
     public async update(
@@ -806,7 +815,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.30.0",
+                "X-Fern-SDK-Version": "0.31.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
