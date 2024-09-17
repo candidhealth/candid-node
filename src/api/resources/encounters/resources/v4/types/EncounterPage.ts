@@ -90,6 +90,13 @@ import * as CandidApi from "../../../../../index";
  *                             number: "1234567890",
  *                             type: CandidApi.PhoneNumberType.Home
  *                         }],
+ *                     nonInsurancePayers: [{
+ *                             nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("EB7623AB-D5BC-4B25-B257-2B8FCEC578DE"),
+ *                             name: "Sunrise Foundation",
+ *                             category: "Foundation",
+ *                             description: "Sunrise Foundation is a non-profit organization that provides financial assistance to patients in need.",
+ *                             enabled: true
+ *                         }],
  *                     phoneConsent: true,
  *                     email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *                     emailConsent: true,

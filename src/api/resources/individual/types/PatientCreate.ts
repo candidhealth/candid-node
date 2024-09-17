@@ -9,6 +9,7 @@ export interface PatientCreate extends CandidApi.PatientBase {
     /** Defaults to false */
     phoneConsent?: boolean;
     email?: CandidApi.Email;
+    nonInsurancePayers?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId[];
     /** Defaults to false */
     emailConsent?: boolean;
 }

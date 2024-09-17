@@ -95,9 +95,6 @@ export interface ServiceLine {
     placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     serviceLineId: CandidApi.ServiceLineId;
     procedureCode: string;
-    referringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
-    initialReferringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
-    supervisingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     orderingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     /**
      * String representation of a Decimal that can be parsed by most libraries.

@@ -16,6 +16,7 @@ import * as CandidApi from "../../../../../../index";
  *                 }],
  *             phoneConsent: true,
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
  *             emailConsent: true,
  *             externalId: "string",
  *             dateOfBirth: "2023-01-15",
@@ -185,7 +186,12 @@ import * as CandidApi from "../../../../../../index";
  *             }],
  *         clinicalNotes: [{
  *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
- *                 notes: [{}]
+ *                 notes: [{
+ *                         text: "string",
+ *                         authorName: "string",
+ *                         authorNpi: CandidApi.Npi("string"),
+ *                         timestamp: new Date("2024-01-15T09:30:00.000Z")
+ *                     }]
  *             }],
  *         billingNotes: [{
  *                 text: "string"
@@ -213,57 +219,19 @@ import * as CandidApi from "../../../../../../index";
  *                 units: CandidApi.ServiceLineUnits.Mj,
  *                 chargeAmountCents: 1,
  *                 diagnosisPointers: [1],
- *                 drugIdentification: {},
+ *                 drugIdentification: {
+ *                     serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+ *                     nationalDrugCode: "string",
+ *                     nationalDrugUnitCount: "string",
+ *                     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+ *                     linkSequenceNumber: "string",
+ *                     pharmacyPrescriptionNumber: "string",
+ *                     conversionFormula: "string"
+ *                 },
  *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
  *                 description: "string",
  *                 dateOfService: "2023-01-15",
  *                 endDateOfService: "2023-01-15",
- *                 referringProvider: {
- *                     npi: "string",
- *                     taxonomyCode: "string",
- *                     address: {
- *                         address1: "123 Main St",
- *                         address2: "Apt 1",
- *                         city: "New York",
- *                         state: CandidApi.State.Ny,
- *                         zipCode: "10001",
- *                         zipPlusFourCode: "1234"
- *                     },
- *                     firstName: "string",
- *                     lastName: "string",
- *                     organizationName: "string"
- *                 },
- *                 initialReferringProvider: {
- *                     npi: "string",
- *                     taxonomyCode: "string",
- *                     address: {
- *                         address1: "123 Main St",
- *                         address2: "Apt 1",
- *                         city: "New York",
- *                         state: CandidApi.State.Ny,
- *                         zipCode: "10001",
- *                         zipPlusFourCode: "1234"
- *                     },
- *                     qualifier: CandidApi.QualifierCode.Dq,
- *                     firstName: "string",
- *                     lastName: "string",
- *                     organizationName: "string"
- *                 },
- *                 supervisingProvider: {
- *                     npi: "string",
- *                     taxonomyCode: "string",
- *                     address: {
- *                         address1: "123 Main St",
- *                         address2: "Apt 1",
- *                         city: "New York",
- *                         state: CandidApi.State.Ny,
- *                         zipCode: "10001",
- *                         zipPlusFourCode: "1234"
- *                     },
- *                     firstName: "string",
- *                     lastName: "string",
- *                     organizationName: "string"
- *                 },
  *                 orderingProvider: {
  *                     npi: "string",
  *                     taxonomyCode: "string",
@@ -433,13 +401,11 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     /**
      * The second iteration of Loop ID-2310. Use code "P3 - Primary Care Provider" in this loop to
      * indicate the initial referral from the primary care provider or whatever provider wrote the initial referral for this patient's episode of care being billed/reported in this transaction.
-     * Information in Loop ID-2310 applies to the entire claim unless overridden on a service line by the presence of Loop ID-2420 with the same value in NM101.
      *
      */
     initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProvider;
     /**
      * Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send.
-     * Information in Loop ID-2310 applies to the entire claim unless overridden on a service line by the presence of Loop ID-2420 with the same value in NM101.
      *
      */
     supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProvider;

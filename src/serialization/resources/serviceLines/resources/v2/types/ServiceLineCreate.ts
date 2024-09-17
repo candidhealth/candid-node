@@ -10,9 +10,6 @@ import { Decimal } from "../../../../commons/types/Decimal";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { DrugIdentification } from "./DrugIdentification";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
-import { ReferringProvider } from "../../../../encounterProviders/resources/v2/types/ReferringProvider";
-import { InitialReferringProvider } from "../../../../encounterProviders/resources/v2/types/InitialReferringProvider";
-import { SupervisingProvider } from "../../../../encounterProviders/resources/v2/types/SupervisingProvider";
 import { OrderingProvider } from "../../../../encounterProviders/resources/v2/types/OrderingProvider";
 
 export const ServiceLineCreate: core.serialization.ObjectSchema<
@@ -33,12 +30,6 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
     description: core.serialization.string().optional(),
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
-    referringProvider: core.serialization.property("referring_provider", ReferringProvider.optional()),
-    initialReferringProvider: core.serialization.property(
-        "initial_referring_provider",
-        InitialReferringProvider.optional()
-    ),
-    supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
     orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
 });
 
@@ -55,9 +46,6 @@ export declare namespace ServiceLineCreate {
         description?: string | null;
         date_of_service?: string | null;
         end_date_of_service?: string | null;
-        referring_provider?: ReferringProvider.Raw | null;
-        initial_referring_provider?: InitialReferringProvider.Raw | null;
-        supervising_provider?: SupervisingProvider.Raw | null;
         ordering_provider?: OrderingProvider.Raw | null;
     }
 }

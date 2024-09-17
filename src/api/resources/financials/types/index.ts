@@ -8,6 +8,7 @@ export * from "./AppointmentAllocationTarget";
 export * from "./AllocationTarget";
 export * from "./AllocationCreate";
 export * from "./AllocationTargetCreate";
+export * from "./AppointmentByIdAndPatientExternalId";
 export * from "./AccountType";
 export * from "./NoteUpdate";
 export * from "./InvoiceUpdate";

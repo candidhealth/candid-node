@@ -13,7 +13,7 @@ export type AllocationTargetCreate =
     | CandidApi.AllocationTargetCreate.ClaimById
     | CandidApi.AllocationTargetCreate.ClaimByEncounterExternalId
     | CandidApi.AllocationTargetCreate.BillingProviderById
-    | CandidApi.AllocationTargetCreate.AppointmentById
+    | CandidApi.AllocationTargetCreate.AppointmentByIdAndPatientExternalId
     | CandidApi.AllocationTargetCreate.Unattributed;
 
 export declare namespace AllocationTargetCreate {
@@ -37,9 +37,8 @@ export declare namespace AllocationTargetCreate {
         value: CandidApi.ProviderId;
     }
 
-    interface AppointmentById {
-        type: "appointment_by_id";
-        value: CandidApi.AppointmentId;
+    interface AppointmentByIdAndPatientExternalId extends CandidApi.AppointmentByIdAndPatientExternalId {
+        type: "appointment_by_id_and_patient_external_id";
     }
 
     interface Unattributed {

@@ -14,7 +14,12 @@ import * as CandidApi from "../../../../../../index";
  *         tagIds: [CandidApi.TagId("string")],
  *         clinicalNotes: [{
  *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
- *                 notes: [{}]
+ *                 notes: [{
+ *                         text: "string",
+ *                         authorName: "string",
+ *                         authorNpi: CandidApi.Npi("string"),
+ *                         timestamp: new Date("2024-01-15T09:30:00.000Z")
+ *                     }]
  *             }],
  *         payToAddress: {
  *             address1: "123 Main St",

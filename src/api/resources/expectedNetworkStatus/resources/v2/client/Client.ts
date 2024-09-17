@@ -40,7 +40,17 @@ export class V2 {
      *     await client.expectedNetworkStatus.v2.computeForRenderingProvider(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *         subscriberInformation: {},
+     *         subscriberInformation: {
+     *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *             memberId: "string",
+     *             insuranceType: {
+     *                 lineOfBusiness: CandidApi.expectedNetworkStatus.v2.LineOfBusiness.Medicare,
+     *                 insuranceTypeCodes: {
+     *                     type: "insurance_type_code",
+     *                     value: CandidApi.InsuranceTypeCode.C01
+     *                 }
+     *             }
+     *         },
      *         patientAddress: {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
@@ -77,7 +87,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -146,7 +156,17 @@ export class V2 {
      *     await client.expectedNetworkStatus.v2.computeAllInNetworkProviders({
      *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *         subscriberInformation: {},
+     *         subscriberInformation: {
+     *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *             memberId: "string",
+     *             insuranceType: {
+     *                 lineOfBusiness: CandidApi.expectedNetworkStatus.v2.LineOfBusiness.Medicare,
+     *                 insuranceTypeCodes: {
+     *                     type: "insurance_type_code",
+     *                     value: CandidApi.InsuranceTypeCode.C01
+     *                 }
+     *             }
+     *         },
      *         patientAddress: {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
@@ -180,7 +200,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

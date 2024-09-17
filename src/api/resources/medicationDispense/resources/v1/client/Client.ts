@@ -39,7 +39,15 @@ export class V1 {
      *         quantity: CandidApi.Decimal("string"),
      *         units: CandidApi.ServiceLineUnits.Mj,
      *         dateOfService: "2023-01-15",
-     *         drugIdentification: {},
+     *         drugIdentification: {
+     *             serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *             nationalDrugCode: "string",
+     *             nationalDrugUnitCount: "string",
+     *             measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *             linkSequenceNumber: "string",
+     *             pharmacyPrescriptionNumber: "string",
+     *             conversionFormula: "string"
+     *         },
      *         description: "string",
      *         modifiers: [CandidApi.ProcedureModifier.TwentyTwo]
      *     })
@@ -59,7 +67,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

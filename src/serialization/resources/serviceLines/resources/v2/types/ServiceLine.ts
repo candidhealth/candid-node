@@ -73,9 +73,6 @@ export const ServiceLine: core.serialization.ObjectSchema<
     ),
     serviceLineId: core.serialization.property("service_line_id", ServiceLineId),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
-    referringProvider: core.serialization.property("referring_provider", EncounterProvider.optional()),
-    initialReferringProvider: core.serialization.property("initial_referring_provider", EncounterProvider.optional()),
-    supervisingProvider: core.serialization.property("supervising_provider", EncounterProvider.optional()),
     orderingProvider: core.serialization.property("ordering_provider", EncounterProvider.optional()),
     quantity: Decimal,
     units: ServiceLineUnits,
@@ -112,9 +109,6 @@ export declare namespace ServiceLine {
         place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
         service_line_id: ServiceLineId.Raw;
         procedure_code: string;
-        referring_provider?: EncounterProvider.Raw | null;
-        initial_referring_provider?: EncounterProvider.Raw | null;
-        supervising_provider?: EncounterProvider.Raw | null;
         ordering_provider?: EncounterProvider.Raw | null;
         quantity: Decimal.Raw;
         units: ServiceLineUnits.Raw;

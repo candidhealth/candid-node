@@ -7,7 +7,7 @@
  *
  * @example
  *     {
- *         startDate: "2024-4-11",
+ *         startDate: "2024-04-11",
  *         rateCents: 33000,
  *         isDeactivated: false
  *     }

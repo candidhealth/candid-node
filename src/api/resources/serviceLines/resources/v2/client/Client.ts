@@ -39,7 +39,9 @@ export class V2 {
      *         diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         denialReason: {},
+     *         denialReason: {
+     *             reason: CandidApi.serviceLines.v2.DenialReasonContent.AuthorizationRequired
+     *         },
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
      *         procedureCode: "string",
      *         quantity: CandidApi.Decimal("string"),
@@ -65,7 +67,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -128,8 +130,18 @@ export class V2 {
      *         diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         drugIdentification: {},
-     *         denialReason: {},
+     *         drugIdentification: {
+     *             serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *             nationalDrugCode: "string",
+     *             nationalDrugUnitCount: "string",
+     *             measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *             linkSequenceNumber: "string",
+     *             pharmacyPrescriptionNumber: "string",
+     *             conversionFormula: "string"
+     *         },
+     *         denialReason: {
+     *             reason: CandidApi.serviceLines.v2.DenialReasonContent.AuthorizationRequired
+     *         },
      *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
      *         units: CandidApi.ServiceLineUnits.Mj,
      *         procedureCode: "string",
@@ -155,7 +167,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -228,7 +240,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

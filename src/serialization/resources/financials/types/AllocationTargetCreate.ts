@@ -9,7 +9,7 @@ import { ServiceLineId } from "../../commons/types/ServiceLineId";
 import { ClaimId } from "../../commons/types/ClaimId";
 import { EncounterExternalId } from "../../commons/types/EncounterExternalId";
 import { ProviderId } from "../../commons/types/ProviderId";
-import { AppointmentId } from "../../commons/types/AppointmentId";
+import { AppointmentByIdAndPatientExternalId } from "./AppointmentByIdAndPatientExternalId";
 
 export const AllocationTargetCreate: core.serialization.Schema<
     serializers.AllocationTargetCreate.Raw,
@@ -28,9 +28,7 @@ export const AllocationTargetCreate: core.serialization.Schema<
         billing_provider_by_id: core.serialization.object({
             value: ProviderId,
         }),
-        appointment_by_id: core.serialization.object({
-            value: AppointmentId,
-        }),
+        appointment_by_id_and_patient_external_id: AppointmentByIdAndPatientExternalId,
         unattributed: core.serialization.object({}),
     })
     .transform<CandidApi.AllocationTargetCreate>({
@@ -44,7 +42,7 @@ export declare namespace AllocationTargetCreate {
         | AllocationTargetCreate.ClaimById
         | AllocationTargetCreate.ClaimByEncounterExternalId
         | AllocationTargetCreate.BillingProviderById
-        | AllocationTargetCreate.AppointmentById
+        | AllocationTargetCreate.AppointmentByIdAndPatientExternalId
         | AllocationTargetCreate.Unattributed;
 
     interface ServiceLineById {
@@ -67,9 +65,8 @@ export declare namespace AllocationTargetCreate {
         value: ProviderId.Raw;
     }
 
-    interface AppointmentById {
-        type: "appointment_by_id";
-        value: AppointmentId.Raw;
+    interface AppointmentByIdAndPatientExternalId extends AppointmentByIdAndPatientExternalId.Raw {
+        type: "appointment_by_id_and_patient_external_id";
     }
 
     interface Unattributed {

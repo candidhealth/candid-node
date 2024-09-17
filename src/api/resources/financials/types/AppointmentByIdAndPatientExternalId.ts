@@ -4,7 +4,7 @@
 
 import * as CandidApi from "../../../index";
 
-export interface AppointmentAllocationTarget {
+export interface AppointmentByIdAndPatientExternalId {
     appointmentId: CandidApi.AppointmentId;
     patientExternalId: CandidApi.PatientExternalId;
 }

@@ -8,15 +8,15 @@ import * as core from "../../../../core";
 import { AppointmentId } from "../../commons/types/AppointmentId";
 import { PatientExternalId } from "../../commons/types/PatientExternalId";
 
-export const AppointmentAllocationTarget: core.serialization.ObjectSchema<
-    serializers.AppointmentAllocationTarget.Raw,
-    CandidApi.AppointmentAllocationTarget
+export const AppointmentByIdAndPatientExternalId: core.serialization.ObjectSchema<
+    serializers.AppointmentByIdAndPatientExternalId.Raw,
+    CandidApi.AppointmentByIdAndPatientExternalId
 > = core.serialization.object({
     appointmentId: core.serialization.property("appointment_id", AppointmentId),
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
 });
 
-export declare namespace AppointmentAllocationTarget {
+export declare namespace AppointmentByIdAndPatientExternalId {
     interface Raw {
         appointment_id: AppointmentId.Raw;
         patient_external_id: PatientExternalId.Raw;

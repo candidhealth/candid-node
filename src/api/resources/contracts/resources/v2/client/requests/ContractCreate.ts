@@ -16,7 +16,14 @@ import * as CandidApi from "../../../../../../index";
  *             type: "states"
  *         },
  *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
- *         authorizedSignatory: {},
+ *         authorizedSignatory: {
+ *             firstName: "string",
+ *             lastName: "string",
+ *             title: "string",
+ *             email: "string",
+ *             phone: "string",
+ *             fax: "string"
+ *         },
  *         commercialInsuranceTypes: {
  *             type: "allApply"
  *         },

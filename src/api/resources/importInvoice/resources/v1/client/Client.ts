@@ -40,7 +40,13 @@ export class V1 {
      *         externalCustomerIdentifier: "string",
      *         note: "string",
      *         dueDate: "2023-01-15",
-     *         items: [{}],
+     *         items: [{
+     *                 attribution: {
+     *                     type: "service_line_id",
+     *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *                 },
+     *                 amountCents: 1
+     *             }],
      *         status: CandidApi.invoices.v2.InvoiceStatus.Draft,
      *         externalIdentifier: "string",
      *         customerInvoiceUrl: "string"
@@ -63,7 +69,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -86,6 +92,25 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.importInvoice.v1.importInvoice.Error.Raw)?.errorName) {
+                case "UnprocessableEntityError":
+                case "EntityConflictError":
+                    return {
+                        ok: false,
+                        error: serializers.importInvoice.v1.importInvoice.Error.parseOrThrow(
+                            _response.error.body as serializers.importInvoice.v1.importInvoice.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
         }
 
         return {
@@ -188,7 +213,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -241,7 +266,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -302,7 +327,13 @@ export class V1 {
      *         dueDate: "2023-01-15",
      *         items: {
      *             updateType: CandidApi.importInvoice.v1.InvoiceItemUpdateType.Append,
-     *             items: [{}]
+     *             items: [{
+     *                     attribution: {
+     *                         type: "service_line_id",
+     *                         value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *                     },
+     *                     amountCents: 1
+     *                 }]
      *         }
      *     })
      */
@@ -322,7 +353,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.31.0",
+                "X-Fern-SDK-Version": "0.32.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
