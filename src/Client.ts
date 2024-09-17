@@ -10,6 +10,7 @@ import { BillingNotes } from "./api/resources/billingNotes/client/Client";
 import { Contracts } from "./api/resources/contracts/client/Client";
 import { CustomSchemas } from "./api/resources/customSchemas/client/Client";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
+import { EncounterProviders } from "./api/resources/encounterProviders/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
@@ -108,6 +109,15 @@ export class CandidApiClient {
 
     public get eligibility(): Eligibility {
         return (this._eligibility ??= new Eligibility({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _encounterProviders: EncounterProviders | undefined;
+
+    public get encounterProviders(): EncounterProviders {
+        return (this._encounterProviders ??= new EncounterProviders({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

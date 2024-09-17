@@ -982,6 +982,794 @@ await client.eligibility.v2.submitEligibilityCheckAvailityPost({
 </dl>
 </details>
 
+## EncounterProviders V2
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateReferringProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.updateReferringProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ReferringProviderUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateInitialReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.updateInitialReferringProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.InitialReferringProviderUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateSupervisingProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateSupervisingProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.updateSupervisingProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.SupervisingProviderUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateOrderingProvider</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateOrderingProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.updateOrderingProvider(
+    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**serviceLineId:** `CandidApi.ServiceLineId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.OrderingProviderUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createReferringProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.createReferringProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ReferringProvider`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createInitialReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createInitialReferringProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.createInitialReferringProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.InitialReferringProvider`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createSupervisingProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createSupervisingProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.createSupervisingProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.SupervisingProvider`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createOrderingProvider</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createOrderingProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.createOrderingProvider(
+    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**serviceLineId:** `CandidApi.ServiceLineId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.OrderingProvider`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteReferringProvider</a>(encounterId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.deleteReferringProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteInitialReferringProvider</a>(encounterId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.deleteInitialReferringProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteSupervisingProvider</a>(encounterId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.deleteSupervisingProvider(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteOrderingProvider</a>(serviceLineId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterProviders.v2.deleteOrderingProvider(
+    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**serviceLineId:** `CandidApi.ServiceLineId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Encounters V4
 
 <details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.EncounterPage, CandidApi.encounters.v4.getAll.Error></code></summary>
