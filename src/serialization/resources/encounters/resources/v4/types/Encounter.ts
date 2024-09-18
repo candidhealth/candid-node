@@ -12,6 +12,8 @@ import { Guarantor } from "../../../../guarantor/resources/v1/types/Guarantor";
 import { EncounterProvider } from "../../../../encounterProviders/resources/v2/types/EncounterProvider";
 import { EncounterServiceFacility } from "../../../../serviceFacility/types/EncounterServiceFacility";
 import { Subscriber } from "../../../../individual/types/Subscriber";
+import { PriorAuthorizationNumber } from "./PriorAuthorizationNumber";
+import { ResponsiblePartyType } from "./ResponsiblePartyType";
 import { LinkUrl } from "../../../../commons/types/LinkUrl";
 import { Diagnosis } from "../../../../diagnoses/types/Diagnosis";
 import { ClinicalNoteCategory } from "./ClinicalNoteCategory";
@@ -36,8 +38,6 @@ export const Encounter: core.serialization.ObjectSchema<
             "patient_control_number",
             core.serialization.string().optional()
         ),
-        dateOfService: core.serialization.property("date_of_service", core.serialization.string()),
-        endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
         encounterId: core.serialization.property("encounter_id", EncounterId),
         claims: core.serialization.list(Claim),
         patient: Patient,
@@ -53,6 +53,12 @@ export const Encounter: core.serialization.ObjectSchema<
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacility),
         subscriberPrimary: core.serialization.property("subscriber_primary", Subscriber.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", Subscriber.optional()),
+        priorAuthorizationNumber: core.serialization.property(
+            "prior_authorization_number",
+            PriorAuthorizationNumber.optional()
+        ),
+        appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
+        responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
         url: LinkUrl,
         diagnoses: core.serialization.list(Diagnosis),
         clinicalNotes: core.serialization.property("clinical_notes", core.serialization.list(ClinicalNoteCategory)),
@@ -83,8 +89,6 @@ export const Encounter: core.serialization.ObjectSchema<
 export declare namespace Encounter {
     interface Raw extends EncounterBase.Raw {
         patient_control_number?: string | null;
-        date_of_service: string;
-        end_date_of_service?: string | null;
         encounter_id: EncounterId.Raw;
         claims: Claim.Raw[];
         patient: Patient.Raw;
@@ -97,6 +101,9 @@ export declare namespace Encounter {
         service_facility: EncounterServiceFacility.Raw;
         subscriber_primary?: Subscriber.Raw | null;
         subscriber_secondary?: Subscriber.Raw | null;
+        prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
+        appointment_type?: string | null;
+        responsible_party: ResponsiblePartyType.Raw;
         url: LinkUrl.Raw;
         diagnoses: Diagnosis.Raw[];
         clinical_notes: ClinicalNoteCategory.Raw[];

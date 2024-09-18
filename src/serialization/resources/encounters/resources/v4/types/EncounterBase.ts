@@ -6,14 +6,12 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { EncounterExternalId } from "../../../../commons/types/EncounterExternalId";
-import { PriorAuthorizationNumber } from "./PriorAuthorizationNumber";
 import { Medication } from "./Medication";
 import { Vitals } from "./Vitals";
 import { Intervention } from "./Intervention";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { SynchronicityType } from "./SynchronicityType";
 import { BillableStatusType } from "./BillableStatusType";
-import { ResponsiblePartyType } from "./ResponsiblePartyType";
 import { ServiceAuthorizationExceptionCode } from "./ServiceAuthorizationExceptionCode";
 import { DelayReasonCode } from "../../../../commons/types/DelayReasonCode";
 
@@ -22,17 +20,14 @@ export const EncounterBase: core.serialization.ObjectSchema<
     CandidApi.encounters.v4.EncounterBase
 > = core.serialization.object({
     externalId: core.serialization.property("external_id", EncounterExternalId),
-    priorAuthorizationNumber: core.serialization.property(
-        "prior_authorization_number",
-        PriorAuthorizationNumber.optional()
-    ),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
+    endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     patientAuthorizedRelease: core.serialization.property("patient_authorized_release", core.serialization.boolean()),
     benefitsAssignedToProvider: core.serialization.property(
         "benefits_assigned_to_provider",
         core.serialization.boolean()
     ),
     providerAcceptsAssignment: core.serialization.property("provider_accepts_assignment", core.serialization.boolean()),
-    appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
     existingMedications: core.serialization.property(
         "existing_medications",
         core.serialization.list(Medication).optional()
@@ -42,7 +37,6 @@ export const EncounterBase: core.serialization.ObjectSchema<
     payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
     synchronicity: SynchronicityType.optional(),
     billableStatus: core.serialization.property("billable_status", BillableStatusType),
-    responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
     additionalInformation: core.serialization.property(
         "additional_information",
         core.serialization.string().optional()
@@ -67,18 +61,17 @@ export const EncounterBase: core.serialization.ObjectSchema<
 export declare namespace EncounterBase {
     interface Raw {
         external_id: EncounterExternalId.Raw;
-        prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
+        date_of_service?: string | null;
+        end_date_of_service?: string | null;
         patient_authorized_release: boolean;
         benefits_assigned_to_provider: boolean;
         provider_accepts_assignment: boolean;
-        appointment_type?: string | null;
         existing_medications?: Medication.Raw[] | null;
         vitals?: Vitals.Raw | null;
         interventions?: Intervention.Raw[] | null;
         pay_to_address?: StreetAddressLongZip.Raw | null;
         synchronicity?: SynchronicityType.Raw | null;
         billable_status: BillableStatusType.Raw;
-        responsible_party: ResponsiblePartyType.Raw;
         additional_information?: string | null;
         service_authorization_exception_code?: ServiceAuthorizationExceptionCode.Raw | null;
         admission_date?: string | null;

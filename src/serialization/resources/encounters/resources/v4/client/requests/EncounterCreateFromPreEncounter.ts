@@ -5,51 +5,42 @@
 import * as serializers from "../../../../../../index";
 import * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
-import { PatientCreate } from "../../../../../individual/types/PatientCreate";
+import { PreEncounterPatientId } from "../../../../../commons/types/PreEncounterPatientId";
+import { PreEncounterAppointmentId } from "../../../../../commons/types/PreEncounterAppointmentId";
 import { BillingProvider } from "../../../../../encounterProviders/resources/v2/types/BillingProvider";
 import { RenderingProvider } from "../../../../../encounterProviders/resources/v2/types/RenderingProvider";
-import { ReferringProvider } from "../../../../../encounterProviders/resources/v2/types/ReferringProvider";
 import { InitialReferringProvider } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProvider";
 import { SupervisingProvider } from "../../../../../encounterProviders/resources/v2/types/SupervisingProvider";
 import { EncounterServiceFacilityBase } from "../../../../../serviceFacility/types/EncounterServiceFacilityBase";
-import { SubscriberCreate } from "../../../../../individual/types/SubscriberCreate";
-import { PriorAuthorizationNumber } from "../../types/PriorAuthorizationNumber";
-import { ResponsiblePartyType } from "../../types/ResponsiblePartyType";
 import { DiagnosisCreate } from "../../../../../diagnoses/types/DiagnosisCreate";
 import { ClinicalNoteCategoryCreate } from "../../types/ClinicalNoteCategoryCreate";
 import { BillingNoteBase } from "../../../../../billingNotes/resources/v2/types/BillingNoteBase";
 import { FacilityTypeCode } from "../../../../../commons/types/FacilityTypeCode";
 import { PatientHistoryCategory } from "../../types/PatientHistoryCategory";
 import { ServiceLineCreate } from "../../../../../serviceLines/resources/v2/types/ServiceLineCreate";
-import { GuarantorCreate } from "../../../../../guarantor/resources/v1/types/GuarantorCreate";
 import { ExternalClaimSubmissionCreate } from "../../../../../claimSubmission/resources/v1/types/ExternalClaimSubmissionCreate";
 import { TagId } from "../../../../../tags/types/TagId";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { EncounterBase } from "../../types/EncounterBase";
 
-export const EncounterCreate: core.serialization.Schema<
-    serializers.encounters.v4.EncounterCreate.Raw,
-    CandidApi.encounters.v4.EncounterCreate
+export const EncounterCreateFromPreEncounter: core.serialization.Schema<
+    serializers.encounters.v4.EncounterCreateFromPreEncounter.Raw,
+    CandidApi.encounters.v4.EncounterCreateFromPreEncounter
 > = core.serialization
     .object({
-        patient: PatientCreate,
+        preEncounterPatientId: core.serialization.property("pre_encounter_patient_id", PreEncounterPatientId),
+        preEncounterAppointmentId: core.serialization.property(
+            "pre_encounter_appointment_id",
+            PreEncounterAppointmentId
+        ),
         billingProvider: core.serialization.property("billing_provider", BillingProvider),
         renderingProvider: core.serialization.property("rendering_provider", RenderingProvider),
-        referringProvider: core.serialization.property("referring_provider", ReferringProvider.optional()),
         initialReferringProvider: core.serialization.property(
             "initial_referring_provider",
             InitialReferringProvider.optional()
         ),
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
-        subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
-        subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
-        priorAuthorizationNumber: core.serialization.property(
-            "prior_authorization_number",
-            PriorAuthorizationNumber.optional()
-        ),
-        appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
-        responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
         diagnoses: core.serialization.list(DiagnosisCreate),
         clinicalNotes: core.serialization.property(
             "clinical_notes",
@@ -65,7 +56,6 @@ export const EncounterCreate: core.serialization.Schema<
             "service_lines",
             core.serialization.list(ServiceLineCreate).optional()
         ),
-        guarantor: GuarantorCreate.optional(),
         externalClaimSubmission: core.serialization.property(
             "external_claim_submission",
             ExternalClaimSubmissionCreate.optional()
@@ -78,27 +68,21 @@ export const EncounterCreate: core.serialization.Schema<
     })
     .extend(EncounterBase);
 
-export declare namespace EncounterCreate {
+export declare namespace EncounterCreateFromPreEncounter {
     interface Raw extends EncounterBase.Raw {
-        patient: PatientCreate.Raw;
+        pre_encounter_patient_id: PreEncounterPatientId.Raw;
+        pre_encounter_appointment_id: PreEncounterAppointmentId.Raw;
         billing_provider: BillingProvider.Raw;
         rendering_provider: RenderingProvider.Raw;
-        referring_provider?: ReferringProvider.Raw | null;
         initial_referring_provider?: InitialReferringProvider.Raw | null;
         supervising_provider?: SupervisingProvider.Raw | null;
         service_facility?: EncounterServiceFacilityBase.Raw | null;
-        subscriber_primary?: SubscriberCreate.Raw | null;
-        subscriber_secondary?: SubscriberCreate.Raw | null;
-        prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
-        appointment_type?: string | null;
-        responsible_party: ResponsiblePartyType.Raw;
         diagnoses: DiagnosisCreate.Raw[];
         clinical_notes?: ClinicalNoteCategoryCreate.Raw[] | null;
         billing_notes?: BillingNoteBase.Raw[] | null;
         place_of_service_code: FacilityTypeCode.Raw;
         patient_histories?: PatientHistoryCategory.Raw[] | null;
         service_lines?: ServiceLineCreate.Raw[] | null;
-        guarantor?: GuarantorCreate.Raw | null;
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;
         tag_ids?: TagId.Raw[] | null;
         schema_instances?: SchemaInstance.Raw[] | null;
