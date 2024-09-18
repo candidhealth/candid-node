@@ -8,7 +8,7 @@ import * as CandidApi from "../../../../../../../index";
  * A coverage object with immutable server-owned properties.
  */
 export interface Coverage extends CandidApi.preEncounter.coverages.v1.MutableCoverage {
-    id: CandidApi.preEncounter.coverages.v1.CoverageId;
+    id: CandidApi.preEncounter.CoverageId;
     /** The organization that owns this coverage. */
     organizationId: CandidApi.preEncounter.OrganizationId;
     /** True if the coverage is deactivated. Deactivated coverages are not returned in search results but are returned in all other endpoints including scan. */

@@ -19,6 +19,8 @@ import { ExternalProvenance } from "./ExternalProvenance";
 import { Contact } from "./Contact";
 import { ExternalProvider } from "../../../../common/types/ExternalProvider";
 import { FilingOrder } from "./FilingOrder";
+import { CanonicalNonInsurancePayerId } from "../../../../common/types/CanonicalNonInsurancePayerId";
+import { Guarantor } from "./Guarantor";
 
 export const MutablePatient: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.MutablePatient.Raw,
@@ -55,6 +57,12 @@ export const MutablePatient: core.serialization.ObjectSchema<
         core.serialization.list(ExternalProvider)
     ),
     filingOrder: core.serialization.property("filing_order", FilingOrder),
+    nonInsurancePayers: core.serialization.property(
+        "non_insurance_payers",
+        core.serialization.list(CanonicalNonInsurancePayerId).optional()
+    ),
+    guarantor: Guarantor.optional(),
+    selfPay: core.serialization.property("self_pay", core.serialization.boolean().optional()),
 });
 
 export declare namespace MutablePatient {
@@ -84,5 +92,8 @@ export declare namespace MutablePatient {
         contacts: Contact.Raw[];
         general_practitioners: ExternalProvider.Raw[];
         filing_order: FilingOrder.Raw;
+        non_insurance_payers?: CanonicalNonInsurancePayerId.Raw[] | null;
+        guarantor?: Guarantor.Raw | null;
+        self_pay?: boolean | null;
     }
 }

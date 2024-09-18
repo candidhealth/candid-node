@@ -8,5 +8,5 @@ import * as CandidApi from "../../../../../../../index";
  * The patient's active coverages, in order of primary, secondary, etc.
  */
 export interface FilingOrder {
-    coverages: CandidApi.preEncounter.coverages.v1.CoverageId[];
+    coverages: CandidApi.preEncounter.CoverageId[];
 }

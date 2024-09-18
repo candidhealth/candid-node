@@ -12,5 +12,5 @@ export interface PlanMetadata {
     groupNumber?: string;
     startDate?: string;
     endDate?: string;
-    eligibilityStatus?: CandidApi.preEncounter.coverages.v1.EligibilityStatus;
+    planDates?: CandidApi.preEncounter.coverages.v1.PlanDate[];
 }

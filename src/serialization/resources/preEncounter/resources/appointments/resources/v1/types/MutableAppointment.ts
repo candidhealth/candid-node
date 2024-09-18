@@ -5,11 +5,9 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { PatientId } from "../../../../patients/resources/v1/types/PatientId";
-import { ExternalProvider } from "../../../../common/types/ExternalProvider";
+import { PatientId } from "../../../../common/types/PatientId";
+import { AppointmentStatus } from "./AppointmentStatus";
 import { Service } from "./Service";
-import { AppointmentReason } from "./AppointmentReason";
-import { AppointmentType } from "./AppointmentType";
 import { AppointmentWorkQueue } from "./AppointmentWorkQueue";
 
 export const MutableAppointment: core.serialization.ObjectSchema<
@@ -17,37 +15,42 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     CandidApi.preEncounter.appointments.v1.MutableAppointment
 > = core.serialization.object({
     patientId: core.serialization.property("patient_id", PatientId),
-    checkedIn: core.serialization.property("checked_in", core.serialization.boolean().optional()),
-    assignedPatientLocation: core.serialization.property(
-        "assigned_patient_location",
-        core.serialization.string().optional()
-    ),
-    attendingDoctor: core.serialization.property("attending_doctor", ExternalProvider.optional()),
-    referringDoctor: core.serialization.property("referring_doctor", ExternalProvider.optional()),
-    startTimestamp: core.serialization.property("start_timestamp", core.serialization.date().optional()),
+    startTimestamp: core.serialization.property("start_timestamp", core.serialization.date()),
+    status: AppointmentStatus.optional(),
     serviceDuration: core.serialization.property("service_duration", core.serialization.number()),
     services: core.serialization.list(Service),
     placerAppointmentId: core.serialization.property("placer_appointment_id", core.serialization.string().optional()),
-    appointmentReason: core.serialization.property("appointment_reason", AppointmentReason.optional()),
-    appointmentType: core.serialization.property("appointment_type", AppointmentType.optional()),
+    estimatedCopayCents: core.serialization.property("estimated_copay_cents", core.serialization.number().optional()),
+    estimatedPatientResponsibilityCents: core.serialization.property(
+        "estimated_patient_responsibility_cents",
+        core.serialization.number().optional()
+    ),
+    patientDepositCents: core.serialization.property("patient_deposit_cents", core.serialization.number().optional()),
+    checkedInTimestamp: core.serialization.property("checked_in_timestamp", core.serialization.date().optional()),
+    notes: core.serialization.string().optional(),
     locationResourceId: core.serialization.property("location_resource_id", core.serialization.string().optional()),
+    automatedEligibilityCheckComplete: core.serialization.property(
+        "automated_eligibility_check_complete",
+        core.serialization.boolean().optional()
+    ),
     workQueue: core.serialization.property("work_queue", AppointmentWorkQueue.optional()),
 });
 
 export declare namespace MutableAppointment {
     interface Raw {
         patient_id: PatientId.Raw;
-        checked_in?: boolean | null;
-        assigned_patient_location?: string | null;
-        attending_doctor?: ExternalProvider.Raw | null;
-        referring_doctor?: ExternalProvider.Raw | null;
-        start_timestamp?: string | null;
+        start_timestamp: string;
+        status?: AppointmentStatus.Raw | null;
         service_duration: number;
         services: Service.Raw[];
         placer_appointment_id?: string | null;
-        appointment_reason?: AppointmentReason.Raw | null;
-        appointment_type?: AppointmentType.Raw | null;
+        estimated_copay_cents?: number | null;
+        estimated_patient_responsibility_cents?: number | null;
+        patient_deposit_cents?: number | null;
+        checked_in_timestamp?: string | null;
+        notes?: string | null;
         location_resource_id?: string | null;
+        automated_eligibility_check_complete?: boolean | null;
         work_queue?: AppointmentWorkQueue.Raw | null;
     }
 }

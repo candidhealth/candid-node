@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { EligibilityStatus } from "./EligibilityStatus";
+import { PlanDate } from "./PlanDate";
 
 export const PlanMetadata: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.PlanMetadata.Raw,
@@ -18,7 +18,7 @@ export const PlanMetadata: core.serialization.ObjectSchema<
     groupNumber: core.serialization.property("group_number", core.serialization.string().optional()),
     startDate: core.serialization.property("start_date", core.serialization.string().optional()),
     endDate: core.serialization.property("end_date", core.serialization.string().optional()),
-    eligibilityStatus: core.serialization.property("eligibility_status", EligibilityStatus.optional()),
+    planDates: core.serialization.property("plan_dates", core.serialization.list(PlanDate).optional()),
 });
 
 export declare namespace PlanMetadata {
@@ -30,6 +30,6 @@ export declare namespace PlanMetadata {
         group_number?: string | null;
         start_date?: string | null;
         end_date?: string | null;
-        eligibility_status?: EligibilityStatus.Raw | null;
+        plan_dates?: PlanDate.Raw[] | null;
     }
 }

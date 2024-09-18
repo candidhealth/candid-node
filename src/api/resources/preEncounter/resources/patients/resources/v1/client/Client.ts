@@ -30,65 +30,43 @@ export class V1 {
     /**
      * Adds a patient. VersionConflictError is returned when the patient's external ID is already in use.
      *
-     * @param {CandidApi.preEncounter.patients.v1.MutablePatient} request
+     * @param {CandidApi.preEncounter.patients.v1.CreatePatientRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.patients.v1.create({
-     *         name: {
-     *             family: "string",
-     *             given: ["string"],
-     *             use: CandidApi.preEncounter.NameUse.Usual,
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             }
-     *         },
-     *         otherNames: [{
+     *         skipDuplicateCheck: true,
+     *         body: {
+     *             name: {
      *                 family: "string",
      *                 given: ["string"],
      *                 use: CandidApi.preEncounter.NameUse.Usual,
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
+     *                 }
+     *             },
+     *             otherNames: [{
+     *                     family: "string",
+     *                     given: ["string"],
+     *                     use: CandidApi.preEncounter.NameUse.Usual,
+     *                     period: {
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     }
-     *                 }
-     *             }],
-     *         gender: CandidApi.preEncounter.Gender.Man,
-     *         birthDate: "2023-01-15",
-     *         socialSecurityNumber: "string",
-     *         biologicalSex: CandidApi.preEncounter.Sex.Female,
-     *         sexualOrientation: CandidApi.preEncounter.SexualOrientation.Heterosexual,
-     *         race: CandidApi.preEncounter.Race.AmericanIndianOrAlaskaNative,
-     *         ethnicity: CandidApi.preEncounter.Ethnicity.HispanicOrLatino,
-     *         disabilityStatus: CandidApi.preEncounter.DisabilityStatus.Disabled,
-     *         maritalStatus: CandidApi.preEncounter.patients.v1.MaritalStatus.Annulled,
-     *         deceased: new Date("2024-01-15T09:30:00.000Z"),
-     *         multipleBirth: 1,
-     *         primaryAddress: {
-     *             use: CandidApi.preEncounter.AddressUse.Home,
-     *             line: ["string"],
-     *             city: "string",
-     *             state: "string",
-     *             postalCode: "string",
-     *             country: "string",
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             }
-     *         },
-     *         otherAddresses: [{
+     *                 }],
+     *             gender: CandidApi.preEncounter.Gender.Man,
+     *             birthDate: "2023-01-15",
+     *             socialSecurityNumber: "string",
+     *             biologicalSex: CandidApi.preEncounter.Sex.Female,
+     *             sexualOrientation: CandidApi.preEncounter.SexualOrientation.Heterosexual,
+     *             race: CandidApi.preEncounter.Race.AmericanIndianOrAlaskaNative,
+     *             ethnicity: CandidApi.preEncounter.Ethnicity.HispanicOrLatino,
+     *             disabilityStatus: CandidApi.preEncounter.DisabilityStatus.Disabled,
+     *             maritalStatus: CandidApi.preEncounter.patients.v1.MaritalStatus.Annulled,
+     *             deceased: new Date("2024-01-15T09:30:00.000Z"),
+     *             multipleBirth: 1,
+     *             primaryAddress: {
      *                 use: CandidApi.preEncounter.AddressUse.Home,
      *                 line: ["string"],
      *                 city: "string",
@@ -96,131 +74,165 @@ export class V1 {
      *                 postalCode: "string",
      *                 country: "string",
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
-     *             }],
-     *         primaryTelecom: {
-     *             value: "string",
-     *             use: CandidApi.preEncounter.ContactPointUse.Home,
-     *             period: {
-     *                 "key": "value"
-     *             }
-     *         },
-     *         otherTelecoms: [{
+     *             },
+     *             otherAddresses: [{
+     *                     use: CandidApi.preEncounter.AddressUse.Home,
+     *                     line: ["string"],
+     *                     city: "string",
+     *                     state: "string",
+     *                     postalCode: "string",
+     *                     country: "string",
+     *                     period: {
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
+     *                     }
+     *                 }],
+     *             primaryTelecom: {
      *                 value: "string",
      *                 use: CandidApi.preEncounter.ContactPointUse.Home,
      *                 period: {
-     *                     "key": "value"
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
-     *             }],
-     *         email: "string",
-     *         electronicCommunicationOptIn: true,
-     *         photo: "string",
-     *         language: "string",
-     *         externalProvenance: {
-     *             externalId: "string",
-     *             systemName: "string"
-     *         },
-     *         contacts: [{
-     *                 relationship: [CandidApi.preEncounter.Relationship.Self],
-     *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: CandidApi.preEncounter.NameUse.Usual,
+     *             },
+     *             otherTelecoms: [{
+     *                     value: "string",
+     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
      *                     period: {
-     *                         start: {
-     *                             "key": "value"
-     *                         },
-     *                         end: {
-     *                             "key": "value"
-     *                         }
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     }
-     *                 },
-     *                 telecoms: [{
-     *                         value: "string",
-     *                         use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                 }],
+     *             email: "string",
+     *             electronicCommunicationOptIn: true,
+     *             photo: "string",
+     *             language: "string",
+     *             externalProvenance: {
+     *                 externalId: "string",
+     *                 systemName: "string"
+     *             },
+     *             contacts: [{
+     *                     relationship: [CandidApi.preEncounter.Relationship.Self],
+     *                     name: {
+     *                         family: "string",
+     *                         given: ["string"],
+     *                         use: CandidApi.preEncounter.NameUse.Usual,
      *                         period: {
-     *                             "key": "value"
+     *                             start: "2023-01-15",
+     *                             end: "2023-01-15"
      *                         }
-     *                     }],
-     *                 addresses: [{
-     *                         use: CandidApi.preEncounter.AddressUse.Home,
-     *                         line: ["string"],
-     *                         city: "string",
-     *                         state: "string",
-     *                         postalCode: "string",
-     *                         country: "string",
-     *                         period: {
-     *                             start: {
-     *                                 "key": "value"
-     *                             },
-     *                             end: {
-     *                                 "key": "value"
+     *                     },
+     *                     telecoms: [{
+     *                             value: "string",
+     *                             use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                             period: {
+     *                                 start: "2023-01-15",
+     *                                 end: "2023-01-15"
      *                             }
-     *                         }
-     *                     }],
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
+     *                         }],
+     *                     addresses: [{
+     *                             use: CandidApi.preEncounter.AddressUse.Home,
+     *                             line: ["string"],
+     *                             city: "string",
+     *                             state: "string",
+     *                             postalCode: "string",
+     *                             country: "string",
+     *                             period: {
+     *                                 start: "2023-01-15",
+     *                                 end: "2023-01-15"
+     *                             }
+     *                         }],
+     *                     period: {
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 },
-     *                 hipaaAuthorization: true
-     *             }],
-     *         generalPractitioners: [{
+     *                     hipaaAuthorization: true
+     *                 }],
+     *             generalPractitioners: [{
+     *                     name: {
+     *                         family: "string",
+     *                         given: ["string"],
+     *                         use: CandidApi.preEncounter.NameUse.Usual,
+     *                         period: {
+     *                             start: "2023-01-15",
+     *                             end: "2023-01-15"
+     *                         }
+     *                     },
+     *                     type: CandidApi.preEncounter.ExternalProviderType.Primary,
+     *                     npi: "string",
+     *                     telecoms: [{
+     *                             value: "string",
+     *                             use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                             period: {
+     *                                 start: "2023-01-15",
+     *                                 end: "2023-01-15"
+     *                             }
+     *                         }],
+     *                     addresses: [{
+     *                             "key": "value"
+     *                         }],
+     *                     period: {
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
+     *                     },
+     *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
+     *                 }],
+     *             filingOrder: {
+     *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+     *             },
+     *             nonInsurancePayers: [CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")],
+     *             guarantor: {
      *                 name: {
      *                     family: "string",
      *                     given: ["string"],
      *                     use: CandidApi.preEncounter.NameUse.Usual,
      *                     period: {
-     *                         start: {
-     *                             "key": "value"
-     *                         },
-     *                         end: {
-     *                             "key": "value"
-     *                         }
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     }
      *                 },
-     *                 type: CandidApi.preEncounter.ExternalProviderType.Primary,
-     *                 npi: "string",
-     *                 telecoms: [{
-     *                         value: "string",
-     *                         use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                         period: {
-     *                             "key": "value"
-     *                         }
-     *                     }],
-     *                 addresses: [{
-     *                         "key": "value"
-     *                     }],
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
+     *                 telecom: {
+     *                     value: "string",
+     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                     period: {
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     }
      *                 },
-     *                 canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
-     *             }],
-     *         filingOrder: {
-     *             coverages: [CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+     *                 email: "string",
+     *                 birthDate: "2023-01-15",
+     *                 address: {
+     *                     use: CandidApi.preEncounter.AddressUse.Home,
+     *                     line: ["string"],
+     *                     city: "string",
+     *                     state: "string",
+     *                     postalCode: "string",
+     *                     country: "string",
+     *                     period: {
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
+     *                     }
+     *                 }
+     *             },
+     *             selfPay: true
      *         }
      *     })
      */
     public async create(
-        request: CandidApi.preEncounter.patients.v1.MutablePatient,
+        request: CandidApi.preEncounter.patients.v1.CreatePatientRequest,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<CandidApi.preEncounter.patients.v1.Patient, CandidApi.preEncounter.patients.v1.create.Error>
     > {
+        const { skipDuplicateCheck, body: _body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (skipDuplicateCheck != null) {
+            _queryParams["skip_duplicate_check"] = skipDuplicateCheck.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
@@ -232,13 +244,14 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(request, {
+            body: serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -260,6 +273,7 @@ export class V1 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.preEncounter.patients.v1.create.Error.Raw)?.errorName) {
                 case "VersionConflictError":
+                case "PotentialDuplicatePatients":
                     return {
                         ok: false,
                         error: serializers.preEncounter.patients.v1.create.Error.parseOrThrow(
@@ -278,267 +292,6 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.preEncounter.patients.v1.create.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * Adds a patient without checking for duplicates.
-     *
-     * @param {CandidApi.preEncounter.patients.v1.MutablePatient} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.preEncounter.patients.v1.createNoDuplicateCheck({
-     *         name: {
-     *             family: "string",
-     *             given: ["string"],
-     *             use: CandidApi.preEncounter.NameUse.Usual,
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             }
-     *         },
-     *         otherNames: [{
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 }
-     *             }],
-     *         gender: CandidApi.preEncounter.Gender.Man,
-     *         birthDate: "2023-01-15",
-     *         socialSecurityNumber: "string",
-     *         biologicalSex: CandidApi.preEncounter.Sex.Female,
-     *         sexualOrientation: CandidApi.preEncounter.SexualOrientation.Heterosexual,
-     *         race: CandidApi.preEncounter.Race.AmericanIndianOrAlaskaNative,
-     *         ethnicity: CandidApi.preEncounter.Ethnicity.HispanicOrLatino,
-     *         disabilityStatus: CandidApi.preEncounter.DisabilityStatus.Disabled,
-     *         maritalStatus: CandidApi.preEncounter.patients.v1.MaritalStatus.Annulled,
-     *         deceased: new Date("2024-01-15T09:30:00.000Z"),
-     *         multipleBirth: 1,
-     *         primaryAddress: {
-     *             use: CandidApi.preEncounter.AddressUse.Home,
-     *             line: ["string"],
-     *             city: "string",
-     *             state: "string",
-     *             postalCode: "string",
-     *             country: "string",
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             }
-     *         },
-     *         otherAddresses: [{
-     *                 use: CandidApi.preEncounter.AddressUse.Home,
-     *                 line: ["string"],
-     *                 city: "string",
-     *                 state: "string",
-     *                 postalCode: "string",
-     *                 country: "string",
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 }
-     *             }],
-     *         primaryTelecom: {
-     *             value: "string",
-     *             use: CandidApi.preEncounter.ContactPointUse.Home,
-     *             period: {
-     *                 "key": "value"
-     *             }
-     *         },
-     *         otherTelecoms: [{
-     *                 value: "string",
-     *                 use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                 period: {
-     *                     "key": "value"
-     *                 }
-     *             }],
-     *         email: "string",
-     *         electronicCommunicationOptIn: true,
-     *         photo: "string",
-     *         language: "string",
-     *         externalProvenance: {
-     *             externalId: "string",
-     *             systemName: "string"
-     *         },
-     *         contacts: [{
-     *                 relationship: [CandidApi.preEncounter.Relationship.Self],
-     *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: CandidApi.preEncounter.NameUse.Usual,
-     *                     period: {
-     *                         start: {
-     *                             "key": "value"
-     *                         },
-     *                         end: {
-     *                             "key": "value"
-     *                         }
-     *                     }
-     *                 },
-     *                 telecoms: [{
-     *                         value: "string",
-     *                         use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                         period: {
-     *                             "key": "value"
-     *                         }
-     *                     }],
-     *                 addresses: [{
-     *                         use: CandidApi.preEncounter.AddressUse.Home,
-     *                         line: ["string"],
-     *                         city: "string",
-     *                         state: "string",
-     *                         postalCode: "string",
-     *                         country: "string",
-     *                         period: {
-     *                             start: {
-     *                                 "key": "value"
-     *                             },
-     *                             end: {
-     *                                 "key": "value"
-     *                             }
-     *                         }
-     *                     }],
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 },
-     *                 hipaaAuthorization: true
-     *             }],
-     *         generalPractitioners: [{
-     *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: CandidApi.preEncounter.NameUse.Usual,
-     *                     period: {
-     *                         start: {
-     *                             "key": "value"
-     *                         },
-     *                         end: {
-     *                             "key": "value"
-     *                         }
-     *                     }
-     *                 },
-     *                 type: CandidApi.preEncounter.ExternalProviderType.Primary,
-     *                 npi: "string",
-     *                 telecoms: [{
-     *                         value: "string",
-     *                         use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                         period: {
-     *                             "key": "value"
-     *                         }
-     *                     }],
-     *                 addresses: [{
-     *                         "key": "value"
-     *                     }],
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 },
-     *                 canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
-     *             }],
-     *         filingOrder: {
-     *             coverages: [CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
-     *         }
-     *     })
-     */
-    public async createNoDuplicateCheck(
-        request: CandidApi.preEncounter.patients.v1.MutablePatient,
-        requestOptions?: V1.RequestOptions
-    ): Promise<
-        core.APIResponse<
-            CandidApi.preEncounter.patients.v1.Patient,
-            CandidApi.preEncounter.patients.v1.createNoDuplicateCheck.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                "/patients/v1"
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-            },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.preEncounter.patients.v1.MutablePatient.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.preEncounter.patients.v1.Patient.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (
-                (_response.error.body as serializers.preEncounter.patients.v1.createNoDuplicateCheck.Error.Raw)
-                    ?.errorName
-            ) {
-                case "VersionConflictError":
-                    return {
-                        ok: false,
-                        error: serializers.preEncounter.patients.v1.createNoDuplicateCheck.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.preEncounter.patients.v1.createNoDuplicateCheck.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            }
-                        ),
-                    };
-            }
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.preEncounter.patients.v1.createNoDuplicateCheck.Error._unknown(_response.error),
         };
     }
 
@@ -599,7 +352,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -631,14 +384,14 @@ export class V1 {
     /**
      * Gets a patient.
      *
-     * @param {CandidApi.preEncounter.patients.v1.PatientId} id
+     * @param {CandidApi.preEncounter.PatientId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.get(CandidApi.preEncounter.patients.v1.PatientId("string"))
+     *     await client.preEncounter.patients.v1.get(CandidApi.preEncounter.PatientId("string"))
      */
     public async get(
-        id: CandidApi.preEncounter.patients.v1.PatientId,
+        id: CandidApi.preEncounter.PatientId,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<CandidApi.preEncounter.patients.v1.Patient, CandidApi.preEncounter.patients.v1.get.Error>
@@ -647,14 +400,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/patients/v1/${encodeURIComponent(serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id))}`
+                `/patients/v1/${encodeURIComponent(serializers.preEncounter.PatientId.jsonOrThrow(id))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -703,14 +456,14 @@ export class V1 {
     /**
      * Gets a patient along with it's full history. The return list is ordered by version ascending.
      *
-     * @param {CandidApi.preEncounter.patients.v1.PatientId} id
+     * @param {CandidApi.preEncounter.PatientId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.getHistory(CandidApi.preEncounter.patients.v1.PatientId("string"))
+     *     await client.preEncounter.patients.v1.getHistory(CandidApi.preEncounter.PatientId("string"))
      */
     public async getHistory(
-        id: CandidApi.preEncounter.patients.v1.PatientId,
+        id: CandidApi.preEncounter.PatientId,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<
@@ -722,16 +475,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/patients/v1/${encodeURIComponent(
-                    serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
-                )}/history`
+                `/patients/v1/${encodeURIComponent(serializers.preEncounter.PatientId.jsonOrThrow(id))}/history`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -780,24 +531,20 @@ export class V1 {
     /**
      * Updates a patient. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
      *
-     * @param {CandidApi.preEncounter.patients.v1.PatientId} id
+     * @param {CandidApi.preEncounter.PatientId} id
      * @param {string} version
      * @param {CandidApi.preEncounter.patients.v1.MutablePatient} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.update(CandidApi.preEncounter.patients.v1.PatientId("string"), "string", {
+     *     await client.preEncounter.patients.v1.update(CandidApi.preEncounter.PatientId("string"), "string", {
      *         name: {
      *             family: "string",
      *             given: ["string"],
      *             use: CandidApi.preEncounter.NameUse.Usual,
      *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
+     *                 start: "2023-01-15",
+     *                 end: "2023-01-15"
      *             }
      *         },
      *         otherNames: [{
@@ -805,12 +552,8 @@ export class V1 {
      *                 given: ["string"],
      *                 use: CandidApi.preEncounter.NameUse.Usual,
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
      *             }],
      *         gender: CandidApi.preEncounter.Gender.Man,
@@ -832,12 +575,8 @@ export class V1 {
      *             postalCode: "string",
      *             country: "string",
      *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
+     *                 start: "2023-01-15",
+     *                 end: "2023-01-15"
      *             }
      *         },
      *         otherAddresses: [{
@@ -848,26 +587,24 @@ export class V1 {
      *                 postalCode: "string",
      *                 country: "string",
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
      *             }],
      *         primaryTelecom: {
      *             value: "string",
      *             use: CandidApi.preEncounter.ContactPointUse.Home,
      *             period: {
-     *                 "key": "value"
+     *                 start: "2023-01-15",
+     *                 end: "2023-01-15"
      *             }
      *         },
      *         otherTelecoms: [{
      *                 value: "string",
      *                 use: CandidApi.preEncounter.ContactPointUse.Home,
      *                 period: {
-     *                     "key": "value"
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
      *             }],
      *         email: "string",
@@ -885,19 +622,16 @@ export class V1 {
      *                     given: ["string"],
      *                     use: CandidApi.preEncounter.NameUse.Usual,
      *                     period: {
-     *                         start: {
-     *                             "key": "value"
-     *                         },
-     *                         end: {
-     *                             "key": "value"
-     *                         }
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     }
      *                 },
      *                 telecoms: [{
      *                         value: "string",
      *                         use: CandidApi.preEncounter.ContactPointUse.Home,
      *                         period: {
-     *                             "key": "value"
+     *                             start: "2023-01-15",
+     *                             end: "2023-01-15"
      *                         }
      *                     }],
      *                 addresses: [{
@@ -908,21 +642,13 @@ export class V1 {
      *                         postalCode: "string",
      *                         country: "string",
      *                         period: {
-     *                             start: {
-     *                                 "key": "value"
-     *                             },
-     *                             end: {
-     *                                 "key": "value"
-     *                             }
+     *                             start: "2023-01-15",
+     *                             end: "2023-01-15"
      *                         }
      *                     }],
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 },
      *                 hipaaAuthorization: true
      *             }],
@@ -932,12 +658,8 @@ export class V1 {
      *                     given: ["string"],
      *                     use: CandidApi.preEncounter.NameUse.Usual,
      *                     period: {
-     *                         start: {
-     *                             "key": "value"
-     *                         },
-     *                         end: {
-     *                             "key": "value"
-     *                         }
+     *                         start: "2023-01-15",
+     *                         end: "2023-01-15"
      *                     }
      *                 },
      *                 type: CandidApi.preEncounter.ExternalProviderType.Primary,
@@ -946,29 +668,61 @@ export class V1 {
      *                         value: "string",
      *                         use: CandidApi.preEncounter.ContactPointUse.Home,
      *                         period: {
-     *                             "key": "value"
+     *                             start: "2023-01-15",
+     *                             end: "2023-01-15"
      *                         }
      *                     }],
      *                 addresses: [{
      *                         "key": "value"
      *                     }],
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 },
      *                 canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
      *             }],
      *         filingOrder: {
-     *             coverages: [CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
-     *         }
+     *             coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+     *         },
+     *         nonInsurancePayers: [CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")],
+     *         guarantor: {
+     *             name: {
+     *                 family: "string",
+     *                 given: ["string"],
+     *                 use: CandidApi.preEncounter.NameUse.Usual,
+     *                 period: {
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
+     *                 }
+     *             },
+     *             telecom: {
+     *                 value: "string",
+     *                 use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                 period: {
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
+     *                 }
+     *             },
+     *             email: "string",
+     *             birthDate: "2023-01-15",
+     *             address: {
+     *                 use: CandidApi.preEncounter.AddressUse.Home,
+     *                 line: ["string"],
+     *                 city: "string",
+     *                 state: "string",
+     *                 postalCode: "string",
+     *                 country: "string",
+     *                 period: {
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
+     *                 }
+     *             }
+     *         },
+     *         selfPay: true
      *     })
      */
     public async update(
-        id: CandidApi.preEncounter.patients.v1.PatientId,
+        id: CandidApi.preEncounter.PatientId,
         version: string,
         request: CandidApi.preEncounter.patients.v1.MutablePatient,
         requestOptions?: V1.RequestOptions
@@ -980,7 +734,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/patients/v1/${encodeURIComponent(
-                    serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
+                    serializers.preEncounter.PatientId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "PUT",
@@ -988,7 +742,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1041,15 +795,15 @@ export class V1 {
     /**
      * Sets a patient as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
      *
-     * @param {CandidApi.preEncounter.patients.v1.PatientId} id
+     * @param {CandidApi.preEncounter.PatientId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.deactivate(CandidApi.preEncounter.patients.v1.PatientId("string"), "string")
+     *     await client.preEncounter.patients.v1.deactivate(CandidApi.preEncounter.PatientId("string"), "string")
      */
     public async deactivate(
-        id: CandidApi.preEncounter.patients.v1.PatientId,
+        id: CandidApi.preEncounter.PatientId,
         version: string,
         requestOptions?: V1.RequestOptions
     ): Promise<core.APIResponse<void, CandidApi.preEncounter.patients.v1.deactivate.Error>> {
@@ -1058,7 +812,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/patients/v1/${encodeURIComponent(
-                    serializers.preEncounter.patients.v1.PatientId.jsonOrThrow(id)
+                    serializers.preEncounter.PatientId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "DELETE",
@@ -1066,7 +820,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1147,7 +901,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1207,7 +961,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

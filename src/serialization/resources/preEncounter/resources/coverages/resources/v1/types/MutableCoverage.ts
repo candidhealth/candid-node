@@ -8,7 +8,7 @@ import * as core from "../../../../../../../../core";
 import { CoverageStatus } from "./CoverageStatus";
 import { Subscriber } from "./Subscriber";
 import { Relationship } from "../../../../common/types/Relationship";
-import { PatientId } from "../../../../patients/resources/v1/types/PatientId";
+import { PatientId } from "../../../../common/types/PatientId";
 import { InsurancePlan } from "./InsurancePlan";
 import { EligibilityCheckMetadata } from "./EligibilityCheckMetadata";
 import { CoverageBenefits } from "./CoverageBenefits";

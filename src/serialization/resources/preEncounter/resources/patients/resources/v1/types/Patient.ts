@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { PatientId } from "./PatientId";
+import { PatientId } from "../../../../common/types/PatientId";
 import { OrganizationId } from "../../../../common/types/OrganizationId";
 import { UserId } from "../../../../common/types/UserId";
 import { MutablePatient } from "./MutablePatient";

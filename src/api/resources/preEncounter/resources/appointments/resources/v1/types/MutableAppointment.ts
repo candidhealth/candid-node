@@ -9,26 +9,25 @@ import * as CandidApi from "../../../../../../../index";
  */
 export interface MutableAppointment {
     /** The Candid-defined patient identifier. */
-    patientId: CandidApi.preEncounter.patients.v1.PatientId;
-    /** True if the patient has checked in. Defaults to false. */
-    checkedIn?: boolean;
-    /** Patient’s initial assigned location or the location to which the patient is being moved. This location is stored on the Patient Demographics tab and is used when creating orders. */
-    assignedPatientLocation?: string;
-    /** Attending physician information. The attending physician will be stored as the Current MD for the patient. */
-    attendingDoctor?: CandidApi.preEncounter.ExternalProvider;
-    /** Referring physician information. The referring physician will be stored as the Referring MD in the patient’s Providers list. */
-    referringDoctor?: CandidApi.preEncounter.ExternalProvider;
-    startTimestamp?: Date;
+    patientId: CandidApi.preEncounter.PatientId;
+    startTimestamp: Date;
+    /** Defaults to PENDING. If status is NOT_READY, work_queue must be set. If status is READY or CHECKED_IN, work_queue must be null. If status is CHECKED_IN, checked_in_timestamp must be set. If checked_in_timestamp is set, status must be CHECKED_IN. */
+    status?: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
     /** The requested length of time allotted for the appointment. The units are in minutes. */
     serviceDuration: number;
     services: CandidApi.preEncounter.appointments.v1.Service[];
     /** ID for the appointment/order for the event. */
     placerAppointmentId?: string;
-    appointmentReason?: CandidApi.preEncounter.appointments.v1.AppointmentReason;
-    /** Contains the identifier code for the appointment. */
-    appointmentType?: CandidApi.preEncounter.appointments.v1.AppointmentType;
+    estimatedCopayCents?: number;
+    estimatedPatientResponsibilityCents?: number;
+    patientDepositCents?: number;
+    /** The timestamp when the patient checked in for their appointment. If status is CHECKED_IN, checked_in_timestamp must be set. If checked_in_timestamp is set, status must be CHECKED_IN. */
+    checkedInTimestamp?: Date;
+    notes?: string;
     /** Contains the coded identification of the location being scheduled. Components: <Identifier (ST)>^<Text (ST)> */
     locationResourceId?: string;
-    /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. */
+    /** True if the automated eligibility check has been completed. It is not recommended to change this value manually via API. This refers explicitly to the automated eligibility check that occurs a specific number of days before the appointment. */
+    automatedEligibilityCheckComplete?: boolean;
+    /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY or CHECKED_IN, work_queue must be null. */
     workQueue?: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue;
 }

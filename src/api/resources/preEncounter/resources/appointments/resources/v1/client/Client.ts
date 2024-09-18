@@ -35,91 +35,22 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.appointments.v1.create({
-     *         patientId: CandidApi.preEncounter.patients.v1.PatientId("string"),
-     *         checkedIn: true,
-     *         assignedPatientLocation: "string",
-     *         attendingDoctor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 }
-     *             },
-     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
-     *             npi: "string",
-     *             telecoms: [{
-     *                     value: "string",
-     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                     period: {
-     *                         "key": "value"
-     *                     }
-     *                 }],
-     *             addresses: [{
-     *                     "key": "value"
-     *                 }],
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             },
-     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
-     *         },
-     *         referringDoctor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 }
-     *             },
-     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
-     *             npi: "string",
-     *             telecoms: [{
-     *                     value: "string",
-     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                     period: {
-     *                         "key": "value"
-     *                     }
-     *                 }],
-     *             addresses: [{
-     *                     "key": "value"
-     *                 }],
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             },
-     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
-     *         },
+     *         patientId: CandidApi.preEncounter.PatientId("string"),
      *         startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         status: CandidApi.preEncounter.appointments.v1.AppointmentStatus.Pending,
      *         serviceDuration: 1,
      *         services: [{
      *                 universalServiceIdentifier: CandidApi.preEncounter.appointments.v1.UniversalServiceIdentifier.MdVisit,
      *                 startTimestamp: new Date("2024-01-15T09:30:00.000Z")
      *             }],
      *         placerAppointmentId: "string",
-     *         appointmentReason: CandidApi.preEncounter.appointments.v1.AppointmentReason.Checkup,
-     *         appointmentType: CandidApi.preEncounter.appointments.v1.AppointmentType.Complete,
+     *         estimatedCopayCents: 1,
+     *         estimatedPatientResponsibilityCents: 1,
+     *         patientDepositCents: 1,
+     *         checkedInTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         notes: "string",
      *         locationResourceId: "string",
+     *         automatedEligibilityCheckComplete: true,
      *         workQueue: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue.EmergentIssue
      *     })
      */
@@ -143,7 +74,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -171,6 +102,7 @@ export class V1 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.preEncounter.appointments.v1.create.Error.Raw)?.errorName) {
                 case "VersionConflictError":
+                case "NotFoundError":
                     return {
                         ok: false,
                         error: serializers.preEncounter.appointments.v1.create.Error.parseOrThrow(
@@ -195,14 +127,14 @@ export class V1 {
     /**
      * Gets an appointment.
      *
-     * @param {CandidApi.preEncounter.appointments.v1.AppointmentId} id
+     * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.get(CandidApi.preEncounter.appointments.v1.AppointmentId("string"))
+     *     await client.preEncounter.appointments.v1.get(CandidApi.preEncounter.AppointmentId("string"))
      */
     public async get(
-        id: CandidApi.preEncounter.appointments.v1.AppointmentId,
+        id: CandidApi.preEncounter.AppointmentId,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<
@@ -214,16 +146,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/appointments/v1/${encodeURIComponent(
-                    serializers.preEncounter.appointments.v1.AppointmentId.jsonOrThrow(id)
-                )}`
+                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -272,14 +202,14 @@ export class V1 {
     /**
      * Gets an appointment along with it's full history. The return list is ordered by version ascending.
      *
-     * @param {CandidApi.preEncounter.appointments.v1.AppointmentId} id
+     * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.getHistory(CandidApi.preEncounter.appointments.v1.AppointmentId("string"))
+     *     await client.preEncounter.appointments.v1.getHistory(CandidApi.preEncounter.AppointmentId("string"))
      */
     public async getHistory(
-        id: CandidApi.preEncounter.appointments.v1.AppointmentId,
+        id: CandidApi.preEncounter.AppointmentId,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<
@@ -291,16 +221,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/appointments/v1/${encodeURIComponent(
-                    serializers.preEncounter.appointments.v1.AppointmentId.jsonOrThrow(id)
-                )}/history`
+                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}/history`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -351,103 +279,34 @@ export class V1 {
     /**
      * Updates an appointment. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
      *
-     * @param {CandidApi.preEncounter.appointments.v1.AppointmentId} id
+     * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {string} version
      * @param {CandidApi.preEncounter.appointments.v1.MutableAppointment} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.update(CandidApi.preEncounter.appointments.v1.AppointmentId("string"), "string", {
-     *         patientId: CandidApi.preEncounter.patients.v1.PatientId("string"),
-     *         checkedIn: true,
-     *         assignedPatientLocation: "string",
-     *         attendingDoctor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 }
-     *             },
-     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
-     *             npi: "string",
-     *             telecoms: [{
-     *                     value: "string",
-     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                     period: {
-     *                         "key": "value"
-     *                     }
-     *                 }],
-     *             addresses: [{
-     *                     "key": "value"
-     *                 }],
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             },
-     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
-     *         },
-     *         referringDoctor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
-     *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
-     *                 }
-     *             },
-     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
-     *             npi: "string",
-     *             telecoms: [{
-     *                     value: "string",
-     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
-     *                     period: {
-     *                         "key": "value"
-     *                     }
-     *                 }],
-     *             addresses: [{
-     *                     "key": "value"
-     *                 }],
-     *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
-     *             },
-     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
-     *         },
+     *     await client.preEncounter.appointments.v1.update(CandidApi.preEncounter.AppointmentId("string"), "string", {
+     *         patientId: CandidApi.preEncounter.PatientId("string"),
      *         startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         status: CandidApi.preEncounter.appointments.v1.AppointmentStatus.Pending,
      *         serviceDuration: 1,
      *         services: [{
      *                 universalServiceIdentifier: CandidApi.preEncounter.appointments.v1.UniversalServiceIdentifier.MdVisit,
      *                 startTimestamp: new Date("2024-01-15T09:30:00.000Z")
      *             }],
      *         placerAppointmentId: "string",
-     *         appointmentReason: CandidApi.preEncounter.appointments.v1.AppointmentReason.Checkup,
-     *         appointmentType: CandidApi.preEncounter.appointments.v1.AppointmentType.Complete,
+     *         estimatedCopayCents: 1,
+     *         estimatedPatientResponsibilityCents: 1,
+     *         patientDepositCents: 1,
+     *         checkedInTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         notes: "string",
      *         locationResourceId: "string",
+     *         automatedEligibilityCheckComplete: true,
      *         workQueue: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue.EmergentIssue
      *     })
      */
     public async update(
-        id: CandidApi.preEncounter.appointments.v1.AppointmentId,
+        id: CandidApi.preEncounter.AppointmentId,
         version: string,
         request: CandidApi.preEncounter.appointments.v1.MutableAppointment,
         requestOptions?: V1.RequestOptions
@@ -462,7 +321,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/appointments/v1/${encodeURIComponent(
-                    serializers.preEncounter.appointments.v1.AppointmentId.jsonOrThrow(id)
+                    serializers.preEncounter.AppointmentId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "PUT",
@@ -470,7 +329,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -523,15 +382,15 @@ export class V1 {
     /**
      * Sets an appointment as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
      *
-     * @param {CandidApi.preEncounter.appointments.v1.AppointmentId} id
+     * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.deactivate(CandidApi.preEncounter.appointments.v1.AppointmentId("string"), "string")
+     *     await client.preEncounter.appointments.v1.deactivate(CandidApi.preEncounter.AppointmentId("string"), "string")
      */
     public async deactivate(
-        id: CandidApi.preEncounter.appointments.v1.AppointmentId,
+        id: CandidApi.preEncounter.AppointmentId,
         version: string,
         requestOptions?: V1.RequestOptions
     ): Promise<core.APIResponse<void, CandidApi.preEncounter.appointments.v1.deactivate.Error>> {
@@ -540,7 +399,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/appointments/v1/${encodeURIComponent(
-                    serializers.preEncounter.appointments.v1.AppointmentId.jsonOrThrow(id)
+                    serializers.preEncounter.AppointmentId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "DELETE",
@@ -548,7 +407,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -589,122 +448,6 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.preEncounter.appointments.v1.deactivate.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * Searches for appointments that match the query parameters.
-     *
-     * @param {CandidApi.preEncounter.appointments.v1.AppointmentsSearchRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.preEncounter.appointments.v1.getMulti({
-     *         checkedIn: true,
-     *         patientId: CandidApi.preEncounter.patients.v1.PatientId("string"),
-     *         minStartTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         maxStartTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         placerAppointmentId: "string",
-     *         workQueue: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue.EmergentIssue,
-     *         sortField: CandidApi.preEncounter.appointments.v1.AppointmentSortField.StartTimestamp,
-     *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
-     *         limit: 1
-     *     })
-     */
-    public async getMulti(
-        request: CandidApi.preEncounter.appointments.v1.AppointmentsSearchRequest = {},
-        requestOptions?: V1.RequestOptions
-    ): Promise<
-        core.APIResponse<
-            CandidApi.preEncounter.appointments.v1.Appointment[],
-            CandidApi.preEncounter.appointments.v1.getMulti.Error
-        >
-    > {
-        const {
-            checkedIn,
-            patientId,
-            minStartTimestamp,
-            maxStartTimestamp,
-            placerAppointmentId,
-            workQueue,
-            sortField,
-            sortDirection,
-            limit,
-        } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
-        if (checkedIn != null) {
-            _queryParams["checked_in"] = checkedIn.toString();
-        }
-
-        if (patientId != null) {
-            _queryParams["patient_id"] = patientId;
-        }
-
-        if (minStartTimestamp != null) {
-            _queryParams["min_start_timestamp"] = minStartTimestamp.toISOString();
-        }
-
-        if (maxStartTimestamp != null) {
-            _queryParams["max_start_timestamp"] = maxStartTimestamp.toISOString();
-        }
-
-        if (placerAppointmentId != null) {
-            _queryParams["placer_appointment_id"] = placerAppointmentId;
-        }
-
-        if (workQueue != null) {
-            _queryParams["work_queue"] = workQueue;
-        }
-
-        if (sortField != null) {
-            _queryParams["sort_field"] = sortField;
-        }
-
-        if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
-        }
-
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
-        const _response = await core.fetcher({
-            url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                "/appointments/v1"
-            ),
-            method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.preEncounter.appointments.v1.getMulti.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.preEncounter.appointments.v1.getMulti.Error._unknown(_response.error),
         };
     }
 

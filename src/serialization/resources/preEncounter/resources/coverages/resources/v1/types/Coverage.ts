@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { CoverageId } from "./CoverageId";
+import { CoverageId } from "../../../../common/types/CoverageId";
 import { OrganizationId } from "../../../../common/types/OrganizationId";
 import { UserId } from "../../../../common/types/UserId";
 import { MutableCoverage } from "./MutableCoverage";

@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { CoverageId } from "../../../../coverages/resources/v1/types/CoverageId";
+import { CoverageId } from "../../../../common/types/CoverageId";
 
 export const FilingOrder: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.FilingOrder.Raw,

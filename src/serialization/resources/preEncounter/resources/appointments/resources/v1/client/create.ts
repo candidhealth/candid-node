@@ -6,6 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { VersionConflictErrorBody } from "../../../../common/types/VersionConflictErrorBody";
+import { NotFoundErrorBody } from "../../../../common/types/NotFoundErrorBody";
 
 export const Error: core.serialization.Schema<
     serializers.preEncounter.appointments.v1.create.Error.Raw,
@@ -15,22 +16,32 @@ export const Error: core.serialization.Schema<
         VersionConflictError: core.serialization.object({
             content: VersionConflictErrorBody,
         }),
+        NotFoundError: core.serialization.object({
+            content: NotFoundErrorBody,
+        }),
     })
     .transform<CandidApi.preEncounter.appointments.v1.create.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "VersionConflictError":
                     return CandidApi.preEncounter.appointments.v1.create.Error.versionConflictError(value.content);
+                case "NotFoundError":
+                    return CandidApi.preEncounter.appointments.v1.create.Error.notFoundError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.VersionConflictError;
+    type Raw = Error.VersionConflictError | Error.NotFoundError;
 
     interface VersionConflictError {
         errorName: "VersionConflictError";
         content: VersionConflictErrorBody.Raw;
+    }
+
+    interface NotFoundError {
+        errorName: "NotFoundError";
+        content: NotFoundErrorBody.Raw;
     }
 }

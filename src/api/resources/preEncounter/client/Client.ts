@@ -6,6 +6,7 @@ import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import { Appointments } from "../resources/appointments/client/Client";
 import { Coverages } from "../resources/coverages/client/Client";
+import { Lists } from "../resources/lists/client/Client";
 import { Patients } from "../resources/patients/client/Client";
 
 export declare namespace PreEncounter {
@@ -37,6 +38,12 @@ export class PreEncounter {
 
     public get coverages(): Coverages {
         return (this._coverages ??= new Coverages(this._options));
+    }
+
+    protected _lists: Lists | undefined;
+
+    public get lists(): Lists {
+        return (this._lists ??= new Lists(this._options));
     }
 
     protected _patients: Patients | undefined;

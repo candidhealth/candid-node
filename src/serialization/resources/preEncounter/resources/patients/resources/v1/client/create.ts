@@ -6,6 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { VersionConflictErrorBody } from "../../../../common/types/VersionConflictErrorBody";
+import { PotentialDuplicatePatientsErrorBody } from "../types/PotentialDuplicatePatientsErrorBody";
 
 export const Error: core.serialization.Schema<
     serializers.preEncounter.patients.v1.create.Error.Raw,
@@ -15,22 +16,32 @@ export const Error: core.serialization.Schema<
         VersionConflictError: core.serialization.object({
             content: VersionConflictErrorBody,
         }),
+        PotentialDuplicatePatients: core.serialization.object({
+            content: PotentialDuplicatePatientsErrorBody,
+        }),
     })
     .transform<CandidApi.preEncounter.patients.v1.create.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "VersionConflictError":
                     return CandidApi.preEncounter.patients.v1.create.Error.versionConflictError(value.content);
+                case "PotentialDuplicatePatients":
+                    return CandidApi.preEncounter.patients.v1.create.Error.potentialDuplicatePatients(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.VersionConflictError;
+    type Raw = Error.VersionConflictError | Error.PotentialDuplicatePatients;
 
     interface VersionConflictError {
         errorName: "VersionConflictError";
         content: VersionConflictErrorBody.Raw;
+    }
+
+    interface PotentialDuplicatePatients {
+        errorName: "PotentialDuplicatePatients";
+        content: PotentialDuplicatePatientsErrorBody.Raw;
     }
 }

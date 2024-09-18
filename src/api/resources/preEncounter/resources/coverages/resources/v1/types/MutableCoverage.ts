@@ -12,7 +12,7 @@ export interface MutableCoverage {
     /** The relationship of beneficiary (patient) to the subscriber. https://hl7.org/fhir/valueset-relationship.html */
     relationship: CandidApi.preEncounter.Relationship;
     /** The patient who benefits from the insurance coverage */
-    patient: CandidApi.preEncounter.patients.v1.PatientId;
+    patient: CandidApi.preEncounter.PatientId;
     insurancePlan: CandidApi.preEncounter.coverages.v1.InsurancePlan;
     /** A boolean indicating if the coverage has been verified by a user. */
     verified: boolean;

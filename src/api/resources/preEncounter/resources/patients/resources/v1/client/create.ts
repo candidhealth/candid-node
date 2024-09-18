@@ -7,12 +7,18 @@ import * as core from "../../../../../../../../core";
 
 export type Error =
     | CandidApi.preEncounter.patients.v1.create.Error.VersionConflictError
+    | CandidApi.preEncounter.patients.v1.create.Error.PotentialDuplicatePatients
     | CandidApi.preEncounter.patients.v1.create.Error._Unknown;
 
 export declare namespace Error {
     interface VersionConflictError extends _Utils {
         errorName: "VersionConflictError";
         content: CandidApi.preEncounter.VersionConflictErrorBody;
+    }
+
+    interface PotentialDuplicatePatients extends _Utils {
+        errorName: "PotentialDuplicatePatients";
+        content: CandidApi.preEncounter.patients.v1.PotentialDuplicatePatientsErrorBody;
     }
 
     interface _Unknown extends _Utils {
@@ -26,6 +32,9 @@ export declare namespace Error {
 
     interface _Visitor<_Result> {
         versionConflictError: (value: CandidApi.preEncounter.VersionConflictErrorBody) => _Result;
+        potentialDuplicatePatients: (
+            value: CandidApi.preEncounter.patients.v1.PotentialDuplicatePatientsErrorBody
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -39,6 +48,21 @@ export const Error = {
             errorName: "VersionConflictError",
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.patients.v1.create.Error.VersionConflictError,
+                visitor: CandidApi.preEncounter.patients.v1.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.preEncounter.patients.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    potentialDuplicatePatients: (
+        value: CandidApi.preEncounter.patients.v1.PotentialDuplicatePatientsErrorBody
+    ): CandidApi.preEncounter.patients.v1.create.Error.PotentialDuplicatePatients => {
+        return {
+            content: value,
+            errorName: "PotentialDuplicatePatients",
+            _visit: function <_Result>(
+                this: CandidApi.preEncounter.patients.v1.create.Error.PotentialDuplicatePatients,
                 visitor: CandidApi.preEncounter.patients.v1.create.Error._Visitor<_Result>
             ) {
                 return CandidApi.preEncounter.patients.v1.create.Error._visit(this, visitor);
@@ -66,6 +90,8 @@ export const Error = {
         switch (value.errorName) {
             case "VersionConflictError":
                 return visitor.versionConflictError(value.content);
+            case "PotentialDuplicatePatients":
+                return visitor.potentialDuplicatePatients(value.content);
             default:
                 return visitor._other(value as any);
         }

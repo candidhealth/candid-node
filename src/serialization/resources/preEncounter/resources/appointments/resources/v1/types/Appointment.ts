@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { AppointmentId } from "./AppointmentId";
+import { AppointmentId } from "../../../../common/types/AppointmentId";
 import { OrganizationId } from "../../../../common/types/OrganizationId";
 import { UserId } from "../../../../common/types/UserId";
 import { MutableAppointment } from "./MutableAppointment";

@@ -42,19 +42,15 @@ export class V1 {
      *                 given: ["string"],
      *                 use: CandidApi.preEncounter.NameUse.Usual,
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
      *             },
      *             dateOfBirth: "2023-01-15",
      *             biologicalSex: CandidApi.preEncounter.Sex.Female
      *         },
      *         relationship: CandidApi.preEncounter.Relationship.Self,
-     *         patient: CandidApi.preEncounter.patients.v1.PatientId("string"),
+     *         patient: CandidApi.preEncounter.PatientId("string"),
      *         insurancePlan: {
      *             memberId: "string",
      *             payerId: CandidApi.preEncounter.PayerId("string"),
@@ -64,12 +60,8 @@ export class V1 {
      *             planType: CandidApi.preEncounter.coverages.v1.NetworkType.SelfPay,
      *             type: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode.C01,
      *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
+     *                 start: "2023-01-15",
+     *                 end: "2023-01-15"
      *             },
      *             insuranceCardImageLocator: "string"
      *         },
@@ -108,7 +100,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -142,13 +134,13 @@ export class V1 {
     /**
      * Updates a Coverage. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
      *
-     * @param {CandidApi.preEncounter.coverages.v1.CoverageId} id
+     * @param {CandidApi.preEncounter.CoverageId} id
      * @param {string} version
      * @param {CandidApi.preEncounter.coverages.v1.MutableCoverage} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.coverages.v1.update(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "string", {
+     *     await client.preEncounter.coverages.v1.update(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "string", {
      *         status: CandidApi.preEncounter.coverages.v1.CoverageStatus.Active,
      *         subscriber: {
      *             name: {
@@ -156,19 +148,15 @@ export class V1 {
      *                 given: ["string"],
      *                 use: CandidApi.preEncounter.NameUse.Usual,
      *                 period: {
-     *                     start: {
-     *                         "key": "value"
-     *                     },
-     *                     end: {
-     *                         "key": "value"
-     *                     }
+     *                     start: "2023-01-15",
+     *                     end: "2023-01-15"
      *                 }
      *             },
      *             dateOfBirth: "2023-01-15",
      *             biologicalSex: CandidApi.preEncounter.Sex.Female
      *         },
      *         relationship: CandidApi.preEncounter.Relationship.Self,
-     *         patient: CandidApi.preEncounter.patients.v1.PatientId("string"),
+     *         patient: CandidApi.preEncounter.PatientId("string"),
      *         insurancePlan: {
      *             memberId: "string",
      *             payerId: CandidApi.preEncounter.PayerId("string"),
@@ -178,12 +166,8 @@ export class V1 {
      *             planType: CandidApi.preEncounter.coverages.v1.NetworkType.SelfPay,
      *             type: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode.C01,
      *             period: {
-     *                 start: {
-     *                     "key": "value"
-     *                 },
-     *                 end: {
-     *                     "key": "value"
-     *                 }
+     *                 start: "2023-01-15",
+     *                 end: "2023-01-15"
      *             },
      *             insuranceCardImageLocator: "string"
      *         },
@@ -206,7 +190,7 @@ export class V1 {
      *     })
      */
     public async update(
-        id: CandidApi.preEncounter.coverages.v1.CoverageId,
+        id: CandidApi.preEncounter.CoverageId,
         version: string,
         request: CandidApi.preEncounter.coverages.v1.MutableCoverage,
         requestOptions?: V1.RequestOptions
@@ -218,7 +202,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/coverages/v1/${encodeURIComponent(
-                    serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
+                    serializers.preEncounter.CoverageId.jsonOrThrow(id)
                 )}/${encodeURIComponent(version)}`
             ),
             method: "PUT",
@@ -226,7 +210,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -279,14 +263,14 @@ export class V1 {
     /**
      * gets a specific Coverage
      *
-     * @param {CandidApi.preEncounter.coverages.v1.CoverageId} id
+     * @param {CandidApi.preEncounter.CoverageId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.coverages.v1.get(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.preEncounter.coverages.v1.get(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
-        id: CandidApi.preEncounter.coverages.v1.CoverageId,
+        id: CandidApi.preEncounter.CoverageId,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.get.Error>
@@ -295,14 +279,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/coverages/v1/${encodeURIComponent(serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id))}`
+                `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -333,14 +317,14 @@ export class V1 {
     /**
      * Gets a coverage along with it's full history. The return list is ordered by version ascending.
      *
-     * @param {CandidApi.preEncounter.coverages.v1.CoverageId} id
+     * @param {CandidApi.preEncounter.CoverageId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.coverages.v1.getHistory(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.preEncounter.coverages.v1.getHistory(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async getHistory(
-        id: CandidApi.preEncounter.coverages.v1.CoverageId,
+        id: CandidApi.preEncounter.CoverageId,
         requestOptions?: V1.RequestOptions
     ): Promise<
         core.APIResponse<
@@ -352,16 +336,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/coverages/v1/${encodeURIComponent(
-                    serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
-                )}/history`
+                `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}/history`
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -444,7 +426,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -504,7 +486,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -536,19 +518,19 @@ export class V1 {
     /**
      * Initiates an eligibility check. Returns the metadata of the check if successfully initiated.
      *
-     * @param {CandidApi.preEncounter.coverages.v1.CoverageId} id
+     * @param {CandidApi.preEncounter.CoverageId} id
      * @param {CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.coverages.v1.checkEligibility(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.preEncounter.coverages.v1.checkEligibility(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         serviceCode: CandidApi.preEncounter.coverages.v1.ServiceTypeCode.MedicalCare,
      *         dateOfService: "2023-01-15",
      *         npi: "string"
      *     })
      */
     public async checkEligibility(
-        id: CandidApi.preEncounter.coverages.v1.CoverageId,
+        id: CandidApi.preEncounter.CoverageId,
         request: CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest,
         requestOptions?: V1.RequestOptions
     ): Promise<
@@ -561,16 +543,14 @@ export class V1 {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
-                `/coverages/v1/${encodeURIComponent(
-                    serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
-                )}/eligibility`
+                `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}/eligibility`
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -604,15 +584,15 @@ export class V1 {
     /**
      * Gets the eligibility of a patient for a specific coverage if successful.
      *
-     * @param {CandidApi.preEncounter.coverages.v1.CoverageId} id
+     * @param {CandidApi.preEncounter.CoverageId} id
      * @param {string} checkId
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.coverages.v1.getEligibility(CandidApi.preEncounter.coverages.v1.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "string")
+     *     await client.preEncounter.coverages.v1.getEligibility(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "string")
      */
     public async getEligibility(
-        id: CandidApi.preEncounter.coverages.v1.CoverageId,
+        id: CandidApi.preEncounter.CoverageId,
         checkId: string,
         requestOptions?: V1.RequestOptions
     ): Promise<
@@ -626,7 +606,7 @@ export class V1 {
                 ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
                     .preEncounter,
                 `/coverages/v1/${encodeURIComponent(
-                    serializers.preEncounter.coverages.v1.CoverageId.jsonOrThrow(id)
+                    serializers.preEncounter.CoverageId.jsonOrThrow(id)
                 )}/eligibility/${encodeURIComponent(checkId)}`
             ),
             method: "GET",
@@ -634,7 +614,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.33.0",
+                "X-Fern-SDK-Version": "0.33.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
