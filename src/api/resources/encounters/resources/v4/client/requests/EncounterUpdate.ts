@@ -103,6 +103,29 @@ import * as CandidApi from "../../../../../../index";
  *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
  *         lastMenstrualPeriodDate: "2023-01-15",
  *         delayReasonCode: CandidApi.DelayReasonCode.C1,
+ *         patient: {
+ *             firstName: "string",
+ *             lastName: "string",
+ *             gender: CandidApi.Gender.Male,
+ *             externalId: "string",
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             phoneNumbers: [{
+ *                     number: "1234567890",
+ *                     type: CandidApi.PhoneNumberType.Home
+ *                 }],
+ *             phoneConsent: true,
+ *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *             emailConsent: true,
+ *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+ *         },
  *         patientAuthorizedRelease: true,
  *         schemaInstances: [{
  *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
@@ -150,7 +173,7 @@ export interface EncounterUpdate {
      *
      */
     diagnosisIds?: CandidApi.DiagnosisId[];
-    /** Names of tags that should be on the encounter.  Note all tags on encounter will be overriden with this list. */
+    /** Names of tags that should be on the encounter.  Note all tags on encounter will be overridden with this list. */
     tagIds?: CandidApi.TagId[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
@@ -257,6 +280,11 @@ export interface EncounterUpdate {
      *
      */
     delayReasonCode?: CandidApi.DelayReasonCode;
+    /**
+     * Contains the identification information of the individual receiving medical services.
+     *
+     */
+    patient?: CandidApi.PatientUpdate;
     /**
      * Whether this patient has authorized the release of medical information
      * for billing purpose.

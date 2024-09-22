@@ -18,6 +18,7 @@ import { FacilityTypeCode } from "../../../../../commons/types/FacilityTypeCode"
 import { SubscriberCreate } from "../../../../../individual/types/SubscriberCreate";
 import { ServiceAuthorizationExceptionCode } from "../../types/ServiceAuthorizationExceptionCode";
 import { DelayReasonCode } from "../../../../../commons/types/DelayReasonCode";
+import { PatientUpdate } from "../../../../../individual/types/PatientUpdate";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { VitalsUpdate } from "../../types/VitalsUpdate";
 
@@ -77,6 +78,7 @@ export const EncounterUpdate: core.serialization.Schema<
         core.serialization.string().optional()
     ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
+    patient: PatientUpdate.optional(),
     patientAuthorizedRelease: core.serialization.property(
         "patient_authorized_release",
         core.serialization.boolean().optional()
@@ -115,6 +117,7 @@ export declare namespace EncounterUpdate {
         onset_of_current_illness_or_symptom_date?: string | null;
         last_menstrual_period_date?: string | null;
         delay_reason_code?: DelayReasonCode.Raw | null;
+        patient?: PatientUpdate.Raw | null;
         patient_authorized_release?: boolean | null;
         schema_instances?: SchemaInstance.Raw[] | null;
         vitals?: VitalsUpdate.Raw | null;

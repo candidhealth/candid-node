@@ -2761,6 +2761,31 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
     onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
     lastMenstrualPeriodDate: "2023-01-15",
     delayReasonCode: CandidApi.DelayReasonCode.C1,
+    patient: {
+        firstName: "string",
+        lastName: "string",
+        gender: CandidApi.Gender.Male,
+        externalId: "string",
+        dateOfBirth: "2023-01-15",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        phoneNumbers: [
+            {
+                number: "1234567890",
+                type: CandidApi.PhoneNumberType.Home,
+            },
+        ],
+        phoneConsent: true,
+        email: CandidApi.Email("johndoe@joincandidhealth.com"),
+        emailConsent: true,
+        nonInsurancePayers: [CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+    },
     patientAuthorizedRelease: true,
     schemaInstances: [
         {
