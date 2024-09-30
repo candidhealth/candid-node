@@ -144,6 +144,107 @@ import * as CandidApi from "../../../../../../index";
  *             bodyTemperatureF: 98,
  *             hemoglobinGdl: 15.1,
  *             hematocritPct: 51.2
+ *         },
+ *         existingMedications: [{
+ *                 name: "Lisinopril",
+ *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
+ *                 dosage: "10mg",
+ *                 dosageForm: "Tablet",
+ *                 frequency: "Once Daily",
+ *                 asNeeded: true
+ *             }],
+ *         renderingProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
+ *         serviceFacility: {
+ *             organizationName: "Test Organization",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             }
+ *         },
+ *         guarantor: {
+ *             firstName: "string",
+ *             lastName: "string",
+ *             externalId: "string",
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             phoneNumbers: [{
+ *                     number: "1234567890",
+ *                     type: CandidApi.PhoneNumberType.Home
+ *                 }],
+ *             phoneConsent: true,
+ *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+ *             emailConsent: true
+ *         },
+ *         supervisingProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
+ *         referringProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
+ *         initialReferringProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             qualifier: CandidApi.QualifierCode.Dq,
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         }
  *     }
  */
@@ -306,4 +407,44 @@ export interface EncounterUpdate {
      *
      */
     vitals?: CandidApi.encounters.v4.VitalsUpdate;
+    /**
+     * Existing medications that should be on the encounter.
+     * Note all current existing medications on encounter will be overridden with this list.
+     *
+     */
+    existingMedications?: CandidApi.encounters.v4.Medication[];
+    /**
+     * The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service.
+     * For telehealth services, the rendering provider performs the visit, asynchronous communication, or other service. The rendering provider address should generally be the same as the service facility address.
+     *
+     */
+    renderingProvider?: CandidApi.encounterProviders.v2.RenderingProviderUpdate;
+    /**
+     * Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process.
+     *
+     */
+    serviceFacility?: CandidApi.EncounterServiceFacilityUpdate;
+    /**
+     * Personal and contact info for the guarantor of the patient responsibility.
+     *
+     */
+    guarantor?: CandidApi.guarantor.v1.GuarantorUpdate;
+    /**
+     * Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send.
+     *
+     */
+    supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProviderUpdate;
+    /**
+     * The final provider who referred the services that were rendered.
+     * All physicians who order services or refer Medicare beneficiaries must
+     * report this data.
+     *
+     */
+    referringProvider?: CandidApi.encounterProviders.v2.ReferringProviderUpdate;
+    /**
+     * The second iteration of Loop ID-2310. Use code "P3 - Primary Care Provider" in this loop to
+     * indicate the initial referral from the primary care provider or whatever provider wrote the initial referral for this patient's episode of care being billed/reported in this transaction.
+     *
+     */
+    initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate;
 }

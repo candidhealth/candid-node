@@ -47,6 +47,8 @@ import * as CandidApi from "../../../../../../index";
  *             organizationName: "string"
  *         },
  *         renderingProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -55,8 +57,6 @@ import * as CandidApi from "../../../../../../index";
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
  *             },
- *             npi: "string",
- *             taxonomyCode: "string",
  *             firstName: "string",
  *             lastName: "string",
  *             organizationName: "string"
@@ -178,7 +178,6 @@ import * as CandidApi from "../../../../../../index";
  *             gender: CandidApi.Gender.Male
  *         },
  *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
- *         appointmentType: "string",
  *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
  *         diagnoses: [{
  *                 name: "string",
@@ -301,6 +300,7 @@ import * as CandidApi from "../../../../../../index";
  *         patientAuthorizedRelease: true,
  *         benefitsAssignedToProvider: true,
  *         providerAcceptsAssignment: true,
+ *         appointmentType: "string",
  *         existingMedications: [{
  *                 name: "Lisinopril",
  *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
@@ -410,11 +410,6 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     subscriberSecondary?: CandidApi.SubscriberCreate;
     /** Box 23 on the CMS-1500 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
-    /**
-     * Human-readable description of the appointment type (ex: "Acupuncture - Headaches").
-     *
-     */
-    appointmentType?: string;
     /**
      * Defines the party to be billed with the initial balance owed on the claim.
      *

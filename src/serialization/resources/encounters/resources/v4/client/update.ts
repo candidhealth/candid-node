@@ -10,6 +10,7 @@ import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotF
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
+import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.update.Error.Raw,
@@ -31,6 +32,9 @@ export const Error: core.serialization.Schema<
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
         }),
+        UnprocessableEntityError: core.serialization.object({
+            content: UnprocessableEntityErrorMessage,
+        }),
     })
     .transform<CandidApi.encounters.v4.update.Error>({
         transform: (value) => {
@@ -45,6 +49,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.update.Error.httpRequestValidationsError(value.content);
                 case "SchemaInstanceValidationHttpFailure":
                     return CandidApi.encounters.v4.update.Error.schemaInstanceValidationHttpFailure(value.content);
+                case "UnprocessableEntityError":
+                    return CandidApi.encounters.v4.update.Error.unprocessableEntityError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -56,7 +62,8 @@ export declare namespace Error {
         | Error.EntityNotFoundError
         | Error.UnauthorizedError
         | Error.HttpRequestValidationsError
-        | Error.SchemaInstanceValidationHttpFailure;
+        | Error.SchemaInstanceValidationHttpFailure
+        | Error.UnprocessableEntityError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -81,5 +88,10 @@ export declare namespace Error {
     interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
+    }
+
+    interface UnprocessableEntityError {
+        errorName: "UnprocessableEntityError";
+        content: UnprocessableEntityErrorMessage.Raw;
     }
 }

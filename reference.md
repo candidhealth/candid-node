@@ -1935,6 +1935,8 @@ await client.encounters.v4.create({
         organizationName: "string",
     },
     renderingProvider: {
+        npi: "string",
+        taxonomyCode: "string",
         address: {
             address1: "123 Main St",
             address2: "Apt 1",
@@ -1943,8 +1945,6 @@ await client.encounters.v4.create({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
-        npi: "string",
-        taxonomyCode: "string",
         firstName: "string",
         lastName: "string",
         organizationName: "string",
@@ -2066,7 +2066,6 @@ await client.encounters.v4.create({
         gender: CandidApi.Gender.Male,
     },
     priorAuthorizationNumber: CandidApi.PriorAuthorizationNumber("string"),
-    appointmentType: "string",
     responsibleParty: CandidApi.ResponsiblePartyType.InsurancePay,
     diagnoses: [
         {
@@ -2214,6 +2213,7 @@ await client.encounters.v4.create({
     patientAuthorizedRelease: true,
     benefitsAssignedToProvider: true,
     providerAcceptsAssignment: true,
+    appointmentType: "string",
     existingMedications: [
         {
             name: "Lisinopril",
@@ -2332,7 +2332,6 @@ where applicable. In particular, the following fields are populated from the pat
 -   Subscriber Primary
 -   Subscriber Secondary
 -   Prior Authorization Number
--   Appointment Type
 -   Responsible Party
 -   Guarantor
 
@@ -2373,6 +2372,8 @@ await client.encounters.v4.createFromPreEncounterPatient({
         organizationName: "string",
     },
     renderingProvider: {
+        npi: "string",
+        taxonomyCode: "string",
         address: {
             address1: "123 Main St",
             address2: "Apt 1",
@@ -2381,8 +2382,6 @@ await client.encounters.v4.createFromPreEncounterPatient({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
-        npi: "string",
-        taxonomyCode: "string",
         firstName: "string",
         lastName: "string",
         organizationName: "string",
@@ -2553,6 +2552,7 @@ await client.encounters.v4.createFromPreEncounterPatient({
     patientAuthorizedRelease: true,
     benefitsAssignedToProvider: true,
     providerAcceptsAssignment: true,
+    appointmentType: "string",
     existingMedications: [
         {
             name: "Lisinopril",
@@ -2806,6 +2806,111 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
         bodyTemperatureF: 98,
         hemoglobinGdl: 15.1,
         hematocritPct: 51.2,
+    },
+    existingMedications: [
+        {
+            name: "Lisinopril",
+            rxCui: CandidApi.RxCui("860975"),
+            dosage: "10mg",
+            dosageForm: "Tablet",
+            frequency: "Once Daily",
+            asNeeded: true,
+        },
+    ],
+    renderingProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    serviceFacility: {
+        organizationName: "Test Organization",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+    },
+    guarantor: {
+        firstName: "string",
+        lastName: "string",
+        externalId: "string",
+        dateOfBirth: "2023-01-15",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        phoneNumbers: [
+            {
+                number: "1234567890",
+                type: CandidApi.PhoneNumberType.Home,
+            },
+        ],
+        phoneConsent: true,
+        email: CandidApi.Email("johndoe@joincandidhealth.com"),
+        emailConsent: true,
+    },
+    supervisingProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    referringProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    initialReferringProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
 });
 ```
@@ -4191,7 +4296,7 @@ await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-
 <dl>
 <dd>
 
-**request:** `CandidApi.guarantor.v1.GuarantorUpdate`
+**request:** `CandidApi.GuarantorUpdate`
 
 </dd>
 </dl>
@@ -8490,1039 +8595,6 @@ await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ff
 </dl>
 </details>
 
-## ThirdPartyPayerPayments V1
-
-<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPaymentsPage, CandidApi.thirdPartyPayerPayments.v1.getMulti.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns all third party payer payments
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerPayments.v1.getMulti({
-    limit: 1,
-    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    checkNumber: "string",
-    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    sort: CandidApi.ThirdPartyPayerPaymentSortField.AmountCents,
-    sortDirection: CandidApi.SortDirection.Asc,
-    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.thirdPartyPayerPayments.v1.GetMultiThirdPartyPayerPaymentRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">get</a>(thirdPartyPayerPaymentId) -> core.APIResponse<CandidApi.ThirdPartyPayerPayment, CandidApi.thirdPartyPayerPayments.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieves a previously created third party payer payment by its `third_party_payer_payment_id`.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerPayments.v1.get(CandidApi.ThirdPartyPayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerPaymentId:** `CandidApi.ThirdPartyPayerPaymentId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPayment, CandidApi.thirdPartyPayerPayments.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerPayments.v1.create({
-    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    amountCents: 1,
-    paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-    paymentNote: "string",
-    checkNumber: "string",
-    allocations: [
-        {
-            amountCents: 1,
-            target: {
-                type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
-    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.ThirdPartyPayerPaymentCreate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">update</a>(thirdPartyPayerPaymentId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPayment, CandidApi.thirdPartyPayerPayments.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerPayments.v1.update(
-    CandidApi.ThirdPartyPayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-        paymentNote: {
-            type: "set",
-            value: "string",
-        },
-        invoiceId: {
-            type: "set",
-            value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        },
-    }
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerPaymentId:** `CandidApi.ThirdPartyPayerPaymentId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.thirdPartyPayerPayments.v1.UpdateThirdPartyPayerPaymentRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerPayments.v1.<a href="/src/api/resources/thirdPartyPayerPayments/resources/v1/client/Client.ts">delete</a>(thirdPartyPayerPaymentId) -> core.APIResponse<void, CandidApi.thirdPartyPayerPayments.v1.delete.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deletes the third party payer payment record matching the provided `third_party_payer_payment_id`.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerPayments.v1.delete(
-    CandidApi.ThirdPartyPayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerPaymentId:** `CandidApi.ThirdPartyPayerPaymentId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## ThirdPartyPayerRefunds V1
-
-<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerRefundsPage, CandidApi.thirdPartyPayerRefunds.v1.getMulti.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns all third party payer refunds satisfying the search criteria
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerRefunds.v1.getMulti({
-    limit: 1,
-    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    checkNumber: "string",
-    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    sort: CandidApi.ThirdPartyPayerRefundSortField.AmountCents,
-    sortDirection: CandidApi.SortDirection.Asc,
-    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.thirdPartyPayerRefunds.v1.GetMultiThirdPartyPayerRefundsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">get</a>(thirdPartyPayerRefundId) -> core.APIResponse<CandidApi.ThirdPartyPayerRefund, CandidApi.thirdPartyPayerRefunds.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieves a previously created third party payer refund by its `third_party_payer_refund_id`.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerRefunds.v1.get(CandidApi.ThirdPartyPayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerRefundId:** `CandidApi.ThirdPartyPayerRefundId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerRefund, CandidApi.thirdPartyPayerRefunds.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a new third party payer refund record and returns the newly created `ThirdPartyPayerRefund` object.
-The allocations can describe whether the refund is being applied toward a specific service line,
-claim, or billing provider.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerRefunds.v1.create({
-    thirdPartyPayerId: CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    amountCents: 1,
-    refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-    refundNote: "string",
-    allocations: [
-        {
-            amountCents: 1,
-            target: {
-                type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
-    refundReason: CandidApi.RefundReason.Overcharged,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.ThirdPartyPayerRefundCreate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">update</a>(thirdPartyPayerRefundId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerRefund, CandidApi.thirdPartyPayerRefunds.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates the third party payer refund record matching the provided third_party_payer_refund_id. If updating the refund amount,
-then the allocations must be appropriately updated as well.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerRefunds.v1.update(
-    CandidApi.ThirdPartyPayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-        refundNote: {
-            type: "set",
-            value: "string",
-        },
-        refundReason: {
-            type: "set",
-            value: CandidApi.RefundReason.Overcharged,
-        },
-        invoiceId: {
-            type: "set",
-            value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        },
-    }
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerRefundId:** `CandidApi.ThirdPartyPayerRefundId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.thirdPartyPayerRefunds.v1.ThirdPartyPayerRefundUpdate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayerRefunds.v1.<a href="/src/api/resources/thirdPartyPayerRefunds/resources/v1/client/Client.ts">delete</a>(thirdPartyPayerRefundId) -> core.APIResponse<void, CandidApi.thirdPartyPayerRefunds.v1.delete.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deletes the third party payer refund record matching the provided `third_party_payer_refund_id`.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayerRefunds.v1.delete(
-    CandidApi.ThirdPartyPayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerRefundId:** `CandidApi.ThirdPartyPayerRefundId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## ThirdPartyPayers V1
-
-<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayers.v1.create({
-    name: "string",
-    description: "string",
-    category: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.CreateThirdPartyPayerRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">toggleEnablement</a>(thirdPartyPayerId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.toggleEnablement.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayers.v1.toggleEnablement(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    enabled: true,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.ToggleThirdPartyPayerEnablementRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayerPage, CandidApi.thirdPartyPayers.v1.getMulti.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayers.v1.getMulti({
-    name: "string",
-    category: "string",
-    enabled: true,
-    sort: CandidApi.ThirdPartyPayerSortField.Name,
-    sortDirection: CandidApi.SortDirection.Asc,
-    limit: 1,
-    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.thirdPartyPayers.v1.GetMultiThirdPartyPayersRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">get</a>(thirdPartyPayerId) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayers.v1.get(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">update</a>(thirdPartyPayerId, { ...params }) -> core.APIResponse<CandidApi.ThirdPartyPayer, CandidApi.thirdPartyPayers.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayers.v1.update(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    name: "string",
-    description: {
-        type: "remove",
-    },
-    category: {
-        type: "remove",
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.ThirdPartyPayerUpdateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.thirdPartyPayers.v1.<a href="/src/api/resources/thirdPartyPayers/resources/v1/client/Client.ts">delete</a>(thirdPartyPayerId) -> core.APIResponse<void, CandidApi.thirdPartyPayers.v1.delete.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.thirdPartyPayers.v1.delete(CandidApi.ThirdPartyPayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**thirdPartyPayerId:** `CandidApi.ThirdPartyPayerId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## WriteOffs V1
 
 <details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error></code></summary>
@@ -9842,6 +8914,46 @@ await client.preEncounter.appointments.v1.create({
         },
     ],
     placerAppointmentId: "string",
+    attendingDoctor: {
+        name: {
+            family: "string",
+            given: ["string"],
+            use: CandidApi.NameUse.Usual,
+            period: {
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
+            },
+        },
+        type: CandidApi.ExternalProviderType.Primary,
+        npi: "string",
+        telecoms: [
+            {
+                value: "string",
+                use: CandidApi.ContactPointUse.Home,
+                period: {
+                    key: "value",
+                },
+            },
+        ],
+        addresses: [
+            {
+                key: "value",
+            },
+        ],
+        period: {
+            start: {
+                key: "value",
+            },
+            end: {
+                key: "value",
+            },
+        },
+        canonicalId: CandidApi.CanonicalProviderId("string"),
+    },
     estimatedCopayCents: 1,
     estimatedPatientResponsibilityCents: 1,
     patientDepositCents: 1,
@@ -10051,6 +9163,46 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("string
         },
     ],
     placerAppointmentId: "string",
+    attendingDoctor: {
+        name: {
+            family: "string",
+            given: ["string"],
+            use: CandidApi.NameUse.Usual,
+            period: {
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
+            },
+        },
+        type: CandidApi.ExternalProviderType.Primary,
+        npi: "string",
+        telecoms: [
+            {
+                value: "string",
+                use: CandidApi.ContactPointUse.Home,
+                period: {
+                    key: "value",
+                },
+            },
+        ],
+        addresses: [
+            {
+                key: "value",
+            },
+        ],
+        period: {
+            start: {
+                key: "value",
+            },
+            end: {
+                key: "value",
+            },
+        },
+        canonicalId: CandidApi.CanonicalProviderId("string"),
+    },
     estimatedCopayCents: 1,
     estimatedPatientResponsibilityCents: 1,
     patientDepositCents: 1,
@@ -10219,8 +9371,12 @@ await client.preEncounter.coverages.v1.create({
             given: ["string"],
             use: CandidApi.NameUse.Usual,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
         dateOfBirth: "2023-01-15",
@@ -10232,13 +9388,23 @@ await client.preEncounter.coverages.v1.create({
         memberId: "string",
         payerId: CandidApi.PayerId("string"),
         payerName: "string",
+        additionalPayerInformation: {
+            availityEligibilityId: "string",
+            availityPayerId: "string",
+            availityPayerName: "string",
+            availityRemittancePayerId: "string",
+        },
         groupNumber: "string",
         name: "string",
         planType: CandidApi.NetworkType.SelfPay,
         type: CandidApi.InsuranceTypeCode.C01,
         period: {
-            start: "2023-01-15",
-            end: "2023-01-15",
+            start: {
+                key: "value",
+            },
+            end: {
+                key: "value",
+            },
         },
         insuranceCardImageLocator: "string",
     },
@@ -10252,6 +9418,11 @@ await client.preEncounter.coverages.v1.create({
             initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
         },
     ],
+    latestEligibilityCheck: {
+        checkId: "string",
+        status: CandidApi.EligibilityStatus.Active,
+        initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+    },
     benefits: {
         planCoverage: {
             key: "value",
@@ -10331,8 +9502,12 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
             given: ["string"],
             use: CandidApi.NameUse.Usual,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
         dateOfBirth: "2023-01-15",
@@ -10344,13 +9519,23 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
         memberId: "string",
         payerId: CandidApi.PayerId("string"),
         payerName: "string",
+        additionalPayerInformation: {
+            availityEligibilityId: "string",
+            availityPayerId: "string",
+            availityPayerName: "string",
+            availityRemittancePayerId: "string",
+        },
         groupNumber: "string",
         name: "string",
         planType: CandidApi.NetworkType.SelfPay,
         type: CandidApi.InsuranceTypeCode.C01,
         period: {
-            start: "2023-01-15",
-            end: "2023-01-15",
+            start: {
+                key: "value",
+            },
+            end: {
+                key: "value",
+            },
         },
         insuranceCardImageLocator: "string",
     },
@@ -10364,6 +9549,11 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
             initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
         },
     ],
+    latestEligibilityCheck: {
+        checkId: "string",
+        status: CandidApi.EligibilityStatus.Active,
+        initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+    },
     benefits: {
         planCoverage: {
             key: "value",
@@ -11006,8 +10196,12 @@ await client.preEncounter.patients.v1.create({
             given: ["string"],
             use: CandidApi.NameUse.Usual,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
         otherNames: [
@@ -11016,8 +10210,12 @@ await client.preEncounter.patients.v1.create({
                 given: ["string"],
                 use: CandidApi.NameUse.Usual,
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
             },
         ],
@@ -11040,8 +10238,12 @@ await client.preEncounter.patients.v1.create({
             postalCode: "string",
             country: "string",
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
         otherAddresses: [
@@ -11053,8 +10255,12 @@ await client.preEncounter.patients.v1.create({
                 postalCode: "string",
                 country: "string",
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
             },
         ],
@@ -11062,8 +10268,7 @@ await client.preEncounter.patients.v1.create({
             value: "string",
             use: CandidApi.ContactPointUse.Home,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                key: "value",
             },
         },
         otherTelecoms: [
@@ -11071,8 +10276,7 @@ await client.preEncounter.patients.v1.create({
                 value: "string",
                 use: CandidApi.ContactPointUse.Home,
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    key: "value",
                 },
             },
         ],
@@ -11092,8 +10296,12 @@ await client.preEncounter.patients.v1.create({
                     given: ["string"],
                     use: CandidApi.NameUse.Usual,
                     period: {
-                        start: "2023-01-15",
-                        end: "2023-01-15",
+                        start: {
+                            key: "value",
+                        },
+                        end: {
+                            key: "value",
+                        },
                     },
                 },
                 telecoms: [
@@ -11101,8 +10309,7 @@ await client.preEncounter.patients.v1.create({
                         value: "string",
                         use: CandidApi.ContactPointUse.Home,
                         period: {
-                            start: "2023-01-15",
-                            end: "2023-01-15",
+                            key: "value",
                         },
                     },
                 ],
@@ -11115,14 +10322,22 @@ await client.preEncounter.patients.v1.create({
                         postalCode: "string",
                         country: "string",
                         period: {
-                            start: "2023-01-15",
-                            end: "2023-01-15",
+                            start: {
+                                key: "value",
+                            },
+                            end: {
+                                key: "value",
+                            },
                         },
                     },
                 ],
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
                 hipaaAuthorization: true,
             },
@@ -11134,8 +10349,12 @@ await client.preEncounter.patients.v1.create({
                     given: ["string"],
                     use: CandidApi.NameUse.Usual,
                     period: {
-                        start: "2023-01-15",
-                        end: "2023-01-15",
+                        start: {
+                            key: "value",
+                        },
+                        end: {
+                            key: "value",
+                        },
                     },
                 },
                 type: CandidApi.ExternalProviderType.Primary,
@@ -11145,8 +10364,7 @@ await client.preEncounter.patients.v1.create({
                         value: "string",
                         use: CandidApi.ContactPointUse.Home,
                         period: {
-                            start: "2023-01-15",
-                            end: "2023-01-15",
+                            key: "value",
                         },
                     },
                 ],
@@ -11156,8 +10374,12 @@ await client.preEncounter.patients.v1.create({
                     },
                 ],
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
                 canonicalId: CandidApi.CanonicalProviderId("string"),
             },
@@ -11172,16 +10394,19 @@ await client.preEncounter.patients.v1.create({
                 given: ["string"],
                 use: CandidApi.NameUse.Usual,
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
             },
             telecom: {
                 value: "string",
                 use: CandidApi.ContactPointUse.Home,
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    key: "value",
                 },
             },
             email: "string",
@@ -11194,12 +10419,88 @@ await client.preEncounter.patients.v1.create({
                 postalCode: "string",
                 country: "string",
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
             },
         },
         selfPay: true,
+        authorizations: [
+            {
+                payerId: CandidApi.PayerId("string"),
+                payerName: "string",
+                additionalPayerInformation: {
+                    key: "value",
+                },
+                authorizationNumber: "string",
+                cptCode: "string",
+                units: CandidApi.AuthorizationUnit.Visit,
+                quantity: {
+                    key: "value",
+                },
+                period: {
+                    key: "value",
+                },
+                notes: {
+                    key: "value",
+                },
+            },
+        ],
+        referrals: [
+            {
+                provider: {
+                    name: {
+                        family: "string",
+                        given: ["string"],
+                        use: CandidApi.NameUse.Usual,
+                        period: {
+                            start: {
+                                key: "value",
+                            },
+                            end: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    type: CandidApi.ExternalProviderType.Primary,
+                    npi: "string",
+                    telecoms: [
+                        {
+                            value: "string",
+                            use: CandidApi.ContactPointUse.Home,
+                            period: {
+                                key: "value",
+                            },
+                        },
+                    ],
+                    addresses: [
+                        {
+                            key: "value",
+                        },
+                    ],
+                    period: {
+                        start: {
+                            key: "value",
+                        },
+                        end: {
+                            key: "value",
+                        },
+                    },
+                    canonicalId: CandidApi.CanonicalProviderId("string"),
+                },
+                referralNumber: "string",
+                period: {
+                    key: "value",
+                },
+                notes: {
+                    key: "value",
+                },
+            },
+        ],
     },
 });
 ```
@@ -11465,8 +10766,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
         given: ["string"],
         use: CandidApi.NameUse.Usual,
         period: {
-            start: "2023-01-15",
-            end: "2023-01-15",
+            start: {
+                key: "value",
+            },
+            end: {
+                key: "value",
+            },
         },
     },
     otherNames: [
@@ -11475,8 +10780,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             given: ["string"],
             use: CandidApi.NameUse.Usual,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
     ],
@@ -11499,8 +10808,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
         postalCode: "string",
         country: "string",
         period: {
-            start: "2023-01-15",
-            end: "2023-01-15",
+            start: {
+                key: "value",
+            },
+            end: {
+                key: "value",
+            },
         },
     },
     otherAddresses: [
@@ -11512,8 +10825,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             postalCode: "string",
             country: "string",
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
     ],
@@ -11521,8 +10838,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
         value: "string",
         use: CandidApi.ContactPointUse.Home,
         period: {
-            start: "2023-01-15",
-            end: "2023-01-15",
+            key: "value",
         },
     },
     otherTelecoms: [
@@ -11530,8 +10846,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             value: "string",
             use: CandidApi.ContactPointUse.Home,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                key: "value",
             },
         },
     ],
@@ -11551,8 +10866,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                 given: ["string"],
                 use: CandidApi.NameUse.Usual,
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
             },
             telecoms: [
@@ -11560,8 +10879,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                     value: "string",
                     use: CandidApi.ContactPointUse.Home,
                     period: {
-                        start: "2023-01-15",
-                        end: "2023-01-15",
+                        key: "value",
                     },
                 },
             ],
@@ -11574,14 +10892,22 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                     postalCode: "string",
                     country: "string",
                     period: {
-                        start: "2023-01-15",
-                        end: "2023-01-15",
+                        start: {
+                            key: "value",
+                        },
+                        end: {
+                            key: "value",
+                        },
                     },
                 },
             ],
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
             hipaaAuthorization: true,
         },
@@ -11593,8 +10919,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                 given: ["string"],
                 use: CandidApi.NameUse.Usual,
                 period: {
-                    start: "2023-01-15",
-                    end: "2023-01-15",
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
                 },
             },
             type: CandidApi.ExternalProviderType.Primary,
@@ -11604,8 +10934,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                     value: "string",
                     use: CandidApi.ContactPointUse.Home,
                     period: {
-                        start: "2023-01-15",
-                        end: "2023-01-15",
+                        key: "value",
                     },
                 },
             ],
@@ -11615,8 +10944,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                 },
             ],
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
             canonicalId: CandidApi.CanonicalProviderId("string"),
         },
@@ -11631,16 +10964,19 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             given: ["string"],
             use: CandidApi.NameUse.Usual,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
         telecom: {
             value: "string",
             use: CandidApi.ContactPointUse.Home,
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                key: "value",
             },
         },
         email: "string",
@@ -11653,12 +10989,88 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             postalCode: "string",
             country: "string",
             period: {
-                start: "2023-01-15",
-                end: "2023-01-15",
+                start: {
+                    key: "value",
+                },
+                end: {
+                    key: "value",
+                },
             },
         },
     },
     selfPay: true,
+    authorizations: [
+        {
+            payerId: CandidApi.PayerId("string"),
+            payerName: "string",
+            additionalPayerInformation: {
+                key: "value",
+            },
+            authorizationNumber: "string",
+            cptCode: "string",
+            units: CandidApi.AuthorizationUnit.Visit,
+            quantity: {
+                key: "value",
+            },
+            period: {
+                key: "value",
+            },
+            notes: {
+                key: "value",
+            },
+        },
+    ],
+    referrals: [
+        {
+            provider: {
+                name: {
+                    family: "string",
+                    given: ["string"],
+                    use: CandidApi.NameUse.Usual,
+                    period: {
+                        start: {
+                            key: "value",
+                        },
+                        end: {
+                            key: "value",
+                        },
+                    },
+                },
+                type: CandidApi.ExternalProviderType.Primary,
+                npi: "string",
+                telecoms: [
+                    {
+                        value: "string",
+                        use: CandidApi.ContactPointUse.Home,
+                        period: {
+                            key: "value",
+                        },
+                    },
+                ],
+                addresses: [
+                    {
+                        key: "value",
+                    },
+                ],
+                period: {
+                    start: {
+                        key: "value",
+                    },
+                    end: {
+                        key: "value",
+                    },
+                },
+                canonicalId: CandidApi.CanonicalProviderId("string"),
+            },
+            referralNumber: "string",
+            period: {
+                key: "value",
+            },
+            notes: {
+                key: "value",
+            },
+        },
+    ],
 });
 ```
 
@@ -11928,8 +11340,7 @@ await client.preEncounter.patients.v1.scan({
 
 ```typescript
 await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    organizationName: "string",
-    npi: "string",
+    organizationName: "Test Organization",
     address: {
         address1: "123 Main St",
         address2: "Apt 1",

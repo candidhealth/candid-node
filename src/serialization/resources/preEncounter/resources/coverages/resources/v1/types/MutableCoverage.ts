@@ -11,6 +11,7 @@ import { Relationship } from "../../../../common/types/Relationship";
 import { PatientId } from "../../../../common/types/PatientId";
 import { InsurancePlan } from "./InsurancePlan";
 import { EligibilityCheckMetadata } from "./EligibilityCheckMetadata";
+import { LatestEligibilityCheck } from "./LatestEligibilityCheck";
 import { CoverageBenefits } from "./CoverageBenefits";
 
 export const MutableCoverage: core.serialization.ObjectSchema<
@@ -27,6 +28,7 @@ export const MutableCoverage: core.serialization.ObjectSchema<
         "eligibility_checks",
         core.serialization.list(EligibilityCheckMetadata).optional()
     ),
+    latestEligibilityCheck: core.serialization.property("latest_eligibility_check", LatestEligibilityCheck.optional()),
     benefits: CoverageBenefits.optional(),
 });
 
@@ -39,6 +41,7 @@ export declare namespace MutableCoverage {
         insurance_plan: InsurancePlan.Raw;
         verified: boolean;
         eligibility_checks?: EligibilityCheckMetadata.Raw[] | null;
+        latest_eligibility_check?: LatestEligibilityCheck.Raw | null;
         benefits?: CoverageBenefits.Raw | null;
     }
 }

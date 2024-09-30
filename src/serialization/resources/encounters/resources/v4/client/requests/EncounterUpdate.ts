@@ -21,6 +21,13 @@ import { DelayReasonCode } from "../../../../../commons/types/DelayReasonCode";
 import { PatientUpdate } from "../../../../../individual/types/PatientUpdate";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { VitalsUpdate } from "../../types/VitalsUpdate";
+import { Medication } from "../../types/Medication";
+import { RenderingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/RenderingProviderUpdate";
+import { EncounterServiceFacilityUpdate } from "../../../../../serviceFacility/types/EncounterServiceFacilityUpdate";
+import { GuarantorUpdate } from "../../../../../guarantor/resources/v1/types/GuarantorUpdate";
+import { SupervisingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdate";
+import { ReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/ReferringProviderUpdate";
+import { InitialReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdate";
 
 export const EncounterUpdate: core.serialization.Schema<
     serializers.encounters.v4.EncounterUpdate.Raw,
@@ -88,6 +95,19 @@ export const EncounterUpdate: core.serialization.Schema<
         core.serialization.list(SchemaInstance).optional()
     ),
     vitals: VitalsUpdate.optional(),
+    existingMedications: core.serialization.property(
+        "existing_medications",
+        core.serialization.list(Medication).optional()
+    ),
+    renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
+    serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityUpdate.optional()),
+    guarantor: GuarantorUpdate.optional(),
+    supervisingProvider: core.serialization.property("supervising_provider", SupervisingProviderUpdate.optional()),
+    referringProvider: core.serialization.property("referring_provider", ReferringProviderUpdate.optional()),
+    initialReferringProvider: core.serialization.property(
+        "initial_referring_provider",
+        InitialReferringProviderUpdate.optional()
+    ),
 });
 
 export declare namespace EncounterUpdate {
@@ -121,5 +141,12 @@ export declare namespace EncounterUpdate {
         patient_authorized_release?: boolean | null;
         schema_instances?: SchemaInstance.Raw[] | null;
         vitals?: VitalsUpdate.Raw | null;
+        existing_medications?: Medication.Raw[] | null;
+        rendering_provider?: RenderingProviderUpdate.Raw | null;
+        service_facility?: EncounterServiceFacilityUpdate.Raw | null;
+        guarantor?: GuarantorUpdate.Raw | null;
+        supervising_provider?: SupervisingProviderUpdate.Raw | null;
+        referring_provider?: ReferringProviderUpdate.Raw | null;
+        initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;
     }
 }

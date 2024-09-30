@@ -7,5 +7,7 @@ import * as CandidApi from "../../../../../../../index";
 export interface ServiceCoverage {
     serviceCode: CandidApi.preEncounter.coverages.v1.ServiceTypeCode;
     inNetwork?: CandidApi.preEncounter.coverages.v1.ServiceCoverageDetails;
+    inNetworkFlat?: CandidApi.preEncounter.coverages.v1.CoverageDetails[];
     outOfNetwork?: CandidApi.preEncounter.coverages.v1.ServiceCoverageDetails;
+    outOfNetworkFlat?: CandidApi.preEncounter.coverages.v1.CoverageDetails[];
 }

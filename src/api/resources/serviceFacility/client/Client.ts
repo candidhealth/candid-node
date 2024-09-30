@@ -34,8 +34,7 @@ export class ServiceFacility {
      *
      * @example
      *     await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         organizationName: "string",
-     *         npi: "string",
+     *         organizationName: "Test Organization",
      *         address: {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
@@ -48,7 +47,7 @@ export class ServiceFacility {
      */
     public async update(
         serviceFacilityId: CandidApi.ServiceFacilityId,
-        request: CandidApi.EncounterServiceFacilityUpdate = {},
+        request: CandidApi.EncounterServiceFacilityUpdate,
         requestOptions?: ServiceFacility.RequestOptions
     ): Promise<core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error>> {
         const _response = await core.fetcher({
@@ -64,7 +63,7 @@ export class ServiceFacility {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

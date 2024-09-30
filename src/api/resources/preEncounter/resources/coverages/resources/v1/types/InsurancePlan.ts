@@ -8,6 +8,7 @@ export interface InsurancePlan {
     memberId: string;
     payerId: CandidApi.preEncounter.PayerId;
     payerName: string;
+    additionalPayerInformation?: CandidApi.preEncounter.AdditionalPayerInformation;
     groupNumber?: string;
     name?: string;
     planType?: CandidApi.preEncounter.coverages.v1.NetworkType;

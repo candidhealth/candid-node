@@ -42,8 +42,12 @@ export class V1 {
      *                 given: ["string"],
      *                 use: CandidApi.preEncounter.NameUse.Usual,
      *                 period: {
-     *                     start: "2023-01-15",
-     *                     end: "2023-01-15"
+     *                     start: {
+     *                         "key": "value"
+     *                     },
+     *                     end: {
+     *                         "key": "value"
+     *                     }
      *                 }
      *             },
      *             dateOfBirth: "2023-01-15",
@@ -55,13 +59,23 @@ export class V1 {
      *             memberId: "string",
      *             payerId: CandidApi.preEncounter.PayerId("string"),
      *             payerName: "string",
+     *             additionalPayerInformation: {
+     *                 availityEligibilityId: "string",
+     *                 availityPayerId: "string",
+     *                 availityPayerName: "string",
+     *                 availityRemittancePayerId: "string"
+     *             },
      *             groupNumber: "string",
      *             name: "string",
      *             planType: CandidApi.preEncounter.coverages.v1.NetworkType.SelfPay,
      *             type: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode.C01,
      *             period: {
-     *                 start: "2023-01-15",
-     *                 end: "2023-01-15"
+     *                 start: {
+     *                     "key": "value"
+     *                 },
+     *                 end: {
+     *                     "key": "value"
+     *                 }
      *             },
      *             insuranceCardImageLocator: "string"
      *         },
@@ -73,6 +87,11 @@ export class V1 {
      *                 initiatedBy: CandidApi.preEncounter.UserId("string"),
      *                 initiatedAt: new Date("2024-01-15T09:30:00.000Z")
      *             }],
+     *         latestEligibilityCheck: {
+     *             checkId: "string",
+     *             status: CandidApi.preEncounter.coverages.v1.EligibilityStatus.Active,
+     *             initiatedAt: new Date("2024-01-15T09:30:00.000Z")
+     *         },
      *         benefits: {
      *             planCoverage: {
      *                 "key": "value"
@@ -100,7 +119,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -148,8 +167,12 @@ export class V1 {
      *                 given: ["string"],
      *                 use: CandidApi.preEncounter.NameUse.Usual,
      *                 period: {
-     *                     start: "2023-01-15",
-     *                     end: "2023-01-15"
+     *                     start: {
+     *                         "key": "value"
+     *                     },
+     *                     end: {
+     *                         "key": "value"
+     *                     }
      *                 }
      *             },
      *             dateOfBirth: "2023-01-15",
@@ -161,13 +184,23 @@ export class V1 {
      *             memberId: "string",
      *             payerId: CandidApi.preEncounter.PayerId("string"),
      *             payerName: "string",
+     *             additionalPayerInformation: {
+     *                 availityEligibilityId: "string",
+     *                 availityPayerId: "string",
+     *                 availityPayerName: "string",
+     *                 availityRemittancePayerId: "string"
+     *             },
      *             groupNumber: "string",
      *             name: "string",
      *             planType: CandidApi.preEncounter.coverages.v1.NetworkType.SelfPay,
      *             type: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode.C01,
      *             period: {
-     *                 start: "2023-01-15",
-     *                 end: "2023-01-15"
+     *                 start: {
+     *                     "key": "value"
+     *                 },
+     *                 end: {
+     *                     "key": "value"
+     *                 }
      *             },
      *             insuranceCardImageLocator: "string"
      *         },
@@ -179,6 +212,11 @@ export class V1 {
      *                 initiatedBy: CandidApi.preEncounter.UserId("string"),
      *                 initiatedAt: new Date("2024-01-15T09:30:00.000Z")
      *             }],
+     *         latestEligibilityCheck: {
+     *             checkId: "string",
+     *             status: CandidApi.preEncounter.coverages.v1.EligibilityStatus.Active,
+     *             initiatedAt: new Date("2024-01-15T09:30:00.000Z")
+     *         },
      *         benefits: {
      *             planCoverage: {
      *                 "key": "value"
@@ -210,7 +248,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -286,7 +324,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -343,7 +381,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -426,7 +464,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -486,7 +524,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -550,7 +588,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -614,7 +652,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

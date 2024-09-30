@@ -26,6 +26,8 @@ import * as CandidApi from "../../../../../../index";
  *             organizationName: "string"
  *         },
  *         renderingProvider: {
+ *             npi: "string",
+ *             taxonomyCode: "string",
  *             address: {
  *                 address1: "123 Main St",
  *                 address2: "Apt 1",
@@ -34,8 +36,6 @@ import * as CandidApi from "../../../../../../index";
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
  *             },
- *             npi: "string",
- *             taxonomyCode: "string",
  *             firstName: "string",
  *             lastName: "string",
  *             organizationName: "string"
@@ -183,6 +183,7 @@ import * as CandidApi from "../../../../../../index";
  *         patientAuthorizedRelease: true,
  *         benefitsAssignedToProvider: true,
  *         providerAcceptsAssignment: true,
+ *         appointmentType: "string",
  *         existingMedications: [{
  *                 name: "Lisinopril",
  *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),

@@ -11,6 +11,7 @@ export type Error =
     | CandidApi.encounters.v4.update.Error.UnauthorizedError
     | CandidApi.encounters.v4.update.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.update.Error.SchemaInstanceValidationHttpFailure
+    | CandidApi.encounters.v4.update.Error.UnprocessableEntityError
     | CandidApi.encounters.v4.update.Error._Unknown;
 
 export declare namespace Error {
@@ -39,6 +40,11 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
+    interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -58,6 +64,7 @@ export declare namespace Error {
         schemaInstanceValidationHttpFailure: (
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
         ) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -138,6 +145,21 @@ export const Error = {
         };
     },
 
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage
+    ): CandidApi.encounters.v4.update.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.update.Error.UnprocessableEntityError,
+                visitor: CandidApi.encounters.v4.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.update.Error._Unknown => {
         return {
             errorName: undefined,
@@ -166,6 +188,8 @@ export const Error = {
                 return visitor.httpRequestValidationsError(value.content);
             case "SchemaInstanceValidationHttpFailure":
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             default:
                 return visitor._other(value as any);
         }

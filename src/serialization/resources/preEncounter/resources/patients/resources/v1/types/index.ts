@@ -8,4 +8,7 @@ export * from "./Patient";
 export * from "./PatientPage";
 export * from "./PotentialDuplicatePatient";
 export * from "./PotentialDuplicatePatientsErrorBody";
+export * from "./AuthorizationUnit";
+export * from "./Authorization";
+export * from "./Referral";
 export * from "./Guarantor";

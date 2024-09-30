@@ -28,6 +28,7 @@ export const EncounterBase: core.serialization.ObjectSchema<
         core.serialization.boolean()
     ),
     providerAcceptsAssignment: core.serialization.property("provider_accepts_assignment", core.serialization.boolean()),
+    appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
     existingMedications: core.serialization.property(
         "existing_medications",
         core.serialization.list(Medication).optional()
@@ -66,6 +67,7 @@ export declare namespace EncounterBase {
         patient_authorized_release: boolean;
         benefits_assigned_to_provider: boolean;
         provider_accepts_assignment: boolean;
+        appointment_type?: string | null;
         existing_medications?: Medication.Raw[] | null;
         vitals?: Vitals.Raw | null;
         interventions?: Intervention.Raw[] | null;

@@ -46,6 +46,8 @@ export interface EncounterBase {
      * Box 27 on the CMS-1500 claim form.
      */
     providerAcceptsAssignment: boolean;
+    /** Human-readable description of the appointment type (ex: "Acupuncture - Headaches"). */
+    appointmentType?: string;
     existingMedications?: CandidApi.encounters.v4.Medication[];
     vitals?: CandidApi.encounters.v4.Vitals;
     interventions?: CandidApi.encounters.v4.Intervention[];

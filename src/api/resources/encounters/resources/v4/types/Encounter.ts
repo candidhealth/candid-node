@@ -432,8 +432,6 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     subscriberSecondary?: CandidApi.Subscriber;
     /** Box 23 on the CMS-1500 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
-    /** Human-readable description of the appointment type (ex: "Acupuncture - Headaches"). */
-    appointmentType?: string;
     /** Defines the party to be billed with the initial balance owed on the claim. */
     responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType;
     /** URL that links directly to the claim created in Candid. */

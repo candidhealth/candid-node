@@ -73,7 +73,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -147,7 +147,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -207,7 +207,7 @@ export class V1 {
      */
     public async update(
         guarantorId: CandidApi.guarantor.v1.GuarantorId,
-        request: CandidApi.guarantor.v1.GuarantorUpdate = {},
+        request: CandidApi.guarantor.v1.GuarantorUpdate,
         requestOptions?: V1.RequestOptions
     ): Promise<core.APIResponse<CandidApi.guarantor.v1.Guarantor, CandidApi.guarantor.v1.update.Error>> {
         const _response = await core.fetcher({
@@ -223,7 +223,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

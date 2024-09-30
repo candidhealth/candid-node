@@ -28,6 +28,7 @@ export * from "./PriorAuthorizationNumber";
 export * from "./RxCui";
 export * from "./IntakeQuestionId";
 export * from "./IntakeFollowUpId";
+export * from "./InsurancePayMissingPrimaryCoverageErrorType";
 export * from "./EncounterExternalIdUniquenessErrorType";
 export * from "./EncounterPatientControlNumberUniquenessErrorType";
 export * from "./EncounterGuarantorMissingContactInfoErrorType";

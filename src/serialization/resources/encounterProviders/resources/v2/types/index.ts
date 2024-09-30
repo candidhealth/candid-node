@@ -1,5 +1,6 @@
 export * from "./EncounterProviderBase";
 export * from "./RenderingProvider";
+export * from "./RenderingProviderUpdate";
 export * from "./ReferringProvider";
 export * from "./ReferringProviderUpdate";
 export * from "./InitialReferringProvider";

@@ -10,7 +10,11 @@ import * as CandidApi from "../../../../../index";
  *         items: [{
  *                 payerUuid: CandidApi.payers.v3.PayerUuid("A6431FD2-0712-4714-B1B1-DD094DAF9F42"),
  *                 payerId: "12345",
- *                 payerName: "Payer Name"
+ *                 payerName: "Payer Name",
+ *                 availityPayerName: "Availity Payer Name",
+ *                 availityClaimsPayerId: "54321",
+ *                 availityEligibilityId: "54321",
+ *                 availityRemittancePayerId: "54321"
  *             }]
  *     }
  */

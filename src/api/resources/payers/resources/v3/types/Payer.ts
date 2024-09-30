@@ -9,7 +9,11 @@ import * as CandidApi from "../../../../../index";
  *     {
  *         payerUuid: CandidApi.payers.v3.PayerUuid("A6431FD2-0712-4714-B1B1-DD094DAF9F42"),
  *         payerId: "12345",
- *         payerName: "Payer Name"
+ *         payerName: "Payer Name",
+ *         availityPayerName: "Availity Payer Name",
+ *         availityClaimsPayerId: "54321",
+ *         availityEligibilityId: "54321",
+ *         availityRemittancePayerId: "54321"
  *     }
  */
 export interface Payer {
@@ -19,4 +23,12 @@ export interface Payer {
     payerId: string;
     /** The primary display name of the payer. */
     payerName: string;
+    /** The name of the payer as it appears in Availity. */
+    availityPayerName?: string;
+    /** The ID of the payer as it appears in Availity. */
+    availityClaimsPayerId?: string;
+    /** The eligibility ID of the payer as it appears in Availity. */
+    availityEligibilityId?: string;
+    /** The remittance ID of the payer as it appears in Availity. */
+    availityRemittancePayerId?: string;
 }

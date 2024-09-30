@@ -6,6 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { PayerId } from "../../../../common/types/PayerId";
+import { AdditionalPayerInformation } from "../../../../common/types/AdditionalPayerInformation";
 import { NetworkType } from "./NetworkType";
 import { InsuranceTypeCode } from "./InsuranceTypeCode";
 import { Period } from "../../../../common/types/Period";
@@ -17,6 +18,10 @@ export const InsurancePlan: core.serialization.ObjectSchema<
     memberId: core.serialization.property("member_id", core.serialization.string()),
     payerId: core.serialization.property("payer_id", PayerId),
     payerName: core.serialization.property("payer_name", core.serialization.string()),
+    additionalPayerInformation: core.serialization.property(
+        "additional_payer_information",
+        AdditionalPayerInformation.optional()
+    ),
     groupNumber: core.serialization.property("group_number", core.serialization.string().optional()),
     name: core.serialization.string().optional(),
     planType: core.serialization.property("plan_type", NetworkType.optional()),
@@ -33,6 +38,7 @@ export declare namespace InsurancePlan {
         member_id: string;
         payer_id: PayerId.Raw;
         payer_name: string;
+        additional_payer_information?: AdditionalPayerInformation.Raw | null;
         group_number?: string | null;
         name?: string | null;
         plan_type?: NetworkType.Raw | null;

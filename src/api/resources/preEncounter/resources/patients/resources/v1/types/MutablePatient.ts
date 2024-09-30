@@ -47,4 +47,6 @@ export interface MutablePatient {
     nonInsurancePayers?: CandidApi.preEncounter.CanonicalNonInsurancePayerId[];
     guarantor?: CandidApi.preEncounter.patients.v1.Guarantor;
     selfPay?: boolean;
+    authorizations?: CandidApi.preEncounter.patients.v1.Authorization[];
+    referrals?: CandidApi.preEncounter.patients.v1.Referral[];
 }

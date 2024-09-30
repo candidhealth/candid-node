@@ -44,6 +44,42 @@ export class V1 {
      *                 startTimestamp: new Date("2024-01-15T09:30:00.000Z")
      *             }],
      *         placerAppointmentId: "string",
+     *         attendingDoctor: {
+     *             name: {
+     *                 family: "string",
+     *                 given: ["string"],
+     *                 use: CandidApi.preEncounter.NameUse.Usual,
+     *                 period: {
+     *                     start: {
+     *                         "key": "value"
+     *                     },
+     *                     end: {
+     *                         "key": "value"
+     *                     }
+     *                 }
+     *             },
+     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
+     *             npi: "string",
+     *             telecoms: [{
+     *                     value: "string",
+     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                     period: {
+     *                         "key": "value"
+     *                     }
+     *                 }],
+     *             addresses: [{
+     *                     "key": "value"
+     *                 }],
+     *             period: {
+     *                 start: {
+     *                     "key": "value"
+     *                 },
+     *                 end: {
+     *                     "key": "value"
+     *                 }
+     *             },
+     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
+     *         },
      *         estimatedCopayCents: 1,
      *         estimatedPatientResponsibilityCents: 1,
      *         patientDepositCents: 1,
@@ -74,7 +110,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -153,7 +189,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -228,7 +264,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -295,6 +331,42 @@ export class V1 {
      *                 startTimestamp: new Date("2024-01-15T09:30:00.000Z")
      *             }],
      *         placerAppointmentId: "string",
+     *         attendingDoctor: {
+     *             name: {
+     *                 family: "string",
+     *                 given: ["string"],
+     *                 use: CandidApi.preEncounter.NameUse.Usual,
+     *                 period: {
+     *                     start: {
+     *                         "key": "value"
+     *                     },
+     *                     end: {
+     *                         "key": "value"
+     *                     }
+     *                 }
+     *             },
+     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
+     *             npi: "string",
+     *             telecoms: [{
+     *                     value: "string",
+     *                     use: CandidApi.preEncounter.ContactPointUse.Home,
+     *                     period: {
+     *                         "key": "value"
+     *                     }
+     *                 }],
+     *             addresses: [{
+     *                     "key": "value"
+     *                 }],
+     *             period: {
+     *                 start: {
+     *                     "key": "value"
+     *                 },
+     *                 end: {
+     *                     "key": "value"
+     *                 }
+     *             },
+     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
+     *         },
      *         estimatedCopayCents: 1,
      *         estimatedPatientResponsibilityCents: 1,
      *         patientDepositCents: 1,
@@ -329,7 +401,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -407,7 +479,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

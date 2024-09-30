@@ -48,7 +48,6 @@ export const EncounterCreate: core.serialization.Schema<
             "prior_authorization_number",
             PriorAuthorizationNumber.optional()
         ),
-        appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
         responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
         diagnoses: core.serialization.list(DiagnosisCreate),
         clinicalNotes: core.serialization.property(
@@ -90,7 +89,6 @@ export declare namespace EncounterCreate {
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;
         prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
-        appointment_type?: string | null;
         responsible_party: ResponsiblePartyType.Raw;
         diagnoses: DiagnosisCreate.Raw[];
         clinical_notes?: ClinicalNoteCategoryCreate.Raw[] | null;

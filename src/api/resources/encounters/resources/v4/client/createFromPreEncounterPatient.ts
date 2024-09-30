@@ -11,6 +11,7 @@ export type Error =
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.EntityNotFoundError
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.SchemaInstanceValidationHttpFailure
+    | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.InsurancePayMissingPrimaryCoverageError
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error._Unknown;
 
 export declare namespace Error {
@@ -39,6 +40,11 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
+    interface InsurancePayMissingPrimaryCoverageError extends _Utils {
+        errorName: "InsurancePayMissingPrimaryCoverageError";
+        content: CandidApi.encounters.v4.InsurancePayMissingPrimaryCoverageErrorType;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -61,6 +67,9 @@ export declare namespace Error {
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         schemaInstanceValidationHttpFailure: (
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+        ) => _Result;
+        insurancePayMissingPrimaryCoverageError: (
+            value: CandidApi.encounters.v4.InsurancePayMissingPrimaryCoverageErrorType
         ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -142,6 +151,21 @@ export const Error = {
         };
     },
 
+    insurancePayMissingPrimaryCoverageError: (
+        value: CandidApi.encounters.v4.InsurancePayMissingPrimaryCoverageErrorType
+    ): CandidApi.encounters.v4.createFromPreEncounterPatient.Error.InsurancePayMissingPrimaryCoverageError => {
+        return {
+            content: value,
+            errorName: "InsurancePayMissingPrimaryCoverageError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.createFromPreEncounterPatient.Error.InsurancePayMissingPrimaryCoverageError,
+                visitor: CandidApi.encounters.v4.createFromPreEncounterPatient.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.createFromPreEncounterPatient.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (
         fetcherError: core.Fetcher.Error
     ): CandidApi.encounters.v4.createFromPreEncounterPatient.Error._Unknown => {
@@ -172,6 +196,8 @@ export const Error = {
                 return visitor.httpRequestValidationsError(value.content);
             case "SchemaInstanceValidationHttpFailure":
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
+            case "InsurancePayMissingPrimaryCoverageError":
+                return visitor.insurancePayMissingPrimaryCoverageError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -13,16 +13,16 @@ export const RenderingProvider: core.serialization.ObjectSchema<
     CandidApi.encounterProviders.v2.RenderingProvider
 > = core.serialization
     .object({
-        address: StreetAddressLongZip.optional(),
         npi: core.serialization.string(),
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
+        address: StreetAddressLongZip.optional(),
     })
     .extend(EncounterProviderBase);
 
 export declare namespace RenderingProvider {
     interface Raw extends EncounterProviderBase.Raw {
-        address?: StreetAddressLongZip.Raw | null;
         npi: string;
         taxonomy_code?: string | null;
+        address?: StreetAddressLongZip.Raw | null;
     }
 }

@@ -6,18 +6,26 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { PlanCoverageDetails } from "./PlanCoverageDetails";
+import { CoverageDetails } from "./CoverageDetails";
 
 export const PlanCoverage: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.PlanCoverage.Raw,
     CandidApi.preEncounter.coverages.v1.PlanCoverage
 > = core.serialization.object({
     inNetwork: core.serialization.property("in_network", PlanCoverageDetails.optional()),
+    inNetworkFlat: core.serialization.property("in_network_flat", core.serialization.list(CoverageDetails).optional()),
     outOfNetwork: core.serialization.property("out_of_network", PlanCoverageDetails.optional()),
+    outOfNetworkFlat: core.serialization.property(
+        "out_of_network_flat",
+        core.serialization.list(CoverageDetails).optional()
+    ),
 });
 
 export declare namespace PlanCoverage {
     interface Raw {
         in_network?: PlanCoverageDetails.Raw | null;
+        in_network_flat?: CoverageDetails.Raw[] | null;
         out_of_network?: PlanCoverageDetails.Raw | null;
+        out_of_network_flat?: CoverageDetails.Raw[] | null;
     }
 }

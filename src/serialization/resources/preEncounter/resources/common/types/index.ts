@@ -25,6 +25,7 @@ export * from "./ResourcePage";
 export * from "./ErrorBase";
 export * from "./NotFoundErrorBody";
 export * from "./VersionConflictErrorBody";
+export * from "./AdditionalPayerInformation";
 export * from "./ExternalProviderType";
 export * from "./ExternalProvider";
 export * from "./SortDirection";

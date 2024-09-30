@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -272,6 +272,8 @@ export class V4 {
      *             organizationName: "string"
      *         },
      *         renderingProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -280,8 +282,6 @@ export class V4 {
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
-     *             npi: "string",
-     *             taxonomyCode: "string",
      *             firstName: "string",
      *             lastName: "string",
      *             organizationName: "string"
@@ -403,7 +403,6 @@ export class V4 {
      *             gender: CandidApi.Gender.Male
      *         },
      *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
-     *         appointmentType: "string",
      *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
      *         diagnoses: [{
      *                 name: "string",
@@ -526,6 +525,7 @@ export class V4 {
      *         patientAuthorizedRelease: true,
      *         benefitsAssignedToProvider: true,
      *         providerAcceptsAssignment: true,
+     *         appointmentType: "string",
      *         existingMedications: [{
      *                 name: "Lisinopril",
      *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
@@ -595,7 +595,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -661,7 +661,6 @@ export class V4 {
      * - Subscriber Primary
      * - Subscriber Secondary
      * - Prior Authorization Number
-     * - Appointment Type
      * - Responsible Party
      * - Guarantor
      *
@@ -692,6 +691,8 @@ export class V4 {
      *             organizationName: "string"
      *         },
      *         renderingProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
      *             address: {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
@@ -700,8 +701,6 @@ export class V4 {
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
-     *             npi: "string",
-     *             taxonomyCode: "string",
      *             firstName: "string",
      *             lastName: "string",
      *             organizationName: "string"
@@ -849,6 +848,7 @@ export class V4 {
      *         patientAuthorizedRelease: true,
      *         benefitsAssignedToProvider: true,
      *         providerAcceptsAssignment: true,
+     *         appointmentType: "string",
      *         existingMedications: [{
      *                 name: "Lisinopril",
      *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
@@ -920,7 +920,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -954,6 +954,7 @@ export class V4 {
                 case "EntityNotFoundError":
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "InsurancePayMissingPrimaryCoverageError":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.createFromPreEncounterPatient.Error.parseOrThrow(
@@ -1119,6 +1120,107 @@ export class V4 {
      *             bodyTemperatureF: 98,
      *             hemoglobinGdl: 15.1,
      *             hematocritPct: 51.2
+     *         },
+     *         existingMedications: [{
+     *                 name: "Lisinopril",
+     *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
+     *                 dosage: "10mg",
+     *                 dosageForm: "Tablet",
+     *                 frequency: "Once Daily",
+     *                 asNeeded: true
+     *             }],
+     *         renderingProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         serviceFacility: {
+     *             organizationName: "Test Organization",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             }
+     *         },
+     *         guarantor: {
+     *             firstName: "string",
+     *             lastName: "string",
+     *             externalId: "string",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             phoneNumbers: [{
+     *                     number: "1234567890",
+     *                     type: CandidApi.PhoneNumberType.Home
+     *                 }],
+     *             phoneConsent: true,
+     *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
+     *             emailConsent: true
+     *         },
+     *         supervisingProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         referringProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
+     *         initialReferringProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             qualifier: CandidApi.QualifierCode.Dq,
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         }
      *     })
      */
@@ -1138,7 +1240,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.1",
+                "X-Fern-SDK-Version": "0.34.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1168,6 +1270,7 @@ export class V4 {
                 case "UnauthorizedError":
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.update.Error.parseOrThrow(

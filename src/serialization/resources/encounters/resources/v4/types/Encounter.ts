@@ -57,7 +57,6 @@ export const Encounter: core.serialization.ObjectSchema<
             "prior_authorization_number",
             PriorAuthorizationNumber.optional()
         ),
-        appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
         responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
         url: LinkUrl,
         diagnoses: core.serialization.list(Diagnosis),
@@ -102,7 +101,6 @@ export declare namespace Encounter {
         subscriber_primary?: Subscriber.Raw | null;
         subscriber_secondary?: Subscriber.Raw | null;
         prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
-        appointment_type?: string | null;
         responsible_party: ResponsiblePartyType.Raw;
         url: LinkUrl.Raw;
         diagnoses: Diagnosis.Raw[];

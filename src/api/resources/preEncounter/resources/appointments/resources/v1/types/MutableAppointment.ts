@@ -18,6 +18,8 @@ export interface MutableAppointment {
     services: CandidApi.preEncounter.appointments.v1.Service[];
     /** ID for the appointment/order for the event. */
     placerAppointmentId?: string;
+    /** Attending physician information. The attending physician will be stored as the Current MD for the patient. */
+    attendingDoctor?: CandidApi.preEncounter.ExternalProvider;
     estimatedCopayCents?: number;
     estimatedPatientResponsibilityCents?: number;
     patientDepositCents?: number;

@@ -14,8 +14,12 @@ import * as CandidApi from "../../../../../../../../index";
  *                 given: ["string"],
  *                 use: CandidApi.preEncounter.NameUse.Usual,
  *                 period: {
- *                     start: "2023-01-15",
- *                     end: "2023-01-15"
+ *                     start: {
+ *                         "key": "value"
+ *                     },
+ *                     end: {
+ *                         "key": "value"
+ *                     }
  *                 }
  *             },
  *             otherNames: [{
@@ -23,8 +27,12 @@ import * as CandidApi from "../../../../../../../../index";
  *                     given: ["string"],
  *                     use: CandidApi.preEncounter.NameUse.Usual,
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         start: {
+ *                             "key": "value"
+ *                         },
+ *                         end: {
+ *                             "key": "value"
+ *                         }
  *                     }
  *                 }],
  *             gender: CandidApi.preEncounter.Gender.Man,
@@ -46,8 +54,12 @@ import * as CandidApi from "../../../../../../../../index";
  *                 postalCode: "string",
  *                 country: "string",
  *                 period: {
- *                     start: "2023-01-15",
- *                     end: "2023-01-15"
+ *                     start: {
+ *                         "key": "value"
+ *                     },
+ *                     end: {
+ *                         "key": "value"
+ *                     }
  *                 }
  *             },
  *             otherAddresses: [{
@@ -58,24 +70,26 @@ import * as CandidApi from "../../../../../../../../index";
  *                     postalCode: "string",
  *                     country: "string",
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         start: {
+ *                             "key": "value"
+ *                         },
+ *                         end: {
+ *                             "key": "value"
+ *                         }
  *                     }
  *                 }],
  *             primaryTelecom: {
  *                 value: "string",
  *                 use: CandidApi.preEncounter.ContactPointUse.Home,
  *                 period: {
- *                     start: "2023-01-15",
- *                     end: "2023-01-15"
+ *                     "key": "value"
  *                 }
  *             },
  *             otherTelecoms: [{
  *                     value: "string",
  *                     use: CandidApi.preEncounter.ContactPointUse.Home,
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         "key": "value"
  *                     }
  *                 }],
  *             email: "string",
@@ -93,16 +107,19 @@ import * as CandidApi from "../../../../../../../../index";
  *                         given: ["string"],
  *                         use: CandidApi.preEncounter.NameUse.Usual,
  *                         period: {
- *                             start: "2023-01-15",
- *                             end: "2023-01-15"
+ *                             start: {
+ *                                 "key": "value"
+ *                             },
+ *                             end: {
+ *                                 "key": "value"
+ *                             }
  *                         }
  *                     },
  *                     telecoms: [{
  *                             value: "string",
  *                             use: CandidApi.preEncounter.ContactPointUse.Home,
  *                             period: {
- *                                 start: "2023-01-15",
- *                                 end: "2023-01-15"
+ *                                 "key": "value"
  *                             }
  *                         }],
  *                     addresses: [{
@@ -113,13 +130,21 @@ import * as CandidApi from "../../../../../../../../index";
  *                             postalCode: "string",
  *                             country: "string",
  *                             period: {
- *                                 start: "2023-01-15",
- *                                 end: "2023-01-15"
+ *                                 start: {
+ *                                     "key": "value"
+ *                                 },
+ *                                 end: {
+ *                                     "key": "value"
+ *                                 }
  *                             }
  *                         }],
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         start: {
+ *                             "key": "value"
+ *                         },
+ *                         end: {
+ *                             "key": "value"
+ *                         }
  *                     },
  *                     hipaaAuthorization: true
  *                 }],
@@ -129,8 +154,12 @@ import * as CandidApi from "../../../../../../../../index";
  *                         given: ["string"],
  *                         use: CandidApi.preEncounter.NameUse.Usual,
  *                         period: {
- *                             start: "2023-01-15",
- *                             end: "2023-01-15"
+ *                             start: {
+ *                                 "key": "value"
+ *                             },
+ *                             end: {
+ *                                 "key": "value"
+ *                             }
  *                         }
  *                     },
  *                     type: CandidApi.preEncounter.ExternalProviderType.Primary,
@@ -139,16 +168,19 @@ import * as CandidApi from "../../../../../../../../index";
  *                             value: "string",
  *                             use: CandidApi.preEncounter.ContactPointUse.Home,
  *                             period: {
- *                                 start: "2023-01-15",
- *                                 end: "2023-01-15"
+ *                                 "key": "value"
  *                             }
  *                         }],
  *                     addresses: [{
  *                             "key": "value"
  *                         }],
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         start: {
+ *                             "key": "value"
+ *                         },
+ *                         end: {
+ *                             "key": "value"
+ *                         }
  *                     },
  *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
  *                 }],
@@ -162,16 +194,19 @@ import * as CandidApi from "../../../../../../../../index";
  *                     given: ["string"],
  *                     use: CandidApi.preEncounter.NameUse.Usual,
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         start: {
+ *                             "key": "value"
+ *                         },
+ *                         end: {
+ *                             "key": "value"
+ *                         }
  *                     }
  *                 },
  *                 telecom: {
  *                     value: "string",
  *                     use: CandidApi.preEncounter.ContactPointUse.Home,
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         "key": "value"
  *                     }
  *                 },
  *                 email: "string",
@@ -184,12 +219,80 @@ import * as CandidApi from "../../../../../../../../index";
  *                     postalCode: "string",
  *                     country: "string",
  *                     period: {
- *                         start: "2023-01-15",
- *                         end: "2023-01-15"
+ *                         start: {
+ *                             "key": "value"
+ *                         },
+ *                         end: {
+ *                             "key": "value"
+ *                         }
  *                     }
  *                 }
  *             },
- *             selfPay: true
+ *             selfPay: true,
+ *             authorizations: [{
+ *                     payerId: CandidApi.preEncounter.PayerId("string"),
+ *                     payerName: "string",
+ *                     additionalPayerInformation: {
+ *                         "key": "value"
+ *                     },
+ *                     authorizationNumber: "string",
+ *                     cptCode: "string",
+ *                     units: CandidApi.preEncounter.patients.v1.AuthorizationUnit.Visit,
+ *                     quantity: {
+ *                         "key": "value"
+ *                     },
+ *                     period: {
+ *                         "key": "value"
+ *                     },
+ *                     notes: {
+ *                         "key": "value"
+ *                     }
+ *                 }],
+ *             referrals: [{
+ *                     provider: {
+ *                         name: {
+ *                             family: "string",
+ *                             given: ["string"],
+ *                             use: CandidApi.preEncounter.NameUse.Usual,
+ *                             period: {
+ *                                 start: {
+ *                                     "key": "value"
+ *                                 },
+ *                                 end: {
+ *                                     "key": "value"
+ *                                 }
+ *                             }
+ *                         },
+ *                         type: CandidApi.preEncounter.ExternalProviderType.Primary,
+ *                         npi: "string",
+ *                         telecoms: [{
+ *                                 value: "string",
+ *                                 use: CandidApi.preEncounter.ContactPointUse.Home,
+ *                                 period: {
+ *                                     "key": "value"
+ *                                 }
+ *                             }],
+ *                         addresses: [{
+ *                                 "key": "value"
+ *                             }],
+ *                         period: {
+ *                             start: {
+ *                                 "key": "value"
+ *                             },
+ *                             end: {
+ *                                 "key": "value"
+ *                             }
+ *                         },
+ *                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
+ *                     },
+ *                     referralNumber: "string",
+ *                     period: {
+ *                         "key": "value"
+ *                     },
+ *                     notes: {
+ *                         "key": "value"
+ *                     }
+ *                 }]
  *         }
  *     }
  */
