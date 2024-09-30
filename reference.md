@@ -2354,7 +2354,7 @@ encounter has not already been submitted or adjudicated.
 ```typescript
 await client.encounters.v4.createFromPreEncounterPatient({
     preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    preEncounterAppointmentId: CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
     billingProvider: {
         address: {
             address1: "123 Main St",
@@ -9244,6 +9244,71 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("string
 <dd>
 
 **request:** `CandidApi.MutableAppointment`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.scan.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Scans up to 100 appointment updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.scan({
+    since: new Date("2024-01-15T09:30:00.000Z"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.appointments.v1.AppointmentScanRequest`
 
 </dd>
 </dl>

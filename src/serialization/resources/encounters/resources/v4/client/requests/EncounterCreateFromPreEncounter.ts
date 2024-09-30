@@ -29,9 +29,9 @@ export const EncounterCreateFromPreEncounter: core.serialization.Schema<
 > = core.serialization
     .object({
         preEncounterPatientId: core.serialization.property("pre_encounter_patient_id", PreEncounterPatientId),
-        preEncounterAppointmentId: core.serialization.property(
-            "pre_encounter_appointment_id",
-            PreEncounterAppointmentId
+        preEncounterAppointmentIds: core.serialization.property(
+            "pre_encounter_appointment_ids",
+            core.serialization.list(PreEncounterAppointmentId)
         ),
         billingProvider: core.serialization.property("billing_provider", BillingProvider),
         renderingProvider: core.serialization.property("rendering_provider", RenderingProvider),
@@ -71,7 +71,7 @@ export const EncounterCreateFromPreEncounter: core.serialization.Schema<
 export declare namespace EncounterCreateFromPreEncounter {
     interface Raw extends EncounterBase.Raw {
         pre_encounter_patient_id: PreEncounterPatientId.Raw;
-        pre_encounter_appointment_id: PreEncounterAppointmentId.Raw;
+        pre_encounter_appointment_ids: PreEncounterAppointmentId.Raw[];
         billing_provider: BillingProvider.Raw;
         rendering_provider: RenderingProvider.Raw;
         initial_referring_provider?: InitialReferringProvider.Raw | null;
