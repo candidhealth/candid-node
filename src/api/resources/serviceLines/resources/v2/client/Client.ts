@@ -67,7 +67,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -148,7 +148,11 @@ export class V2 {
      *         quantity: CandidApi.Decimal("string"),
      *         description: "string",
      *         dateOfService: "2023-01-15",
-     *         endDateOfService: "2023-01-15"
+     *         endDateOfService: "2023-01-15",
+     *         testResult: {
+     *             type: "hematocrit",
+     *             value: 1.1
+     *         }
      *     })
      */
     public async update(
@@ -167,7 +171,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -240,7 +244,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

@@ -150,6 +150,10 @@ import * as CandidApi from "../../../../../../index";
  *                     firstName: "string",
  *                     lastName: "string",
  *                     organizationName: "string"
+ *                 },
+ *                 testResult: {
+ *                     type: "hematocrit",
+ *                     value: 1.1
  *                 }
  *             }],
  *         externalClaimSubmission: {

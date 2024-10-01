@@ -28,4 +28,6 @@ export interface ServiceLineUpdate {
     /** date_of_service must be defined on either the encounter or the service lines but not both. */
     dateOfService?: string;
     endDateOfService?: string;
+    /** Contains a single test result value. Maps to MEA-02 on the 837-P. */
+    testResult?: CandidApi.serviceLines.v2.TestResult;
 }

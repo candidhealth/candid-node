@@ -11,6 +11,7 @@ import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { DrugIdentification } from "./DrugIdentification";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { OrderingProvider } from "../../../../encounterProviders/resources/v2/types/OrderingProvider";
+import { TestResult } from "./TestResult";
 
 export const ServiceLineCreate: core.serialization.ObjectSchema<
     serializers.serviceLines.v2.ServiceLineCreate.Raw,
@@ -31,6 +32,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
+    testResult: core.serialization.property("test_result", TestResult.optional()),
 });
 
 export declare namespace ServiceLineCreate {
@@ -47,5 +49,6 @@ export declare namespace ServiceLineCreate {
         date_of_service?: string | null;
         end_date_of_service?: string | null;
         ordering_provider?: OrderingProvider.Raw | null;
+        test_result?: TestResult.Raw | null;
     }
 }

@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -471,6 +471,10 @@ export class V4 {
      *                     firstName: "string",
      *                     lastName: "string",
      *                     organizationName: "string"
+     *                 },
+     *                 testResult: {
+     *                     type: "hematocrit",
+     *                     value: 1.1
      *                 }
      *             }],
      *         guarantor: {
@@ -595,7 +599,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -815,6 +819,10 @@ export class V4 {
      *                     firstName: "string",
      *                     lastName: "string",
      *                     organizationName: "string"
+     *                 },
+     *                 testResult: {
+     *                     type: "hematocrit",
+     *                     value: 1.1
      *                 }
      *             }],
      *         externalClaimSubmission: {
@@ -920,7 +928,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1240,7 +1248,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.3",
+                "X-Fern-SDK-Version": "0.34.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

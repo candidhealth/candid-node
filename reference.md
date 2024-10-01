@@ -2152,6 +2152,10 @@ await client.encounters.v4.create({
                 lastName: "string",
                 organizationName: "string",
             },
+            testResult: {
+                type: "hematocrit",
+                value: 1.1,
+            },
         },
     ],
     guarantor: {
@@ -2513,6 +2517,10 @@ await client.encounters.v4.createFromPreEncounterPatient({
                 firstName: "string",
                 lastName: "string",
                 organizationName: "string",
+            },
+            testResult: {
+                type: "hematocrit",
+                value: 1.1,
             },
         },
     ],
@@ -8228,6 +8236,10 @@ await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
     description: "string",
     dateOfService: "2023-01-15",
     endDateOfService: "2023-01-15",
+    testResult: {
+        type: "hematocrit",
+        value: 1.1,
+    },
 });
 ```
 

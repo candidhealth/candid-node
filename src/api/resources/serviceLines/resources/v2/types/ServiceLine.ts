@@ -67,7 +67,11 @@ import * as CandidApi from "../../../../../index";
  *             endDate: CandidApi.Date_("2023-01-03")
  *         },
  *         dateOfService: "2023-01-01",
- *         endDateOfService: "2023-01-03"
+ *         endDateOfService: "2023-01-03",
+ *         testResult: {
+ *             type: "hemoglobin",
+ *             value: 2.4
+ *         }
  *     }
  */
 export interface ServiceLine {
@@ -113,4 +117,6 @@ export interface ServiceLine {
     description?: string;
     dateOfService: string;
     endDateOfService?: string;
+    /** Contains a single test result value. Maps to MEA-02 on the 837-P. */
+    testResult?: CandidApi.serviceLines.v2.TestResult;
 }
