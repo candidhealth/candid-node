@@ -200,6 +200,22 @@ import * as CandidApi from "../../../../../../index";
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *             emailConsent: true
  *         },
+ *         billingProvider: {
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             taxId: "string",
+ *             npi: "string",
+ *             taxonomyCode: "string",
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
+ *         },
  *         supervisingProvider: {
  *             npi: "string",
  *             taxonomyCode: "string",
@@ -429,6 +445,11 @@ export interface EncounterUpdate {
      *
      */
     guarantor?: CandidApi.guarantor.v1.GuarantorUpdate;
+    /**
+     * The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form.
+     *
+     */
+    billingProvider?: CandidApi.encounterProviders.v2.BillingProviderUpdate;
     /**
      * Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send.
      *

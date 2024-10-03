@@ -2874,6 +2874,22 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
         email: CandidApi.Email("johndoe@joincandidhealth.com"),
         emailConsent: true,
     },
+    billingProvider: {
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        taxId: "string",
+        npi: "string",
+        taxonomyCode: "string",
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
     supervisingProvider: {
         npi: "string",
         taxonomyCode: "string",

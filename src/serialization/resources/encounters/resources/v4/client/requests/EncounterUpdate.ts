@@ -25,6 +25,7 @@ import { Medication } from "../../types/Medication";
 import { RenderingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/RenderingProviderUpdate";
 import { EncounterServiceFacilityUpdate } from "../../../../../serviceFacility/types/EncounterServiceFacilityUpdate";
 import { GuarantorUpdate } from "../../../../../guarantor/resources/v1/types/GuarantorUpdate";
+import { BillingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/BillingProviderUpdate";
 import { SupervisingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdate";
 import { ReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/ReferringProviderUpdate";
 import { InitialReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdate";
@@ -102,6 +103,7 @@ export const EncounterUpdate: core.serialization.Schema<
     renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
     serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityUpdate.optional()),
     guarantor: GuarantorUpdate.optional(),
+    billingProvider: core.serialization.property("billing_provider", BillingProviderUpdate.optional()),
     supervisingProvider: core.serialization.property("supervising_provider", SupervisingProviderUpdate.optional()),
     referringProvider: core.serialization.property("referring_provider", ReferringProviderUpdate.optional()),
     initialReferringProvider: core.serialization.property(
@@ -145,6 +147,7 @@ export declare namespace EncounterUpdate {
         rendering_provider?: RenderingProviderUpdate.Raw | null;
         service_facility?: EncounterServiceFacilityUpdate.Raw | null;
         guarantor?: GuarantorUpdate.Raw | null;
+        billing_provider?: BillingProviderUpdate.Raw | null;
         supervising_provider?: SupervisingProviderUpdate.Raw | null;
         referring_provider?: ReferringProviderUpdate.Raw | null;
         initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;

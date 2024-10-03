@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
+import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 
 export const Error: core.serialization.Schema<
@@ -13,8 +13,8 @@ export const Error: core.serialization.Schema<
     CandidApi.encounterProviders.v2.updateSupervisingProvider.Error
 > = core.serialization
     .union("errorName", {
-        UnprocessableEntityError: core.serialization.object({
-            content: UnprocessableEntityErrorMessage,
+        HttpRequestValidationsError: core.serialization.object({
+            content: core.serialization.list(RequestValidationError),
         }),
         EntityNotFoundError: core.serialization.object({
             content: EntityNotFoundErrorMessage,
@@ -23,8 +23,8 @@ export const Error: core.serialization.Schema<
     .transform<CandidApi.encounterProviders.v2.updateSupervisingProvider.Error>({
         transform: (value) => {
             switch (value.errorName) {
-                case "UnprocessableEntityError":
-                    return CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.unprocessableEntityError(
+                case "HttpRequestValidationsError":
+                    return CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.httpRequestValidationsError(
                         value.content
                     );
                 case "EntityNotFoundError":
@@ -37,11 +37,11 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.UnprocessableEntityError | Error.EntityNotFoundError;
+    type Raw = Error.HttpRequestValidationsError | Error.EntityNotFoundError;
 
-    interface UnprocessableEntityError {
-        errorName: "UnprocessableEntityError";
-        content: UnprocessableEntityErrorMessage.Raw;
+    interface HttpRequestValidationsError {
+        errorName: "HttpRequestValidationsError";
+        content: RequestValidationError.Raw[];
     }
 
     interface EntityNotFoundError {

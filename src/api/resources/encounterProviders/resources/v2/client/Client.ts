@@ -70,7 +70,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -99,7 +99,7 @@ export class V2 {
             switch (
                 (_response.error.body as serializers.encounterProviders.v2.updateReferringProvider.Error.Raw)?.errorName
             ) {
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -168,7 +168,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V2 {
                 (_response.error.body as serializers.encounterProviders.v2.updateInitialReferringProvider.Error.Raw)
                     ?.errorName
             ) {
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -267,7 +267,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -297,7 +297,7 @@ export class V2 {
                 (_response.error.body as serializers.encounterProviders.v2.updateSupervisingProvider.Error.Raw)
                     ?.errorName
             ) {
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -366,7 +366,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -395,7 +395,7 @@ export class V2 {
             switch (
                 (_response.error.body as serializers.encounterProviders.v2.updateOrderingProvider.Error.Raw)?.errorName
             ) {
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -463,7 +463,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -493,7 +493,7 @@ export class V2 {
                 (_response.error.body as serializers.encounterProviders.v2.createReferringProvider.Error.Raw)?.errorName
             ) {
                 case "EntityConflictError":
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -562,7 +562,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -594,6 +594,7 @@ export class V2 {
             ) {
                 case "EntityConflictError":
                 case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -662,7 +663,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -693,7 +694,7 @@ export class V2 {
                     ?.errorName
             ) {
                 case "EntityConflictError":
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -762,7 +763,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -792,7 +793,7 @@ export class V2 {
                 (_response.error.body as serializers.encounterProviders.v2.createOrderingProvider.Error.Raw)?.errorName
             ) {
                 case "EntityConflictError":
-                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
                         ok: false,
@@ -839,7 +840,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -907,7 +908,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -976,7 +977,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1045,7 +1046,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.4",
+                "X-Fern-SDK-Version": "0.34.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

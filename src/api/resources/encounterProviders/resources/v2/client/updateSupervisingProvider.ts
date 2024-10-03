@@ -6,18 +6,16 @@ import * as CandidApi from "../../../../../index";
 import * as core from "../../../../../../core";
 
 export type Error =
-    /**
-     * Cannot set first/last name without also unsetting organization_name. */
-    | CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.UnprocessableEntityError
+    | CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.HttpRequestValidationsError
     /**
      * The encounter could not be found or has no supervising provider. */
     | CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.EntityNotFoundError
     | CandidApi.encounterProviders.v2.updateSupervisingProvider.Error._Unknown;
 
 export declare namespace Error {
-    interface UnprocessableEntityError extends _Utils {
-        errorName: "UnprocessableEntityError";
-        content: CandidApi.UnprocessableEntityErrorMessage;
+    interface HttpRequestValidationsError extends _Utils {
+        errorName: "HttpRequestValidationsError";
+        content: CandidApi.RequestValidationError[];
     }
 
     interface EntityNotFoundError extends _Utils {
@@ -37,21 +35,21 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
-        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
-    unprocessableEntityError: (
-        value: CandidApi.UnprocessableEntityErrorMessage
-    ): CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.UnprocessableEntityError => {
+    httpRequestValidationsError: (
+        value: CandidApi.RequestValidationError[]
+    ): CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.HttpRequestValidationsError => {
         return {
             content: value,
-            errorName: "UnprocessableEntityError",
+            errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
-                this: CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.UnprocessableEntityError,
+                this: CandidApi.encounterProviders.v2.updateSupervisingProvider.Error.HttpRequestValidationsError,
                 visitor: CandidApi.encounterProviders.v2.updateSupervisingProvider.Error._Visitor<_Result>
             ) {
                 return CandidApi.encounterProviders.v2.updateSupervisingProvider.Error._visit(this, visitor);
@@ -94,8 +92,8 @@ export const Error = {
         visitor: CandidApi.encounterProviders.v2.updateSupervisingProvider.Error._Visitor<_Result>
     ): _Result => {
         switch (value.errorName) {
-            case "UnprocessableEntityError":
-                return visitor.unprocessableEntityError(value.content);
+            case "HttpRequestValidationsError":
+                return visitor.httpRequestValidationsError(value.content);
             case "EntityNotFoundError":
                 return visitor.entityNotFoundError(value.content);
             default:

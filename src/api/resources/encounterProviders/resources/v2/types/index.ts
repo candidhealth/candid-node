@@ -10,5 +10,6 @@ export * from "./SupervisingProviderUpdate";
 export * from "./OrderingProvider";
 export * from "./OrderingProviderUpdate";
 export * from "./BillingProvider";
+export * from "./BillingProviderUpdate";
 export * from "./ProviderId";
 export * from "./EncounterProvider";

@@ -10,10 +10,10 @@ export type Error =
      * The encounter already has an initial referring provider. */
     | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.EntityConflictError
     /**
-     * Cannot set first/last name without also unsetting organization_name.
      * Cannot set Initial Referring Provider without an existing Referring Provider.
      *  */
     | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.UnprocessableEntityError
+    | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.HttpRequestValidationsError
     /**
      * The encounter could not be found. */
     | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.EntityNotFoundError
@@ -28,6 +28,11 @@ export declare namespace Error {
     interface UnprocessableEntityError extends _Utils {
         errorName: "UnprocessableEntityError";
         content: CandidApi.UnprocessableEntityErrorMessage;
+    }
+
+    interface HttpRequestValidationsError extends _Utils {
+        errorName: "HttpRequestValidationsError";
+        content: CandidApi.RequestValidationError[];
     }
 
     interface EntityNotFoundError extends _Utils {
@@ -49,6 +54,7 @@ export declare namespace Error {
     interface _Visitor<_Result> {
         entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -78,6 +84,21 @@ export const Error = {
             errorName: "UnprocessableEntityError",
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.UnprocessableEntityError,
+                visitor: CandidApi.encounterProviders.v2.createInitialReferringProvider.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounterProviders.v2.createInitialReferringProvider.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    httpRequestValidationsError: (
+        value: CandidApi.RequestValidationError[]
+    ): CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.HttpRequestValidationsError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationsError",
+            _visit: function <_Result>(
+                this: CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.HttpRequestValidationsError,
                 visitor: CandidApi.encounterProviders.v2.createInitialReferringProvider.Error._Visitor<_Result>
             ) {
                 return CandidApi.encounterProviders.v2.createInitialReferringProvider.Error._visit(this, visitor);
@@ -124,6 +145,8 @@ export const Error = {
                 return visitor.entityConflictError(value.content);
             case "UnprocessableEntityError":
                 return visitor.unprocessableEntityError(value.content);
+            case "HttpRequestValidationsError":
+                return visitor.httpRequestValidationsError(value.content);
             case "EntityNotFoundError":
                 return visitor.entityNotFoundError(value.content);
             default:
