@@ -55,3 +55,4 @@ export * from "./serviceFacility/types";
 export * as tags from "./tags";
 export * from "./tags/types";
 export * as eligibility from "./eligibility";
+export * from "./diagnoses/client/requests";

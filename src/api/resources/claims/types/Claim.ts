@@ -74,10 +74,10 @@ import * as CandidApi from "../../../index";
  *                 },
  *                 dateOfService: "2023-01-01",
  *                 endDateOfService: "2023-01-03",
- *                 testResult: {
- *                     type: "hemoglobin",
- *                     value: 2.4
- *                 }
+ *                 testResults: [{
+ *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hemoglobin,
+ *                         value: 51
+ *                     }]
  *             }],
  *         eras: [{
  *                 eraId: CandidApi.EraId("4D844EF1-2253-43CD-A4F1-6DB7E65CB54B"),

@@ -130,7 +130,8 @@ import * as CandidApi from "../../../../../../index";
  *                     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
  *                     linkSequenceNumber: "string",
  *                     pharmacyPrescriptionNumber: "string",
- *                     conversionFormula: "string"
+ *                     conversionFormula: "string",
+ *                     drugDescription: "string"
  *                 },
  *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
  *                 description: "string",
@@ -151,10 +152,10 @@ import * as CandidApi from "../../../../../../index";
  *                     lastName: "string",
  *                     organizationName: "string"
  *                 },
- *                 testResult: {
- *                     type: "hematocrit",
- *                     value: 1.1
- *                 }
+ *                 testResults: [{
+ *                         value: 1.1,
+ *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+ *                     }]
  *             }],
  *         externalClaimSubmission: {
  *             claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),

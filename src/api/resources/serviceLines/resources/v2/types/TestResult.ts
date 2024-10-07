@@ -4,18 +4,7 @@
 
 import * as CandidApi from "../../../../../index";
 
-export type TestResult =
-    | CandidApi.serviceLines.v2.TestResult.Hematocrit
-    | CandidApi.serviceLines.v2.TestResult.Hemoglobin;
-
-export declare namespace TestResult {
-    interface Hematocrit {
-        type: "hematocrit";
-        value: number;
-    }
-
-    interface Hemoglobin {
-        type: "hemoglobin";
-        value: number;
-    }
+export interface TestResult {
+    value: number;
+    resultType: CandidApi.serviceLines.v2.TestResultType;
 }

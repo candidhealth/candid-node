@@ -5,34 +5,19 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { TestResultType } from "./TestResultType";
 
-export const TestResult: core.serialization.Schema<
+export const TestResult: core.serialization.ObjectSchema<
     serializers.serviceLines.v2.TestResult.Raw,
     CandidApi.serviceLines.v2.TestResult
-> = core.serialization
-    .union("type", {
-        hematocrit: core.serialization.object({
-            value: core.serialization.number(),
-        }),
-        hemoglobin: core.serialization.object({
-            value: core.serialization.number(),
-        }),
-    })
-    .transform<CandidApi.serviceLines.v2.TestResult>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.object({
+    value: core.serialization.number(),
+    resultType: core.serialization.property("result_type", TestResultType),
+});
 
 export declare namespace TestResult {
-    type Raw = TestResult.Hematocrit | TestResult.Hemoglobin;
-
-    interface Hematocrit {
-        type: "hematocrit";
+    interface Raw {
         value: number;
-    }
-
-    interface Hemoglobin {
-        type: "hemoglobin";
-        value: number;
+        result_type: TestResultType.Raw;
     }
 }

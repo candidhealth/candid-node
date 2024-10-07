@@ -34,6 +34,7 @@ import { ServiceLines } from "./api/resources/serviceLines/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 import { PreEncounter } from "./api/resources/preEncounter/client/Client";
+import { Diagnoses } from "./api/resources/diagnoses/client/Client";
 import { ServiceFacility } from "./api/resources/serviceFacility/client/Client";
 
 export declare namespace CandidApiClient {
@@ -322,6 +323,15 @@ export class CandidApiClient {
 
     public get preEncounter(): PreEncounter {
         return (this._preEncounter ??= new PreEncounter({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _diagnoses: Diagnoses | undefined;
+
+    public get diagnoses(): Diagnoses {
+        return (this._diagnoses ??= new Diagnoses({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

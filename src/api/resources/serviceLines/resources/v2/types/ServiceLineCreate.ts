@@ -33,6 +33,6 @@ export interface ServiceLineCreate {
      * If not required by this implementation guide, do not send.
      */
     orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
-    /** Contains a single test result value. Maps to MEA-02 on the 837-P. */
-    testResult?: CandidApi.serviceLines.v2.TestResult;
+    /** Maps to MEA-02 on the 837-P. No more than 5 test results may be submitted per service line. */
+    testResults?: CandidApi.serviceLines.v2.TestResult[];
 }

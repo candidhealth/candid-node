@@ -22,6 +22,7 @@ export const DrugIdentification: core.serialization.ObjectSchema<
         core.serialization.string().optional()
     ),
     conversionFormula: core.serialization.property("conversion_formula", core.serialization.string().optional()),
+    drugDescription: core.serialization.property("drug_description", core.serialization.string().optional()),
 });
 
 export declare namespace DrugIdentification {
@@ -33,5 +34,6 @@ export declare namespace DrugIdentification {
         link_sequence_number?: string | null;
         pharmacy_prescription_number?: string | null;
         conversion_formula?: string | null;
+        drug_description?: string | null;
     }
 }

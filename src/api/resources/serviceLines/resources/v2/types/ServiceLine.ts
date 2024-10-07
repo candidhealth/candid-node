@@ -68,10 +68,10 @@ import * as CandidApi from "../../../../../index";
  *         },
  *         dateOfService: "2023-01-01",
  *         endDateOfService: "2023-01-03",
- *         testResult: {
- *             type: "hemoglobin",
- *             value: 2.4
- *         }
+ *         testResults: [{
+ *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hemoglobin,
+ *                 value: 51
+ *             }]
  *     }
  */
 export interface ServiceLine {
@@ -117,6 +117,6 @@ export interface ServiceLine {
     description?: string;
     dateOfService: string;
     endDateOfService?: string;
-    /** Contains a single test result value. Maps to MEA-02 on the 837-P. */
-    testResult?: CandidApi.serviceLines.v2.TestResult;
+    /** Maps to MEA-02 on the 837-P. No more than 5 test results may be submitted per service line. */
+    testResults?: CandidApi.serviceLines.v2.TestResult[];
 }

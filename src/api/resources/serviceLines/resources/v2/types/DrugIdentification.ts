@@ -12,4 +12,5 @@ export interface DrugIdentification {
     linkSequenceNumber?: string;
     pharmacyPrescriptionNumber?: string;
     conversionFormula?: string;
+    drugDescription?: string;
 }
