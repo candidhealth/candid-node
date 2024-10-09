@@ -188,6 +188,12 @@ import * as CandidApi from "../../../../../../../../index";
  *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
  *             },
  *             nonInsurancePayers: [CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")],
+ *             nonInsurancePayerAssociations: [{
+ *                     id: CandidApi.preEncounter.CanonicalNonInsurancePayerId("string"),
+ *                     memberId: {
+ *                         "key": "value"
+ *                     }
+ *                 }],
  *             guarantor: {
  *                 name: {
  *                     family: "string",
@@ -292,7 +298,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                     notes: {
  *                         "key": "value"
  *                     }
- *                 }]
+ *                 }],
+ *             primaryServiceFacilityId: "string"
  *         }
  *     }
  */

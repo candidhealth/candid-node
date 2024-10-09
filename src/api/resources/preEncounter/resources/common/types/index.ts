@@ -5,6 +5,7 @@ export * from "./PatientId";
 export * from "./CoverageId";
 export * from "./AppointmentId";
 export * from "./CanonicalProviderId";
+export * from "./CanonicalNonInsurancePayerAssociation";
 export * from "./CanonicalNonInsurancePayerId";
 export * from "./Relationship";
 export * from "./Gender";

@@ -57,6 +57,7 @@ export const EncounterBase: core.serialization.ObjectSchema<
         core.serialization.string().optional()
     ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
+    referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
 });
 
 export declare namespace EncounterBase {
@@ -81,5 +82,6 @@ export declare namespace EncounterBase {
         onset_of_current_illness_or_symptom_date?: string | null;
         last_menstrual_period_date?: string | null;
         delay_reason_code?: DelayReasonCode.Raw | null;
+        referral_number?: string | null;
     }
 }

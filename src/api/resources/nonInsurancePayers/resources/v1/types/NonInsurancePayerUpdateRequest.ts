@@ -9,4 +9,5 @@ export interface NonInsurancePayerUpdateRequest {
     name?: string;
     description?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerDescriptionUpdate;
     category?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerCategoryUpdate;
+    address?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerAddressUpdate;
 }

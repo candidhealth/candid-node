@@ -5,6 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { StreetAddressShortZip } from "../../../../commons/types/StreetAddressShortZip";
 
 export const CreateNonInsurancePayerRequest: core.serialization.ObjectSchema<
     serializers.nonInsurancePayers.v1.CreateNonInsurancePayerRequest.Raw,
@@ -13,6 +14,7 @@ export const CreateNonInsurancePayerRequest: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     description: core.serialization.string().optional(),
     category: core.serialization.string().optional(),
+    address: StreetAddressShortZip.optional(),
 });
 
 export declare namespace CreateNonInsurancePayerRequest {
@@ -20,5 +22,6 @@ export declare namespace CreateNonInsurancePayerRequest {
         name: string;
         description?: string | null;
         category?: string | null;
+        address?: StreetAddressShortZip.Raw | null;
     }
 }

@@ -49,7 +49,21 @@ export class V2 {
      *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         description: "string",
      *         dateOfService: "2023-01-15",
-     *         endDateOfService: "2023-01-15"
+     *         endDateOfService: "2023-01-15",
+     *         drugIdentification: {
+     *             serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *             nationalDrugCode: "string",
+     *             nationalDrugUnitCount: "string",
+     *             measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *             linkSequenceNumber: "string",
+     *             pharmacyPrescriptionNumber: "string",
+     *             conversionFormula: "string",
+     *             drugDescription: "string"
+     *         },
+     *         testResults: [{
+     *                 value: 1.1,
+     *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+     *             }]
      *     })
      */
     public async create(
@@ -67,7 +81,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.6",
+                "X-Fern-SDK-Version": "0.34.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -172,7 +186,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.6",
+                "X-Fern-SDK-Version": "0.34.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -245,7 +259,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.6",
+                "X-Fern-SDK-Version": "0.34.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

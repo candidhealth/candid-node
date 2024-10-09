@@ -10,6 +10,7 @@ import { StreetAddressShortZip } from "../../commons/types/StreetAddressShortZip
 import { PhoneNumber } from "../../commons/types/PhoneNumber";
 import { Email } from "../../commons/types/Email";
 import { NonInsurancePayerId } from "../../nonInsurancePayers/resources/v1/types/NonInsurancePayerId";
+import { PatientNonInsurancePayerInfoCreate } from "./PatientNonInsurancePayerInfoCreate";
 
 export const PatientUpdate: core.serialization.ObjectSchema<serializers.PatientUpdate.Raw, CandidApi.PatientUpdate> =
     core.serialization.object({
@@ -27,6 +28,10 @@ export const PatientUpdate: core.serialization.ObjectSchema<serializers.PatientU
             "non_insurance_payers",
             core.serialization.list(NonInsurancePayerId).optional()
         ),
+        nonInsurancePayersInfo: core.serialization.property(
+            "non_insurance_payers_info",
+            core.serialization.list(PatientNonInsurancePayerInfoCreate).optional()
+        ),
     });
 
 export declare namespace PatientUpdate {
@@ -42,5 +47,6 @@ export declare namespace PatientUpdate {
         email?: Email.Raw | null;
         email_consent?: boolean | null;
         non_insurance_payers?: NonInsurancePayerId.Raw[] | null;
+        non_insurance_payers_info?: PatientNonInsurancePayerInfoCreate.Raw[] | null;
     }
 }

@@ -20,4 +20,6 @@ export interface PatientUpdate {
     emailConsent?: boolean;
     /** On update, we will replace the existing list of non-insurance payers with the new list if populated. */
     nonInsurancePayers?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId[];
+    /** On update, we will replace the existing list of non-insurance payers with the new list if populated. */
+    nonInsurancePayersInfo?: CandidApi.PatientNonInsurancePayerInfoCreate[];
 }

@@ -9,6 +9,7 @@ import { IndividualId } from "./IndividualId";
 import { PhoneNumber } from "../../commons/types/PhoneNumber";
 import { Email } from "../../commons/types/Email";
 import { NonInsurancePayer } from "../../nonInsurancePayers/resources/v1/types/NonInsurancePayer";
+import { PatientNonInsurancePayerInfo } from "./PatientNonInsurancePayerInfo";
 import { PatientBase } from "./PatientBase";
 
 export const Patient: core.serialization.ObjectSchema<serializers.Patient.Raw, CandidApi.Patient> = core.serialization
@@ -22,6 +23,10 @@ export const Patient: core.serialization.ObjectSchema<serializers.Patient.Raw, C
             "non_insurance_payers",
             core.serialization.list(NonInsurancePayer)
         ),
+        nonInsurancePayersInfo: core.serialization.property(
+            "non_insurance_payers_info",
+            core.serialization.list(PatientNonInsurancePayerInfo)
+        ),
     })
     .extend(PatientBase);
 
@@ -33,5 +38,6 @@ export declare namespace Patient {
         email?: Email.Raw | null;
         email_consent: boolean;
         non_insurance_payers: NonInsurancePayer.Raw[];
+        non_insurance_payers_info: PatientNonInsurancePayerInfo.Raw[];
     }
 }

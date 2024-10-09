@@ -110,6 +110,7 @@ export const EncounterUpdate: core.serialization.Schema<
         "initial_referring_provider",
         InitialReferringProviderUpdate.optional()
     ),
+    referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
 });
 
 export declare namespace EncounterUpdate {
@@ -151,5 +152,6 @@ export declare namespace EncounterUpdate {
         supervising_provider?: SupervisingProviderUpdate.Raw | null;
         referring_provider?: ReferringProviderUpdate.Raw | null;
         initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;
+        referral_number?: string | null;
     }
 }

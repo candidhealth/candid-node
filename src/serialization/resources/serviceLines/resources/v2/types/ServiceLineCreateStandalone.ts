@@ -12,6 +12,8 @@ import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { Decimal } from "../../../../commons/types/Decimal";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { ClaimId } from "../../../../commons/types/ClaimId";
+import { DrugIdentification } from "./DrugIdentification";
+import { TestResult } from "./TestResult";
 
 export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
     serializers.serviceLines.v2.ServiceLineCreateStandalone.Raw,
@@ -32,6 +34,8 @@ export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
     description: core.serialization.string().optional(),
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
+    drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
+    testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
 });
 
 export declare namespace ServiceLineCreateStandalone {
@@ -51,5 +55,7 @@ export declare namespace ServiceLineCreateStandalone {
         description?: string | null;
         date_of_service?: string | null;
         end_date_of_service?: string | null;
+        drug_identification?: DrugIdentification.Raw | null;
+        test_results?: TestResult.Raw[] | null;
     }
 }

@@ -108,4 +108,6 @@ export interface EncounterBase {
      * Code indicating the reason why a request was delayed
      */
     delayReasonCode?: CandidApi.DelayReasonCode;
+    /** Refers to REF\*9F on the 837p. Value cannot be greater than 50 characters. */
+    referralNumber?: string;
 }

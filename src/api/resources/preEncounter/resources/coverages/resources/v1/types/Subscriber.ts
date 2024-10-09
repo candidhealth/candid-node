@@ -8,4 +8,5 @@ export interface Subscriber {
     name: CandidApi.preEncounter.HumanName;
     dateOfBirth: string;
     biologicalSex: CandidApi.preEncounter.Sex;
+    address?: CandidApi.preEncounter.Address;
 }

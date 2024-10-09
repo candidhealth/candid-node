@@ -15,6 +15,10 @@ import * as CandidApi from "../../../../../../index";
  *             phoneConsent: true,
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+ *             nonInsurancePayersInfo: [{
+ *                     nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *                     memberId: "string"
+ *                 }],
  *             emailConsent: true,
  *             externalId: "string",
  *             dateOfBirth: "2023-01-15",
@@ -357,7 +361,8 @@ import * as CandidApi from "../../../../../../index";
  *         dischargeDate: "2023-01-15",
  *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
  *         lastMenstrualPeriodDate: "2023-01-15",
- *         delayReasonCode: CandidApi.DelayReasonCode.C1
+ *         delayReasonCode: CandidApi.DelayReasonCode.C1,
+ *         referralNumber: "string"
  *     }
  */
 export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {

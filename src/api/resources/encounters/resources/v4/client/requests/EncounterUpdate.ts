@@ -124,7 +124,11 @@ import * as CandidApi from "../../../../../../index";
  *             phoneConsent: true,
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *             emailConsent: true,
- *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+ *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+ *             nonInsurancePayersInfo: [{
+ *                     nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *                     memberId: "string"
+ *                 }]
  *         },
  *         patientAuthorizedRelease: true,
  *         schemaInstances: [{
@@ -261,7 +265,8 @@ import * as CandidApi from "../../../../../../index";
  *             firstName: "string",
  *             lastName: "string",
  *             organizationName: "string"
- *         }
+ *         },
+ *         referralNumber: "string"
  *     }
  */
 export interface EncounterUpdate {
@@ -468,4 +473,9 @@ export interface EncounterUpdate {
      *
      */
     initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate;
+    /**
+     * Refers to REF*9F on the 837p. Value cannot be greater than 50 characters.
+     *
+     */
+    referralNumber?: string;
 }

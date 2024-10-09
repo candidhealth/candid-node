@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { NonInsurancePayerDescriptionUpdate } from "./NonInsurancePayerDescriptionUpdate";
 import { NonInsurancePayerCategoryUpdate } from "./NonInsurancePayerCategoryUpdate";
+import { NonInsurancePayerAddressUpdate } from "./NonInsurancePayerAddressUpdate";
 
 export const NonInsurancePayerUpdateRequest: core.serialization.ObjectSchema<
     serializers.nonInsurancePayers.v1.NonInsurancePayerUpdateRequest.Raw,
@@ -15,6 +16,7 @@ export const NonInsurancePayerUpdateRequest: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     description: NonInsurancePayerDescriptionUpdate.optional(),
     category: NonInsurancePayerCategoryUpdate.optional(),
+    address: NonInsurancePayerAddressUpdate.optional(),
 });
 
 export declare namespace NonInsurancePayerUpdateRequest {
@@ -22,5 +24,6 @@ export declare namespace NonInsurancePayerUpdateRequest {
         name?: string | null;
         description?: NonInsurancePayerDescriptionUpdate.Raw | null;
         category?: NonInsurancePayerCategoryUpdate.Raw | null;
+        address?: NonInsurancePayerAddressUpdate.Raw | null;
     }
 }
