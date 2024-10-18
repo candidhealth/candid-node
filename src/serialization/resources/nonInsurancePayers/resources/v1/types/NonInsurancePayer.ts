@@ -6,6 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { NonInsurancePayerId } from "./NonInsurancePayerId";
+import { StreetAddressShortZip } from "../../../../commons/types/StreetAddressShortZip";
 
 export const NonInsurancePayer: core.serialization.ObjectSchema<
     serializers.nonInsurancePayers.v1.NonInsurancePayer.Raw,
@@ -16,6 +17,7 @@ export const NonInsurancePayer: core.serialization.ObjectSchema<
     description: core.serialization.string().optional(),
     category: core.serialization.string().optional(),
     enabled: core.serialization.boolean(),
+    address: StreetAddressShortZip.optional(),
 });
 
 export declare namespace NonInsurancePayer {
@@ -25,5 +27,6 @@ export declare namespace NonInsurancePayer {
         description?: string | null;
         category?: string | null;
         enabled: boolean;
+        address?: StreetAddressShortZip.Raw | null;
     }
 }

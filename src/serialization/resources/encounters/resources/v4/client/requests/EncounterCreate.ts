@@ -74,6 +74,7 @@ export const EncounterCreate: core.serialization.Schema<
             "schema_instances",
             core.serialization.list(SchemaInstance).optional()
         ),
+        referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
     })
     .extend(EncounterBase);
 
@@ -100,5 +101,6 @@ export declare namespace EncounterCreate {
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;
         tag_ids?: TagId.Raw[] | null;
         schema_instances?: SchemaInstance.Raw[] | null;
+        referral_number?: string | null;
     }
 }

@@ -27,6 +27,11 @@ export interface ServiceLineCreateStandalone {
     dateOfService?: string;
     endDateOfService?: string;
     drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
+    /**
+     * Required when the service or supply was ordered by a provider who is different than the rendering provider for this service line.
+     * If not required by this implementation guide, do not send.
+     */
+    orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
     /** Maps to MEA-02 on the 837-P. No more than 5 test results may be submitted per service line. */
     testResults?: CandidApi.serviceLines.v2.TestResult[];
 }

@@ -98,7 +98,13 @@ import * as CandidApi from "../../../../../index";
  *                     name: "Sunrise Foundation",
  *                     category: "Foundation",
  *                     description: "Sunrise Foundation is a non-profit organization that provides financial assistance to patients in need.",
- *                     enabled: true
+ *                     enabled: true,
+ *                     address: {
+ *                         address1: "123 Main St",
+ *                         city: "San Francisco",
+ *                         state: CandidApi.State.Ca,
+ *                         zipCode: "94105"
+ *                     }
  *                 }],
  *             nonInsurancePayersInfo: [{
  *                     nonInsurancePayer: {
@@ -106,7 +112,13 @@ import * as CandidApi from "../../../../../index";
  *                         name: "Sunrise Foundation",
  *                         category: "Foundation",
  *                         description: "Sunrise Foundation is a non-profit organization that provides financial assistance to patients in need.",
- *                         enabled: true
+ *                         enabled: true,
+ *                         address: {
+ *                             address1: "123 Main St",
+ *                             city: "San Francisco",
+ *                             state: CandidApi.State.Ca,
+ *                             zipCode: "94105"
+ *                         }
  *                     },
  *                     memberId: "123456789"
  *                 }],
@@ -483,4 +495,6 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
      * instances cannot be created for the same schema on an encounter.
      */
     schemaInstances: CandidApi.customSchemas.v1.SchemaInstance[];
+    /** Refers to REF\*9F on the 837p. Value cannot be greater than 50 characters. */
+    referralNumber?: string;
 }

@@ -8,6 +8,7 @@ import { V2 } from "./api/resources/auth/resources/v2/client/Client";
 import { Auth } from "./api/resources/auth/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
 import { Contracts } from "./api/resources/contracts/client/Client";
+import { Credentialing } from "./api/resources/credentialing/client/Client";
 import { CustomSchemas } from "./api/resources/customSchemas/client/Client";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { EncounterProviders } from "./api/resources/encounterProviders/client/Client";
@@ -89,6 +90,15 @@ export class CandidApiClient {
 
     public get contracts(): Contracts {
         return (this._contracts ??= new Contracts({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _credentialing: Credentialing | undefined;
+
+    public get credentialing(): Credentialing {
+        return (this._credentialing ??= new Credentialing({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

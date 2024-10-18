@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -528,6 +528,7 @@ export class V4 {
      *                     "age": 38
      *                 }
      *             }],
+     *         referralNumber: "string",
      *         externalId: CandidApi.EncounterExternalId("string"),
      *         dateOfService: "2023-01-15",
      *         endDateOfService: "2023-01-15",
@@ -586,8 +587,7 @@ export class V4 {
      *         dischargeDate: "2023-01-15",
      *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
      *         lastMenstrualPeriodDate: "2023-01-15",
-     *         delayReasonCode: CandidApi.DelayReasonCode.C1,
-     *         referralNumber: "string"
+     *         delayReasonCode: CandidApi.DelayReasonCode.C1
      *     })
      */
     public async create(
@@ -605,7 +605,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -670,7 +670,7 @@ export class V4 {
      * - Referring Provider
      * - Subscriber Primary
      * - Subscriber Secondary
-     * - Prior Authorization Number
+     * - Referral Number
      * - Responsible Party
      * - Guarantor
      *
@@ -915,8 +915,7 @@ export class V4 {
      *         dischargeDate: "2023-01-15",
      *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
      *         lastMenstrualPeriodDate: "2023-01-15",
-     *         delayReasonCode: CandidApi.DelayReasonCode.C1,
-     *         referralNumber: "string"
+     *         delayReasonCode: CandidApi.DelayReasonCode.C1
      *     })
      */
     public async createFromPreEncounterPatient(
@@ -936,7 +935,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -970,7 +969,6 @@ export class V4 {
                 case "EntityNotFoundError":
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
-                case "InsurancePayMissingPrimaryCoverageError":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.createFromPreEncounterPatient.Error.parseOrThrow(
@@ -1277,7 +1275,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

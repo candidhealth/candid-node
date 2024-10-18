@@ -328,6 +328,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N97",
         "N98",
         "N99",
+        "N102",
         "N103",
         "N104",
         "N105",
@@ -1392,6 +1393,7 @@ export declare namespace Rarc {
         | "N97"
         | "N98"
         | "N99"
+        | "N102"
         | "N103"
         | "N104"
         | "N105"

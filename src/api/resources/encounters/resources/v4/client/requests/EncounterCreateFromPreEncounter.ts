@@ -240,8 +240,7 @@ import * as CandidApi from "../../../../../../index";
  *         dischargeDate: "2023-01-15",
  *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
  *         lastMenstrualPeriodDate: "2023-01-15",
- *         delayReasonCode: CandidApi.DelayReasonCode.C1,
- *         referralNumber: "string"
+ *         delayReasonCode: CandidApi.DelayReasonCode.C1
  *     }
  */
 export interface EncounterCreateFromPreEncounter extends CandidApi.encounters.v4.EncounterBase {

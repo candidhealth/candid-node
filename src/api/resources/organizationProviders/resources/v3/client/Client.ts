@@ -56,7 +56,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -167,7 +167,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -227,10 +227,7 @@ export class V3 {
      *         employmentTerminationDate: "2023-01-15",
      *         qualifications: [{
      *                 period: {
-     *                     startDate: CandidApi.Date_("string"),
-     *                     endDate: {
-     *                         "key": "value"
-     *                     }
+     *                     startDate: CandidApi.Date_("string")
      *                 },
      *                 identifierCode: CandidApi.IdentifierCode.Mcr,
      *                 identifierValue: {
@@ -259,7 +256,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -342,10 +339,7 @@ export class V3 {
      *         qualifications: [{
      *                 type: "add",
      *                 period: {
-     *                     startDate: CandidApi.Date_("string"),
-     *                     endDate: {
-     *                         "key": "value"
-     *                     }
+     *                     startDate: CandidApi.Date_("string")
      *                 },
      *                 identifierCode: CandidApi.IdentifierCode.Mcr,
      *                 identifierValue: {
@@ -377,7 +371,7 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

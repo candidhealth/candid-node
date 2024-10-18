@@ -5,6 +5,7 @@ export * as auth from "./auth";
 export * as billingNotes from "./billingNotes";
 export * as claimSubmission from "./claimSubmission";
 export * as contracts from "./contracts";
+export * as credentialing from "./credentialing";
 export * as customSchemas from "./customSchemas";
 export * as encounterProviders from "./encounterProviders";
 export * as encounters from "./encounters";

@@ -18,6 +18,7 @@ export * from "./ProviderId";
 export * from "./InvoiceId";
 export * from "./RateId";
 export * from "./SchemaId";
+export * from "./ProviderCredentialingSpanId";
 export * from "./Primitive";
 export * from "./LinkUrl";
 export * from "./PageToken";

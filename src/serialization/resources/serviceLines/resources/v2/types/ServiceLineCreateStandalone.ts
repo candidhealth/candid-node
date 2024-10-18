@@ -13,6 +13,7 @@ import { Decimal } from "../../../../commons/types/Decimal";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { ClaimId } from "../../../../commons/types/ClaimId";
 import { DrugIdentification } from "./DrugIdentification";
+import { OrderingProvider } from "../../../../encounterProviders/resources/v2/types/OrderingProvider";
 import { TestResult } from "./TestResult";
 
 export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
@@ -35,6 +36,7 @@ export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
+    orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
 });
 
@@ -56,6 +58,7 @@ export declare namespace ServiceLineCreateStandalone {
         date_of_service?: string | null;
         end_date_of_service?: string | null;
         drug_identification?: DrugIdentification.Raw | null;
+        ordering_provider?: OrderingProvider.Raw | null;
         test_results?: TestResult.Raw[] | null;
     }
 }

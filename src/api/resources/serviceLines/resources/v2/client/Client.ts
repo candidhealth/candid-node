@@ -60,6 +60,21 @@ export class V2 {
      *             conversionFormula: "string",
      *             drugDescription: "string"
      *         },
+     *         orderingProvider: {
+     *             npi: "string",
+     *             taxonomyCode: "string",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: CandidApi.State.Ny,
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
+     *         },
      *         testResults: [{
      *                 value: 1.1,
      *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
@@ -81,7 +96,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -186,7 +201,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -259,7 +274,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.34.9",
+                "X-Fern-SDK-Version": "0.35.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

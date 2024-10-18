@@ -10,7 +10,6 @@ import { EncounterPatientControlNumberUniquenessErrorType } from "../types/Encou
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
-import { InsurancePayMissingPrimaryCoverageErrorType } from "../types/InsurancePayMissingPrimaryCoverageErrorType";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.createFromPreEncounterPatient.Error.Raw,
@@ -31,9 +30,6 @@ export const Error: core.serialization.Schema<
         }),
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
-        }),
-        InsurancePayMissingPrimaryCoverageError: core.serialization.object({
-            content: InsurancePayMissingPrimaryCoverageErrorType,
         }),
     })
     .transform<CandidApi.encounters.v4.createFromPreEncounterPatient.Error>({
@@ -59,10 +55,6 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.schemaInstanceValidationHttpFailure(
                         value.content
                     );
-                case "InsurancePayMissingPrimaryCoverageError":
-                    return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.insurancePayMissingPrimaryCoverageError(
-                        value.content
-                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -74,8 +66,7 @@ export declare namespace Error {
         | Error.EncounterPatientControlNumberUniquenessError
         | Error.EntityNotFoundError
         | Error.HttpRequestValidationsError
-        | Error.SchemaInstanceValidationHttpFailure
-        | Error.InsurancePayMissingPrimaryCoverageError;
+        | Error.SchemaInstanceValidationHttpFailure;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -100,10 +91,5 @@ export declare namespace Error {
     interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
-    }
-
-    interface InsurancePayMissingPrimaryCoverageError {
-        errorName: "InsurancePayMissingPrimaryCoverageError";
-        content: InsurancePayMissingPrimaryCoverageErrorType.Raw;
     }
 }

@@ -11,7 +11,13 @@ import * as CandidApi from "../../../../../index";
  *         name: "Sunrise Foundation",
  *         category: "Foundation",
  *         description: "Sunrise Foundation is a non-profit organization that provides financial assistance to patients in need.",
- *         enabled: true
+ *         enabled: true,
+ *         address: {
+ *             address1: "123 Main St",
+ *             city: "San Francisco",
+ *             state: CandidApi.State.Ca,
+ *             zipCode: "94105"
+ *         }
  *     }
  */
 export interface NonInsurancePayer {
@@ -20,4 +26,5 @@ export interface NonInsurancePayer {
     description?: string;
     category?: string;
     enabled: boolean;
+    address?: CandidApi.StreetAddressShortZip;
 }

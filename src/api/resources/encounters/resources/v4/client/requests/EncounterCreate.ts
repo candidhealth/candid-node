@@ -303,6 +303,7 @@ import * as CandidApi from "../../../../../../index";
  *                     "age": 38
  *                 }
  *             }],
+ *         referralNumber: "string",
  *         externalId: CandidApi.EncounterExternalId("string"),
  *         dateOfService: "2023-01-15",
  *         endDateOfService: "2023-01-15",
@@ -361,8 +362,7 @@ import * as CandidApi from "../../../../../../index";
  *         dischargeDate: "2023-01-15",
  *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
  *         lastMenstrualPeriodDate: "2023-01-15",
- *         delayReasonCode: CandidApi.DelayReasonCode.C1,
- *         referralNumber: "string"
+ *         delayReasonCode: CandidApi.DelayReasonCode.C1
  *     }
  */
 export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
@@ -473,4 +473,9 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
+    /**
+     * Refers to REF*9F on the 837p. Value cannot be greater than 50 characters.
+     *
+     */
+    referralNumber?: string;
 }
