@@ -8,6 +8,7 @@ import * as core from "../../../../../../../../core";
 import { Appointment } from "../../../../appointments/resources/v1/types/Appointment";
 import { MutablePatient } from "../../../../patients/resources/v1/types/MutablePatient";
 import { MutableCoverage } from "../../../../coverages/resources/v1/types/MutableCoverage";
+import { UniversalServiceIdentifier } from "../../../../appointments/resources/v1/types/UniversalServiceIdentifier";
 
 export const AppointmentListItem: core.serialization.ObjectSchema<
     serializers.preEncounter.lists.v1.AppointmentListItem.Raw,
@@ -16,6 +17,7 @@ export const AppointmentListItem: core.serialization.ObjectSchema<
     appointment: Appointment,
     patient: MutablePatient,
     primaryCoverage: core.serialization.property("primary_coverage", MutableCoverage.optional()),
+    primaryServiceType: core.serialization.property("primary_service_type", UniversalServiceIdentifier.optional()),
 });
 
 export declare namespace AppointmentListItem {
@@ -23,5 +25,6 @@ export declare namespace AppointmentListItem {
         appointment: Appointment.Raw;
         patient: MutablePatient.Raw;
         primary_coverage?: MutableCoverage.Raw | null;
+        primary_service_type?: UniversalServiceIdentifier.Raw | null;
     }
 }

@@ -37,7 +37,7 @@ export class V1 {
      *     await client.preEncounter.lists.v1.getPatientList({
      *         pageToken: CandidApi.preEncounter.PageToken("string"),
      *         limit: 1,
-     *         sortField: "string",
+     *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
      *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
      *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")
      *     })
@@ -84,7 +84,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.0",
+                "X-Fern-SDK-Version": "0.35.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -139,7 +139,7 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.lists.v1.getAppointmentList({
-     *         sortField: "string",
+     *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
      *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
      *         limit: 1,
      *         pageToken: CandidApi.preEncounter.PageToken("string"),
@@ -188,7 +188,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.0",
+                "X-Fern-SDK-Version": "0.35.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

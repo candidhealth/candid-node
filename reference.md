@@ -3586,8 +3586,9 @@ of Candid Health's export files be resilient to the addition of new columns at t
 
 **SLA guarantees:** Files for a given date are guaranteed to be available after 3 business days. For example, Friday's file will be
 available by Wednesday at the latest. If file generation is still in progress upon request before 3 business days have passed, the
-caller will receive a 422 response. If the file has already been generated, it will be served. Please email
-our [Support team](mailto:support@joincandidhealth.com) with any data requests outside of these stated guarantees.
+caller will receive a 422 response. If the file has already been generated, it will be served. Historic files should be available
+up to 90 days in the past by default. Please email our [Support team](mailto:support@joincandidhealth.com) with any data requests
+outside of these stated guarantees.
 
 </dd>
 </dl>
@@ -5078,6 +5079,7 @@ await client.insuranceAdjudications.v1.create({
             },
         ],
     },
+    remitDraftId: CandidApi.RemitDraftId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
 });
 ```
 
@@ -10415,7 +10417,7 @@ Gets patients with dependent objects for patients that match the query parameter
 await client.preEncounter.lists.v1.getPatientList({
     pageToken: CandidApi.PageToken("string"),
     limit: 1,
-    sortField: "string",
+    sortField: CandidApi.SortFieldString("string"),
     sortDirection: CandidApi.SortDirection.Asc,
     filters: CandidApi.FilterQueryString("string"),
 });
@@ -10482,7 +10484,7 @@ Searches for appointments that match the query parameters.
 
 ```typescript
 await client.preEncounter.lists.v1.getAppointmentList({
-    sortField: "string",
+    sortField: CandidApi.SortFieldString("string"),
     sortDirection: CandidApi.SortDirection.Asc,
     limit: 1,
     pageToken: CandidApi.PageToken("string"),
@@ -10736,6 +10738,7 @@ await client.preEncounter.patients.v1.create({
             },
         ],
         primaryServiceFacilityId: "string",
+        doNotInvoiceReason: CandidApi.DoNotInvoiceReason.Bankruptcy,
     },
 });
 ```
@@ -10754,6 +10757,256 @@ await client.preEncounter.patients.v1.create({
 <dd>
 
 **request:** `CandidApi.preEncounter.patients.v1.CreatePatientRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">createWithMrn</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.createWithMrn.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. InvalidMRNError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.createWithMrn({
+    skipDuplicateCheck: true,
+    body: {
+        mrn: "string",
+        name: {
+            family: "string",
+            given: ["string"],
+            use: CandidApi.NameUse.Usual,
+            period: {},
+        },
+        otherNames: [
+            {
+                family: "string",
+                given: ["string"],
+                use: CandidApi.NameUse.Usual,
+                period: {},
+            },
+        ],
+        gender: CandidApi.Gender.Man,
+        birthDate: "2023-01-15",
+        socialSecurityNumber: "string",
+        biologicalSex: CandidApi.Sex.Female,
+        sexualOrientation: CandidApi.SexualOrientation.Heterosexual,
+        race: CandidApi.Race.AmericanIndianOrAlaskaNative,
+        ethnicity: CandidApi.Ethnicity.HispanicOrLatino,
+        disabilityStatus: CandidApi.DisabilityStatus.Disabled,
+        maritalStatus: CandidApi.MaritalStatus.Annulled,
+        deceased: new Date("2024-01-15T09:30:00.000Z"),
+        multipleBirth: 1,
+        primaryAddress: {
+            use: CandidApi.AddressUse.Home,
+            line: ["string"],
+            city: "string",
+            state: "string",
+            postalCode: "string",
+            country: "string",
+            period: {},
+        },
+        otherAddresses: [
+            {
+                use: CandidApi.AddressUse.Home,
+                line: ["string"],
+                city: "string",
+                state: "string",
+                postalCode: "string",
+                country: "string",
+                period: {},
+            },
+        ],
+        primaryTelecom: {
+            value: "string",
+            use: CandidApi.ContactPointUse.Home,
+        },
+        otherTelecoms: [
+            {
+                value: "string",
+                use: CandidApi.ContactPointUse.Home,
+            },
+        ],
+        email: "string",
+        electronicCommunicationOptIn: true,
+        photo: "string",
+        language: "string",
+        externalProvenance: {
+            externalId: "string",
+            systemName: "string",
+        },
+        contacts: [
+            {
+                relationship: [CandidApi.Relationship.Self],
+                name: {
+                    family: "string",
+                    given: ["string"],
+                    use: CandidApi.NameUse.Usual,
+                    period: {},
+                },
+                telecoms: [
+                    {
+                        value: "string",
+                        use: CandidApi.ContactPointUse.Home,
+                    },
+                ],
+                addresses: [
+                    {
+                        use: CandidApi.AddressUse.Home,
+                        line: ["string"],
+                        city: "string",
+                        state: "string",
+                        postalCode: "string",
+                        country: "string",
+                        period: {},
+                    },
+                ],
+                period: {},
+                hipaaAuthorization: true,
+            },
+        ],
+        generalPractitioners: [
+            {
+                name: {
+                    family: "string",
+                    given: ["string"],
+                    use: CandidApi.NameUse.Usual,
+                    period: {},
+                },
+                type: CandidApi.ExternalProviderType.Primary,
+                npi: "string",
+                telecoms: [
+                    {
+                        value: "string",
+                        use: CandidApi.ContactPointUse.Home,
+                    },
+                ],
+                addresses: [],
+                period: {},
+                canonicalId: CandidApi.CanonicalProviderId("string"),
+            },
+        ],
+        filingOrder: {
+            coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+        },
+        nonInsurancePayers: [CandidApi.CanonicalNonInsurancePayerId("string")],
+        nonInsurancePayerAssociations: [
+            {
+                id: CandidApi.CanonicalNonInsurancePayerId("string"),
+            },
+        ],
+        guarantor: {
+            name: {
+                family: "string",
+                given: ["string"],
+                use: CandidApi.NameUse.Usual,
+                period: {},
+            },
+            telecom: {
+                value: "string",
+                use: CandidApi.ContactPointUse.Home,
+            },
+            email: "string",
+            birthDate: "2023-01-15",
+            address: {
+                use: CandidApi.AddressUse.Home,
+                line: ["string"],
+                city: "string",
+                state: "string",
+                postalCode: "string",
+                country: "string",
+                period: {},
+            },
+        },
+        selfPay: true,
+        authorizations: [
+            {
+                payerId: CandidApi.PayerId("string"),
+                payerName: "string",
+                authorizationNumber: "string",
+                cptCode: "string",
+                units: CandidApi.AuthorizationUnit.Visit,
+            },
+        ],
+        referrals: [
+            {
+                provider: {
+                    name: {
+                        family: "string",
+                        given: ["string"],
+                        use: CandidApi.NameUse.Usual,
+                        period: {},
+                    },
+                    type: CandidApi.ExternalProviderType.Primary,
+                    npi: "string",
+                    telecoms: [
+                        {
+                            value: "string",
+                            use: CandidApi.ContactPointUse.Home,
+                        },
+                    ],
+                    addresses: [],
+                    period: {},
+                    canonicalId: CandidApi.CanonicalProviderId("string"),
+                },
+                referralNumber: "string",
+            },
+        ],
+        primaryServiceFacilityId: "string",
+        doNotInvoiceReason: CandidApi.DoNotInvoiceReason.Bankruptcy,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.patients.v1.CreatePatientWithMrnRequest`
 
 </dd>
 </dl>
@@ -11177,6 +11430,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
         },
     ],
     primaryServiceFacilityId: "string",
+    doNotInvoiceReason: CandidApi.DoNotInvoiceReason.Bankruptcy,
 });
 ```
 

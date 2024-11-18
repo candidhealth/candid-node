@@ -165,7 +165,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                     },
  *                     referralNumber: "string"
  *                 }],
- *             primaryServiceFacilityId: "string"
+ *             primaryServiceFacilityId: "string",
+ *             doNotInvoiceReason: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason.Bankruptcy
  *         }
  *     }
  */

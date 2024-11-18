@@ -7,7 +7,7 @@ import * as CandidApi from "../../../../../../../../index";
 /**
  * @example
  *     {
- *         sortField: "string",
+ *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
  *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
  *         limit: 1,
  *         pageToken: CandidApi.preEncounter.PageToken("string"),
@@ -16,9 +16,9 @@ import * as CandidApi from "../../../../../../../../index";
  */
 export interface AppointmentsGetListRequest {
     /**
-     * The string path to the field to order by. Defaults to appointment.startTimestamp. Path values are camelCase.
+     * Defaults to appointment.startTimestamp.
      */
-    sortField?: string;
+    sortField?: CandidApi.preEncounter.lists.v1.SortFieldString;
     /**
      * Defaults to asc.
      */

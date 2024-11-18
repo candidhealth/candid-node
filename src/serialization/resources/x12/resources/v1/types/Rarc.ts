@@ -107,6 +107,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M115",
         "M116",
         "M117",
+        "M119",
         "M121",
         "M122",
         "M123",
@@ -213,6 +214,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA97",
         "MA99",
         "MA100",
+        "MA102",
         "MA103",
         "MA106",
         "MA107",
@@ -252,6 +254,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N11",
         "N12",
         "N13",
+        "N14",
         "N15",
         "N16",
         "N19",
@@ -582,6 +585,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N362",
         "N363",
         "N364",
+        "N365",
         "N366",
         "N367",
         "N368",
@@ -1069,6 +1073,8 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N858",
         "N859",
         "N860",
+        "N880",
+        "N887",
     ]);
 
 export declare namespace Rarc {
@@ -1172,6 +1178,7 @@ export declare namespace Rarc {
         | "M115"
         | "M116"
         | "M117"
+        | "M119"
         | "M121"
         | "M122"
         | "M123"
@@ -1278,6 +1285,7 @@ export declare namespace Rarc {
         | "MA97"
         | "MA99"
         | "MA100"
+        | "MA102"
         | "MA103"
         | "MA106"
         | "MA107"
@@ -1317,6 +1325,7 @@ export declare namespace Rarc {
         | "N11"
         | "N12"
         | "N13"
+        | "N14"
         | "N15"
         | "N16"
         | "N19"
@@ -1647,6 +1656,7 @@ export declare namespace Rarc {
         | "N362"
         | "N363"
         | "N364"
+        | "N365"
         | "N366"
         | "N367"
         | "N368"
@@ -2133,5 +2143,7 @@ export declare namespace Rarc {
         | "N857"
         | "N858"
         | "N859"
-        | "N860";
+        | "N860"
+        | "N880"
+        | "N887";
 }

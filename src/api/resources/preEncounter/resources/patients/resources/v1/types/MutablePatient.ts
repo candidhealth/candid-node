@@ -51,4 +51,6 @@ export interface MutablePatient {
     authorizations?: CandidApi.preEncounter.patients.v1.Authorization[];
     referrals?: CandidApi.preEncounter.patients.v1.Referral[];
     primaryServiceFacilityId?: string;
+    /** If this value is defined, the customer will not be invoiced. */
+    doNotInvoiceReason?: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason;
 }

@@ -9,7 +9,7 @@ import * as CandidApi from "../../../../../../../../index";
  *     {
  *         pageToken: CandidApi.preEncounter.PageToken("string"),
  *         limit: 1,
- *         sortField: "string",
+ *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
  *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
  *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")
  *     }
@@ -17,7 +17,10 @@ import * as CandidApi from "../../../../../../../../index";
 export interface PatientListRequest {
     pageToken?: CandidApi.preEncounter.PageToken;
     limit?: number;
-    sortField?: string;
+    /**
+     * Defaults to patient.updatedAt.
+     */
+    sortField?: CandidApi.preEncounter.lists.v1.SortFieldString;
     /**
      * Defaults to ascending.
      */

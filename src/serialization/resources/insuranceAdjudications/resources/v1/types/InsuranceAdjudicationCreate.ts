@@ -9,6 +9,7 @@ import { PayerIdentifier } from "../../../../payers/resources/v3/types/PayerIden
 import { Payee } from "../../../../remits/resources/v1/types/Payee";
 import { ClaimId } from "../../../../commons/types/ClaimId";
 import { ClaimAdjudicationCreate } from "./ClaimAdjudicationCreate";
+import { RemitDraftId } from "../../../../remitDrafts/resources/v1/types/RemitDraftId";
 
 export const InsuranceAdjudicationCreate: core.serialization.ObjectSchema<
     serializers.insuranceAdjudications.v1.InsuranceAdjudicationCreate.Raw,
@@ -21,6 +22,7 @@ export const InsuranceAdjudicationCreate: core.serialization.ObjectSchema<
     checkDate: core.serialization.property("check_date", core.serialization.string()),
     note: core.serialization.string().optional(),
     claims: core.serialization.record(ClaimId, core.serialization.list(ClaimAdjudicationCreate)),
+    remitDraftId: core.serialization.property("remit_draft_id", RemitDraftId.optional()),
 });
 
 export declare namespace InsuranceAdjudicationCreate {
@@ -32,5 +34,6 @@ export declare namespace InsuranceAdjudicationCreate {
         check_date: string;
         note?: string | null;
         claims: Record<ClaimId.Raw, ClaimAdjudicationCreate.Raw[]>;
+        remit_draft_id?: RemitDraftId.Raw | null;
     }
 }

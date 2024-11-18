@@ -24,6 +24,7 @@ import { CanonicalNonInsurancePayerAssociation } from "../../../../common/types/
 import { Guarantor } from "./Guarantor";
 import { Authorization } from "./Authorization";
 import { Referral } from "./Referral";
+import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 
 export const MutablePatient: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.MutablePatient.Raw,
@@ -76,6 +77,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
         "primary_service_facility_id",
         core.serialization.string().optional()
     ),
+    doNotInvoiceReason: core.serialization.property("do_not_invoice_reason", DoNotInvoiceReason.optional()),
 });
 
 export declare namespace MutablePatient {
@@ -112,5 +114,6 @@ export declare namespace MutablePatient {
         authorizations?: Authorization.Raw[] | null;
         referrals?: Referral.Raw[] | null;
         primary_service_facility_id?: string | null;
+        do_not_invoice_reason?: DoNotInvoiceReason.Raw | null;
     }
 }

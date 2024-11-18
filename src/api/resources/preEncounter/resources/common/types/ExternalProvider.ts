@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../../index";
 
 export interface ExternalProvider {
     name: CandidApi.preEncounter.HumanName;
+    /** Defaults to ATTENDING. */
     type?: CandidApi.preEncounter.ExternalProviderType;
     npi?: string;
     telecoms: CandidApi.preEncounter.ContactPoint[];

@@ -9,8 +9,8 @@ import * as core from "../../../../../../../../core";
 export const AppointmentWorkQueue: core.serialization.Schema<
     serializers.preEncounter.appointments.v1.AppointmentWorkQueue.Raw,
     CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue
-> = core.serialization.enum_(["EMERGENT_ISSUE", "NEW_PATIENT", "RETURNING_PATIENT"]);
+> = core.serialization.enum_(["EMERGENT_ISSUE", "NEW_PATIENT", "RETURNING_PATIENT", "MANUAL_ESCALATION"]);
 
 export declare namespace AppointmentWorkQueue {
-    type Raw = "EMERGENT_ISSUE" | "NEW_PATIENT" | "RETURNING_PATIENT";
+    type Raw = "EMERGENT_ISSUE" | "NEW_PATIENT" | "RETURNING_PATIENT" | "MANUAL_ESCALATION";
 }

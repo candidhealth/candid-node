@@ -26,6 +26,7 @@ export * as organizationProviders from "./organizationProviders";
 export * as patientPayments from "./patientPayments";
 export * as patientRefunds from "./patientRefunds";
 export * as payers from "./payers";
+export * as remitDrafts from "./remitDrafts";
 export * as remits from "./remits";
 export * as serviceLines from "./serviceLines";
 export * as tasks from "./tasks";
