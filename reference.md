@@ -596,6 +596,7 @@ await client.credentialing.v2.getAll({
     limit: 1,
     pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
     payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    providerId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
     asRenderingProvider: true,
     asContractingProvider: true,
 });
@@ -10787,7 +10788,7 @@ await client.preEncounter.patients.v1.create({
 <dl>
 <dd>
 
-Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. InvalidMRNError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
+Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
 
 </dd>
 </dl>

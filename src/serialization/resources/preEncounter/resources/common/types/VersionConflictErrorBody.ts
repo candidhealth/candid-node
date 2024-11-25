@@ -5,21 +5,19 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { ErrorBase } from "./ErrorBase";
+import { ErrorBase4Xx } from "./ErrorBase4Xx";
 
 export const VersionConflictErrorBody: core.serialization.ObjectSchema<
     serializers.preEncounter.VersionConflictErrorBody.Raw,
     CandidApi.preEncounter.VersionConflictErrorBody
 > = core.serialization
     .object({
-        code: core.serialization.stringLiteral("VERSION_CONFLICT"),
-        latestVersion: core.serialization.property("latest_version", core.serialization.number()),
+        latestVersion: core.serialization.property("latest_version", core.serialization.number().optional()),
     })
-    .extend(ErrorBase);
+    .extend(ErrorBase4Xx);
 
 export declare namespace VersionConflictErrorBody {
-    interface Raw extends ErrorBase.Raw {
-        code: "VERSION_CONFLICT";
-        latest_version: number;
+    interface Raw extends ErrorBase4Xx.Raw {
+        latest_version?: number | null;
     }
 }

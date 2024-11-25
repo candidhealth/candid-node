@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { ErrorBase } from "../../../../common/types/ErrorBase";
+import { ErrorBase4Xx } from "../../../../common/types/ErrorBase4Xx";
 
 export const Error: core.serialization.Schema<
     serializers.preEncounter.lists.v1.getPatientList.Error.Raw,
@@ -13,7 +13,7 @@ export const Error: core.serialization.Schema<
 > = core.serialization
     .union("errorName", {
         BadRequestError: core.serialization.object({
-            content: ErrorBase,
+            content: ErrorBase4Xx,
         }),
     })
     .transform<CandidApi.preEncounter.lists.v1.getPatientList.Error>({
@@ -31,6 +31,6 @@ export declare namespace Error {
 
     interface BadRequestError {
         errorName: "BadRequestError";
-        content: ErrorBase.Raw;
+        content: ErrorBase4Xx.Raw;
     }
 }

@@ -4,7 +4,6 @@
 
 import * as CandidApi from "../../../../../index";
 
-export interface VersionConflictErrorBody extends CandidApi.preEncounter.ErrorBase {
-    code: "VERSION_CONFLICT";
-    latestVersion: number;
+export interface VersionConflictErrorBody extends CandidApi.preEncounter.ErrorBase4Xx {
+    latestVersion?: number;
 }

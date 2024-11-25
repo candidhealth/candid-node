@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { NotFoundErrorBody } from "../../../../common/types/NotFoundErrorBody";
+import { ErrorBase4Xx } from "../../../../common/types/ErrorBase4Xx";
 import { VersionConflictErrorBody } from "../../../../common/types/VersionConflictErrorBody";
 
 export const Error: core.serialization.Schema<
@@ -14,7 +14,7 @@ export const Error: core.serialization.Schema<
 > = core.serialization
     .union("errorName", {
         NotFoundError: core.serialization.object({
-            content: NotFoundErrorBody,
+            content: ErrorBase4Xx,
         }),
         VersionConflictError: core.serialization.object({
             content: VersionConflictErrorBody,
@@ -37,7 +37,7 @@ export declare namespace Error {
 
     interface NotFoundError {
         errorName: "NotFoundError";
-        content: NotFoundErrorBody.Raw;
+        content: ErrorBase4Xx.Raw;
     }
 
     interface VersionConflictError {

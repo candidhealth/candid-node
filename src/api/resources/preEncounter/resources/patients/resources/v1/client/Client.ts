@@ -221,7 +221,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -250,7 +250,6 @@ export class V1 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.preEncounter.patients.v1.create.Error.Raw)?.errorName) {
                 case "VersionConflictError":
-                case "PotentialDuplicatePatients":
                     return {
                         ok: false,
                         error: serializers.preEncounter.patients.v1.create.Error.parseOrThrow(
@@ -273,7 +272,7 @@ export class V1 {
     }
 
     /**
-     * Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. InvalidMRNError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
+     * Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
      *
      * @param {CandidApi.preEncounter.patients.v1.CreatePatientWithMrnRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -470,7 +469,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -499,8 +498,7 @@ export class V1 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.preEncounter.patients.v1.createWithMrn.Error.Raw)?.errorName) {
                 case "VersionConflictError":
-                case "PotentialDuplicatePatients":
-                case "InvalidMRNError":
+                case "BadRequestError":
                     return {
                         ok: false,
                         error: serializers.preEncounter.patients.v1.createWithMrn.Error.parseOrThrow(
@@ -579,7 +577,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -634,7 +632,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -709,7 +707,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -946,7 +944,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1024,7 +1022,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1105,7 +1103,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1165,7 +1163,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.1",
+                "X-Fern-SDK-Version": "0.35.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

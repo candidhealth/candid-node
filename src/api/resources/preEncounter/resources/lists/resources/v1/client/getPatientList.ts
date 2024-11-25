@@ -12,7 +12,7 @@ export type Error =
 export declare namespace Error {
     interface BadRequestError extends _Utils {
         errorName: "BadRequestError";
-        content: CandidApi.preEncounter.ErrorBase;
+        content: CandidApi.preEncounter.ErrorBase4Xx;
     }
 
     interface _Unknown extends _Utils {
@@ -25,14 +25,14 @@ export declare namespace Error {
     }
 
     interface _Visitor<_Result> {
-        badRequestError: (value: CandidApi.preEncounter.ErrorBase) => _Result;
+        badRequestError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
     badRequestError: (
-        value: CandidApi.preEncounter.ErrorBase
+        value: CandidApi.preEncounter.ErrorBase4Xx
     ): CandidApi.preEncounter.lists.v1.getPatientList.Error.BadRequestError => {
         return {
             content: value,

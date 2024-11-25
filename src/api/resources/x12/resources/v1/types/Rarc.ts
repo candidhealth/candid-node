@@ -1069,7 +1069,8 @@ export type Rarc =
     | "N859"
     | "N860"
     | "N880"
-    | "N887";
+    | "N887"
+    | "N891";
 
 export const Rarc = {
     M1: "M1",
@@ -2139,4 +2140,5 @@ export const Rarc = {
     N860: "N860",
     N880: "N880",
     N887: "N887",
+    N891: "N891",
 } as const;

@@ -18,7 +18,7 @@ export declare namespace Error {
 
     interface NotFoundError extends _Utils {
         errorName: "NotFoundError";
-        content: CandidApi.preEncounter.NotFoundErrorBody;
+        content: CandidApi.preEncounter.ErrorBase4Xx;
     }
 
     interface _Unknown extends _Utils {
@@ -32,7 +32,7 @@ export declare namespace Error {
 
     interface _Visitor<_Result> {
         versionConflictError: (value: CandidApi.preEncounter.VersionConflictErrorBody) => _Result;
-        notFoundError: (value: CandidApi.preEncounter.NotFoundErrorBody) => _Result;
+        notFoundError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -54,7 +54,7 @@ export const Error = {
     },
 
     notFoundError: (
-        value: CandidApi.preEncounter.NotFoundErrorBody
+        value: CandidApi.preEncounter.ErrorBase4Xx
     ): CandidApi.preEncounter.appointments.v1.create.Error.NotFoundError => {
         return {
             content: value,

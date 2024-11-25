@@ -7,8 +7,7 @@ import * as core from "../../../../../../../../core";
 
 export type Error =
     | CandidApi.preEncounter.patients.v1.createWithMrn.Error.VersionConflictError
-    | CandidApi.preEncounter.patients.v1.createWithMrn.Error.PotentialDuplicatePatients
-    | CandidApi.preEncounter.patients.v1.createWithMrn.Error.InvalidMrnError
+    | CandidApi.preEncounter.patients.v1.createWithMrn.Error.BadRequestError
     | CandidApi.preEncounter.patients.v1.createWithMrn.Error._Unknown;
 
 export declare namespace Error {
@@ -17,14 +16,9 @@ export declare namespace Error {
         content: CandidApi.preEncounter.VersionConflictErrorBody;
     }
 
-    interface PotentialDuplicatePatients extends _Utils {
-        errorName: "PotentialDuplicatePatients";
-        content: CandidApi.preEncounter.patients.v1.PotentialDuplicatePatientsErrorBody;
-    }
-
-    interface InvalidMrnError extends _Utils {
-        errorName: "InvalidMRNError";
-        content: CandidApi.preEncounter.patients.v1.InvalidMrnErrorBody;
+    interface BadRequestError extends _Utils {
+        errorName: "BadRequestError";
+        content: CandidApi.preEncounter.ErrorBase4Xx;
     }
 
     interface _Unknown extends _Utils {
@@ -38,10 +32,7 @@ export declare namespace Error {
 
     interface _Visitor<_Result> {
         versionConflictError: (value: CandidApi.preEncounter.VersionConflictErrorBody) => _Result;
-        potentialDuplicatePatients: (
-            value: CandidApi.preEncounter.patients.v1.PotentialDuplicatePatientsErrorBody
-        ) => _Result;
-        invalidMrnError: (value: CandidApi.preEncounter.patients.v1.InvalidMrnErrorBody) => _Result;
+        badRequestError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -62,29 +53,14 @@ export const Error = {
         };
     },
 
-    potentialDuplicatePatients: (
-        value: CandidApi.preEncounter.patients.v1.PotentialDuplicatePatientsErrorBody
-    ): CandidApi.preEncounter.patients.v1.createWithMrn.Error.PotentialDuplicatePatients => {
+    badRequestError: (
+        value: CandidApi.preEncounter.ErrorBase4Xx
+    ): CandidApi.preEncounter.patients.v1.createWithMrn.Error.BadRequestError => {
         return {
             content: value,
-            errorName: "PotentialDuplicatePatients",
+            errorName: "BadRequestError",
             _visit: function <_Result>(
-                this: CandidApi.preEncounter.patients.v1.createWithMrn.Error.PotentialDuplicatePatients,
-                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>
-            ) {
-                return CandidApi.preEncounter.patients.v1.createWithMrn.Error._visit(this, visitor);
-            },
-        };
-    },
-
-    invalidMrnError: (
-        value: CandidApi.preEncounter.patients.v1.InvalidMrnErrorBody
-    ): CandidApi.preEncounter.patients.v1.createWithMrn.Error.InvalidMrnError => {
-        return {
-            content: value,
-            errorName: "InvalidMRNError",
-            _visit: function <_Result>(
-                this: CandidApi.preEncounter.patients.v1.createWithMrn.Error.InvalidMrnError,
+                this: CandidApi.preEncounter.patients.v1.createWithMrn.Error.BadRequestError,
                 visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>
             ) {
                 return CandidApi.preEncounter.patients.v1.createWithMrn.Error._visit(this, visitor);
@@ -112,10 +88,8 @@ export const Error = {
         switch (value.errorName) {
             case "VersionConflictError":
                 return visitor.versionConflictError(value.content);
-            case "PotentialDuplicatePatients":
-                return visitor.potentialDuplicatePatients(value.content);
-            case "InvalidMRNError":
-                return visitor.invalidMrnError(value.content);
+            case "BadRequestError":
+                return visitor.badRequestError(value.content);
             default:
                 return visitor._other(value as any);
         }

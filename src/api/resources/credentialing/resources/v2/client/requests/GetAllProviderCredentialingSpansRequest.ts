@@ -10,6 +10,7 @@ import * as CandidApi from "../../../../../../index";
  *         limit: 1,
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+ *         providerId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
  *         asRenderingProvider: true,
  *         asContractingProvider: true
  *     }
@@ -25,11 +26,15 @@ export interface GetAllProviderCredentialingSpansRequest {
      */
     payerUuid?: string;
     /**
-     * Filter to credentialing spans where the provider is a rendering provider.
+     * Filter to a particular provider. Use in conjunction as_rendering_provider and as_contracting_provider.
+     */
+    providerId?: string;
+    /**
+     * Filter to credentialing spans where the provider is a rendering provider. To use this filter provider_id is required.
      */
     asRenderingProvider?: boolean;
     /**
-     * Filter to credentialing spans where the provider is a contracting provider.
+     * Filter to credentialing spans where the provider is a contracting provider. To use this filter provider_id is required.
      */
     asContractingProvider?: boolean;
 }

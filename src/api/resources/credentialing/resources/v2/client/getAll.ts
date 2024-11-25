@@ -7,12 +7,18 @@ import * as core from "../../../../../../core";
 
 export type Error =
     | CandidApi.credentialing.v2.getAll.Error.UnauthorizedError
+    | CandidApi.credentialing.v2.getAll.Error.UnprocessableEntityError
     | CandidApi.credentialing.v2.getAll.Error._Unknown;
 
 export declare namespace Error {
     interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
     interface _Unknown extends _Utils {
@@ -26,6 +32,7 @@ export declare namespace Error {
 
     interface _Visitor<_Result> {
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -39,6 +46,21 @@ export const Error = {
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.credentialing.v2.getAll.Error.UnauthorizedError,
+                visitor: CandidApi.credentialing.v2.getAll.Error._Visitor<_Result>
+            ) {
+                return CandidApi.credentialing.v2.getAll.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage
+    ): CandidApi.credentialing.v2.getAll.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.credentialing.v2.getAll.Error.UnprocessableEntityError,
                 visitor: CandidApi.credentialing.v2.getAll.Error._Visitor<_Result>
             ) {
                 return CandidApi.credentialing.v2.getAll.Error._visit(this, visitor);
@@ -66,6 +88,8 @@ export const Error = {
         switch (value.errorName) {
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -6,8 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { VersionConflictErrorBody } from "../../../../common/types/VersionConflictErrorBody";
-import { PotentialDuplicatePatientsErrorBody } from "../types/PotentialDuplicatePatientsErrorBody";
-import { InvalidMrnErrorBody } from "../types/InvalidMrnErrorBody";
+import { ErrorBase4Xx } from "../../../../common/types/ErrorBase4Xx";
 
 export const Error: core.serialization.Schema<
     serializers.preEncounter.patients.v1.createWithMrn.Error.Raw,
@@ -17,11 +16,8 @@ export const Error: core.serialization.Schema<
         VersionConflictError: core.serialization.object({
             content: VersionConflictErrorBody,
         }),
-        PotentialDuplicatePatients: core.serialization.object({
-            content: PotentialDuplicatePatientsErrorBody,
-        }),
-        InvalidMRNError: core.serialization.object({
-            content: InvalidMrnErrorBody,
+        BadRequestError: core.serialization.object({
+            content: ErrorBase4Xx,
         }),
     })
     .transform<CandidApi.preEncounter.patients.v1.createWithMrn.Error>({
@@ -29,32 +25,23 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "VersionConflictError":
                     return CandidApi.preEncounter.patients.v1.createWithMrn.Error.versionConflictError(value.content);
-                case "PotentialDuplicatePatients":
-                    return CandidApi.preEncounter.patients.v1.createWithMrn.Error.potentialDuplicatePatients(
-                        value.content
-                    );
-                case "InvalidMRNError":
-                    return CandidApi.preEncounter.patients.v1.createWithMrn.Error.invalidMrnError(value.content);
+                case "BadRequestError":
+                    return CandidApi.preEncounter.patients.v1.createWithMrn.Error.badRequestError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.VersionConflictError | Error.PotentialDuplicatePatients | Error.InvalidMrnError;
+    type Raw = Error.VersionConflictError | Error.BadRequestError;
 
     interface VersionConflictError {
         errorName: "VersionConflictError";
         content: VersionConflictErrorBody.Raw;
     }
 
-    interface PotentialDuplicatePatients {
-        errorName: "PotentialDuplicatePatients";
-        content: PotentialDuplicatePatientsErrorBody.Raw;
-    }
-
-    interface InvalidMrnError {
-        errorName: "InvalidMRNError";
-        content: InvalidMrnErrorBody.Raw;
+    interface BadRequestError {
+        errorName: "BadRequestError";
+        content: ErrorBase4Xx.Raw;
     }
 }
