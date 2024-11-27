@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../../../../index";
 
 /**
- * A serialized list of filters separated by commas indicating filters to apply. Each filter is of the form 'path:operator:value'. Example: 'patient.mrn|eq|12345'. Filters are separated by commas. Example: 'patient.mrn|eq|12345,appointment.startDate|gt|67890'. All filters are ANDed together. Valid operators are 'eq', 'gt', 'lt'. Path values are camelCase.
+ * A serialized list of filters separated by commas indicating filters to apply. Each filter is of the form 'path:operator:value'. Example: 'patient.mrn|eq|12345'. Filters are separated by commas. Example: 'patient.mrn|eq|12345,appointment.startDate|gt|67890'. All filters are ANDed together. Valid operators are 'eq', 'gt', 'lt', 'contains'. Path values are camelCase.
  */
 export type FilterQueryString = string & {
     preEncounter_lists_v1_FilterQueryString: void;

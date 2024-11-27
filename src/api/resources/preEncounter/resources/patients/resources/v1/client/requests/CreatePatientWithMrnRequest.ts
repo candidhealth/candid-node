@@ -167,7 +167,9 @@ import * as CandidApi from "../../../../../../../../index";
  *                     referralNumber: "string"
  *                 }],
  *             primaryServiceFacilityId: "string",
- *             doNotInvoiceReason: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason.Bankruptcy
+ *             doNotInvoiceReason: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason.Bankruptcy,
+ *             noteIds: [CandidApi.preEncounter.NoteId("string")],
+ *             tagIds: [CandidApi.preEncounter.TagId("string")]
  *         }
  *     }
  */

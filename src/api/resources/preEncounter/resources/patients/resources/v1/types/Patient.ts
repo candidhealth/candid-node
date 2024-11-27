@@ -7,18 +7,9 @@ import * as CandidApi from "../../../../../../../index";
 /**
  * A patient object with immutable server-owned properties.
  */
-export interface Patient extends CandidApi.preEncounter.patients.v1.MutablePatient {
+export interface Patient extends CandidApi.preEncounter.BaseModel, CandidApi.preEncounter.patients.v1.MutablePatient {
     /** The unique UUID identifier for a Patient. Patient ID is used in machine contexts. */
     id: CandidApi.preEncounter.PatientId;
     /** The medical record number for the patient. Human-friendly Candid generated MRNs are of the form "YYMMDDXXXX", where "YYYYMMDD" is the date of patient creation and "XXXX" is a zero-padded incrementing integer. */
     mrn: string;
-    /** The organization that owns this patient. */
-    organizationId: CandidApi.preEncounter.OrganizationId;
-    /** True if the patient is deactivated. Deactivated patients are not returned in search results but are returned in all other endpoints including scan. */
-    deactivated: boolean;
-    /** The version of the patient. Any update to any property of a patient object will create a new version. */
-    version: number;
-    updatedAt: Date;
-    /** The user ID of the user who last updated the patient. */
-    updatingUserId: CandidApi.preEncounter.UserId;
 }

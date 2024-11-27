@@ -6,8 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { CoverageId } from "../../../../common/types/CoverageId";
-import { OrganizationId } from "../../../../common/types/OrganizationId";
-import { UserId } from "../../../../common/types/UserId";
+import { BaseModel } from "../../../../common/types/BaseModel";
 import { MutableCoverage } from "./MutableCoverage";
 
 export const Coverage: core.serialization.ObjectSchema<
@@ -16,21 +15,12 @@ export const Coverage: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         id: CoverageId,
-        organizationId: core.serialization.property("organization_id", OrganizationId),
-        deactivated: core.serialization.boolean(),
-        version: core.serialization.number(),
-        updatedAt: core.serialization.property("updated_at", core.serialization.date()),
-        updatingUserId: core.serialization.property("updating_user_id", UserId),
     })
+    .extend(BaseModel)
     .extend(MutableCoverage);
 
 export declare namespace Coverage {
-    interface Raw extends MutableCoverage.Raw {
+    interface Raw extends BaseModel.Raw, MutableCoverage.Raw {
         id: CoverageId.Raw;
-        organization_id: OrganizationId.Raw;
-        deactivated: boolean;
-        version: number;
-        updated_at: string;
-        updating_user_id: UserId.Raw;
     }
 }

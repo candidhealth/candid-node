@@ -6,8 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { AppointmentId } from "../../../../common/types/AppointmentId";
-import { OrganizationId } from "../../../../common/types/OrganizationId";
-import { UserId } from "../../../../common/types/UserId";
+import { BaseModel } from "../../../../common/types/BaseModel";
 import { MutableAppointment } from "./MutableAppointment";
 
 export const Appointment: core.serialization.ObjectSchema<
@@ -16,21 +15,12 @@ export const Appointment: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         id: AppointmentId,
-        organizationId: core.serialization.property("organization_id", OrganizationId),
-        deactivated: core.serialization.boolean(),
-        version: core.serialization.number(),
-        updatedAt: core.serialization.property("updated_at", core.serialization.date()),
-        updatingUserId: core.serialization.property("updating_user_id", UserId),
     })
+    .extend(BaseModel)
     .extend(MutableAppointment);
 
 export declare namespace Appointment {
-    interface Raw extends MutableAppointment.Raw {
+    interface Raw extends BaseModel.Raw, MutableAppointment.Raw {
         id: AppointmentId.Raw;
-        organization_id: OrganizationId.Raw;
-        deactivated: boolean;
-        version: number;
-        updated_at: string;
-        updating_user_id: UserId.Raw;
     }
 }

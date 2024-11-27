@@ -7,15 +7,8 @@ import * as CandidApi from "../../../../../../../index";
 /**
  * An appointment object with immutable server-owned properties.
  */
-export interface Appointment extends CandidApi.preEncounter.appointments.v1.MutableAppointment {
+export interface Appointment
+    extends CandidApi.preEncounter.BaseModel,
+        CandidApi.preEncounter.appointments.v1.MutableAppointment {
     id: CandidApi.preEncounter.AppointmentId;
-    /** The organization that owns this appointment. */
-    organizationId: CandidApi.preEncounter.OrganizationId;
-    /** True if the appointment is deactivated. Deactivated appointments are not returned in search results but are returned in all other endpoints including scan. */
-    deactivated: boolean;
-    /** The version of the appointment. Any update to any property of an appointment object will create a new version. */
-    version: number;
-    updatedAt: Date;
-    /** The user ID of the user who last updated the appointment. */
-    updatingUserId: CandidApi.preEncounter.UserId;
 }

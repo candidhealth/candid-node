@@ -1,6 +1,6 @@
 {
     "name": "candidhealth",
-    "version": "0.35.2",
+    "version": "0.35.3",
     "private": false,
     "repository": "https://github.com/candidhealth/candid-node",
     "main": "./index.js",

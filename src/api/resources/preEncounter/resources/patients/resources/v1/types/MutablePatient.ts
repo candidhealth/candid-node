@@ -53,4 +53,6 @@ export interface MutablePatient {
     primaryServiceFacilityId?: string;
     /** If this value is defined, the customer will not be invoiced. */
     doNotInvoiceReason?: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason;
+    noteIds?: CandidApi.preEncounter.NoteId[];
+    tagIds?: CandidApi.preEncounter.TagId[];
 }

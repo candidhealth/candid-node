@@ -7,7 +7,9 @@ import * as core from "../../../../core";
 import { Appointments } from "../resources/appointments/client/Client";
 import { Coverages } from "../resources/coverages/client/Client";
 import { Lists } from "../resources/lists/client/Client";
+import { Notes } from "../resources/notes/client/Client";
 import { Patients } from "../resources/patients/client/Client";
+import { Tags } from "../resources/tags/client/Client";
 
 export declare namespace PreEncounter {
     interface Options {
@@ -46,9 +48,21 @@ export class PreEncounter {
         return (this._lists ??= new Lists(this._options));
     }
 
+    protected _notes: Notes | undefined;
+
+    public get notes(): Notes {
+        return (this._notes ??= new Notes(this._options));
+    }
+
     protected _patients: Patients | undefined;
 
     public get patients(): Patients {
         return (this._patients ??= new Patients(this._options));
+    }
+
+    protected _tags: Tags | undefined;
+
+    public get tags(): Tags {
+        return (this._tags ??= new Tags(this._options));
     }
 }
