@@ -52,7 +52,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.35.3",
+                "X-Fern-SDK-Version": "0.36.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -80,6 +80,153 @@ export class V2 {
         return {
             ok: false,
             error: CandidApi.billingNotes.v2.create.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.billingNotes.v2.BillingNoteId} billingNoteId
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.billingNotes.v2.delete(CandidApi.billingNotes.v2.BillingNoteId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public async delete(
+        billingNoteId: CandidApi.billingNotes.v2.BillingNoteId,
+        requestOptions?: V2.RequestOptions
+    ): Promise<core.APIResponse<void, CandidApi.billingNotes.v2.delete.Error>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
+                `/api/billing_notes/v2/${encodeURIComponent(
+                    serializers.billingNotes.v2.BillingNoteId.jsonOrThrow(billingNoteId)
+                )}`
+            ),
+            method: "DELETE",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.36.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: undefined,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.billingNotes.v2.delete.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "OrganizationNotAuthorizedError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.billingNotes.v2.delete.Error.parseOrThrow(
+                            _response.error.body as serializers.billingNotes.v2.delete.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.billingNotes.v2.delete.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.billingNotes.v2.BillingNoteId} billingNoteId
+     * @param {CandidApi.billingNotes.v2.BillingNoteUpdate} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.billingNotes.v2.update(CandidApi.billingNotes.v2.BillingNoteId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         text: "string"
+     *     })
+     */
+    public async update(
+        billingNoteId: CandidApi.billingNotes.v2.BillingNoteId,
+        request: CandidApi.billingNotes.v2.BillingNoteUpdate,
+        requestOptions?: V2.RequestOptions
+    ): Promise<core.APIResponse<CandidApi.billingNotes.v2.BillingNote, CandidApi.billingNotes.v2.update.Error>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
+                    .candidApi,
+                `/api/billing_notes/v2/${encodeURIComponent(
+                    serializers.billingNotes.v2.BillingNoteId.jsonOrThrow(billingNoteId)
+                )}`
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.36.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.billingNotes.v2.BillingNoteUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.billingNotes.v2.BillingNote.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.billingNotes.v2.update.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "OrganizationNotAuthorizedError":
+                case "HttpRequestValidationError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.billingNotes.v2.update.Error.parseOrThrow(
+                            _response.error.body as serializers.billingNotes.v2.update.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            }
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.billingNotes.v2.update.Error._unknown(_response.error),
         };
     }
 

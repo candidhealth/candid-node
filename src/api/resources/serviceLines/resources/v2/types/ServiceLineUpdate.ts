@@ -14,6 +14,7 @@ export interface ServiceLineUpdate {
     diagnosisIdThree?: CandidApi.DiagnosisId;
     drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
     denialReason?: CandidApi.serviceLines.v2.ServiceLineDenialReason;
+    /** 837p Loop2300, SV105. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     units?: CandidApi.ServiceLineUnits;
     procedureCode?: string;

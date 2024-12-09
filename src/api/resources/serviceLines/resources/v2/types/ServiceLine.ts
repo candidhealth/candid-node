@@ -95,7 +95,9 @@ export interface ServiceLine {
     relatedInvoices?: CandidApi.Invoice[];
     relatedInvoiceInfo?: CandidApi.invoices.v2.InvoiceInfo[];
     denialReason?: CandidApi.serviceLines.v2.ServiceLineDenialReason;
+    /** 837p Loop2300, SV105. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    /** 837p Loop2300, SV105. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     serviceLineId: CandidApi.ServiceLineId;
     procedureCode: string;

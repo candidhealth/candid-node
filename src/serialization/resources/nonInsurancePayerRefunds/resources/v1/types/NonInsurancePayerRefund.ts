@@ -20,6 +20,7 @@ export const NonInsurancePayerRefund: core.serialization.ObjectSchema<
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
     refundTimestamp: core.serialization.property("refund_timestamp", core.serialization.date().optional()),
     refundNote: core.serialization.property("refund_note", core.serialization.string().optional()),
+    checkNumber: core.serialization.property("check_number", core.serialization.string().optional()),
     allocations: core.serialization.list(Allocation),
     refundReason: core.serialization.property("refund_reason", RefundReason.optional()),
     invoiceId: core.serialization.property("invoice_id", InvoiceId.optional()),
@@ -32,6 +33,7 @@ export declare namespace NonInsurancePayerRefund {
         amount_cents: number;
         refund_timestamp?: string | null;
         refund_note?: string | null;
+        check_number?: string | null;
         allocations: Allocation.Raw[];
         refund_reason?: RefundReason.Raw | null;
         invoice_id?: InvoiceId.Raw | null;

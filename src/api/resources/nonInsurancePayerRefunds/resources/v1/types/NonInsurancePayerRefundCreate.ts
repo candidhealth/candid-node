@@ -10,6 +10,7 @@ export interface NonInsurancePayerRefundCreate {
     amountCents: number;
     refundTimestamp?: Date;
     refundNote?: string;
+    checkNumber?: string;
     allocations: CandidApi.AllocationCreate[];
     refundReason?: CandidApi.RefundReason;
 }

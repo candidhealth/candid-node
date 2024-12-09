@@ -23,6 +23,7 @@ export interface ServiceLineCreate {
     /** Indices (zero-indexed) of all the diagnoses this service line references */
     diagnosisPointers: number[];
     drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
+    /** 837p Loop2300, SV105. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */
     description?: string;
