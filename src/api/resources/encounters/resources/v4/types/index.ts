@@ -1,4 +1,5 @@
 export * from "./EncounterBase";
+export * from "./EncounterOptional";
 export * from "./Encounter";
 export * from "./EncounterSortOptions";
 export * from "./Medication";

@@ -8,6 +8,7 @@ import * as core from "../../../../../../core";
 import { ProviderId } from "./ProviderId";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { QualifierCode } from "../../../../commons/types/QualifierCode";
+import { BillingProviderCommercialLicenseType } from "../../../../commons/types/BillingProviderCommercialLicenseType";
 import { EncounterProviderBase } from "./EncounterProviderBase";
 
 export const EncounterProvider: core.serialization.ObjectSchema<
@@ -21,6 +22,10 @@ export const EncounterProvider: core.serialization.ObjectSchema<
         npi: core.serialization.string(),
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
         qualifier: QualifierCode.optional(),
+        providerCommercialLicenseType: core.serialization.property(
+            "provider_commercial_license_type",
+            BillingProviderCommercialLicenseType.optional()
+        ),
     })
     .extend(EncounterProviderBase);
 
@@ -32,5 +37,6 @@ export declare namespace EncounterProvider {
         npi: string;
         taxonomy_code?: string | null;
         qualifier?: QualifierCode.Raw | null;
+        provider_commercial_license_type?: BillingProviderCommercialLicenseType.Raw | null;
     }
 }

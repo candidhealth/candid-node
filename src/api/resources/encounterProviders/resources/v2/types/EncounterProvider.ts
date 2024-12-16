@@ -31,4 +31,9 @@ export interface EncounterProvider extends CandidApi.encounterProviders.v2.Encou
     npi: string;
     taxonomyCode?: string;
     qualifier?: CandidApi.QualifierCode;
+    /**
+     * 837i Loop2010BB G2
+     * Provider Commercial Number
+     */
+    providerCommercialLicenseType?: CandidApi.BillingProviderCommercialLicenseType;
 }

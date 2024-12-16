@@ -6,6 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
+import { ContractInvalidExpirationDateError } from "../types/ContractInvalidExpirationDateError";
 
 export const Error: core.serialization.Schema<
     serializers.contracts.v2.update.Error.Raw,
@@ -15,22 +16,32 @@ export const Error: core.serialization.Schema<
         UnprocessableEntityError: core.serialization.object({
             content: UnprocessableEntityErrorMessage,
         }),
+        ContractInvalidExpirationDateHttpError: core.serialization.object({
+            content: ContractInvalidExpirationDateError,
+        }),
     })
     .transform<CandidApi.contracts.v2.update.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "UnprocessableEntityError":
                     return CandidApi.contracts.v2.update.Error.unprocessableEntityError(value.content);
+                case "ContractInvalidExpirationDateHttpError":
+                    return CandidApi.contracts.v2.update.Error.contractInvalidExpirationDateHttpError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.UnprocessableEntityError;
+    type Raw = Error.UnprocessableEntityError | Error.ContractInvalidExpirationDateHttpError;
 
     interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
+    }
+
+    interface ContractInvalidExpirationDateHttpError {
+        errorName: "ContractInvalidExpirationDateHttpError";
+        content: ContractInvalidExpirationDateError.Raw;
     }
 }

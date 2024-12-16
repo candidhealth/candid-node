@@ -20,4 +20,9 @@ export interface BillingProviderUpdate extends CandidApi.encounterProviders.v2.E
     taxId?: string;
     npi?: string;
     taxonomyCode?: string;
+    /**
+     * 837i Loop2010BB G2
+     * Provider Commercial Number
+     */
+    providerCommercialLicenseType?: CandidApi.BillingProviderCommercialLicenseType;
 }

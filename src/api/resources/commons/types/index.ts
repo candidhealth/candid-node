@@ -60,3 +60,4 @@ export * from "./PhoneNumberType";
 export * from "./Email";
 export * from "./DelayReasonCode";
 export * from "./IntendedSubmissionMedium";
+export * from "./BillingProviderCommercialLicenseType";

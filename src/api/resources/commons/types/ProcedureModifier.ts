@@ -1166,7 +1166,10 @@ export type ProcedureModifier =
     | "V3"
     /**
      * Two or more separate patient visits on the same date of service */
-    | "XE";
+    | "XE"
+    /**
+     * A service that is distinct because it was performed on a separate organ/structure */
+    | "XS";
 
 export const ProcedureModifier = {
     TwentyTwo: "22",
@@ -1557,4 +1560,5 @@ export const ProcedureModifier = {
     V2: "V2",
     V3: "V3",
     Xe: "XE",
+    Xs: "XS",
 } as const;
