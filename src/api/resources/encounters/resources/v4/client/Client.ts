@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.36.1",
+                "X-Fern-SDK-Version": "0.37.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.36.1",
+                "X-Fern-SDK-Version": "0.37.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -271,10 +271,7 @@ export class V4 {
      *             taxId: "string",
      *             npi: "string",
      *             taxonomyCode: "string",
-     *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker
      *         },
      *         renderingProvider: {
      *             npi: "string",
@@ -286,10 +283,7 @@ export class V4 {
      *                 state: CandidApi.State.Ny,
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             }
      *         },
      *         referringProvider: {
      *             npi: "string",
@@ -301,10 +295,7 @@ export class V4 {
      *                 state: CandidApi.State.Ny,
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             }
      *         },
      *         initialReferringProvider: {
      *             npi: "string",
@@ -317,10 +308,7 @@ export class V4 {
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
-     *             qualifier: CandidApi.QualifierCode.Dq,
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             qualifier: CandidApi.QualifierCode.Dq
      *         },
      *         supervisingProvider: {
      *             npi: "string",
@@ -332,10 +320,7 @@ export class V4 {
      *                 state: CandidApi.State.Ny,
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             }
      *         },
      *         serviceFacility: {
      *             organizationName: "string",
@@ -353,27 +338,9 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string",
-     *                 rxBin: "string",
-     *                 rxPcn: "string",
-     *                 imageUrlFront: "string",
-     *                 imageUrlBack: "string",
-     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
-     *                 groupNumber: "string",
-     *                 planName: "string",
-     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
-     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *                 payerId: "string"
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: CandidApi.Gender.Male
@@ -382,27 +349,9 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string",
-     *                 rxBin: "string",
-     *                 rxPcn: "string",
-     *                 imageUrlFront: "string",
-     *                 imageUrlBack: "string",
-     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
-     *                 groupNumber: "string",
-     *                 planName: "string",
-     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
-     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *                 payerId: "string"
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: CandidApi.Gender.Male
@@ -410,12 +359,18 @@ export class V4 {
      *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
      *         responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
      *         diagnoses: [{
+     *                 name: "string",
      *                 codeType: CandidApi.DiagnosisTypeCode.Abf,
      *                 code: "string"
      *             }],
      *         clinicalNotes: [{
      *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
-     *                 notes: []
+     *                 notes: [{
+     *                         text: "string",
+     *                         authorName: "string",
+     *                         authorNpi: CandidApi.Npi("string"),
+     *                         timestamp: new Date("2024-01-15T09:30:00.000Z")
+     *                     }]
      *             }],
      *         billingNotes: [{
      *                 text: "string"
@@ -437,10 +392,42 @@ export class V4 {
      *                     }]
      *             }],
      *         serviceLines: [{
+     *                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
      *                 procedureCode: "string",
      *                 quantity: CandidApi.Decimal("string"),
      *                 units: CandidApi.ServiceLineUnits.Mj,
-     *                 diagnosisPointers: []
+     *                 chargeAmountCents: 1,
+     *                 diagnosisPointers: [1],
+     *                 drugIdentification: {
+     *                     serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *                     nationalDrugCode: "string",
+     *                     nationalDrugUnitCount: "string",
+     *                     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *                     linkSequenceNumber: "string",
+     *                     pharmacyPrescriptionNumber: "string",
+     *                     conversionFormula: "string",
+     *                     drugDescription: "string"
+     *                 },
+     *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *                 description: "string",
+     *                 dateOfService: "2023-01-15",
+     *                 endDateOfService: "2023-01-15",
+     *                 orderingProvider: {
+     *                     npi: "string",
+     *                     taxonomyCode: "string",
+     *                     address: {
+     *                         address1: "123 Main St",
+     *                         address2: "Apt 1",
+     *                         city: "New York",
+     *                         state: CandidApi.State.Ny,
+     *                         zipCode: "10001",
+     *                         zipPlusFourCode: "1234"
+     *                     }
+     *                 },
+     *                 testResults: [{
+     *                         value: 1.1,
+     *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+     *                     }]
      *             }],
      *         guarantor: {
      *             phoneNumbers: [{
@@ -565,7 +552,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.36.1",
+                "X-Fern-SDK-Version": "0.37.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -656,10 +643,7 @@ export class V4 {
      *             taxId: "string",
      *             npi: "string",
      *             taxonomyCode: "string",
-     *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker
      *         },
      *         renderingProvider: {
      *             npi: "string",
@@ -671,10 +655,7 @@ export class V4 {
      *                 state: CandidApi.State.Ny,
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             }
      *         },
      *         initialReferringProvider: {
      *             npi: "string",
@@ -687,10 +668,7 @@ export class V4 {
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
-     *             qualifier: CandidApi.QualifierCode.Dq,
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             qualifier: CandidApi.QualifierCode.Dq
      *         },
      *         supervisingProvider: {
      *             npi: "string",
@@ -702,10 +680,7 @@ export class V4 {
      *                 state: CandidApi.State.Ny,
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
+     *             }
      *         },
      *         serviceFacility: {
      *             organizationName: "string",
@@ -720,12 +695,18 @@ export class V4 {
      *             }
      *         },
      *         diagnoses: [{
+     *                 name: "string",
      *                 codeType: CandidApi.DiagnosisTypeCode.Abf,
      *                 code: "string"
      *             }],
      *         clinicalNotes: [{
      *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
-     *                 notes: []
+     *                 notes: [{
+     *                         text: "string",
+     *                         authorName: "string",
+     *                         authorNpi: CandidApi.Npi("string"),
+     *                         timestamp: new Date("2024-01-15T09:30:00.000Z")
+     *                     }]
      *             }],
      *         billingNotes: [{
      *                 text: "string"
@@ -747,10 +728,42 @@ export class V4 {
      *                     }]
      *             }],
      *         serviceLines: [{
+     *                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
      *                 procedureCode: "string",
      *                 quantity: CandidApi.Decimal("string"),
      *                 units: CandidApi.ServiceLineUnits.Mj,
-     *                 diagnosisPointers: []
+     *                 chargeAmountCents: 1,
+     *                 diagnosisPointers: [1],
+     *                 drugIdentification: {
+     *                     serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *                     nationalDrugCode: "string",
+     *                     nationalDrugUnitCount: "string",
+     *                     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *                     linkSequenceNumber: "string",
+     *                     pharmacyPrescriptionNumber: "string",
+     *                     conversionFormula: "string",
+     *                     drugDescription: "string"
+     *                 },
+     *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *                 description: "string",
+     *                 dateOfService: "2023-01-15",
+     *                 endDateOfService: "2023-01-15",
+     *                 orderingProvider: {
+     *                     npi: "string",
+     *                     taxonomyCode: "string",
+     *                     address: {
+     *                         address1: "123 Main St",
+     *                         address2: "Apt 1",
+     *                         city: "New York",
+     *                         state: CandidApi.State.Ny,
+     *                         zipCode: "10001",
+     *                         zipPlusFourCode: "1234"
+     *                     }
+     *                 },
+     *                 testResults: [{
+     *                         value: 1.1,
+     *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+     *                     }]
      *             }],
      *         externalClaimSubmission: {
      *             claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
@@ -855,7 +868,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.36.1",
+                "X-Fern-SDK-Version": "0.37.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -923,11 +936,8 @@ export class V4 {
      *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
      *         externalId: CandidApi.EncounterExternalId("string"),
      *         dateOfService: "2023-01-15",
-     *         tagIds: [CandidApi.TagId("string")],
-     *         clinicalNotes: [{
-     *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
-     *                 notes: []
-     *             }],
+     *         tagIds: [],
+     *         clinicalNotes: [],
      *         payToAddress: {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
@@ -947,27 +957,9 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string",
-     *                 rxBin: "string",
-     *                 rxPcn: "string",
-     *                 imageUrlFront: "string",
-     *                 imageUrlBack: "string",
-     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
-     *                 groupNumber: "string",
-     *                 planName: "string",
-     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
-     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *                 payerId: "string"
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: CandidApi.Gender.Male
@@ -976,27 +968,9 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string",
-     *                 rxBin: "string",
-     *                 rxPcn: "string",
-     *                 imageUrlFront: "string",
-     *                 imageUrlBack: "string",
-     *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
-     *                 groupNumber: "string",
-     *                 planName: "string",
-     *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
-     *                 insuranceType: CandidApi.InsuranceTypeCode.C01
+     *                 payerId: "string"
      *             },
      *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: CandidApi.Gender.Male
@@ -1008,37 +982,9 @@ export class V4 {
      *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
      *         lastMenstrualPeriodDate: "2023-01-15",
      *         delayReasonCode: CandidApi.DelayReasonCode.C1,
-     *         patient: {
-     *             firstName: "string",
-     *             lastName: "string",
-     *             gender: CandidApi.Gender.Male,
-     *             externalId: "string",
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             phoneNumbers: [],
-     *             phoneConsent: true,
-     *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
-     *             emailConsent: true,
-     *             nonInsurancePayers: [],
-     *             nonInsurancePayersInfo: []
-     *         },
+     *         patient: {},
      *         patientAuthorizedRelease: true,
-     *         schemaInstances: [{
-     *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
-     *                 content: {
-     *                     "provider_category": "internist",
-     *                     "is_urgent_care": true,
-     *                     "bmi": 24.2,
-     *                     "age": 38
-     *                 }
-     *             }],
+     *         schemaInstances: [],
      *         vitals: {
      *             heightIn: 70,
      *             weightLbs: 165,
@@ -1048,29 +994,8 @@ export class V4 {
      *             hemoglobinGdl: 15.1,
      *             hematocritPct: 51.2
      *         },
-     *         existingMedications: [{
-     *                 name: "Lisinopril",
-     *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
-     *                 dosage: "10mg",
-     *                 dosageForm: "Tablet",
-     *                 frequency: "Once Daily",
-     *                 asNeeded: true
-     *             }],
-     *         renderingProvider: {
-     *             npi: "string",
-     *             taxonomyCode: "string",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
-     *         },
+     *         existingMedications: [],
+     *         renderingProvider: {},
      *         serviceFacility: {
      *             organizationName: "Test Organization",
      *             address: {
@@ -1082,87 +1007,11 @@ export class V4 {
      *                 zipPlusFourCode: "1234"
      *             }
      *         },
-     *         guarantor: {
-     *             firstName: "string",
-     *             lastName: "string",
-     *             externalId: "string",
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             phoneNumbers: [],
-     *             phoneConsent: true,
-     *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
-     *             emailConsent: true
-     *         },
-     *         billingProvider: {
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             taxId: "string",
-     *             npi: "string",
-     *             taxonomyCode: "string",
-     *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
-     *         },
-     *         supervisingProvider: {
-     *             npi: "string",
-     *             taxonomyCode: "string",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
-     *         },
-     *         referringProvider: {
-     *             npi: "string",
-     *             taxonomyCode: "string",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
-     *         },
-     *         initialReferringProvider: {
-     *             npi: "string",
-     *             taxonomyCode: "string",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             qualifier: CandidApi.QualifierCode.Dq,
-     *             firstName: "string",
-     *             lastName: "string",
-     *             organizationName: "string"
-     *         },
+     *         guarantor: {},
+     *         billingProvider: {},
+     *         supervisingProvider: {},
+     *         referringProvider: {},
+     *         initialReferringProvider: {},
      *         referralNumber: "string"
      *     })
      */
@@ -1182,7 +1031,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.36.1",
+                "X-Fern-SDK-Version": "0.37.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

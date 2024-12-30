@@ -21,10 +21,7 @@ import * as CandidApi from "../../../../../../index";
  *             taxId: "string",
  *             npi: "string",
  *             taxonomyCode: "string",
- *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
+ *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker
  *         },
  *         renderingProvider: {
  *             npi: "string",
@@ -36,10 +33,7 @@ import * as CandidApi from "../../../../../../index";
  *                 state: CandidApi.State.Ny,
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
+ *             }
  *         },
  *         initialReferringProvider: {
  *             npi: "string",
@@ -52,10 +46,7 @@ import * as CandidApi from "../../../../../../index";
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
  *             },
- *             qualifier: CandidApi.QualifierCode.Dq,
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
+ *             qualifier: CandidApi.QualifierCode.Dq
  *         },
  *         supervisingProvider: {
  *             npi: "string",
@@ -67,10 +58,7 @@ import * as CandidApi from "../../../../../../index";
  *                 state: CandidApi.State.Ny,
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
+ *             }
  *         },
  *         serviceFacility: {
  *             organizationName: "string",
@@ -85,12 +73,18 @@ import * as CandidApi from "../../../../../../index";
  *             }
  *         },
  *         diagnoses: [{
+ *                 name: "string",
  *                 codeType: CandidApi.DiagnosisTypeCode.Abf,
  *                 code: "string"
  *             }],
  *         clinicalNotes: [{
  *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
- *                 notes: []
+ *                 notes: [{
+ *                         text: "string",
+ *                         authorName: "string",
+ *                         authorNpi: CandidApi.Npi("string"),
+ *                         timestamp: new Date("2024-01-15T09:30:00.000Z")
+ *                     }]
  *             }],
  *         billingNotes: [{
  *                 text: "string"
@@ -112,10 +106,42 @@ import * as CandidApi from "../../../../../../index";
  *                     }]
  *             }],
  *         serviceLines: [{
+ *                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
  *                 procedureCode: "string",
  *                 quantity: CandidApi.Decimal("string"),
  *                 units: CandidApi.ServiceLineUnits.Mj,
- *                 diagnosisPointers: []
+ *                 chargeAmountCents: 1,
+ *                 diagnosisPointers: [1],
+ *                 drugIdentification: {
+ *                     serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+ *                     nationalDrugCode: "string",
+ *                     nationalDrugUnitCount: "string",
+ *                     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+ *                     linkSequenceNumber: "string",
+ *                     pharmacyPrescriptionNumber: "string",
+ *                     conversionFormula: "string",
+ *                     drugDescription: "string"
+ *                 },
+ *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+ *                 description: "string",
+ *                 dateOfService: "2023-01-15",
+ *                 endDateOfService: "2023-01-15",
+ *                 orderingProvider: {
+ *                     npi: "string",
+ *                     taxonomyCode: "string",
+ *                     address: {
+ *                         address1: "123 Main St",
+ *                         address2: "Apt 1",
+ *                         city: "New York",
+ *                         state: CandidApi.State.Ny,
+ *                         zipCode: "10001",
+ *                         zipPlusFourCode: "1234"
+ *                     }
+ *                 },
+ *                 testResults: [{
+ *                         value: 1.1,
+ *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+ *                     }]
  *             }],
  *         externalClaimSubmission: {
  *             claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),

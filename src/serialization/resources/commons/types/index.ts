@@ -1,4 +1,5 @@
 export * from "./EncounterId";
+export * from "./ChargeCaptureId";
 export * from "./OrganizationId";
 export * from "./ClaimId";
 export * from "./PreEncounterPatientId";
@@ -55,6 +56,7 @@ export * from "./HttpServiceUnavailableErrorMessage";
 export * from "./RequestValidationError";
 export * from "./UpdatesDisabledDueToExternalSystemIntegrationErrorMessage";
 export * from "./OrganizationNotAuthorizedErrorMessage";
+export * from "./NotImplementedErrorMessage";
 export * from "./PhoneNumber";
 export * from "./PhoneNumberType";
 export * from "./Email";
