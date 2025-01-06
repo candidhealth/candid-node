@@ -7,7 +7,6 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
-import { NotImplementedErrorMessage } from "../../../../commons/types/NotImplementedErrorMessage";
 
 export const Error: core.serialization.Schema<
     serializers.chargeCapture.v1.delete.Error.Raw,
@@ -20,9 +19,6 @@ export const Error: core.serialization.Schema<
         UnauthorizedError: core.serialization.object({
             content: UnauthorizedErrorMessage,
         }),
-        NotImplementedError: core.serialization.object({
-            content: NotImplementedErrorMessage,
-        }),
     })
     .transform<CandidApi.chargeCapture.v1.delete.Error>({
         transform: (value) => {
@@ -31,15 +27,13 @@ export const Error: core.serialization.Schema<
                     return CandidApi.chargeCapture.v1.delete.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
                     return CandidApi.chargeCapture.v1.delete.Error.unauthorizedError(value.content);
-                case "NotImplementedError":
-                    return CandidApi.chargeCapture.v1.delete.Error.notImplementedError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.NotImplementedError;
+    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError;
 
     interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -49,10 +43,5 @@ export declare namespace Error {
     interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
-    }
-
-    interface NotImplementedError {
-        errorName: "NotImplementedError";
-        content: NotImplementedErrorMessage.Raw;
     }
 }

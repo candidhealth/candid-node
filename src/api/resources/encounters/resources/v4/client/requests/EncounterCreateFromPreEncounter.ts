@@ -70,7 +70,8 @@ import * as CandidApi from "../../../../../../index";
  *                 state: CandidApi.State.Ny,
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             secondaryIdentification: "string"
  *         },
  *         diagnoses: [{
  *                 name: "string",

@@ -22,4 +22,10 @@ export interface EncounterServiceFacilityBase {
     npi?: string;
     /** zip_plus_four_code is required for service facility address. When the zip_plus_four_code is not available use "9998" as per CMS documentation. */
     address: CandidApi.StreetAddressLongZip;
+    /**
+     * An additional identifier for the service facility other than the facility's NPI. Some payers may require this field.
+     * Potential examples: state license number, provider commercial number, or location number.
+     * Box 32 section (b) of the CMS-1500 claim form.
+     */
+    secondaryIdentification?: string;
 }

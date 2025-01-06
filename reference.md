@@ -2819,6 +2819,7 @@ await client.encounters.v4.create({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        secondaryIdentification: "string",
     },
     subscriberPrimary: {
         insuranceCard: {
@@ -3199,6 +3200,7 @@ await client.encounters.v4.createFromPreEncounterPatient({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        secondaryIdentification: "string",
     },
     diagnoses: [
         {

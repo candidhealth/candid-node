@@ -16,6 +16,10 @@ export const EncounterServiceFacility: core.serialization.ObjectSchema<
     organizationName: core.serialization.property("organization_name", core.serialization.string()),
     npi: core.serialization.string().optional(),
     address: StreetAddressLongZip,
+    secondaryIdentification: core.serialization.property(
+        "secondary_identification",
+        core.serialization.string().optional()
+    ),
 });
 
 export declare namespace EncounterServiceFacility {
@@ -24,5 +28,6 @@ export declare namespace EncounterServiceFacility {
         organization_name: string;
         npi?: string | null;
         address: StreetAddressLongZip.Raw;
+        secondary_identification?: string | null;
     }
 }

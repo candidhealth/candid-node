@@ -157,7 +157,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.37.0",
+                "X-Fern-SDK-Version": "0.38.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -234,7 +234,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.37.0",
+                "X-Fern-SDK-Version": "0.38.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -255,7 +255,6 @@ export class V1 {
             switch ((_response.error.body as serializers.chargeCapture.v1.delete.Error.Raw)?.errorName) {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
-                case "NotImplementedError":
                     return {
                         ok: false,
                         error: serializers.chargeCapture.v1.delete.Error.parseOrThrow(
@@ -411,7 +410,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.37.0",
+                "X-Fern-SDK-Version": "0.38.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -488,7 +487,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.37.0",
+                "X-Fern-SDK-Version": "0.38.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -568,7 +567,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.37.0",
+                "X-Fern-SDK-Version": "0.38.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -589,24 +588,6 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.chargeCapture.v1.getAll.Error.Raw)?.errorName) {
-                case "NotImplementedError":
-                    return {
-                        ok: false,
-                        error: serializers.chargeCapture.v1.getAll.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCapture.v1.getAll.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            }
-                        ),
-                    };
-            }
         }
 
         return {

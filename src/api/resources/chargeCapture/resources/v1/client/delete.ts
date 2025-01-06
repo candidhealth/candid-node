@@ -8,7 +8,6 @@ import * as core from "../../../../../../core";
 export type Error =
     | CandidApi.chargeCapture.v1.delete.Error.EntityNotFoundError
     | CandidApi.chargeCapture.v1.delete.Error.UnauthorizedError
-    | CandidApi.chargeCapture.v1.delete.Error.NotImplementedError
     | CandidApi.chargeCapture.v1.delete.Error._Unknown;
 
 export declare namespace Error {
@@ -20,11 +19,6 @@ export declare namespace Error {
     interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
-    }
-
-    interface NotImplementedError extends _Utils {
-        errorName: "NotImplementedError";
-        content: CandidApi.NotImplementedErrorMessage;
     }
 
     interface _Unknown extends _Utils {
@@ -39,7 +33,6 @@ export declare namespace Error {
     interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
-        notImplementedError: (value: CandidApi.NotImplementedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -75,21 +68,6 @@ export const Error = {
         };
     },
 
-    notImplementedError: (
-        value: CandidApi.NotImplementedErrorMessage
-    ): CandidApi.chargeCapture.v1.delete.Error.NotImplementedError => {
-        return {
-            content: value,
-            errorName: "NotImplementedError",
-            _visit: function <_Result>(
-                this: CandidApi.chargeCapture.v1.delete.Error.NotImplementedError,
-                visitor: CandidApi.chargeCapture.v1.delete.Error._Visitor<_Result>
-            ) {
-                return CandidApi.chargeCapture.v1.delete.Error._visit(this, visitor);
-            },
-        };
-    },
-
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.chargeCapture.v1.delete.Error._Unknown => {
         return {
             errorName: undefined,
@@ -112,8 +90,6 @@ export const Error = {
                 return visitor.entityNotFoundError(value.content);
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
-            case "NotImplementedError":
-                return visitor.notImplementedError(value.content);
             default:
                 return visitor._other(value as any);
         }
