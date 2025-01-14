@@ -10,6 +10,7 @@ import { EncounterExternalIdUniquenessErrorType } from "../../../../encounters/r
 import { EncounterPatientControlNumberUniquenessErrorType } from "../../../../encounters/resources/v4/types/EncounterPatientControlNumberUniquenessErrorType";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { SchemaInstanceValidationFailure } from "../../../../encounters/resources/v4/types/SchemaInstanceValidationFailure";
+import { InvalidTagNamesErrorType } from "../../../../encounters/resources/v4/types/InvalidTagNamesErrorType";
 
 export const Error: core.serialization.Schema<
     serializers.medicationDispense.v1.create.Error.Raw,
@@ -31,6 +32,9 @@ export const Error: core.serialization.Schema<
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
         }),
+        InvalidTagNamesError: core.serialization.object({
+            content: InvalidTagNamesErrorType,
+        }),
     })
     .transform<CandidApi.medicationDispense.v1.create.Error>({
         transform: (value) => {
@@ -51,6 +55,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.medicationDispense.v1.create.Error.schemaInstanceValidationHttpFailure(
                         value.content
                     );
+                case "InvalidTagNamesError":
+                    return CandidApi.medicationDispense.v1.create.Error.invalidTagNamesError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -62,7 +68,8 @@ export declare namespace Error {
         | Error.EncounterExternalIdUniquenessError
         | Error.EncounterPatientControlNumberUniquenessError
         | Error.EntityNotFoundError
-        | Error.SchemaInstanceValidationHttpFailure;
+        | Error.SchemaInstanceValidationHttpFailure
+        | Error.InvalidTagNamesError;
 
     interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
@@ -87,5 +94,10 @@ export declare namespace Error {
     interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
+    }
+
+    interface InvalidTagNamesError {
+        errorName: "InvalidTagNamesError";
+        content: InvalidTagNamesErrorType.Raw;
     }
 }

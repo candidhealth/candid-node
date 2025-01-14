@@ -110,10 +110,11 @@ import * as CandidApi from "../../../../../../index";
  *             initialReferringProvider: {},
  *             referralNumber: "string"
  *         },
- *         encounterExternalId: CandidApi.EncounterExternalId("string"),
+ *         chargeExternalId: "string",
  *         ehrSourceUrl: "string",
  *         patientExternalId: "string",
- *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned
+ *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+ *         dateOfService: "2023-01-15"
  *     }
  */
 export interface ChargeCaptureUpdate {
@@ -124,7 +125,7 @@ export interface ChargeCaptureUpdate {
      * This field should not contain PHI.
      *
      */
-    encounterExternalId?: CandidApi.EncounterExternalId;
+    chargeExternalId?: string;
     /**
      * External URL reference that links to Charge Capture details within the external system (e.g. the EHR visit page).
      * Send full URL format for the external link (e.g. https://emr_charge_capture_url.com/123).
@@ -135,4 +136,10 @@ export interface ChargeCaptureUpdate {
     patientExternalId?: string;
     /** the status of the charge capture */
     status?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     *
+     */
+    dateOfService?: string;
 }

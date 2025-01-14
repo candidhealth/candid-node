@@ -11,6 +11,7 @@ export type Error =
     | CandidApi.medicationDispense.v1.create.Error.EncounterPatientControlNumberUniquenessError
     | CandidApi.medicationDispense.v1.create.Error.EntityNotFoundError
     | CandidApi.medicationDispense.v1.create.Error.SchemaInstanceValidationHttpFailure
+    | CandidApi.medicationDispense.v1.create.Error.InvalidTagNamesError
     | CandidApi.medicationDispense.v1.create.Error._Unknown;
 
 export declare namespace Error {
@@ -39,6 +40,11 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
+    interface InvalidTagNamesError extends _Utils {
+        errorName: "InvalidTagNamesError";
+        content: CandidApi.encounters.v4.InvalidTagNamesErrorType;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -60,6 +66,7 @@ export declare namespace Error {
         schemaInstanceValidationHttpFailure: (
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
         ) => _Result;
+        invalidTagNamesError: (value: CandidApi.encounters.v4.InvalidTagNamesErrorType) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -140,6 +147,21 @@ export const Error = {
         };
     },
 
+    invalidTagNamesError: (
+        value: CandidApi.encounters.v4.InvalidTagNamesErrorType
+    ): CandidApi.medicationDispense.v1.create.Error.InvalidTagNamesError => {
+        return {
+            content: value,
+            errorName: "InvalidTagNamesError",
+            _visit: function <_Result>(
+                this: CandidApi.medicationDispense.v1.create.Error.InvalidTagNamesError,
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.medicationDispense.v1.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -168,6 +190,8 @@ export const Error = {
                 return visitor.entityNotFoundError(value.content);
             case "SchemaInstanceValidationHttpFailure":
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
+            case "InvalidTagNamesError":
+                return visitor.invalidTagNamesError(value.content);
             default:
                 return visitor._other(value as any);
         }

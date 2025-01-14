@@ -12,12 +12,22 @@ export const BenefitType: core.serialization.Schema<
 > = core.serialization.enum_([
     "DEDUCTIBLE",
     "DEDUCTIBLE_REMAINING",
+    "DEDUCTIBLE_YEAR_TO_DATE",
     "OOP_MAX",
     "OOP_MAX_REMAINING",
+    "OOP_YEAR_TO_DATE",
     "COPAY",
     "COINSURANCE",
 ]);
 
 export declare namespace BenefitType {
-    type Raw = "DEDUCTIBLE" | "DEDUCTIBLE_REMAINING" | "OOP_MAX" | "OOP_MAX_REMAINING" | "COPAY" | "COINSURANCE";
+    type Raw =
+        | "DEDUCTIBLE"
+        | "DEDUCTIBLE_REMAINING"
+        | "DEDUCTIBLE_YEAR_TO_DATE"
+        | "OOP_MAX"
+        | "OOP_MAX_REMAINING"
+        | "OOP_YEAR_TO_DATE"
+        | "COPAY"
+        | "COINSURANCE";
 }

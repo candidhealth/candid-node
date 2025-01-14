@@ -13,11 +13,13 @@ export const ResourcePage: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nextPageToken: core.serialization.property("next_page_token", PageToken.optional()),
     prevPageToken: core.serialization.property("prev_page_token", PageToken.optional()),
+    total: core.serialization.number(),
 });
 
 export declare namespace ResourcePage {
     interface Raw {
         next_page_token?: PageToken.Raw | null;
         prev_page_token?: PageToken.Raw | null;
+        total: number;
     }
 }

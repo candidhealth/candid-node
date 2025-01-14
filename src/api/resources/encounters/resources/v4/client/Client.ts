@@ -147,7 +147,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -198,7 +198,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -553,7 +553,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -585,6 +585,7 @@ export class V4 {
                 case "HttpRequestValidationsError":
                 case "CashPayPayerError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "InvalidTagNamesError":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.create.Error.parseOrThrow(
@@ -870,7 +871,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1033,7 +1034,7 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -1064,6 +1065,7 @@ export class V4 {
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
                 case "UnprocessableEntityError":
+                case "InvalidTagNamesError":
                     return {
                         ok: false,
                         error: serializers.encounters.v4.update.Error.parseOrThrow(

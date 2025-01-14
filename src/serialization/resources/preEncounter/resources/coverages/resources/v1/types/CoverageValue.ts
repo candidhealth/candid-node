@@ -12,11 +12,13 @@ export const CoverageValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     family: core.serialization.number().optional(),
     individual: core.serialization.number().optional(),
+    employeeAndSpouse: core.serialization.number().optional(),
 });
 
 export declare namespace CoverageValue {
     interface Raw {
         family?: number | null;
         individual?: number | null;
+        employeeAndSpouse?: number | null;
     }
 }

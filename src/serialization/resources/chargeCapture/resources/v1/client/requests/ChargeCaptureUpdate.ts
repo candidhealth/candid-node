@@ -6,7 +6,6 @@ import * as serializers from "../../../../../../index";
 import * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
 import { ChargeCaptureData } from "../../types/ChargeCaptureData";
-import { EncounterExternalId } from "../../../../../commons/types/EncounterExternalId";
 import { ChargeCaptureStatus } from "../../types/ChargeCaptureStatus";
 
 export const ChargeCaptureUpdate: core.serialization.Schema<
@@ -14,18 +13,20 @@ export const ChargeCaptureUpdate: core.serialization.Schema<
     CandidApi.chargeCapture.v1.ChargeCaptureUpdate
 > = core.serialization.object({
     data: ChargeCaptureData.optional(),
-    encounterExternalId: core.serialization.property("encounter_external_id", EncounterExternalId.optional()),
+    chargeExternalId: core.serialization.property("charge_external_id", core.serialization.string().optional()),
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
     patientExternalId: core.serialization.property("patient_external_id", core.serialization.string().optional()),
     status: ChargeCaptureStatus.optional(),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
 });
 
 export declare namespace ChargeCaptureUpdate {
     interface Raw {
         data?: ChargeCaptureData.Raw | null;
-        encounter_external_id?: EncounterExternalId.Raw | null;
+        charge_external_id?: string | null;
         ehr_source_url?: string | null;
         patient_external_id?: string | null;
         status?: ChargeCaptureStatus.Raw | null;
+        date_of_service?: string | null;
     }
 }

@@ -12,6 +12,7 @@ import { EncounterGuarantorMissingContactInfoErrorType } from "../types/Encounte
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { CashPayPayerErrorMessage } from "../types/CashPayPayerErrorMessage";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
+import { InvalidTagNamesErrorType } from "../types/InvalidTagNamesErrorType";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.create.Error.Raw,
@@ -39,6 +40,9 @@ export const Error: core.serialization.Schema<
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
         }),
+        InvalidTagNamesError: core.serialization.object({
+            content: InvalidTagNamesErrorType,
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
@@ -61,6 +65,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.cashPayPayerError(value.content);
                 case "SchemaInstanceValidationHttpFailure":
                     return CandidApi.encounters.v4.create.Error.schemaInstanceValidationHttpFailure(value.content);
+                case "InvalidTagNamesError":
+                    return CandidApi.encounters.v4.create.Error.invalidTagNamesError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -74,7 +80,8 @@ export declare namespace Error {
         | Error.EncounterGuarantorMissingContactInfoError
         | Error.HttpRequestValidationsError
         | Error.CashPayPayerError
-        | Error.SchemaInstanceValidationHttpFailure;
+        | Error.SchemaInstanceValidationHttpFailure
+        | Error.InvalidTagNamesError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -109,5 +116,10 @@ export declare namespace Error {
     interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
+    }
+
+    interface InvalidTagNamesError {
+        errorName: "InvalidTagNamesError";
+        content: InvalidTagNamesErrorType.Raw;
     }
 }

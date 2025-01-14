@@ -11,7 +11,8 @@ import * as CandidApi from "../../../../../../index";
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         patientExternalId: "string",
  *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
- *         externalId: CandidApi.EncounterExternalId("string")
+ *         chargeExternalId: "string",
+ *         dateOfService: "2023-01-15"
  *     }
  */
 export interface GetAllChargeCapturesRequest {
@@ -33,5 +34,10 @@ export interface GetAllChargeCapturesRequest {
      * for example, your internal encounter ID or a Dr. Chrono encounter ID.
      * This field should not contain PHI.
      */
-    externalId?: CandidApi.EncounterExternalId;
+    chargeExternalId?: string;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     */
+    dateOfService?: string;
 }

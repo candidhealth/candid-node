@@ -11,6 +11,7 @@ import { UnauthorizedErrorMessage } from "../../../../commons/types/Unauthorized
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
 import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
+import { InvalidTagNamesErrorType } from "../types/InvalidTagNamesErrorType";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.update.Error.Raw,
@@ -35,6 +36,9 @@ export const Error: core.serialization.Schema<
         UnprocessableEntityError: core.serialization.object({
             content: UnprocessableEntityErrorMessage,
         }),
+        InvalidTagNamesError: core.serialization.object({
+            content: InvalidTagNamesErrorType,
+        }),
     })
     .transform<CandidApi.encounters.v4.update.Error>({
         transform: (value) => {
@@ -51,6 +55,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.update.Error.schemaInstanceValidationHttpFailure(value.content);
                 case "UnprocessableEntityError":
                     return CandidApi.encounters.v4.update.Error.unprocessableEntityError(value.content);
+                case "InvalidTagNamesError":
+                    return CandidApi.encounters.v4.update.Error.invalidTagNamesError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -63,7 +69,8 @@ export declare namespace Error {
         | Error.UnauthorizedError
         | Error.HttpRequestValidationsError
         | Error.SchemaInstanceValidationHttpFailure
-        | Error.UnprocessableEntityError;
+        | Error.UnprocessableEntityError
+        | Error.InvalidTagNamesError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -93,5 +100,10 @@ export declare namespace Error {
     interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
+    }
+
+    interface InvalidTagNamesError {
+        errorName: "InvalidTagNamesError";
+        content: InvalidTagNamesErrorType.Raw;
     }
 }

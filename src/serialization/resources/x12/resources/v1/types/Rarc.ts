@@ -40,6 +40,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M30",
         "M31",
         "M32",
+        "M34",
         "M36",
         "M37",
         "M38",
@@ -267,6 +268,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N26",
         "N27",
         "N28",
+        "N29",
         "N30",
         "N31",
         "N32",
@@ -1075,6 +1077,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N860",
         "N880",
         "N887",
+        "N888",
         "N891",
     ]);
 
@@ -1112,6 +1115,7 @@ export declare namespace Rarc {
         | "M30"
         | "M31"
         | "M32"
+        | "M34"
         | "M36"
         | "M37"
         | "M38"
@@ -1339,6 +1343,7 @@ export declare namespace Rarc {
         | "N26"
         | "N27"
         | "N28"
+        | "N29"
         | "N30"
         | "N31"
         | "N32"
@@ -2147,5 +2152,6 @@ export declare namespace Rarc {
         | "N860"
         | "N880"
         | "N887"
+        | "N888"
         | "N891";
 }

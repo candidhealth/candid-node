@@ -9,7 +9,6 @@ import { ChargeCaptureId } from "../../../../commons/types/ChargeCaptureId";
 import { ChargeCaptureStatus } from "./ChargeCaptureStatus";
 import { ChargeCaptureData } from "./ChargeCaptureData";
 import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
-import { EncounterExternalId } from "../../../../commons/types/EncounterExternalId";
 
 export const ChargeCapture: core.serialization.ObjectSchema<
     serializers.chargeCapture.v1.ChargeCapture.Raw,
@@ -19,8 +18,9 @@ export const ChargeCapture: core.serialization.ObjectSchema<
     status: ChargeCaptureStatus,
     chargeCaptureData: core.serialization.property("charge_capture_data", ChargeCaptureData),
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
-    encounterExternalId: core.serialization.property("encounter_external_id", EncounterExternalId),
+    chargeExternalId: core.serialization.property("charge_external_id", core.serialization.string()),
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
 });
 
 export declare namespace ChargeCapture {
@@ -29,7 +29,8 @@ export declare namespace ChargeCapture {
         status: ChargeCaptureStatus.Raw;
         charge_capture_data: ChargeCaptureData.Raw;
         patient_external_id: PatientExternalId.Raw;
-        encounter_external_id: EncounterExternalId.Raw;
+        charge_external_id: string;
         ehr_source_url?: string | null;
+        date_of_service?: string | null;
     }
 }

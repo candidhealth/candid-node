@@ -7,4 +7,5 @@ import * as CandidApi from "../../../../../index";
 export interface ResourcePage {
     nextPageToken?: CandidApi.preEncounter.PageToken;
     prevPageToken?: CandidApi.preEncounter.PageToken;
+    total: number;
 }

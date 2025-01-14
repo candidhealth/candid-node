@@ -5,16 +5,20 @@
 export type BenefitType =
     | "DEDUCTIBLE"
     | "DEDUCTIBLE_REMAINING"
+    | "DEDUCTIBLE_YEAR_TO_DATE"
     | "OOP_MAX"
     | "OOP_MAX_REMAINING"
+    | "OOP_YEAR_TO_DATE"
     | "COPAY"
     | "COINSURANCE";
 
 export const BenefitType = {
     Deductible: "DEDUCTIBLE",
     DeductibleRemaining: "DEDUCTIBLE_REMAINING",
+    DeductibleYearToDate: "DEDUCTIBLE_YEAR_TO_DATE",
     OopMax: "OOP_MAX",
     OopMaxRemaining: "OOP_MAX_REMAINING",
+    OopYearToDate: "OOP_YEAR_TO_DATE",
     Copay: "COPAY",
     Coinsurance: "COINSURANCE",
 } as const;

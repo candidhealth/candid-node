@@ -35,6 +35,7 @@ export type Rarc =
     | "M30"
     | "M31"
     | "M32"
+    | "M34"
     | "M36"
     | "M37"
     | "M38"
@@ -262,6 +263,7 @@ export type Rarc =
     | "N26"
     | "N27"
     | "N28"
+    | "N29"
     | "N30"
     | "N31"
     | "N32"
@@ -1070,6 +1072,7 @@ export type Rarc =
     | "N860"
     | "N880"
     | "N887"
+    | "N888"
     | "N891";
 
 export const Rarc = {
@@ -1105,6 +1108,7 @@ export const Rarc = {
     M30: "M30",
     M31: "M31",
     M32: "M32",
+    M34: "M34",
     M36: "M36",
     M37: "M37",
     M38: "M38",
@@ -1332,6 +1336,7 @@ export const Rarc = {
     N26: "N26",
     N27: "N27",
     N28: "N28",
+    N29: "N29",
     N30: "N30",
     N31: "N31",
     N32: "N32",
@@ -2140,5 +2145,6 @@ export const Rarc = {
     N860: "N860",
     N880: "N880",
     N887: "N887",
+    N888: "N888",
     N891: "N891",
 } as const;

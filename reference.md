@@ -364,8 +364,9 @@ await client.chargeCapture.v1.create({
         initialReferringProvider: {},
         referralNumber: "string",
     },
-    encounterExternalId: CandidApi.EncounterExternalId("string"),
+    chargeExternalId: "string",
     ehrSourceUrl: "string",
+    dateOfService: "2023-01-15",
     patientExternalId: "string",
     status: CandidApi.ChargeCaptureStatus.Planned,
 });
@@ -571,10 +572,11 @@ await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4b
         initialReferringProvider: {},
         referralNumber: "string",
     },
-    encounterExternalId: CandidApi.EncounterExternalId("string"),
+    chargeExternalId: "string",
     ehrSourceUrl: "string",
     patientExternalId: "string",
     status: CandidApi.ChargeCaptureStatus.Planned,
+    dateOfService: "2023-01-15",
 });
 ```
 
@@ -684,7 +686,8 @@ await client.chargeCapture.v1.getAll({
     pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
     patientExternalId: "string",
     status: CandidApi.ChargeCaptureStatus.Planned,
-    externalId: CandidApi.EncounterExternalId("string"),
+    chargeExternalId: "string",
+    dateOfService: "2023-01-15",
 });
 ```
 

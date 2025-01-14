@@ -12,6 +12,7 @@ export type Error =
     | CandidApi.encounters.v4.update.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.update.Error.SchemaInstanceValidationHttpFailure
     | CandidApi.encounters.v4.update.Error.UnprocessableEntityError
+    | CandidApi.encounters.v4.update.Error.InvalidTagNamesError
     | CandidApi.encounters.v4.update.Error._Unknown;
 
 export declare namespace Error {
@@ -45,6 +46,11 @@ export declare namespace Error {
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
+    interface InvalidTagNamesError extends _Utils {
+        errorName: "InvalidTagNamesError";
+        content: CandidApi.encounters.v4.InvalidTagNamesErrorType;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -65,6 +71,7 @@ export declare namespace Error {
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
         ) => _Result;
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        invalidTagNamesError: (value: CandidApi.encounters.v4.InvalidTagNamesErrorType) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -160,6 +167,21 @@ export const Error = {
         };
     },
 
+    invalidTagNamesError: (
+        value: CandidApi.encounters.v4.InvalidTagNamesErrorType
+    ): CandidApi.encounters.v4.update.Error.InvalidTagNamesError => {
+        return {
+            content: value,
+            errorName: "InvalidTagNamesError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.update.Error.InvalidTagNamesError,
+                visitor: CandidApi.encounters.v4.update.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.update.Error._Unknown => {
         return {
             errorName: undefined,
@@ -190,6 +212,8 @@ export const Error = {
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
             case "UnprocessableEntityError":
                 return visitor.unprocessableEntityError(value.content);
+            case "InvalidTagNamesError":
+                return visitor.invalidTagNamesError(value.content);
             default:
                 return visitor._other(value as any);
         }

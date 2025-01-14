@@ -136,8 +136,9 @@ export class V1 {
      *             initialReferringProvider: {},
      *             referralNumber: "string"
      *         },
-     *         encounterExternalId: CandidApi.EncounterExternalId("string"),
+     *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
+     *         dateOfService: "2023-01-15",
      *         patientExternalId: "string",
      *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned
      *     })
@@ -157,7 +158,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -234,7 +235,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -386,10 +387,11 @@ export class V1 {
      *             initialReferringProvider: {},
      *             referralNumber: "string"
      *         },
-     *         encounterExternalId: CandidApi.EncounterExternalId("string"),
+     *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
      *         patientExternalId: "string",
-     *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned
+     *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+     *         dateOfService: "2023-01-15"
      *     })
      */
     public async update(
@@ -410,7 +412,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -487,7 +489,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -525,7 +527,8 @@ export class V1 {
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         patientExternalId: "string",
      *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
-     *         externalId: CandidApi.EncounterExternalId("string")
+     *         chargeExternalId: "string",
+     *         dateOfService: "2023-01-15"
      *     })
      */
     public async getAll(
@@ -534,7 +537,7 @@ export class V1 {
     ): Promise<
         core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
     > {
-        const { limit, pageToken, patientExternalId, status, externalId } = request;
+        const { limit, pageToken, patientExternalId, status, chargeExternalId, dateOfService } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
@@ -552,8 +555,12 @@ export class V1 {
             _queryParams["status"] = status;
         }
 
-        if (externalId != null) {
-            _queryParams["external_id"] = externalId;
+        if (chargeExternalId != null) {
+            _queryParams["charge_external_id"] = chargeExternalId;
+        }
+
+        if (dateOfService != null) {
+            _queryParams["date_of_service"] = dateOfService;
         }
 
         const _response = await core.fetcher({
@@ -567,7 +574,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.0",
+                "X-Fern-SDK-Version": "0.38.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

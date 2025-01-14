@@ -33,6 +33,7 @@ export * from "./EncounterExternalIdUniquenessErrorType";
 export * from "./EncounterPatientControlNumberUniquenessErrorType";
 export * from "./EncounterGuarantorMissingContactInfoErrorType";
 export * from "./CashPayPayerErrorMessage";
+export * from "./InvalidTagNamesErrorType";
 export * from "./ServiceAuthorizationExceptionCode";
 export * from "./SchemaInstanceValidationFailure";
 export * from "./KeyDoesNotExistError";

@@ -7,7 +7,9 @@ import * as CandidApi from "../../../../../../../index";
 export interface PlanCoverageDetails {
     deductible?: CandidApi.preEncounter.coverages.v1.CoverageValue;
     deductibleRemaining?: CandidApi.preEncounter.coverages.v1.CoverageValue;
+    deductibleYearToDate?: CandidApi.preEncounter.coverages.v1.CoverageValue;
     oopMax?: CandidApi.preEncounter.coverages.v1.CoverageValue;
     oopMaxRemaining?: CandidApi.preEncounter.coverages.v1.CoverageValue;
+    oopYearToDate?: CandidApi.preEncounter.coverages.v1.CoverageValue;
     additionalNotes?: string;
 }

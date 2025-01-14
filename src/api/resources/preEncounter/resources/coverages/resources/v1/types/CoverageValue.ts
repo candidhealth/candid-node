@@ -5,4 +5,5 @@
 export interface CoverageValue {
     family?: number;
     individual?: number;
+    employeeAndSpouse?: number;
 }
