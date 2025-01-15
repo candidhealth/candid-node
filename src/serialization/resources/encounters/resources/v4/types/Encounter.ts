@@ -83,6 +83,7 @@ export const Encounter: core.serialization.ObjectSchema<
         submissionOrigin: core.serialization.property("submission_origin", EncounterSubmissionOriginType),
         schemaInstances: core.serialization.property("schema_instances", core.serialization.list(SchemaInstance)),
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
+        lastSubmittedAt: core.serialization.property("last_submitted_at", core.serialization.date().optional()),
     })
     .extend(EncounterBase);
 
@@ -119,5 +120,6 @@ export declare namespace Encounter {
         submission_origin: EncounterSubmissionOriginType.Raw;
         schema_instances: SchemaInstance.Raw[];
         referral_number?: string | null;
+        last_submitted_at?: string | null;
     }
 }
