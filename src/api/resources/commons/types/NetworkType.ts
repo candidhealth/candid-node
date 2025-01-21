@@ -59,7 +59,13 @@ export type NetworkType =
     | "WC"
     /**
      * Mutually Defined */
-    | "ZZ";
+    | "ZZ"
+    /**
+     * Commercial Insurance */
+    | "CI"
+    /**
+     * Blue Cross Blue Shield */
+    | "BL";
 
 export const NetworkType = {
     Ppo: "12",
@@ -81,4 +87,6 @@ export const NetworkType = {
     VeteransAffairsPlan: "VA",
     WorkersCompHealthClaim: "WC",
     MutuallyDefined: "ZZ",
+    CommercialInsuranceCo: "CI",
+    BlueCrossBlueShield: "BL",
 } as const;

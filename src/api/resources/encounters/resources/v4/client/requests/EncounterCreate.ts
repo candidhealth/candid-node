@@ -46,7 +46,10 @@ import * as CandidApi from "../../../../../../index";
  *             taxId: "string",
  *             npi: "string",
  *             taxonomyCode: "string",
- *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker
+ *             providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         renderingProvider: {
  *             npi: "string",
@@ -58,7 +61,10 @@ import * as CandidApi from "../../../../../../index";
  *                 state: CandidApi.State.Ny,
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         referringProvider: {
  *             npi: "string",
@@ -70,7 +76,10 @@ import * as CandidApi from "../../../../../../index";
  *                 state: CandidApi.State.Ny,
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         initialReferringProvider: {
  *             npi: "string",
@@ -83,7 +92,10 @@ import * as CandidApi from "../../../../../../index";
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
  *             },
- *             qualifier: CandidApi.QualifierCode.Dq
+ *             qualifier: CandidApi.QualifierCode.Dq,
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         supervisingProvider: {
  *             npi: "string",
@@ -95,7 +107,10 @@ import * as CandidApi from "../../../../../../index";
  *                 state: CandidApi.State.Ny,
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         serviceFacility: {
  *             organizationName: "string",
@@ -114,9 +129,27 @@ import * as CandidApi from "../../../../../../index";
  *             insuranceCard: {
  *                 memberId: "string",
  *                 payerName: "string",
- *                 payerId: "string"
+ *                 payerId: "string",
+ *                 rxBin: "string",
+ *                 rxPcn: "string",
+ *                 imageUrlFront: "string",
+ *                 imageUrlBack: "string",
+ *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+ *                 groupNumber: "string",
+ *                 planName: "string",
+ *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+ *                 insuranceType: CandidApi.InsuranceTypeCode.C01
  *             },
  *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
  *             firstName: "string",
  *             lastName: "string",
  *             gender: CandidApi.Gender.Male
@@ -125,9 +158,27 @@ import * as CandidApi from "../../../../../../index";
  *             insuranceCard: {
  *                 memberId: "string",
  *                 payerName: "string",
- *                 payerId: "string"
+ *                 payerId: "string",
+ *                 rxBin: "string",
+ *                 rxPcn: "string",
+ *                 imageUrlFront: "string",
+ *                 imageUrlBack: "string",
+ *                 emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+ *                 groupNumber: "string",
+ *                 planName: "string",
+ *                 planType: CandidApi.SourceOfPaymentCode.SelfPay,
+ *                 insuranceType: CandidApi.InsuranceTypeCode.C01
  *             },
  *             patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: CandidApi.State.Ny,
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
  *             firstName: "string",
  *             lastName: "string",
  *             gender: CandidApi.Gender.Male
@@ -198,7 +249,10 @@ import * as CandidApi from "../../../../../../index";
  *                         state: CandidApi.State.Ny,
  *                         zipCode: "10001",
  *                         zipPlusFourCode: "1234"
- *                     }
+ *                     },
+ *                     firstName: "string",
+ *                     lastName: "string",
+ *                     organizationName: "string"
  *                 },
  *                 testResults: [{
  *                         value: 1.1,

@@ -11,11 +11,13 @@ export const BenefitType: core.serialization.Schema<
     CandidApi.preEncounter.coverages.v1.BenefitType
 > = core.serialization.enum_([
     "DEDUCTIBLE",
+    "DEDUCTIBLE_CONTRACT",
     "DEDUCTIBLE_REMAINING",
     "DEDUCTIBLE_YEAR_TO_DATE",
     "OOP_MAX",
+    "OOP_MAX_CONTRACT",
     "OOP_MAX_REMAINING",
-    "OOP_YEAR_TO_DATE",
+    "OOP_MAX_YEAR_TO_DATE",
     "COPAY",
     "COINSURANCE",
 ]);
@@ -23,11 +25,13 @@ export const BenefitType: core.serialization.Schema<
 export declare namespace BenefitType {
     type Raw =
         | "DEDUCTIBLE"
+        | "DEDUCTIBLE_CONTRACT"
         | "DEDUCTIBLE_REMAINING"
         | "DEDUCTIBLE_YEAR_TO_DATE"
         | "OOP_MAX"
+        | "OOP_MAX_CONTRACT"
         | "OOP_MAX_REMAINING"
-        | "OOP_YEAR_TO_DATE"
+        | "OOP_MAX_YEAR_TO_DATE"
         | "COPAY"
         | "COINSURANCE";
 }

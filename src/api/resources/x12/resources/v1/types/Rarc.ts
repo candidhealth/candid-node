@@ -71,6 +71,7 @@ export type Rarc =
     | "M75"
     | "M76"
     | "M77"
+    | "M78"
     | "M79"
     | "M80"
     | "M81"
@@ -1073,7 +1074,8 @@ export type Rarc =
     | "N880"
     | "N887"
     | "N888"
-    | "N891";
+    | "N891"
+    | "N900";
 
 export const Rarc = {
     M1: "M1",
@@ -1144,6 +1146,7 @@ export const Rarc = {
     M75: "M75",
     M76: "M76",
     M77: "M77",
+    M78: "M78",
     M79: "M79",
     M80: "M80",
     M81: "M81",
@@ -2147,4 +2150,5 @@ export const Rarc = {
     N887: "N887",
     N888: "N888",
     N891: "N891",
+    N900: "N900",
 } as const;

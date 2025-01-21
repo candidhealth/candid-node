@@ -33,109 +33,7 @@ export class V1 {
      *
      * @example
      *     await client.chargeCapture.v1.create({
-     *         data: {
-     *             diagnoses: [],
-     *             interventions: [],
-     *             externalClaimSubmission: {
-     *                 claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
-     *                 patientControlNumber: "PATIENT_CONTROL_NUMBER",
-     *                 submissionRecords: [{
-     *                         submittedAt: new Date("2023-01-01T13:00:00.000Z"),
-     *                         claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
-     *                         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-     *                         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
-     *                     }, {
-     *                         submittedAt: new Date("2023-01-04T12:00:00.000Z"),
-     *                         claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
-     *                         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-     *                         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
-     *                     }]
-     *             },
-     *             serviceLines: [],
-     *             patientHistories: [],
-     *             billingNotes: [],
-     *             benefitsAssignedToProvider: true,
-     *             priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
-     *             externalId: CandidApi.EncounterExternalId("string"),
-     *             dateOfService: "2023-01-15",
-     *             tagIds: [],
-     *             clinicalNotes: [],
-     *             payToAddress: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
-     *             responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
-     *             providerAcceptsAssignment: true,
-     *             synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
-     *             placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *             appointmentType: "string",
-     *             endDateOfService: "2023-01-15",
-     *             subscriberPrimary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: CandidApi.Gender.Male
-     *             },
-     *             subscriberSecondary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: CandidApi.Gender.Male
-     *             },
-     *             additionalInformation: "string",
-     *             serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
-     *             admissionDate: "2023-01-15",
-     *             dischargeDate: "2023-01-15",
-     *             onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-     *             lastMenstrualPeriodDate: "2023-01-15",
-     *             delayReasonCode: CandidApi.DelayReasonCode.C1,
-     *             patient: {},
-     *             patientAuthorizedRelease: true,
-     *             schemaInstances: [],
-     *             vitals: {
-     *                 heightIn: 70,
-     *                 weightLbs: 165,
-     *                 bloodPressureSystolicMmhg: 115,
-     *                 bloodPressureDiastolicMmhg: 85,
-     *                 bodyTemperatureF: 98,
-     *                 hemoglobinGdl: 15.1,
-     *                 hematocritPct: 51.2
-     *             },
-     *             existingMedications: [],
-     *             renderingProvider: {},
-     *             serviceFacility: {
-     *                 organizationName: "Test Organization",
-     *                 address: {
-     *                     address1: "123 Main St",
-     *                     address2: "Apt 1",
-     *                     city: "New York",
-     *                     state: CandidApi.State.Ny,
-     *                     zipCode: "10001",
-     *                     zipPlusFourCode: "1234"
-     *                 }
-     *             },
-     *             guarantor: {},
-     *             billingProvider: {},
-     *             supervisingProvider: {},
-     *             referringProvider: {},
-     *             initialReferringProvider: {},
-     *             referralNumber: "string"
-     *         },
+     *         data: {},
      *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
      *         dateOfService: "2023-01-15",
@@ -158,7 +56,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -235,7 +133,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -284,109 +182,7 @@ export class V1 {
      *
      * @example
      *     await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         data: {
-     *             diagnoses: [],
-     *             interventions: [],
-     *             externalClaimSubmission: {
-     *                 claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
-     *                 patientControlNumber: "PATIENT_CONTROL_NUMBER",
-     *                 submissionRecords: [{
-     *                         submittedAt: new Date("2023-01-01T13:00:00.000Z"),
-     *                         claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
-     *                         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-     *                         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
-     *                     }, {
-     *                         submittedAt: new Date("2023-01-04T12:00:00.000Z"),
-     *                         claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
-     *                         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-     *                         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
-     *                     }]
-     *             },
-     *             serviceLines: [],
-     *             patientHistories: [],
-     *             billingNotes: [],
-     *             benefitsAssignedToProvider: true,
-     *             priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
-     *             externalId: CandidApi.EncounterExternalId("string"),
-     *             dateOfService: "2023-01-15",
-     *             tagIds: [],
-     *             clinicalNotes: [],
-     *             payToAddress: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             billableStatus: CandidApi.encounters.v4.BillableStatusType.Billable,
-     *             responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType.InsurancePay,
-     *             providerAcceptsAssignment: true,
-     *             synchronicity: CandidApi.encounters.v4.SynchronicityType.Synchronous,
-     *             placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *             appointmentType: "string",
-     *             endDateOfService: "2023-01-15",
-     *             subscriberPrimary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: CandidApi.Gender.Male
-     *             },
-     *             subscriberSecondary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: CandidApi.Gender.Male
-     *             },
-     *             additionalInformation: "string",
-     *             serviceAuthorizationExceptionCode: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode.C1,
-     *             admissionDate: "2023-01-15",
-     *             dischargeDate: "2023-01-15",
-     *             onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-     *             lastMenstrualPeriodDate: "2023-01-15",
-     *             delayReasonCode: CandidApi.DelayReasonCode.C1,
-     *             patient: {},
-     *             patientAuthorizedRelease: true,
-     *             schemaInstances: [],
-     *             vitals: {
-     *                 heightIn: 70,
-     *                 weightLbs: 165,
-     *                 bloodPressureSystolicMmhg: 115,
-     *                 bloodPressureDiastolicMmhg: 85,
-     *                 bodyTemperatureF: 98,
-     *                 hemoglobinGdl: 15.1,
-     *                 hematocritPct: 51.2
-     *             },
-     *             existingMedications: [],
-     *             renderingProvider: {},
-     *             serviceFacility: {
-     *                 organizationName: "Test Organization",
-     *                 address: {
-     *                     address1: "123 Main St",
-     *                     address2: "Apt 1",
-     *                     city: "New York",
-     *                     state: CandidApi.State.Ny,
-     *                     zipCode: "10001",
-     *                     zipPlusFourCode: "1234"
-     *                 }
-     *             },
-     *             guarantor: {},
-     *             billingProvider: {},
-     *             supervisingProvider: {},
-     *             referringProvider: {},
-     *             initialReferringProvider: {},
-     *             referralNumber: "string"
-     *         },
+     *         data: {},
      *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
      *         patientExternalId: "string",
@@ -412,7 +208,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -489,7 +285,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -574,7 +370,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

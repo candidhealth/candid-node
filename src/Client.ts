@@ -7,6 +7,7 @@ import * as core from "./core";
 import { V2 } from "./api/resources/auth/resources/v2/client/Client";
 import { Auth } from "./api/resources/auth/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
+import { ChargeCaptureBundles } from "./api/resources/chargeCaptureBundles/client/Client";
 import { ChargeCapture } from "./api/resources/chargeCapture/client/Client";
 import { Contracts } from "./api/resources/contracts/client/Client";
 import { Credentialing } from "./api/resources/credentialing/client/Client";
@@ -82,6 +83,15 @@ export class CandidApiClient {
 
     public get billingNotes(): BillingNotes {
         return (this._billingNotes ??= new BillingNotes({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    protected _chargeCaptureBundles: ChargeCaptureBundles | undefined;
+
+    public get chargeCaptureBundles(): ChargeCaptureBundles {
+        return (this._chargeCaptureBundles ??= new ChargeCaptureBundles({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

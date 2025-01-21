@@ -13,6 +13,7 @@ export const CoverageValue: core.serialization.ObjectSchema<
     family: core.serialization.number().optional(),
     individual: core.serialization.number().optional(),
     employeeAndSpouse: core.serialization.number().optional(),
+    employeeAndChildren: core.serialization.number().optional(),
 });
 
 export declare namespace CoverageValue {
@@ -20,5 +21,6 @@ export declare namespace CoverageValue {
         family?: number | null;
         individual?: number | null;
         employeeAndSpouse?: number | null;
+        employeeAndChildren?: number | null;
     }
 }

@@ -7,5 +7,6 @@ import * as CandidApi from "../../../../../../../index";
 export interface CoverageBenefits {
     planCoverage?: CandidApi.preEncounter.coverages.v1.PlanCoverage;
     serviceSpecificCoverage?: CandidApi.preEncounter.coverages.v1.ServiceCoverage[];
+    benefitsRelatedEntities?: CandidApi.preEncounter.coverages.v1.BenefitsRelatedEntity[];
     notes?: string;
 }

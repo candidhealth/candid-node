@@ -76,6 +76,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M75",
         "M76",
         "M77",
+        "M78",
         "M79",
         "M80",
         "M81",
@@ -1079,6 +1080,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N887",
         "N888",
         "N891",
+        "N900",
     ]);
 
 export declare namespace Rarc {
@@ -1151,6 +1153,7 @@ export declare namespace Rarc {
         | "M75"
         | "M76"
         | "M77"
+        | "M78"
         | "M79"
         | "M80"
         | "M81"
@@ -2153,5 +2156,6 @@ export declare namespace Rarc {
         | "N880"
         | "N887"
         | "N888"
-        | "N891";
+        | "N891"
+        | "N900";
 }

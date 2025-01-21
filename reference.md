@@ -242,6 +242,160 @@ await client.billingNotes.v2.update(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 </dl>
 </details>
 
+## ChargeCaptureBundles V1
+
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">get</a>(chargeCaptureBundleId) -> core.APIResponse<CandidApi.ChargeCaptureBundle, CandidApi.chargeCaptureBundles.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**chargeCaptureBundleId:** `CandidApi.ChargeCaptureBundleId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">resubmit</a>(chargeCaptureBundleId) -> core.APIResponse<CandidApi.ChargeCaptureBundle, CandidApi.chargeCaptureBundles.v1.resubmit.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCaptureBundles.v1.resubmit(CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**chargeCaptureBundleId:** `CandidApi.ChargeCaptureBundleId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCaptureBundlePage, CandidApi.chargeCaptureBundles.v1.getAll.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCaptureBundles.v1.getAll({
+    limit: 1,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+    patientExternalId: "string",
+    bundleStatus: CandidApi.ChargeCaptureBundleStatus.InProgress,
+    chargeStatus: CandidApi.ChargeCaptureStatus.Planned,
+    chargeExternalId: "string",
+    dateOfService: "2023-01-15",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureBundlesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## ChargeCapture V1
 
 <details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.create.Error></code></summary>
@@ -258,112 +412,7 @@ await client.billingNotes.v2.update(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 
 ```typescript
 await client.chargeCapture.v1.create({
-    data: {
-        diagnoses: [],
-        interventions: [],
-        externalClaimSubmission: {
-            claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
-            patientControlNumber: "PATIENT_CONTROL_NUMBER",
-            submissionRecords: [
-                {
-                    submittedAt: new Date("2023-01-01T13:00:00.000Z"),
-                    claimFrequencyCode: CandidApi.ClaimFrequencyTypeCode.Original,
-                    payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-                    intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic,
-                },
-                {
-                    submittedAt: new Date("2023-01-04T12:00:00.000Z"),
-                    claimFrequencyCode: CandidApi.ClaimFrequencyTypeCode.Replacement,
-                    payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-                    intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper,
-                },
-            ],
-        },
-        serviceLines: [],
-        patientHistories: [],
-        billingNotes: [],
-        benefitsAssignedToProvider: true,
-        priorAuthorizationNumber: CandidApi.PriorAuthorizationNumber("string"),
-        externalId: CandidApi.EncounterExternalId("string"),
-        dateOfService: "2023-01-15",
-        tagIds: [],
-        clinicalNotes: [],
-        payToAddress: {
-            address1: "123 Main St",
-            address2: "Apt 1",
-            city: "New York",
-            state: CandidApi.State.Ny,
-            zipCode: "10001",
-            zipPlusFourCode: "1234",
-        },
-        billableStatus: CandidApi.BillableStatusType.Billable,
-        responsibleParty: CandidApi.ResponsiblePartyType.InsurancePay,
-        providerAcceptsAssignment: true,
-        synchronicity: CandidApi.SynchronicityType.Synchronous,
-        placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-        appointmentType: "string",
-        endDateOfService: "2023-01-15",
-        subscriberPrimary: {
-            insuranceCard: {
-                memberId: "string",
-                payerName: "string",
-                payerId: "string",
-            },
-            patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-            firstName: "string",
-            lastName: "string",
-            gender: CandidApi.Gender.Male,
-        },
-        subscriberSecondary: {
-            insuranceCard: {
-                memberId: "string",
-                payerName: "string",
-                payerId: "string",
-            },
-            patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-            firstName: "string",
-            lastName: "string",
-            gender: CandidApi.Gender.Male,
-        },
-        additionalInformation: "string",
-        serviceAuthorizationExceptionCode: CandidApi.ServiceAuthorizationExceptionCode.C1,
-        admissionDate: "2023-01-15",
-        dischargeDate: "2023-01-15",
-        onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-        lastMenstrualPeriodDate: "2023-01-15",
-        delayReasonCode: CandidApi.DelayReasonCode.C1,
-        patient: {},
-        patientAuthorizedRelease: true,
-        schemaInstances: [],
-        vitals: {
-            heightIn: 70,
-            weightLbs: 165,
-            bloodPressureSystolicMmhg: 115,
-            bloodPressureDiastolicMmhg: 85,
-            bodyTemperatureF: 98,
-            hemoglobinGdl: 15.1,
-            hematocritPct: 51.2,
-        },
-        existingMedications: [],
-        renderingProvider: {},
-        serviceFacility: {
-            organizationName: "Test Organization",
-            address: {
-                address1: "123 Main St",
-                address2: "Apt 1",
-                city: "New York",
-                state: CandidApi.State.Ny,
-                zipCode: "10001",
-                zipPlusFourCode: "1234",
-            },
-        },
-        guarantor: {},
-        billingProvider: {},
-        supervisingProvider: {},
-        referringProvider: {},
-        initialReferringProvider: {},
-        referralNumber: "string",
-    },
+    data: {},
     chargeExternalId: "string",
     ehrSourceUrl: "string",
     dateOfService: "2023-01-15",
@@ -466,112 +515,7 @@ await client.chargeCapture.v1.delete(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4b
 
 ```typescript
 await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    data: {
-        diagnoses: [],
-        interventions: [],
-        externalClaimSubmission: {
-            claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
-            patientControlNumber: "PATIENT_CONTROL_NUMBER",
-            submissionRecords: [
-                {
-                    submittedAt: new Date("2023-01-01T13:00:00.000Z"),
-                    claimFrequencyCode: CandidApi.ClaimFrequencyTypeCode.Original,
-                    payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-                    intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic,
-                },
-                {
-                    submittedAt: new Date("2023-01-04T12:00:00.000Z"),
-                    claimFrequencyCode: CandidApi.ClaimFrequencyTypeCode.Replacement,
-                    payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
-                    intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper,
-                },
-            ],
-        },
-        serviceLines: [],
-        patientHistories: [],
-        billingNotes: [],
-        benefitsAssignedToProvider: true,
-        priorAuthorizationNumber: CandidApi.PriorAuthorizationNumber("string"),
-        externalId: CandidApi.EncounterExternalId("string"),
-        dateOfService: "2023-01-15",
-        tagIds: [],
-        clinicalNotes: [],
-        payToAddress: {
-            address1: "123 Main St",
-            address2: "Apt 1",
-            city: "New York",
-            state: CandidApi.State.Ny,
-            zipCode: "10001",
-            zipPlusFourCode: "1234",
-        },
-        billableStatus: CandidApi.BillableStatusType.Billable,
-        responsibleParty: CandidApi.ResponsiblePartyType.InsurancePay,
-        providerAcceptsAssignment: true,
-        synchronicity: CandidApi.SynchronicityType.Synchronous,
-        placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-        appointmentType: "string",
-        endDateOfService: "2023-01-15",
-        subscriberPrimary: {
-            insuranceCard: {
-                memberId: "string",
-                payerName: "string",
-                payerId: "string",
-            },
-            patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-            firstName: "string",
-            lastName: "string",
-            gender: CandidApi.Gender.Male,
-        },
-        subscriberSecondary: {
-            insuranceCard: {
-                memberId: "string",
-                payerName: "string",
-                payerId: "string",
-            },
-            patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-            firstName: "string",
-            lastName: "string",
-            gender: CandidApi.Gender.Male,
-        },
-        additionalInformation: "string",
-        serviceAuthorizationExceptionCode: CandidApi.ServiceAuthorizationExceptionCode.C1,
-        admissionDate: "2023-01-15",
-        dischargeDate: "2023-01-15",
-        onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-        lastMenstrualPeriodDate: "2023-01-15",
-        delayReasonCode: CandidApi.DelayReasonCode.C1,
-        patient: {},
-        patientAuthorizedRelease: true,
-        schemaInstances: [],
-        vitals: {
-            heightIn: 70,
-            weightLbs: 165,
-            bloodPressureSystolicMmhg: 115,
-            bloodPressureDiastolicMmhg: 85,
-            bodyTemperatureF: 98,
-            hemoglobinGdl: 15.1,
-            hematocritPct: 51.2,
-        },
-        existingMedications: [],
-        renderingProvider: {},
-        serviceFacility: {
-            organizationName: "Test Organization",
-            address: {
-                address1: "123 Main St",
-                address2: "Apt 1",
-                city: "New York",
-                state: CandidApi.State.Ny,
-                zipCode: "10001",
-                zipPlusFourCode: "1234",
-            },
-        },
-        guarantor: {},
-        billingProvider: {},
-        supervisingProvider: {},
-        referringProvider: {},
-        initialReferringProvider: {},
-        referralNumber: "string",
-    },
+    data: {},
     chargeExternalId: "string",
     ehrSourceUrl: "string",
     patientExternalId: "string",
@@ -1881,7 +1825,21 @@ await client.eligibility.v2.submitEligibilityCheckAvailityPost({
 ```typescript
 await client.encounterProviders.v2.updateReferringProvider(
     CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {}
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
 );
 ```
 
@@ -1940,7 +1898,22 @@ await client.encounterProviders.v2.updateReferringProvider(
 ```typescript
 await client.encounterProviders.v2.updateInitialReferringProvider(
     CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {}
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
 );
 ```
 
@@ -1999,7 +1972,21 @@ await client.encounterProviders.v2.updateInitialReferringProvider(
 ```typescript
 await client.encounterProviders.v2.updateSupervisingProvider(
     CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {}
+    {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    }
 );
 ```
 
@@ -2069,6 +2056,9 @@ await client.encounterProviders.v2.updateOrderingProvider(
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     }
 );
 ```
@@ -2139,6 +2129,9 @@ await client.encounterProviders.v2.createReferringProvider(
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     }
 );
 ```
@@ -2210,6 +2203,9 @@ await client.encounterProviders.v2.createInitialReferringProvider(
             zipPlusFourCode: "1234",
         },
         qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     }
 );
 ```
@@ -2280,6 +2276,9 @@ await client.encounterProviders.v2.createSupervisingProvider(
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     }
 );
 ```
@@ -2350,6 +2349,9 @@ await client.encounterProviders.v2.createOrderingProvider(
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     }
 );
 ```
@@ -2761,6 +2763,9 @@ await client.encounters.v4.create({
         npi: "string",
         taxonomyCode: "string",
         providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     renderingProvider: {
         npi: "string",
@@ -2773,6 +2778,9 @@ await client.encounters.v4.create({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     referringProvider: {
         npi: "string",
@@ -2785,6 +2793,9 @@ await client.encounters.v4.create({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     initialReferringProvider: {
         npi: "string",
@@ -2798,6 +2809,9 @@ await client.encounters.v4.create({
             zipPlusFourCode: "1234",
         },
         qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     supervisingProvider: {
         npi: "string",
@@ -2810,6 +2824,9 @@ await client.encounters.v4.create({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     serviceFacility: {
         organizationName: "string",
@@ -2829,8 +2846,26 @@ await client.encounters.v4.create({
             memberId: "string",
             payerName: "string",
             payerId: "string",
+            rxBin: "string",
+            rxPcn: "string",
+            imageUrlFront: "string",
+            imageUrlBack: "string",
+            emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+            groupNumber: "string",
+            planName: "string",
+            planType: CandidApi.SourceOfPaymentCode.SelfPay,
+            insuranceType: CandidApi.InsuranceTypeCode.C01,
         },
         patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+        dateOfBirth: "2023-01-15",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
         firstName: "string",
         lastName: "string",
         gender: CandidApi.Gender.Male,
@@ -2840,8 +2875,26 @@ await client.encounters.v4.create({
             memberId: "string",
             payerName: "string",
             payerId: "string",
+            rxBin: "string",
+            rxPcn: "string",
+            imageUrlFront: "string",
+            imageUrlBack: "string",
+            emrPayerCrosswalk: CandidApi.EmrPayerCrosswalk.Healthie,
+            groupNumber: "string",
+            planName: "string",
+            planType: CandidApi.SourceOfPaymentCode.SelfPay,
+            insuranceType: CandidApi.InsuranceTypeCode.C01,
         },
         patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
+        dateOfBirth: "2023-01-15",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
         firstName: "string",
         lastName: "string",
         gender: CandidApi.Gender.Male,
@@ -2930,6 +2983,9 @@ await client.encounters.v4.create({
                     zipCode: "10001",
                     zipPlusFourCode: "1234",
                 },
+                firstName: "string",
+                lastName: "string",
+                organizationName: "string",
             },
             testResults: [
                 {
@@ -3154,6 +3210,9 @@ await client.encounters.v4.createFromPreEncounterPatient({
         npi: "string",
         taxonomyCode: "string",
         providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     renderingProvider: {
         npi: "string",
@@ -3166,6 +3225,9 @@ await client.encounters.v4.createFromPreEncounterPatient({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     initialReferringProvider: {
         npi: "string",
@@ -3179,6 +3241,9 @@ await client.encounters.v4.createFromPreEncounterPatient({
             zipPlusFourCode: "1234",
         },
         qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     supervisingProvider: {
         npi: "string",
@@ -3191,6 +3256,9 @@ await client.encounters.v4.createFromPreEncounterPatient({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     serviceFacility: {
         organizationName: "string",
@@ -3287,6 +3355,9 @@ await client.encounters.v4.createFromPreEncounterPatient({
                     zipCode: "10001",
                     zipPlusFourCode: "1234",
                 },
+                firstName: "string",
+                lastName: "string",
+                organizationName: "string",
             },
             testResults: [
                 {
@@ -3443,87 +3514,6 @@ await client.encounters.v4.createFromPreEncounterPatient({
 await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
     diagnosisIds: [CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
     placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy,
-    benefitsAssignedToProvider: true,
-    priorAuthorizationNumber: CandidApi.PriorAuthorizationNumber("string"),
-    externalId: CandidApi.EncounterExternalId("string"),
-    dateOfService: "2023-01-15",
-    tagIds: [],
-    clinicalNotes: [],
-    payToAddress: {
-        address1: "123 Main St",
-        address2: "Apt 1",
-        city: "New York",
-        state: CandidApi.State.Ny,
-        zipCode: "10001",
-        zipPlusFourCode: "1234",
-    },
-    billableStatus: CandidApi.BillableStatusType.Billable,
-    responsibleParty: CandidApi.ResponsiblePartyType.InsurancePay,
-    providerAcceptsAssignment: true,
-    synchronicity: CandidApi.SynchronicityType.Synchronous,
-    placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-    appointmentType: "string",
-    endDateOfService: "2023-01-15",
-    subscriberPrimary: {
-        insuranceCard: {
-            memberId: "string",
-            payerName: "string",
-            payerId: "string",
-        },
-        patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-        firstName: "string",
-        lastName: "string",
-        gender: CandidApi.Gender.Male,
-    },
-    subscriberSecondary: {
-        insuranceCard: {
-            memberId: "string",
-            payerName: "string",
-            payerId: "string",
-        },
-        patientRelationshipToSubscriberCode: CandidApi.PatientRelationshipToInsuredCodeAll.Spouse,
-        firstName: "string",
-        lastName: "string",
-        gender: CandidApi.Gender.Male,
-    },
-    additionalInformation: "string",
-    serviceAuthorizationExceptionCode: CandidApi.ServiceAuthorizationExceptionCode.C1,
-    admissionDate: "2023-01-15",
-    dischargeDate: "2023-01-15",
-    onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-    lastMenstrualPeriodDate: "2023-01-15",
-    delayReasonCode: CandidApi.DelayReasonCode.C1,
-    patient: {},
-    patientAuthorizedRelease: true,
-    schemaInstances: [],
-    vitals: {
-        heightIn: 70,
-        weightLbs: 165,
-        bloodPressureSystolicMmhg: 115,
-        bloodPressureDiastolicMmhg: 85,
-        bodyTemperatureF: 98,
-        hemoglobinGdl: 15.1,
-        hematocritPct: 51.2,
-    },
-    existingMedications: [],
-    renderingProvider: {},
-    serviceFacility: {
-        organizationName: "Test Organization",
-        address: {
-            address1: "123 Main St",
-            address2: "Apt 1",
-            city: "New York",
-            state: CandidApi.State.Ny,
-            zipCode: "10001",
-            zipPlusFourCode: "1234",
-        },
-    },
-    guarantor: {},
-    billingProvider: {},
-    supervisingProvider: {},
-    referringProvider: {},
-    initialReferringProvider: {},
-    referralNumber: "string",
 });
 ```
 
@@ -4863,7 +4853,29 @@ Updates a guarantor by its `guarantor_id`.
 <dd>
 
 ```typescript
-await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
+await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    firstName: "string",
+    lastName: "string",
+    externalId: "string",
+    dateOfBirth: "2023-01-15",
+    address: {
+        address1: "123 Main St",
+        address2: "Apt 1",
+        city: "New York",
+        state: CandidApi.State.Ny,
+        zipCode: "10001",
+        zipPlusFourCode: "1234",
+    },
+    phoneNumbers: [
+        {
+            number: "1234567890",
+            type: CandidApi.PhoneNumberType.Home,
+        },
+    ],
+    phoneConsent: true,
+    email: CandidApi.Email("johndoe@joincandidhealth.com"),
+    emailConsent: true,
+});
 ```
 
 </dd>
@@ -8756,6 +8768,9 @@ await client.serviceLines.v2.create({
             zipCode: "10001",
             zipPlusFourCode: "1234",
         },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
     },
     testResults: [
         {
@@ -10048,7 +10063,7 @@ await client.preEncounter.coverages.v1.create({
         {
             checkId: "string",
             serviceCode: CandidApi.ServiceTypeCode.MedicalCare,
-            status: CandidApi.EligibilityCheckStatus.Created,
+            status: CandidApi.EligibilityCheckStatus.Completed,
             initiatedBy: CandidApi.UserId("string"),
             initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
         },
@@ -10167,7 +10182,7 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
         {
             checkId: "string",
             serviceCode: CandidApi.ServiceTypeCode.MedicalCare,
-            status: CandidApi.EligibilityCheckStatus.Created,
+            status: CandidApi.EligibilityCheckStatus.Completed,
             initiatedBy: CandidApi.UserId("string"),
             initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
         },

@@ -9,8 +9,8 @@ import * as core from "../../../../../../../../core";
 export const CoverageLevel: core.serialization.Schema<
     serializers.preEncounter.coverages.v1.CoverageLevel.Raw,
     CandidApi.preEncounter.coverages.v1.CoverageLevel
-> = core.serialization.enum_(["INDIVIDUAL", "FAMILY", "EMPLOYEE_ONLY", "EMPLOYEE_AND_SPOUSE"]);
+> = core.serialization.enum_(["EMPLOYEE_AND_CHILDREN", "EMPLOYEE_ONLY", "EMPLOYEE_AND_SPOUSE", "FAMILY", "INDIVIDUAL"]);
 
 export declare namespace CoverageLevel {
-    type Raw = "INDIVIDUAL" | "FAMILY" | "EMPLOYEE_ONLY" | "EMPLOYEE_AND_SPOUSE";
+    type Raw = "EMPLOYEE_AND_CHILDREN" | "EMPLOYEE_ONLY" | "EMPLOYEE_AND_SPOUSE" | "FAMILY" | "INDIVIDUAL";
 }

@@ -3,6 +3,7 @@ export * as commons from "./commons";
 export * from "./commons/errors";
 export * as auth from "./auth";
 export * as billingNotes from "./billingNotes";
+export * as chargeCaptureBundles from "./chargeCaptureBundles";
 export * as chargeCapture from "./chargeCapture";
 export * as claimSubmission from "./claimSubmission";
 export * as contracts from "./contracts";

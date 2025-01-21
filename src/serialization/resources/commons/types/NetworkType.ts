@@ -27,6 +27,8 @@ export const NetworkType: core.serialization.Schema<serializers.NetworkType.Raw,
         "VA",
         "WC",
         "ZZ",
+        "CI",
+        "BL",
     ]);
 
 export declare namespace NetworkType {
@@ -49,5 +51,7 @@ export declare namespace NetworkType {
         | "TV"
         | "VA"
         | "WC"
-        | "ZZ";
+        | "ZZ"
+        | "CI"
+        | "BL";
 }

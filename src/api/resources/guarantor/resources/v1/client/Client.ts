@@ -73,7 +73,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -147,7 +147,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -183,7 +183,27 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.guarantor.v1.update(CandidApi.guarantor.v1.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
+     *     await client.guarantor.v1.update(CandidApi.guarantor.v1.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         firstName: "string",
+     *         lastName: "string",
+     *         externalId: "string",
+     *         dateOfBirth: "2023-01-15",
+     *         address: {
+     *             address1: "123 Main St",
+     *             address2: "Apt 1",
+     *             city: "New York",
+     *             state: CandidApi.State.Ny,
+     *             zipCode: "10001",
+     *             zipPlusFourCode: "1234"
+     *         },
+     *         phoneNumbers: [{
+     *                 number: "1234567890",
+     *                 type: CandidApi.PhoneNumberType.Home
+     *             }],
+     *         phoneConsent: true,
+     *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
+     *         emailConsent: true
+     *     })
      */
     public async update(
         guarantorId: CandidApi.guarantor.v1.GuarantorId,
@@ -203,7 +223,7 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.38.2",
+                "X-Fern-SDK-Version": "0.39.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

@@ -4,21 +4,25 @@
 
 export type BenefitType =
     | "DEDUCTIBLE"
+    | "DEDUCTIBLE_CONTRACT"
     | "DEDUCTIBLE_REMAINING"
     | "DEDUCTIBLE_YEAR_TO_DATE"
     | "OOP_MAX"
+    | "OOP_MAX_CONTRACT"
     | "OOP_MAX_REMAINING"
-    | "OOP_YEAR_TO_DATE"
+    | "OOP_MAX_YEAR_TO_DATE"
     | "COPAY"
     | "COINSURANCE";
 
 export const BenefitType = {
     Deductible: "DEDUCTIBLE",
+    DeductibleContract: "DEDUCTIBLE_CONTRACT",
     DeductibleRemaining: "DEDUCTIBLE_REMAINING",
     DeductibleYearToDate: "DEDUCTIBLE_YEAR_TO_DATE",
     OopMax: "OOP_MAX",
+    OopMaxContract: "OOP_MAX_CONTRACT",
     OopMaxRemaining: "OOP_MAX_REMAINING",
-    OopYearToDate: "OOP_YEAR_TO_DATE",
+    OopMaxYearToDate: "OOP_MAX_YEAR_TO_DATE",
     Copay: "COPAY",
     Coinsurance: "COINSURANCE",
 } as const;

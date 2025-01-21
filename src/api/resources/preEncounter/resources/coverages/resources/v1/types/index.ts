@@ -22,5 +22,7 @@ export * from "./NetworkType";
 export * from "./InsurancePlan";
 export * from "./MutableCoverage";
 export * from "./Coverage";
+export * from "./BenefitsRelatedEntity";
+export * from "./RelatedEntityContact";
 export * from "./InsuranceTypeCode";
 export * from "./ServiceTypeCode";
