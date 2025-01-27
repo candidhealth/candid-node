@@ -31,6 +31,9 @@ export const Error: core.serialization.Schema<
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
         }),
+        HttpRequestValidationError: core.serialization.object({
+            content: RequestValidationError,
+        }),
     })
     .transform<CandidApi.encounters.v4.createFromPreEncounterPatient.Error>({
         transform: (value) => {
@@ -55,6 +58,10 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.schemaInstanceValidationHttpFailure(
                         value.content
                     );
+                case "HttpRequestValidationError":
+                    return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.httpRequestValidationError(
+                        value.content
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -66,7 +73,8 @@ export declare namespace Error {
         | Error.EncounterPatientControlNumberUniquenessError
         | Error.EntityNotFoundError
         | Error.HttpRequestValidationsError
-        | Error.SchemaInstanceValidationHttpFailure;
+        | Error.SchemaInstanceValidationHttpFailure
+        | Error.HttpRequestValidationError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -91,5 +99,10 @@ export declare namespace Error {
     interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
+    }
+
+    interface HttpRequestValidationError {
+        errorName: "HttpRequestValidationError";
+        content: RequestValidationError.Raw;
     }
 }

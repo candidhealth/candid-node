@@ -14,6 +14,7 @@ export type Error =
     | CandidApi.encounters.v4.create.Error.CashPayPayerError
     | CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure
     | CandidApi.encounters.v4.create.Error.InvalidTagNamesError
+    | CandidApi.encounters.v4.create.Error.HttpRequestValidationError
     | CandidApi.encounters.v4.create.Error._Unknown;
 
 export declare namespace Error {
@@ -57,6 +58,11 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.InvalidTagNamesErrorType;
     }
 
+    interface HttpRequestValidationError extends _Utils {
+        errorName: "HttpRequestValidationError";
+        content: CandidApi.RequestValidationError;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -83,6 +89,7 @@ export declare namespace Error {
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
         ) => _Result;
         invalidTagNamesError: (value: CandidApi.encounters.v4.InvalidTagNamesErrorType) => _Result;
+        httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -208,6 +215,21 @@ export const Error = {
         };
     },
 
+    httpRequestValidationError: (
+        value: CandidApi.RequestValidationError
+    ): CandidApi.encounters.v4.create.Error.HttpRequestValidationError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.HttpRequestValidationError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -242,6 +264,8 @@ export const Error = {
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
             case "InvalidTagNamesError":
                 return visitor.invalidTagNamesError(value.content);
+            case "HttpRequestValidationError":
+                return visitor.httpRequestValidationError(value.content);
             default:
                 return visitor._other(value as any);
         }

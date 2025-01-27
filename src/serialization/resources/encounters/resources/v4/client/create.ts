@@ -43,6 +43,9 @@ export const Error: core.serialization.Schema<
         InvalidTagNamesError: core.serialization.object({
             content: InvalidTagNamesErrorType,
         }),
+        HttpRequestValidationError: core.serialization.object({
+            content: RequestValidationError,
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
@@ -67,6 +70,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.schemaInstanceValidationHttpFailure(value.content);
                 case "InvalidTagNamesError":
                     return CandidApi.encounters.v4.create.Error.invalidTagNamesError(value.content);
+                case "HttpRequestValidationError":
+                    return CandidApi.encounters.v4.create.Error.httpRequestValidationError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -81,7 +86,8 @@ export declare namespace Error {
         | Error.HttpRequestValidationsError
         | Error.CashPayPayerError
         | Error.SchemaInstanceValidationHttpFailure
-        | Error.InvalidTagNamesError;
+        | Error.InvalidTagNamesError
+        | Error.HttpRequestValidationError;
 
     interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -121,5 +127,10 @@ export declare namespace Error {
     interface InvalidTagNamesError {
         errorName: "InvalidTagNamesError";
         content: InvalidTagNamesErrorType.Raw;
+    }
+
+    interface HttpRequestValidationError {
+        errorName: "HttpRequestValidationError";
+        content: RequestValidationError.Raw;
     }
 }

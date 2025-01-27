@@ -11,6 +11,7 @@ export type Error =
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.EntityNotFoundError
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.SchemaInstanceValidationHttpFailure
+    | CandidApi.encounters.v4.createFromPreEncounterPatient.Error.HttpRequestValidationError
     | CandidApi.encounters.v4.createFromPreEncounterPatient.Error._Unknown;
 
 export declare namespace Error {
@@ -39,6 +40,11 @@ export declare namespace Error {
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
+    interface HttpRequestValidationError extends _Utils {
+        errorName: "HttpRequestValidationError";
+        content: CandidApi.RequestValidationError;
+    }
+
     interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -62,6 +68,7 @@ export declare namespace Error {
         schemaInstanceValidationHttpFailure: (
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
         ) => _Result;
+        httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -142,6 +149,21 @@ export const Error = {
         };
     },
 
+    httpRequestValidationError: (
+        value: CandidApi.RequestValidationError
+    ): CandidApi.encounters.v4.createFromPreEncounterPatient.Error.HttpRequestValidationError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.createFromPreEncounterPatient.Error.HttpRequestValidationError,
+                visitor: CandidApi.encounters.v4.createFromPreEncounterPatient.Error._Visitor<_Result>
+            ) {
+                return CandidApi.encounters.v4.createFromPreEncounterPatient.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (
         fetcherError: core.Fetcher.Error
     ): CandidApi.encounters.v4.createFromPreEncounterPatient.Error._Unknown => {
@@ -172,6 +194,8 @@ export const Error = {
                 return visitor.httpRequestValidationsError(value.content);
             case "SchemaInstanceValidationHttpFailure":
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
+            case "HttpRequestValidationError":
+                return visitor.httpRequestValidationError(value.content);
             default:
                 return visitor._other(value as any);
         }
