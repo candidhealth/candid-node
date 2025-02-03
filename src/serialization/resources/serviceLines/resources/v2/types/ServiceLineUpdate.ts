@@ -35,6 +35,11 @@ export const ServiceLineUpdate: core.serialization.ObjectSchema<
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
+    hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
+    hasFamilyPlanningIndicator: core.serialization.property(
+        "has_family_planning_indicator",
+        core.serialization.boolean().optional()
+    ),
 });
 
 export declare namespace ServiceLineUpdate {
@@ -56,5 +61,7 @@ export declare namespace ServiceLineUpdate {
         date_of_service?: string | null;
         end_date_of_service?: string | null;
         test_results?: TestResult.Raw[] | null;
+        has_epsdt_indicator?: boolean | null;
+        has_family_planning_indicator?: boolean | null;
     }
 }

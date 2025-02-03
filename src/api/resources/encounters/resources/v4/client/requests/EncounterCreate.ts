@@ -192,12 +192,7 @@ import * as CandidApi from "../../../../../../index";
  *             }],
  *         clinicalNotes: [{
  *                 category: CandidApi.encounters.v4.NoteCategory.Clinical,
- *                 notes: [{
- *                         text: "string",
- *                         authorName: "string",
- *                         authorNpi: CandidApi.Npi("string"),
- *                         timestamp: new Date("2024-01-15T09:30:00.000Z")
- *                     }]
+ *                 notes: []
  *             }],
  *         billingNotes: [{
  *                 text: "string"
@@ -219,45 +214,10 @@ import * as CandidApi from "../../../../../../index";
  *                     }]
  *             }],
  *         serviceLines: [{
- *                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
  *                 procedureCode: "string",
  *                 quantity: CandidApi.Decimal("string"),
  *                 units: CandidApi.ServiceLineUnits.Mj,
- *                 chargeAmountCents: 1,
- *                 diagnosisPointers: [1],
- *                 drugIdentification: {
- *                     serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
- *                     nationalDrugCode: "string",
- *                     nationalDrugUnitCount: "string",
- *                     measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
- *                     linkSequenceNumber: "string",
- *                     pharmacyPrescriptionNumber: "string",
- *                     conversionFormula: "string",
- *                     drugDescription: "string"
- *                 },
- *                 placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
- *                 description: "string",
- *                 dateOfService: "2023-01-15",
- *                 endDateOfService: "2023-01-15",
- *                 orderingProvider: {
- *                     npi: "string",
- *                     taxonomyCode: "string",
- *                     address: {
- *                         address1: "123 Main St",
- *                         address2: "Apt 1",
- *                         city: "New York",
- *                         state: CandidApi.State.Ny,
- *                         zipCode: "10001",
- *                         zipPlusFourCode: "1234"
- *                     },
- *                     firstName: "string",
- *                     lastName: "string",
- *                     organizationName: "string"
- *                 },
- *                 testResults: [{
- *                         value: 1.1,
- *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
- *                     }]
+ *                 diagnosisPointers: []
  *             }],
  *         guarantor: {
  *             phoneNumbers: [{
@@ -306,6 +266,11 @@ import * as CandidApi from "../../../../../../index";
  *                 }
  *             }],
  *         referralNumber: "string",
+ *         epsdtReferral: {
+ *             conditionIndicator1: CandidApi.EpsdtReferralConditionIndicatorCode.Av,
+ *             conditionIndicator2: CandidApi.EpsdtReferralConditionIndicatorCode.Av,
+ *             conditionIndicator3: CandidApi.EpsdtReferralConditionIndicatorCode.Av
+ *         },
  *         externalId: CandidApi.EncounterExternalId("string"),
  *         dateOfService: "2023-01-15",
  *         endDateOfService: "2023-01-15",
@@ -461,7 +426,6 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      */
     guarantor?: CandidApi.guarantor.v1.GuarantorCreate;
     /**
-     * ***This field is in beta.***
      * To be included for claims that have been submitted outside of Candid.
      * Candid supports posting remits and payments to these claims and working them in-platform (e.g. editing, resubmitting).
      *
@@ -480,4 +444,9 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     referralNumber?: string;
+    /**
+     * Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form
+     *
+     */
+    epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
 }

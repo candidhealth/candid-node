@@ -1,3 +1,4 @@
+export * from "./EncounterCreateFromPreEncounter";
 export * from "./EncounterBase";
 export * from "./EncounterOptional";
 export * from "./Encounter";
@@ -24,6 +25,7 @@ export * from "./EncounterOwnerOfNextActionType";
 export * from "./EncounterSubmissionOriginType";
 export * from "./SynchronicityType";
 export * from "./CodingAttributionType";
+export * from "./EpsdtReferral";
 export * from "./EncounterPage";
 export * from "./PriorAuthorizationNumber";
 export * from "./RxCui";

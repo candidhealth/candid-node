@@ -6,6 +6,16 @@ import * as CandidApi from "../../../../../index";
 
 export interface ServiceLineCreate {
     modifiers?: CandidApi.ProcedureModifier[];
+    /**
+     * Maps to SV1-11 on the 837-P and Box 24H on the CMS-1500.
+     * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
+     */
+    hasEpsdtIndicator?: boolean;
+    /**
+     * Maps to SV1-12 on the 837-P and Box 24I on the CMS-1500.
+     * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
+     */
+    hasFamilyPlanningIndicator?: boolean;
     procedureCode: string;
     /**
      * String representation of a Decimal that can be parsed by most libraries.

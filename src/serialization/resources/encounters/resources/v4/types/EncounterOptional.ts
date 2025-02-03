@@ -28,6 +28,7 @@ import { BillingProviderUpdate } from "../../../../encounterProviders/resources/
 import { SupervisingProviderUpdate } from "../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdate";
 import { ReferringProviderUpdate } from "../../../../encounterProviders/resources/v2/types/ReferringProviderUpdate";
 import { InitialReferringProviderUpdate } from "../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdate";
+import { EpsdtReferral } from "./EpsdtReferral";
 
 export const EncounterOptional: core.serialization.ObjectSchema<
     serializers.encounters.v4.EncounterOptional.Raw,
@@ -105,6 +106,7 @@ export const EncounterOptional: core.serialization.ObjectSchema<
         InitialReferringProviderUpdate.optional()
     ),
     referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
+    epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
 });
 
 export declare namespace EncounterOptional {
@@ -145,5 +147,6 @@ export declare namespace EncounterOptional {
         referring_provider?: ReferringProviderUpdate.Raw | null;
         initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;
         referral_number?: string | null;
+        epsdt_referral?: EpsdtReferral.Raw | null;
     }
 }

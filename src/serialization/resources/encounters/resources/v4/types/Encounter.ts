@@ -27,6 +27,7 @@ import { WorkQueueId } from "../../../../commons/types/WorkQueueId";
 import { EncounterOwnerOfNextActionType } from "./EncounterOwnerOfNextActionType";
 import { EncounterSubmissionOriginType } from "./EncounterSubmissionOriginType";
 import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
+import { EpsdtReferral } from "./EpsdtReferral";
 import { EncounterBase } from "./EncounterBase";
 
 export const Encounter: core.serialization.ObjectSchema<
@@ -83,6 +84,7 @@ export const Encounter: core.serialization.ObjectSchema<
         submissionOrigin: core.serialization.property("submission_origin", EncounterSubmissionOriginType),
         schemaInstances: core.serialization.property("schema_instances", core.serialization.list(SchemaInstance)),
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
+        epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
         lastSubmittedAt: core.serialization.property("last_submitted_at", core.serialization.date().optional()),
     })
     .extend(EncounterBase);
@@ -120,6 +122,7 @@ export declare namespace Encounter {
         submission_origin: EncounterSubmissionOriginType.Raw;
         schema_instances: SchemaInstance.Raw[];
         referral_number?: string | null;
+        epsdt_referral?: EpsdtReferral.Raw | null;
         last_submitted_at?: string | null;
     }
 }

@@ -25,6 +25,7 @@ import { GuarantorCreate } from "../../../../../guarantor/resources/v1/types/Gua
 import { ExternalClaimSubmissionCreate } from "../../../../../claimSubmission/resources/v1/types/ExternalClaimSubmissionCreate";
 import { TagId } from "../../../../../tags/types/TagId";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
+import { EpsdtReferral } from "../../types/EpsdtReferral";
 import { EncounterBase } from "../../types/EncounterBase";
 
 export const EncounterCreate: core.serialization.Schema<
@@ -75,6 +76,7 @@ export const EncounterCreate: core.serialization.Schema<
             core.serialization.list(SchemaInstance).optional()
         ),
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
+        epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
     })
     .extend(EncounterBase);
 
@@ -102,5 +104,6 @@ export declare namespace EncounterCreate {
         tag_ids?: TagId.Raw[] | null;
         schema_instances?: SchemaInstance.Raw[] | null;
         referral_number?: string | null;
+        epsdt_referral?: EpsdtReferral.Raw | null;
     }
 }

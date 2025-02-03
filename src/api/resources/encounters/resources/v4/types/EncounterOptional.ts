@@ -145,4 +145,6 @@ export interface EncounterOptional {
     initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate;
     /** Refers to REF\*9F on the 837p. Value cannot be greater than 50 characters. */
     referralNumber?: string;
+    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
+    epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
 }

@@ -78,7 +78,9 @@ export class V2 {
      *         testResults: [{
      *                 value: 1.1,
      *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
-     *             }]
+     *             }],
+     *         hasEpsdtIndicator: true,
+     *         hasFamilyPlanningIndicator: true
      *     })
      */
     public async create(
@@ -96,7 +98,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.2",
+                "X-Fern-SDK-Version": "0.39.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -182,7 +184,9 @@ export class V2 {
      *         testResults: [{
      *                 value: 1.1,
      *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
-     *             }]
+     *             }],
+     *         hasEpsdtIndicator: true,
+     *         hasFamilyPlanningIndicator: true
      *     })
      */
     public async update(
@@ -201,7 +205,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.2",
+                "X-Fern-SDK-Version": "0.39.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -274,7 +278,7 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.2",
+                "X-Fern-SDK-Version": "0.39.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

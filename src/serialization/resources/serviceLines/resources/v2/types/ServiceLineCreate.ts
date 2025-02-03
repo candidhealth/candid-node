@@ -18,6 +18,11 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
     CandidApi.serviceLines.v2.ServiceLineCreate
 > = core.serialization.object({
     modifiers: core.serialization.list(ProcedureModifier).optional(),
+    hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
+    hasFamilyPlanningIndicator: core.serialization.property(
+        "has_family_planning_indicator",
+        core.serialization.boolean().optional()
+    ),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
     quantity: Decimal,
     units: ServiceLineUnits,
@@ -38,6 +43,8 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
 export declare namespace ServiceLineCreate {
     interface Raw {
         modifiers?: ProcedureModifier.Raw[] | null;
+        has_epsdt_indicator?: boolean | null;
+        has_family_planning_indicator?: boolean | null;
         procedure_code: string;
         quantity: Decimal.Raw;
         units: ServiceLineUnits.Raw;

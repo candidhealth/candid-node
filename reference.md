@@ -2911,14 +2911,7 @@ await client.encounters.v4.create({
     clinicalNotes: [
         {
             category: CandidApi.NoteCategory.Clinical,
-            notes: [
-                {
-                    text: "string",
-                    authorName: "string",
-                    authorNpi: CandidApi.Npi("string"),
-                    timestamp: new Date("2024-01-15T09:30:00.000Z"),
-                },
-            ],
+            notes: [],
         },
     ],
     billingNotes: [
@@ -2952,47 +2945,10 @@ await client.encounters.v4.create({
     ],
     serviceLines: [
         {
-            modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
             procedureCode: "string",
             quantity: CandidApi.Decimal("string"),
             units: CandidApi.ServiceLineUnits.Mj,
-            chargeAmountCents: 1,
-            diagnosisPointers: [1],
-            drugIdentification: {
-                serviceIdQualifier: CandidApi.ServiceIdQualifier.EanUcc13,
-                nationalDrugCode: "string",
-                nationalDrugUnitCount: "string",
-                measurementUnitCode: CandidApi.MeasurementUnitCode.Milliliters,
-                linkSequenceNumber: "string",
-                pharmacyPrescriptionNumber: "string",
-                conversionFormula: "string",
-                drugDescription: "string",
-            },
-            placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-            description: "string",
-            dateOfService: "2023-01-15",
-            endDateOfService: "2023-01-15",
-            orderingProvider: {
-                npi: "string",
-                taxonomyCode: "string",
-                address: {
-                    address1: "123 Main St",
-                    address2: "Apt 1",
-                    city: "New York",
-                    state: CandidApi.State.Ny,
-                    zipCode: "10001",
-                    zipPlusFourCode: "1234",
-                },
-                firstName: "string",
-                lastName: "string",
-                organizationName: "string",
-            },
-            testResults: [
-                {
-                    value: 1.1,
-                    resultType: CandidApi.TestResultType.Hematocrit,
-                },
-            ],
+            diagnosisPointers: [],
         },
     ],
     guarantor: {
@@ -3049,6 +3005,11 @@ await client.encounters.v4.create({
         },
     ],
     referralNumber: "string",
+    epsdtReferral: {
+        conditionIndicator1: CandidApi.EpsdtReferralConditionIndicatorCode.Av,
+        conditionIndicator2: CandidApi.EpsdtReferralConditionIndicatorCode.Av,
+        conditionIndicator3: CandidApi.EpsdtReferralConditionIndicatorCode.Av,
+    },
     externalId: CandidApi.EncounterExternalId("string"),
     dateOfService: "2023-01-15",
     endDateOfService: "2023-01-15",
@@ -3283,14 +3244,7 @@ await client.encounters.v4.createFromPreEncounterPatient({
     clinicalNotes: [
         {
             category: CandidApi.NoteCategory.Clinical,
-            notes: [
-                {
-                    text: "string",
-                    authorName: "string",
-                    authorNpi: CandidApi.Npi("string"),
-                    timestamp: new Date("2024-01-15T09:30:00.000Z"),
-                },
-            ],
+            notes: [],
         },
     ],
     billingNotes: [
@@ -3324,47 +3278,10 @@ await client.encounters.v4.createFromPreEncounterPatient({
     ],
     serviceLines: [
         {
-            modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
             procedureCode: "string",
             quantity: CandidApi.Decimal("string"),
             units: CandidApi.ServiceLineUnits.Mj,
-            chargeAmountCents: 1,
-            diagnosisPointers: [1],
-            drugIdentification: {
-                serviceIdQualifier: CandidApi.ServiceIdQualifier.EanUcc13,
-                nationalDrugCode: "string",
-                nationalDrugUnitCount: "string",
-                measurementUnitCode: CandidApi.MeasurementUnitCode.Milliliters,
-                linkSequenceNumber: "string",
-                pharmacyPrescriptionNumber: "string",
-                conversionFormula: "string",
-                drugDescription: "string",
-            },
-            placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-            description: "string",
-            dateOfService: "2023-01-15",
-            endDateOfService: "2023-01-15",
-            orderingProvider: {
-                npi: "string",
-                taxonomyCode: "string",
-                address: {
-                    address1: "123 Main St",
-                    address2: "Apt 1",
-                    city: "New York",
-                    state: CandidApi.State.Ny,
-                    zipCode: "10001",
-                    zipPlusFourCode: "1234",
-                },
-                firstName: "string",
-                lastName: "string",
-                organizationName: "string",
-            },
-            testResults: [
-                {
-                    value: 1.1,
-                    resultType: CandidApi.TestResultType.Hematocrit,
-                },
-            ],
+            diagnosisPointers: [],
         },
     ],
     externalClaimSubmission: {
@@ -3479,7 +3396,311 @@ await client.encounters.v4.createFromPreEncounterPatient({
 <dl>
 <dd>
 
-**request:** `CandidApi.encounters.v4.EncounterCreateFromPreEncounter`
+**request:** `CandidApi.EncounterCreateFromPreEncounter`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createFromPreEncounterPatientInternal</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatientInternal.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create an encounter from a pre-encounter patient and appointment. This endpoint is intended to be used by consumers who are managing
+patients and appointments in the pre-encounter service and is currently under development. Consumers who are not taking advantage
+of the pre-encounter service should use the standard create endpoint.
+
+The endpoint will create an encounter from the provided fields, pulling information from the provided patient and appointment objects
+where applicable. In particular, the following fields are populated from the patient and appointment objects:
+
+-   Patient
+-   Referring Provider
+-   Subscriber Primary
+-   Subscriber Secondary
+-   Referral Number
+-   Responsible Party
+-   Guarantor
+
+Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
+encounter has not already been submitted or adjudicated.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounters.v4.createFromPreEncounterPatientInternal({
+    preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+    billingProvider: {
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        taxId: "string",
+        npi: "string",
+        taxonomyCode: "string",
+        providerCommercialLicenseType: CandidApi.BillingProviderCommercialLicenseType.LicensedClinicalSocialWorker,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    renderingProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    initialReferringProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        qualifier: CandidApi.QualifierCode.Dq,
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    supervisingProvider: {
+        npi: "string",
+        taxonomyCode: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        organizationName: "string",
+    },
+    serviceFacility: {
+        organizationName: "string",
+        npi: "string",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: CandidApi.State.Ny,
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        secondaryIdentification: "string",
+    },
+    diagnoses: [
+        {
+            name: "string",
+            codeType: CandidApi.DiagnosisTypeCode.Abf,
+            code: "string",
+        },
+    ],
+    clinicalNotes: [
+        {
+            category: CandidApi.NoteCategory.Clinical,
+            notes: [],
+        },
+    ],
+    billingNotes: [
+        {
+            text: "string",
+        },
+    ],
+    placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+    patientHistories: [
+        {
+            category: CandidApi.PatientHistoryCategoryEnum.PresentIllness,
+            questions: [
+                {
+                    id: CandidApi.IntakeQuestionId("6E7FBCE4-A8EA-46D0-A8D8-FF83CA3BB176"),
+                    text: "Do you have any allergies?",
+                    responses: [
+                        {
+                            response: "No allergies",
+                            followUps: [
+                                {
+                                    id: CandidApi.IntakeFollowUpId("4F3D57F9-AC94-49D6-87E4-E804B709917A"),
+                                    text: "Do you have any allergies?",
+                                    response: "No allergies",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
+    serviceLines: [
+        {
+            procedureCode: "string",
+            quantity: CandidApi.Decimal("string"),
+            units: CandidApi.ServiceLineUnits.Mj,
+            diagnosisPointers: [],
+        },
+    ],
+    externalClaimSubmission: {
+        claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
+        patientControlNumber: "PATIENT_CONTROL_NUMBER",
+        submissionRecords: [
+            {
+                submittedAt: new Date("2023-01-01T13:00:00.000Z"),
+                claimFrequencyCode: CandidApi.ClaimFrequencyTypeCode.Original,
+                payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
+                intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic,
+            },
+            {
+                submittedAt: new Date("2023-01-04T12:00:00.000Z"),
+                claimFrequencyCode: CandidApi.ClaimFrequencyTypeCode.Replacement,
+                payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
+                intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper,
+            },
+        ],
+    },
+    tagIds: [CandidApi.TagId("string")],
+    schemaInstances: [
+        {
+            schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
+            content: {
+                provider_category: "internist",
+                is_urgent_care: true,
+                bmi: 24.2,
+                age: 38,
+            },
+        },
+    ],
+    externalId: CandidApi.EncounterExternalId("string"),
+    dateOfService: "2023-01-15",
+    endDateOfService: "2023-01-15",
+    patientAuthorizedRelease: true,
+    benefitsAssignedToProvider: true,
+    providerAcceptsAssignment: true,
+    appointmentType: "string",
+    existingMedications: [
+        {
+            name: "Lisinopril",
+            rxCui: CandidApi.RxCui("860975"),
+            dosage: "10mg",
+            dosageForm: "Tablet",
+            frequency: "Once Daily",
+            asNeeded: true,
+        },
+    ],
+    vitals: {
+        heightIn: 70,
+        weightLbs: 165,
+        bloodPressureSystolicMmhg: 115,
+        bloodPressureDiastolicMmhg: 85,
+        bodyTemperatureF: 98,
+        hemoglobinGdl: 15.1,
+        hematocritPct: 51.2,
+    },
+    interventions: [
+        {
+            name: "Physical Therapy Session",
+            category: CandidApi.InterventionCategory.Lifestyle,
+            description:
+                "A session focused on improving muscular strength, flexibility, and range of motion post-injury.",
+            medication: {
+                name: "Lisinopril",
+                rxCui: CandidApi.RxCui("860975"),
+                dosage: "10mg",
+                dosageForm: "Tablet",
+                frequency: "Once Daily",
+                asNeeded: true,
+            },
+            labs: [
+                {
+                    name: "Genetic Health Labs",
+                    code: "GH12345",
+                    codeType: CandidApi.LabCodeType.Quest,
+                },
+            ],
+        },
+    ],
+    payToAddress: {
+        address1: "123 Main St",
+        address2: "Apt 1",
+        city: "New York",
+        state: CandidApi.State.Ny,
+        zipCode: "10001",
+        zipPlusFourCode: "1234",
+    },
+    synchronicity: CandidApi.SynchronicityType.Synchronous,
+    billableStatus: CandidApi.BillableStatusType.Billable,
+    additionalInformation: "string",
+    serviceAuthorizationExceptionCode: CandidApi.ServiceAuthorizationExceptionCode.C1,
+    admissionDate: "2023-01-15",
+    dischargeDate: "2023-01-15",
+    onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
+    lastMenstrualPeriodDate: "2023-01-15",
+    delayReasonCode: CandidApi.DelayReasonCode.C1,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.EncounterCreateFromPreEncounter`
 
 </dd>
 </dl>
@@ -8778,6 +8999,8 @@ await client.serviceLines.v2.create({
             resultType: CandidApi.TestResultType.Hematocrit,
         },
     ],
+    hasEpsdtIndicator: true,
+    hasFamilyPlanningIndicator: true,
 });
 ```
 
@@ -8860,6 +9083,8 @@ await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
             resultType: CandidApi.TestResultType.Hematocrit,
         },
     ],
+    hasEpsdtIndicator: true,
+    hasFamilyPlanningIndicator: true,
 });
 ```
 
@@ -10242,2625 +10467,3 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
 
 </dd>
 </dl>
-</details>
-
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-gets a specific Coverage
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.CoverageId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse<CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getHistory.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets a coverage along with it's full history. The return list is ordered by version ascending.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.CoverageId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getMulti.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns a list of Coverages based on the search criteria.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.coverages.v1.getMulti({
-    patientId: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.scan.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Scans up to 100 coverage updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.coverages.v1.scan({
-    since: new Date("2024-01-15T09:30:00.000Z"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.coverages.v1.CoverageScanRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">checkEligibility</a>(id, { ...params }) -> core.APIResponse<CandidApi.EligibilityCheckMetadata, CandidApi.preEncounter.coverages.v1.checkEligibility.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Initiates an eligibility check. Returns the metadata of the check if successfully initiated.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.coverages.v1.checkEligibility(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    serviceCode: CandidApi.ServiceTypeCode.MedicalCare,
-    dateOfService: "2023-01-15",
-    npi: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.CoverageId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getEligibility</a>(id, checkId) -> core.APIResponse<CandidApi.CoverageEligibilityCheckResponse, CandidApi.preEncounter.coverages.v1.getEligibility.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets the eligibility of a patient for a specific coverage if successful.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.coverages.v1.getEligibility(
-    CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    "string"
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.CoverageId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**checkId:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## PreEncounter Lists V1
-
-<details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getPatientList</a>({ ...params }) -> core.APIResponse<CandidApi.PatientListPage, CandidApi.preEncounter.lists.v1.getPatientList.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets patients with dependent objects for patients that match the query parameters.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.lists.v1.getPatientList({
-    pageToken: CandidApi.PageToken("string"),
-    limit: 1,
-    sortField: CandidApi.SortFieldString("string"),
-    sortDirection: CandidApi.SortDirection.Asc,
-    filters: CandidApi.FilterQueryString("string"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.lists.v1.PatientListRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getAppointmentList</a>({ ...params }) -> core.APIResponse<CandidApi.AppointmentListPage, CandidApi.preEncounter.lists.v1.getAppointmentList.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Searches for appointments that match the query parameters.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.lists.v1.getAppointmentList({
-    sortField: CandidApi.SortFieldString("string"),
-    sortDirection: CandidApi.SortDirection.Asc,
-    limit: 1,
-    pageToken: CandidApi.PageToken("string"),
-    filters: CandidApi.FilterQueryString("string"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.lists.v1.AppointmentsGetListRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## PreEncounter Notes V1
-
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets a note by NoteId.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.notes.v1.get(CandidApi.NoteId("string"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.NoteId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Adds a new note.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.notes.v1.create({
-    value: "string",
-    authorEmail: "string",
-    authorName: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.MutableNote`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates a note. The path must contain the most recent version to prevent races.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.notes.v1.update(CandidApi.NoteId("string"), "string", {
-    value: "string",
-    authorEmail: "string",
-    authorName: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.NoteId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**version:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.MutableNote`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.notes.v1.deactivate.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Sets a note as deactivated. The path must contain the most recent version to prevent races.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.notes.v1.deactivate(CandidApi.NoteId("string"), "string");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.NoteId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**version:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## PreEncounter Patients V1
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Adds a patient. VersionConflictError is returned when the patient's external ID is already in use.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.create({
-    skipDuplicateCheck: true,
-    body: {
-        name: {
-            family: "string",
-            given: ["string"],
-            use: CandidApi.NameUse.Usual,
-            period: {},
-        },
-        otherNames: [
-            {
-                family: "string",
-                given: ["string"],
-                use: CandidApi.NameUse.Usual,
-                period: {},
-            },
-        ],
-        gender: CandidApi.Gender.Man,
-        birthDate: "2023-01-15",
-        socialSecurityNumber: "string",
-        biologicalSex: CandidApi.Sex.Female,
-        sexualOrientation: CandidApi.SexualOrientation.Heterosexual,
-        race: CandidApi.Race.AmericanIndianOrAlaskaNative,
-        ethnicity: CandidApi.Ethnicity.HispanicOrLatino,
-        disabilityStatus: CandidApi.DisabilityStatus.Disabled,
-        maritalStatus: CandidApi.MaritalStatus.Annulled,
-        deceased: new Date("2024-01-15T09:30:00.000Z"),
-        multipleBirth: 1,
-        primaryAddress: {
-            use: CandidApi.AddressUse.Home,
-            line: ["string"],
-            city: "string",
-            state: "string",
-            postalCode: "string",
-            country: "string",
-            period: {},
-        },
-        otherAddresses: [
-            {
-                use: CandidApi.AddressUse.Home,
-                line: ["string"],
-                city: "string",
-                state: "string",
-                postalCode: "string",
-                country: "string",
-                period: {},
-            },
-        ],
-        primaryTelecom: {
-            value: "string",
-            use: CandidApi.ContactPointUse.Home,
-        },
-        otherTelecoms: [
-            {
-                value: "string",
-                use: CandidApi.ContactPointUse.Home,
-            },
-        ],
-        email: "string",
-        electronicCommunicationOptIn: true,
-        photo: "string",
-        language: "string",
-        externalProvenance: {
-            externalId: "string",
-            systemName: "string",
-        },
-        contacts: [
-            {
-                relationship: [CandidApi.Relationship.Self],
-                name: {
-                    family: "string",
-                    given: ["string"],
-                    use: CandidApi.NameUse.Usual,
-                    period: {},
-                },
-                telecoms: [
-                    {
-                        value: "string",
-                        use: CandidApi.ContactPointUse.Home,
-                    },
-                ],
-                addresses: [
-                    {
-                        use: CandidApi.AddressUse.Home,
-                        line: ["string"],
-                        city: "string",
-                        state: "string",
-                        postalCode: "string",
-                        country: "string",
-                        period: {},
-                    },
-                ],
-                period: {},
-                hipaaAuthorization: true,
-            },
-        ],
-        generalPractitioners: [
-            {
-                name: {
-                    family: "string",
-                    given: ["string"],
-                    use: CandidApi.NameUse.Usual,
-                    period: {},
-                },
-                type: CandidApi.ExternalProviderType.Primary,
-                npi: "string",
-                telecoms: [
-                    {
-                        value: "string",
-                        use: CandidApi.ContactPointUse.Home,
-                    },
-                ],
-                addresses: [],
-                period: {},
-                canonicalId: CandidApi.CanonicalProviderId("string"),
-            },
-        ],
-        filingOrder: {
-            coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
-        },
-        nonInsurancePayers: [CandidApi.CanonicalNonInsurancePayerId("string")],
-        nonInsurancePayerAssociations: [
-            {
-                id: CandidApi.CanonicalNonInsurancePayerId("string"),
-            },
-        ],
-        guarantor: {
-            name: {
-                family: "string",
-                given: ["string"],
-                use: CandidApi.NameUse.Usual,
-                period: {},
-            },
-            telecom: {
-                value: "string",
-                use: CandidApi.ContactPointUse.Home,
-            },
-            email: "string",
-            birthDate: "2023-01-15",
-            address: {
-                use: CandidApi.AddressUse.Home,
-                line: ["string"],
-                city: "string",
-                state: "string",
-                postalCode: "string",
-                country: "string",
-                period: {},
-            },
-        },
-        selfPay: true,
-        authorizations: [
-            {
-                payerId: CandidApi.PayerId("string"),
-                payerName: "string",
-                authorizationNumber: "string",
-                cptCode: "string",
-                units: CandidApi.AuthorizationUnit.Visit,
-            },
-        ],
-        referrals: [
-            {
-                provider: {
-                    name: {
-                        family: "string",
-                        given: ["string"],
-                        use: CandidApi.NameUse.Usual,
-                        period: {},
-                    },
-                    type: CandidApi.ExternalProviderType.Primary,
-                    npi: "string",
-                    telecoms: [
-                        {
-                            value: "string",
-                            use: CandidApi.ContactPointUse.Home,
-                        },
-                    ],
-                    addresses: [],
-                    period: {},
-                    canonicalId: CandidApi.CanonicalProviderId("string"),
-                },
-                referralNumber: "string",
-            },
-        ],
-        primaryServiceFacilityId: "string",
-        doNotInvoiceReason: CandidApi.DoNotInvoiceReason.Bankruptcy,
-        noteIds: [CandidApi.NoteId("string")],
-        tagIds: [CandidApi.TagId("string")],
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.patients.v1.CreatePatientRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">createWithMrn</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.createWithMrn.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.createWithMrn({
-    skipDuplicateCheck: true,
-    body: {
-        mrn: "string",
-        name: {
-            family: "string",
-            given: ["string"],
-            use: CandidApi.NameUse.Usual,
-            period: {},
-        },
-        otherNames: [
-            {
-                family: "string",
-                given: ["string"],
-                use: CandidApi.NameUse.Usual,
-                period: {},
-            },
-        ],
-        gender: CandidApi.Gender.Man,
-        birthDate: "2023-01-15",
-        socialSecurityNumber: "string",
-        biologicalSex: CandidApi.Sex.Female,
-        sexualOrientation: CandidApi.SexualOrientation.Heterosexual,
-        race: CandidApi.Race.AmericanIndianOrAlaskaNative,
-        ethnicity: CandidApi.Ethnicity.HispanicOrLatino,
-        disabilityStatus: CandidApi.DisabilityStatus.Disabled,
-        maritalStatus: CandidApi.MaritalStatus.Annulled,
-        deceased: new Date("2024-01-15T09:30:00.000Z"),
-        multipleBirth: 1,
-        primaryAddress: {
-            use: CandidApi.AddressUse.Home,
-            line: ["string"],
-            city: "string",
-            state: "string",
-            postalCode: "string",
-            country: "string",
-            period: {},
-        },
-        otherAddresses: [
-            {
-                use: CandidApi.AddressUse.Home,
-                line: ["string"],
-                city: "string",
-                state: "string",
-                postalCode: "string",
-                country: "string",
-                period: {},
-            },
-        ],
-        primaryTelecom: {
-            value: "string",
-            use: CandidApi.ContactPointUse.Home,
-        },
-        otherTelecoms: [
-            {
-                value: "string",
-                use: CandidApi.ContactPointUse.Home,
-            },
-        ],
-        email: "string",
-        electronicCommunicationOptIn: true,
-        photo: "string",
-        language: "string",
-        externalProvenance: {
-            externalId: "string",
-            systemName: "string",
-        },
-        contacts: [
-            {
-                relationship: [CandidApi.Relationship.Self],
-                name: {
-                    family: "string",
-                    given: ["string"],
-                    use: CandidApi.NameUse.Usual,
-                    period: {},
-                },
-                telecoms: [
-                    {
-                        value: "string",
-                        use: CandidApi.ContactPointUse.Home,
-                    },
-                ],
-                addresses: [
-                    {
-                        use: CandidApi.AddressUse.Home,
-                        line: ["string"],
-                        city: "string",
-                        state: "string",
-                        postalCode: "string",
-                        country: "string",
-                        period: {},
-                    },
-                ],
-                period: {},
-                hipaaAuthorization: true,
-            },
-        ],
-        generalPractitioners: [
-            {
-                name: {
-                    family: "string",
-                    given: ["string"],
-                    use: CandidApi.NameUse.Usual,
-                    period: {},
-                },
-                type: CandidApi.ExternalProviderType.Primary,
-                npi: "string",
-                telecoms: [
-                    {
-                        value: "string",
-                        use: CandidApi.ContactPointUse.Home,
-                    },
-                ],
-                addresses: [],
-                period: {},
-                canonicalId: CandidApi.CanonicalProviderId("string"),
-            },
-        ],
-        filingOrder: {
-            coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
-        },
-        nonInsurancePayers: [CandidApi.CanonicalNonInsurancePayerId("string")],
-        nonInsurancePayerAssociations: [
-            {
-                id: CandidApi.CanonicalNonInsurancePayerId("string"),
-            },
-        ],
-        guarantor: {
-            name: {
-                family: "string",
-                given: ["string"],
-                use: CandidApi.NameUse.Usual,
-                period: {},
-            },
-            telecom: {
-                value: "string",
-                use: CandidApi.ContactPointUse.Home,
-            },
-            email: "string",
-            birthDate: "2023-01-15",
-            address: {
-                use: CandidApi.AddressUse.Home,
-                line: ["string"],
-                city: "string",
-                state: "string",
-                postalCode: "string",
-                country: "string",
-                period: {},
-            },
-        },
-        selfPay: true,
-        authorizations: [
-            {
-                payerId: CandidApi.PayerId("string"),
-                payerName: "string",
-                authorizationNumber: "string",
-                cptCode: "string",
-                units: CandidApi.AuthorizationUnit.Visit,
-            },
-        ],
-        referrals: [
-            {
-                provider: {
-                    name: {
-                        family: "string",
-                        given: ["string"],
-                        use: CandidApi.NameUse.Usual,
-                        period: {},
-                    },
-                    type: CandidApi.ExternalProviderType.Primary,
-                    npi: "string",
-                    telecoms: [
-                        {
-                            value: "string",
-                            use: CandidApi.ContactPointUse.Home,
-                        },
-                    ],
-                    addresses: [],
-                    period: {},
-                    canonicalId: CandidApi.CanonicalProviderId("string"),
-                },
-                referralNumber: "string",
-            },
-        ],
-        primaryServiceFacilityId: "string",
-        doNotInvoiceReason: CandidApi.DoNotInvoiceReason.Bankruptcy,
-        noteIds: [CandidApi.NoteId("string")],
-        tagIds: [CandidApi.TagId("string")],
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.patients.v1.CreatePatientWithMrnRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPage, CandidApi.preEncounter.patients.v1.getMulti.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Searches for patients that match the query parameters.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.getMulti({
-    limit: 1,
-    mrn: "string",
-    pageToken: CandidApi.PageToken("string"),
-    sortField: CandidApi.PatientSortField("string"),
-    sortDirection: CandidApi.SortDirection.Asc,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets a patient.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.get(CandidApi.PatientId("string"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.PatientId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse<CandidApi.Patient[], CandidApi.preEncounter.patients.v1.getHistory.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets a patient along with it's full history. The return list is ordered by version ascending.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("string"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.PatientId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates a patient. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "string", {
-    name: {
-        family: "string",
-        given: ["string"],
-        use: CandidApi.NameUse.Usual,
-        period: {},
-    },
-    otherNames: [
-        {
-            family: "string",
-            given: ["string"],
-            use: CandidApi.NameUse.Usual,
-            period: {},
-        },
-    ],
-    gender: CandidApi.Gender.Man,
-    birthDate: "2023-01-15",
-    socialSecurityNumber: "string",
-    biologicalSex: CandidApi.Sex.Female,
-    sexualOrientation: CandidApi.SexualOrientation.Heterosexual,
-    race: CandidApi.Race.AmericanIndianOrAlaskaNative,
-    ethnicity: CandidApi.Ethnicity.HispanicOrLatino,
-    disabilityStatus: CandidApi.DisabilityStatus.Disabled,
-    maritalStatus: CandidApi.MaritalStatus.Annulled,
-    deceased: new Date("2024-01-15T09:30:00.000Z"),
-    multipleBirth: 1,
-    primaryAddress: {
-        use: CandidApi.AddressUse.Home,
-        line: ["string"],
-        city: "string",
-        state: "string",
-        postalCode: "string",
-        country: "string",
-        period: {},
-    },
-    otherAddresses: [
-        {
-            use: CandidApi.AddressUse.Home,
-            line: ["string"],
-            city: "string",
-            state: "string",
-            postalCode: "string",
-            country: "string",
-            period: {},
-        },
-    ],
-    primaryTelecom: {
-        value: "string",
-        use: CandidApi.ContactPointUse.Home,
-    },
-    otherTelecoms: [
-        {
-            value: "string",
-            use: CandidApi.ContactPointUse.Home,
-        },
-    ],
-    email: "string",
-    electronicCommunicationOptIn: true,
-    photo: "string",
-    language: "string",
-    externalProvenance: {
-        externalId: "string",
-        systemName: "string",
-    },
-    contacts: [
-        {
-            relationship: [CandidApi.Relationship.Self],
-            name: {
-                family: "string",
-                given: ["string"],
-                use: CandidApi.NameUse.Usual,
-                period: {},
-            },
-            telecoms: [
-                {
-                    value: "string",
-                    use: CandidApi.ContactPointUse.Home,
-                },
-            ],
-            addresses: [
-                {
-                    use: CandidApi.AddressUse.Home,
-                    line: ["string"],
-                    city: "string",
-                    state: "string",
-                    postalCode: "string",
-                    country: "string",
-                    period: {},
-                },
-            ],
-            period: {},
-            hipaaAuthorization: true,
-        },
-    ],
-    generalPractitioners: [
-        {
-            name: {
-                family: "string",
-                given: ["string"],
-                use: CandidApi.NameUse.Usual,
-                period: {},
-            },
-            type: CandidApi.ExternalProviderType.Primary,
-            npi: "string",
-            telecoms: [
-                {
-                    value: "string",
-                    use: CandidApi.ContactPointUse.Home,
-                },
-            ],
-            addresses: [],
-            period: {},
-            canonicalId: CandidApi.CanonicalProviderId("string"),
-        },
-    ],
-    filingOrder: {
-        coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
-    },
-    nonInsurancePayers: [CandidApi.CanonicalNonInsurancePayerId("string")],
-    nonInsurancePayerAssociations: [
-        {
-            id: CandidApi.CanonicalNonInsurancePayerId("string"),
-        },
-    ],
-    guarantor: {
-        name: {
-            family: "string",
-            given: ["string"],
-            use: CandidApi.NameUse.Usual,
-            period: {},
-        },
-        telecom: {
-            value: "string",
-            use: CandidApi.ContactPointUse.Home,
-        },
-        email: "string",
-        birthDate: "2023-01-15",
-        address: {
-            use: CandidApi.AddressUse.Home,
-            line: ["string"],
-            city: "string",
-            state: "string",
-            postalCode: "string",
-            country: "string",
-            period: {},
-        },
-    },
-    selfPay: true,
-    authorizations: [
-        {
-            payerId: CandidApi.PayerId("string"),
-            payerName: "string",
-            authorizationNumber: "string",
-            cptCode: "string",
-            units: CandidApi.AuthorizationUnit.Visit,
-        },
-    ],
-    referrals: [
-        {
-            provider: {
-                name: {
-                    family: "string",
-                    given: ["string"],
-                    use: CandidApi.NameUse.Usual,
-                    period: {},
-                },
-                type: CandidApi.ExternalProviderType.Primary,
-                npi: "string",
-                telecoms: [
-                    {
-                        value: "string",
-                        use: CandidApi.ContactPointUse.Home,
-                    },
-                ],
-                addresses: [],
-                period: {},
-                canonicalId: CandidApi.CanonicalProviderId("string"),
-            },
-            referralNumber: "string",
-        },
-    ],
-    primaryServiceFacilityId: "string",
-    doNotInvoiceReason: CandidApi.DoNotInvoiceReason.Bankruptcy,
-    noteIds: [CandidApi.NoteId("string")],
-    tagIds: [CandidApi.TagId("string")],
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.PatientId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**version:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.MutablePatient`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.patients.v1.deactivate.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Sets a patient as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("string"), "string");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.PatientId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**version:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">search</a>({ ...params }) -> core.APIResponse<CandidApi.Patient[], CandidApi.preEncounter.patients.v1.search.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns a list of Patients based on the search criteria.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.search({
-    mrn: "string",
-    similarNameOrdering: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.patients.v1.PatientGetMultiRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.Patient[], CandidApi.preEncounter.patients.v1.scan.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.patients.v1.scan({
-    since: new Date("2024-01-15T09:30:00.000Z"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.patients.v1.PatientScanRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## PreEncounter Tags V1
-
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets a tag by TagId.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.tags.v1.get(CandidApi.TagId("string"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.TagId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.TagPage, CandidApi.preEncounter.tags.v1.getAll.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets all tags. Defaults to page size of 1000.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.tags.v1.getAll({
-    limit: 1,
-    pageToken: CandidApi.PageToken("string"),
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.preEncounter.tags.v1.GetAllTagsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Adds a new tag if it does not already exist, otherwise, returns the existing tag.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.tags.v1.create({
-    value: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.MutableTag`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates a tag. The path must contain the most recent version to prevent races.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.tags.v1.update(CandidApi.TagId("string"), "string", {
-    value: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.TagId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**version:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.MutableTag`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.tags.v1.deactivate.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Sets a tag as deactivated. The path must contain the most recent version to prevent races.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.preEncounter.tags.v1.deactivate(CandidApi.TagId("string"), "string");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `CandidApi.TagId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**version:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## Diagnoses
-
-<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a new diagnosis for an encounter
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.diagnoses.create({
-    encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    name: "string",
-    codeType: CandidApi.DiagnosisTypeCode.Abf,
-    code: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.StandaloneDiagnosisCreate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Diagnoses.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">update</a>(diagnosisId, { ...params }) -> core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates the diagnosis record matching the provided `diagnosis_id`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.diagnoses.update(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    name: "string",
-    codeType: CandidApi.DiagnosisTypeCode.Abf,
-    code: "string",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**diagnosisId:** `CandidApi.DiagnosisId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.DiagnosisUpdate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Diagnoses.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">delete</a>(diagnosisId) -> core.APIResponse<void, CandidApi.diagnoses.delete.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deletes the diagnosis record associated with the provided `diagnosis_id`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.diagnoses.delete(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**diagnosisId:** `CandidApi.DiagnosisId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Diagnoses.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## ServiceFacility
-
-<details><summary><code>client.serviceFacility.<a href="/src/api/resources/serviceFacility/client/Client.ts">update</a>(serviceFacilityId, { ...params }) -> core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    organizationName: "Test Organization",
-    address: {
-        address1: "123 Main St",
-        address2: "Apt 1",
-        city: "New York",
-        state: CandidApi.State.Ny,
-        zipCode: "10001",
-        zipPlusFourCode: "1234",
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**serviceFacilityId:** `CandidApi.ServiceFacilityId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.EncounterServiceFacilityUpdate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ServiceFacility.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>

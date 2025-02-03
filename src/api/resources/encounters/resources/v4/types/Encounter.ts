@@ -497,6 +497,8 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     schemaInstances: CandidApi.customSchemas.v1.SchemaInstance[];
     /** Refers to REF\*9F on the 837p. Value cannot be greater than 50 characters. */
     referralNumber?: string;
+    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
+    epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
     /** The date and time the encounter was last submitted to a payer. */
     lastSubmittedAt?: Date;
 }

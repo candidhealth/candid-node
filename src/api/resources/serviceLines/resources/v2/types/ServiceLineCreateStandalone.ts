@@ -35,4 +35,14 @@ export interface ServiceLineCreateStandalone {
     orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
     /** Maps to MEA-02 on the 837-P. No more than 5 test results may be submitted per service line. */
     testResults?: CandidApi.serviceLines.v2.TestResult[];
+    /**
+     * Maps to SV1-11 on the 837-P and Box 24H on the CMS-1500.
+     * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
+     */
+    hasEpsdtIndicator?: boolean;
+    /**
+     * Maps to SV1-12 on the 837-P and Box 24I on the CMS-1500.
+     * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
+     */
+    hasFamilyPlanningIndicator?: boolean;
 }
