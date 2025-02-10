@@ -142,9 +142,13 @@ import * as CandidApi from "../../../../../../../../index";
  *             authorizations: [{
  *                     payerId: CandidApi.preEncounter.PayerId("string"),
  *                     payerName: "string",
+ *                     additionalPayerInformation: {},
  *                     authorizationNumber: "string",
  *                     cptCode: "string",
- *                     units: CandidApi.preEncounter.patients.v1.AuthorizationUnit.Visit
+ *                     units: CandidApi.preEncounter.patients.v1.AuthorizationUnit.Visit,
+ *                     quantity: 1,
+ *                     period: {},
+ *                     notes: "string"
  *                 }],
  *             referrals: [{
  *                     provider: {
