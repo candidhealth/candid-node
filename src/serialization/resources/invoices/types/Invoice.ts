@@ -30,7 +30,7 @@ export const Invoice: core.serialization.ObjectSchema<serializers.Invoice.Raw, C
     });
 
 export declare namespace Invoice {
-    interface Raw {
+    export interface Raw {
         id: InvoiceId.Raw;
         created_at: string;
         updated_at: string;

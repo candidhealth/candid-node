@@ -33,7 +33,6 @@ export type DiagnosisTypeCode =
     /**
      * Logical Observation Identifier Names and Codes (LOINC<190>) Codes */
     | "LOI";
-
 export const DiagnosisTypeCode = {
     Abf: "ABF",
     Abj: "ABJ",

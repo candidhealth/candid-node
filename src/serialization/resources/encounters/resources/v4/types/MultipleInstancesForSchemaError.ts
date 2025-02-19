@@ -15,7 +15,7 @@ export const MultipleInstancesForSchemaError: core.serialization.ObjectSchema<
 });
 
 export declare namespace MultipleInstancesForSchemaError {
-    interface Raw {
+    export interface Raw {
         schema_id: SchemaId.Raw;
     }
 }

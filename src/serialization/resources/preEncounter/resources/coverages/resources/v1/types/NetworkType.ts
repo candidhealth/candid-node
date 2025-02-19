@@ -37,7 +37,7 @@ export const NetworkType: core.serialization.Schema<
 ]);
 
 export declare namespace NetworkType {
-    type Raw =
+    export type Raw =
         | "09"
         | "11"
         | "12"

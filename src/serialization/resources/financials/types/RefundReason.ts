@@ -10,5 +10,5 @@ export const RefundReason: core.serialization.Schema<serializers.RefundReason.Ra
     core.serialization.enum_(["OVERCHARGED"]);
 
 export declare namespace RefundReason {
-    type Raw = "OVERCHARGED";
+    export type Raw = "OVERCHARGED";
 }

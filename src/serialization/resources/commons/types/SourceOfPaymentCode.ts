@@ -37,7 +37,7 @@ export const SourceOfPaymentCode: core.serialization.Schema<
 ]);
 
 export declare namespace SourceOfPaymentCode {
-    type Raw =
+    export type Raw =
         | "09"
         | "11"
         | "12"

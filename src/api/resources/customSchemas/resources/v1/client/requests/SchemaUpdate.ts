@@ -11,7 +11,7 @@ import * as CandidApi from "../../../../../../index";
  *         description: "Values collected during all visits",
  *         fieldsToAdd: [{
  *                 key: "visit_type",
- *                 type: CandidApi.Primitive.String
+ *                 type: "STRING"
  *             }]
  *     }
  */

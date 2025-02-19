@@ -14,5 +14,5 @@ export const Npi: core.serialization.Schema<serializers.Npi.Raw, CandidApi.Npi> 
     });
 
 export declare namespace Npi {
-    type Raw = string;
+    export type Raw = string;
 }

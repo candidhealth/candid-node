@@ -12,5 +12,5 @@ export const InterventionCategory: core.serialization.Schema<
 > = core.serialization.enum_(["allopathic", "naturopathic", "tests", "lifestyle"]);
 
 export declare namespace InterventionCategory {
-    type Raw = "allopathic" | "naturopathic" | "tests" | "lifestyle";
+    export type Raw = "allopathic" | "naturopathic" | "tests" | "lifestyle";
 }

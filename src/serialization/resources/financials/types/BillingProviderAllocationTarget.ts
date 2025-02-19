@@ -15,7 +15,7 @@ export const BillingProviderAllocationTarget: core.serialization.ObjectSchema<
 });
 
 export declare namespace BillingProviderAllocationTarget {
-    interface Raw {
+    export interface Raw {
         billing_provider_id: ProviderId.Raw;
     }
 }

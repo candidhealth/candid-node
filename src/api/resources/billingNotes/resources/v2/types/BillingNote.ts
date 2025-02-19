@@ -9,7 +9,7 @@ import * as CandidApi from "../../../../../index";
  *     {
  *         billingNoteId: CandidApi.billingNotes.v2.BillingNoteId("99882EEA-936F-4E71-BC4F-520E4D14E3E2"),
  *         encounterId: CandidApi.EncounterId("8BCFB6A8-2876-4111-9E3F-602B541FCF62"),
- *         createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *         createdAt: "2023-01-01T00:00:00Z",
  *         authorAuth0Id: "F0DE3BF9-F9A1-4FA7-BF6B-28C0B46BADD8",
  *         authorName: "John Doe",
  *         text: "Patient was billed for an MRI."

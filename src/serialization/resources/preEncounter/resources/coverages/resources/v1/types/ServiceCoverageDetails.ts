@@ -19,7 +19,7 @@ export const ServiceCoverageDetails: core.serialization.ObjectSchema<
 });
 
 export declare namespace ServiceCoverageDetails {
-    interface Raw {
+    export interface Raw {
         copay?: CoverageValue.Raw | null;
         coinsurance?: CoverageValue.Raw | null;
         visits?: CoverageValue.Raw | null;

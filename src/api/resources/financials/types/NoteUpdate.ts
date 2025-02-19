@@ -6,13 +6,13 @@ import * as CandidApi from "../../../index";
 
 export type NoteUpdate = CandidApi.NoteUpdate.Set | CandidApi.NoteUpdate.Remove;
 
-export declare namespace NoteUpdate {
-    interface Set {
+export namespace NoteUpdate {
+    export interface Set {
         type: "set";
         value: string;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

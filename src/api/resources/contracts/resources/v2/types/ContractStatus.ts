@@ -13,7 +13,6 @@ export type ContractStatus =
     /**
      * Contract is no longer effective but kept around for historical documentation */
     | "cancelled";
-
 export const ContractStatus = {
     Pending: "pending",
     Effective: "effective",

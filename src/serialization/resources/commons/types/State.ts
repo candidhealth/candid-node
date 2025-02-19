@@ -72,7 +72,7 @@ export const State: core.serialization.Schema<serializers.State.Raw, CandidApi.S
 ]);
 
 export declare namespace State {
-    type Raw =
+    export type Raw =
         | "AA"
         | "AE"
         | "AP"

@@ -17,12 +17,12 @@ export const PlanCoverage: core.serialization.ObjectSchema<
     outOfNetwork: core.serialization.property("out_of_network", PlanCoverageDetails.optional()),
     outOfNetworkFlat: core.serialization.property(
         "out_of_network_flat",
-        core.serialization.list(CoverageDetails).optional()
+        core.serialization.list(CoverageDetails).optional(),
     ),
 });
 
 export declare namespace PlanCoverage {
-    interface Raw {
+    export interface Raw {
         in_network?: PlanCoverageDetails.Raw | null;
         in_network_flat?: CoverageDetails.Raw[] | null;
         out_of_network?: PlanCoverageDetails.Raw | null;

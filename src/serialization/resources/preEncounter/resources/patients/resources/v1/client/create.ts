@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.VersionConflictError;
+    export type Raw = Error.VersionConflictError;
 
-    interface VersionConflictError {
+    export interface VersionConflictError {
         errorName: "VersionConflictError";
         content: VersionConflictErrorBody.Raw;
     }

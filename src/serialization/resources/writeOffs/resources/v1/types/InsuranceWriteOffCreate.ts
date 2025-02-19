@@ -22,7 +22,7 @@ export const InsuranceWriteOffCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsuranceWriteOffCreate {
-    interface Raw {
+    export interface Raw {
         payer_identifier: PayerIdentifier.Raw;
         write_off_target: InsuranceWriteOffTarget.Raw;
         write_off_timestamp: string;

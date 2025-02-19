@@ -11,24 +11,24 @@ export type SchemaInstanceValidationError =
     | CandidApi.encounters.v4.SchemaInstanceValidationError.SchemaDoesNotExist
     | CandidApi.encounters.v4.SchemaInstanceValidationError.SchemaUnauthorizedAccess;
 
-export declare namespace SchemaInstanceValidationError {
-    interface MultipleInstancesForSchema extends CandidApi.encounters.v4.MultipleInstancesForSchemaError {
+export namespace SchemaInstanceValidationError {
+    export interface MultipleInstancesForSchema extends CandidApi.encounters.v4.MultipleInstancesForSchemaError {
         type: "multiple_instances_for_schema";
     }
 
-    interface ValueDoesNotMatchKeyType extends CandidApi.encounters.v4.ValueDoesNotMatchKeyTypeError {
+    export interface ValueDoesNotMatchKeyType extends CandidApi.encounters.v4.ValueDoesNotMatchKeyTypeError {
         type: "value_does_not_match_key_type";
     }
 
-    interface KeyDoesNotExist extends CandidApi.encounters.v4.KeyDoesNotExistError {
+    export interface KeyDoesNotExist extends CandidApi.encounters.v4.KeyDoesNotExistError {
         type: "key_does_not_exist";
     }
 
-    interface SchemaDoesNotExist extends CandidApi.encounters.v4.SchemaDoesNotExistError {
+    export interface SchemaDoesNotExist extends CandidApi.encounters.v4.SchemaDoesNotExistError {
         type: "schema_does_not_exist";
     }
 
-    interface SchemaUnauthorizedAccess extends CandidApi.encounters.v4.SchemaUnauthorizedAccessError {
+    export interface SchemaUnauthorizedAccess extends CandidApi.encounters.v4.SchemaUnauthorizedAccessError {
         type: "schema_unauthorized_access";
     }
 }

@@ -12,5 +12,5 @@ export const CredentialingSpanStatus: core.serialization.Schema<
 > = core.serialization.enum_(["work_in_progress", "pending", "effective", "expired"]);
 
 export declare namespace CredentialingSpanStatus {
-    type Raw = "work_in_progress" | "pending" | "effective" | "expired";
+    export type Raw = "work_in_progress" | "pending" | "effective" | "expired";
 }

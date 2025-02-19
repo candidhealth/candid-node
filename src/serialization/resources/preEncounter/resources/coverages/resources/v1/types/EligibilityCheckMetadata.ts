@@ -21,7 +21,7 @@ export const EligibilityCheckMetadata: core.serialization.ObjectSchema<
 });
 
 export declare namespace EligibilityCheckMetadata {
-    interface Raw {
+    export interface Raw {
         check_id: string;
         service_code: ServiceTypeCode.Raw;
         status: EligibilityCheckStatus.Raw;

@@ -24,13 +24,13 @@ export const EncounterProvider: core.serialization.ObjectSchema<
         qualifier: QualifierCode.optional(),
         providerCommercialLicenseType: core.serialization.property(
             "provider_commercial_license_type",
-            BillingProviderCommercialLicenseType.optional()
+            BillingProviderCommercialLicenseType.optional(),
         ),
     })
     .extend(EncounterProviderBase);
 
 export declare namespace EncounterProvider {
-    interface Raw extends EncounterProviderBase.Raw {
+    export interface Raw extends EncounterProviderBase.Raw {
         provider_id: ProviderId.Raw;
         address: StreetAddressLongZip.Raw;
         tax_id?: string | null;

@@ -27,7 +27,7 @@ export const Error: core.serialization.Schema<
                     return CandidApi.organizationProviders.v3.create.Error.httpRequestValidationError(value.content);
                 case "UpdatesDisabledDueToExternalSystemIntegrationError":
                     return CandidApi.organizationProviders.v3.create.Error.updatesDisabledDueToExternalSystemIntegrationError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -35,14 +35,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.HttpRequestValidationError | Error.UpdatesDisabledDueToExternalSystemIntegrationError;
+    export type Raw = Error.HttpRequestValidationError | Error.UpdatesDisabledDueToExternalSystemIntegrationError;
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
     }
 
-    interface UpdatesDisabledDueToExternalSystemIntegrationError {
+    export interface UpdatesDisabledDueToExternalSystemIntegrationError {
         errorName: "UpdatesDisabledDueToExternalSystemIntegrationError";
         content: UpdatesDisabledDueToExternalSystemIntegrationErrorMessage.Raw;
     }

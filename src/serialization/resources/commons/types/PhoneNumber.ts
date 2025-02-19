@@ -14,7 +14,7 @@ export const PhoneNumber: core.serialization.ObjectSchema<serializers.PhoneNumbe
     });
 
 export declare namespace PhoneNumber {
-    interface Raw {
+    export interface Raw {
         number: string;
         type: PhoneNumberType.Raw;
     }

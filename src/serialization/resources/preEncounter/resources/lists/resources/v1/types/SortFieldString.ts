@@ -15,5 +15,5 @@ export const SortFieldString: core.serialization.Schema<
 });
 
 export declare namespace SortFieldString {
-    type Raw = string;
+    export type Raw = string;
 }

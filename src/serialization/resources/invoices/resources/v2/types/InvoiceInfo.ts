@@ -19,7 +19,7 @@ export const InvoiceInfo: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceInfo {
-    interface Raw {
+    export interface Raw {
         id: InvoiceId.Raw;
         invoice: Invoice.Raw;
         invoice_type: InvoiceDestination.Raw;

@@ -17,7 +17,7 @@ export const OverlappingRateEntriesError: core.serialization.ObjectSchema<
 });
 
 export declare namespace OverlappingRateEntriesError {
-    interface Raw {
+    export interface Raw {
         message: string;
         rate_a: RateEntry.Raw;
         rate_b: RateEntry.Raw;

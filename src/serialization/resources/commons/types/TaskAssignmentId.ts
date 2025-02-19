@@ -13,5 +13,5 @@ export const TaskAssignmentId: core.serialization.Schema<serializers.TaskAssignm
     });
 
 export declare namespace TaskAssignmentId {
-    type Raw = string;
+    export type Raw = string;
 }

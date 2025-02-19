@@ -12,5 +12,5 @@ export const CodingAttributionType: core.serialization.Schema<
 > = core.serialization.enum_(["CANDID", "CUSTOMER", "TCN", "PJF"]);
 
 export declare namespace CodingAttributionType {
-    type Raw = "CANDID" | "CUSTOMER" | "TCN" | "PJF";
+    export type Raw = "CANDID" | "CUSTOMER" | "TCN" | "PJF";
 }

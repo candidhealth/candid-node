@@ -52,7 +52,7 @@ export const TaskCategory: core.serialization.Schema<serializers.tasks.TaskCateg
     ]);
 
 export declare namespace TaskCategory {
-    type Raw =
+    export type Raw =
         | "other"
         | "provider_credentialing"
         | "authorization_required"

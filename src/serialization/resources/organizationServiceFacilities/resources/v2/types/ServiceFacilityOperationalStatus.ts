@@ -12,5 +12,5 @@ export const ServiceFacilityOperationalStatus: core.serialization.Schema<
 > = core.serialization.enum_(["C", "H", "I", "K", "O", "U"]);
 
 export declare namespace ServiceFacilityOperationalStatus {
-    type Raw = "C" | "H" | "I" | "K" | "O" | "U";
+    export type Raw = "C" | "H" | "I" | "K" | "O" | "U";
 }

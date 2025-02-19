@@ -13,5 +13,5 @@ export const WorkQueueId: core.serialization.Schema<serializers.WorkQueueId.Raw,
     });
 
 export declare namespace WorkQueueId {
-    type Raw = string;
+    export type Raw = string;
 }

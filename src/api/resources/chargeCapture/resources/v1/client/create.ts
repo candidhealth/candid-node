@@ -13,47 +13,47 @@ export type Error =
     | CandidApi.chargeCapture.v1.create.Error.UnprocessableEntityError
     | CandidApi.chargeCapture.v1.create.Error._Unknown;
 
-export declare namespace Error {
-    interface EntityNotFoundError extends _Utils {
+export namespace Error {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface UnauthorizedError extends _Utils {
+    export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
     }
 
-    interface HttpRequestValidationsError extends _Utils {
+    export interface HttpRequestValidationsError extends _Utils {
         errorName: "HttpRequestValidationsError";
         content: CandidApi.RequestValidationError[];
     }
 
-    interface SchemaInstanceValidationHttpFailure extends _Utils {
+    export interface SchemaInstanceValidationHttpFailure extends _Utils {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
-    interface UnprocessableEntityError extends _Utils {
+    export interface UnprocessableEntityError extends _Utils {
         errorName: "UnprocessableEntityError";
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         schemaInstanceValidationHttpFailure: (
-            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
         ) => _Result;
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -62,14 +62,14 @@ export declare namespace Error {
 
 export const Error = {
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.chargeCapture.v1.create.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.chargeCapture.v1.create.Error.EntityNotFoundError,
-                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
             },
@@ -77,14 +77,14 @@ export const Error = {
     },
 
     unauthorizedError: (
-        value: CandidApi.UnauthorizedErrorMessage
+        value: CandidApi.UnauthorizedErrorMessage,
     ): CandidApi.chargeCapture.v1.create.Error.UnauthorizedError => {
         return {
             content: value,
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.chargeCapture.v1.create.Error.UnauthorizedError,
-                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
             },
@@ -92,14 +92,14 @@ export const Error = {
     },
 
     httpRequestValidationsError: (
-        value: CandidApi.RequestValidationError[]
+        value: CandidApi.RequestValidationError[],
     ): CandidApi.chargeCapture.v1.create.Error.HttpRequestValidationsError => {
         return {
             content: value,
             errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
                 this: CandidApi.chargeCapture.v1.create.Error.HttpRequestValidationsError,
-                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
             },
@@ -107,14 +107,14 @@ export const Error = {
     },
 
     schemaInstanceValidationHttpFailure: (
-        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
     ): CandidApi.chargeCapture.v1.create.Error.SchemaInstanceValidationHttpFailure => {
         return {
             content: value,
             errorName: "SchemaInstanceValidationHttpFailure",
             _visit: function <_Result>(
                 this: CandidApi.chargeCapture.v1.create.Error.SchemaInstanceValidationHttpFailure,
-                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
             },
@@ -122,14 +122,14 @@ export const Error = {
     },
 
     unprocessableEntityError: (
-        value: CandidApi.UnprocessableEntityErrorMessage
+        value: CandidApi.UnprocessableEntityErrorMessage,
     ): CandidApi.chargeCapture.v1.create.Error.UnprocessableEntityError => {
         return {
             content: value,
             errorName: "UnprocessableEntityError",
             _visit: function <_Result>(
                 this: CandidApi.chargeCapture.v1.create.Error.UnprocessableEntityError,
-                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
             },
@@ -142,7 +142,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.chargeCapture.v1.create.Error._Unknown,
-                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
             },
@@ -151,7 +151,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.chargeCapture.v1.create.Error,
-        visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>
+        visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityNotFoundError":

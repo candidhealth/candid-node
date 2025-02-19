@@ -10,31 +10,31 @@ export type Error =
     | CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error.OrganizationNotAuthorizedError
     | CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Unknown;
 
-export declare namespace Error {
-    interface ExpectedNetworkStatusCheckError extends _Utils {
+export namespace Error {
+    export interface ExpectedNetworkStatusCheckError extends _Utils {
         errorName: "ExpectedNetworkStatusCheckError";
         content: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusCheckErrorMessage;
     }
 
-    interface OrganizationNotAuthorizedError extends _Utils {
+    export interface OrganizationNotAuthorizedError extends _Utils {
         errorName: "OrganizationNotAuthorizedError";
         content: CandidApi.OrganizationNotAuthorizedErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>
+            visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         expectedNetworkStatusCheckError: (
-            value: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusCheckErrorMessage
+            value: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusCheckErrorMessage,
         ) => _Result;
         organizationNotAuthorizedError: (value: CandidApi.OrganizationNotAuthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -43,14 +43,14 @@ export declare namespace Error {
 
 export const Error = {
     expectedNetworkStatusCheckError: (
-        value: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusCheckErrorMessage
+        value: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusCheckErrorMessage,
     ): CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error.ExpectedNetworkStatusCheckError => {
         return {
             content: value,
             errorName: "ExpectedNetworkStatusCheckError",
             _visit: function <_Result>(
                 this: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error.ExpectedNetworkStatusCheckError,
-                visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._visit(this, visitor);
             },
@@ -58,14 +58,14 @@ export const Error = {
     },
 
     organizationNotAuthorizedError: (
-        value: CandidApi.OrganizationNotAuthorizedErrorMessage
+        value: CandidApi.OrganizationNotAuthorizedErrorMessage,
     ): CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error.OrganizationNotAuthorizedError => {
         return {
             content: value,
             errorName: "OrganizationNotAuthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error.OrganizationNotAuthorizedError,
-                visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._visit(this, visitor);
             },
@@ -73,14 +73,14 @@ export const Error = {
     },
 
     _unknown: (
-        fetcherError: core.Fetcher.Error
+        fetcherError: core.Fetcher.Error,
     ): CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Unknown,
-                visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._visit(this, visitor);
             },
@@ -89,7 +89,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error,
-        visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>
+        visitor: CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "ExpectedNetworkStatusCheckError":

@@ -22,7 +22,7 @@ export const PatientWriteOffReason: core.serialization.Schema<
 ]);
 
 export declare namespace PatientWriteOffReason {
-    type Raw =
+    export type Raw =
         | "SMALL_BALANCE"
         | "CHARITY_OR_FINANCIAL_ASSISTANCE"
         | "PATIENT_EXPERIENCE_OR_SERVICE_RECOVERY"

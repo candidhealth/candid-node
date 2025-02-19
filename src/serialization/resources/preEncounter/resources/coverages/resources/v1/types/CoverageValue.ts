@@ -17,7 +17,7 @@ export const CoverageValue: core.serialization.ObjectSchema<
 });
 
 export declare namespace CoverageValue {
-    interface Raw {
+    export interface Raw {
         family?: number | null;
         individual?: number | null;
         employeeAndSpouse?: number | null;

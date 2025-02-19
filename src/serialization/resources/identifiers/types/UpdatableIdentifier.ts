@@ -26,17 +26,17 @@ export const UpdatableIdentifier: core.serialization.Schema<
     });
 
 export declare namespace UpdatableIdentifier {
-    type Raw = UpdatableIdentifier.Add | UpdatableIdentifier.Update | UpdatableIdentifier.Remove;
+    export type Raw = UpdatableIdentifier.Add | UpdatableIdentifier.Update | UpdatableIdentifier.Remove;
 
-    interface Add extends IdentifierCreate.Raw {
+    export interface Add extends IdentifierCreate.Raw {
         type: "add";
     }
 
-    interface Update extends IdentifierUpdate.Raw {
+    export interface Update extends IdentifierUpdate.Raw {
         type: "update";
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
         value: IdentifierId.Raw;
     }

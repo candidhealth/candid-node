@@ -18,7 +18,7 @@ export const ExternalPaymentAccountConfigPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace ExternalPaymentAccountConfigPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: ExternalPaymentAccountConfig.Raw[];
     }
 }

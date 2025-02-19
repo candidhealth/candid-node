@@ -14,14 +14,14 @@ export const InNetworkRenderingProvidersDetail: core.serialization.ObjectSchema<
 > = core.serialization.object({
     renderingProviders: core.serialization.property(
         "rendering_providers",
-        core.serialization.list(OrganizationProviderId)
+        core.serialization.list(OrganizationProviderId),
     ),
     routedPayerUuid: core.serialization.property("routed_payer_uuid", PayerUuid),
     routedBillingProviderId: core.serialization.property("routed_billing_provider_id", OrganizationProviderId),
 });
 
 export declare namespace InNetworkRenderingProvidersDetail {
-    interface Raw {
+    export interface Raw {
         rendering_providers: OrganizationProviderId.Raw[];
         routed_payer_uuid: PayerUuid.Raw;
         routed_billing_provider_id: OrganizationProviderId.Raw;

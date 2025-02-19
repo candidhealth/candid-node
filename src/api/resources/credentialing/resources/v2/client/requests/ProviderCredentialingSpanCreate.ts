@@ -14,7 +14,7 @@ import * as CandidApi from "../../../../../../index";
  *         endDate: "2023-01-15",
  *         regions: {
  *             type: "states",
- *             states: [CandidApi.State.Aa]
+ *             states: ["AA"]
  *         },
  *         submittedDate: "2023-01-15",
  *         payerLoadedDate: "2023-01-15"

@@ -16,12 +16,12 @@ export const CreateImportInvoiceRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     externalPaymentAccountConfigId: core.serialization.property(
         "external_payment_account_config_id",
-        PaymentAccountConfigId
+        PaymentAccountConfigId,
     ),
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
     externalCustomerIdentifier: core.serialization.property(
         "external_customer_identifier",
-        core.serialization.string()
+        core.serialization.string(),
     ),
     note: core.serialization.string().optional(),
     dueDate: core.serialization.property("due_date", core.serialization.string().optional()),
@@ -32,7 +32,7 @@ export const CreateImportInvoiceRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CreateImportInvoiceRequest {
-    interface Raw {
+    export interface Raw {
         external_payment_account_config_id: PaymentAccountConfigId.Raw;
         patient_external_id: PatientExternalId.Raw;
         external_customer_identifier: string;

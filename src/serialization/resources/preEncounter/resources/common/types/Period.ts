@@ -15,7 +15,7 @@ export const Period: core.serialization.ObjectSchema<
 });
 
 export declare namespace Period {
-    interface Raw {
+    export interface Raw {
         start?: string | null;
         end?: string | null;
     }

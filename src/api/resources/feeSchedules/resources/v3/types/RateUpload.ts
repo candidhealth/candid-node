@@ -6,12 +6,12 @@ import * as CandidApi from "../../../../../index";
 
 export type RateUpload = CandidApi.feeSchedules.v3.RateUpload.NewRate | CandidApi.feeSchedules.v3.RateUpload.NewVersion;
 
-export declare namespace RateUpload {
-    interface NewRate extends CandidApi.feeSchedules.v3.NewRate {
+export namespace RateUpload {
+    export interface NewRate extends CandidApi.feeSchedules.v3.NewRate {
         type: "new_rate";
     }
 
-    interface NewVersion extends CandidApi.feeSchedules.v3.NewRateVersion {
+    export interface NewVersion extends CandidApi.feeSchedules.v3.NewRateVersion {
         type: "new_version";
     }
 }

@@ -12,5 +12,5 @@ export const SynchronicityType: core.serialization.Schema<
 > = core.serialization.enum_(["Synchronous", "Asynchronous"]);
 
 export declare namespace SynchronicityType {
-    type Raw = "Synchronous" | "Asynchronous";
+    export type Raw = "Synchronous" | "Asynchronous";
 }

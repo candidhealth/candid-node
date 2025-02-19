@@ -27,7 +27,7 @@ export const NoteCategory: core.serialization.Schema<
 ]);
 
 export declare namespace NoteCategory {
-    type Raw =
+    export type Raw =
         | "clinical"
         | "care_plan"
         | "diagnoses"

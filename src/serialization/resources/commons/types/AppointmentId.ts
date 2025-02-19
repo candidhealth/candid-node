@@ -13,5 +13,5 @@ export const AppointmentId: core.serialization.Schema<serializers.AppointmentId.
     });
 
 export declare namespace AppointmentId {
-    type Raw = string;
+    export type Raw = string;
 }

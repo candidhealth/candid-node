@@ -27,22 +27,22 @@ export const InvoiceItemAttributionCreate: core.serialization.Schema<
     });
 
 export declare namespace InvoiceItemAttributionCreate {
-    type Raw =
+    export type Raw =
         | InvoiceItemAttributionCreate.ServiceLineId
         | InvoiceItemAttributionCreate.ClaimId
         | InvoiceItemAttributionCreate.Unattributed;
 
-    interface ServiceLineId {
+    export interface ServiceLineId {
         type: "service_line_id";
         value: ServiceLineId.Raw;
     }
 
-    interface ClaimId {
+    export interface ClaimId {
         type: "claim_id";
         value: ClaimId.Raw;
     }
 
-    interface Unattributed {
+    export interface Unattributed {
         type: "unattributed";
     }
 }

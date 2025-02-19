@@ -12,5 +12,5 @@ export const AddressType: core.serialization.Schema<
 > = core.serialization.enum_(["DEFAULT"]);
 
 export declare namespace AddressType {
-    type Raw = "DEFAULT";
+    export type Raw = "DEFAULT";
 }

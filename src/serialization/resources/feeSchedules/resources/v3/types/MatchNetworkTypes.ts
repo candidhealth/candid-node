@@ -17,7 +17,7 @@ export const MatchNetworkTypes: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchNetworkTypes {
-    interface Raw {
+    export interface Raw {
         value: NetworkType.Raw[];
         match: boolean;
         explanation: string;

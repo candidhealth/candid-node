@@ -20,7 +20,7 @@ export const Dimensions: core.serialization.ObjectSchema<
     payerUuid: core.serialization.property("payer_uuid", PayerUuid),
     organizationBillingProviderId: core.serialization.property(
         "organization_billing_provider_id",
-        OrganizationProviderId
+        OrganizationProviderId,
     ),
     states: core.serialization.set(State),
     zipCodes: core.serialization.property("zip_codes", core.serialization.set(core.serialization.string())),
@@ -32,7 +32,7 @@ export const Dimensions: core.serialization.ObjectSchema<
 });
 
 export declare namespace Dimensions {
-    interface Raw {
+    export interface Raw {
         payer_uuid: PayerUuid.Raw;
         organization_billing_provider_id: OrganizationProviderId.Raw;
         states: State.Raw[];

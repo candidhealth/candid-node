@@ -14,7 +14,6 @@ export type PatientPaymentStatus =
     | "failed"
     | "requires_action"
     | "canceled";
-
 export const PatientPaymentStatus = {
     Pending: "PENDING",
     Paid: "paid",

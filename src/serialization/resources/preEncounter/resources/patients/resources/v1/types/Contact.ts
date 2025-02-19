@@ -24,7 +24,7 @@ export const Contact: core.serialization.ObjectSchema<
 });
 
 export declare namespace Contact {
-    interface Raw {
+    export interface Raw {
         relationship: Relationship.Raw[];
         name: HumanName.Raw;
         telecoms: ContactPoint.Raw[];

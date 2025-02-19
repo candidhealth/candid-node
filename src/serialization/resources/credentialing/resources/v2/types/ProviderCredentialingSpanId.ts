@@ -15,5 +15,5 @@ export const ProviderCredentialingSpanId: core.serialization.Schema<
 });
 
 export declare namespace ProviderCredentialingSpanId {
-    type Raw = string;
+    export type Raw = string;
 }

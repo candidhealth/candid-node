@@ -41,24 +41,62 @@ import { Diagnoses } from "./api/resources/diagnoses/client/Client";
 import { ServiceFacility } from "./api/resources/serviceFacility/client/Client";
 
 export declare namespace CandidApiClient {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         clientId: core.Supplier<string>;
         clientSecret: core.Supplier<string>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
 export class CandidApiClient {
     private readonly _oauthTokenProvider: core.OAuthTokenProvider;
+    protected _auth: Auth | undefined;
+    protected _billingNotes: BillingNotes | undefined;
+    protected _chargeCaptureBundles: ChargeCaptureBundles | undefined;
+    protected _chargeCapture: ChargeCapture | undefined;
+    protected _contracts: Contracts | undefined;
+    protected _credentialing: Credentialing | undefined;
+    protected _customSchemas: CustomSchemas | undefined;
+    protected _eligibility: Eligibility | undefined;
+    protected _encounterProviders: EncounterProviders | undefined;
+    protected _encounters: Encounters | undefined;
+    protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
+    protected _exports: Exports | undefined;
+    protected _externalPaymentAccountConfig: ExternalPaymentAccountConfig | undefined;
+    protected _feeSchedules: FeeSchedules | undefined;
+    protected _guarantor: Guarantor | undefined;
+    protected _importInvoice: ImportInvoice | undefined;
+    protected _insuranceAdjudications: InsuranceAdjudications | undefined;
+    protected _insurancePayments: InsurancePayments | undefined;
+    protected _insuranceRefunds: InsuranceRefunds | undefined;
+    protected _medicationDispense: MedicationDispense | undefined;
+    protected _nonInsurancePayerPayments: NonInsurancePayerPayments | undefined;
+    protected _nonInsurancePayerRefunds: NonInsurancePayerRefunds | undefined;
+    protected _nonInsurancePayers: NonInsurancePayers | undefined;
+    protected _organizationServiceFacilities: OrganizationServiceFacilities | undefined;
+    protected _organizationProviders: OrganizationProviders | undefined;
+    protected _patientPayments: PatientPayments | undefined;
+    protected _patientRefunds: PatientRefunds | undefined;
+    protected _payers: Payers | undefined;
+    protected _serviceLines: ServiceLines | undefined;
+    protected _tasks: Tasks | undefined;
+    protected _writeOffs: WriteOffs | undefined;
+    protected _preEncounter: PreEncounter | undefined;
+    protected _diagnoses: Diagnoses | undefined;
+    protected _serviceFacility: ServiceFacility | undefined;
 
     constructor(protected readonly _options: CandidApiClient.Options) {
         this._oauthTokenProvider = new core.OAuthTokenProvider({
@@ -70,16 +108,12 @@ export class CandidApiClient {
         });
     }
 
-    protected _auth: Auth | undefined;
-
     public get auth(): Auth {
         return (this._auth ??= new Auth({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _billingNotes: BillingNotes | undefined;
 
     public get billingNotes(): BillingNotes {
         return (this._billingNotes ??= new BillingNotes({
@@ -88,16 +122,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _chargeCaptureBundles: ChargeCaptureBundles | undefined;
-
     public get chargeCaptureBundles(): ChargeCaptureBundles {
         return (this._chargeCaptureBundles ??= new ChargeCaptureBundles({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _chargeCapture: ChargeCapture | undefined;
 
     public get chargeCapture(): ChargeCapture {
         return (this._chargeCapture ??= new ChargeCapture({
@@ -106,16 +136,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _contracts: Contracts | undefined;
-
     public get contracts(): Contracts {
         return (this._contracts ??= new Contracts({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _credentialing: Credentialing | undefined;
 
     public get credentialing(): Credentialing {
         return (this._credentialing ??= new Credentialing({
@@ -124,16 +150,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _customSchemas: CustomSchemas | undefined;
-
     public get customSchemas(): CustomSchemas {
         return (this._customSchemas ??= new CustomSchemas({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _eligibility: Eligibility | undefined;
 
     public get eligibility(): Eligibility {
         return (this._eligibility ??= new Eligibility({
@@ -142,16 +164,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _encounterProviders: EncounterProviders | undefined;
-
     public get encounterProviders(): EncounterProviders {
         return (this._encounterProviders ??= new EncounterProviders({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _encounters: Encounters | undefined;
 
     public get encounters(): Encounters {
         return (this._encounters ??= new Encounters({
@@ -160,16 +178,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
-
     public get expectedNetworkStatus(): ExpectedNetworkStatus {
         return (this._expectedNetworkStatus ??= new ExpectedNetworkStatus({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _exports: Exports | undefined;
 
     public get exports(): Exports {
         return (this._exports ??= new Exports({
@@ -178,16 +192,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _externalPaymentAccountConfig: ExternalPaymentAccountConfig | undefined;
-
     public get externalPaymentAccountConfig(): ExternalPaymentAccountConfig {
         return (this._externalPaymentAccountConfig ??= new ExternalPaymentAccountConfig({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _feeSchedules: FeeSchedules | undefined;
 
     public get feeSchedules(): FeeSchedules {
         return (this._feeSchedules ??= new FeeSchedules({
@@ -196,16 +206,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _guarantor: Guarantor | undefined;
-
     public get guarantor(): Guarantor {
         return (this._guarantor ??= new Guarantor({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _importInvoice: ImportInvoice | undefined;
 
     public get importInvoice(): ImportInvoice {
         return (this._importInvoice ??= new ImportInvoice({
@@ -214,16 +220,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _insuranceAdjudications: InsuranceAdjudications | undefined;
-
     public get insuranceAdjudications(): InsuranceAdjudications {
         return (this._insuranceAdjudications ??= new InsuranceAdjudications({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _insurancePayments: InsurancePayments | undefined;
 
     public get insurancePayments(): InsurancePayments {
         return (this._insurancePayments ??= new InsurancePayments({
@@ -232,16 +234,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _insuranceRefunds: InsuranceRefunds | undefined;
-
     public get insuranceRefunds(): InsuranceRefunds {
         return (this._insuranceRefunds ??= new InsuranceRefunds({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _medicationDispense: MedicationDispense | undefined;
 
     public get medicationDispense(): MedicationDispense {
         return (this._medicationDispense ??= new MedicationDispense({
@@ -250,16 +248,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _nonInsurancePayerPayments: NonInsurancePayerPayments | undefined;
-
     public get nonInsurancePayerPayments(): NonInsurancePayerPayments {
         return (this._nonInsurancePayerPayments ??= new NonInsurancePayerPayments({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _nonInsurancePayerRefunds: NonInsurancePayerRefunds | undefined;
 
     public get nonInsurancePayerRefunds(): NonInsurancePayerRefunds {
         return (this._nonInsurancePayerRefunds ??= new NonInsurancePayerRefunds({
@@ -268,16 +262,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _nonInsurancePayers: NonInsurancePayers | undefined;
-
     public get nonInsurancePayers(): NonInsurancePayers {
         return (this._nonInsurancePayers ??= new NonInsurancePayers({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _organizationServiceFacilities: OrganizationServiceFacilities | undefined;
 
     public get organizationServiceFacilities(): OrganizationServiceFacilities {
         return (this._organizationServiceFacilities ??= new OrganizationServiceFacilities({
@@ -286,16 +276,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _organizationProviders: OrganizationProviders | undefined;
-
     public get organizationProviders(): OrganizationProviders {
         return (this._organizationProviders ??= new OrganizationProviders({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _patientPayments: PatientPayments | undefined;
 
     public get patientPayments(): PatientPayments {
         return (this._patientPayments ??= new PatientPayments({
@@ -304,16 +290,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _patientRefunds: PatientRefunds | undefined;
-
     public get patientRefunds(): PatientRefunds {
         return (this._patientRefunds ??= new PatientRefunds({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _payers: Payers | undefined;
 
     public get payers(): Payers {
         return (this._payers ??= new Payers({
@@ -322,16 +304,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _serviceLines: ServiceLines | undefined;
-
     public get serviceLines(): ServiceLines {
         return (this._serviceLines ??= new ServiceLines({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _tasks: Tasks | undefined;
 
     public get tasks(): Tasks {
         return (this._tasks ??= new Tasks({
@@ -340,16 +318,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _writeOffs: WriteOffs | undefined;
-
     public get writeOffs(): WriteOffs {
         return (this._writeOffs ??= new WriteOffs({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _preEncounter: PreEncounter | undefined;
 
     public get preEncounter(): PreEncounter {
         return (this._preEncounter ??= new PreEncounter({
@@ -358,16 +332,12 @@ export class CandidApiClient {
         }));
     }
 
-    protected _diagnoses: Diagnoses | undefined;
-
     public get diagnoses(): Diagnoses {
         return (this._diagnoses ??= new Diagnoses({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));
     }
-
-    protected _serviceFacility: ServiceFacility | undefined;
 
     public get serviceFacility(): ServiceFacility {
         return (this._serviceFacility ??= new ServiceFacility({

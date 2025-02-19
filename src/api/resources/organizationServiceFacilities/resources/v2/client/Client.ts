@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -36,7 +40,7 @@ export class V2 {
      */
     public async get(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
@@ -45,22 +49,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
-                        organizationServiceFacilityId
-                    )
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/organization-service-facilities/v2/${encodeURIComponent(serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(organizationServiceFacilityId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -78,7 +83,7 @@ export class V2 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -95,7 +100,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -120,7 +125,7 @@ export class V2 {
      */
     public async getMulti(
         request: CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest = {},
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityPage,
@@ -128,7 +133,7 @@ export class V2 {
         >
     > {
         const { limit, name, pageToken } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -143,18 +148,23 @@ export class V2 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/organization-service-facilities/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/organization-service-facilities/v2",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -173,7 +183,7 @@ export class V2 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -193,17 +203,17 @@ export class V2 {
      *         name: "Test Service Facility",
      *         aliases: ["Test Service Facility Alias"],
      *         description: "Test Service Facility Description",
-     *         status: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus.Active,
-     *         operationalStatus: CandidApi.organizationServiceFacilities.v2.ServiceFacilityOperationalStatus.Closed,
-     *         mode: CandidApi.organizationServiceFacilities.v2.ServiceFacilityMode.Instance,
-     *         type: CandidApi.organizationServiceFacilities.v2.ServiceFacilityType.DiagnosticsOrTherapeuticsUnit,
-     *         physicalType: CandidApi.organizationServiceFacilities.v2.ServiceFacilityPhysicalType.Site,
+     *         status: "active",
+     *         operationalStatus: "C",
+     *         mode: "instance",
+     *         type: "DX",
+     *         physicalType: "si",
      *         telecoms: ["555-555-5555"],
      *         address: {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         }
@@ -211,7 +221,7 @@ export class V2 {
      */
     public async create(
         request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
@@ -220,18 +230,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/organization-service-facilities/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/organization-service-facilities/v2",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -252,7 +267,7 @@ export class V2 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -271,7 +286,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -293,17 +308,17 @@ export class V2 {
      *         name: "Test Service Facility",
      *         aliases: ["Test Service Facility Alias"],
      *         description: "Test Service Facility Description",
-     *         status: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus.Active,
-     *         operationalStatus: CandidApi.organizationServiceFacilities.v2.ServiceFacilityOperationalStatus.Closed,
-     *         mode: CandidApi.organizationServiceFacilities.v2.ServiceFacilityMode.Instance,
-     *         type: CandidApi.organizationServiceFacilities.v2.ServiceFacilityType.DiagnosticsOrTherapeuticsUnit,
-     *         physicalType: CandidApi.organizationServiceFacilities.v2.ServiceFacilityPhysicalType.Site,
+     *         status: "active",
+     *         operationalStatus: "C",
+     *         mode: "instance",
+     *         type: "DX",
+     *         physicalType: "si",
      *         telecoms: ["555-555-5555"],
      *         address: {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         }
@@ -312,7 +327,7 @@ export class V2 {
     public async update(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
         request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
@@ -321,22 +336,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
-                        organizationServiceFacilityId
-                    )
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/organization-service-facilities/v2/${encodeURIComponent(serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(organizationServiceFacilityId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -357,7 +373,7 @@ export class V2 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -377,7 +393,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -398,26 +414,27 @@ export class V2 {
      */
     public async delete(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.organizationServiceFacilities.v2.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/organization-service-facilities/v2/${encodeURIComponent(
-                    serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(
-                        organizationServiceFacilityId
-                    )
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/organization-service-facilities/v2/${encodeURIComponent(serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(organizationServiceFacilityId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -446,7 +463,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

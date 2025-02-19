@@ -19,7 +19,7 @@ export const OrganizationServiceFacility: core.serialization.ObjectSchema<
 > = core.serialization.object({
     organizationServiceFacilityId: core.serialization.property(
         "organization_service_facility_id",
-        OrganizationServiceFacilityId
+        OrganizationServiceFacilityId,
     ),
     name: core.serialization.string(),
     aliases: core.serialization.list(core.serialization.string()),
@@ -35,7 +35,7 @@ export const OrganizationServiceFacility: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationServiceFacility {
-    interface Raw {
+    export interface Raw {
         organization_service_facility_id: OrganizationServiceFacilityId.Raw;
         name: string;
         aliases: string[];

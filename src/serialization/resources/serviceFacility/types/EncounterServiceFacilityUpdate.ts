@@ -16,12 +16,12 @@ export const EncounterServiceFacilityUpdate: core.serialization.ObjectSchema<
     address: StreetAddressLongZip.optional(),
     secondaryIdentification: core.serialization.property(
         "secondary_identification",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
 });
 
 export declare namespace EncounterServiceFacilityUpdate {
-    interface Raw {
+    export interface Raw {
         organization_name?: string | null;
         npi?: string | null;
         address?: StreetAddressLongZip.Raw | null;

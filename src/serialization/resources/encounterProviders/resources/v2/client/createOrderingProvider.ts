@@ -29,15 +29,15 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "EntityConflictError":
                     return CandidApi.encounterProviders.v2.createOrderingProvider.Error.entityConflictError(
-                        value.content
+                        value.content,
                     );
                 case "HttpRequestValidationsError":
                     return CandidApi.encounterProviders.v2.createOrderingProvider.Error.httpRequestValidationsError(
-                        value.content
+                        value.content,
                     );
                 case "EntityNotFoundError":
                     return CandidApi.encounterProviders.v2.createOrderingProvider.Error.entityNotFoundError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -45,19 +45,19 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityConflictError | Error.HttpRequestValidationsError | Error.EntityNotFoundError;
+    export type Raw = Error.EntityConflictError | Error.HttpRequestValidationsError | Error.EntityNotFoundError;
 
-    interface EntityConflictError {
+    export interface EntityConflictError {
         errorName: "EntityConflictError";
         content: EntityConflictErrorMessage.Raw;
     }
 
-    interface HttpRequestValidationsError {
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }

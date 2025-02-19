@@ -16,12 +16,12 @@ export const ClaimInvoiceItemInfo: core.serialization.ObjectSchema<
     claimInvoiceItem: core.serialization.property("claim_invoice_item", ClaimInvoiceItem.optional()),
     serviceLineInvoiceItems: core.serialization.property(
         "service_line_invoice_items",
-        core.serialization.record(ServiceLineId, ServiceLineInvoiceItem)
+        core.serialization.record(ServiceLineId, ServiceLineInvoiceItem),
     ),
 });
 
 export declare namespace ClaimInvoiceItemInfo {
-    interface Raw {
+    export interface Raw {
         claim_invoice_item?: ClaimInvoiceItem.Raw | null;
         service_line_invoice_items: Record<ServiceLineId.Raw, ServiceLineInvoiceItem.Raw>;
     }

@@ -8,12 +8,12 @@ export type WriteOffCreate =
     | CandidApi.writeOffs.v1.WriteOffCreate.Patient
     | CandidApi.writeOffs.v1.WriteOffCreate.Insurance;
 
-export declare namespace WriteOffCreate {
-    interface Patient extends CandidApi.writeOffs.v1.PatientWriteOffCreate {
+export namespace WriteOffCreate {
+    export interface Patient extends CandidApi.writeOffs.v1.PatientWriteOffCreate {
         type: "patient";
     }
 
-    interface Insurance extends CandidApi.writeOffs.v1.InsuranceWriteOffCreate {
+    export interface Insurance extends CandidApi.writeOffs.v1.InsuranceWriteOffCreate {
         type: "insurance";
     }
 }

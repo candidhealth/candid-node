@@ -15,7 +15,7 @@ export const EncounterExternalIdUniquenessErrorType: core.serialization.ObjectSc
 });
 
 export declare namespace EncounterExternalIdUniquenessErrorType {
-    interface Raw {
+    export interface Raw {
         external_id?: EncounterExternalId.Raw | null;
     }
 }

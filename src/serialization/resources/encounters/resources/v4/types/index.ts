@@ -44,3 +44,4 @@ export * from "./SchemaUnauthorizedAccessError";
 export * from "./ValueDoesNotMatchKeyTypeError";
 export * from "./MultipleInstancesForSchemaError";
 export * from "./SchemaInstanceValidationError";
+export * from "./PayerPlanGroupPayerDoesNotMatchInsuranceCardError";

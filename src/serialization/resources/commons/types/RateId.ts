@@ -14,5 +14,5 @@ export const RateId: core.serialization.Schema<serializers.RateId.Raw, CandidApi
     });
 
 export declare namespace RateId {
-    type Raw = string;
+    export type Raw = string;
 }

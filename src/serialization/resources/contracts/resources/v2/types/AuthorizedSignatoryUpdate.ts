@@ -21,13 +21,13 @@ export const AuthorizedSignatoryUpdate: core.serialization.Schema<
     });
 
 export declare namespace AuthorizedSignatoryUpdate {
-    type Raw = AuthorizedSignatoryUpdate.Set | AuthorizedSignatoryUpdate.Remove;
+    export type Raw = AuthorizedSignatoryUpdate.Set | AuthorizedSignatoryUpdate.Remove;
 
-    interface Set extends AuthorizedSignatory.Raw {
+    export interface Set extends AuthorizedSignatory.Raw {
         type: "set";
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

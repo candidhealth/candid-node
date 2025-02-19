@@ -51,34 +51,34 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.EntityNotFoundError
         | Error.UnauthorizedError
         | Error.HttpRequestValidationsError
         | Error.SchemaInstanceValidationHttpFailure
         | Error.UnprocessableEntityError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface UnauthorizedError {
+    export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
     }
 
-    interface HttpRequestValidationsError {
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }
 
-    interface SchemaInstanceValidationHttpFailure {
+    export interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
     }
 
-    interface UnprocessableEntityError {
+    export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
     }

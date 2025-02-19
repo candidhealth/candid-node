@@ -21,7 +21,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
     hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
     hasFamilyPlanningIndicator: core.serialization.property(
         "has_family_planning_indicator",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
     quantity: Decimal,
@@ -29,7 +29,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
     diagnosisPointers: core.serialization.property(
         "diagnosis_pointers",
-        core.serialization.list(core.serialization.number())
+        core.serialization.list(core.serialization.number()),
     ),
     drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
@@ -41,7 +41,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace ServiceLineCreate {
-    interface Raw {
+    export interface Raw {
         modifiers?: ProcedureModifier.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;

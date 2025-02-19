@@ -10,8 +10,8 @@ import * as CandidApi from "../../../../../../index";
  *         name: "string",
  *         category: "string",
  *         enabled: true,
- *         sort: CandidApi.nonInsurancePayers.v1.NonInsurancePayerSortField.Name,
- *         sortDirection: CandidApi.SortDirection.Asc,
+ *         sort: "NAME",
+ *         sortDirection: "asc",
  *         limit: 1,
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
  *     }

@@ -3,7 +3,6 @@
  */
 
 export type LineOfBusiness = "medicare" | "medicaid" | "commercial";
-
 export const LineOfBusiness = {
     Medicare: "medicare",
     Medicaid: "medicaid",

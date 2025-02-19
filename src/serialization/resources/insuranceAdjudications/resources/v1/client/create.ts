@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EraNotFullyProcessedError;
+    export type Raw = Error.EraNotFullyProcessedError;
 
-    interface EraNotFullyProcessedError {
+    export interface EraNotFullyProcessedError {
         errorName: "EraNotFullyProcessedError";
         content: EraNotFullyProcessedErrorMessage.Raw;
     }

@@ -82,7 +82,7 @@ export const InsuranceTypeCode: core.serialization.Schema<
 ]);
 
 export declare namespace InsuranceTypeCode {
-    type Raw =
+    export type Raw =
         | "01"
         | "12"
         | "13"

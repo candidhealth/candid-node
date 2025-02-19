@@ -15,7 +15,7 @@ export const RelatedEntityContact: core.serialization.ObjectSchema<
 });
 
 export declare namespace RelatedEntityContact {
-    interface Raw {
+    export interface Raw {
         mode?: string | null;
         value?: string | null;
     }

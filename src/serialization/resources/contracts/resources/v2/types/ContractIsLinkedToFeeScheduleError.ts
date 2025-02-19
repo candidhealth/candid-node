@@ -14,7 +14,7 @@ export const ContractIsLinkedToFeeScheduleError: core.serialization.ObjectSchema
 });
 
 export declare namespace ContractIsLinkedToFeeScheduleError {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

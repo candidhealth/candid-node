@@ -17,7 +17,7 @@ export const MatchTestResult: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchTestResult {
-    interface Raw {
+    export interface Raw {
         dimensions: DimensionMatch.Raw;
         threshold: ThresholdMatch.Raw;
     }

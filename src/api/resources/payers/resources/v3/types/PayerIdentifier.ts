@@ -8,12 +8,12 @@ export type PayerIdentifier =
     | CandidApi.payers.v3.PayerIdentifier.PayerInfo
     | CandidApi.payers.v3.PayerIdentifier.PayerUuid;
 
-export declare namespace PayerIdentifier {
-    interface PayerInfo extends CandidApi.payers.v3.PayerInfo {
+export namespace PayerIdentifier {
+    export interface PayerInfo extends CandidApi.payers.v3.PayerInfo {
         type: "payer_info";
     }
 
-    interface PayerUuid {
+    export interface PayerUuid {
         type: "payer_uuid";
         value: CandidApi.payers.v3.PayerUuid;
     }

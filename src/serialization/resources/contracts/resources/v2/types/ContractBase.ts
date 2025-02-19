@@ -26,7 +26,7 @@ export const ContractBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContractBase {
-    interface Raw {
+    export interface Raw {
         effective_date: Date_.Raw;
         expiration_date?: Date_.Raw | null;
         regions: Regions.Raw;

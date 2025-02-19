@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.NotImplementedError;
+    export type Raw = Error.NotImplementedError;
 
-    interface NotImplementedError {
+    export interface NotImplementedError {
         errorName: "NotImplementedError";
         content: NotImplementedErrorMessage.Raw;
     }

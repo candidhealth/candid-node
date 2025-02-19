@@ -12,7 +12,6 @@ export type Race =
     | "OTHER"
     | "UNKNOWN"
     | "REFUSED";
-
 export const Race = {
     AmericanIndianOrAlaskaNative: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
     White: "WHITE",

@@ -12,5 +12,5 @@ export const ClaimFrequencyTypeCode: core.serialization.Schema<
 > = core.serialization.enum_(["1", "7", "8"]);
 
 export declare namespace ClaimFrequencyTypeCode {
-    type Raw = "1" | "7" | "8";
+    export type Raw = "1" | "7" | "8";
 }

@@ -16,7 +16,7 @@ export const SchemaInstance: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaInstance {
-    interface Raw {
+    export interface Raw {
         schema_id: SchemaId.Raw;
         content: Record<string, unknown>;
     }

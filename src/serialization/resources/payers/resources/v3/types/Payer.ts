@@ -15,20 +15,20 @@ export const Payer: core.serialization.ObjectSchema<serializers.payers.v3.Payer.
         availityPayerName: core.serialization.property("availity_payer_name", core.serialization.string().optional()),
         availityClaimsPayerId: core.serialization.property(
             "availity_claims_payer_id",
-            core.serialization.string().optional()
+            core.serialization.string().optional(),
         ),
         availityEligibilityId: core.serialization.property(
             "availity_eligibility_id",
-            core.serialization.string().optional()
+            core.serialization.string().optional(),
         ),
         availityRemittancePayerId: core.serialization.property(
             "availity_remittance_payer_id",
-            core.serialization.string().optional()
+            core.serialization.string().optional(),
         ),
     });
 
 export declare namespace Payer {
-    interface Raw {
+    export interface Raw {
         payer_uuid: PayerUuid.Raw;
         payer_id: string;
         payer_name: string;

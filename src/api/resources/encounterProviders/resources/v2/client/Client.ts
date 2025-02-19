@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -40,7 +44,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -52,7 +56,7 @@ export class V2 {
     public async updateReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.ReferringProviderUpdate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -61,18 +65,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -110,7 +119,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -135,11 +144,11 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
-     *         qualifier: CandidApi.QualifierCode.Dq,
+     *         qualifier: "DQ",
      *         firstName: "string",
      *         lastName: "string",
      *         organizationName: "string"
@@ -148,7 +157,7 @@ export class V2 {
     public async updateInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -157,20 +166,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/initial-referring-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/initial-referring-provider`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -210,7 +222,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -235,7 +247,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -247,7 +259,7 @@ export class V2 {
     public async updateSupervisingProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.SupervisingProviderUpdate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -256,20 +268,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/supervising-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/supervising-provider`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -309,7 +324,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -334,7 +349,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -346,7 +361,7 @@ export class V2 {
     public async updateOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.encounterProviders.v2.OrderingProviderUpdate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -355,20 +370,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.ServiceLineId.jsonOrThrow(serviceLineId)
-                )}/ordering-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/ordering-provider`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -406,7 +424,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -431,7 +449,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -443,7 +461,7 @@ export class V2 {
     public async createReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.ReferringProvider,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -452,20 +470,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/create-referring-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/create-referring-provider`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -504,7 +525,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -529,11 +550,11 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
-     *         qualifier: CandidApi.QualifierCode.Dq,
+     *         qualifier: "DQ",
      *         firstName: "string",
      *         lastName: "string",
      *         organizationName: "string"
@@ -542,7 +563,7 @@ export class V2 {
     public async createInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.InitialReferringProvider,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -551,20 +572,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/create-initial-referring-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/create-initial-referring-provider`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -606,7 +630,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -631,7 +655,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -643,7 +667,7 @@ export class V2 {
     public async createSupervisingProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.SupervisingProvider,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -652,20 +676,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/create-supervising-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/create-supervising-provider`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -706,7 +733,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -731,7 +758,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -743,7 +770,7 @@ export class V2 {
     public async createOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.encounterProviders.v2.OrderingProvider,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
@@ -752,20 +779,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.ServiceLineId.jsonOrThrow(serviceLineId)
-                )}/create-ordering-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/create-ordering-provider`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -804,7 +834,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -825,24 +855,27 @@ export class V2 {
      */
     public async deleteReferringProvider(
         encounterId: CandidApi.EncounterId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/referring-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/referring-provider`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -872,7 +905,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -893,24 +926,27 @@ export class V2 {
      */
     public async deleteInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/initial-referring-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/initial-referring-provider`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -941,7 +977,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -962,24 +998,27 @@ export class V2 {
      */
     public async deleteSupervisingProvider(
         encounterId: CandidApi.EncounterId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.EncounterId.jsonOrThrow(encounterId)
-                )}/supervising-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/supervising-provider`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -1010,7 +1049,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -1031,24 +1070,27 @@ export class V2 {
      */
     public async deleteOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/encounter-providers/v2/${encodeURIComponent(
-                    serializers.ServiceLineId.jsonOrThrow(serviceLineId)
-                )}/ordering-provider`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-providers/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/ordering-provider`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -1077,7 +1119,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

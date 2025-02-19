@@ -13,5 +13,5 @@ export const PayerUuid: core.serialization.Schema<serializers.payers.v3.PayerUui
     });
 
 export declare namespace PayerUuid {
-    type Raw = string;
+    export type Raw = string;
 }

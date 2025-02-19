@@ -200,7 +200,7 @@ export const ServiceTypeCode: core.serialization.Schema<
 ]);
 
 export declare namespace ServiceTypeCode {
-    type Raw =
+    export type Raw =
         | "1"
         | "2"
         | "3"

@@ -44,7 +44,6 @@ export type ServiceType =
     | "sleep_study"
     | "cms_telehealth_codes"
     | "cms_telehealth_audio_codes";
-
 export const ServiceType = {
     NewPatientVideoAppt: "new_patient_video_appt",
     NewPatientPrevVideoAppt: "new_patient_prev_video_appt",

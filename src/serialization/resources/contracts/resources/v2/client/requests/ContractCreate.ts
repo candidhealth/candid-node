@@ -17,14 +17,14 @@ export const ContractCreate: core.serialization.Schema<
         contractingProviderId: core.serialization.property("contracting_provider_id", ContractingProviderId),
         renderingProviderIds: core.serialization.property(
             "rendering_provider_ids",
-            core.serialization.set(RenderingProviderid)
+            core.serialization.set(RenderingProviderid),
         ),
         payerUuid: core.serialization.property("payer_uuid", core.serialization.string()),
     })
     .extend(ContractBase);
 
 export declare namespace ContractCreate {
-    interface Raw extends ContractBase.Raw {
+    export interface Raw extends ContractBase.Raw {
         contracting_provider_id: ContractingProviderId.Raw;
         rendering_provider_ids: RenderingProviderid.Raw[];
         payer_uuid: string;

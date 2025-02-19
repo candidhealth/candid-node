@@ -13,5 +13,5 @@ export const NoteId: core.serialization.Schema<serializers.preEncounter.NoteId.R
     });
 
 export declare namespace NoteId {
-    type Raw = string;
+    export type Raw = string;
 }

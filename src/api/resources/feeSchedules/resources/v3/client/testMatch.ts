@@ -10,27 +10,27 @@ export type Error =
     | CandidApi.feeSchedules.v3.testMatch.Error.FailedToBuildServiceLineDimensions
     | CandidApi.feeSchedules.v3.testMatch.Error._Unknown;
 
-export declare namespace Error {
-    interface EntityNotFoundError extends _Utils {
+export namespace Error {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface FailedToBuildServiceLineDimensions extends _Utils {
+    export interface FailedToBuildServiceLineDimensions extends _Utils {
         errorName: "FailedToBuildServiceLineDimensions";
         content: CandidApi.ErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         failedToBuildServiceLineDimensions: (value: CandidApi.ErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -39,14 +39,14 @@ export declare namespace Error {
 
 export const Error = {
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.feeSchedules.v3.testMatch.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.feeSchedules.v3.testMatch.Error.EntityNotFoundError,
-                visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>
+                visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>,
             ) {
                 return CandidApi.feeSchedules.v3.testMatch.Error._visit(this, visitor);
             },
@@ -54,14 +54,14 @@ export const Error = {
     },
 
     failedToBuildServiceLineDimensions: (
-        value: CandidApi.ErrorMessage
+        value: CandidApi.ErrorMessage,
     ): CandidApi.feeSchedules.v3.testMatch.Error.FailedToBuildServiceLineDimensions => {
         return {
             content: value,
             errorName: "FailedToBuildServiceLineDimensions",
             _visit: function <_Result>(
                 this: CandidApi.feeSchedules.v3.testMatch.Error.FailedToBuildServiceLineDimensions,
-                visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>
+                visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>,
             ) {
                 return CandidApi.feeSchedules.v3.testMatch.Error._visit(this, visitor);
             },
@@ -74,7 +74,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.feeSchedules.v3.testMatch.Error._Unknown,
-                visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>
+                visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>,
             ) {
                 return CandidApi.feeSchedules.v3.testMatch.Error._visit(this, visitor);
             },
@@ -83,7 +83,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.feeSchedules.v3.testMatch.Error,
-        visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>
+        visitor: CandidApi.feeSchedules.v3.testMatch.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityNotFoundError":

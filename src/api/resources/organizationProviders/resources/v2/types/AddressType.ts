@@ -3,7 +3,6 @@
  */
 
 export type AddressType = "DEFAULT";
-
 export const AddressType = {
     Default: "DEFAULT",
 } as const;

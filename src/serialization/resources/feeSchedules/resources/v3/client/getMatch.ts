@@ -15,7 +15,7 @@ export const Response: core.serialization.Schema<
 > = MatchResult.optional();
 
 export declare namespace Response {
-    type Raw = MatchResult.Raw | null | undefined;
+    export type Raw = MatchResult.Raw | null | undefined;
 }
 
 export const Error: core.serialization.Schema<
@@ -43,14 +43,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.FailedToBuildServiceLineDimensions;
+    export type Raw = Error.EntityNotFoundError | Error.FailedToBuildServiceLineDimensions;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface FailedToBuildServiceLineDimensions {
+    export interface FailedToBuildServiceLineDimensions {
         errorName: "FailedToBuildServiceLineDimensions";
         content: ErrorMessage.Raw;
     }

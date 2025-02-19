@@ -24,7 +24,7 @@ export const Guarantor: core.serialization.ObjectSchema<
     .extend(GuarantorBase);
 
 export declare namespace Guarantor {
-    interface Raw extends GuarantorBase.Raw {
+    export interface Raw extends GuarantorBase.Raw {
         guarantor_id: GuarantorId.Raw;
         phone_numbers: PhoneNumber.Raw[];
         phone_consent: boolean;

@@ -1,28 +1,9 @@
+import fs from "fs";
+import { join } from "path";
+
 import { Fetcher, fetcherImpl } from "../../../src/core/fetcher/Fetcher";
 
 describe("Test fetcherImpl", () => {
-    let mockCreateUrl: jest.Mock;
-    let mockGetBody: jest.Mock;
-    let mockGetFetchFn: jest.Mock;
-    let mockRequestWithRetries: jest.Mock;
-    let mockGetResponseBody: jest.Mock;
-
-    beforeEach(() => {
-        mockCreateUrl = jest.fn();
-        mockGetBody = jest.fn();
-        mockGetFetchFn = jest.fn();
-        mockRequestWithRetries = jest.fn();
-        mockGetResponseBody = jest.fn();
-
-        jest.mock("../../../src/core/fetcher/Fetcher", () => ({
-            createUrl: mockCreateUrl,
-            getBody: mockGetBody,
-            getFetchFn: mockGetFetchFn,
-            requestWithRetries: mockRequestWithRetries,
-            getResponseBody: mockGetResponseBody,
-        }));
-    });
-
     it("should handle successful request", async () => {
         const mockArgs: Fetcher.Args = {
             url: "https://httpbin.org/post",
@@ -33,15 +14,61 @@ describe("Test fetcherImpl", () => {
             requestType: "json",
         };
 
-        mockCreateUrl.mockReturnValue("https://test.com");
-        mockGetBody.mockResolvedValue(JSON.stringify({ data: "test" }));
-        mockGetFetchFn.mockResolvedValue(() => Promise.resolve());
-        mockRequestWithRetries.mockResolvedValue({ status: 200 });
-        mockGetResponseBody.mockResolvedValue({ result: "success" });
+        global.fetch = jest.fn().mockResolvedValue({
+            ok: true,
+            status: 200,
+            text: () => Promise.resolve(JSON.stringify({ data: "test" })),
+            json: () => ({ data: "test" }),
+        });
 
         const result = await fetcherImpl(mockArgs);
         expect(result.ok).toBe(true);
-        // @ts-expect-error
-        expect(result.body.json).toEqual({ data: "test" });
+        if (result.ok) {
+            expect(result.body).toEqual({ data: "test" });
+        }
+
+        expect(global.fetch).toHaveBeenCalledWith(
+            "https://httpbin.org/post",
+            expect.objectContaining({
+                method: "POST",
+                headers: expect.objectContaining({ "X-Test": "x-test-header" }),
+                body: JSON.stringify({ data: "test" }),
+            }),
+        );
+    });
+
+    it("should send octet stream", async () => {
+        const url = "https://httpbin.org/post/file";
+        const mockArgs: Fetcher.Args = {
+            url,
+            method: "POST",
+            headers: { "X-Test": "x-test-header" },
+            contentType: "application/octet-stream",
+            requestType: "bytes",
+            duplex: "half",
+            body: fs.createReadStream(join(__dirname, "test-file.txt")),
+        };
+
+        global.fetch = jest.fn().mockResolvedValue({
+            ok: true,
+            status: 200,
+            text: () => Promise.resolve(JSON.stringify({ data: "test" })),
+            json: () => Promise.resolve({ data: "test" }),
+        });
+
+        const result = await fetcherImpl(mockArgs);
+
+        expect(global.fetch).toHaveBeenCalledWith(
+            url,
+            expect.objectContaining({
+                method: "POST",
+                headers: expect.objectContaining({ "X-Test": "x-test-header" }),
+                body: expect.any(fs.ReadStream),
+            }),
+        );
+        expect(result.ok).toBe(true);
+        if (result.ok) {
+            expect(result.body).toEqual({ data: "test" });
+        }
     });
 });

@@ -12,5 +12,5 @@ export const UniversalServiceIdentifier: core.serialization.Schema<
 > = core.serialization.enum_(["MD_Visit", "Treatment", "Tests", "Activity"]);
 
 export declare namespace UniversalServiceIdentifier {
-    type Raw = "MD_Visit" | "Treatment" | "Tests" | "Activity";
+    export type Raw = "MD_Visit" | "Treatment" | "Tests" | "Activity";
 }

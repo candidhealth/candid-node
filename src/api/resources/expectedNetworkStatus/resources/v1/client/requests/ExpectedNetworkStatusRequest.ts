@@ -10,12 +10,12 @@ import * as CandidApi from "../../../../../../index";
  *         externalPatientId: "string",
  *         subscriberPayerId: "string",
  *         subscriberPayerName: "string",
- *         subscriberInsuranceType: CandidApi.InsuranceTypeCode.C01,
+ *         subscriberInsuranceType: "01",
  *         subscriberPlanName: "string",
  *         billingProviderNpi: "string",
  *         billingProviderTin: "string",
  *         renderingProviderNpi: "string",
- *         contractedState: CandidApi.State.Aa,
+ *         contractedState: "AA",
  *         dateOfService: CandidApi.Date_("string")
  *     }
  */

@@ -12,5 +12,5 @@ export const LineOfBusiness: core.serialization.Schema<
 > = core.serialization.enum_(["medicare", "medicaid", "commercial"]);
 
 export declare namespace LineOfBusiness {
-    type Raw = "medicare" | "medicaid" | "commercial";
+    export type Raw = "medicare" | "medicaid" | "commercial";
 }

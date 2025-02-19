@@ -18,7 +18,7 @@ export const ClaimAdjustmentReasonCode: core.serialization.ObjectSchema<
 });
 
 export declare namespace ClaimAdjustmentReasonCode {
-    interface Raw {
+    export interface Raw {
         group_code: ClaimAdjustmentGroupCodes.Raw;
         reason_code: Carc.Raw;
         amount_cents: number;

@@ -15,7 +15,7 @@ export const ServiceLineDenialReason: core.serialization.ObjectSchema<
 });
 
 export declare namespace ServiceLineDenialReason {
-    interface Raw {
+    export interface Raw {
         reason?: DenialReasonContent.Raw | null;
     }
 }

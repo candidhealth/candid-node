@@ -19,7 +19,7 @@ export const GuarantorBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace GuarantorBase {
-    interface Raw {
+    export interface Raw {
         first_name: string;
         last_name: string;
         external_id: string;

@@ -10,22 +10,22 @@ export type Error =
      * Limit parameter provided must be greater than 0 and less than 1000. */
     CandidApi.tasks.v3.getMulti.Error.UnprocessableEntityError | CandidApi.tasks.v3.getMulti.Error._Unknown;
 
-export declare namespace Error {
-    interface UnprocessableEntityError extends _Utils {
+export namespace Error {
+    export interface UnprocessableEntityError extends _Utils {
         errorName: "UnprocessableEntityError";
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -33,14 +33,14 @@ export declare namespace Error {
 
 export const Error = {
     unprocessableEntityError: (
-        value: CandidApi.UnprocessableEntityErrorMessage
+        value: CandidApi.UnprocessableEntityErrorMessage,
     ): CandidApi.tasks.v3.getMulti.Error.UnprocessableEntityError => {
         return {
             content: value,
             errorName: "UnprocessableEntityError",
             _visit: function <_Result>(
                 this: CandidApi.tasks.v3.getMulti.Error.UnprocessableEntityError,
-                visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>
+                visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.tasks.v3.getMulti.Error._visit(this, visitor);
             },
@@ -53,7 +53,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.tasks.v3.getMulti.Error._Unknown,
-                visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>
+                visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.tasks.v3.getMulti.Error._visit(this, visitor);
             },
@@ -62,7 +62,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.tasks.v3.getMulti.Error,
-        visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>
+        visitor: CandidApi.tasks.v3.getMulti.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "UnprocessableEntityError":

@@ -15,5 +15,5 @@ export const InsurancePaymentId: core.serialization.Schema<
 });
 
 export declare namespace InsurancePaymentId {
-    type Raw = string;
+    export type Raw = string;
 }

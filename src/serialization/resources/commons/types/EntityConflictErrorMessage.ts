@@ -14,7 +14,7 @@ export const EntityConflictErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityConflictErrorMessage {
-    interface Raw {
+    export interface Raw {
         entity_name: string;
     }
 }

@@ -17,13 +17,13 @@ export const EncounterUpdate: core.serialization.Schema<
         diagnosisIds: core.serialization.property("diagnosis_ids", core.serialization.list(DiagnosisId).optional()),
         placeOfServiceCodeAsSubmitted: core.serialization.property(
             "place_of_service_code_as_submitted",
-            FacilityTypeCode.optional()
+            FacilityTypeCode.optional(),
         ),
     })
     .extend(EncounterOptional);
 
 export declare namespace EncounterUpdate {
-    interface Raw extends EncounterOptional.Raw {
+    export interface Raw extends EncounterOptional.Raw {
         diagnosis_ids?: DiagnosisId.Raw[] | null;
         place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
     }

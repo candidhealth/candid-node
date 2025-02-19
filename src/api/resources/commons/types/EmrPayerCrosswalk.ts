@@ -3,7 +3,6 @@
  */
 
 export type EmrPayerCrosswalk = "HEALTHIE" | "CANVAS";
-
 export const EmrPayerCrosswalk = {
     Healthie: "HEALTHIE",
     Canvas: "CANVAS",

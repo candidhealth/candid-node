@@ -9,16 +9,16 @@ export type UpdatableIdentifier =
     | CandidApi.UpdatableIdentifier.Update
     | CandidApi.UpdatableIdentifier.Remove;
 
-export declare namespace UpdatableIdentifier {
-    interface Add extends CandidApi.IdentifierCreate {
+export namespace UpdatableIdentifier {
+    export interface Add extends CandidApi.IdentifierCreate {
         type: "add";
     }
 
-    interface Update extends CandidApi.IdentifierUpdate {
+    export interface Update extends CandidApi.IdentifierUpdate {
         type: "update";
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
         value: CandidApi.IdentifierId;
     }

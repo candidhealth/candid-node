@@ -8,7 +8,7 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         diagnosisIds: [CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
- *         placeOfServiceCodeAsSubmitted: CandidApi.FacilityTypeCode.Pharmacy
+ *         placeOfServiceCodeAsSubmitted: "01"
  *     }
  */
 export interface EncounterUpdate extends CandidApi.encounters.v4.EncounterOptional {

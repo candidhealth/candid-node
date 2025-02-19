@@ -13,5 +13,5 @@ export const ProviderId: core.serialization.Schema<serializers.ProviderId.Raw, C
     });
 
 export declare namespace ProviderId {
-    type Raw = string;
+    export type Raw = string;
 }

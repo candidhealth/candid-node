@@ -21,7 +21,7 @@ export const CoverageDetails: core.serialization.ObjectSchema<
 });
 
 export declare namespace CoverageDetails {
-    interface Raw {
+    export interface Raw {
         type: BenefitType.Raw;
         coverageLevel: CoverageLevel.Raw;
         unit: CoverageValueUnit.Raw;

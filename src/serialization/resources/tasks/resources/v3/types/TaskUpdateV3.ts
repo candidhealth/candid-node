@@ -16,12 +16,12 @@ export const TaskUpdateV3: core.serialization.ObjectSchema<
     assigneeUserId: core.serialization.property("assignee_user_id", UserId.optional()),
     blocksClaimSubmission: core.serialization.property(
         "blocks_claim_submission",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
 });
 
 export declare namespace TaskUpdateV3 {
-    interface Raw {
+    export interface Raw {
         status?: TaskStatus.Raw | null;
         assignee_user_id?: UserId.Raw | null;
         blocks_claim_submission?: boolean | null;

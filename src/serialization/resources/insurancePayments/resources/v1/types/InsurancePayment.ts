@@ -22,7 +22,7 @@ export const InsurancePayment: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsurancePayment {
-    interface Raw {
+    export interface Raw {
         insurance_payment_id: InsurancePaymentId.Raw;
         payer: Payer.Raw;
         amount_cents: number;

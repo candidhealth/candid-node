@@ -16,13 +16,13 @@ export const PayerThresholdsPage: core.serialization.ObjectSchema<
     .object({
         payerThresholds: core.serialization.property(
             "payer_thresholds",
-            core.serialization.record(PayerUuid, PayerThreshold)
+            core.serialization.record(PayerUuid, PayerThreshold),
         ),
     })
     .extend(ResourcePage);
 
 export declare namespace PayerThresholdsPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         payer_thresholds: Record<PayerUuid.Raw, PayerThreshold.Raw>;
     }
 }

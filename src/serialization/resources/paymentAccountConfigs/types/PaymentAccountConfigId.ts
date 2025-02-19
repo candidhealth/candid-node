@@ -15,5 +15,5 @@ export const PaymentAccountConfigId: core.serialization.Schema<
 });
 
 export declare namespace PaymentAccountConfigId {
-    type Raw = string;
+    export type Raw = string;
 }

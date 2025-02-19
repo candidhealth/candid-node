@@ -15,7 +15,6 @@ export type TaskType =
     | "PAYER_CONFIGURATION_ERROR"
     | "DENIAL_RESOLUTION"
     | "MISSING_ENROLLMENT";
-
 export const TaskType = {
     CustomerDataRequest: "CUSTOMER_DATA_REQUEST",
     ClaimSubmissionRunValidationsFailure: "CLAIM_SUBMISSION_RUN_VALIDATIONS_FAILURE",

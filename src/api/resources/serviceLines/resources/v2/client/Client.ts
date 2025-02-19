@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -33,28 +37,28 @@ export class V2 {
      *
      * @example
      *     await client.serviceLines.v2.create({
-     *         modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+     *         modifiers: ["22"],
      *         chargeAmountCents: 1,
      *         diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         denialReason: {
-     *             reason: CandidApi.serviceLines.v2.DenialReasonContent.AuthorizationRequired
+     *             reason: "Authorization Required"
      *         },
-     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *         placeOfServiceCode: "01",
      *         procedureCode: "string",
      *         quantity: CandidApi.Decimal("string"),
-     *         units: CandidApi.ServiceLineUnits.Mj,
+     *         units: "MJ",
      *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         description: "string",
      *         dateOfService: "2023-01-15",
      *         endDateOfService: "2023-01-15",
      *         drugIdentification: {
-     *             serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *             serviceIdQualifier: "EN",
      *             nationalDrugCode: "string",
      *             nationalDrugUnitCount: "string",
-     *             measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *             measurementUnitCode: "ML",
      *             linkSequenceNumber: "string",
      *             pharmacyPrescriptionNumber: "string",
      *             conversionFormula: "string",
@@ -67,7 +71,7 @@ export class V2 {
      *                 address1: "123 Main St",
      *                 address2: "Apt 1",
      *                 city: "New York",
-     *                 state: CandidApi.State.Ny,
+     *                 state: "NY",
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
@@ -77,7 +81,7 @@ export class V2 {
      *         },
      *         testResults: [{
      *                 value: 1.1,
-     *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+     *                 resultType: "HEMATOCRIT"
      *             }],
      *         hasEpsdtIndicator: true,
      *         hasFamilyPlanningIndicator: true
@@ -85,22 +89,27 @@ export class V2 {
      */
     public async create(
         request: CandidApi.serviceLines.v2.ServiceLineCreateStandalone,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/service-lines/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/service-lines/v2",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -135,7 +144,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -155,27 +164,27 @@ export class V2 {
      * @example
      *     await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         editReason: "string",
-     *         modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
+     *         modifiers: ["22"],
      *         chargeAmountCents: 1,
      *         diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdTwo: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdThree: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         drugIdentification: {
-     *             serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *             serviceIdQualifier: "EN",
      *             nationalDrugCode: "string",
      *             nationalDrugUnitCount: "string",
-     *             measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *             measurementUnitCode: "ML",
      *             linkSequenceNumber: "string",
      *             pharmacyPrescriptionNumber: "string",
      *             conversionFormula: "string",
      *             drugDescription: "string"
      *         },
      *         denialReason: {
-     *             reason: CandidApi.serviceLines.v2.DenialReasonContent.AuthorizationRequired
+     *             reason: "Authorization Required"
      *         },
-     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
-     *         units: CandidApi.ServiceLineUnits.Mj,
+     *         placeOfServiceCode: "01",
+     *         units: "MJ",
      *         procedureCode: "string",
      *         quantity: CandidApi.Decimal("string"),
      *         description: "string",
@@ -183,7 +192,7 @@ export class V2 {
      *         endDateOfService: "2023-01-15",
      *         testResults: [{
      *                 value: 1.1,
-     *                 resultType: CandidApi.serviceLines.v2.TestResultType.Hematocrit
+     *                 resultType: "HEMATOCRIT"
      *             }],
      *         hasEpsdtIndicator: true,
      *         hasFamilyPlanningIndicator: true
@@ -192,22 +201,27 @@ export class V2 {
     public async update(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.serviceLines.v2.ServiceLineUpdate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -244,7 +258,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -265,22 +279,27 @@ export class V2 {
      */
     public async delete(
         serviceLineId: CandidApi.ServiceLineId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.serviceLines.v2.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -308,7 +327,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

@@ -23,7 +23,7 @@ export const PlanCoverageDetails: core.serialization.ObjectSchema<
 });
 
 export declare namespace PlanCoverageDetails {
-    interface Raw {
+    export interface Raw {
         deductible?: CoverageValue.Raw | null;
         deductible_contract?: CoverageValue.Raw | null;
         deductible_remaining?: CoverageValue.Raw | null;

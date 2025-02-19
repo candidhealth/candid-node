@@ -15,7 +15,7 @@ export const SchemaDoesNotExistError: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaDoesNotExistError {
-    interface Raw {
+    export interface Raw {
         schema_id: SchemaId.Raw;
     }
 }

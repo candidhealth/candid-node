@@ -12,37 +12,37 @@ export type Error =
     | CandidApi.billingNotes.v2.update.Error.UnauthorizedError
     | CandidApi.billingNotes.v2.update.Error._Unknown;
 
-export declare namespace Error {
-    interface EntityNotFoundError extends _Utils {
+export namespace Error {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface OrganizationNotAuthorizedError extends _Utils {
+    export interface OrganizationNotAuthorizedError extends _Utils {
         errorName: "OrganizationNotAuthorizedError";
         content: CandidApi.OrganizationNotAuthorizedErrorMessage;
     }
 
-    interface HttpRequestValidationError extends _Utils {
+    export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
     }
 
-    interface UnauthorizedError extends _Utils {
+    export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         organizationNotAuthorizedError: (value: CandidApi.OrganizationNotAuthorizedErrorMessage) => _Result;
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
@@ -53,14 +53,14 @@ export declare namespace Error {
 
 export const Error = {
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.billingNotes.v2.update.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.billingNotes.v2.update.Error.EntityNotFoundError,
-                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.billingNotes.v2.update.Error._visit(this, visitor);
             },
@@ -68,14 +68,14 @@ export const Error = {
     },
 
     organizationNotAuthorizedError: (
-        value: CandidApi.OrganizationNotAuthorizedErrorMessage
+        value: CandidApi.OrganizationNotAuthorizedErrorMessage,
     ): CandidApi.billingNotes.v2.update.Error.OrganizationNotAuthorizedError => {
         return {
             content: value,
             errorName: "OrganizationNotAuthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.billingNotes.v2.update.Error.OrganizationNotAuthorizedError,
-                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.billingNotes.v2.update.Error._visit(this, visitor);
             },
@@ -83,14 +83,14 @@ export const Error = {
     },
 
     httpRequestValidationError: (
-        value: CandidApi.RequestValidationError
+        value: CandidApi.RequestValidationError,
     ): CandidApi.billingNotes.v2.update.Error.HttpRequestValidationError => {
         return {
             content: value,
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.billingNotes.v2.update.Error.HttpRequestValidationError,
-                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.billingNotes.v2.update.Error._visit(this, visitor);
             },
@@ -98,14 +98,14 @@ export const Error = {
     },
 
     unauthorizedError: (
-        value: CandidApi.UnauthorizedErrorMessage
+        value: CandidApi.UnauthorizedErrorMessage,
     ): CandidApi.billingNotes.v2.update.Error.UnauthorizedError => {
         return {
             content: value,
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.billingNotes.v2.update.Error.UnauthorizedError,
-                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.billingNotes.v2.update.Error._visit(this, visitor);
             },
@@ -118,7 +118,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.billingNotes.v2.update.Error._Unknown,
-                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.billingNotes.v2.update.Error._visit(this, visitor);
             },
@@ -127,7 +127,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.billingNotes.v2.update.Error,
-        visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>
+        visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityNotFoundError":

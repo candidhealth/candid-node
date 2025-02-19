@@ -14,7 +14,7 @@ export const CashPayPayerErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace CashPayPayerErrorMessage {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

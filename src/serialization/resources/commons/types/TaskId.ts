@@ -14,5 +14,5 @@ export const TaskId: core.serialization.Schema<serializers.TaskId.Raw, CandidApi
     });
 
 export declare namespace TaskId {
-    type Raw = string;
+    export type Raw = string;
 }

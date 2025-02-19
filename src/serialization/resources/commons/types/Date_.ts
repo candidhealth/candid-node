@@ -14,5 +14,5 @@ export const Date_: core.serialization.Schema<serializers.Date_.Raw, CandidApi.D
     });
 
 export declare namespace Date_ {
-    type Raw = string;
+    export type Raw = string;
 }

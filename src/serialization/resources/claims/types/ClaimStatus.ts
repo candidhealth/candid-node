@@ -26,7 +26,7 @@ export const ClaimStatus: core.serialization.Schema<serializers.ClaimStatus.Raw,
     ]);
 
 export declare namespace ClaimStatus {
-    type Raw =
+    export type Raw =
         | "biller_received"
         | "coded"
         | "submitted_to_payer"

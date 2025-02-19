@@ -12,5 +12,5 @@ export const BillingProviderCommercialLicenseType: core.serialization.Schema<
 > = core.serialization.enum_(["0", "A", "B", "C", "D", "E", "F", "G", "H", "I"]);
 
 export declare namespace BillingProviderCommercialLicenseType {
-    type Raw = "0" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
+    export type Raw = "0" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
 }

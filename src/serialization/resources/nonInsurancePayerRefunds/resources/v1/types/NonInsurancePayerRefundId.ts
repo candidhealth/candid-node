@@ -15,5 +15,5 @@ export const NonInsurancePayerRefundId: core.serialization.Schema<
 });
 
 export declare namespace NonInsurancePayerRefundId {
-    type Raw = string;
+    export type Raw = string;
 }

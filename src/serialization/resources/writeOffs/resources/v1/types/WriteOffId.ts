@@ -15,5 +15,5 @@ export const WriteOffId: core.serialization.Schema<
 });
 
 export declare namespace WriteOffId {
-    type Raw = string;
+    export type Raw = string;
 }

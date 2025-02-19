@@ -12,5 +12,5 @@ export const AppointmentStatus: core.serialization.Schema<
 > = core.serialization.enum_(["PENDING", "NOT_READY", "READY", "CHECKED_IN"]);
 
 export declare namespace AppointmentStatus {
-    type Raw = "PENDING" | "NOT_READY" | "READY" | "CHECKED_IN";
+    export type Raw = "PENDING" | "NOT_READY" | "READY" | "CHECKED_IN";
 }

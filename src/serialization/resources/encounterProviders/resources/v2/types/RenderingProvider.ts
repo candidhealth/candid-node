@@ -20,7 +20,7 @@ export const RenderingProvider: core.serialization.ObjectSchema<
     .extend(EncounterProviderBase);
 
 export declare namespace RenderingProvider {
-    interface Raw extends EncounterProviderBase.Raw {
+    export interface Raw extends EncounterProviderBase.Raw {
         npi: string;
         taxonomy_code?: string | null;
         address?: StreetAddressLongZip.Raw | null;

@@ -20,7 +20,7 @@ export const Tag: core.serialization.ObjectSchema<
     .extend(MutableTag);
 
 export declare namespace Tag {
-    interface Raw extends BaseModel.Raw, MutableTag.Raw {
+    export interface Raw extends BaseModel.Raw, MutableTag.Raw {
         id: TagId.Raw;
     }
 }

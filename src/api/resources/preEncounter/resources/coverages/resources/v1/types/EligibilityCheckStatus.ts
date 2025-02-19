@@ -6,7 +6,6 @@
  * enum to represent the statuses of eligibility checks
  */
 export type EligibilityCheckStatus = "COMPLETED" | "FAILED" | "PENDING";
-
 export const EligibilityCheckStatus = {
     Completed: "COMPLETED",
     Failed: "FAILED",

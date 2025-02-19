@@ -12,5 +12,5 @@ export const AuthorizationUnit: core.serialization.Schema<
 > = core.serialization.enum_(["VISIT"]);
 
 export declare namespace AuthorizationUnit {
-    type Raw = "VISIT";
+    export type Raw = "VISIT";
 }

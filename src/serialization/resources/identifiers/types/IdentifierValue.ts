@@ -20,13 +20,13 @@ export const IdentifierValue: core.serialization.Schema<serializers.IdentifierVa
         });
 
 export declare namespace IdentifierValue {
-    type Raw = IdentifierValue.MedicareProviderIdentifier | IdentifierValue.MedicaidProviderIdentifier;
+    export type Raw = IdentifierValue.MedicareProviderIdentifier | IdentifierValue.MedicaidProviderIdentifier;
 
-    interface MedicareProviderIdentifier extends MedicareProviderIdentifier.Raw {
+    export interface MedicareProviderIdentifier extends MedicareProviderIdentifier.Raw {
         type: "medicare_provider_identifier";
     }
 
-    interface MedicaidProviderIdentifier extends MedicaidProviderIdentifier.Raw {
+    export interface MedicaidProviderIdentifier extends MedicaidProviderIdentifier.Raw {
         type: "medicaid_provider_identifier";
     }
 }

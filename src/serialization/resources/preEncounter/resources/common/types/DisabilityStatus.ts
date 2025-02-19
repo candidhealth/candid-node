@@ -12,5 +12,5 @@ export const DisabilityStatus: core.serialization.Schema<
 > = core.serialization.enum_(["DISABLED", "NON_DISABLED"]);
 
 export declare namespace DisabilityStatus {
-    type Raw = "DISABLED" | "NON_DISABLED";
+    export type Raw = "DISABLED" | "NON_DISABLED";
 }

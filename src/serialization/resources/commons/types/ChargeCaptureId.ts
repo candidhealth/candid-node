@@ -13,5 +13,5 @@ export const ChargeCaptureId: core.serialization.Schema<serializers.ChargeCaptur
     });
 
 export declare namespace ChargeCaptureId {
-    type Raw = string;
+    export type Raw = string;
 }

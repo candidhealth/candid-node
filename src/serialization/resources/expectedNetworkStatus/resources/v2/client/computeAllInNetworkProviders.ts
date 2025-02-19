@@ -25,11 +25,11 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "ExpectedNetworkStatusCheckError":
                     return CandidApi.expectedNetworkStatus.v2.computeAllInNetworkProviders.Error.expectedNetworkStatusCheckError(
-                        value.content
+                        value.content,
                     );
                 case "OrganizationNotAuthorizedError":
                     return CandidApi.expectedNetworkStatus.v2.computeAllInNetworkProviders.Error.organizationNotAuthorizedError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -37,14 +37,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.ExpectedNetworkStatusCheckError | Error.OrganizationNotAuthorizedError;
+    export type Raw = Error.ExpectedNetworkStatusCheckError | Error.OrganizationNotAuthorizedError;
 
-    interface ExpectedNetworkStatusCheckError {
+    export interface ExpectedNetworkStatusCheckError {
         errorName: "ExpectedNetworkStatusCheckError";
         content: ExpectedNetworkStatusCheckErrorMessage.Raw;
     }
 
-    interface OrganizationNotAuthorizedError {
+    export interface OrganizationNotAuthorizedError {
         errorName: "OrganizationNotAuthorizedError";
         content: OrganizationNotAuthorizedErrorMessage.Raw;
     }

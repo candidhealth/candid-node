@@ -12,5 +12,5 @@ export const InvoiceDestination: core.serialization.Schema<
 > = core.serialization.enum_(["STRIPE", "CEDAR", "HEALTHIE", "COLLECTLY", "THIRD_PARTY_PAYERS"]);
 
 export declare namespace InvoiceDestination {
-    type Raw = "STRIPE" | "CEDAR" | "HEALTHIE" | "COLLECTLY" | "THIRD_PARTY_PAYERS";
+    export type Raw = "STRIPE" | "CEDAR" | "HEALTHIE" | "COLLECTLY" | "THIRD_PARTY_PAYERS";
 }

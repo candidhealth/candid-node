@@ -24,7 +24,7 @@ export const ChargeCapture: core.serialization.ObjectSchema<
 });
 
 export declare namespace ChargeCapture {
-    interface Raw {
+    export interface Raw {
         id: ChargeCaptureId.Raw;
         status: ChargeCaptureStatus.Raw;
         charge_capture_data: ChargeCaptureData.Raw;

@@ -16,7 +16,7 @@ export const Identifier: core.serialization.ObjectSchema<serializers.Identifier.
         .extend(IdentifierBase);
 
 export declare namespace Identifier {
-    interface Raw extends IdentifierBase.Raw {
+    export interface Raw extends IdentifierBase.Raw {
         identifier_id: IdentifierId.Raw;
     }
 }

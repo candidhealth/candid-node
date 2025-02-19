@@ -15,7 +15,7 @@ export const Lab: core.serialization.ObjectSchema<serializers.encounters.v4.Lab.
     });
 
 export declare namespace Lab {
-    interface Raw {
+    export interface Raw {
         name: string;
         code?: string | null;
         code_type?: LabCodeType.Raw | null;

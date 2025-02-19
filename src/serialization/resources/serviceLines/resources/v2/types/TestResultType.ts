@@ -12,5 +12,5 @@ export const TestResultType: core.serialization.Schema<
 > = core.serialization.enum_(["HEMATOCRIT", "HEMOGLOBIN"]);
 
 export declare namespace TestResultType {
-    type Raw = "HEMATOCRIT" | "HEMOGLOBIN";
+    export type Raw = "HEMATOCRIT" | "HEMOGLOBIN";
 }

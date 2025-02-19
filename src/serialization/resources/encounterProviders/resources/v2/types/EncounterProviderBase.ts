@@ -16,7 +16,7 @@ export const EncounterProviderBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace EncounterProviderBase {
-    interface Raw {
+    export interface Raw {
         first_name?: string | null;
         last_name?: string | null;
         organization_name?: string | null;

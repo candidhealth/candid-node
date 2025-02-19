@@ -11,7 +11,7 @@ import * as CandidApi from "../../../../../../index";
  *         chargeExternalId: "string",
  *         ehrSourceUrl: "string",
  *         patientExternalId: "string",
- *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+ *         status: "planned",
  *         dateOfService: "2023-01-15"
  *     }
  */

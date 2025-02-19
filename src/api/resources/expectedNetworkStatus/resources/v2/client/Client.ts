@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -38,16 +42,16 @@ export class V2 {
      *
      * @example
      *     await client.expectedNetworkStatus.v2.computeForRenderingProvider(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
-     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *         serviceType: "new_patient_video_appt",
+     *         placeOfServiceCode: "01",
      *         subscriberInformation: {
      *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *             memberId: "string",
      *             insuranceType: {
-     *                 lineOfBusiness: CandidApi.expectedNetworkStatus.v2.LineOfBusiness.Medicare,
+     *                 lineOfBusiness: "medicare",
      *                 insuranceTypeCodes: {
      *                     type: "insurance_type_code",
-     *                     value: CandidApi.InsuranceTypeCode.C01
+     *                     value: "01"
      *                 }
      *             }
      *         },
@@ -55,7 +59,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -67,7 +71,7 @@ export class V2 {
     public async computeForRenderingProvider(
         renderingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId,
         request: CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusRequestV2,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusResponseV2,
@@ -76,20 +80,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/expected-network-status/v2/compute/${encodeURIComponent(
-                    serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(renderingProviderId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/expected-network-status/v2/compute/${encodeURIComponent(serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(renderingProviderId))}`,
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -110,7 +117,7 @@ export class V2 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -132,7 +139,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -154,16 +161,16 @@ export class V2 {
      *
      * @example
      *     await client.expectedNetworkStatus.v2.computeAllInNetworkProviders({
-     *         serviceType: CandidApi.expectedNetworkStatus.v2.ServiceType.NewPatientVideoAppt,
-     *         placeOfServiceCode: CandidApi.FacilityTypeCode.Pharmacy,
+     *         serviceType: "new_patient_video_appt",
+     *         placeOfServiceCode: "01",
      *         subscriberInformation: {
      *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *             memberId: "string",
      *             insuranceType: {
-     *                 lineOfBusiness: CandidApi.expectedNetworkStatus.v2.LineOfBusiness.Medicare,
+     *                 lineOfBusiness: "medicare",
      *                 insuranceTypeCodes: {
      *                     type: "insurance_type_code",
-     *                     value: CandidApi.InsuranceTypeCode.C01
+     *                     value: "01"
      *                 }
      *             }
      *         },
@@ -171,7 +178,7 @@ export class V2 {
      *             address1: "123 Main St",
      *             address2: "Apt 1",
      *             city: "New York",
-     *             state: CandidApi.State.Ny,
+     *             state: "NY",
      *             zipCode: "10001",
      *             zipPlusFourCode: "1234"
      *         },
@@ -182,7 +189,7 @@ export class V2 {
      */
     public async computeAllInNetworkProviders(
         request: CandidApi.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersRequest,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.expectedNetworkStatus.v2.ComputeAllInNetworkProvidersResponse,
@@ -191,18 +198,23 @@ export class V2 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/expected-network-status/v2/compute"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/expected-network-status/v2/compute",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -223,7 +235,7 @@ export class V2 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -245,7 +257,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

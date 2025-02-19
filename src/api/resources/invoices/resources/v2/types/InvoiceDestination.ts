@@ -3,7 +3,6 @@
  */
 
 export type InvoiceDestination = "STRIPE" | "CEDAR" | "HEALTHIE" | "COLLECTLY" | "THIRD_PARTY_PAYERS";
-
 export const InvoiceDestination = {
     Stripe: "STRIPE",
     Cedar: "CEDAR",

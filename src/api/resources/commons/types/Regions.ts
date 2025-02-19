@@ -6,12 +6,12 @@ import * as CandidApi from "../../../index";
 
 export type Regions = CandidApi.Regions.States | CandidApi.Regions.National;
 
-export declare namespace Regions {
-    interface States extends CandidApi.RegionStates {
+export namespace Regions {
+    export interface States extends CandidApi.RegionStates {
         type: "states";
     }
 
-    interface National extends CandidApi.RegionNational {
+    export interface National extends CandidApi.RegionNational {
         type: "national";
     }
 }

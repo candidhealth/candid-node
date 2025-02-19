@@ -20,7 +20,7 @@ export const Race: core.serialization.Schema<serializers.preEncounter.Race.Raw, 
     ]);
 
 export declare namespace Race {
-    type Raw =
+    export type Raw =
         | "AMERICAN_INDIAN_OR_ALASKA_NATIVE"
         | "WHITE"
         | "BLACK"

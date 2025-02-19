@@ -13,13 +13,13 @@ export const Service: core.serialization.ObjectSchema<
 > = core.serialization.object({
     universalServiceIdentifier: core.serialization.property(
         "universal_service_identifier",
-        UniversalServiceIdentifier.optional()
+        UniversalServiceIdentifier.optional(),
     ),
     startTimestamp: core.serialization.property("start_timestamp", core.serialization.date().optional()),
 });
 
 export declare namespace Service {
-    interface Raw {
+    export interface Raw {
         universal_service_identifier?: UniversalServiceIdentifier.Raw | null;
         start_timestamp?: string | null;
     }

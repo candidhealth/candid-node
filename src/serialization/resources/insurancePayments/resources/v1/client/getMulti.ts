@@ -33,14 +33,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.UnauthorizedError | Error.UnprocessableEntityError;
+    export type Raw = Error.UnauthorizedError | Error.UnprocessableEntityError;
 
-    interface UnauthorizedError {
+    export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
     }
 
-    interface UnprocessableEntityError {
+    export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
     }

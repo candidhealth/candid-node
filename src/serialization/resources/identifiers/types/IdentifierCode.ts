@@ -10,5 +10,5 @@ export const IdentifierCode: core.serialization.Schema<serializers.IdentifierCod
     core.serialization.enum_(["MCR", "MCD"]);
 
 export declare namespace IdentifierCode {
-    type Raw = "MCR" | "MCD";
+    export type Raw = "MCR" | "MCD";
 }

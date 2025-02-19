@@ -18,7 +18,7 @@ export const Authorization: core.serialization.ObjectSchema<
     payerName: core.serialization.property("payer_name", core.serialization.string()),
     additionalPayerInformation: core.serialization.property(
         "additional_payer_information",
-        AdditionalPayerInformation.optional()
+        AdditionalPayerInformation.optional(),
     ),
     authorizationNumber: core.serialization.property("authorization_number", core.serialization.string()),
     cptCode: core.serialization.property("cpt_code", core.serialization.string()),
@@ -29,7 +29,7 @@ export const Authorization: core.serialization.ObjectSchema<
 });
 
 export declare namespace Authorization {
-    interface Raw {
+    export interface Raw {
         payer_id: PayerId.Raw;
         payer_name: string;
         additional_payer_information?: AdditionalPayerInformation.Raw | null;

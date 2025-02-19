@@ -8,7 +8,6 @@ export type PatientRefundSortField =
     | "refund_timestamp"
     | "refund_reason"
     | "refund_note";
-
 export const PatientRefundSortField = {
     RefundSource: "refund_source",
     AmountCents: "amount_cents",

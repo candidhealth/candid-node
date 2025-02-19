@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.nonInsurancePayers.v1.getMulti.Error.UnprocessableEntityError
     | CandidApi.nonInsurancePayers.v1.getMulti.Error._Unknown;
 
-export declare namespace Error {
-    interface UnprocessableEntityError extends _Utils {
+export namespace Error {
+    export interface UnprocessableEntityError extends _Utils {
         errorName: "UnprocessableEntityError";
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     unprocessableEntityError: (
-        value: CandidApi.UnprocessableEntityErrorMessage
+        value: CandidApi.UnprocessableEntityErrorMessage,
     ): CandidApi.nonInsurancePayers.v1.getMulti.Error.UnprocessableEntityError => {
         return {
             content: value,
             errorName: "UnprocessableEntityError",
             _visit: function <_Result>(
                 this: CandidApi.nonInsurancePayers.v1.getMulti.Error.UnprocessableEntityError,
-                visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>
+                visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.nonInsurancePayers.v1.getMulti.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.nonInsurancePayers.v1.getMulti.Error._Unknown,
-                visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>
+                visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.nonInsurancePayers.v1.getMulti.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.nonInsurancePayers.v1.getMulti.Error,
-        visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>
+        visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "UnprocessableEntityError":

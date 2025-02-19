@@ -25,7 +25,7 @@ export const InsuranceCardCreate: core.serialization.ObjectSchema<
     .extend(InsuranceCardBase);
 
 export declare namespace InsuranceCardCreate {
-    interface Raw extends InsuranceCardBase.Raw {
+    export interface Raw extends InsuranceCardBase.Raw {
         member_id: string;
         payer_name: string;
         payer_id: string;

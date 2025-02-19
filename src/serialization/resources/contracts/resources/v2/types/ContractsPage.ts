@@ -18,7 +18,7 @@ export const ContractsPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace ContractsPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: Contract.Raw[];
     }
 }

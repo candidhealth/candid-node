@@ -14,5 +14,5 @@ export const TaxId: core.serialization.Schema<serializers.TaxId.Raw, CandidApi.T
     });
 
 export declare namespace TaxId {
-    type Raw = string;
+    export type Raw = string;
 }

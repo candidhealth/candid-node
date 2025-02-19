@@ -12,5 +12,5 @@ export const ClaimStatusCodeCreate: core.serialization.Schema<
 > = core.serialization.enum_(["1", "2", "3", "4", "19", "20", "21", "22", "23"]);
 
 export declare namespace ClaimStatusCodeCreate {
-    type Raw = "1" | "2" | "3" | "4" | "19" | "20" | "21" | "22" | "23";
+    export type Raw = "1" | "2" | "3" | "4" | "19" | "20" | "21" | "22" | "23";
 }

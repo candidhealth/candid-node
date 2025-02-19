@@ -3,7 +3,6 @@
  */
 
 export type DisabilityStatus = "DISABLED" | "NON_DISABLED";
-
 export const DisabilityStatus = {
     Disabled: "DISABLED",
     NonDisabled: "NON_DISABLED",

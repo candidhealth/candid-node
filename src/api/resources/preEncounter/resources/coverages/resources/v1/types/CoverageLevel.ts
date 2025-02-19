@@ -3,7 +3,6 @@
  */
 
 export type CoverageLevel = "EMPLOYEE_AND_CHILDREN" | "EMPLOYEE_ONLY" | "EMPLOYEE_AND_SPOUSE" | "FAMILY" | "INDIVIDUAL";
-
 export const CoverageLevel = {
     EmployeeAndChildren: "EMPLOYEE_AND_CHILDREN",
     EmployeeOnly: "EMPLOYEE_ONLY",

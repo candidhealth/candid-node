@@ -13,5 +13,5 @@ export const TagId: core.serialization.Schema<serializers.preEncounter.TagId.Raw
     });
 
 export declare namespace TagId {
-    type Raw = string;
+    export type Raw = string;
 }

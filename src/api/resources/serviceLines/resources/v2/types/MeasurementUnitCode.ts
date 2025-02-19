@@ -3,7 +3,6 @@
  */
 
 export type MeasurementUnitCode = "ML" | "UN" | "GR" | "F2" | "ME";
-
 export const MeasurementUnitCode = {
     Milliliters: "ML",
     Units: "UN",

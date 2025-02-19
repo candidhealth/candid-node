@@ -10,7 +10,6 @@ export type SexualOrientation =
     | "OTHER"
     | "UNKNOWN"
     | "REFUSED";
-
 export const SexualOrientation = {
     Heterosexual: "HETEROSEXUAL",
     Homosexual: "HOMOSEXUAL",

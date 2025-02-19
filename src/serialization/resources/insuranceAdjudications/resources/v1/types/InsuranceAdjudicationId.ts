@@ -15,5 +15,5 @@ export const InsuranceAdjudicationId: core.serialization.Schema<
 });
 
 export declare namespace InsuranceAdjudicationId {
-    type Raw = string;
+    export type Raw = string;
 }

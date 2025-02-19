@@ -22,13 +22,13 @@ export const SchemaValidationError: core.serialization.Schema<
     });
 
 export declare namespace SchemaValidationError {
-    type Raw = SchemaValidationError.SchemaNameAlreadyExists | SchemaValidationError.KeyNameAlreadyExists;
+    export type Raw = SchemaValidationError.SchemaNameAlreadyExists | SchemaValidationError.KeyNameAlreadyExists;
 
-    interface SchemaNameAlreadyExists extends SchemaWithNameAlreadyExistsError.Raw {
+    export interface SchemaNameAlreadyExists extends SchemaWithNameAlreadyExistsError.Raw {
         type: "schema_name_already_exists";
     }
 
-    interface KeyNameAlreadyExists extends KeyWithNameAlreadyExistsError.Raw {
+    export interface KeyNameAlreadyExists extends KeyWithNameAlreadyExistsError.Raw {
         type: "key_name_already_exists";
     }
 }

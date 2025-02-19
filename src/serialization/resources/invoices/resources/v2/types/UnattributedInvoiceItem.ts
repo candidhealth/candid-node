@@ -14,7 +14,7 @@ export const UnattributedInvoiceItem: core.serialization.ObjectSchema<
 });
 
 export declare namespace UnattributedInvoiceItem {
-    interface Raw {
+    export interface Raw {
         amount_cents: number;
     }
 }

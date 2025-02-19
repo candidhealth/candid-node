@@ -3,7 +3,6 @@
  */
 
 export type WriteOffSortField = "amount_cents" | "write_off_timestamp" | "write_off_note";
-
 export const WriteOffSortField = {
     AmountCents: "amount_cents",
     WriteOffTimestamp: "write_off_timestamp",

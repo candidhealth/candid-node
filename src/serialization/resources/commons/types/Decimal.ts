@@ -14,5 +14,5 @@ export const Decimal: core.serialization.Schema<serializers.Decimal.Raw, CandidA
     });
 
 export declare namespace Decimal {
-    type Raw = string;
+    export type Raw = string;
 }

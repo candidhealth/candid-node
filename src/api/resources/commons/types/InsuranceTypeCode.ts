@@ -216,7 +216,6 @@ export type InsuranceTypeCode =
     /**
      * Wrap Up Policy - A Workers Compensation Policy written for a specific job site, which will include or cover more than one insured */
     | "WU";
-
 export const InsuranceTypeCode = {
     C01: "01",
     C12: "12",

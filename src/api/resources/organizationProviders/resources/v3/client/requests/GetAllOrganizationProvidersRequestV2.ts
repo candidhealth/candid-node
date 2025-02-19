@@ -13,7 +13,7 @@ import * as CandidApi from "../../../../../../index";
  *         isRendering: true,
  *         isBilling: true,
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
- *         sort: CandidApi.organizationProviders.v2.OrganizationProviderSortOptions.ProviderNameAsc
+ *         sort: "provider_name:asc"
  *     }
  */
 export interface GetAllOrganizationProvidersRequestV2 {

@@ -3,7 +3,6 @@
  */
 
 export type ContactPointUse = "HOME" | "WORK" | "TEMP" | "OLD" | "MOBILE";
-
 export const ContactPointUse = {
     Home: "HOME",
     Work: "WORK",

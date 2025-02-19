@@ -12,5 +12,5 @@ export const LabCodeType: core.serialization.Schema<
 > = core.serialization.enum_(["quest", "labcorp"]);
 
 export declare namespace LabCodeType {
-    type Raw = "quest" | "labcorp";
+    export type Raw = "quest" | "labcorp";
 }

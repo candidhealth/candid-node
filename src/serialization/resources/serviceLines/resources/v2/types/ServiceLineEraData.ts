@@ -13,16 +13,16 @@ export const ServiceLineEraData: core.serialization.ObjectSchema<
 > = core.serialization.object({
     serviceLineAdjustments: core.serialization.property(
         "service_line_adjustments",
-        core.serialization.list(ServiceLineAdjustment)
+        core.serialization.list(ServiceLineAdjustment),
     ),
     remittanceAdviceRemarkCodes: core.serialization.property(
         "remittance_advice_remark_codes",
-        core.serialization.list(core.serialization.string())
+        core.serialization.list(core.serialization.string()),
     ),
 });
 
 export declare namespace ServiceLineEraData {
-    interface Raw {
+    export interface Raw {
         service_line_adjustments: ServiceLineAdjustment.Raw[];
         remittance_advice_remark_codes: string[];
     }

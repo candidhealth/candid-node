@@ -23,14 +23,14 @@ export const RegionsUpdate: core.serialization.Schema<
     });
 
 export declare namespace RegionsUpdate {
-    type Raw = RegionsUpdate.Set | RegionsUpdate.Remove;
+    export type Raw = RegionsUpdate.Set | RegionsUpdate.Remove;
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: Regions.Raw;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

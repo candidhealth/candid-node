@@ -3,7 +3,6 @@
  */
 
 export type ResponsiblePartyType = "INSURANCE_PAY" | "SELF_PAY" | "UNKNOWN";
-
 export const ResponsiblePartyType = {
     InsurancePay: "INSURANCE_PAY",
     SelfPay: "SELF_PAY",

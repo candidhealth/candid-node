@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V1 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -38,27 +42,32 @@ export class V1 {
      *         ehrSourceUrl: "string",
      *         dateOfService: "2023-01-15",
      *         patientExternalId: "string",
-     *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned
+     *         status: "planned"
      *     })
      */
     public async create(
         request: CandidApi.chargeCapture.v1.CreateChargeCaptureRequest,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/charge_captures/v1"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/charge_captures/v1",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -97,7 +106,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -118,24 +127,27 @@ export class V1 {
      */
     public async delete(
         chargeCaptureId: CandidApi.ChargeCaptureId,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.chargeCapture.v1.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/charge_captures/v1/${encodeURIComponent(
-                    serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/charge_captures/v1/${encodeURIComponent(serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -163,7 +175,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -186,31 +198,34 @@ export class V1 {
      *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
      *         patientExternalId: "string",
-     *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+     *         status: "planned",
      *         dateOfService: "2023-01-15"
      *     })
      */
     public async update(
         chargeCaptureId: CandidApi.ChargeCaptureId,
         request: CandidApi.chargeCapture.v1.ChargeCaptureUpdate = {},
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/charge_captures/v1/${encodeURIComponent(
-                    serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/charge_captures/v1/${encodeURIComponent(serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -249,7 +264,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -270,24 +285,27 @@ export class V1 {
      */
     public async get(
         chargeCaptureId: CandidApi.ChargeCaptureId,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/charge_captures/v1/${encodeURIComponent(
-                    serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/charge_captures/v1/${encodeURIComponent(serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -322,19 +340,19 @@ export class V1 {
      *         limit: 1,
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         patientExternalId: "string",
-     *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+     *         status: "planned",
      *         chargeExternalId: "string",
      *         dateOfService: "2023-01-15"
      *     })
      */
     public async getAll(
         request: CandidApi.chargeCapture.v1.GetAllChargeCapturesRequest = {},
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
     > {
         const { limit, pageToken, patientExternalId, status, chargeExternalId, dateOfService } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -348,7 +366,9 @@ export class V1 {
         }
 
         if (status != null) {
-            _queryParams["status"] = status;
+            _queryParams["status"] = serializers.chargeCapture.v1.ChargeCaptureStatus.jsonOrThrow(status, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (chargeExternalId != null) {
@@ -361,18 +381,23 @@ export class V1 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/charge_captures/v1"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/charge_captures/v1",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,

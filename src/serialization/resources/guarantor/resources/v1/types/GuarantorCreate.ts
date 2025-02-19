@@ -22,7 +22,7 @@ export const GuarantorCreate: core.serialization.ObjectSchema<
     .extend(GuarantorBase);
 
 export declare namespace GuarantorCreate {
-    interface Raw extends GuarantorBase.Raw {
+    export interface Raw extends GuarantorBase.Raw {
         phone_numbers?: PhoneNumber.Raw[] | null;
         phone_consent?: boolean | null;
         email?: Email.Raw | null;

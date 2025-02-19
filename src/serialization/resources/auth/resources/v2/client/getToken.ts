@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.TooManyRequestsError;
+    export type Raw = Error.TooManyRequestsError;
 
-    interface TooManyRequestsError {
+    export interface TooManyRequestsError {
         errorName: "TooManyRequestsError";
         content: TooManyRequestsErrorType.Raw;
     }

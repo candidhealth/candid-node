@@ -12,5 +12,5 @@ export const OrganizationProviderSortOptions: core.serialization.Schema<
 > = core.serialization.enum_(["provider_name:asc", "provider_name:desc", "npi:asc", "npi:desc"]);
 
 export declare namespace OrganizationProviderSortOptions {
-    type Raw = "provider_name:asc" | "provider_name:desc" | "npi:asc" | "npi:desc";
+    export type Raw = "provider_name:asc" | "provider_name:desc" | "npi:asc" | "npi:desc";
 }

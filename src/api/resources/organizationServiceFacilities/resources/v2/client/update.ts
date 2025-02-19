@@ -10,29 +10,29 @@ export type Error =
     | CandidApi.organizationServiceFacilities.v2.update.Error.EntityNotFoundError
     | CandidApi.organizationServiceFacilities.v2.update.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpRequestValidationError extends _Utils {
+export namespace Error {
+    export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
     }
 
-    interface EntityNotFoundError extends _Utils {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>
+            visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -41,14 +41,14 @@ export declare namespace Error {
 
 export const Error = {
     httpRequestValidationError: (
-        value: CandidApi.RequestValidationError
+        value: CandidApi.RequestValidationError,
     ): CandidApi.organizationServiceFacilities.v2.update.Error.HttpRequestValidationError => {
         return {
             content: value,
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.organizationServiceFacilities.v2.update.Error.HttpRequestValidationError,
-                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.organizationServiceFacilities.v2.update.Error._visit(this, visitor);
             },
@@ -56,14 +56,14 @@ export const Error = {
     },
 
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.organizationServiceFacilities.v2.update.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.organizationServiceFacilities.v2.update.Error.EntityNotFoundError,
-                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.organizationServiceFacilities.v2.update.Error._visit(this, visitor);
             },
@@ -76,7 +76,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.organizationServiceFacilities.v2.update.Error._Unknown,
-                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.organizationServiceFacilities.v2.update.Error._visit(this, visitor);
             },
@@ -85,7 +85,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.organizationServiceFacilities.v2.update.Error,
-        visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>
+        visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpRequestValidationError":

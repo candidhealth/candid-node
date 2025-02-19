@@ -19,7 +19,7 @@ export const HumanName: core.serialization.ObjectSchema<
 });
 
 export declare namespace HumanName {
-    interface Raw {
+    export interface Raw {
         family: string;
         given: string[];
         use: NameUse.Raw;

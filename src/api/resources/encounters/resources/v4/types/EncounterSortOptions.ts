@@ -7,7 +7,6 @@ export type EncounterSortOptions =
     | "created_at:desc"
     | "date_of_service:asc"
     | "date_of_service:desc";
-
 export const EncounterSortOptions = {
     CreatedAtAsc: "created_at:asc",
     CreatedAtDesc: "created_at:desc",

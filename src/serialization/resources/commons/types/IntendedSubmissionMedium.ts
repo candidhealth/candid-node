@@ -12,5 +12,5 @@ export const IntendedSubmissionMedium: core.serialization.Schema<
 > = core.serialization.enum_(["paper", "electronic"]);
 
 export declare namespace IntendedSubmissionMedium {
-    type Raw = "paper" | "electronic";
+    export type Raw = "paper" | "electronic";
 }

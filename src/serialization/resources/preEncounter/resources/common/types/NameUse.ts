@@ -10,5 +10,5 @@ export const NameUse: core.serialization.Schema<serializers.preEncounter.NameUse
     core.serialization.enum_(["USUAL", "OFFICIAL", "TEMP", "NICKNAME", "ANONYMOUS", "OLD", "MAIDEN"]);
 
 export declare namespace NameUse {
-    type Raw = "USUAL" | "OFFICIAL" | "TEMP" | "NICKNAME" | "ANONYMOUS" | "OLD" | "MAIDEN";
+    export type Raw = "USUAL" | "OFFICIAL" | "TEMP" | "NICKNAME" | "ANONYMOUS" | "OLD" | "MAIDEN";
 }

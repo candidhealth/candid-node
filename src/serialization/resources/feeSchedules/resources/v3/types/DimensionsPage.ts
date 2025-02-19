@@ -18,7 +18,7 @@ export const DimensionsPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace DimensionsPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         dimensions: OptionalDimensions.Raw[];
     }
 }

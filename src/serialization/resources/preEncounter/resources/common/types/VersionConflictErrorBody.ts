@@ -17,7 +17,7 @@ export const VersionConflictErrorBody: core.serialization.ObjectSchema<
     .extend(ErrorBase4Xx);
 
 export declare namespace VersionConflictErrorBody {
-    interface Raw extends ErrorBase4Xx.Raw {
+    export interface Raw extends ErrorBase4Xx.Raw {
         latest_version?: number | null;
     }
 }

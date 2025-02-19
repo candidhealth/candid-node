@@ -25,7 +25,6 @@ export type TaskSortOptions =
     | "date_of_service:desc"
     | "blocks_claim_submission:asc"
     | "blocks_claim_submission:desc";
-
 export const TaskSortOptions = {
     UpdatedAtAsc: "updated_at:asc",
     UpdatedAtDesc: "updated_at:desc",

@@ -3,7 +3,6 @@
  */
 
 export type ClaimAdjustmentGroupCodes = "CO" | "CR" | "DE" | "MA" | "OA" | "PI" | "PR" | "RR" | "NC" | "UNKNOWN";
-
 export const ClaimAdjustmentGroupCodes = {
     Co: "CO",
     Cr: "CR",

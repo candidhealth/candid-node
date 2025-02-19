@@ -14,7 +14,7 @@ export const Tag: core.serialization.ObjectSchema<serializers.Tag.Raw, CandidApi
     .extend(TagCreate);
 
 export declare namespace Tag {
-    interface Raw extends TagCreate.Raw {
+    export interface Raw extends TagCreate.Raw {
         creator_id: string;
     }
 }

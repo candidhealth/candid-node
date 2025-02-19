@@ -16,7 +16,7 @@ export const MedicareProviderIdentifier: core.serialization.ObjectSchema<
 });
 
 export declare namespace MedicareProviderIdentifier {
-    interface Raw {
+    export interface Raw {
         state: State.Raw;
         provider_number: string;
     }

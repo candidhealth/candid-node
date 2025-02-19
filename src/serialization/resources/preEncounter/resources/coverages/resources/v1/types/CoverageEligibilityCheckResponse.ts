@@ -17,7 +17,7 @@ export const CoverageEligibilityCheckResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace CoverageEligibilityCheckResponse {
-    interface Raw {
+    export interface Raw {
         metadata: EligibilityCheckMetadata.Raw;
         check?: EligibilityCheck.Raw | null;
     }

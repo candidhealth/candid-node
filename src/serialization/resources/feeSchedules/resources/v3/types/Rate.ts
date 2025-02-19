@@ -23,7 +23,7 @@ export const Rate: core.serialization.ObjectSchema<
 });
 
 export declare namespace Rate {
-    interface Raw {
+    export interface Raw {
         rate_id: RateId.Raw;
         dimensions: Dimensions.Raw;
         version: number;

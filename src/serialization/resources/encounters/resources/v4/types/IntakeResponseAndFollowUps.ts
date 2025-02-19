@@ -16,7 +16,7 @@ export const IntakeResponseAndFollowUps: core.serialization.ObjectSchema<
 });
 
 export declare namespace IntakeResponseAndFollowUps {
-    interface Raw {
+    export interface Raw {
         response?: string | null;
         follow_ups?: IntakeFollowUp.Raw[] | null;
     }

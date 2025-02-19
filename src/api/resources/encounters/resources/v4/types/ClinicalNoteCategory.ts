@@ -13,7 +13,7 @@ import * as CandidApi from "../../../../../index";
  *                 text: "Mild chest pain since morning.",
  *                 authorName: "John Doe",
  *                 authorNpi: CandidApi.Npi("1234567890"),
- *                 timestamp: new Date("2023-01-01T00:00:00.000Z")
+ *                 timestamp: "2023-01-01T00:00:00Z"
  *             }]
  *     }
  */

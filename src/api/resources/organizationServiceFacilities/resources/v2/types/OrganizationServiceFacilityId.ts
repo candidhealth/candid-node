@@ -13,7 +13,7 @@ export type OrganizationServiceFacilityId = string & {
 };
 
 export function OrganizationServiceFacilityId(
-    value: string
+    value: string,
 ): CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId {
     return value as unknown as CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId;
 }

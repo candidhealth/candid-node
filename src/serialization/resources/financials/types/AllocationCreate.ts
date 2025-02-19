@@ -16,7 +16,7 @@ export const AllocationCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace AllocationCreate {
-    interface Raw {
+    export interface Raw {
         amount_cents: number;
         target: AllocationTargetCreate.Raw;
     }

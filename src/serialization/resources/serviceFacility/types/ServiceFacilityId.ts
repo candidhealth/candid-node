@@ -15,5 +15,5 @@ export const ServiceFacilityId: core.serialization.Schema<
 });
 
 export declare namespace ServiceFacilityId {
-    type Raw = string;
+    export type Raw = string;
 }

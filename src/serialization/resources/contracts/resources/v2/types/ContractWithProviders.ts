@@ -14,13 +14,13 @@ export const ContractWithProviders: core.serialization.ObjectSchema<
     .object({
         renderingProviderIds: core.serialization.property(
             "rendering_provider_ids",
-            core.serialization.set(core.serialization.string())
+            core.serialization.set(core.serialization.string()),
         ),
     })
     .extend(Contract);
 
 export declare namespace ContractWithProviders {
-    interface Raw extends Contract.Raw {
+    export interface Raw extends Contract.Raw {
         rendering_provider_ids: string[];
     }
 }

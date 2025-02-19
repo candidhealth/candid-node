@@ -14,7 +14,7 @@ export const ResourcePage: core.serialization.ObjectSchema<serializers.ResourceP
     });
 
 export declare namespace ResourcePage {
-    interface Raw {
+    export interface Raw {
         prev_page_token?: PageToken.Raw | null;
         next_page_token?: PageToken.Raw | null;
     }

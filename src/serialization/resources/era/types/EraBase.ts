@@ -14,7 +14,7 @@ export const EraBase: core.serialization.ObjectSchema<serializers.EraBase.Raw, C
     });
 
 export declare namespace EraBase {
-    interface Raw {
+    export interface Raw {
         check_number: string;
         check_date: Date_.Raw;
     }

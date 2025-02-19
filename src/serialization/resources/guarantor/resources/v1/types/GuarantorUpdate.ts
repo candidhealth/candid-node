@@ -25,7 +25,7 @@ export const GuarantorUpdate: core.serialization.ObjectSchema<
 });
 
 export declare namespace GuarantorUpdate {
-    interface Raw {
+    export interface Raw {
         first_name?: string | null;
         last_name?: string | null;
         external_id?: string | null;

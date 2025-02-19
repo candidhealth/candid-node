@@ -18,7 +18,7 @@ export const NewRateVersion: core.serialization.ObjectSchema<
 });
 
 export declare namespace NewRateVersion {
-    interface Raw {
+    export interface Raw {
         rate_id: RateId.Raw;
         previous_version: number;
         entries: RateEntry.Raw[];

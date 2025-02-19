@@ -17,7 +17,7 @@ export const MatchResult: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchResult {
-    interface Raw {
+    export interface Raw {
         threshold: ThresholdMatch.Raw;
         rate_id: RateId.Raw;
     }

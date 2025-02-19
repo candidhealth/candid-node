@@ -22,7 +22,7 @@ export const PlanMetadata: core.serialization.ObjectSchema<
 });
 
 export declare namespace PlanMetadata {
-    interface Raw {
+    export interface Raw {
         insurance_type?: string | null;
         insurance_type_code?: string | null;
         plan_name?: string | null;

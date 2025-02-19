@@ -406,7 +406,6 @@ export type Carc =
     | "Y2"
     | "Y3"
     | "UNKNOWN";
-
 export const Carc = {
     Carc1: "1",
     Carc2: "2",

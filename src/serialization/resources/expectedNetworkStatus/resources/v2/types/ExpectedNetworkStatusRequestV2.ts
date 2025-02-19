@@ -20,19 +20,19 @@ export const ExpectedNetworkStatusRequestV2: core.serialization.ObjectSchema<
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode),
     subscriberInformation: core.serialization.property(
         "subscriber_information",
-        ExpectedNetworkStatusSubscriberInformation
+        ExpectedNetworkStatusSubscriberInformation,
     ),
     patientAddress: core.serialization.property("patient_address", StreetAddressShortZip),
     billingProviderId: core.serialization.property("billing_provider_id", OrganizationProviderId),
     organizationServiceFacilityId: core.serialization.property(
         "organization_service_facility_id",
-        OrganizationServiceFacilityId
+        OrganizationServiceFacilityId,
     ),
     dateOfService: core.serialization.property("date_of_service", core.serialization.string()),
 });
 
 export declare namespace ExpectedNetworkStatusRequestV2 {
-    interface Raw {
+    export interface Raw {
         service_type: ServiceType.Raw;
         place_of_service_code: FacilityTypeCode.Raw;
         subscriber_information: ExpectedNetworkStatusSubscriberInformation.Raw;

@@ -13,5 +13,5 @@ export const ErrorMessage: core.serialization.Schema<serializers.ErrorMessage.Ra
     });
 
 export declare namespace ErrorMessage {
-    type Raw = string;
+    export type Raw = string;
 }

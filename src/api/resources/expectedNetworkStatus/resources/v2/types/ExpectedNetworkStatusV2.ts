@@ -9,16 +9,16 @@ export type ExpectedNetworkStatusV2 =
     | CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusV2.OutOfNetwork
     | CandidApi.expectedNetworkStatus.v2.ExpectedNetworkStatusV2.Indeterminate;
 
-export declare namespace ExpectedNetworkStatusV2 {
-    interface InNetwork extends CandidApi.expectedNetworkStatus.v2.InNetworkStatus {
+export namespace ExpectedNetworkStatusV2 {
+    export interface InNetwork extends CandidApi.expectedNetworkStatus.v2.InNetworkStatus {
         type: "in_network";
     }
 
-    interface OutOfNetwork extends CandidApi.expectedNetworkStatus.v2.OutOfNetworkStatus {
+    export interface OutOfNetwork extends CandidApi.expectedNetworkStatus.v2.OutOfNetworkStatus {
         type: "out_of_network";
     }
 
-    interface Indeterminate extends CandidApi.expectedNetworkStatus.v2.IndeterminateNetworkStatus {
+    export interface Indeterminate extends CandidApi.expectedNetworkStatus.v2.IndeterminateNetworkStatus {
         type: "indeterminate";
     }
 }

@@ -22,7 +22,7 @@ export const InitialReferringProviderUpdate: core.serialization.ObjectSchema<
     .extend(EncounterProviderBase);
 
 export declare namespace InitialReferringProviderUpdate {
-    interface Raw extends EncounterProviderBase.Raw {
+    export interface Raw extends EncounterProviderBase.Raw {
         npi?: string | null;
         taxonomy_code?: string | null;
         address?: StreetAddressLongZip.Raw | null;

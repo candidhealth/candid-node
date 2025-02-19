@@ -20,7 +20,7 @@ export const TaskCreateV3: core.serialization.ObjectSchema<
     description: core.serialization.string(),
     blocksClaimSubmission: core.serialization.property(
         "blocks_claim_submission",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     assigneeUserId: core.serialization.property("assignee_user_id", UserId.optional()),
     category: TaskCategory.optional(),
@@ -28,7 +28,7 @@ export const TaskCreateV3: core.serialization.ObjectSchema<
 });
 
 export declare namespace TaskCreateV3 {
-    interface Raw {
+    export interface Raw {
         encounter_id: EncounterId.Raw;
         task_type: TaskType.Raw;
         description: string;

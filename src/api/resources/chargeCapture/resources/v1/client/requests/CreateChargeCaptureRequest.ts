@@ -12,7 +12,7 @@ import * as CandidApi from "../../../../../../index";
  *         ehrSourceUrl: "string",
  *         dateOfService: "2023-01-15",
  *         patientExternalId: "string",
- *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned
+ *         status: "planned"
  *     }
  */
 export interface CreateChargeCaptureRequest {

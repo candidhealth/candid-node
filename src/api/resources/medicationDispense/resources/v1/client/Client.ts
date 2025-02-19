@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V1 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -37,40 +41,45 @@ export class V1 {
      *         patientExternalId: "string",
      *         procedureCode: "string",
      *         quantity: CandidApi.Decimal("string"),
-     *         units: CandidApi.ServiceLineUnits.Mj,
+     *         units: "MJ",
      *         dateOfService: "2023-01-15",
      *         drugIdentification: {
-     *             serviceIdQualifier: CandidApi.serviceLines.v2.ServiceIdQualifier.EanUcc13,
+     *             serviceIdQualifier: "EN",
      *             nationalDrugCode: "string",
      *             nationalDrugUnitCount: "string",
-     *             measurementUnitCode: CandidApi.serviceLines.v2.MeasurementUnitCode.Milliliters,
+     *             measurementUnitCode: "ML",
      *             linkSequenceNumber: "string",
      *             pharmacyPrescriptionNumber: "string",
      *             conversionFormula: "string",
      *             drugDescription: "string"
      *         },
      *         description: "string",
-     *         modifiers: [CandidApi.ProcedureModifier.TwentyTwo]
+     *         modifiers: ["22"]
      *     })
      */
     public async create(
         request: CandidApi.medicationDispense.v1.MedicationDispenseCreate,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.medicationDispense.v1.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/medication-dispense/v1"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/medication-dispense/v1",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -110,7 +119,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

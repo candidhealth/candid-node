@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.DiagnosisNotFoundHttpError;
+    export type Raw = Error.DiagnosisNotFoundHttpError;
 
-    interface DiagnosisNotFoundHttpError {
+    export interface DiagnosisNotFoundHttpError {
         errorName: "DiagnosisNotFoundHTTPError";
         content: DiagnosisNotFoundError.Raw;
     }

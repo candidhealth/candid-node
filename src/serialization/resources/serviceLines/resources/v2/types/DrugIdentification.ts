@@ -19,14 +19,14 @@ export const DrugIdentification: core.serialization.ObjectSchema<
     linkSequenceNumber: core.serialization.property("link_sequence_number", core.serialization.string().optional()),
     pharmacyPrescriptionNumber: core.serialization.property(
         "pharmacy_prescription_number",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     conversionFormula: core.serialization.property("conversion_formula", core.serialization.string().optional()),
     drugDescription: core.serialization.property("drug_description", core.serialization.string().optional()),
 });
 
 export declare namespace DrugIdentification {
-    interface Raw {
+    export interface Raw {
         service_id_qualifier: ServiceIdQualifier.Raw;
         national_drug_code: string;
         national_drug_unit_count: string;

@@ -414,7 +414,7 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
     ]);
 
 export declare namespace Carc {
-    type Raw =
+    export type Raw =
         | "1"
         | "2"
         | "3"

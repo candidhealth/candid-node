@@ -15,7 +15,7 @@ export const SchemaGetMultiResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaGetMultiResponse {
-    interface Raw {
+    export interface Raw {
         schemas: Schema.Raw[];
     }
 }

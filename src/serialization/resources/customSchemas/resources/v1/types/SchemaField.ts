@@ -16,7 +16,7 @@ export const SchemaField: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaField {
-    interface Raw {
+    export interface Raw {
         key: string;
         type: Primitive.Raw;
     }

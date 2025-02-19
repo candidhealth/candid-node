@@ -24,7 +24,7 @@ export const InsuranceAdjudication: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsuranceAdjudication {
-    interface Raw {
+    export interface Raw {
         insurance_adjudication_id: InsuranceAdjudicationId.Raw;
         payer_uuid: PayerUuid.Raw;
         post_date?: string | null;

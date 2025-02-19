@@ -24,20 +24,20 @@ export const ExpectedNetworkStatusV2: core.serialization.Schema<
     });
 
 export declare namespace ExpectedNetworkStatusV2 {
-    type Raw =
+    export type Raw =
         | ExpectedNetworkStatusV2.InNetwork
         | ExpectedNetworkStatusV2.OutOfNetwork
         | ExpectedNetworkStatusV2.Indeterminate;
 
-    interface InNetwork extends InNetworkStatus.Raw {
+    export interface InNetwork extends InNetworkStatus.Raw {
         type: "in_network";
     }
 
-    interface OutOfNetwork extends OutOfNetworkStatus.Raw {
+    export interface OutOfNetwork extends OutOfNetworkStatus.Raw {
         type: "out_of_network";
     }
 
-    interface Indeterminate extends IndeterminateNetworkStatus.Raw {
+    export interface Indeterminate extends IndeterminateNetworkStatus.Raw {
         type: "indeterminate";
     }
 }

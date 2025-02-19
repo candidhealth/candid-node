@@ -17,7 +17,7 @@ export const ClaimAllocationTarget: core.serialization.ObjectSchema<
 });
 
 export declare namespace ClaimAllocationTarget {
-    interface Raw {
+    export interface Raw {
         claim_id: ClaimId.Raw;
         encounter_id: EncounterId.Raw;
     }

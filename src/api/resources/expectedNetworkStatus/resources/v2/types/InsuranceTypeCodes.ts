@@ -18,17 +18,17 @@ export type InsuranceTypeCodes =
      *  */
     | CandidApi.expectedNetworkStatus.v2.InsuranceTypeCodes.NotApplicable;
 
-export declare namespace InsuranceTypeCodes {
-    interface InsuranceTypeCode {
+export namespace InsuranceTypeCodes {
+    export interface InsuranceTypeCode {
         type: "insurance_type_code";
         value: CandidApi.InsuranceTypeCode;
     }
 
-    interface UnknownInsuranceTypeCode {
+    export interface UnknownInsuranceTypeCode {
         type: "unknown_insurance_type_code";
     }
 
-    interface NotApplicable {
+    export interface NotApplicable {
         type: "not_applicable";
     }
 }

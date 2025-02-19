@@ -12,5 +12,5 @@ export const InvoiceItemUpdateType: core.serialization.Schema<
 > = core.serialization.enum_(["APPEND", "OVERWRITE"]);
 
 export declare namespace InvoiceItemUpdateType {
-    type Raw = "APPEND" | "OVERWRITE";
+    export type Raw = "APPEND" | "OVERWRITE";
 }

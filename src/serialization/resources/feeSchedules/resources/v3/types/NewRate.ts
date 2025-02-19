@@ -17,7 +17,7 @@ export const NewRate: core.serialization.ObjectSchema<
 });
 
 export declare namespace NewRate {
-    interface Raw {
+    export interface Raw {
         dimensions: Dimensions.Raw;
         entries: RateEntry.Raw[];
     }

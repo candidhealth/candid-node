@@ -12,5 +12,5 @@ export const MeasurementUnitCode: core.serialization.Schema<
 > = core.serialization.enum_(["ML", "UN", "GR", "F2", "ME"]);
 
 export declare namespace MeasurementUnitCode {
-    type Raw = "ML" | "UN" | "GR" | "F2" | "ME";
+    export type Raw = "ML" | "UN" | "GR" | "F2" | "ME";
 }

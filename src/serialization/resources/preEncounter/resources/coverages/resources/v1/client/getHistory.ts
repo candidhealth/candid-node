@@ -14,7 +14,7 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(Coverage);
 
 export declare namespace Response {
-    type Raw = Coverage.Raw[];
+    export type Raw = Coverage.Raw[];
 }
 
 export const Error: core.serialization.Schema<
@@ -37,9 +37,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.NotFoundError;
+    export type Raw = Error.NotFoundError;
 
-    interface NotFoundError {
+    export interface NotFoundError {
         errorName: "NotFoundError";
         content: ErrorBase4Xx.Raw;
     }

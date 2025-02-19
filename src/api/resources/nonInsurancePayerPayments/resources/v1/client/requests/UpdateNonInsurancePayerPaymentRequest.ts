@@ -7,7 +7,7 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+ *         paymentTimestamp: "2024-01-15T09:30:00Z",
  *         paymentNote: {
  *             type: "set",
  *             value: "string"

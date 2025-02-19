@@ -12,5 +12,5 @@ export const EligibilityStatus: core.serialization.Schema<
 > = core.serialization.enum_(["ACTIVE", "INACTIVE", "UNKNOWN"]);
 
 export declare namespace EligibilityStatus {
-    type Raw = "ACTIVE" | "INACTIVE" | "UNKNOWN";
+    export type Raw = "ACTIVE" | "INACTIVE" | "UNKNOWN";
 }

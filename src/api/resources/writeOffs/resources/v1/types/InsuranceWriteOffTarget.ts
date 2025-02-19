@@ -9,18 +9,18 @@ export type InsuranceWriteOffTarget =
     | CandidApi.writeOffs.v1.InsuranceWriteOffTarget.ClaimId
     | CandidApi.writeOffs.v1.InsuranceWriteOffTarget.BillingProviderId;
 
-export declare namespace InsuranceWriteOffTarget {
-    interface ServiceLineId {
+export namespace InsuranceWriteOffTarget {
+    export interface ServiceLineId {
         type: "service_line_id";
         value: CandidApi.ServiceLineId;
     }
 
-    interface ClaimId {
+    export interface ClaimId {
         type: "claim_id";
         value: CandidApi.ClaimId;
     }
 
-    interface BillingProviderId {
+    export interface BillingProviderId {
         type: "billing_provider_id";
         value: CandidApi.ProviderId;
     }

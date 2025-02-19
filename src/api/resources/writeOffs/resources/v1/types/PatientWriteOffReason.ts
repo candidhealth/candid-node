@@ -12,7 +12,6 @@ export type PatientWriteOffReason =
     | "COLLECTION_AGENCY"
     | "OTHER"
     | "UNKNOWN";
-
 export const PatientWriteOffReason = {
     SmallBalance: "SMALL_BALANCE",
     CharityOrFinancialAssistance: "CHARITY_OR_FINANCIAL_ASSISTANCE",

@@ -33,7 +33,6 @@ export type DenialReasonContent =
     | "Billing Error"
     | "Unknown"
     | "Max Benefit Reached";
-
 export const DenialReasonContent = {
     AuthorizationRequired: "Authorization Required",
     ReferralRequired: "Referral Required",

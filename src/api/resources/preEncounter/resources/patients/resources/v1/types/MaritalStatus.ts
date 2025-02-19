@@ -15,7 +15,6 @@ export type MaritalStatus =
     | "NEVER_MARRIED"
     | "WIDOWED"
     | "UNKNOWN";
-
 export const MaritalStatus = {
     Annulled: "ANNULLED",
     Divorced: "DIVORCED",

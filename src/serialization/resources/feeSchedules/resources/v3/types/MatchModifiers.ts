@@ -17,7 +17,7 @@ export const MatchModifiers: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchModifiers {
-    interface Raw {
+    export interface Raw {
         value: ProcedureModifier.Raw[];
         match: boolean;
         explanation: string;

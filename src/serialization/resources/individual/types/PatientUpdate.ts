@@ -26,16 +26,16 @@ export const PatientUpdate: core.serialization.ObjectSchema<serializers.PatientU
         emailConsent: core.serialization.property("email_consent", core.serialization.boolean().optional()),
         nonInsurancePayers: core.serialization.property(
             "non_insurance_payers",
-            core.serialization.list(NonInsurancePayerId).optional()
+            core.serialization.list(NonInsurancePayerId).optional(),
         ),
         nonInsurancePayersInfo: core.serialization.property(
             "non_insurance_payers_info",
-            core.serialization.list(PatientNonInsurancePayerInfoCreate).optional()
+            core.serialization.list(PatientNonInsurancePayerInfoCreate).optional(),
         ),
     });
 
 export declare namespace PatientUpdate {
-    interface Raw {
+    export interface Raw {
         first_name?: string | null;
         last_name?: string | null;
         gender?: Gender.Raw | null;

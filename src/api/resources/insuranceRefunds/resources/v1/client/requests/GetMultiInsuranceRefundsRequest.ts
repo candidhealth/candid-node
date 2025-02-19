@@ -12,8 +12,8 @@ import * as CandidApi from "../../../../../../index";
  *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         sort: CandidApi.insuranceRefunds.v1.InsuranceRefundSortField.AmountCents,
- *         sortDirection: CandidApi.SortDirection.Asc,
+ *         sort: "amount_cents",
+ *         sortDirection: "asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
  *     }
  */

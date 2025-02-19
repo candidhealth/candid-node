@@ -14,7 +14,7 @@ export const ExpectedNetworkStatusCheckErrorMessage: core.serialization.ObjectSc
 });
 
 export declare namespace ExpectedNetworkStatusCheckErrorMessage {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

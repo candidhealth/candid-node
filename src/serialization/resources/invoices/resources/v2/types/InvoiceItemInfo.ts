@@ -15,16 +15,16 @@ export const InvoiceItemInfo: core.serialization.ObjectSchema<
 > = core.serialization.object({
     claimInvoiceItems: core.serialization.property(
         "claim_invoice_items",
-        core.serialization.record(ClaimId, ClaimInvoiceItemInfo)
+        core.serialization.record(ClaimId, ClaimInvoiceItemInfo),
     ),
     unattributedItems: core.serialization.property(
         "unattributed_items",
-        core.serialization.list(UnattributedInvoiceItem)
+        core.serialization.list(UnattributedInvoiceItem),
     ),
 });
 
 export declare namespace InvoiceItemInfo {
-    interface Raw {
+    export interface Raw {
         claim_invoice_items: Record<ClaimId.Raw, ClaimInvoiceItemInfo.Raw>;
         unattributed_items: UnattributedInvoiceItem.Raw[];
     }

@@ -23,7 +23,7 @@ export const BillingNote: core.serialization.ObjectSchema<
     .extend(BillingNoteBase);
 
 export declare namespace BillingNote {
-    interface Raw extends BillingNoteBase.Raw {
+    export interface Raw extends BillingNoteBase.Raw {
         billing_note_id: BillingNoteId.Raw;
         encounter_id: EncounterId.Raw;
         created_at: string;

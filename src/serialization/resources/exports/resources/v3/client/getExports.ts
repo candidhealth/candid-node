@@ -48,34 +48,34 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.HttpRequestValidationsError
         | Error.ExportFilesUnavailableError
         | Error.MissingDailyIncrementalExportFileError
         | Error.ExportNotYetAvailableError
         | Error.ExportDateTooEarlyError;
 
-    interface HttpRequestValidationsError {
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }
 
-    interface ExportFilesUnavailableError {
+    export interface ExportFilesUnavailableError {
         errorName: "ExportFilesUnavailableError";
         content: ErrorMessage.Raw;
     }
 
-    interface MissingDailyIncrementalExportFileError {
+    export interface MissingDailyIncrementalExportFileError {
         errorName: "MissingDailyIncrementalExportFileError";
         content: ErrorMessage.Raw;
     }
 
-    interface ExportNotYetAvailableError {
+    export interface ExportNotYetAvailableError {
         errorName: "ExportNotYetAvailableError";
         content: ErrorMessage.Raw;
     }
 
-    interface ExportDateTooEarlyError {
+    export interface ExportDateTooEarlyError {
         errorName: "ExportDateTooEarlyError";
         content: ErrorMessage.Raw;
     }

@@ -10,7 +10,6 @@ export type ChargeCaptureStatus =
     | "billed"
     | "entered-in-error"
     | "unknown";
-
 export const ChargeCaptureStatus = {
     Planned: "planned",
     NotBillable: "not-billable",

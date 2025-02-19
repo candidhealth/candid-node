@@ -12,5 +12,5 @@ export const WriteOffSortField: core.serialization.Schema<
 > = core.serialization.enum_(["amount_cents", "write_off_timestamp", "write_off_note"]);
 
 export declare namespace WriteOffSortField {
-    type Raw = "amount_cents" | "write_off_timestamp" | "write_off_note";
+    export type Raw = "amount_cents" | "write_off_timestamp" | "write_off_note";
 }

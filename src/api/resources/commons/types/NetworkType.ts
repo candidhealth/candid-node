@@ -66,7 +66,6 @@ export type NetworkType =
     /**
      * Blue Cross Blue Shield */
     | "BL";
-
 export const NetworkType = {
     Ppo: "12",
     Pos: "13",

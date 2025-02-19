@@ -14,7 +14,7 @@ export const UnprocessableEntityErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace UnprocessableEntityErrorMessage {
-    interface Raw {
+    export interface Raw {
         message?: string | null;
     }
 }

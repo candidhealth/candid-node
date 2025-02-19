@@ -18,7 +18,7 @@ export const CreateNonInsurancePayerRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace CreateNonInsurancePayerRequest {
-    interface Raw {
+    export interface Raw {
         name: string;
         description?: string | null;
         category?: string | null;

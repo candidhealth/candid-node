@@ -3,7 +3,6 @@
  */
 
 export type ClaimSubmissionPayerResponsibilityType = "primary" | "secondary";
-
 export const ClaimSubmissionPayerResponsibilityType = {
     Primary: "primary",
     Secondary: "secondary",

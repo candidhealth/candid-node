@@ -6,13 +6,13 @@ import * as CandidApi from "../../../index";
 
 export type RefundReasonUpdate = CandidApi.RefundReasonUpdate.Set | CandidApi.RefundReasonUpdate.Remove;
 
-export declare namespace RefundReasonUpdate {
-    interface Set {
+export namespace RefundReasonUpdate {
+    export interface Set {
         type: "set";
         value: CandidApi.RefundReason;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

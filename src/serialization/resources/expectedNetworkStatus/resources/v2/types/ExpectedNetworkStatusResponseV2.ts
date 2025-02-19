@@ -17,7 +17,7 @@ export const ExpectedNetworkStatusResponseV2: core.serialization.ObjectSchema<
 });
 
 export declare namespace ExpectedNetworkStatusResponseV2 {
-    interface Raw {
+    export interface Raw {
         network_status_check_id: NetworkStatusCheckId.Raw;
         network_status: ExpectedNetworkStatusV2.Raw;
     }

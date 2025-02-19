@@ -17,7 +17,7 @@ export const SchemaUpdate: core.serialization.Schema<
 });
 
 export declare namespace SchemaUpdate {
-    interface Raw {
+    export interface Raw {
         name?: string | null;
         description?: string | null;
         fields_to_add?: SchemaField.Raw[] | null;

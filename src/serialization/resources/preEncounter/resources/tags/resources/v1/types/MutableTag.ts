@@ -14,7 +14,7 @@ export const MutableTag: core.serialization.ObjectSchema<
 });
 
 export declare namespace MutableTag {
-    interface Raw {
+    export interface Raw {
         value: string;
     }
 }

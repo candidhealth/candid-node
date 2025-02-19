@@ -15,7 +15,7 @@ export const Era: core.serialization.ObjectSchema<serializers.Era.Raw, CandidApi
     .extend(EraBase);
 
 export declare namespace Era {
-    interface Raw extends EraBase.Raw {
+    export interface Raw extends EraBase.Raw {
         era_id: EraId.Raw;
     }
 }

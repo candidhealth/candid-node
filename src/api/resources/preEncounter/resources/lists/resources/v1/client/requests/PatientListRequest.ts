@@ -10,7 +10,7 @@ import * as CandidApi from "../../../../../../../../index";
  *         pageToken: CandidApi.preEncounter.PageToken("string"),
  *         limit: 1,
  *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
- *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
+ *         sortDirection: "asc",
  *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")
  *     }
  */

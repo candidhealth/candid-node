@@ -12,5 +12,5 @@ export const EncounterSubmissionOriginType: core.serialization.Schema<
 > = core.serialization.enum_(["CANDID", "EXTERNAL"]);
 
 export declare namespace EncounterSubmissionOriginType {
-    type Raw = "CANDID" | "EXTERNAL";
+    export type Raw = "CANDID" | "EXTERNAL";
 }

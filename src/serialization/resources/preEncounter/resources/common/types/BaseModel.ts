@@ -20,7 +20,7 @@ export const BaseModel: core.serialization.ObjectSchema<
 });
 
 export declare namespace BaseModel {
-    interface Raw {
+    export interface Raw {
         organization_id: OrganizationId.Raw;
         deactivated: boolean;
         version: number;

@@ -3,7 +3,6 @@
  */
 
 export type EligibilityStatus = "ACTIVE" | "INACTIVE" | "UNKNOWN";
-
 export const EligibilityStatus = {
     Active: "ACTIVE",
     Inactive: "INACTIVE",

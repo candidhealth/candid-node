@@ -15,5 +15,5 @@ export const IntakeFollowUpId: core.serialization.Schema<
 });
 
 export declare namespace IntakeFollowUpId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -3,7 +3,6 @@
  */
 
 export type Gender = "male" | "female" | "other" | "not_given" | "unknown";
-
 export const Gender = {
     Male: "male",
     Female: "female",

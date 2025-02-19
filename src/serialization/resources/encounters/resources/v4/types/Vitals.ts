@@ -14,11 +14,11 @@ export const Vitals: core.serialization.ObjectSchema<
     weightLbs: core.serialization.property("weight_lbs", core.serialization.number().optional()),
     bloodPressureSystolicMmhg: core.serialization.property(
         "blood_pressure_systolic_mmhg",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     bloodPressureDiastolicMmhg: core.serialization.property(
         "blood_pressure_diastolic_mmhg",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     bodyTemperatureF: core.serialization.property("body_temperature_f", core.serialization.number().optional()),
     hemoglobinGdl: core.serialization.property("hemoglobin_gdl", core.serialization.number().optional()),
@@ -26,7 +26,7 @@ export const Vitals: core.serialization.ObjectSchema<
 });
 
 export declare namespace Vitals {
-    interface Raw {
+    export interface Raw {
         height_in?: number | null;
         weight_lbs?: number | null;
         blood_pressure_systolic_mmhg?: number | null;

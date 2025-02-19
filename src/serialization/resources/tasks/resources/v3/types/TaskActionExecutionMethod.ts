@@ -19,9 +19,9 @@ export const TaskActionExecutionMethod: core.serialization.Schema<
     });
 
 export declare namespace TaskActionExecutionMethod {
-    type Raw = TaskActionExecutionMethod.CloseTask;
+    export type Raw = TaskActionExecutionMethod.CloseTask;
 
-    interface CloseTask {
+    export interface CloseTask {
         type: "close_task";
     }
 }

@@ -20,7 +20,7 @@ export const NonInsurancePayerUpdateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace NonInsurancePayerUpdateRequest {
-    interface Raw {
+    export interface Raw {
         name?: string | null;
         description?: NonInsurancePayerDescriptionUpdate.Raw | null;
         category?: NonInsurancePayerCategoryUpdate.Raw | null;

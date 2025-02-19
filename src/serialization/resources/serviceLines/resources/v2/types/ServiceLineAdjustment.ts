@@ -15,13 +15,13 @@ export const ServiceLineAdjustment: core.serialization.ObjectSchema<
     adjustmentReasonCode: core.serialization.property("adjustment_reason_code", core.serialization.string().optional()),
     adjustmentAmountCents: core.serialization.property(
         "adjustment_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     adjustmentNote: core.serialization.property("adjustment_note", core.serialization.string().optional()),
 });
 
 export declare namespace ServiceLineAdjustment {
-    interface Raw {
+    export interface Raw {
         created_at: string;
         adjustment_group_code?: string | null;
         adjustment_reason_code?: string | null;

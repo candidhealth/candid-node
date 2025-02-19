@@ -15,5 +15,5 @@ export const FilterQueryString: core.serialization.Schema<
 });
 
 export declare namespace FilterQueryString {
-    type Raw = string;
+    export type Raw = string;
 }

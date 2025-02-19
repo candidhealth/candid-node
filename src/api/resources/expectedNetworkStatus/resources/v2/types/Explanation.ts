@@ -11,7 +11,6 @@ export type Explanation =
     | "No Effective Contract with Insurance Type"
     | "No Effective Contract with Rendering Provider"
     | "Rendering Provider Not Credentialed";
-
 export const Explanation = {
     RoutingFailed: "Payer Routing and/or Billing Provider Routing Failed",
     PayerMatchFailed: "No Effective Contract with Payer",

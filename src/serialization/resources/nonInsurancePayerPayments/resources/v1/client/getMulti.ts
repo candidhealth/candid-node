@@ -21,7 +21,7 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "UnprocessableEntityError":
                     return CandidApi.nonInsurancePayerPayments.v1.getMulti.Error.unprocessableEntityError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -29,9 +29,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.UnprocessableEntityError;
+    export type Raw = Error.UnprocessableEntityError;
 
-    interface UnprocessableEntityError {
+    export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
     }

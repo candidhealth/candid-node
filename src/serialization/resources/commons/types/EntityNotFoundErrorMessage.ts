@@ -14,7 +14,7 @@ export const EntityNotFoundErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace EntityNotFoundErrorMessage {
-    interface Raw {
+    export interface Raw {
         id: string;
     }
 }

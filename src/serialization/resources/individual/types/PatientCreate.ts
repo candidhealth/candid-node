@@ -19,18 +19,18 @@ export const PatientCreate: core.serialization.ObjectSchema<serializers.PatientC
             email: Email.optional(),
             nonInsurancePayers: core.serialization.property(
                 "non_insurance_payers",
-                core.serialization.list(NonInsurancePayerId).optional()
+                core.serialization.list(NonInsurancePayerId).optional(),
             ),
             nonInsurancePayersInfo: core.serialization.property(
                 "non_insurance_payers_info",
-                core.serialization.list(PatientNonInsurancePayerInfoCreate).optional()
+                core.serialization.list(PatientNonInsurancePayerInfoCreate).optional(),
             ),
             emailConsent: core.serialization.property("email_consent", core.serialization.boolean().optional()),
         })
         .extend(PatientBase);
 
 export declare namespace PatientCreate {
-    interface Raw extends PatientBase.Raw {
+    export interface Raw extends PatientBase.Raw {
         phone_numbers?: PhoneNumber.Raw[] | null;
         phone_consent?: boolean | null;
         email?: Email.Raw | null;

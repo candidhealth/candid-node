@@ -9,7 +9,7 @@ export type NonInsurancePayerRefundId = string & {
 };
 
 export function NonInsurancePayerRefundId(
-    value: string
+    value: string,
 ): CandidApi.nonInsurancePayerRefunds.v1.NonInsurancePayerRefundId {
     return value as unknown as CandidApi.nonInsurancePayerRefunds.v1.NonInsurancePayerRefundId;
 }

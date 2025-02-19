@@ -14,9 +14,9 @@ import * as CandidApi from "../../../../../../index";
  *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         unattributed: true,
  *         invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         sources: CandidApi.PatientTransactionSource.ManualEntry,
- *         sort: CandidApi.patientRefunds.v1.PatientRefundSortField.RefundSource,
- *         sortDirection: CandidApi.SortDirection.Asc,
+ *         sources: "MANUAL_ENTRY",
+ *         sort: "refund_source",
+ *         sortDirection: "asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
  *     }
  */

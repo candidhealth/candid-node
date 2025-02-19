@@ -17,7 +17,7 @@ export const ProviderCredentialingSpan: core.serialization.ObjectSchema<
 > = core.serialization.object({
     providerCredentialingSpanId: core.serialization.property(
         "provider_credentialing_span_id",
-        ProviderCredentialingSpanId
+        ProviderCredentialingSpanId,
     ),
     renderingProvider: core.serialization.property("rendering_provider", OrganizationProviderV2),
     contractingProvider: core.serialization.property("contracting_provider", OrganizationProviderV2),
@@ -31,13 +31,13 @@ export const ProviderCredentialingSpan: core.serialization.ObjectSchema<
     source: core.serialization.string(),
     medallionPayerEnrollmentId: core.serialization.property(
         "medallion_payer_enrollment_id",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     isEnabled: core.serialization.property("is_enabled", core.serialization.boolean()),
 });
 
 export declare namespace ProviderCredentialingSpan {
-    interface Raw {
+    export interface Raw {
         provider_credentialing_span_id: ProviderCredentialingSpanId.Raw;
         rendering_provider: OrganizationProviderV2.Raw;
         contracting_provider: OrganizationProviderV2.Raw;

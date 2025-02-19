@@ -15,12 +15,12 @@ export const ExternalClaimSubmissionCreate: core.serialization.ObjectSchema<
     patientControlNumber: core.serialization.property("patient_control_number", core.serialization.string()),
     submissionRecords: core.serialization.property(
         "submission_records",
-        core.serialization.list(ClaimSubmissionRecordCreate)
+        core.serialization.list(ClaimSubmissionRecordCreate),
     ),
 });
 
 export declare namespace ExternalClaimSubmissionCreate {
-    interface Raw {
+    export interface Raw {
         claim_created_at: string;
         patient_control_number: string;
         submission_records: ClaimSubmissionRecordCreate.Raw[];

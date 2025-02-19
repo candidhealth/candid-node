@@ -19,7 +19,7 @@ export const RateUploadWithPossibleErrors: core.serialization.ObjectSchema<
 });
 
 export declare namespace RateUploadWithPossibleErrors {
-    interface Raw {
+    export interface Raw {
         rate_upload: RateUpload.Raw;
         existing_rate?: Rate.Raw | null;
         possible_errors: ValidationError.Raw[];

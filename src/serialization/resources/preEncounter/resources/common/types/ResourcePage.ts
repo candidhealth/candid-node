@@ -17,7 +17,7 @@ export const ResourcePage: core.serialization.ObjectSchema<
 });
 
 export declare namespace ResourcePage {
-    interface Raw {
+    export interface Raw {
         next_page_token?: PageToken.Raw | null;
         prev_page_token?: PageToken.Raw | null;
         total: number;

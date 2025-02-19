@@ -14,7 +14,7 @@ export const ContractInvalidExpirationDateError: core.serialization.ObjectSchema
 });
 
 export declare namespace ContractInvalidExpirationDateError {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

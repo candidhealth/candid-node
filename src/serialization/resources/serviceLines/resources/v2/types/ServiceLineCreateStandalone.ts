@@ -41,12 +41,12 @@ export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
     hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
     hasFamilyPlanningIndicator: core.serialization.property(
         "has_family_planning_indicator",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
 });
 
 export declare namespace ServiceLineCreateStandalone {
-    interface Raw {
+    export interface Raw {
         modifiers?: ProcedureModifier.Raw[] | null;
         charge_amount_cents?: number | null;
         diagnosis_id_zero?: DiagnosisId.Raw | null;

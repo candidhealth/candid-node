@@ -12,5 +12,5 @@ export const EligibilityCheckStatus: core.serialization.Schema<
 > = core.serialization.enum_(["COMPLETED", "FAILED", "PENDING"]);
 
 export declare namespace EligibilityCheckStatus {
-    type Raw = "COMPLETED" | "FAILED" | "PENDING";
+    export type Raw = "COMPLETED" | "FAILED" | "PENDING";
 }

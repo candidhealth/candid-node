@@ -3,7 +3,6 @@
  */
 
 export type Gender = "MAN" | "WOMAN" | "NON_BINARY" | "TWO_SPIRIT" | "OTHER" | "UNKNOWN" | "REFUSED";
-
 export const Gender = {
     Man: "MAN",
     Woman: "WOMAN",

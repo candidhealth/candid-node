@@ -3,7 +3,6 @@
  */
 
 export type CodingAttributionType = "CANDID" | "CUSTOMER" | "TCN" | "PJF";
-
 export const CodingAttributionType = {
     Candid: "CANDID",
     Customer: "CUSTOMER",

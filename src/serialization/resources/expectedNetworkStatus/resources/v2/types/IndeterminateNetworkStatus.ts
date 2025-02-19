@@ -18,12 +18,12 @@ export const IndeterminateNetworkStatus: core.serialization.ObjectSchema<
     routedPayerUuid: core.serialization.property("routed_payer_uuid", PayerUuid.optional()),
     routedBillingProviderId: core.serialization.property(
         "routed_billing_provider_id",
-        OrganizationProviderId.optional()
+        OrganizationProviderId.optional(),
     ),
 });
 
 export declare namespace IndeterminateNetworkStatus {
-    interface Raw {
+    export interface Raw {
         error: string;
         explanation: Explanation.Raw;
         routed_payer_uuid?: PayerUuid.Raw | null;

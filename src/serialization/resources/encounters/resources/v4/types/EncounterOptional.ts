@@ -36,25 +36,25 @@ export const EncounterOptional: core.serialization.ObjectSchema<
 > = core.serialization.object({
     benefitsAssignedToProvider: core.serialization.property(
         "benefits_assigned_to_provider",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     priorAuthorizationNumber: core.serialization.property(
         "prior_authorization_number",
-        PriorAuthorizationNumber.optional()
+        PriorAuthorizationNumber.optional(),
     ),
     externalId: core.serialization.property("external_id", EncounterExternalId.optional()),
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
     clinicalNotes: core.serialization.property(
         "clinical_notes",
-        core.serialization.list(ClinicalNoteCategoryCreate).optional()
+        core.serialization.list(ClinicalNoteCategoryCreate).optional(),
     ),
     payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
     billableStatus: core.serialization.property("billable_status", BillableStatusType.optional()),
     responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType.optional()),
     providerAcceptsAssignment: core.serialization.property(
         "provider_accepts_assignment",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     synchronicity: SynchronicityType.optional(),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
@@ -64,36 +64,36 @@ export const EncounterOptional: core.serialization.ObjectSchema<
     subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
     additionalInformation: core.serialization.property(
         "additional_information",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     serviceAuthorizationExceptionCode: core.serialization.property(
         "service_authorization_exception_code",
-        ServiceAuthorizationExceptionCode.optional()
+        ServiceAuthorizationExceptionCode.optional(),
     ),
     admissionDate: core.serialization.property("admission_date", core.serialization.string().optional()),
     dischargeDate: core.serialization.property("discharge_date", core.serialization.string().optional()),
     onsetOfCurrentIllnessOrSymptomDate: core.serialization.property(
         "onset_of_current_illness_or_symptom_date",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     lastMenstrualPeriodDate: core.serialization.property(
         "last_menstrual_period_date",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
     patient: PatientUpdate.optional(),
     patientAuthorizedRelease: core.serialization.property(
         "patient_authorized_release",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     schemaInstances: core.serialization.property(
         "schema_instances",
-        core.serialization.list(SchemaInstance).optional()
+        core.serialization.list(SchemaInstance).optional(),
     ),
     vitals: VitalsUpdate.optional(),
     existingMedications: core.serialization.property(
         "existing_medications",
-        core.serialization.list(Medication).optional()
+        core.serialization.list(Medication).optional(),
     ),
     renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
     serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityUpdate.optional()),
@@ -103,14 +103,14 @@ export const EncounterOptional: core.serialization.ObjectSchema<
     referringProvider: core.serialization.property("referring_provider", ReferringProviderUpdate.optional()),
     initialReferringProvider: core.serialization.property(
         "initial_referring_provider",
-        InitialReferringProviderUpdate.optional()
+        InitialReferringProviderUpdate.optional(),
     ),
     referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
     epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
 });
 
 export declare namespace EncounterOptional {
-    interface Raw {
+    export interface Raw {
         benefits_assigned_to_provider?: boolean | null;
         prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
         external_id?: EncounterExternalId.Raw | null;

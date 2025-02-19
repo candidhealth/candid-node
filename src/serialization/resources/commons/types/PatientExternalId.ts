@@ -15,5 +15,5 @@ export const PatientExternalId: core.serialization.Schema<
 });
 
 export declare namespace PatientExternalId {
-    type Raw = string;
+    export type Raw = string;
 }

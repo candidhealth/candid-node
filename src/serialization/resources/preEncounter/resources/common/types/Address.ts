@@ -22,7 +22,7 @@ export const Address: core.serialization.ObjectSchema<
 });
 
 export declare namespace Address {
-    interface Raw {
+    export interface Raw {
         use: AddressUse.Raw;
         line: string[];
         city: string;

@@ -24,7 +24,6 @@ export type ServiceIdQualifier =
     /**
      * UCC - 12 */
     | "UP";
-
 export const ServiceIdQualifier = {
     EanUcc13: "EN",
     EanUcc8: "EO",

@@ -29,19 +29,19 @@ export const PayeeIdentifier: core.serialization.Schema<
     });
 
 export declare namespace PayeeIdentifier {
-    type Raw = PayeeIdentifier.Npi | PayeeIdentifier.Tin | PayeeIdentifier.CmsPlanId;
+    export type Raw = PayeeIdentifier.Npi | PayeeIdentifier.Tin | PayeeIdentifier.CmsPlanId;
 
-    interface Npi {
+    export interface Npi {
         type: "npi";
         value: Npi.Raw;
     }
 
-    interface Tin {
+    export interface Tin {
         type: "tin";
         value: TaxId.Raw;
     }
 
-    interface CmsPlanId {
+    export interface CmsPlanId {
         type: "cms_plan_id";
         value: string;
     }

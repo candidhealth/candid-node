@@ -3,7 +3,6 @@
  */
 
 export type NameUse = "USUAL" | "OFFICIAL" | "TEMP" | "NICKNAME" | "ANONYMOUS" | "OLD" | "MAIDEN";
-
 export const NameUse = {
     Usual: "USUAL",
     Official: "OFFICIAL",

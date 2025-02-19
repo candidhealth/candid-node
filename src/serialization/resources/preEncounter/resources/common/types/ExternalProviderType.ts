@@ -12,5 +12,5 @@ export const ExternalProviderType: core.serialization.Schema<
 > = core.serialization.enum_(["PRIMARY", "REFERRING", "ATTENDING"]);
 
 export declare namespace ExternalProviderType {
-    type Raw = "PRIMARY" | "REFERRING" | "ATTENDING";
+    export type Raw = "PRIMARY" | "REFERRING" | "ATTENDING";
 }

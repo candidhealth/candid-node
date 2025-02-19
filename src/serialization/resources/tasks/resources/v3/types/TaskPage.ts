@@ -16,7 +16,7 @@ export const TaskPage: core.serialization.ObjectSchema<serializers.tasks.v3.Task
         .extend(ResourcePage);
 
 export declare namespace TaskPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: Task.Raw[];
     }
 }

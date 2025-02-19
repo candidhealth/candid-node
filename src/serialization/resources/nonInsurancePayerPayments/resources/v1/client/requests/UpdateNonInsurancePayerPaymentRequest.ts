@@ -18,7 +18,7 @@ export const UpdateNonInsurancePayerPaymentRequest: core.serialization.Schema<
 });
 
 export declare namespace UpdateNonInsurancePayerPaymentRequest {
-    interface Raw {
+    export interface Raw {
         payment_timestamp?: string | null;
         payment_note?: NoteUpdate.Raw | null;
         invoice_id?: InvoiceUpdate.Raw | null;

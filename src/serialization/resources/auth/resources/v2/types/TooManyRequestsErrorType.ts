@@ -14,7 +14,7 @@ export const TooManyRequestsErrorType: core.serialization.ObjectSchema<
 });
 
 export declare namespace TooManyRequestsErrorType {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

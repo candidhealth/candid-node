@@ -16,7 +16,7 @@ export const DateRangeOptionalEnd: core.serialization.ObjectSchema<
 });
 
 export declare namespace DateRangeOptionalEnd {
-    interface Raw {
+    export interface Raw {
         start_date: Date_.Raw;
         end_date?: Date_.Raw | null;
     }

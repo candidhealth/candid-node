@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V3 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -36,22 +40,27 @@ export class V3 {
      */
     public async getActions(
         taskId: CandidApi.TaskId,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskActions, CandidApi.tasks.v3.getActions.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}/actions`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}/actions`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -85,22 +94,22 @@ export class V3 {
      *     await client.tasks.v3.getMulti({
      *         limit: 1,
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         status: CandidApi.tasks.TaskStatus.Finished,
-     *         taskType: CandidApi.tasks.TaskType.CustomerDataRequest,
+     *         status: "finished",
+     *         taskType: "CUSTOMER_DATA_REQUEST",
      *         categories: "string",
-     *         updatedSince: new Date("2024-01-15T09:30:00.000Z"),
+     *         updatedSince: "2024-01-15T09:30:00Z",
      *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         searchTerm: "string",
      *         assignedToId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         dateOfServiceMin: "2023-01-15",
      *         dateOfServiceMax: "2023-01-15",
      *         billingProviderNpi: "string",
-     *         sort: CandidApi.tasks.v3.TaskSortOptions.UpdatedAtAsc
+     *         sort: "updated_at:asc"
      *     })
      */
     public async getMulti(
         request: CandidApi.tasks.v3.GetAllTasksRequest = {},
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskPage, CandidApi.tasks.v3.getMulti.Error>> {
         const {
             limit,
@@ -117,7 +126,7 @@ export class V3 {
             billingProviderNpi,
             sort,
         } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -127,11 +136,15 @@ export class V3 {
         }
 
         if (status != null) {
-            _queryParams["status"] = status;
+            _queryParams["status"] = serializers.tasks.TaskStatus.jsonOrThrow(status, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (taskType != null) {
-            _queryParams["task_type"] = taskType;
+            _queryParams["task_type"] = serializers.tasks.TaskType.jsonOrThrow(taskType, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (categories != null) {
@@ -167,23 +180,30 @@ export class V3 {
         }
 
         if (sort != null) {
-            _queryParams["sort"] = sort;
+            _queryParams["sort"] = serializers.tasks.v3.TaskSortOptions.jsonOrThrow(sort, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/tasks/v3"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/tasks/v3",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -216,7 +236,7 @@ export class V3 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -237,22 +257,27 @@ export class V3 {
      */
     public async get(
         taskId: CandidApi.TaskId,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -285,7 +310,7 @@ export class V3 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -304,32 +329,37 @@ export class V3 {
      * @example
      *     await client.tasks.v3.create({
      *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         taskType: CandidApi.tasks.TaskType.CustomerDataRequest,
+     *         taskType: "CUSTOMER_DATA_REQUEST",
      *         description: "string",
      *         blocksClaimSubmission: true,
      *         assigneeUserId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         category: CandidApi.tasks.TaskCategory.Other,
+     *         category: "other",
      *         workQueueId: CandidApi.WorkQueueId("string")
      *     })
      */
     public async create(
         request: CandidApi.tasks.v3.TaskCreateV3,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/tasks/v3"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/tasks/v3",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -363,7 +393,7 @@ export class V3 {
      *
      * @example
      *     await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         status: CandidApi.tasks.TaskStatus.Finished,
+     *         status: "finished",
      *         assigneeUserId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         blocksClaimSubmission: true
      *     })
@@ -371,22 +401,27 @@ export class V3 {
     public async update(
         taskId: CandidApi.TaskId,
         request: CandidApi.tasks.v3.TaskUpdateV3,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -421,7 +456,7 @@ export class V3 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

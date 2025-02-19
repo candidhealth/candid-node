@@ -3,7 +3,6 @@
  */
 
 export type LabCodeType = "quest" | "labcorp";
-
 export const LabCodeType = {
     Quest: "quest",
     Labcorp: "labcorp",

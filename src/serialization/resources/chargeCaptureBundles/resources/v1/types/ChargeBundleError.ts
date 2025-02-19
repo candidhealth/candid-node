@@ -20,7 +20,7 @@ export const ChargeBundleError: core.serialization.ObjectSchema<
 });
 
 export declare namespace ChargeBundleError {
-    interface Raw {
+    export interface Raw {
         id: string;
         charge_capture_id?: ChargeCaptureId.Raw | null;
         message: string;

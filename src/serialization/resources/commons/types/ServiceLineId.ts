@@ -13,5 +13,5 @@ export const ServiceLineId: core.serialization.Schema<serializers.ServiceLineId.
     });
 
 export declare namespace ServiceLineId {
-    type Raw = string;
+    export type Raw = string;
 }

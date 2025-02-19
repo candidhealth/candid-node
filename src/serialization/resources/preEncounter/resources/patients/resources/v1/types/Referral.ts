@@ -19,7 +19,7 @@ export const Referral: core.serialization.ObjectSchema<
 });
 
 export declare namespace Referral {
-    interface Raw {
+    export interface Raw {
         provider: ExternalProvider.Raw;
         referral_number: string;
         period?: Period.Raw | null;

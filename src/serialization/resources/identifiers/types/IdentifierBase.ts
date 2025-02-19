@@ -17,7 +17,7 @@ export const IdentifierBase: core.serialization.ObjectSchema<serializers.Identif
     });
 
 export declare namespace IdentifierBase {
-    interface Raw {
+    export interface Raw {
         period?: DateRangeOptionalEnd.Raw | null;
         identifier_code: IdentifierCode.Raw;
         identifier_value: IdentifierValue.Raw;

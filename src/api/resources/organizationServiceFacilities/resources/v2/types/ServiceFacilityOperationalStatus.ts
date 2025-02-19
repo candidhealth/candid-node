@@ -25,7 +25,6 @@ export type ServiceFacilityOperationalStatus =
     /**
      * The location is operational but currently empty or not in use. */
     | "U";
-
 export const ServiceFacilityOperationalStatus = {
     Closed: "C",
     Housekeeping: "H",

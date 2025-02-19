@@ -17,7 +17,7 @@ export const MatchLicenseType: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchLicenseType {
-    interface Raw {
+    export interface Raw {
         value?: LicenseType.Raw | null;
         match: boolean;
         explanation: string;

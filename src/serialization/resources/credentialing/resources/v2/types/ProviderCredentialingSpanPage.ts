@@ -18,7 +18,7 @@ export const ProviderCredentialingSpanPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace ProviderCredentialingSpanPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: ProviderCredentialingSpan.Raw[];
     }
 }

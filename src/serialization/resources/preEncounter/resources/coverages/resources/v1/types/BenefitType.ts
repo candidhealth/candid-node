@@ -23,7 +23,7 @@ export const BenefitType: core.serialization.Schema<
 ]);
 
 export declare namespace BenefitType {
-    type Raw =
+    export type Raw =
         | "DEDUCTIBLE"
         | "DEDUCTIBLE_CONTRACT"
         | "DEDUCTIBLE_REMAINING"

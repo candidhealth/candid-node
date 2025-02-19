@@ -22,13 +22,13 @@ export const RateUpload: core.serialization.Schema<
     });
 
 export declare namespace RateUpload {
-    type Raw = RateUpload.NewRate | RateUpload.NewVersion;
+    export type Raw = RateUpload.NewRate | RateUpload.NewVersion;
 
-    interface NewRate extends NewRate.Raw {
+    export interface NewRate extends NewRate.Raw {
         type: "new_rate";
     }
 
-    interface NewVersion extends NewRateVersion.Raw {
+    export interface NewVersion extends NewRateVersion.Raw {
         type: "new_version";
     }
 }

@@ -17,7 +17,7 @@ export const PayerInfo: core.serialization.ObjectSchema<
 });
 
 export declare namespace PayerInfo {
-    interface Raw {
+    export interface Raw {
         payer_id: PayerId.Raw;
         payer_name: PayerName.Raw;
     }

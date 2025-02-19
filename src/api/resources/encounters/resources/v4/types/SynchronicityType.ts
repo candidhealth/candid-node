@@ -3,7 +3,6 @@
  */
 
 export type SynchronicityType = "Synchronous" | "Asynchronous";
-
 export const SynchronicityType = {
     Synchronous: "Synchronous",
     Asynchronous: "Asynchronous",

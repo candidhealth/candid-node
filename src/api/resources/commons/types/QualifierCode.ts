@@ -7,7 +7,6 @@
  *     CandidApi.QualifierCode.Dq
  */
 export type QualifierCode = "DQ" | "DN" | "DK" | "P3";
-
 export const QualifierCode = {
     Dq: "DQ",
     Dn: "DN",

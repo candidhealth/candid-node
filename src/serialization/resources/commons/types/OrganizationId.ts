@@ -13,5 +13,5 @@ export const OrganizationId: core.serialization.Schema<serializers.OrganizationI
     });
 
 export declare namespace OrganizationId {
-    type Raw = string;
+    export type Raw = string;
 }

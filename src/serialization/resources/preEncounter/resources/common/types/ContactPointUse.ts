@@ -12,5 +12,5 @@ export const ContactPointUse: core.serialization.Schema<
 > = core.serialization.enum_(["HOME", "WORK", "TEMP", "OLD", "MOBILE"]);
 
 export declare namespace ContactPointUse {
-    type Raw = "HOME" | "WORK" | "TEMP" | "OLD" | "MOBILE";
+    export type Raw = "HOME" | "WORK" | "TEMP" | "OLD" | "MOBILE";
 }

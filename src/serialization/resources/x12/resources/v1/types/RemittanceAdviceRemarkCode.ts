@@ -15,7 +15,7 @@ export const RemittanceAdviceRemarkCode: core.serialization.ObjectSchema<
 });
 
 export declare namespace RemittanceAdviceRemarkCode {
-    interface Raw {
+    export interface Raw {
         reason_code: Rarc.Raw;
     }
 }

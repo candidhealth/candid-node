@@ -20,14 +20,14 @@ export const NoteUpdate: core.serialization.Schema<serializers.NoteUpdate.Raw, C
         });
 
 export declare namespace NoteUpdate {
-    type Raw = NoteUpdate.Set | NoteUpdate.Remove;
+    export type Raw = NoteUpdate.Set | NoteUpdate.Remove;
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: string;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

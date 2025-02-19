@@ -17,23 +17,23 @@ export const ClaimAdjudication: core.serialization.ObjectSchema<
     claimId: core.serialization.property("claim_id", ClaimId),
     insuranceAllowedAmountCents: core.serialization.property(
         "insurance_allowed_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     insurancePaidAmountCents: core.serialization.property(
         "insurance_paid_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
     serviceLines: core.serialization.property(
         "service_lines",
-        core.serialization.record(ServiceLineId, core.serialization.list(ServiceLineAdjudication))
+        core.serialization.record(ServiceLineId, core.serialization.list(ServiceLineAdjudication)),
     ),
     payerClaimNumber: core.serialization.property("payer_claim_number", core.serialization.string().optional()),
     carcs: core.serialization.list(ClaimAdjustmentReasonCode),
 });
 
 export declare namespace ClaimAdjudication {
-    interface Raw {
+    export interface Raw {
         claim_id: ClaimId.Raw;
         insurance_allowed_amount_cents?: number | null;
         insurance_paid_amount_cents?: number | null;

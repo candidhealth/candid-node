@@ -16,19 +16,19 @@ export const ServiceLineAdjudicationCreate: core.serialization.ObjectSchema<
     denialReason: core.serialization.property("denial_reason", DenialReasonContent.optional()),
     insuranceAllowedAmountCents: core.serialization.property(
         "insurance_allowed_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     insurancePaidAmountCents: core.serialization.property(
         "insurance_paid_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     deductibleAmountCents: core.serialization.property(
         "deductible_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     coinsuranceAmountCents: core.serialization.property(
         "coinsurance_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     copayAmountCents: core.serialization.property("copay_amount_cents", core.serialization.number().optional()),
     carcs: core.serialization.list(ClaimAdjustmentReasonCode),
@@ -36,7 +36,7 @@ export const ServiceLineAdjudicationCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace ServiceLineAdjudicationCreate {
-    interface Raw {
+    export interface Raw {
         denial_reason?: DenialReasonContent.Raw | null;
         insurance_allowed_amount_cents?: number | null;
         insurance_paid_amount_cents?: number | null;

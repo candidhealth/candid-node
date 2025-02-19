@@ -15,5 +15,5 @@ export const ContractingProviderId: core.serialization.Schema<
 });
 
 export declare namespace ContractingProviderId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -65,7 +65,6 @@ export type State =
     | "WV"
     | "WI"
     | "WY";
-
 export const State = {
     Aa: "AA",
     Ae: "AE",

@@ -22,7 +22,7 @@ export const InsuranceRefundCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsuranceRefundCreate {
-    interface Raw {
+    export interface Raw {
         payer_identifier: PayerIdentifier.Raw;
         amount_cents: number;
         refund_timestamp?: string | null;

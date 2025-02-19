@@ -3,7 +3,6 @@
  */
 
 export type AccountType = "PATIENT" | "INSURANCE" | "THIRD_PARTY_PAYER";
-
 export const AccountType = {
     Patient: "PATIENT",
     Insurance: "INSURANCE",

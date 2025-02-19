@@ -61,7 +61,7 @@ export const FacilityTypeCode: core.serialization.Schema<serializers.FacilityTyp
     ]);
 
 export declare namespace FacilityTypeCode {
-    type Raw =
+    export type Raw =
         | "01"
         | "02"
         | "03"

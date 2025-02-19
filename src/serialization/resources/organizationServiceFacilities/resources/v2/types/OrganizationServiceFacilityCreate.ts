@@ -30,7 +30,7 @@ export const OrganizationServiceFacilityCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationServiceFacilityCreate {
-    interface Raw {
+    export interface Raw {
         name: string;
         aliases: string[];
         description?: string | null;

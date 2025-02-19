@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.NotFoundError;
+    export type Raw = Error.NotFoundError;
 
-    interface NotFoundError {
+    export interface NotFoundError {
         errorName: "NotFoundError";
         content: ErrorBase4Xx.Raw;
     }

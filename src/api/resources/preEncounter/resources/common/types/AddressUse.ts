@@ -3,7 +3,6 @@
  */
 
 export type AddressUse = "HOME" | "WORK" | "TEMP" | "OLD" | "BILLING";
-
 export const AddressUse = {
     Home: "HOME",
     Work: "WORK",

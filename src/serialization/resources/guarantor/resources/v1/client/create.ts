@@ -33,14 +33,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EncounterHasExistingGuarantorError | Error.HttpRequestValidationsError;
+    export type Raw = Error.EncounterHasExistingGuarantorError | Error.HttpRequestValidationsError;
 
-    interface EncounterHasExistingGuarantorError {
+    export interface EncounterHasExistingGuarantorError {
         errorName: "EncounterHasExistingGuarantorError";
         content: EncounterHasExistingGuarantorErrorType.Raw;
     }
 
-    interface HttpRequestValidationsError {
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }

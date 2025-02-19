@@ -17,7 +17,7 @@ export const RateEntry: core.serialization.ObjectSchema<
 });
 
 export declare namespace RateEntry {
-    interface Raw {
+    export interface Raw {
         start_date: string;
         end_date?: string | null;
         rate_cents: number;

@@ -12,5 +12,5 @@ export const BillableStatusType: core.serialization.Schema<
 > = core.serialization.enum_(["BILLABLE", "NOT_BILLABLE"]);
 
 export declare namespace BillableStatusType {
-    type Raw = "BILLABLE" | "NOT_BILLABLE";
+    export type Raw = "BILLABLE" | "NOT_BILLABLE";
 }

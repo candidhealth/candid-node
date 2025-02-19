@@ -9,16 +9,16 @@ export type InsuranceTypes =
     | CandidApi.contracts.v2.InsuranceTypes.NoneApply
     | CandidApi.contracts.v2.InsuranceTypes.TheseApply;
 
-export declare namespace InsuranceTypes {
-    interface AllApply {
+export namespace InsuranceTypes {
+    export interface AllApply {
         type: "allApply";
     }
 
-    interface NoneApply {
+    export interface NoneApply {
         type: "noneApply";
     }
 
-    interface TheseApply {
+    export interface TheseApply {
         type: "theseApply";
         value: Set<CandidApi.InsuranceTypeCode>;
     }

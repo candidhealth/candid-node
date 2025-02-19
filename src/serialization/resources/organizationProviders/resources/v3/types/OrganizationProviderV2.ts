@@ -29,14 +29,14 @@ export const OrganizationProviderV2: core.serialization.ObjectSchema<
     employmentStartDate: core.serialization.property("employment_start_date", core.serialization.string().optional()),
     employmentTerminationDate: core.serialization.property(
         "employment_termination_date",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     organizationProviderId: core.serialization.property("organization_provider_id", OrganizationProviderId),
     qualifications: core.serialization.list(Identifier),
 });
 
 export declare namespace OrganizationProviderV2 {
-    interface Raw {
+    export interface Raw {
         npi: string;
         is_rendering: boolean;
         is_billing: boolean;

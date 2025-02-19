@@ -3,7 +3,6 @@
  */
 
 export type RefundReason = "OVERCHARGED";
-
 export const RefundReason = {
     Overcharged: "OVERCHARGED",
 } as const;

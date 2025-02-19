@@ -19,7 +19,7 @@ export const ServiceLineAllocationTarget: core.serialization.ObjectSchema<
 });
 
 export declare namespace ServiceLineAllocationTarget {
-    interface Raw {
+    export interface Raw {
         service_line_id: ServiceLineId.Raw;
         claim_id: ClaimId.Raw;
         encounter_id: EncounterId.Raw;

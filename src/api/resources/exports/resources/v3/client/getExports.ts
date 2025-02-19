@@ -13,42 +13,42 @@ export type Error =
     | CandidApi.exports.v3.getExports.Error.ExportDateTooEarlyError
     | CandidApi.exports.v3.getExports.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpRequestValidationsError extends _Utils {
+export namespace Error {
+    export interface HttpRequestValidationsError extends _Utils {
         errorName: "HttpRequestValidationsError";
         content: CandidApi.RequestValidationError[];
     }
 
-    interface ExportFilesUnavailableError extends _Utils {
+    export interface ExportFilesUnavailableError extends _Utils {
         errorName: "ExportFilesUnavailableError";
         content: CandidApi.ErrorMessage;
     }
 
-    interface MissingDailyIncrementalExportFileError extends _Utils {
+    export interface MissingDailyIncrementalExportFileError extends _Utils {
         errorName: "MissingDailyIncrementalExportFileError";
         content: CandidApi.ErrorMessage;
     }
 
-    interface ExportNotYetAvailableError extends _Utils {
+    export interface ExportNotYetAvailableError extends _Utils {
         errorName: "ExportNotYetAvailableError";
         content: CandidApi.ErrorMessage;
     }
 
-    interface ExportDateTooEarlyError extends _Utils {
+    export interface ExportDateTooEarlyError extends _Utils {
         errorName: "ExportDateTooEarlyError";
         content: CandidApi.ErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         exportFilesUnavailableError: (value: CandidApi.ErrorMessage) => _Result;
         missingDailyIncrementalExportFileError: (value: CandidApi.ErrorMessage) => _Result;
@@ -60,14 +60,14 @@ export declare namespace Error {
 
 export const Error = {
     httpRequestValidationsError: (
-        value: CandidApi.RequestValidationError[]
+        value: CandidApi.RequestValidationError[],
     ): CandidApi.exports.v3.getExports.Error.HttpRequestValidationsError => {
         return {
             content: value,
             errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
                 this: CandidApi.exports.v3.getExports.Error.HttpRequestValidationsError,
-                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
             ) {
                 return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
             },
@@ -75,14 +75,14 @@ export const Error = {
     },
 
     exportFilesUnavailableError: (
-        value: CandidApi.ErrorMessage
+        value: CandidApi.ErrorMessage,
     ): CandidApi.exports.v3.getExports.Error.ExportFilesUnavailableError => {
         return {
             content: value,
             errorName: "ExportFilesUnavailableError",
             _visit: function <_Result>(
                 this: CandidApi.exports.v3.getExports.Error.ExportFilesUnavailableError,
-                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
             ) {
                 return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
             },
@@ -90,14 +90,14 @@ export const Error = {
     },
 
     missingDailyIncrementalExportFileError: (
-        value: CandidApi.ErrorMessage
+        value: CandidApi.ErrorMessage,
     ): CandidApi.exports.v3.getExports.Error.MissingDailyIncrementalExportFileError => {
         return {
             content: value,
             errorName: "MissingDailyIncrementalExportFileError",
             _visit: function <_Result>(
                 this: CandidApi.exports.v3.getExports.Error.MissingDailyIncrementalExportFileError,
-                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
             ) {
                 return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
             },
@@ -105,14 +105,14 @@ export const Error = {
     },
 
     exportNotYetAvailableError: (
-        value: CandidApi.ErrorMessage
+        value: CandidApi.ErrorMessage,
     ): CandidApi.exports.v3.getExports.Error.ExportNotYetAvailableError => {
         return {
             content: value,
             errorName: "ExportNotYetAvailableError",
             _visit: function <_Result>(
                 this: CandidApi.exports.v3.getExports.Error.ExportNotYetAvailableError,
-                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
             ) {
                 return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
             },
@@ -120,14 +120,14 @@ export const Error = {
     },
 
     exportDateTooEarlyError: (
-        value: CandidApi.ErrorMessage
+        value: CandidApi.ErrorMessage,
     ): CandidApi.exports.v3.getExports.Error.ExportDateTooEarlyError => {
         return {
             content: value,
             errorName: "ExportDateTooEarlyError",
             _visit: function <_Result>(
                 this: CandidApi.exports.v3.getExports.Error.ExportDateTooEarlyError,
-                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
             ) {
                 return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
             },
@@ -140,7 +140,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.exports.v3.getExports.Error._Unknown,
-                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
             ) {
                 return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
             },
@@ -149,7 +149,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.exports.v3.getExports.Error,
-        visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>
+        visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpRequestValidationsError":

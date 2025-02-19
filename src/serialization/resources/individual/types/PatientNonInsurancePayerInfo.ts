@@ -16,7 +16,7 @@ export const PatientNonInsurancePayerInfo: core.serialization.ObjectSchema<
 });
 
 export declare namespace PatientNonInsurancePayerInfo {
-    interface Raw {
+    export interface Raw {
         non_insurance_payer: NonInsurancePayer.Raw;
         member_id?: string | null;
     }

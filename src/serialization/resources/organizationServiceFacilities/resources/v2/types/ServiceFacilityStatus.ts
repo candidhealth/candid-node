@@ -12,5 +12,5 @@ export const ServiceFacilityStatus: core.serialization.Schema<
 > = core.serialization.enum_(["active", "inactive", "suspended"]);
 
 export declare namespace ServiceFacilityStatus {
-    type Raw = "active" | "inactive" | "suspended";
+    export type Raw = "active" | "inactive" | "suspended";
 }

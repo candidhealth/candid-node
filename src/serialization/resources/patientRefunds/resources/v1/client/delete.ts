@@ -39,19 +39,19 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.UnprocessableEntityError;
+    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.UnprocessableEntityError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface UnauthorizedError {
+    export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
     }
 
-    interface UnprocessableEntityError {
+    export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
     }

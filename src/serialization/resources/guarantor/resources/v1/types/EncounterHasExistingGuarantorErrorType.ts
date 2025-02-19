@@ -14,7 +14,7 @@ export const EncounterHasExistingGuarantorErrorType: core.serialization.ObjectSc
 });
 
 export declare namespace EncounterHasExistingGuarantorErrorType {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

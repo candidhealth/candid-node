@@ -16,7 +16,7 @@ export const NonInsurancePayerPayment: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nonInsurancePayerPaymentId: core.serialization.property(
         "non_insurance_payer_payment_id",
-        NonInsurancePayerPaymentId
+        NonInsurancePayerPaymentId,
     ),
     nonInsurancePayer: core.serialization.property("non_insurance_payer", NonInsurancePayer),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
@@ -28,7 +28,7 @@ export const NonInsurancePayerPayment: core.serialization.ObjectSchema<
 });
 
 export declare namespace NonInsurancePayerPayment {
-    interface Raw {
+    export interface Raw {
         non_insurance_payer_payment_id: NonInsurancePayerPaymentId.Raw;
         non_insurance_payer: NonInsurancePayer.Raw;
         amount_cents: number;

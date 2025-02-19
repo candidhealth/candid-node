@@ -18,7 +18,7 @@ export const InsurancePaymentsPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace InsurancePaymentsPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: InsurancePayment.Raw[];
     }
 }

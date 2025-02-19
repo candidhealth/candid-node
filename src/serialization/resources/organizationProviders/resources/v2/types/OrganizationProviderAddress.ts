@@ -17,7 +17,7 @@ export const OrganizationProviderAddress: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationProviderAddress {
-    interface Raw {
+    export interface Raw {
         address: StreetAddressLongZip.Raw;
         address_type: AddressType.Raw;
     }

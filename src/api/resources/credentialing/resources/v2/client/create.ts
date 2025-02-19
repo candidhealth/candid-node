@@ -10,27 +10,27 @@ export type Error =
     | CandidApi.credentialing.v2.create.Error.UnauthorizedError
     | CandidApi.credentialing.v2.create.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpRequestValidationsError extends _Utils {
+export namespace Error {
+    export interface HttpRequestValidationsError extends _Utils {
         errorName: "HttpRequestValidationsError";
         content: CandidApi.RequestValidationError[];
     }
 
-    interface UnauthorizedError extends _Utils {
+    export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -39,14 +39,14 @@ export declare namespace Error {
 
 export const Error = {
     httpRequestValidationsError: (
-        value: CandidApi.RequestValidationError[]
+        value: CandidApi.RequestValidationError[],
     ): CandidApi.credentialing.v2.create.Error.HttpRequestValidationsError => {
         return {
             content: value,
             errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
                 this: CandidApi.credentialing.v2.create.Error.HttpRequestValidationsError,
-                visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>
+                visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.credentialing.v2.create.Error._visit(this, visitor);
             },
@@ -54,14 +54,14 @@ export const Error = {
     },
 
     unauthorizedError: (
-        value: CandidApi.UnauthorizedErrorMessage
+        value: CandidApi.UnauthorizedErrorMessage,
     ): CandidApi.credentialing.v2.create.Error.UnauthorizedError => {
         return {
             content: value,
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.credentialing.v2.create.Error.UnauthorizedError,
-                visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>
+                visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.credentialing.v2.create.Error._visit(this, visitor);
             },
@@ -74,7 +74,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.credentialing.v2.create.Error._Unknown,
-                visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>
+                visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.credentialing.v2.create.Error._visit(this, visitor);
             },
@@ -83,7 +83,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.credentialing.v2.create.Error,
-        visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>
+        visitor: CandidApi.credentialing.v2.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpRequestValidationsError":

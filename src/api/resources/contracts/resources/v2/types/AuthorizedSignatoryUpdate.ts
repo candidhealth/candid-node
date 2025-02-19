@@ -8,12 +8,12 @@ export type AuthorizedSignatoryUpdate =
     | CandidApi.contracts.v2.AuthorizedSignatoryUpdate.Set
     | CandidApi.contracts.v2.AuthorizedSignatoryUpdate.Remove;
 
-export declare namespace AuthorizedSignatoryUpdate {
-    interface Set extends CandidApi.contracts.v2.AuthorizedSignatory {
+export namespace AuthorizedSignatoryUpdate {
+    export interface Set extends CandidApi.contracts.v2.AuthorizedSignatory {
         type: "set";
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

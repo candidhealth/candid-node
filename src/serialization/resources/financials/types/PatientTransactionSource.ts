@@ -12,5 +12,5 @@ export const PatientTransactionSource: core.serialization.Schema<
 > = core.serialization.enum_(["MANUAL_ENTRY", "CHARGEBEE", "SQUARE", "STRIPE", "ELATION", "CEDAR", "HEALTHIE"]);
 
 export declare namespace PatientTransactionSource {
-    type Raw = "MANUAL_ENTRY" | "CHARGEBEE" | "SQUARE" | "STRIPE" | "ELATION" | "CEDAR" | "HEALTHIE";
+    export type Raw = "MANUAL_ENTRY" | "CHARGEBEE" | "SQUARE" | "STRIPE" | "ELATION" | "CEDAR" | "HEALTHIE";
 }

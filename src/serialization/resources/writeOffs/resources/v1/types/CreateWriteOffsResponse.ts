@@ -15,7 +15,7 @@ export const CreateWriteOffsResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace CreateWriteOffsResponse {
-    interface Raw {
+    export interface Raw {
         write_offs: WriteOff.Raw[];
     }
 }

@@ -3,7 +3,6 @@
  */
 
 export type CoverageValueUnit = "PERCENT" | "CURRENCY" | "COUNT";
-
 export const CoverageValueUnit = {
     Percent: "PERCENT",
     Currency: "CURRENCY",

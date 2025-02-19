@@ -21,14 +21,14 @@ export const InvoiceUpdate: core.serialization.Schema<serializers.InvoiceUpdate.
         });
 
 export declare namespace InvoiceUpdate {
-    type Raw = InvoiceUpdate.Set | InvoiceUpdate.Remove;
+    export type Raw = InvoiceUpdate.Set | InvoiceUpdate.Remove;
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: InvoiceId.Raw;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

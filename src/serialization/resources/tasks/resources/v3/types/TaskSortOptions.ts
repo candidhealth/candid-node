@@ -35,7 +35,7 @@ export const TaskSortOptions: core.serialization.Schema<
 ]);
 
 export declare namespace TaskSortOptions {
-    type Raw =
+    export type Raw =
         | "updated_at:asc"
         | "updated_at:desc"
         | "patient_name:asc"

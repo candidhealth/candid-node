@@ -10,5 +10,5 @@ export const InvoiceStatus: core.serialization.Schema<serializers.InvoiceStatus.
     core.serialization.enum_(["draft", "open", "paid", "void", "uncollectible", "held"]);
 
 export declare namespace InvoiceStatus {
-    type Raw = "draft" | "open" | "paid" | "void" | "uncollectible" | "held";
+    export type Raw = "draft" | "open" | "paid" | "void" | "uncollectible" | "held";
 }

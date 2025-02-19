@@ -3,7 +3,6 @@
  */
 
 export type PatientHistoryCategoryEnum = "present_illness" | "medical" | "family" | "social";
-
 export const PatientHistoryCategoryEnum = {
     PresentIllness: "present_illness",
     Medical: "medical",

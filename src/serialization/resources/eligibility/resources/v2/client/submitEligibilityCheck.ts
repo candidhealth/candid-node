@@ -21,7 +21,7 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "HttpServiceUnavailableError":
                     return CandidApi.eligibility.v2.submitEligibilityCheck.Error.httpServiceUnavailableError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -29,9 +29,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.HttpServiceUnavailableError;
+    export type Raw = Error.HttpServiceUnavailableError;
 
-    interface HttpServiceUnavailableError {
+    export interface HttpServiceUnavailableError {
         errorName: "HttpServiceUnavailableError";
         content: HttpServiceUnavailableErrorMessage.Raw;
     }

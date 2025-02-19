@@ -31,7 +31,7 @@ export const DimensionMatch: core.serialization.ObjectSchema<
 });
 
 export declare namespace DimensionMatch {
-    interface Raw {
+    export interface Raw {
         payer: MatchPayer.Raw;
         geography: MatchGeo.Raw;
         organization_billing_provider: MatchProvider.Raw;

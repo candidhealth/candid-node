@@ -14,7 +14,7 @@ export const InvoiceItem: core.serialization.ObjectSchema<serializers.InvoiceIte
     });
 
 export declare namespace InvoiceItem {
-    interface Raw {
+    export interface Raw {
         service_line_id: ServiceLineId.Raw;
         amount_cents: number;
     }

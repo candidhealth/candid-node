@@ -20,7 +20,7 @@ export const PatientWriteOffCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace PatientWriteOffCreate {
-    interface Raw {
+    export interface Raw {
         write_off_timestamp: string;
         write_off_note?: string | null;
         write_off_reason: PatientWriteOffReason.Raw;

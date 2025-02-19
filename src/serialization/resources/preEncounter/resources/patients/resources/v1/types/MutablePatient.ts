@@ -52,7 +52,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
     email: core.serialization.string().optional(),
     electronicCommunicationOptIn: core.serialization.property(
         "electronic_communication_opt_in",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     photo: core.serialization.string().optional(),
     language: core.serialization.string().optional(),
@@ -60,16 +60,16 @@ export const MutablePatient: core.serialization.ObjectSchema<
     contacts: core.serialization.list(Contact),
     generalPractitioners: core.serialization.property(
         "general_practitioners",
-        core.serialization.list(ExternalProvider)
+        core.serialization.list(ExternalProvider),
     ),
     filingOrder: core.serialization.property("filing_order", FilingOrder),
     nonInsurancePayers: core.serialization.property(
         "non_insurance_payers",
-        core.serialization.list(CanonicalNonInsurancePayerId).optional()
+        core.serialization.list(CanonicalNonInsurancePayerId).optional(),
     ),
     nonInsurancePayerAssociations: core.serialization.property(
         "non_insurance_payer_associations",
-        core.serialization.list(CanonicalNonInsurancePayerAssociation).optional()
+        core.serialization.list(CanonicalNonInsurancePayerAssociation).optional(),
     ),
     guarantor: Guarantor.optional(),
     selfPay: core.serialization.property("self_pay", core.serialization.boolean().optional()),
@@ -77,7 +77,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
     referrals: core.serialization.list(Referral).optional(),
     primaryServiceFacilityId: core.serialization.property(
         "primary_service_facility_id",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     doNotInvoiceReason: core.serialization.property("do_not_invoice_reason", DoNotInvoiceReason.optional()),
     noteIds: core.serialization.property("note_ids", core.serialization.list(NoteId).optional()),
@@ -85,7 +85,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
 });
 
 export declare namespace MutablePatient {
-    interface Raw {
+    export interface Raw {
         name: HumanName.Raw;
         other_names: HumanName.Raw[];
         gender?: Gender.Raw | null;

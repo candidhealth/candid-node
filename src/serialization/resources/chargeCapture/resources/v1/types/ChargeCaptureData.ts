@@ -22,22 +22,22 @@ export const ChargeCaptureData: core.serialization.ObjectSchema<
         interventions: core.serialization.list(Intervention).optional(),
         externalClaimSubmission: core.serialization.property(
             "external_claim_submission",
-            ExternalClaimSubmissionCreate.optional()
+            ExternalClaimSubmissionCreate.optional(),
         ),
         serviceLines: core.serialization.property(
             "service_lines",
-            core.serialization.list(ServiceLineCreate).optional()
+            core.serialization.list(ServiceLineCreate).optional(),
         ),
         patientHistories: core.serialization.property(
             "patient_histories",
-            core.serialization.list(PatientHistoryCategory).optional()
+            core.serialization.list(PatientHistoryCategory).optional(),
         ),
         billingNotes: core.serialization.property("billing_notes", core.serialization.list(BillingNote).optional()),
     })
     .extend(EncounterOptional);
 
 export declare namespace ChargeCaptureData {
-    interface Raw extends EncounterOptional.Raw {
+    export interface Raw extends EncounterOptional.Raw {
         diagnoses?: DiagnosisCreate.Raw[] | null;
         interventions?: Intervention.Raw[] | null;
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;

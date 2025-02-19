@@ -3,7 +3,6 @@
  */
 
 export type TaskActionType = "close_task" | "close_task_and_reprocess";
-
 export const TaskActionType = {
     CloseTask: "close_task",
     CloseTaskAndReprocess: "close_task_and_reprocess",

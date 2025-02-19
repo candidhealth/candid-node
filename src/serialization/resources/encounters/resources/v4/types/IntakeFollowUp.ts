@@ -17,7 +17,7 @@ export const IntakeFollowUp: core.serialization.ObjectSchema<
 });
 
 export declare namespace IntakeFollowUp {
-    interface Raw {
+    export interface Raw {
         id: IntakeFollowUpId.Raw;
         text: string;
         response?: string | null;

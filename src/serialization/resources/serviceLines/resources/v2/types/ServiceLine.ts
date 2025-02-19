@@ -31,25 +31,25 @@ export const ServiceLine: core.serialization.ObjectSchema<
     allowedAmountCents: core.serialization.property("allowed_amount_cents", core.serialization.number().optional()),
     insuranceBalanceCents: core.serialization.property(
         "insurance_balance_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     patientBalanceCents: core.serialization.property("patient_balance_cents", core.serialization.number().optional()),
     paidAmountCents: core.serialization.property("paid_amount_cents", core.serialization.number().optional()),
     primaryPaidAmountCents: core.serialization.property(
         "primary_paid_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     secondaryPaidAmountCents: core.serialization.property(
         "secondary_paid_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     tertiaryPaidAmountCents: core.serialization.property(
         "tertiary_paid_amount_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     patientResponsibilityCents: core.serialization.property(
         "patient_responsibility_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     diagnosisIdZero: core.serialization.property("diagnosis_id_zero", DiagnosisId.optional()),
     diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
@@ -59,18 +59,18 @@ export const ServiceLine: core.serialization.ObjectSchema<
     serviceLineEraData: core.serialization.property("service_line_era_data", ServiceLineEraData.optional()),
     serviceLineManualAdjustments: core.serialization.property(
         "service_line_manual_adjustments",
-        core.serialization.list(ServiceLineAdjustment).optional()
+        core.serialization.list(ServiceLineAdjustment).optional(),
     ),
     relatedInvoices: core.serialization.property("related_invoices", core.serialization.list(Invoice).optional()),
     relatedInvoiceInfo: core.serialization.property(
         "related_invoice_info",
-        core.serialization.list(InvoiceInfo).optional()
+        core.serialization.list(InvoiceInfo).optional(),
     ),
     denialReason: core.serialization.property("denial_reason", ServiceLineDenialReason.optional()),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
     placeOfServiceCodeAsSubmitted: core.serialization.property(
         "place_of_service_code_as_submitted",
-        FacilityTypeCode.optional()
+        FacilityTypeCode.optional(),
     ),
     serviceLineId: core.serialization.property("service_line_id", ServiceLineId),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
@@ -86,12 +86,12 @@ export const ServiceLine: core.serialization.ObjectSchema<
     hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
     hasFamilyPlanningIndicator: core.serialization.property(
         "has_family_planning_indicator",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
 });
 
 export declare namespace ServiceLine {
-    interface Raw {
+    export interface Raw {
         modifiers?: ProcedureModifier.Raw[] | null;
         charge_amount_cents?: number | null;
         allowed_amount_cents?: number | null;

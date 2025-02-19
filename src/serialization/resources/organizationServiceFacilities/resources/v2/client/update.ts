@@ -25,7 +25,7 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "HttpRequestValidationError":
                     return CandidApi.organizationServiceFacilities.v2.update.Error.httpRequestValidationError(
-                        value.content
+                        value.content,
                     );
                 case "EntityNotFoundError":
                     return CandidApi.organizationServiceFacilities.v2.update.Error.entityNotFoundError(value.content);
@@ -35,14 +35,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.HttpRequestValidationError | Error.EntityNotFoundError;
+    export type Raw = Error.HttpRequestValidationError | Error.EntityNotFoundError;
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }

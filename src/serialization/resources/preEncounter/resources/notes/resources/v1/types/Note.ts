@@ -21,7 +21,7 @@ export const Note: core.serialization.ObjectSchema<
     .extend(MutableNote);
 
 export declare namespace Note {
-    interface Raw extends BaseModel.Raw, MutableNote.Raw {
+    export interface Raw extends BaseModel.Raw, MutableNote.Raw {
         id: NoteId.Raw;
         created_at: string;
     }

@@ -16,7 +16,7 @@ export const KeyDoesNotExistError: core.serialization.ObjectSchema<
 });
 
 export declare namespace KeyDoesNotExistError {
-    interface Raw {
+    export interface Raw {
         key: string;
         schema_id: SchemaId.Raw;
     }

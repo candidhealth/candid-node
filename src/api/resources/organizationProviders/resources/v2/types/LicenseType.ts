@@ -70,8 +70,30 @@ export type LicenseType =
     | "OMS"
     | "MFTA"
     | "APCC"
-    | "DNP";
-
+    | "DNP"
+    | "AGNPBC"
+    | "ANP"
+    | "FNPPP"
+    | "LCSWR"
+    | "ALC"
+    | "RMFTI"
+    | "LAMFT"
+    | "LPCA"
+    | "LSWI"
+    | "CSW"
+    | "CPC"
+    | "LGMFT"
+    | "LLPC"
+    | "PLPC"
+    | "PLMFT"
+    | "LMHCA"
+    | "CIT"
+    | "CT"
+    | "MFT"
+    | "LSW"
+    | "PLMHP"
+    | "PCMSW"
+    | "LMHP";
 export const LicenseType = {
     Md: "MD",
     Np: "NP",
@@ -141,4 +163,27 @@ export const LicenseType = {
     Mfta: "MFTA",
     Apcc: "APCC",
     Dnp: "DNP",
+    Agnpbc: "AGNPBC",
+    Anp: "ANP",
+    Fnppp: "FNPPP",
+    Lcswr: "LCSWR",
+    Alc: "ALC",
+    Rmfti: "RMFTI",
+    Lamft: "LAMFT",
+    Lpca: "LPCA",
+    Lswi: "LSWI",
+    Csw: "CSW",
+    Cpc: "CPC",
+    Lgmft: "LGMFT",
+    Llpc: "LLPC",
+    Plpc: "PLPC",
+    Plmft: "PLMFT",
+    Lmhca: "LMHCA",
+    Cit: "CIT",
+    Ct: "CT",
+    Mft: "MFT",
+    Lsw: "LSW",
+    Plmhp: "PLMHP",
+    Pcmsw: "PCMSW",
+    Lmhp: "LMHP",
 } as const;

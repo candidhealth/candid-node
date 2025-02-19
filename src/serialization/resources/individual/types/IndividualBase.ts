@@ -15,7 +15,7 @@ export const IndividualBase: core.serialization.ObjectSchema<serializers.Individ
     });
 
 export declare namespace IndividualBase {
-    interface Raw {
+    export interface Raw {
         first_name: string;
         last_name: string;
         gender: Gender.Raw;

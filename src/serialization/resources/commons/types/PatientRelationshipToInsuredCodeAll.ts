@@ -37,7 +37,7 @@ export const PatientRelationshipToInsuredCodeAll: core.serialization.Schema<
 ]);
 
 export declare namespace PatientRelationshipToInsuredCodeAll {
-    type Raw =
+    export type Raw =
         | "01"
         | "04"
         | "05"

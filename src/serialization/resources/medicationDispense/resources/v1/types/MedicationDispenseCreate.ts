@@ -16,7 +16,7 @@ export const MedicationDispenseCreate: core.serialization.ObjectSchema<
 > = core.serialization.object({
     medicationDispenseExternalId: core.serialization.property(
         "medication_dispense_external_id",
-        core.serialization.string()
+        core.serialization.string(),
     ),
     patientExternalId: core.serialization.property("patient_external_id", core.serialization.string()),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
@@ -29,7 +29,7 @@ export const MedicationDispenseCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace MedicationDispenseCreate {
-    interface Raw {
+    export interface Raw {
         medication_dispense_external_id: string;
         patient_external_id: string;
         procedure_code: string;

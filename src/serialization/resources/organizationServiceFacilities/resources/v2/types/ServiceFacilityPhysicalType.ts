@@ -12,5 +12,19 @@ export const ServiceFacilityPhysicalType: core.serialization.Schema<
 > = core.serialization.enum_(["si", "bu", "wi", "wa", "lvl", "co", "ro", "bd", "ve", "ho", "ca", "rd", "area", "jdn"]);
 
 export declare namespace ServiceFacilityPhysicalType {
-    type Raw = "si" | "bu" | "wi" | "wa" | "lvl" | "co" | "ro" | "bd" | "ve" | "ho" | "ca" | "rd" | "area" | "jdn";
+    export type Raw =
+        | "si"
+        | "bu"
+        | "wi"
+        | "wa"
+        | "lvl"
+        | "co"
+        | "ro"
+        | "bd"
+        | "ve"
+        | "ho"
+        | "ca"
+        | "rd"
+        | "area"
+        | "jdn";
 }

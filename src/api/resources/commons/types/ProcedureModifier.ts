@@ -1170,7 +1170,6 @@ export type ProcedureModifier =
     /**
      * A service that is distinct because it was performed on a separate organ/structure */
     | "XS";
-
 export const ProcedureModifier = {
     TwentyTwo: "22",
     TwentyThree: "23",

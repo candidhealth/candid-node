@@ -18,7 +18,7 @@ export const PatientRefundsPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace PatientRefundsPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: PatientRefund.Raw[];
     }
 }

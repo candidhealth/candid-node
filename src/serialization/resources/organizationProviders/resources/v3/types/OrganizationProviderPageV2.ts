@@ -18,7 +18,7 @@ export const OrganizationProviderPageV2: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace OrganizationProviderPageV2 {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: OrganizationProviderV2.Raw[];
     }
 }

@@ -11,16 +11,16 @@ import * as CandidApi from "../../../../../../index";
  *         description: "Values associated with a generic visit",
  *         fields: [{
  *                 key: "provider_category",
- *                 type: CandidApi.Primitive.String
+ *                 type: "STRING"
  *             }, {
  *                 key: "is_urgent_care",
- *                 type: CandidApi.Primitive.Boolean
+ *                 type: "BOOLEAN"
  *             }, {
  *                 key: "bmi",
- *                 type: CandidApi.Primitive.Double
+ *                 type: "DOUBLE"
  *             }, {
  *                 key: "age",
- *                 type: CandidApi.Primitive.Integer
+ *                 type: "INTEGER"
  *             }]
  *     }
  */

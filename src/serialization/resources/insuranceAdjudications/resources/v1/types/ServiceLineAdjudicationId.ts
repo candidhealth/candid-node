@@ -15,5 +15,5 @@ export const ServiceLineAdjudicationId: core.serialization.Schema<
 });
 
 export declare namespace ServiceLineAdjudicationId {
-    type Raw = string;
+    export type Raw = string;
 }

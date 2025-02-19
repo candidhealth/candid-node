@@ -20,7 +20,7 @@ export const OrderingProviderUpdate: core.serialization.ObjectSchema<
     .extend(EncounterProviderBase);
 
 export declare namespace OrderingProviderUpdate {
-    interface Raw extends EncounterProviderBase.Raw {
+    export interface Raw extends EncounterProviderBase.Raw {
         npi?: string | null;
         taxonomy_code?: string | null;
         address?: StreetAddressLongZip.Raw | null;

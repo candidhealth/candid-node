@@ -33,14 +33,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.EntityConflictError;
+    export type Raw = Error.EntityNotFoundError | Error.EntityConflictError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface EntityConflictError {
+    export interface EntityConflictError {
         errorName: "EntityConflictError";
         content: EntityConflictErrorMessage.Raw;
     }

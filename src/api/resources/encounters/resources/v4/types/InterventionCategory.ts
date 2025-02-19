@@ -3,7 +3,6 @@
  */
 
 export type InterventionCategory = "allopathic" | "naturopathic" | "tests" | "lifestyle";
-
 export const InterventionCategory = {
     Allopathic: "allopathic",
     Naturopathic: "naturopathic",

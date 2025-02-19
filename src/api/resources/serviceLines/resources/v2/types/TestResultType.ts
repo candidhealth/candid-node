@@ -3,7 +3,6 @@
  */
 
 export type TestResultType = "HEMATOCRIT" | "HEMOGLOBIN";
-
 export const TestResultType = {
     Hematocrit: "HEMATOCRIT",
     Hemoglobin: "HEMOGLOBIN",

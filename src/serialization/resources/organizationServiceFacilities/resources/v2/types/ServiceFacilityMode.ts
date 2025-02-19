@@ -12,5 +12,5 @@ export const ServiceFacilityMode: core.serialization.Schema<
 > = core.serialization.enum_(["instance", "kind"]);
 
 export declare namespace ServiceFacilityMode {
-    type Raw = "instance" | "kind";
+    export type Raw = "instance" | "kind";
 }

@@ -19,7 +19,7 @@ export const Schema: core.serialization.ObjectSchema<
 });
 
 export declare namespace Schema {
-    interface Raw {
+    export interface Raw {
         id: SchemaId.Raw;
         name: string;
         description?: string | null;

@@ -18,7 +18,7 @@ export const ContactPoint: core.serialization.ObjectSchema<
 });
 
 export declare namespace ContactPoint {
-    interface Raw {
+    export interface Raw {
         value: string;
         use: ContactPointUse.Raw;
         period?: Period.Raw | null;

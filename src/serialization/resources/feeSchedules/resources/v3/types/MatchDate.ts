@@ -16,7 +16,7 @@ export const MatchDate: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchDate {
-    interface Raw {
+    export interface Raw {
         value?: string | null;
         match: boolean;
         explanation: string;

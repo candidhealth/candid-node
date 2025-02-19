@@ -15,7 +15,7 @@ import * as CandidApi from "../../../../../../index";
  *         regions: {
  *             type: "states"
  *         },
- *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
+ *         contractStatus: "pending",
  *         authorizedSignatory: {
  *             firstName: "string",
  *             lastName: "string",

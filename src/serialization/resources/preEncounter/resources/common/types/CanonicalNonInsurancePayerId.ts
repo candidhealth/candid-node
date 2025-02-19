@@ -15,5 +15,5 @@ export const CanonicalNonInsurancePayerId: core.serialization.Schema<
 });
 
 export declare namespace CanonicalNonInsurancePayerId {
-    type Raw = string;
+    export type Raw = string;
 }

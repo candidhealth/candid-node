@@ -14,29 +14,29 @@ export type Error =
     | CandidApi.encounterProviders.v2.deleteReferringProvider.Error.EntityConflictError
     | CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Unknown;
 
-export declare namespace Error {
-    interface EntityNotFoundError extends _Utils {
+export namespace Error {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface EntityConflictError extends _Utils {
+    export interface EntityConflictError extends _Utils {
         errorName: "EntityConflictError";
         content: CandidApi.EntityConflictErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>
+            visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -45,14 +45,14 @@ export declare namespace Error {
 
 export const Error = {
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.encounterProviders.v2.deleteReferringProvider.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.deleteReferringProvider.Error.EntityNotFoundError,
-                visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.deleteReferringProvider.Error._visit(this, visitor);
             },
@@ -60,14 +60,14 @@ export const Error = {
     },
 
     entityConflictError: (
-        value: CandidApi.EntityConflictErrorMessage
+        value: CandidApi.EntityConflictErrorMessage,
     ): CandidApi.encounterProviders.v2.deleteReferringProvider.Error.EntityConflictError => {
         return {
             content: value,
             errorName: "EntityConflictError",
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.deleteReferringProvider.Error.EntityConflictError,
-                visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.deleteReferringProvider.Error._visit(this, visitor);
             },
@@ -75,14 +75,14 @@ export const Error = {
     },
 
     _unknown: (
-        fetcherError: core.Fetcher.Error
+        fetcherError: core.Fetcher.Error,
     ): CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Unknown,
-                visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.deleteReferringProvider.Error._visit(this, visitor);
             },
@@ -91,7 +91,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.encounterProviders.v2.deleteReferringProvider.Error,
-        visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>
+        visitor: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityNotFoundError":

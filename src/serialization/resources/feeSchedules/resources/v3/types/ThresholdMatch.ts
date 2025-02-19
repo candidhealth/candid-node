@@ -18,7 +18,7 @@ export const ThresholdMatch: core.serialization.ObjectSchema<
 });
 
 export declare namespace ThresholdMatch {
-    interface Raw {
+    export interface Raw {
         threshold: PayerThreshold.Raw;
         rate_cents: number;
         match: boolean;

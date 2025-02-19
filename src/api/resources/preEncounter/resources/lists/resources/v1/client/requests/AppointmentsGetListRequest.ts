@@ -8,7 +8,7 @@ import * as CandidApi from "../../../../../../../../index";
  * @example
  *     {
  *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
- *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
+ *         sortDirection: "asc",
  *         limit: 1,
  *         pageToken: CandidApi.preEncounter.PageToken("string"),
  *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")

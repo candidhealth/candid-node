@@ -158,7 +158,6 @@ export type FacilityTypeCode =
     /**
      * Other Unlisted Facility */
     | "99";
-
 export const FacilityTypeCode = {
     Pharmacy: "01",
     Telehealth: "02",

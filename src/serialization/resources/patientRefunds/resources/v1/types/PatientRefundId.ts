@@ -15,5 +15,5 @@ export const PatientRefundId: core.serialization.Schema<
 });
 
 export declare namespace PatientRefundId {
-    type Raw = string;
+    export type Raw = string;
 }

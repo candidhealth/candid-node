@@ -12,5 +12,5 @@ export const TaskActionType: core.serialization.Schema<
 > = core.serialization.enum_(["close_task", "close_task_and_reprocess"]);
 
 export declare namespace TaskActionType {
-    type Raw = "close_task" | "close_task_and_reprocess";
+    export type Raw = "close_task" | "close_task_and_reprocess";
 }

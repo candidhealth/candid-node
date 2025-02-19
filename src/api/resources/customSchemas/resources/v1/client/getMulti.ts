@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.customSchemas.v1.getMulti.Error.UnauthorizedError
     | CandidApi.customSchemas.v1.getMulti.Error._Unknown;
 
-export declare namespace Error {
-    interface UnauthorizedError extends _Utils {
+export namespace Error {
+    export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     unauthorizedError: (
-        value: CandidApi.UnauthorizedErrorMessage
+        value: CandidApi.UnauthorizedErrorMessage,
     ): CandidApi.customSchemas.v1.getMulti.Error.UnauthorizedError => {
         return {
             content: value,
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.customSchemas.v1.getMulti.Error.UnauthorizedError,
-                visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>
+                visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.customSchemas.v1.getMulti.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.customSchemas.v1.getMulti.Error._Unknown,
-                visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>
+                visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.customSchemas.v1.getMulti.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.customSchemas.v1.getMulti.Error,
-        visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>
+        visitor: CandidApi.customSchemas.v1.getMulti.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "UnauthorizedError":

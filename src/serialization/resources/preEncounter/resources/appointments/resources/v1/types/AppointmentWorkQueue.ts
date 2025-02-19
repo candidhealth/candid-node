@@ -12,5 +12,5 @@ export const AppointmentWorkQueue: core.serialization.Schema<
 > = core.serialization.enum_(["EMERGENT_ISSUE", "NEW_PATIENT", "RETURNING_PATIENT", "MANUAL_ESCALATION"]);
 
 export declare namespace AppointmentWorkQueue {
-    type Raw = "EMERGENT_ISSUE" | "NEW_PATIENT" | "RETURNING_PATIENT" | "MANUAL_ESCALATION";
+    export type Raw = "EMERGENT_ISSUE" | "NEW_PATIENT" | "RETURNING_PATIENT" | "MANUAL_ESCALATION";
 }

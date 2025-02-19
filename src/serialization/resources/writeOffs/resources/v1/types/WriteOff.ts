@@ -22,13 +22,13 @@ export const WriteOff: core.serialization.Schema<
     });
 
 export declare namespace WriteOff {
-    type Raw = WriteOff.Patient | WriteOff.Insurance;
+    export type Raw = WriteOff.Patient | WriteOff.Insurance;
 
-    interface Patient extends PatientWriteOff.Raw {
+    export interface Patient extends PatientWriteOff.Raw {
         type: "patient";
     }
 
-    interface Insurance extends InsuranceWriteOff.Raw {
+    export interface Insurance extends InsuranceWriteOff.Raw {
         type: "insurance";
     }
 }

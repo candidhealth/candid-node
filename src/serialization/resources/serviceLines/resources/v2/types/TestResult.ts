@@ -16,7 +16,7 @@ export const TestResult: core.serialization.ObjectSchema<
 });
 
 export declare namespace TestResult {
-    interface Raw {
+    export interface Raw {
         value: number;
         result_type: TestResultType.Raw;
     }

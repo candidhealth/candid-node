@@ -15,7 +15,7 @@ export const TaskUpdatedToDeprecatedStatusErrorType: core.serialization.ObjectSc
 });
 
 export declare namespace TaskUpdatedToDeprecatedStatusErrorType {
-    interface Raw {
+    export interface Raw {
         deprecated_status?: TaskStatus.Raw | null;
     }
 }

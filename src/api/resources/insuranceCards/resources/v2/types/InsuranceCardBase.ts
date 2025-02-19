@@ -11,4 +11,5 @@ export interface InsuranceCardBase {
     planName?: string;
     planType?: CandidApi.SourceOfPaymentCode;
     insuranceType?: CandidApi.InsuranceTypeCode;
+    payerPlanGroupId?: CandidApi.PayerPlanGroupId;
 }

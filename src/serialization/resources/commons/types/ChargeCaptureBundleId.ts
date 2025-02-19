@@ -15,5 +15,5 @@ export const ChargeCaptureBundleId: core.serialization.Schema<
 });
 
 export declare namespace ChargeCaptureBundleId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -17,7 +17,7 @@ export const MatchProvider: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchProvider {
-    interface Raw {
+    export interface Raw {
         value?: OrganizationProviderId.Raw | null;
         match: boolean;
         explanation: string;

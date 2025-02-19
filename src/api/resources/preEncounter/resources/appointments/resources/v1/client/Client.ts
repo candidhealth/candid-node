@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V1 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -36,26 +40,26 @@ export class V1 {
      * @example
      *     await client.preEncounter.appointments.v1.create({
      *         patientId: CandidApi.preEncounter.PatientId("string"),
-     *         startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         status: CandidApi.preEncounter.appointments.v1.AppointmentStatus.Pending,
+     *         startTimestamp: "2024-01-15T09:30:00Z",
+     *         status: "PENDING",
      *         serviceDuration: 1,
      *         services: [{
-     *                 universalServiceIdentifier: CandidApi.preEncounter.appointments.v1.UniversalServiceIdentifier.MdVisit,
-     *                 startTimestamp: new Date("2024-01-15T09:30:00.000Z")
+     *                 universalServiceIdentifier: "MD_Visit",
+     *                 startTimestamp: "2024-01-15T09:30:00Z"
      *             }],
      *         placerAppointmentId: "string",
      *         attendingDoctor: {
      *             name: {
      *                 family: "string",
      *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
+     *                 use: "USUAL",
      *                 period: {}
      *             },
-     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
+     *             type: "PRIMARY",
      *             npi: "string",
      *             telecoms: [{
      *                     value: "string",
-     *                     use: CandidApi.preEncounter.ContactPointUse.Home
+     *                     use: "HOME"
      *                 }],
      *             addresses: [],
      *             period: {},
@@ -64,16 +68,16 @@ export class V1 {
      *         estimatedCopayCents: 1,
      *         estimatedPatientResponsibilityCents: 1,
      *         patientDepositCents: 1,
-     *         checkedInTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         checkedInTimestamp: "2024-01-15T09:30:00Z",
      *         notes: "string",
      *         locationResourceId: "string",
      *         automatedEligibilityCheckComplete: true,
-     *         workQueue: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue.EmergentIssue
+     *         workQueue: "EMERGENT_ISSUE"
      *     })
      */
     public async create(
         request: CandidApi.preEncounter.appointments.v1.MutableAppointment,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.appointments.v1.Appointment,
@@ -82,18 +86,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                "/appointments/v1"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/appointments/v1",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -129,7 +138,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -152,7 +161,7 @@ export class V1 {
      */
     public async get(
         id: CandidApi.preEncounter.AppointmentId,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.appointments.v1.Appointment,
@@ -161,18 +170,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -204,7 +218,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -227,7 +241,7 @@ export class V1 {
      */
     public async getHistory(
         id: CandidApi.preEncounter.AppointmentId,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.appointments.v1.Appointment[],
@@ -236,18 +250,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}/history`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}/history`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -281,7 +300,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -304,26 +323,26 @@ export class V1 {
      * @example
      *     await client.preEncounter.appointments.v1.update(CandidApi.preEncounter.AppointmentId("string"), "string", {
      *         patientId: CandidApi.preEncounter.PatientId("string"),
-     *         startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
-     *         status: CandidApi.preEncounter.appointments.v1.AppointmentStatus.Pending,
+     *         startTimestamp: "2024-01-15T09:30:00Z",
+     *         status: "PENDING",
      *         serviceDuration: 1,
      *         services: [{
-     *                 universalServiceIdentifier: CandidApi.preEncounter.appointments.v1.UniversalServiceIdentifier.MdVisit,
-     *                 startTimestamp: new Date("2024-01-15T09:30:00.000Z")
+     *                 universalServiceIdentifier: "MD_Visit",
+     *                 startTimestamp: "2024-01-15T09:30:00Z"
      *             }],
      *         placerAppointmentId: "string",
      *         attendingDoctor: {
      *             name: {
      *                 family: "string",
      *                 given: ["string"],
-     *                 use: CandidApi.preEncounter.NameUse.Usual,
+     *                 use: "USUAL",
      *                 period: {}
      *             },
-     *             type: CandidApi.preEncounter.ExternalProviderType.Primary,
+     *             type: "PRIMARY",
      *             npi: "string",
      *             telecoms: [{
      *                     value: "string",
-     *                     use: CandidApi.preEncounter.ContactPointUse.Home
+     *                     use: "HOME"
      *                 }],
      *             addresses: [],
      *             period: {},
@@ -332,18 +351,18 @@ export class V1 {
      *         estimatedCopayCents: 1,
      *         estimatedPatientResponsibilityCents: 1,
      *         patientDepositCents: 1,
-     *         checkedInTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         checkedInTimestamp: "2024-01-15T09:30:00Z",
      *         notes: "string",
      *         locationResourceId: "string",
      *         automatedEligibilityCheckComplete: true,
-     *         workQueue: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue.EmergentIssue
+     *         workQueue: "EMERGENT_ISSUE"
      *     })
      */
     public async update(
         id: CandidApi.preEncounter.AppointmentId,
         version: string,
         request: CandidApi.preEncounter.appointments.v1.MutableAppointment,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.appointments.v1.Appointment,
@@ -352,20 +371,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                `/appointments/v1/${encodeURIComponent(
-                    serializers.preEncounter.AppointmentId.jsonOrThrow(id)
-                )}/${encodeURIComponent(version)}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}/${encodeURIComponent(version)}`,
             ),
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -401,7 +423,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -421,12 +443,12 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.appointments.v1.scan({
-     *         since: new Date("2024-01-15T09:30:00.000Z")
+     *         since: "2024-01-15T09:30:00Z"
      *     })
      */
     public async scan(
         request: CandidApi.preEncounter.appointments.v1.AppointmentScanRequest,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.appointments.v1.Appointment[],
@@ -434,22 +456,27 @@ export class V1 {
         >
     > {
         const { since } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["since"] = since.toISOString();
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                "/appointments/v1/updates/scan"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/appointments/v1/updates/scan",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -489,24 +516,27 @@ export class V1 {
     public async deactivate(
         id: CandidApi.preEncounter.AppointmentId,
         version: string,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.preEncounter.appointments.v1.deactivate.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                `/appointments/v1/${encodeURIComponent(
-                    serializers.preEncounter.AppointmentId.jsonOrThrow(id)
-                )}/${encodeURIComponent(version)}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/appointments/v1/${encodeURIComponent(serializers.preEncounter.AppointmentId.jsonOrThrow(id))}/${encodeURIComponent(version)}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -536,7 +566,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

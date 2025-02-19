@@ -25,13 +25,13 @@ export const EncounterBase: core.serialization.ObjectSchema<
     patientAuthorizedRelease: core.serialization.property("patient_authorized_release", core.serialization.boolean()),
     benefitsAssignedToProvider: core.serialization.property(
         "benefits_assigned_to_provider",
-        core.serialization.boolean()
+        core.serialization.boolean(),
     ),
     providerAcceptsAssignment: core.serialization.property("provider_accepts_assignment", core.serialization.boolean()),
     appointmentType: core.serialization.property("appointment_type", core.serialization.string().optional()),
     existingMedications: core.serialization.property(
         "existing_medications",
-        core.serialization.list(Medication).optional()
+        core.serialization.list(Medication).optional(),
     ),
     vitals: Vitals.optional(),
     interventions: core.serialization.list(Intervention).optional(),
@@ -40,27 +40,27 @@ export const EncounterBase: core.serialization.ObjectSchema<
     billableStatus: core.serialization.property("billable_status", BillableStatusType),
     additionalInformation: core.serialization.property(
         "additional_information",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     serviceAuthorizationExceptionCode: core.serialization.property(
         "service_authorization_exception_code",
-        ServiceAuthorizationExceptionCode.optional()
+        ServiceAuthorizationExceptionCode.optional(),
     ),
     admissionDate: core.serialization.property("admission_date", core.serialization.string().optional()),
     dischargeDate: core.serialization.property("discharge_date", core.serialization.string().optional()),
     onsetOfCurrentIllnessOrSymptomDate: core.serialization.property(
         "onset_of_current_illness_or_symptom_date",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     lastMenstrualPeriodDate: core.serialization.property(
         "last_menstrual_period_date",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
 });
 
 export declare namespace EncounterBase {
-    interface Raw {
+    export interface Raw {
         external_id: EncounterExternalId.Raw;
         date_of_service?: string | null;
         end_date_of_service?: string | null;

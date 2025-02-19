@@ -24,7 +24,7 @@ export const PatientPaymentStatus: core.serialization.Schema<
 ]);
 
 export declare namespace PatientPaymentStatus {
-    type Raw =
+    export type Raw =
         | "PENDING"
         | "paid"
         | "CANCELED"

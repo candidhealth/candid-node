@@ -78,10 +78,33 @@ export const LicenseType: core.serialization.Schema<
     "MFTA",
     "APCC",
     "DNP",
+    "AGNPBC",
+    "ANP",
+    "FNPPP",
+    "LCSWR",
+    "ALC",
+    "RMFTI",
+    "LAMFT",
+    "LPCA",
+    "LSWI",
+    "CSW",
+    "CPC",
+    "LGMFT",
+    "LLPC",
+    "PLPC",
+    "PLMFT",
+    "LMHCA",
+    "CIT",
+    "CT",
+    "MFT",
+    "LSW",
+    "PLMHP",
+    "PCMSW",
+    "LMHP",
 ]);
 
 export declare namespace LicenseType {
-    type Raw =
+    export type Raw =
         | "MD"
         | "NP"
         | "PA"
@@ -149,5 +172,28 @@ export declare namespace LicenseType {
         | "OMS"
         | "MFTA"
         | "APCC"
-        | "DNP";
+        | "DNP"
+        | "AGNPBC"
+        | "ANP"
+        | "FNPPP"
+        | "LCSWR"
+        | "ALC"
+        | "RMFTI"
+        | "LAMFT"
+        | "LPCA"
+        | "LSWI"
+        | "CSW"
+        | "CPC"
+        | "LGMFT"
+        | "LLPC"
+        | "PLPC"
+        | "PLMFT"
+        | "LMHCA"
+        | "CIT"
+        | "CT"
+        | "MFT"
+        | "LSW"
+        | "PLMHP"
+        | "PCMSW"
+        | "LMHP";
 }

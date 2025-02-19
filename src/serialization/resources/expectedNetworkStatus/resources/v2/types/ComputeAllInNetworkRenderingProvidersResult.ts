@@ -24,20 +24,20 @@ export const ComputeAllInNetworkRenderingProvidersResult: core.serialization.Sch
     });
 
 export declare namespace ComputeAllInNetworkRenderingProvidersResult {
-    type Raw =
+    export type Raw =
         | ComputeAllInNetworkRenderingProvidersResult.RenderingProviders
         | ComputeAllInNetworkRenderingProvidersResult.Indeterminate
         | ComputeAllInNetworkRenderingProvidersResult.OutOfNetwork;
 
-    interface RenderingProviders extends InNetworkRenderingProvidersDetail.Raw {
+    export interface RenderingProviders extends InNetworkRenderingProvidersDetail.Raw {
         type: "rendering_providers";
     }
 
-    interface Indeterminate extends IndeterminateNetworkStatus.Raw {
+    export interface Indeterminate extends IndeterminateNetworkStatus.Raw {
         type: "indeterminate";
     }
 
-    interface OutOfNetwork extends OutOfNetworkStatus.Raw {
+    export interface OutOfNetwork extends OutOfNetworkStatus.Raw {
         type: "out_of_network";
     }
 }

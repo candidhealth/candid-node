@@ -3,7 +3,6 @@
  */
 
 export type PhoneNumberType = "Home" | "Mobile" | "Work";
-
 export const PhoneNumberType = {
     Home: "Home",
     Mobile: "Mobile",

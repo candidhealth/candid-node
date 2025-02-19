@@ -3,7 +3,6 @@
  */
 
 export type AppointmentWorkQueue = "EMERGENT_ISSUE" | "NEW_PATIENT" | "RETURNING_PATIENT" | "MANUAL_ESCALATION";
-
 export const AppointmentWorkQueue = {
     EmergentIssue: "EMERGENT_ISSUE",
     NewPatient: "NEW_PATIENT",

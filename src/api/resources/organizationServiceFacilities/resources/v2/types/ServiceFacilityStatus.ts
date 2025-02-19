@@ -16,7 +16,6 @@ export type ServiceFacilityStatus =
     /**
      * TThe location is temporarily closed. */
     | "suspended";
-
 export const ServiceFacilityStatus = {
     Active: "active",
     Inactive: "inactive",

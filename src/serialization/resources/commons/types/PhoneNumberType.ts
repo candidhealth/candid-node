@@ -10,5 +10,5 @@ export const PhoneNumberType: core.serialization.Schema<serializers.PhoneNumberT
     core.serialization.enum_(["Home", "Mobile", "Work"]);
 
 export declare namespace PhoneNumberType {
-    type Raw = "Home" | "Mobile" | "Work";
+    export type Raw = "Home" | "Mobile" | "Work";
 }

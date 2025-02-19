@@ -1084,7 +1084,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
     ]);
 
 export declare namespace Rarc {
-    type Raw =
+    export type Raw =
         | "M1"
         | "M2"
         | "M3"

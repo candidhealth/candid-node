@@ -22,13 +22,13 @@ export const NonInsurancePayerDescriptionUpdate: core.serialization.Schema<
     });
 
 export declare namespace NonInsurancePayerDescriptionUpdate {
-    type Raw = NonInsurancePayerDescriptionUpdate.Remove | NonInsurancePayerDescriptionUpdate.Set;
+    export type Raw = NonInsurancePayerDescriptionUpdate.Remove | NonInsurancePayerDescriptionUpdate.Set;
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: string;
     }

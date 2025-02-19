@@ -8,12 +8,12 @@ export type RemovableDateRangeOptionalEnd =
     | CandidApi.RemovableDateRangeOptionalEnd.DateRange
     | CandidApi.RemovableDateRangeOptionalEnd.Remove;
 
-export declare namespace RemovableDateRangeOptionalEnd {
-    interface DateRange extends CandidApi.DateRangeOptionalEnd {
+export namespace RemovableDateRangeOptionalEnd {
+    export interface DateRange extends CandidApi.DateRangeOptionalEnd {
         type: "date_range";
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

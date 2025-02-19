@@ -14,7 +14,7 @@ export const UpdatesDisabledDueToExternalSystemIntegrationErrorMessage: core.ser
 });
 
 export declare namespace UpdatesDisabledDueToExternalSystemIntegrationErrorMessage {
-    interface Raw {
+    export interface Raw {
         message?: string | null;
     }
 }

@@ -16,7 +16,7 @@ export const MedicaidProviderIdentifier: core.serialization.ObjectSchema<
 });
 
 export declare namespace MedicaidProviderIdentifier {
-    interface Raw {
+    export interface Raw {
         state: State.Raw;
         provider_number: string;
     }

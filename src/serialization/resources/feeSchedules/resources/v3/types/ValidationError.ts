@@ -26,30 +26,30 @@ export const ValidationError: core.serialization.Schema<
     });
 
 export declare namespace ValidationError {
-    type Raw =
+    export type Raw =
         | ValidationError.OverlappingRateEntries
         | ValidationError.VersionConflict
         | ValidationError.OrganizationProviderNotFound
         | ValidationError.DuplicateRate
         | ValidationError.EmptyEntries;
 
-    interface OverlappingRateEntries extends OverlappingRateEntriesError.Raw {
+    export interface OverlappingRateEntries extends OverlappingRateEntriesError.Raw {
         type: "overlapping_rate_entries";
     }
 
-    interface VersionConflict extends EntityConflictErrorMessage.Raw {
+    export interface VersionConflict extends EntityConflictErrorMessage.Raw {
         type: "version_conflict";
     }
 
-    interface OrganizationProviderNotFound extends EntityNotFoundErrorMessage.Raw {
+    export interface OrganizationProviderNotFound extends EntityNotFoundErrorMessage.Raw {
         type: "organization_provider_not_found";
     }
 
-    interface DuplicateRate {
+    export interface DuplicateRate {
         type: "duplicate_rate";
     }
 
-    interface EmptyEntries {
+    export interface EmptyEntries {
         type: "empty_entries";
     }
 }

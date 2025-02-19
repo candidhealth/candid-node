@@ -14,7 +14,7 @@ export const ToggleNonInsurancePayerEnablementRequest: core.serialization.Object
 });
 
 export declare namespace ToggleNonInsurancePayerEnablementRequest {
-    interface Raw {
+    export interface Raw {
         enabled: boolean;
     }
 }

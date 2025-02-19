@@ -17,17 +17,17 @@ export const Claim: core.serialization.ObjectSchema<serializers.Claim.Raw, Candi
         clearinghouse: core.serialization.string().optional(),
         clearinghouseClaimId: core.serialization.property(
             "clearinghouse_claim_id",
-            core.serialization.string().optional()
+            core.serialization.string().optional(),
         ),
         payerClaimId: core.serialization.property("payer_claim_id", core.serialization.string().optional()),
         cliaNumber: core.serialization.property("clia_number", core.serialization.string().optional()),
         serviceLines: core.serialization.property("service_lines", core.serialization.list(ServiceLine)),
         eras: core.serialization.list(Era),
-    }
+    },
 );
 
 export declare namespace Claim {
-    interface Raw {
+    export interface Raw {
         claim_id: ClaimId.Raw;
         status: ClaimStatus.Raw;
         clearinghouse?: string | null;

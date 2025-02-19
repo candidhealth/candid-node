@@ -13,7 +13,6 @@ export type BenefitType =
     | "OOP_MAX_YEAR_TO_DATE"
     | "COPAY"
     | "COINSURANCE";
-
 export const BenefitType = {
     Deductible: "DEDUCTIBLE",
     DeductibleContract: "DEDUCTIBLE_CONTRACT",

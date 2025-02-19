@@ -6,13 +6,13 @@ import * as CandidApi from "../../../../../index";
 
 export type DateUpdate = CandidApi.contracts.v2.DateUpdate.Set | CandidApi.contracts.v2.DateUpdate.Remove;
 
-export declare namespace DateUpdate {
-    interface Set {
+export namespace DateUpdate {
+    export interface Set {
         type: "set";
         value: CandidApi.Date_;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

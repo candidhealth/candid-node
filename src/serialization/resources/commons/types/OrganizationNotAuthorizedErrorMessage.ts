@@ -14,7 +14,7 @@ export const OrganizationNotAuthorizedErrorMessage: core.serialization.ObjectSch
 });
 
 export declare namespace OrganizationNotAuthorizedErrorMessage {
-    interface Raw {
+    export interface Raw {
         message: string;
     }
 }

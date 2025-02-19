@@ -14,7 +14,7 @@ export const NotImplementedErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace NotImplementedErrorMessage {
-    interface Raw {
+    export interface Raw {
         message?: string | null;
     }
 }

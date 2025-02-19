@@ -14,7 +14,7 @@ export const HttpServiceUnavailableErrorMessage: core.serialization.ObjectSchema
 });
 
 export declare namespace HttpServiceUnavailableErrorMessage {
-    interface Raw {
+    export interface Raw {
         message?: string | null;
     }
 }

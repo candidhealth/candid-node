@@ -33,14 +33,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.UnprocessableEntityError | Error.ContractInvalidExpirationDateHttpError;
+    export type Raw = Error.UnprocessableEntityError | Error.ContractInvalidExpirationDateHttpError;
 
-    interface UnprocessableEntityError {
+    export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
     }
 
-    interface ContractInvalidExpirationDateHttpError {
+    export interface ContractInvalidExpirationDateHttpError {
         errorName: "ContractInvalidExpirationDateHttpError";
         content: ContractInvalidExpirationDateError.Raw;
     }

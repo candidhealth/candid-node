@@ -10,12 +10,12 @@ export type NonInsurancePayerCategoryUpdate =
      * Max 255 characters allowed */
     | CandidApi.nonInsurancePayers.v1.NonInsurancePayerCategoryUpdate.Set;
 
-export declare namespace NonInsurancePayerCategoryUpdate {
-    interface Remove {
+export namespace NonInsurancePayerCategoryUpdate {
+    export interface Remove {
         type: "remove";
     }
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: string;
     }

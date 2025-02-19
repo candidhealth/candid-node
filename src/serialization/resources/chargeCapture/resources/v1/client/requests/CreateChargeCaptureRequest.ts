@@ -21,7 +21,7 @@ export const CreateChargeCaptureRequest: core.serialization.Schema<
 });
 
 export declare namespace CreateChargeCaptureRequest {
-    interface Raw {
+    export interface Raw {
         data: ChargeCaptureData.Raw;
         charge_external_id: string;
         ehr_source_url?: string | null;

@@ -25,30 +25,30 @@ export const AllocationTarget: core.serialization.Schema<serializers.AllocationT
         });
 
 export declare namespace AllocationTarget {
-    type Raw =
+    export type Raw =
         | AllocationTarget.ServiceLine
         | AllocationTarget.Claim
         | AllocationTarget.BillingProviderId
         | AllocationTarget.Appointment
         | AllocationTarget.Unattributed;
 
-    interface ServiceLine extends ServiceLineAllocationTarget.Raw {
+    export interface ServiceLine extends ServiceLineAllocationTarget.Raw {
         type: "service_line";
     }
 
-    interface Claim extends ClaimAllocationTarget.Raw {
+    export interface Claim extends ClaimAllocationTarget.Raw {
         type: "claim";
     }
 
-    interface BillingProviderId extends BillingProviderAllocationTarget.Raw {
+    export interface BillingProviderId extends BillingProviderAllocationTarget.Raw {
         type: "billing_provider_id";
     }
 
-    interface Appointment extends AppointmentAllocationTarget.Raw {
+    export interface Appointment extends AppointmentAllocationTarget.Raw {
         type: "appointment";
     }
 
-    interface Unattributed {
+    export interface Unattributed {
         type: "unattributed";
     }
 }

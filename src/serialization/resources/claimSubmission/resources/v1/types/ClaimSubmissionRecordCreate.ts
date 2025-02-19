@@ -17,16 +17,16 @@ export const ClaimSubmissionRecordCreate: core.serialization.ObjectSchema<
     claimFrequencyCode: core.serialization.property("claim_frequency_code", ClaimFrequencyTypeCode.optional()),
     payerResponsibility: core.serialization.property(
         "payer_responsibility",
-        ClaimSubmissionPayerResponsibilityType.optional()
+        ClaimSubmissionPayerResponsibilityType.optional(),
     ),
     intendedSubmissionMedium: core.serialization.property(
         "intended_submission_medium",
-        IntendedSubmissionMedium.optional()
+        IntendedSubmissionMedium.optional(),
     ),
 });
 
 export declare namespace ClaimSubmissionRecordCreate {
-    interface Raw {
+    export interface Raw {
         submitted_at: string;
         claim_frequency_code?: ClaimFrequencyTypeCode.Raw | null;
         payer_responsibility?: ClaimSubmissionPayerResponsibilityType.Raw | null;

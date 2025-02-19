@@ -18,7 +18,7 @@ export const TagPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace TagPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: Tag.Raw[];
     }
 }

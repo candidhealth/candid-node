@@ -54,7 +54,7 @@ export const ServiceType: core.serialization.Schema<
 ]);
 
 export declare namespace ServiceType {
-    type Raw =
+    export type Raw =
         | "new_patient_video_appt"
         | "new_patient_prev_video_appt"
         | "new_patient_office_appt"

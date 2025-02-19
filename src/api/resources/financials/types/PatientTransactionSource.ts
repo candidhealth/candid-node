@@ -10,7 +10,6 @@ export type PatientTransactionSource =
     | "ELATION"
     | "CEDAR"
     | "HEALTHIE";
-
 export const PatientTransactionSource = {
     ManualEntry: "MANUAL_ENTRY",
     Chargebee: "CHARGEBEE",

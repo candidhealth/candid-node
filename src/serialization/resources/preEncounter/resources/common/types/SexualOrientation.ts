@@ -12,5 +12,5 @@ export const SexualOrientation: core.serialization.Schema<
 > = core.serialization.enum_(["HETEROSEXUAL", "HOMOSEXUAL", "BISEXUAL", "TWO_SPIRIT", "OTHER", "UNKNOWN", "REFUSED"]);
 
 export declare namespace SexualOrientation {
-    type Raw = "HETEROSEXUAL" | "HOMOSEXUAL" | "BISEXUAL" | "TWO_SPIRIT" | "OTHER" | "UNKNOWN" | "REFUSED";
+    export type Raw = "HETEROSEXUAL" | "HOMOSEXUAL" | "BISEXUAL" | "TWO_SPIRIT" | "OTHER" | "UNKNOWN" | "REFUSED";
 }

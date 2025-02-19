@@ -12,12 +12,12 @@ export const InvalidTagNamesErrorType: core.serialization.ObjectSchema<
 > = core.serialization.object({
     invalidTagNames: core.serialization.property(
         "invalid_tag_names",
-        core.serialization.list(core.serialization.string())
+        core.serialization.list(core.serialization.string()),
     ),
 });
 
 export declare namespace InvalidTagNamesErrorType {
-    interface Raw {
+    export interface Raw {
         invalid_tag_names: string[];
     }
 }

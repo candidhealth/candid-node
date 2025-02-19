@@ -20,7 +20,7 @@ export const InsurancePaymentCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsurancePaymentCreate {
-    interface Raw {
+    export interface Raw {
         payer_identifier: PayerIdentifier.Raw;
         amount_cents: number;
         payment_timestamp?: string | null;

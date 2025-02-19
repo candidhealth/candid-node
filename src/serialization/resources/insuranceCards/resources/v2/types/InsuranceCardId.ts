@@ -15,5 +15,5 @@ export const InsuranceCardId: core.serialization.Schema<
 });
 
 export declare namespace InsuranceCardId {
-    type Raw = string;
+    export type Raw = string;
 }

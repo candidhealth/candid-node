@@ -3,7 +3,6 @@
  */
 
 export type Ethnicity = "HISPANIC_OR_LATINO" | "NOT_HISPANIC_OR_LATINO" | "UNKNOWN" | "REFUSED";
-
 export const Ethnicity = {
     HispanicOrLatino: "HISPANIC_OR_LATINO",
     NotHispanicOrLatino: "NOT_HISPANIC_OR_LATINO",

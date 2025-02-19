@@ -3,7 +3,6 @@
  */
 
 export type AppointmentStatus = "PENDING" | "NOT_READY" | "READY" | "CHECKED_IN";
-
 export const AppointmentStatus = {
     Pending: "PENDING",
     NotReady: "NOT_READY",

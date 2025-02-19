@@ -21,13 +21,13 @@ export const RemovableDateRangeOptionalEnd: core.serialization.Schema<
     });
 
 export declare namespace RemovableDateRangeOptionalEnd {
-    type Raw = RemovableDateRangeOptionalEnd.DateRange | RemovableDateRangeOptionalEnd.Remove;
+    export type Raw = RemovableDateRangeOptionalEnd.DateRange | RemovableDateRangeOptionalEnd.Remove;
 
-    interface DateRange extends DateRangeOptionalEnd.Raw {
+    export interface DateRange extends DateRangeOptionalEnd.Raw {
         type: "date_range";
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

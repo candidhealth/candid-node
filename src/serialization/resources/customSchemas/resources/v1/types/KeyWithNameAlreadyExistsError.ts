@@ -16,7 +16,7 @@ export const KeyWithNameAlreadyExistsError: core.serialization.ObjectSchema<
 });
 
 export declare namespace KeyWithNameAlreadyExistsError {
-    interface Raw {
+    export interface Raw {
         key: string;
         value_type: Primitive.Raw;
     }

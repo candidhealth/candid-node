@@ -37,7 +37,7 @@ export const Encounter: core.serialization.ObjectSchema<
     .object({
         patientControlNumber: core.serialization.property(
             "patient_control_number",
-            core.serialization.string().optional()
+            core.serialization.string().optional(),
         ),
         encounterId: core.serialization.property("encounter_id", EncounterId),
         claims: core.serialization.list(Claim),
@@ -48,7 +48,7 @@ export const Encounter: core.serialization.ObjectSchema<
         referringProvider: core.serialization.property("referring_provider", EncounterProvider.optional()),
         initialReferringProvider: core.serialization.property(
             "initial_referring_provider",
-            EncounterProvider.optional()
+            EncounterProvider.optional(),
         ),
         supervisingProvider: core.serialization.property("supervising_provider", EncounterProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacility),
@@ -56,7 +56,7 @@ export const Encounter: core.serialization.ObjectSchema<
         subscriberSecondary: core.serialization.property("subscriber_secondary", Subscriber.optional()),
         priorAuthorizationNumber: core.serialization.property(
             "prior_authorization_number",
-            PriorAuthorizationNumber.optional()
+            PriorAuthorizationNumber.optional(),
         ),
         responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
         url: LinkUrl,
@@ -66,11 +66,11 @@ export const Encounter: core.serialization.ObjectSchema<
         placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
         placeOfServiceCodeAsSubmitted: core.serialization.property(
             "place_of_service_code_as_submitted",
-            FacilityTypeCode.optional()
+            FacilityTypeCode.optional(),
         ),
         patientHistories: core.serialization.property(
             "patient_histories",
-            core.serialization.list(PatientHistoryCategory)
+            core.serialization.list(PatientHistoryCategory),
         ),
         patientPayments: core.serialization.property("patient_payments", core.serialization.list(PatientPayment)),
         tags: core.serialization.list(Tag),
@@ -78,7 +78,7 @@ export const Encounter: core.serialization.ObjectSchema<
         workQueueId: core.serialization.property("work_queue_id", WorkQueueId.optional()),
         workQueueMembershipActivatedAt: core.serialization.property(
             "work_queue_membership_activated_at",
-            core.serialization.date().optional()
+            core.serialization.date().optional(),
         ),
         ownerOfNextAction: core.serialization.property("owner_of_next_action", EncounterOwnerOfNextActionType),
         submissionOrigin: core.serialization.property("submission_origin", EncounterSubmissionOriginType),
@@ -90,7 +90,7 @@ export const Encounter: core.serialization.ObjectSchema<
     .extend(EncounterBase);
 
 export declare namespace Encounter {
-    interface Raw extends EncounterBase.Raw {
+    export interface Raw extends EncounterBase.Raw {
         patient_control_number?: string | null;
         encounter_id: EncounterId.Raw;
         claims: Claim.Raw[];

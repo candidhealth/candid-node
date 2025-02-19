@@ -20,7 +20,7 @@ export const OptionalDimensions: core.serialization.ObjectSchema<
     payerUuid: core.serialization.property("payer_uuid", PayerUuid.optional()),
     organizationBillingProviderId: core.serialization.property(
         "organization_billing_provider_id",
-        OrganizationProviderId.optional()
+        OrganizationProviderId.optional(),
     ),
     states: core.serialization.set(State),
     zipCodes: core.serialization.property("zip_codes", core.serialization.set(core.serialization.string())),
@@ -32,7 +32,7 @@ export const OptionalDimensions: core.serialization.ObjectSchema<
 });
 
 export declare namespace OptionalDimensions {
-    interface Raw {
+    export interface Raw {
         payer_uuid?: PayerUuid.Raw | null;
         organization_billing_provider_id?: OrganizationProviderId.Raw | null;
         states: State.Raw[];

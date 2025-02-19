@@ -17,7 +17,6 @@ export type NoteCategory =
     | "consent"
     | "procedure"
     | "time_in_appointment";
-
 export const NoteCategory = {
     Clinical: "clinical",
     CarePlan: "care_plan",

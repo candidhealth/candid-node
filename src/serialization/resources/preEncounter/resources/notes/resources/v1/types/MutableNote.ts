@@ -16,7 +16,7 @@ export const MutableNote: core.serialization.ObjectSchema<
 });
 
 export declare namespace MutableNote {
-    interface Raw {
+    export interface Raw {
         value: string;
         author_email?: string | null;
         author_name?: string | null;

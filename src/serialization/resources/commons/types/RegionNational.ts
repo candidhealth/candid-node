@@ -10,5 +10,5 @@ export const RegionNational: core.serialization.ObjectSchema<serializers.RegionN
     core.serialization.object({});
 
 export declare namespace RegionNational {
-    interface Raw {}
+    export interface Raw {}
 }

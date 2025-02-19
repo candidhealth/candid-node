@@ -17,7 +17,7 @@ export const SchemaCreate: core.serialization.Schema<
 });
 
 export declare namespace SchemaCreate {
-    interface Raw {
+    export interface Raw {
         name: string;
         description?: string | null;
         fields: SchemaField.Raw[];

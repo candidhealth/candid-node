@@ -12,5 +12,5 @@ export const ServiceIdQualifier: core.serialization.Schema<
 > = core.serialization.enum_(["EN", "EO", "HI", "N4", "ON", "UK", "UP"]);
 
 export declare namespace ServiceIdQualifier {
-    type Raw = "EN" | "EO" | "HI" | "N4" | "ON" | "UK" | "UP";
+    export type Raw = "EN" | "EO" | "HI" | "N4" | "ON" | "UK" | "UP";
 }

@@ -3,7 +3,6 @@
  */
 
 export type ServiceLineUnits = "MJ" | "UN";
-
 export const ServiceLineUnits = {
     Mj: "MJ",
     Un: "UN",

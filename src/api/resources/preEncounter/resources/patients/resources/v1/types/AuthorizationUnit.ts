@@ -3,7 +3,6 @@
  */
 
 export type AuthorizationUnit = "VISIT";
-
 export const AuthorizationUnit = {
     Visit: "VISIT",
 } as const;

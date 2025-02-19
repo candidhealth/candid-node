@@ -5,22 +5,26 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
-import urlJoin from "url-join";
 import * as serializers from "../../../../../../serialization/index";
+import urlJoin from "url-join";
 
 export declare namespace V1 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -39,14 +43,14 @@ export class V1 {
      *         nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         checkNumber: "string",
      *         invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         sort: CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentSortField.AmountCents,
-     *         sortDirection: CandidApi.SortDirection.Asc,
+     *         sort: "amount_cents",
+     *         sortDirection: "asc",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
      *     })
      */
     public async getMulti(
         request: CandidApi.nonInsurancePayerPayments.v1.GetMultiNonInsurancePayerPaymentRequest = {},
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentsPage,
@@ -54,7 +58,7 @@ export class V1 {
         >
     > {
         const { limit, nonInsurancePayerId, checkNumber, invoiceId, sort, sortDirection, pageToken } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -76,11 +80,16 @@ export class V1 {
         }
 
         if (sort != null) {
-            _queryParams["sort"] = sort;
+            _queryParams["sort"] =
+                serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentSortField.jsonOrThrow(sort, {
+                    unrecognizedObjectKeys: "strip",
+                });
         }
 
         if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
+            _queryParams["sort_direction"] = serializers.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (pageToken != null) {
@@ -89,18 +98,23 @@ export class V1 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/non-insurance-payer-payments/v1"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/non-insurance-payer-payments/v1",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -119,7 +133,7 @@ export class V1 {
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
-                    }
+                    },
                 ),
             };
         }
@@ -136,7 +150,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -159,7 +173,7 @@ export class V1 {
      */
     public async get(
         nonInsurancePayerPaymentId: CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPayment,
@@ -168,22 +182,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/non-insurance-payer-payments/v1/${encodeURIComponent(
-                    serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId.jsonOrThrow(
-                        nonInsurancePayerPaymentId
-                    )
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/non-insurance-payer-payments/v1/${encodeURIComponent(serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId.jsonOrThrow(nonInsurancePayerPaymentId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -215,7 +230,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -235,7 +250,7 @@ export class V1 {
      *     await client.nonInsurancePayerPayments.v1.create({
      *         nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         amountCents: 1,
-     *         paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         paymentTimestamp: "2024-01-15T09:30:00Z",
      *         paymentNote: "string",
      *         checkNumber: "string",
      *         allocations: [{
@@ -250,7 +265,7 @@ export class V1 {
      */
     public async create(
         request: CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentCreate,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPayment,
@@ -259,18 +274,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/non-insurance-payer-payments/v1"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/non-insurance-payer-payments/v1",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -306,7 +326,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -325,7 +345,7 @@ export class V1 {
      *
      * @example
      *     await client.nonInsurancePayerPayments.v1.update(CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+     *         paymentTimestamp: "2024-01-15T09:30:00Z",
      *         paymentNote: {
      *             type: "set",
      *             value: "string"
@@ -339,7 +359,7 @@ export class V1 {
     public async update(
         nonInsurancePayerPaymentId: CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId,
         request: CandidApi.nonInsurancePayerPayments.v1.UpdateNonInsurancePayerPaymentRequest = {},
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPayment,
@@ -348,22 +368,23 @@ export class V1 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/non-insurance-payer-payments/v1/${encodeURIComponent(
-                    serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId.jsonOrThrow(
-                        nonInsurancePayerPaymentId
-                    )
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/non-insurance-payer-payments/v1/${encodeURIComponent(serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId.jsonOrThrow(nonInsurancePayerPaymentId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -399,7 +420,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -422,26 +443,27 @@ export class V1 {
      */
     public async delete(
         nonInsurancePayerPaymentId: CandidApi.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId,
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.nonInsurancePayerPayments.v1.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/non-insurance-payer-payments/v1/${encodeURIComponent(
-                    serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId.jsonOrThrow(
-                        nonInsurancePayerPaymentId
-                    )
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/non-insurance-payer-payments/v1/${encodeURIComponent(serializers.nonInsurancePayerPayments.v1.NonInsurancePayerPaymentId.jsonOrThrow(nonInsurancePayerPaymentId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -469,7 +491,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

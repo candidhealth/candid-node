@@ -15,5 +15,5 @@ export const RenderingProviderid: core.serialization.Schema<
 });
 
 export declare namespace RenderingProviderid {
-    type Raw = string;
+    export type Raw = string;
 }

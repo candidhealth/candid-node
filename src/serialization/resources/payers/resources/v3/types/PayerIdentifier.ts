@@ -24,13 +24,13 @@ export const PayerIdentifier: core.serialization.Schema<
     });
 
 export declare namespace PayerIdentifier {
-    type Raw = PayerIdentifier.PayerInfo | PayerIdentifier.PayerUuid;
+    export type Raw = PayerIdentifier.PayerInfo | PayerIdentifier.PayerUuid;
 
-    interface PayerInfo extends PayerInfo.Raw {
+    export interface PayerInfo extends PayerInfo.Raw {
         type: "payer_info";
     }
 
-    interface PayerUuid {
+    export interface PayerUuid {
         type: "payer_uuid";
         value: PayerUuid.Raw;
     }

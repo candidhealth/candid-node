@@ -29,7 +29,7 @@ export const InsuranceWriteOffReason: core.serialization.Schema<
 ]);
 
 export declare namespace InsuranceWriteOffReason {
-    type Raw =
+    export type Raw =
         | "SMALL_BALANCE"
         | "NO_AUTHORIZATION_REFERRAL"
         | "TIMELY_FILING"

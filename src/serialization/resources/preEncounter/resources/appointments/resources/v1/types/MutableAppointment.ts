@@ -25,7 +25,7 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     estimatedCopayCents: core.serialization.property("estimated_copay_cents", core.serialization.number().optional()),
     estimatedPatientResponsibilityCents: core.serialization.property(
         "estimated_patient_responsibility_cents",
-        core.serialization.number().optional()
+        core.serialization.number().optional(),
     ),
     patientDepositCents: core.serialization.property("patient_deposit_cents", core.serialization.number().optional()),
     checkedInTimestamp: core.serialization.property("checked_in_timestamp", core.serialization.date().optional()),
@@ -33,13 +33,13 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     locationResourceId: core.serialization.property("location_resource_id", core.serialization.string().optional()),
     automatedEligibilityCheckComplete: core.serialization.property(
         "automated_eligibility_check_complete",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
     workQueue: core.serialization.property("work_queue", AppointmentWorkQueue.optional()),
 });
 
 export declare namespace MutableAppointment {
-    interface Raw {
+    export interface Raw {
         patient_id: PatientId.Raw;
         start_timestamp: string;
         status?: AppointmentStatus.Raw | null;

@@ -26,7 +26,7 @@ export const ExternalProvider: core.serialization.ObjectSchema<
 });
 
 export declare namespace ExternalProvider {
-    interface Raw {
+    export interface Raw {
         name: HumanName.Raw;
         type?: ExternalProviderType.Raw | null;
         npi?: string | null;

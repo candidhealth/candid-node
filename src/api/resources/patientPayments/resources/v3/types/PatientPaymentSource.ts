@@ -12,7 +12,6 @@ export type PatientPaymentSource =
     | "STRIPE_CHARGES"
     | "STRIPE_REFUNDS"
     | "ELATION_PAYMENTS";
-
 export const PatientPaymentSource = {
     ManualEntry: "MANUAL_ENTRY",
     ChargebeePayments: "CHARGEBEE_PAYMENTS",

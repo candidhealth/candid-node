@@ -39,7 +39,7 @@ export const EncounterCreate: core.serialization.Schema<
         referringProvider: core.serialization.property("referring_provider", ReferringProvider.optional()),
         initialReferringProvider: core.serialization.property(
             "initial_referring_provider",
-            InitialReferringProvider.optional()
+            InitialReferringProvider.optional(),
         ),
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
@@ -47,33 +47,33 @@ export const EncounterCreate: core.serialization.Schema<
         subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
         priorAuthorizationNumber: core.serialization.property(
             "prior_authorization_number",
-            PriorAuthorizationNumber.optional()
+            PriorAuthorizationNumber.optional(),
         ),
         responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
         diagnoses: core.serialization.list(DiagnosisCreate),
         clinicalNotes: core.serialization.property(
             "clinical_notes",
-            core.serialization.list(ClinicalNoteCategoryCreate).optional()
+            core.serialization.list(ClinicalNoteCategoryCreate).optional(),
         ),
         billingNotes: core.serialization.property("billing_notes", core.serialization.list(BillingNoteBase).optional()),
         placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode),
         patientHistories: core.serialization.property(
             "patient_histories",
-            core.serialization.list(PatientHistoryCategory).optional()
+            core.serialization.list(PatientHistoryCategory).optional(),
         ),
         serviceLines: core.serialization.property(
             "service_lines",
-            core.serialization.list(ServiceLineCreate).optional()
+            core.serialization.list(ServiceLineCreate).optional(),
         ),
         guarantor: GuarantorCreate.optional(),
         externalClaimSubmission: core.serialization.property(
             "external_claim_submission",
-            ExternalClaimSubmissionCreate.optional()
+            ExternalClaimSubmissionCreate.optional(),
         ),
         tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
         schemaInstances: core.serialization.property(
             "schema_instances",
-            core.serialization.list(SchemaInstance).optional()
+            core.serialization.list(SchemaInstance).optional(),
         ),
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
         epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
@@ -81,7 +81,7 @@ export const EncounterCreate: core.serialization.Schema<
     .extend(EncounterBase);
 
 export declare namespace EncounterCreate {
-    interface Raw extends EncounterBase.Raw {
+    export interface Raw extends EncounterBase.Raw {
         patient: PatientCreate.Raw;
         billing_provider: BillingProvider.Raw;
         rendering_provider: RenderingProvider.Raw;

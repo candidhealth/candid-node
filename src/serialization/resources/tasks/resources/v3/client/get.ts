@@ -31,14 +31,14 @@ export const Error: core.serialization.Schema<serializers.tasks.v3.get.Error.Raw
         });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError;
+    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface UnauthorizedError {
+    export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
     }

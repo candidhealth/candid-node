@@ -3,7 +3,6 @@
  */
 
 export type EmploymentStatus = "ACTIVE" | "TERMINATED";
-
 export const EmploymentStatus = {
     Active: "ACTIVE",
     Terminated: "TERMINATED",

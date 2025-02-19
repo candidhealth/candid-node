@@ -9,24 +9,24 @@ export type Error =
     | CandidApi.contracts.v2.delete.Error.ContractIsLinkedToFeeScheduleHttpError
     | CandidApi.contracts.v2.delete.Error._Unknown;
 
-export declare namespace Error {
-    interface ContractIsLinkedToFeeScheduleHttpError extends _Utils {
+export namespace Error {
+    export interface ContractIsLinkedToFeeScheduleHttpError extends _Utils {
         errorName: "ContractIsLinkedToFeeScheduleHttpError";
         content: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         contractIsLinkedToFeeScheduleHttpError: (
-            value: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError
+            value: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError,
         ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -34,14 +34,14 @@ export declare namespace Error {
 
 export const Error = {
     contractIsLinkedToFeeScheduleHttpError: (
-        value: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError
+        value: CandidApi.contracts.v2.ContractIsLinkedToFeeScheduleError,
     ): CandidApi.contracts.v2.delete.Error.ContractIsLinkedToFeeScheduleHttpError => {
         return {
             content: value,
             errorName: "ContractIsLinkedToFeeScheduleHttpError",
             _visit: function <_Result>(
                 this: CandidApi.contracts.v2.delete.Error.ContractIsLinkedToFeeScheduleHttpError,
-                visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>
+                visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>,
             ) {
                 return CandidApi.contracts.v2.delete.Error._visit(this, visitor);
             },
@@ -54,7 +54,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.contracts.v2.delete.Error._Unknown,
-                visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>
+                visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>,
             ) {
                 return CandidApi.contracts.v2.delete.Error._visit(this, visitor);
             },
@@ -63,7 +63,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.contracts.v2.delete.Error,
-        visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>
+        visitor: CandidApi.contracts.v2.delete.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "ContractIsLinkedToFeeScheduleHttpError":

@@ -17,7 +17,7 @@ export const AppointmentByIdAndPatientExternalId: core.serialization.ObjectSchem
 });
 
 export declare namespace AppointmentByIdAndPatientExternalId {
-    interface Raw {
+    export interface Raw {
         appointment_id: AppointmentId.Raw;
         patient_external_id: PatientExternalId.Raw;
     }

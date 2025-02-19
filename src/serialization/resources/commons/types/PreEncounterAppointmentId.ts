@@ -15,5 +15,5 @@ export const PreEncounterAppointmentId: core.serialization.Schema<
 });
 
 export declare namespace PreEncounterAppointmentId {
-    type Raw = string;
+    export type Raw = string;
 }

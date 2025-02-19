@@ -23,7 +23,7 @@ export const NonInsurancePayerPaymentCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace NonInsurancePayerPaymentCreate {
-    interface Raw {
+    export interface Raw {
         non_insurance_payer_id: NonInsurancePayerId.Raw;
         amount_cents: number;
         payment_timestamp?: string | null;

@@ -10,5 +10,5 @@ export const ServiceLineUnits: core.serialization.Schema<serializers.ServiceLine
     core.serialization.enum_(["MJ", "UN"]);
 
 export declare namespace ServiceLineUnits {
-    type Raw = "MJ" | "UN";
+    export type Raw = "MJ" | "UN";
 }

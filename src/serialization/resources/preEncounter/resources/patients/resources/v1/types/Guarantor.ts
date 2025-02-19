@@ -21,7 +21,7 @@ export const Guarantor: core.serialization.ObjectSchema<
 });
 
 export declare namespace Guarantor {
-    interface Raw {
+    export interface Raw {
         name: HumanName.Raw;
         telecom?: ContactPoint.Raw | null;
         email?: string | null;

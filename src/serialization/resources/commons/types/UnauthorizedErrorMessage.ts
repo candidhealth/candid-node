@@ -14,7 +14,7 @@ export const UnauthorizedErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace UnauthorizedErrorMessage {
-    interface Raw {
+    export interface Raw {
         message?: string | null;
     }
 }

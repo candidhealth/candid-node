@@ -12,18 +12,18 @@ export type InvoiceItemAttributionCreate =
     | CandidApi.invoices.v2.InvoiceItemAttributionCreate.ClaimId
     | CandidApi.invoices.v2.InvoiceItemAttributionCreate.Unattributed;
 
-export declare namespace InvoiceItemAttributionCreate {
-    interface ServiceLineId {
+export namespace InvoiceItemAttributionCreate {
+    export interface ServiceLineId {
         type: "service_line_id";
         value: CandidApi.ServiceLineId;
     }
 
-    interface ClaimId {
+    export interface ClaimId {
         type: "claim_id";
         value: CandidApi.ClaimId;
     }
 
-    interface Unattributed {
+    export interface Unattributed {
         type: "unattributed";
     }
 }

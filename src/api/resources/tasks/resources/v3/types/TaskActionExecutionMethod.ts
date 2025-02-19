@@ -6,8 +6,8 @@ import * as CandidApi from "../../../../../index";
 
 export type TaskActionExecutionMethod = CandidApi.tasks.v3.TaskActionExecutionMethod.CloseTask;
 
-export declare namespace TaskActionExecutionMethod {
-    interface CloseTask {
+export namespace TaskActionExecutionMethod {
+    export interface CloseTask {
         type: "close_task";
     }
 }

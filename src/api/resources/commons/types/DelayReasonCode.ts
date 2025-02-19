@@ -48,7 +48,6 @@ export type DelayReasonCode =
     /**
      * No response to initial request */
     | "17";
-
 export const DelayReasonCode = {
     C1: "1",
     C2: "2",

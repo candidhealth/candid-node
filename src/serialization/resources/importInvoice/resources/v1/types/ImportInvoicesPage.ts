@@ -18,7 +18,7 @@ export const ImportInvoicesPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace ImportInvoicesPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: ImportInvoice.Raw[];
     }
 }

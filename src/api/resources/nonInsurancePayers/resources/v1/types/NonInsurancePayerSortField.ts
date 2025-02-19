@@ -3,7 +3,6 @@
  */
 
 export type NonInsurancePayerSortField = "NAME" | "CATEGORY" | "ENABLED" | "UPDATED_AT";
-
 export const NonInsurancePayerSortField = {
     Name: "NAME",
     Category: "CATEGORY",

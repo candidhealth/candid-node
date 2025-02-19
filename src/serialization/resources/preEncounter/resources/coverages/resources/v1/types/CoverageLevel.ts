@@ -12,5 +12,5 @@ export const CoverageLevel: core.serialization.Schema<
 > = core.serialization.enum_(["EMPLOYEE_AND_CHILDREN", "EMPLOYEE_ONLY", "EMPLOYEE_AND_SPOUSE", "FAMILY", "INDIVIDUAL"]);
 
 export declare namespace CoverageLevel {
-    type Raw = "EMPLOYEE_AND_CHILDREN" | "EMPLOYEE_ONLY" | "EMPLOYEE_AND_SPOUSE" | "FAMILY" | "INDIVIDUAL";
+    export type Raw = "EMPLOYEE_AND_CHILDREN" | "EMPLOYEE_ONLY" | "EMPLOYEE_AND_SPOUSE" | "FAMILY" | "INDIVIDUAL";
 }

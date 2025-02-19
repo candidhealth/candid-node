@@ -17,7 +17,7 @@ export const MutablePatientWithMrn: core.serialization.ObjectSchema<
     .extend(MutablePatient);
 
 export declare namespace MutablePatientWithMrn {
-    interface Raw extends MutablePatient.Raw {
+    export interface Raw extends MutablePatient.Raw {
         mrn: string;
     }
 }

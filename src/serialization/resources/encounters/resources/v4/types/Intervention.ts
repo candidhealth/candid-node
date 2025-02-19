@@ -21,7 +21,7 @@ export const Intervention: core.serialization.ObjectSchema<
 });
 
 export declare namespace Intervention {
-    interface Raw {
+    export interface Raw {
         name: string;
         category: InterventionCategory.Raw;
         description?: string | null;

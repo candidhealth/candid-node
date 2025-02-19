@@ -17,7 +17,7 @@ export const MatchPayer: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchPayer {
-    interface Raw {
+    export interface Raw {
         value: PayerUuid.Raw;
         match: boolean;
         explanation: string;

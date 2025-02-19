@@ -12,5 +12,5 @@ export const Relationship: core.serialization.Schema<
 > = core.serialization.enum_(["SELF", "SPOUSE", "CHILD", "COMMON_LAW_SPOUSE", "OTHER"]);
 
 export declare namespace Relationship {
-    type Raw = "SELF" | "SPOUSE" | "CHILD" | "COMMON_LAW_SPOUSE" | "OTHER";
+    export type Raw = "SELF" | "SPOUSE" | "CHILD" | "COMMON_LAW_SPOUSE" | "OTHER";
 }

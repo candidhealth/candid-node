@@ -16,7 +16,7 @@ export const DiagnosisNotFoundError: core.serialization.ObjectSchema<
 });
 
 export declare namespace DiagnosisNotFoundError {
-    interface Raw {
+    export interface Raw {
         diagnosis_id?: DiagnosisId.Raw | null;
         message: string;
     }

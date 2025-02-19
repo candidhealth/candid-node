@@ -75,7 +75,6 @@ export type NetworkType =
     /**
      * Mutually Defined */
     | "ZZ";
-
 export const NetworkType = {
     SelfPay: "09",
     OtherNonFederalPrograms: "11",

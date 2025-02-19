@@ -15,7 +15,7 @@ export const TaskActions: core.serialization.ObjectSchema<
 });
 
 export declare namespace TaskActions {
-    interface Raw {
+    export interface Raw {
         actions: TaskAction.Raw[];
     }
 }

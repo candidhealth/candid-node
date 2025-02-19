@@ -19,7 +19,7 @@ export const StreetAddressBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace StreetAddressBase {
-    interface Raw {
+    export interface Raw {
         address1: string;
         address2?: string | null;
         city: string;

@@ -24,7 +24,7 @@ export const PatientRefundCreate: core.serialization.Schema<
 });
 
 export declare namespace PatientRefundCreate {
-    interface Raw {
+    export interface Raw {
         amount_cents: number;
         refund_timestamp?: string | null;
         refund_note?: string | null;

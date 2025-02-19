@@ -26,14 +26,14 @@ export const MutableCoverage: core.serialization.ObjectSchema<
     verified: core.serialization.boolean(),
     eligibilityChecks: core.serialization.property(
         "eligibility_checks",
-        core.serialization.list(EligibilityCheckMetadata).optional()
+        core.serialization.list(EligibilityCheckMetadata).optional(),
     ),
     latestEligibilityCheck: core.serialization.property("latest_eligibility_check", LatestEligibilityCheck.optional()),
     benefits: CoverageBenefits.optional(),
 });
 
 export declare namespace MutableCoverage {
-    interface Raw {
+    export interface Raw {
         status: CoverageStatus.Raw;
         subscriber: Subscriber.Raw;
         relationship: Relationship.Raw;

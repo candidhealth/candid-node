@@ -13,5 +13,5 @@ export const TaskNoteId: core.serialization.Schema<serializers.TaskNoteId.Raw, C
     });
 
 export declare namespace TaskNoteId {
-    type Raw = string;
+    export type Raw = string;
 }

@@ -14,7 +14,7 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(Rate);
 
 export declare namespace Response {
-    type Raw = Rate.Raw[];
+    export type Raw = Rate.Raw[];
 }
 
 export const Error: core.serialization.Schema<
@@ -37,9 +37,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError;
+    export type Raw = Error.EntityNotFoundError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }

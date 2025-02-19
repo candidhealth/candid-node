@@ -3,7 +3,6 @@
  */
 
 export type OrganizationProviderSortOptions = "provider_name:asc" | "provider_name:desc" | "npi:asc" | "npi:desc";
-
 export const OrganizationProviderSortOptions = {
     ProviderNameAsc: "provider_name:asc",
     ProviderNameDesc: "provider_name:desc",

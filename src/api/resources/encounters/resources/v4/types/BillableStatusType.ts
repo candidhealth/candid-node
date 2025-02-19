@@ -3,7 +3,6 @@
  */
 
 export type BillableStatusType = "BILLABLE" | "NOT_BILLABLE";
-
 export const BillableStatusType = {
     Billable: "BILLABLE",
     NotBillable: "NOT_BILLABLE",

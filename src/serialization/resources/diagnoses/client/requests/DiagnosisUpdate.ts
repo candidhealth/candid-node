@@ -15,7 +15,7 @@ export const DiagnosisUpdate: core.serialization.Schema<serializers.DiagnosisUpd
     });
 
 export declare namespace DiagnosisUpdate {
-    interface Raw {
+    export interface Raw {
         name?: string | null;
         code_type?: DiagnosisTypeCode.Raw | null;
         code?: string | null;

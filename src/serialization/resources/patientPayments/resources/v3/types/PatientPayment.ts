@@ -32,7 +32,7 @@ export const PatientPayment: core.serialization.ObjectSchema<
 });
 
 export declare namespace PatientPayment {
-    interface Raw {
+    export interface Raw {
         patient_payment_id: PatientPaymentId.Raw;
         organization_id: OrganizationId.Raw;
         source_internal_id: string;

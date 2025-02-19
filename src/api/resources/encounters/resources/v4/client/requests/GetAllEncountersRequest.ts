@@ -8,15 +8,15 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         limit: 100,
- *         claimStatus: CandidApi.ClaimStatus.BillerReceived,
- *         sort: CandidApi.encounters.v4.EncounterSortOptions.CreatedAtAsc,
+ *         claimStatus: "biller_received",
+ *         sort: "created_at:asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         dateOfServiceMin: "2019-08-24",
  *         dateOfServiceMax: "2019-08-25",
  *         primaryPayerNames: "Medicare,Medicaid",
  *         searchTerm: "doe",
  *         externalId: CandidApi.EncounterExternalId("123456"),
- *         diagnosesUpdatedSince: new Date("2019-08-24T14:15:22.000Z")
+ *         diagnosesUpdatedSince: "2019-08-24T14:15:22Z"
  *     }
  */
 export interface GetAllEncountersRequest {

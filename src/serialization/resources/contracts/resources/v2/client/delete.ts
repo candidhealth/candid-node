@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.ContractIsLinkedToFeeScheduleHttpError;
+    export type Raw = Error.ContractIsLinkedToFeeScheduleHttpError;
 
-    interface ContractIsLinkedToFeeScheduleHttpError {
+    export interface ContractIsLinkedToFeeScheduleHttpError {
         errorName: "ContractIsLinkedToFeeScheduleHttpError";
         content: ContractIsLinkedToFeeScheduleError.Raw;
     }

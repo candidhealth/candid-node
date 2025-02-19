@@ -14,7 +14,7 @@ export const EncounterPatientControlNumberUniquenessErrorType: core.serializatio
 });
 
 export declare namespace EncounterPatientControlNumberUniquenessErrorType {
-    interface Raw {
+    export interface Raw {
         patient_control_number: string;
     }
 }

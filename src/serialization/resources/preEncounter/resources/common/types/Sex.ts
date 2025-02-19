@@ -10,5 +10,5 @@ export const Sex: core.serialization.Schema<serializers.preEncounter.Sex.Raw, Ca
     core.serialization.enum_(["FEMALE", "MALE", "UNKNOWN", "REFUSED"]);
 
 export declare namespace Sex {
-    type Raw = "FEMALE" | "MALE" | "UNKNOWN" | "REFUSED";
+    export type Raw = "FEMALE" | "MALE" | "UNKNOWN" | "REFUSED";
 }

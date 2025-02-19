@@ -18,7 +18,7 @@ export const TaskStatus: core.serialization.Schema<serializers.tasks.TaskStatus.
     ]);
 
 export declare namespace TaskStatus {
-    type Raw =
+    export type Raw =
         | "finished"
         | "addressed_by_provider_group"
         | "sent_to_provider_group"

@@ -19,7 +19,6 @@ export type InsuranceWriteOffReason =
     | "OTHER"
     | "UNKNOWN"
     | "CONTRACTUAL_ADJUSTMENT";
-
 export const InsuranceWriteOffReason = {
     SmallBalance: "SMALL_BALANCE",
     NoAuthorizationReferral: "NO_AUTHORIZATION_REFERRAL",

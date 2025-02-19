@@ -3,7 +3,6 @@
  */
 
 export type NonInsurancePayerRefundSortField = "amount_cents" | "refund_timestamp";
-
 export const NonInsurancePayerRefundSortField = {
     AmountCents: "amount_cents",
     RefundTimestamp: "refund_timestamp",

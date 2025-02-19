@@ -23,14 +23,14 @@ export const RefundReasonUpdate: core.serialization.Schema<
     });
 
 export declare namespace RefundReasonUpdate {
-    type Raw = RefundReasonUpdate.Set | RefundReasonUpdate.Remove;
+    export type Raw = RefundReasonUpdate.Set | RefundReasonUpdate.Remove;
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: RefundReason.Raw;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

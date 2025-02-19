@@ -12,5 +12,5 @@ export const ClaimSubmissionPayerResponsibilityType: core.serialization.Schema<
 > = core.serialization.enum_(["primary", "secondary"]);
 
 export declare namespace ClaimSubmissionPayerResponsibilityType {
-    type Raw = "primary" | "secondary";
+    export type Raw = "primary" | "secondary";
 }

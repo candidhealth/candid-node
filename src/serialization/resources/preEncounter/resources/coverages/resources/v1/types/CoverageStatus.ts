@@ -12,5 +12,5 @@ export const CoverageStatus: core.serialization.Schema<
 > = core.serialization.enum_(["ACTIVE", "CANCELLED", "DRAFT", "ENTERED_IN_ERROR"]);
 
 export declare namespace CoverageStatus {
-    type Raw = "ACTIVE" | "CANCELLED" | "DRAFT" | "ENTERED_IN_ERROR";
+    export type Raw = "ACTIVE" | "CANCELLED" | "DRAFT" | "ENTERED_IN_ERROR";
 }

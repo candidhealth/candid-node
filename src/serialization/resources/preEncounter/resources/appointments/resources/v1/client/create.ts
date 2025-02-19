@@ -33,14 +33,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.VersionConflictError | Error.NotFoundError;
+    export type Raw = Error.VersionConflictError | Error.NotFoundError;
 
-    interface VersionConflictError {
+    export interface VersionConflictError {
         errorName: "VersionConflictError";
         content: VersionConflictErrorBody.Raw;
     }
 
-    interface NotFoundError {
+    export interface NotFoundError {
         errorName: "NotFoundError";
         content: ErrorBase4Xx.Raw;
     }

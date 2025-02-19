@@ -8,8 +8,10 @@ import * as core from "../../../../../../core";
 import { EncounterExternalIdUniquenessErrorType } from "../types/EncounterExternalIdUniquenessErrorType";
 import { EncounterPatientControlNumberUniquenessErrorType } from "../types/EncounterPatientControlNumberUniquenessErrorType";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
+import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
+import { PayerPlanGroupPayerDoesNotMatchInsuranceCardError } from "../types/PayerPlanGroupPayerDoesNotMatchInsuranceCardError";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.createFromPreEncounterPatient.Error.Raw,
@@ -25,6 +27,9 @@ export const Error: core.serialization.Schema<
         EntityNotFoundError: core.serialization.object({
             content: EntityNotFoundErrorMessage,
         }),
+        UnauthorizedError: core.serialization.object({
+            content: UnauthorizedErrorMessage,
+        }),
         HttpRequestValidationsError: core.serialization.object({
             content: core.serialization.list(RequestValidationError),
         }),
@@ -34,33 +39,42 @@ export const Error: core.serialization.Schema<
         HttpRequestValidationError: core.serialization.object({
             content: RequestValidationError,
         }),
+        PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: core.serialization.object({
+            content: PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
+        }),
     })
     .transform<CandidApi.encounters.v4.createFromPreEncounterPatient.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "EncounterExternalIdUniquenessError":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.encounterExternalIdUniquenessError(
-                        value.content
+                        value.content,
                     );
                 case "EncounterPatientControlNumberUniquenessError":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.encounterPatientControlNumberUniquenessError(
-                        value.content
+                        value.content,
                     );
                 case "EntityNotFoundError":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.entityNotFoundError(
-                        value.content
+                        value.content,
                     );
+                case "UnauthorizedError":
+                    return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.unauthorizedError(value.content);
                 case "HttpRequestValidationsError":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.httpRequestValidationsError(
-                        value.content
+                        value.content,
                     );
                 case "SchemaInstanceValidationHttpFailure":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.schemaInstanceValidationHttpFailure(
-                        value.content
+                        value.content,
                     );
                 case "HttpRequestValidationError":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.httpRequestValidationError(
-                        value.content
+                        value.content,
+                    );
+                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
+                    return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError(
+                        value.content,
                     );
             }
         },
@@ -68,41 +82,53 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.EncounterExternalIdUniquenessError
         | Error.EncounterPatientControlNumberUniquenessError
         | Error.EntityNotFoundError
+        | Error.UnauthorizedError
         | Error.HttpRequestValidationsError
         | Error.SchemaInstanceValidationHttpFailure
-        | Error.HttpRequestValidationError;
+        | Error.HttpRequestValidationError
+        | Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError;
 
-    interface EncounterExternalIdUniquenessError {
+    export interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: EncounterExternalIdUniquenessErrorType.Raw;
     }
 
-    interface EncounterPatientControlNumberUniquenessError {
+    export interface EncounterPatientControlNumberUniquenessError {
         errorName: "EncounterPatientControlNumberUniquenessError";
         content: EncounterPatientControlNumberUniquenessErrorType.Raw;
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface HttpRequestValidationsError {
+    export interface UnauthorizedError {
+        errorName: "UnauthorizedError";
+        content: UnauthorizedErrorMessage.Raw;
+    }
+
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }
 
-    interface SchemaInstanceValidationHttpFailure {
+    export interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
     }
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
+    }
+
+    export interface PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError {
+        errorName: "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError";
+        content: PayerPlanGroupPayerDoesNotMatchInsuranceCardError.Raw;
     }
 }

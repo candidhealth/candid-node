@@ -13,5 +13,5 @@ export const FeeScheduleValidationHttpError: core.serialization.Schema<
 > = core.serialization.list(RateUploadWithPossibleErrors);
 
 export declare namespace FeeScheduleValidationHttpError {
-    type Raw = RateUploadWithPossibleErrors.Raw[];
+    export type Raw = RateUploadWithPossibleErrors.Raw[];
 }

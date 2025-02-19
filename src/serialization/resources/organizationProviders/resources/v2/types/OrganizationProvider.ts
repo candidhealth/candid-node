@@ -23,7 +23,7 @@ export const OrganizationProvider: core.serialization.ObjectSchema<
     .extend(OrganizationProviderBase);
 
 export declare namespace OrganizationProvider {
-    interface Raw extends OrganizationProviderBase.Raw {
+    export interface Raw extends OrganizationProviderBase.Raw {
         organization_provider_id: OrganizationProviderId.Raw;
         employment_status: EmploymentStatus.Raw;
         employment_start_date?: Date_.Raw | null;

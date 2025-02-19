@@ -13,13 +13,13 @@ import * as CandidApi from "../../../../../../index";
  *                 dimensions: {
  *                     payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *                     organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *                     states: new Set([CandidApi.State.Aa]),
+ *                     states: new Set(["AA"]),
  *                     zipCodes: new Set(["string"]),
- *                     licenseTypes: new Set([CandidApi.organizationProviders.v2.LicenseType.Md]),
- *                     facilityTypeCodes: new Set([CandidApi.FacilityTypeCode.Pharmacy]),
- *                     networkTypes: new Set([CandidApi.NetworkType.Ppo]),
+ *                     licenseTypes: new Set(["MD"]),
+ *                     facilityTypeCodes: new Set(["01"]),
+ *                     networkTypes: new Set(["12"]),
  *                     cptCode: "string",
- *                     modifiers: new Set([CandidApi.ProcedureModifier.TwentyTwo])
+ *                     modifiers: new Set(["22"])
  *                 },
  *                 entries: [{
  *                         startDate: "2024-04-11",

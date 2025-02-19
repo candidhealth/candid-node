@@ -18,7 +18,7 @@ export const MatchGeo: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchGeo {
-    interface Raw {
+    export interface Raw {
         zip_code?: string | null;
         state?: State.Raw | null;
         match: boolean;

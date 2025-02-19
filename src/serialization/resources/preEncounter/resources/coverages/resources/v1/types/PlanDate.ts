@@ -16,7 +16,7 @@ export const PlanDate: core.serialization.ObjectSchema<
 });
 
 export declare namespace PlanDate {
-    interface Raw {
+    export interface Raw {
         start_date: string;
         end_date?: string | null;
         field_name: string;

@@ -15,5 +15,5 @@ export const BillingNoteId: core.serialization.Schema<
 });
 
 export declare namespace BillingNoteId {
-    type Raw = string;
+    export type Raw = string;
 }

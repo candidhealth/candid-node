@@ -3,7 +3,6 @@
  */
 
 export type EncounterSubmissionOriginType = "CANDID" | "EXTERNAL";
-
 export const EncounterSubmissionOriginType = {
     Candid: "CANDID",
     External: "EXTERNAL",

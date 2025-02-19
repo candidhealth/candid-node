@@ -14,5 +14,5 @@ export const LinkUrl: core.serialization.Schema<serializers.LinkUrl.Raw, CandidA
     });
 
 export declare namespace LinkUrl {
-    type Raw = string;
+    export type Raw = string;
 }

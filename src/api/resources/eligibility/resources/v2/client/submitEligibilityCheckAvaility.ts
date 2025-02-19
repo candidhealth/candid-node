@@ -9,24 +9,24 @@ export type Error =
     | CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error.HttpRequestValidationError
     | CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpRequestValidationError extends _Utils {
+export namespace Error {
+    export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>
+            visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -34,14 +34,14 @@ export declare namespace Error {
 
 export const Error = {
     httpRequestValidationError: (
-        value: CandidApi.RequestValidationError
+        value: CandidApi.RequestValidationError,
     ): CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error.HttpRequestValidationError => {
         return {
             content: value,
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error.HttpRequestValidationError,
-                visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>
+                visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>,
             ) {
                 return CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._visit(this, visitor);
             },
@@ -49,14 +49,14 @@ export const Error = {
     },
 
     _unknown: (
-        fetcherError: core.Fetcher.Error
+        fetcherError: core.Fetcher.Error,
     ): CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Unknown,
-                visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>
+                visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>,
             ) {
                 return CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._visit(this, visitor);
             },
@@ -65,7 +65,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error,
-        visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>
+        visitor: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpRequestValidationError":

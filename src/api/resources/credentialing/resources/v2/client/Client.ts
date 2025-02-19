@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -40,7 +44,7 @@ export class V2 {
      *         endDate: "2023-01-15",
      *         regions: {
      *             type: "states",
-     *             states: [CandidApi.State.Aa]
+     *             states: ["AA"]
      *         },
      *         submittedDate: "2023-01-15",
      *         payerLoadedDate: "2023-01-15"
@@ -48,24 +52,29 @@ export class V2 {
      */
     public async create(
         request: CandidApi.credentialing.v2.ProviderCredentialingSpanCreate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<CandidApi.credentialing.v2.ProviderCredentialingSpan, CandidApi.credentialing.v2.create.Error>
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/provider-credentialing-span/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/provider-credentialing-span/v2",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -101,7 +110,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -122,26 +131,29 @@ export class V2 {
      */
     public async get(
         providerCredentialingId: CandidApi.ProviderCredentialingSpanId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<CandidApi.credentialing.v2.ProviderCredentialingSpan, CandidApi.credentialing.v2.get.Error>
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/provider-credentialing-span/v2/${encodeURIComponent(
-                    serializers.ProviderCredentialingSpanId.jsonOrThrow(providerCredentialingId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/provider-credentialing-span/v2/${encodeURIComponent(serializers.ProviderCredentialingSpanId.jsonOrThrow(providerCredentialingId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -174,7 +186,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -202,7 +214,7 @@ export class V2 {
      */
     public async getAll(
         request: CandidApi.credentialing.v2.GetAllProviderCredentialingSpansRequest = {},
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.credentialing.v2.ProviderCredentialingSpanPage,
@@ -210,7 +222,7 @@ export class V2 {
         >
     > {
         const { limit, pageToken, payerUuid, providerId, asRenderingProvider, asContractingProvider } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -237,18 +249,23 @@ export class V2 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/provider-credentialing-span/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/provider-credentialing-span/v2",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -282,7 +299,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -305,24 +322,27 @@ export class V2 {
      */
     public async delete(
         providerCredentialingId: CandidApi.ProviderCredentialingSpanId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.credentialing.v2.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/provider-credentialing-span/v2/${encodeURIComponent(
-                    serializers.ProviderCredentialingSpanId.jsonOrThrow(providerCredentialingId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/provider-credentialing-span/v2/${encodeURIComponent(serializers.ProviderCredentialingSpanId.jsonOrThrow(providerCredentialingId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -350,7 +370,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -375,7 +395,7 @@ export class V2 {
      *         endDate: "2023-01-15",
      *         regions: {
      *             type: "states",
-     *             states: [CandidApi.State.Aa]
+     *             states: ["AA"]
      *         },
      *         submittedDate: "2023-01-15",
      *         payerLoadedDate: "2023-01-15"
@@ -384,26 +404,29 @@ export class V2 {
     public async update(
         providerCredentialingId: CandidApi.ProviderCredentialingSpanId,
         request: CandidApi.credentialing.v2.ProviderCredentialingSpanUpdate = {},
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<
         core.APIResponse<CandidApi.credentialing.v2.ProviderCredentialingSpan, CandidApi.credentialing.v2.update.Error>
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/provider-credentialing-span/v2/${encodeURIComponent(
-                    serializers.ProviderCredentialingSpanId.jsonOrThrow(providerCredentialingId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/provider-credentialing-span/v2/${encodeURIComponent(serializers.ProviderCredentialingSpanId.jsonOrThrow(providerCredentialingId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -441,7 +464,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

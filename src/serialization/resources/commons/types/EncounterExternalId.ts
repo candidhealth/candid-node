@@ -15,5 +15,5 @@ export const EncounterExternalId: core.serialization.Schema<
 });
 
 export declare namespace EncounterExternalId {
-    type Raw = string;
+    export type Raw = string;
 }

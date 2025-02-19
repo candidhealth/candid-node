@@ -3,7 +3,6 @@
  */
 
 export type IdentifierCode = "MCR" | "MCD";
-
 export const IdentifierCode = {
     Mcr: "MCR",
     Mcd: "MCD",

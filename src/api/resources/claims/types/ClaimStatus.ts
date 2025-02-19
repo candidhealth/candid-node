@@ -18,7 +18,6 @@ export type ClaimStatus =
     | "finalized_denied"
     | "held_by_customer"
     | "era_requires_review";
-
 export const ClaimStatus = {
     BillerReceived: "biller_received",
     Coded: "coded",

@@ -18,7 +18,7 @@ export const ExpectedNetworkStatusSubscriberInformation: core.serialization.Obje
 });
 
 export declare namespace ExpectedNetworkStatusSubscriberInformation {
-    interface Raw {
+    export interface Raw {
         payer_uuid: PayerUuid.Raw;
         member_id: string;
         insurance_type: InsuranceType.Raw;

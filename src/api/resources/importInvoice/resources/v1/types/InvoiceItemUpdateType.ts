@@ -3,7 +3,6 @@
  */
 
 export type InvoiceItemUpdateType = "APPEND" | "OVERWRITE";
-
 export const InvoiceItemUpdateType = {
     Append: "APPEND",
     Overwrite: "OVERWRITE",

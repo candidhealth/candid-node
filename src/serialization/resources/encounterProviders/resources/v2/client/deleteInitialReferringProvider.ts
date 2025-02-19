@@ -21,7 +21,7 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "EntityNotFoundError":
                     return CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error.entityNotFoundError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -29,9 +29,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError;
+    export type Raw = Error.EntityNotFoundError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }

@@ -12,5 +12,5 @@ export const EpsdtReferralConditionIndicatorCode: core.serialization.Schema<
 > = core.serialization.enum_(["AV", "NU", "S2", "ST"]);
 
 export declare namespace EpsdtReferralConditionIndicatorCode {
-    type Raw = "AV" | "NU" | "S2" | "ST";
+    export type Raw = "AV" | "NU" | "S2" | "ST";
 }

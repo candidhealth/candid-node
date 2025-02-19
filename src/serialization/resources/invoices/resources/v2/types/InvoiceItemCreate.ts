@@ -16,7 +16,7 @@ export const InvoiceItemCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceItemCreate {
-    interface Raw {
+    export interface Raw {
         attribution: InvoiceItemAttributionCreate.Raw;
         amount_cents: number;
     }

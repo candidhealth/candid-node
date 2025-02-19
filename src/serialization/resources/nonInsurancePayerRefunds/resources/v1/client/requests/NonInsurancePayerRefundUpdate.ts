@@ -20,7 +20,7 @@ export const NonInsurancePayerRefundUpdate: core.serialization.Schema<
 });
 
 export declare namespace NonInsurancePayerRefundUpdate {
-    interface Raw {
+    export interface Raw {
         refund_timestamp?: string | null;
         refund_note?: NoteUpdate.Raw | null;
         refund_reason?: RefundReasonUpdate.Raw | null;

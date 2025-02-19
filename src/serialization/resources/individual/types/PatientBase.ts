@@ -18,7 +18,7 @@ export const PatientBase: core.serialization.ObjectSchema<serializers.PatientBas
         .extend(IndividualBase);
 
 export declare namespace PatientBase {
-    interface Raw extends IndividualBase.Raw {
+    export interface Raw extends IndividualBase.Raw {
         external_id: string;
         date_of_birth: string;
         address: StreetAddressShortZip.Raw;

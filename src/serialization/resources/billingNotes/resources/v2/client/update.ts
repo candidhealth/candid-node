@@ -45,28 +45,28 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.EntityNotFoundError
         | Error.OrganizationNotAuthorizedError
         | Error.HttpRequestValidationError
         | Error.UnauthorizedError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface OrganizationNotAuthorizedError {
+    export interface OrganizationNotAuthorizedError {
         errorName: "OrganizationNotAuthorizedError";
         content: OrganizationNotAuthorizedErrorMessage.Raw;
     }
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
     }
 
-    interface UnauthorizedError {
+    export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
     }

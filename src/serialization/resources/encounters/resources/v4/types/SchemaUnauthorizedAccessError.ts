@@ -15,7 +15,7 @@ export const SchemaUnauthorizedAccessError: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaUnauthorizedAccessError {
-    interface Raw {
+    export interface Raw {
         schema_id: SchemaId.Raw;
     }
 }

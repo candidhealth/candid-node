@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.BadRequestError;
+    export type Raw = Error.BadRequestError;
 
-    interface BadRequestError {
+    export interface BadRequestError {
         errorName: "BadRequestError";
         content: ErrorBase4Xx.Raw;
     }

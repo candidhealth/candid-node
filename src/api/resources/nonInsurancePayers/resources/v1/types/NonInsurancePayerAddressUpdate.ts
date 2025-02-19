@@ -8,12 +8,12 @@ export type NonInsurancePayerAddressUpdate =
     | CandidApi.nonInsurancePayers.v1.NonInsurancePayerAddressUpdate.Remove
     | CandidApi.nonInsurancePayers.v1.NonInsurancePayerAddressUpdate.Set;
 
-export declare namespace NonInsurancePayerAddressUpdate {
-    interface Remove {
+export namespace NonInsurancePayerAddressUpdate {
+    export interface Remove {
         type: "remove";
     }
 
-    interface Set {
+    export interface Set {
         type: "set";
         value?: CandidApi.StreetAddressShortZip;
     }

@@ -12,5 +12,5 @@ export const PatientRefundSortField: core.serialization.Schema<
 > = core.serialization.enum_(["refund_source", "amount_cents", "refund_timestamp", "refund_reason", "refund_note"]);
 
 export declare namespace PatientRefundSortField {
-    type Raw = "refund_source" | "amount_cents" | "refund_timestamp" | "refund_reason" | "refund_note";
+    export type Raw = "refund_source" | "amount_cents" | "refund_timestamp" | "refund_reason" | "refund_note";
 }

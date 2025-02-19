@@ -13,5 +13,5 @@ export const PayerName: core.serialization.Schema<serializers.payers.v3.PayerNam
     });
 
 export declare namespace PayerName {
-    type Raw = string;
+    export type Raw = string;
 }

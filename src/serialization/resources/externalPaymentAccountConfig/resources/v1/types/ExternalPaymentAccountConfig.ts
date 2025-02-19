@@ -16,7 +16,7 @@ export const ExternalPaymentAccountConfig: core.serialization.ObjectSchema<
 });
 
 export declare namespace ExternalPaymentAccountConfig {
-    interface Raw {
+    export interface Raw {
         id: PaymentAccountConfigId.Raw;
         account_name: string;
     }

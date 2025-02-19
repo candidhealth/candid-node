@@ -18,7 +18,7 @@ export const PatientPaymentUpdate: core.serialization.Schema<
 });
 
 export declare namespace PatientPaymentUpdate {
-    interface Raw {
+    export interface Raw {
         payment_timestamp?: string | null;
         payment_note?: NoteUpdate.Raw | null;
         invoice?: InvoiceUpdate.Raw | null;

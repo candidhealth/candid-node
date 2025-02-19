@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.serviceLines.v2.create.Error.HttpRequestValidationError
     | CandidApi.serviceLines.v2.create.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpRequestValidationError extends _Utils {
+export namespace Error {
+    export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     httpRequestValidationError: (
-        value: CandidApi.RequestValidationError
+        value: CandidApi.RequestValidationError,
     ): CandidApi.serviceLines.v2.create.Error.HttpRequestValidationError => {
         return {
             content: value,
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.serviceLines.v2.create.Error.HttpRequestValidationError,
-                visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>
+                visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.serviceLines.v2.create.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.serviceLines.v2.create.Error._Unknown,
-                visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>
+                visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.serviceLines.v2.create.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.serviceLines.v2.create.Error,
-        visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>
+        visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpRequestValidationError":

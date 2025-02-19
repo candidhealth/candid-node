@@ -19,7 +19,7 @@ export const PatientListItem: core.serialization.ObjectSchema<
 });
 
 export declare namespace PatientListItem {
-    interface Raw {
+    export interface Raw {
         patient: Patient.Raw;
         primary_coverage?: MutableCoverage.Raw | null;
         next_appointment?: MutableAppointment.Raw | null;

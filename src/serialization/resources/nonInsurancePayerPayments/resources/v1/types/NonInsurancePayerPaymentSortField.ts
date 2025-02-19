@@ -12,5 +12,5 @@ export const NonInsurancePayerPaymentSortField: core.serialization.Schema<
 > = core.serialization.enum_(["amount_cents", "payment_timestamp"]);
 
 export declare namespace NonInsurancePayerPaymentSortField {
-    type Raw = "amount_cents" | "payment_timestamp";
+    export type Raw = "amount_cents" | "payment_timestamp";
 }

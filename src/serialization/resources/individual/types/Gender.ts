@@ -15,5 +15,5 @@ export const Gender: core.serialization.Schema<serializers.Gender.Raw, CandidApi
 ]);
 
 export declare namespace Gender {
-    type Raw = "male" | "female" | "other" | "not_given" | "unknown";
+    export type Raw = "male" | "female" | "other" | "not_given" | "unknown";
 }

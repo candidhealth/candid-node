@@ -5,22 +5,26 @@
 import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
 import * as CandidApi from "../../../../../../../index";
-import urlJoin from "url-join";
 import * as serializers from "../../../../../../../../serialization/index";
+import urlJoin from "url-join";
 
 export declare namespace V1 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -38,13 +42,13 @@ export class V1 {
      *         pageToken: CandidApi.preEncounter.PageToken("string"),
      *         limit: 1,
      *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
-     *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
+     *         sortDirection: "asc",
      *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")
      *     })
      */
     public async getPatientList(
         request: CandidApi.preEncounter.lists.v1.PatientListRequest = {},
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.lists.v1.PatientListPage,
@@ -52,7 +56,7 @@ export class V1 {
         >
     > {
         const { pageToken, limit, sortField, sortDirection, filters } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (pageToken != null) {
             _queryParams["page_token"] = pageToken;
         }
@@ -66,7 +70,9 @@ export class V1 {
         }
 
         if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
+            _queryParams["sort_direction"] = serializers.preEncounter.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (filters != null) {
@@ -75,18 +81,23 @@ export class V1 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                "/lists/v1/patient"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/lists/v1/patient",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -119,7 +130,7 @@ export class V1 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -140,7 +151,7 @@ export class V1 {
      * @example
      *     await client.preEncounter.lists.v1.getAppointmentList({
      *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
-     *         sortDirection: CandidApi.preEncounter.SortDirection.Asc,
+     *         sortDirection: "asc",
      *         limit: 1,
      *         pageToken: CandidApi.preEncounter.PageToken("string"),
      *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")
@@ -148,7 +159,7 @@ export class V1 {
      */
     public async getAppointmentList(
         request: CandidApi.preEncounter.lists.v1.AppointmentsGetListRequest = {},
-        requestOptions?: V1.RequestOptions
+        requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.preEncounter.lists.v1.AppointmentListPage,
@@ -156,13 +167,15 @@ export class V1 {
         >
     > {
         const { sortField, sortDirection, limit, pageToken, filters } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (sortField != null) {
             _queryParams["sort_field"] = sortField;
         }
 
         if (sortDirection != null) {
-            _queryParams["sort_direction"] = sortDirection;
+            _queryParams["sort_direction"] = serializers.preEncounter.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (limit != null) {
@@ -179,18 +192,23 @@ export class V1 {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .preEncounter,
-                "/lists/v1/appointment"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/lists/v1/appointment",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,

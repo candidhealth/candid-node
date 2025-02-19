@@ -14,5 +14,5 @@ export const EraId: core.serialization.Schema<serializers.EraId.Raw, CandidApi.E
     });
 
 export declare namespace EraId {
-    type Raw = string;
+    export type Raw = string;
 }

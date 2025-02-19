@@ -15,5 +15,5 @@ export const PatientSortField: core.serialization.Schema<
 });
 
 export declare namespace PatientSortField {
-    type Raw = string;
+    export type Raw = string;
 }

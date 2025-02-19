@@ -14,7 +14,7 @@ export const Response: core.serialization.Schema<
 > = core.serialization.list(Rate);
 
 export declare namespace Response {
-    type Raw = Rate.Raw[];
+    export type Raw = Rate.Raw[];
 }
 
 export const Error: core.serialization.Schema<
@@ -31,7 +31,7 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "FeeScheduleValidationHttpError":
                     return CandidApi.feeSchedules.v3.uploadFeeSchedule.Error.feeScheduleValidationHttpError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -39,9 +39,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.FeeScheduleValidationHttpError;
+    export type Raw = Error.FeeScheduleValidationHttpError;
 
-    interface FeeScheduleValidationHttpError {
+    export interface FeeScheduleValidationHttpError {
         errorName: "FeeScheduleValidationHttpError";
         content: RateUploadWithPossibleErrors.Raw[];
     }

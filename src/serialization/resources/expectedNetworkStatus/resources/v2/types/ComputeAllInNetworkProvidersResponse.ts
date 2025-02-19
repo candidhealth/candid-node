@@ -14,13 +14,13 @@ export const ComputeAllInNetworkProvidersResponse: core.serialization.ObjectSche
 > = core.serialization.object({
     computedNetworkStatus: core.serialization.property(
         "computed_network_status",
-        ComputeAllInNetworkRenderingProvidersResult
+        ComputeAllInNetworkRenderingProvidersResult,
     ),
     networkStatusCheckId: core.serialization.property("network_status_check_id", NetworkStatusCheckId),
 });
 
 export declare namespace ComputeAllInNetworkProvidersResponse {
-    interface Raw {
+    export interface Raw {
         computed_network_status: ComputeAllInNetworkRenderingProvidersResult.Raw;
         network_status_check_id: NetworkStatusCheckId.Raw;
     }

@@ -12,5 +12,5 @@ export const ResponsiblePartyType: core.serialization.Schema<
 > = core.serialization.enum_(["INSURANCE_PAY", "SELF_PAY", "UNKNOWN"]);
 
 export declare namespace ResponsiblePartyType {
-    type Raw = "INSURANCE_PAY" | "SELF_PAY" | "UNKNOWN";
+    export type Raw = "INSURANCE_PAY" | "SELF_PAY" | "UNKNOWN";
 }

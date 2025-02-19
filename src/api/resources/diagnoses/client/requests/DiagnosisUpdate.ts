@@ -8,7 +8,7 @@ import * as CandidApi from "../../../../index";
  * @example
  *     {
  *         name: "string",
- *         codeType: CandidApi.DiagnosisTypeCode.Abf,
+ *         codeType: "ABF",
  *         code: "string"
  *     }
  */

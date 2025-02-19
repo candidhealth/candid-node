@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.insuranceAdjudications.v1.create.Error.EraNotFullyProcessedError
     | CandidApi.insuranceAdjudications.v1.create.Error._Unknown;
 
-export declare namespace Error {
-    interface EraNotFullyProcessedError extends _Utils {
+export namespace Error {
+    export interface EraNotFullyProcessedError extends _Utils {
         errorName: "EraNotFullyProcessedError";
         content: CandidApi.EraNotFullyProcessedErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         eraNotFullyProcessedError: (value: CandidApi.EraNotFullyProcessedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     eraNotFullyProcessedError: (
-        value: CandidApi.EraNotFullyProcessedErrorMessage
+        value: CandidApi.EraNotFullyProcessedErrorMessage,
     ): CandidApi.insuranceAdjudications.v1.create.Error.EraNotFullyProcessedError => {
         return {
             content: value,
             errorName: "EraNotFullyProcessedError",
             _visit: function <_Result>(
                 this: CandidApi.insuranceAdjudications.v1.create.Error.EraNotFullyProcessedError,
-                visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.insuranceAdjudications.v1.create.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.insuranceAdjudications.v1.create.Error._Unknown,
-                visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.insuranceAdjudications.v1.create.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.insuranceAdjudications.v1.create.Error,
-        visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>
+        visitor: CandidApi.insuranceAdjudications.v1.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EraNotFullyProcessedError":

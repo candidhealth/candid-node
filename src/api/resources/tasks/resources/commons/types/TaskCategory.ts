@@ -44,7 +44,6 @@ export type TaskCategory =
     | "held_by_customer"
     | "pending_manual_remit_posting"
     | "incorrect_referring_provider_info";
-
 export const TaskCategory = {
     Other: "other",
     ProviderCredentialing: "provider_credentialing",

@@ -10,5 +10,5 @@ export const Primitive: core.serialization.Schema<serializers.Primitive.Raw, Can
     core.serialization.enum_(["BOOLEAN", "DOUBLE", "INTEGER", "STRING"]);
 
 export declare namespace Primitive {
-    type Raw = "BOOLEAN" | "DOUBLE" | "INTEGER" | "STRING";
+    export type Raw = "BOOLEAN" | "DOUBLE" | "INTEGER" | "STRING";
 }

@@ -17,7 +17,7 @@ export const PatientHistoryCategory: core.serialization.ObjectSchema<
 });
 
 export declare namespace PatientHistoryCategory {
-    interface Raw {
+    export interface Raw {
         category: PatientHistoryCategoryEnum.Raw;
         questions: IntakeQuestion.Raw[];
     }

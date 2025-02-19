@@ -18,7 +18,7 @@ export const StandaloneDiagnosisCreate: core.serialization.ObjectSchema<
     .extend(DiagnosisCreate);
 
 export declare namespace StandaloneDiagnosisCreate {
-    interface Raw extends DiagnosisCreate.Raw {
+    export interface Raw extends DiagnosisCreate.Raw {
         encounter_id: EncounterId.Raw;
     }
 }

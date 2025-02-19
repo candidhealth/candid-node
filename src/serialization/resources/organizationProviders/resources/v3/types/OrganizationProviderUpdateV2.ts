@@ -32,7 +32,7 @@ export const OrganizationProviderUpdateV2: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationProviderUpdateV2 {
-    interface Raw {
+    export interface Raw {
         npi?: string | null;
         is_rendering?: boolean | null;
         is_billing?: boolean | null;

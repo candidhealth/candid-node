@@ -16,7 +16,7 @@ export const EraNotFullyProcessedErrorMessage: core.serialization.ObjectSchema<
 });
 
 export declare namespace EraNotFullyProcessedErrorMessage {
-    interface Raw {
+    export interface Raw {
         claim_id: ClaimId.Raw;
         message: string;
     }

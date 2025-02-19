@@ -15,5 +15,5 @@ export const OrganizationProviderId: core.serialization.Schema<
 });
 
 export declare namespace OrganizationProviderId {
-    type Raw = string;
+    export type Raw = string;
 }

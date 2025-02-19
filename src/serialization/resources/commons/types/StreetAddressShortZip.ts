@@ -17,7 +17,7 @@ export const StreetAddressShortZip: core.serialization.ObjectSchema<
     .extend(StreetAddressBase);
 
 export declare namespace StreetAddressShortZip {
-    interface Raw extends StreetAddressBase.Raw {
+    export interface Raw extends StreetAddressBase.Raw {
         zip_plus_four_code?: string | null;
     }
 }

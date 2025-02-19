@@ -12,5 +12,5 @@ export const NonInsurancePayerSortField: core.serialization.Schema<
 > = core.serialization.enum_(["NAME", "CATEGORY", "ENABLED", "UPDATED_AT"]);
 
 export declare namespace NonInsurancePayerSortField {
-    type Raw = "NAME" | "CATEGORY" | "ENABLED" | "UPDATED_AT";
+    export type Raw = "NAME" | "CATEGORY" | "ENABLED" | "UPDATED_AT";
 }

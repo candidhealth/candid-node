@@ -19,13 +19,13 @@ export const Regions: core.serialization.Schema<serializers.Regions.Raw, CandidA
     });
 
 export declare namespace Regions {
-    type Raw = Regions.States | Regions.National;
+    export type Raw = Regions.States | Regions.National;
 
-    interface States extends RegionStates.Raw {
+    export interface States extends RegionStates.Raw {
         type: "states";
     }
 
-    interface National extends RegionNational.Raw {
+    export interface National extends RegionNational.Raw {
         type: "national";
     }
 }

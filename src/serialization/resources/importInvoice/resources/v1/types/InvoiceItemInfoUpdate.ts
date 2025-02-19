@@ -17,7 +17,7 @@ export const InvoiceItemInfoUpdate: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceItemInfoUpdate {
-    interface Raw {
+    export interface Raw {
         update_type: InvoiceItemUpdateType.Raw;
         items: InvoiceItemCreate.Raw[];
     }

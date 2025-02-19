@@ -33,7 +33,7 @@ export const Error: core.serialization.Schema<
                     return CandidApi.organizationProviders.v3.update.Error.entityNotFoundError(value.content);
                 case "UpdatesDisabledDueToExternalSystemIntegrationError":
                     return CandidApi.organizationProviders.v3.update.Error.updatesDisabledDueToExternalSystemIntegrationError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -41,22 +41,22 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.HttpRequestValidationError
         | Error.EntityNotFoundError
         | Error.UpdatesDisabledDueToExternalSystemIntegrationError;
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface UpdatesDisabledDueToExternalSystemIntegrationError {
+    export interface UpdatesDisabledDueToExternalSystemIntegrationError {
         errorName: "UpdatesDisabledDueToExternalSystemIntegrationError";
         content: UpdatesDisabledDueToExternalSystemIntegrationErrorMessage.Raw;
     }

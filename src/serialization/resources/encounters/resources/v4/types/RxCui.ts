@@ -13,5 +13,5 @@ export const RxCui: core.serialization.Schema<serializers.encounters.v4.RxCui.Ra
     });
 
 export declare namespace RxCui {
-    type Raw = string;
+    export type Raw = string;
 }

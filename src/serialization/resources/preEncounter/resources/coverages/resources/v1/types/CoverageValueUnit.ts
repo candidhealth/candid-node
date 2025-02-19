@@ -12,5 +12,5 @@ export const CoverageValueUnit: core.serialization.Schema<
 > = core.serialization.enum_(["PERCENT", "CURRENCY", "COUNT"]);
 
 export declare namespace CoverageValueUnit {
-    type Raw = "PERCENT" | "CURRENCY" | "COUNT";
+    export type Raw = "PERCENT" | "CURRENCY" | "COUNT";
 }

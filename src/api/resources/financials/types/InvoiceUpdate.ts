@@ -6,13 +6,13 @@ import * as CandidApi from "../../../index";
 
 export type InvoiceUpdate = CandidApi.InvoiceUpdate.Set | CandidApi.InvoiceUpdate.Remove;
 
-export declare namespace InvoiceUpdate {
-    interface Set {
+export namespace InvoiceUpdate {
+    export interface Set {
         type: "set";
         value: CandidApi.InvoiceId;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

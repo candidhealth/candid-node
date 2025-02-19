@@ -15,5 +15,5 @@ export const RemitDraftId: core.serialization.Schema<
 });
 
 export declare namespace RemitDraftId {
-    type Raw = string;
+    export type Raw = string;
 }

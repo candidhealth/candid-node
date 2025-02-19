@@ -12,5 +12,5 @@ export const DimensionName: core.serialization.Schema<
 > = core.serialization.enum_(["payer_uuid", "organization_billing_provider_id", "cpt_code"]);
 
 export declare namespace DimensionName {
-    type Raw = "payer_uuid" | "organization_billing_provider_id" | "cpt_code";
+    export type Raw = "payer_uuid" | "organization_billing_provider_id" | "cpt_code";
 }

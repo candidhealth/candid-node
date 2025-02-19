@@ -9,101 +9,117 @@ export type Error =
     | CandidApi.encounters.v4.create.Error.EncounterExternalIdUniquenessError
     | CandidApi.encounters.v4.create.Error.EncounterPatientControlNumberUniquenessError
     | CandidApi.encounters.v4.create.Error.EntityNotFoundError
+    | CandidApi.encounters.v4.create.Error.UnauthorizedError
     | CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError
     | CandidApi.encounters.v4.create.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.create.Error.CashPayPayerError
     | CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure
     | CandidApi.encounters.v4.create.Error.InvalidTagNamesError
     | CandidApi.encounters.v4.create.Error.HttpRequestValidationError
+    | CandidApi.encounters.v4.create.Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError
     | CandidApi.encounters.v4.create.Error._Unknown;
 
-export declare namespace Error {
-    interface EncounterExternalIdUniquenessError extends _Utils {
+export namespace Error {
+    export interface EncounterExternalIdUniquenessError extends _Utils {
         errorName: "EncounterExternalIdUniquenessError";
         content: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType;
     }
 
-    interface EncounterPatientControlNumberUniquenessError extends _Utils {
+    export interface EncounterPatientControlNumberUniquenessError extends _Utils {
         errorName: "EncounterPatientControlNumberUniquenessError";
         content: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType;
     }
 
-    interface EntityNotFoundError extends _Utils {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface EncounterGuarantorMissingContactInfoError extends _Utils {
+    export interface UnauthorizedError extends _Utils {
+        errorName: "UnauthorizedError";
+        content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    export interface EncounterGuarantorMissingContactInfoError extends _Utils {
         errorName: "EncounterGuarantorMissingContactInfoError";
         content: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType;
     }
 
-    interface HttpRequestValidationsError extends _Utils {
+    export interface HttpRequestValidationsError extends _Utils {
         errorName: "HttpRequestValidationsError";
         content: CandidApi.RequestValidationError[];
     }
 
-    interface CashPayPayerError extends _Utils {
+    export interface CashPayPayerError extends _Utils {
         errorName: "CashPayPayerError";
         content: CandidApi.encounters.v4.CashPayPayerErrorMessage;
     }
 
-    interface SchemaInstanceValidationHttpFailure extends _Utils {
+    export interface SchemaInstanceValidationHttpFailure extends _Utils {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
-    interface InvalidTagNamesError extends _Utils {
+    export interface InvalidTagNamesError extends _Utils {
         errorName: "InvalidTagNamesError";
         content: CandidApi.encounters.v4.InvalidTagNamesErrorType;
     }
 
-    interface HttpRequestValidationError extends _Utils {
+    export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
     }
 
-    interface _Unknown extends _Utils {
+    export interface PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError extends _Utils {
+        errorName: "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError";
+        content: CandidApi.encounters.v4.PayerPlanGroupPayerDoesNotMatchInsuranceCardError;
+    }
+
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         encounterExternalIdUniquenessError: (
-            value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
+            value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType,
         ) => _Result;
         encounterPatientControlNumberUniquenessError: (
-            value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+            value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType,
         ) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
+        unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         encounterGuarantorMissingContactInfoError: (
-            value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType
+            value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType,
         ) => _Result;
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         cashPayPayerError: (value: CandidApi.encounters.v4.CashPayPayerErrorMessage) => _Result;
         schemaInstanceValidationHttpFailure: (
-            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
         ) => _Result;
         invalidTagNamesError: (value: CandidApi.encounters.v4.InvalidTagNamesErrorType) => _Result;
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
+        payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: (
+            value: CandidApi.encounters.v4.PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
     encounterExternalIdUniquenessError: (
-        value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
+        value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType,
     ): CandidApi.encounters.v4.create.Error.EncounterExternalIdUniquenessError => {
         return {
             content: value,
             errorName: "EncounterExternalIdUniquenessError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.EncounterExternalIdUniquenessError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -111,14 +127,14 @@ export const Error = {
     },
 
     encounterPatientControlNumberUniquenessError: (
-        value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+        value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType,
     ): CandidApi.encounters.v4.create.Error.EncounterPatientControlNumberUniquenessError => {
         return {
             content: value,
             errorName: "EncounterPatientControlNumberUniquenessError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.EncounterPatientControlNumberUniquenessError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -126,14 +142,29 @@ export const Error = {
     },
 
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.encounters.v4.create.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.EntityNotFoundError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unauthorizedError: (
+        value: CandidApi.UnauthorizedErrorMessage,
+    ): CandidApi.encounters.v4.create.Error.UnauthorizedError => {
+        return {
+            content: value,
+            errorName: "UnauthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.UnauthorizedError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -141,14 +172,14 @@ export const Error = {
     },
 
     encounterGuarantorMissingContactInfoError: (
-        value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType
+        value: CandidApi.encounters.v4.EncounterGuarantorMissingContactInfoErrorType,
     ): CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError => {
         return {
             content: value,
             errorName: "EncounterGuarantorMissingContactInfoError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.EncounterGuarantorMissingContactInfoError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -156,14 +187,14 @@ export const Error = {
     },
 
     httpRequestValidationsError: (
-        value: CandidApi.RequestValidationError[]
+        value: CandidApi.RequestValidationError[],
     ): CandidApi.encounters.v4.create.Error.HttpRequestValidationsError => {
         return {
             content: value,
             errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.HttpRequestValidationsError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -171,14 +202,14 @@ export const Error = {
     },
 
     cashPayPayerError: (
-        value: CandidApi.encounters.v4.CashPayPayerErrorMessage
+        value: CandidApi.encounters.v4.CashPayPayerErrorMessage,
     ): CandidApi.encounters.v4.create.Error.CashPayPayerError => {
         return {
             content: value,
             errorName: "CashPayPayerError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.CashPayPayerError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -186,14 +217,14 @@ export const Error = {
     },
 
     schemaInstanceValidationHttpFailure: (
-        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
     ): CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure => {
         return {
             content: value,
             errorName: "SchemaInstanceValidationHttpFailure",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.SchemaInstanceValidationHttpFailure,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -201,14 +232,14 @@ export const Error = {
     },
 
     invalidTagNamesError: (
-        value: CandidApi.encounters.v4.InvalidTagNamesErrorType
+        value: CandidApi.encounters.v4.InvalidTagNamesErrorType,
     ): CandidApi.encounters.v4.create.Error.InvalidTagNamesError => {
         return {
             content: value,
             errorName: "InvalidTagNamesError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.InvalidTagNamesError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -216,14 +247,29 @@ export const Error = {
     },
 
     httpRequestValidationError: (
-        value: CandidApi.RequestValidationError
+        value: CandidApi.RequestValidationError,
     ): CandidApi.encounters.v4.create.Error.HttpRequestValidationError => {
         return {
             content: value,
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error.HttpRequestValidationError,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: (
+        value: CandidApi.encounters.v4.PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
+    ): CandidApi.encounters.v4.create.Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError => {
+        return {
+            content: value,
+            errorName: "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -236,7 +282,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.encounters.v4.create.Error._Unknown,
-                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounters.v4.create.Error._visit(this, visitor);
             },
@@ -245,7 +291,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.encounters.v4.create.Error,
-        visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>
+        visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EncounterExternalIdUniquenessError":
@@ -254,6 +300,8 @@ export const Error = {
                 return visitor.encounterPatientControlNumberUniquenessError(value.content);
             case "EntityNotFoundError":
                 return visitor.entityNotFoundError(value.content);
+            case "UnauthorizedError":
+                return visitor.unauthorizedError(value.content);
             case "EncounterGuarantorMissingContactInfoError":
                 return visitor.encounterGuarantorMissingContactInfoError(value.content);
             case "HttpRequestValidationsError":
@@ -266,6 +314,8 @@ export const Error = {
                 return visitor.invalidTagNamesError(value.content);
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
+            case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
+                return visitor.payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError(value.content);
             default:
                 return visitor._other(value as any);
         }

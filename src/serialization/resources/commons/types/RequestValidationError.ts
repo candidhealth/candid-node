@@ -15,7 +15,7 @@ export const RequestValidationError: core.serialization.ObjectSchema<
 });
 
 export declare namespace RequestValidationError {
-    interface Raw {
+    export interface Raw {
         fieldName: string;
         humanReadableMessage?: string | null;
     }

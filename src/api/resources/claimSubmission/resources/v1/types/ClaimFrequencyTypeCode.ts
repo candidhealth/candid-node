@@ -3,7 +3,6 @@
  */
 
 export type ClaimFrequencyTypeCode = "1" | "7" | "8";
-
 export const ClaimFrequencyTypeCode = {
     Original: "1",
     Replacement: "7",

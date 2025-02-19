@@ -20,13 +20,13 @@ export const BillingProvider: core.serialization.ObjectSchema<
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
         providerCommercialLicenseType: core.serialization.property(
             "provider_commercial_license_type",
-            BillingProviderCommercialLicenseType.optional()
+            BillingProviderCommercialLicenseType.optional(),
         ),
     })
     .extend(EncounterProviderBase);
 
 export declare namespace BillingProvider {
-    interface Raw extends EncounterProviderBase.Raw {
+    export interface Raw extends EncounterProviderBase.Raw {
         address: StreetAddressLongZip.Raw;
         tax_id: string;
         npi: string;

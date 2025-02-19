@@ -22,7 +22,7 @@ export const ProviderCredentialingSpanCreate: core.serialization.Schema<
 });
 
 export declare namespace ProviderCredentialingSpanCreate {
-    interface Raw {
+    export interface Raw {
         rendering_provider_id: string;
         contracting_provider_id: string;
         payer_uuid: string;

@@ -10,7 +10,7 @@ import * as CandidApi from "../../../../../../index";
  *         limit: 1,
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         patientExternalId: "string",
- *         status: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+ *         status: "planned",
  *         chargeExternalId: "string",
  *         dateOfService: "2023-01-15"
  *     }

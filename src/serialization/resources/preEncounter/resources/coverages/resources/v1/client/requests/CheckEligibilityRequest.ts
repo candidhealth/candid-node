@@ -17,7 +17,7 @@ export const CheckEligibilityRequest: core.serialization.Schema<
 });
 
 export declare namespace CheckEligibilityRequest {
-    interface Raw {
+    export interface Raw {
         service_code: ServiceTypeCode.Raw;
         date_of_service: string;
         npi: string;

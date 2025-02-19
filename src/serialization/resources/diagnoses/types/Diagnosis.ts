@@ -18,7 +18,7 @@ export const Diagnosis: core.serialization.ObjectSchema<serializers.Diagnosis.Ra
         .extend(StandaloneDiagnosisCreate);
 
 export declare namespace Diagnosis {
-    interface Raw extends StandaloneDiagnosisCreate.Raw {
+    export interface Raw extends StandaloneDiagnosisCreate.Raw {
         diagnosis_id: DiagnosisId.Raw;
         created_at: string;
         updated_at: string;

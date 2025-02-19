@@ -17,7 +17,7 @@ export const ClinicalNoteCategoryCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace ClinicalNoteCategoryCreate {
-    interface Raw {
+    export interface Raw {
         category: NoteCategory.Raw;
         notes: ClinicalNote.Raw[];
     }

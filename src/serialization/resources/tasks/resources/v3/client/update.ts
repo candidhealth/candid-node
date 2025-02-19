@@ -37,19 +37,19 @@ export const Error: core.serialization.Schema<serializers.tasks.v3.update.Error.
         });
 
 export declare namespace Error {
-    type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.TaskUpdatedToDeprecatedStatusError;
+    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.TaskUpdatedToDeprecatedStatusError;
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface UnauthorizedError {
+    export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
     }
 
-    interface TaskUpdatedToDeprecatedStatusError {
+    export interface TaskUpdatedToDeprecatedStatusError {
         errorName: "TaskUpdatedToDeprecatedStatusError";
         content: TaskUpdatedToDeprecatedStatusErrorType.Raw;
     }

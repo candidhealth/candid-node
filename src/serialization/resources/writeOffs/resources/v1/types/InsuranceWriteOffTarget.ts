@@ -30,22 +30,22 @@ export const InsuranceWriteOffTarget: core.serialization.Schema<
     });
 
 export declare namespace InsuranceWriteOffTarget {
-    type Raw =
+    export type Raw =
         | InsuranceWriteOffTarget.ServiceLineId
         | InsuranceWriteOffTarget.ClaimId
         | InsuranceWriteOffTarget.BillingProviderId;
 
-    interface ServiceLineId {
+    export interface ServiceLineId {
         type: "service_line_id";
         value: ServiceLineId.Raw;
     }
 
-    interface ClaimId {
+    export interface ClaimId {
         type: "claim_id";
         value: ClaimId.Raw;
     }
 
-    interface BillingProviderId {
+    export interface BillingProviderId {
         type: "billing_provider_id";
         value: ProviderId.Raw;
     }

@@ -12,5 +12,5 @@ export const ChargeCaptureBundleStatus: core.serialization.Schema<
 > = core.serialization.enum_(["in-progress", "in-error", "successful", "aborted"]);
 
 export declare namespace ChargeCaptureBundleStatus {
-    type Raw = "in-progress" | "in-error" | "successful" | "aborted";
+    export type Raw = "in-progress" | "in-error" | "successful" | "aborted";
 }

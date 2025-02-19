@@ -14,5 +14,5 @@ export const SchemaId: core.serialization.Schema<serializers.SchemaId.Raw, Candi
     });
 
 export declare namespace SchemaId {
-    type Raw = string;
+    export type Raw = string;
 }

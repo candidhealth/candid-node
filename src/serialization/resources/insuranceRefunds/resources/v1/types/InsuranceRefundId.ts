@@ -15,5 +15,5 @@ export const InsuranceRefundId: core.serialization.Schema<
 });
 
 export declare namespace InsuranceRefundId {
-    type Raw = string;
+    export type Raw = string;
 }

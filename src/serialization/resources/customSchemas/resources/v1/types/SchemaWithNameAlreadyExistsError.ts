@@ -16,7 +16,7 @@ export const SchemaWithNameAlreadyExistsError: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaWithNameAlreadyExistsError {
-    interface Raw {
+    export interface Raw {
         name: string;
         id: SchemaId.Raw;
     }

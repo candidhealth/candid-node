@@ -9,7 +9,7 @@ export type ServiceLineAdjudicationId = string & {
 };
 
 export function ServiceLineAdjudicationId(
-    value: string
+    value: string,
 ): CandidApi.insuranceAdjudications.v1.ServiceLineAdjudicationId {
     return value as unknown as CandidApi.insuranceAdjudications.v1.ServiceLineAdjudicationId;
 }

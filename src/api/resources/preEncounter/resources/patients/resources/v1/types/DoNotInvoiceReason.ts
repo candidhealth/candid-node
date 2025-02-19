@@ -3,7 +3,6 @@
  */
 
 export type DoNotInvoiceReason = "BANKRUPTCY" | "DECEASED" | "HARDSHIP" | "OTHER";
-
 export const DoNotInvoiceReason = {
     Bankruptcy: "BANKRUPTCY",
     Deceased: "DECEASED",

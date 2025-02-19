@@ -6,13 +6,13 @@ import * as CandidApi from "../../../../../index";
 
 export type RegionsUpdate = CandidApi.contracts.v2.RegionsUpdate.Set | CandidApi.contracts.v2.RegionsUpdate.Remove;
 
-export declare namespace RegionsUpdate {
-    interface Set {
+export namespace RegionsUpdate {
+    export interface Set {
         type: "set";
         value: CandidApi.Regions;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

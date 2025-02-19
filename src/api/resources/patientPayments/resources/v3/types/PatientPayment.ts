@@ -12,7 +12,7 @@ import * as CandidApi from "../../../../../index";
  *         sourceInternalId: "D1A76039-D5C5-4323-A2FC-B7C8B6AEF6A4",
  *         source: CandidApi.patientPayments.v3.PatientPaymentSource.ManualEntry,
  *         amountCents: 2000,
- *         paymentTimestamp: new Date("2023-01-01T00:00:00.000Z"),
+ *         paymentTimestamp: "2023-01-01T00:00:00Z",
  *         status: CandidApi.patientPayments.v3.PatientPaymentStatus.Pending,
  *         paymentName: "John Doe",
  *         paymentNote: "test payment note",

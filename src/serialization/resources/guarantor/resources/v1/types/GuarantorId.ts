@@ -15,5 +15,5 @@ export const GuarantorId: core.serialization.Schema<
 });
 
 export declare namespace GuarantorId {
-    type Raw = string;
+    export type Raw = string;
 }

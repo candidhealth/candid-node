@@ -16,7 +16,7 @@ export const PayerThreshold: core.serialization.ObjectSchema<
 });
 
 export declare namespace PayerThreshold {
-    interface Raw {
+    export interface Raw {
         upper_threshold_cents?: number | null;
         lower_threshold_cents?: number | null;
         disable_paid_incorrectly: boolean;

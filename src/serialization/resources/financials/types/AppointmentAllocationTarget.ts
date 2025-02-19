@@ -17,7 +17,7 @@ export const AppointmentAllocationTarget: core.serialization.ObjectSchema<
 });
 
 export declare namespace AppointmentAllocationTarget {
-    interface Raw {
+    export interface Raw {
         appointment_id: AppointmentId.Raw;
         patient_external_id: PatientExternalId.Raw;
     }

@@ -3,7 +3,6 @@
  */
 
 export type Relationship = "SELF" | "SPOUSE" | "CHILD" | "COMMON_LAW_SPOUSE" | "OTHER";
-
 export const Relationship = {
     Self: "SELF",
     Spouse: "SPOUSE",

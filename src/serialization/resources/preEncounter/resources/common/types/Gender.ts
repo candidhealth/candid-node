@@ -10,5 +10,5 @@ export const Gender: core.serialization.Schema<serializers.preEncounter.Gender.R
     core.serialization.enum_(["MAN", "WOMAN", "NON_BINARY", "TWO_SPIRIT", "OTHER", "UNKNOWN", "REFUSED"]);
 
 export declare namespace Gender {
-    type Raw = "MAN" | "WOMAN" | "NON_BINARY" | "TWO_SPIRIT" | "OTHER" | "UNKNOWN" | "REFUSED";
+    export type Raw = "MAN" | "WOMAN" | "NON_BINARY" | "TWO_SPIRIT" | "OTHER" | "UNKNOWN" | "REFUSED";
 }

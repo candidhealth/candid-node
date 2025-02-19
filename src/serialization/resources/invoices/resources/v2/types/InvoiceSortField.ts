@@ -12,5 +12,5 @@ export const InvoiceSortField: core.serialization.Schema<
 > = core.serialization.enum_(["CREATED_AT", "UPDATED_AT", "PATIENT_EXTERNAL_ID", "NOTE", "DUE_DATE", "STATUS"]);
 
 export declare namespace InvoiceSortField {
-    type Raw = "CREATED_AT" | "UPDATED_AT" | "PATIENT_EXTERNAL_ID" | "NOTE" | "DUE_DATE" | "STATUS";
+    export type Raw = "CREATED_AT" | "UPDATED_AT" | "PATIENT_EXTERNAL_ID" | "NOTE" | "DUE_DATE" | "STATUS";
 }

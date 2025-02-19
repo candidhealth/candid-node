@@ -21,17 +21,17 @@ export const Patient: core.serialization.ObjectSchema<serializers.Patient.Raw, C
         emailConsent: core.serialization.property("email_consent", core.serialization.boolean()),
         nonInsurancePayers: core.serialization.property(
             "non_insurance_payers",
-            core.serialization.list(NonInsurancePayer)
+            core.serialization.list(NonInsurancePayer),
         ),
         nonInsurancePayersInfo: core.serialization.property(
             "non_insurance_payers_info",
-            core.serialization.list(PatientNonInsurancePayerInfo)
+            core.serialization.list(PatientNonInsurancePayerInfo),
         ),
     })
     .extend(PatientBase);
 
 export declare namespace Patient {
-    interface Raw extends PatientBase.Raw {
+    export interface Raw extends PatientBase.Raw {
         individual_id: IndividualId.Raw;
         phone_numbers: PhoneNumber.Raw[];
         phone_consent: boolean;

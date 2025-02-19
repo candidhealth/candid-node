@@ -27,7 +27,7 @@ export const NonInsurancePayerRefund: core.serialization.ObjectSchema<
 });
 
 export declare namespace NonInsurancePayerRefund {
-    interface Raw {
+    export interface Raw {
         non_insurance_payer_refund_id: NonInsurancePayerRefundId.Raw;
         non_insurance_payer: NonInsurancePayer.Raw;
         amount_cents: number;

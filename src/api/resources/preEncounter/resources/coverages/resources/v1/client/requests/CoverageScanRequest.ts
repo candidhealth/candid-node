@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         since: new Date("2024-01-15T09:30:00.000Z")
+ *         since: "2024-01-15T09:30:00Z"
  *     }
  */
 export interface CoverageScanRequest {

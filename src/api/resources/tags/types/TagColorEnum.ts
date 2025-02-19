@@ -13,7 +13,6 @@ export type TagColorEnum =
     | "indigo"
     | "purple"
     | "pink";
-
 export const TagColorEnum = {
     Black: "black",
     White: "white",

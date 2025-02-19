@@ -12,55 +12,54 @@ import { Patients } from "../resources/patients/client/Client";
 import { Tags } from "../resources/tags/client/Client";
 
 export declare namespace PreEncounter {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
 export class PreEncounter {
-    constructor(protected readonly _options: PreEncounter.Options = {}) {}
-
     protected _appointments: Appointments | undefined;
+    protected _coverages: Coverages | undefined;
+    protected _lists: Lists | undefined;
+    protected _notes: Notes | undefined;
+    protected _patients: Patients | undefined;
+    protected _tags: Tags | undefined;
+
+    constructor(protected readonly _options: PreEncounter.Options = {}) {}
 
     public get appointments(): Appointments {
         return (this._appointments ??= new Appointments(this._options));
     }
 
-    protected _coverages: Coverages | undefined;
-
     public get coverages(): Coverages {
         return (this._coverages ??= new Coverages(this._options));
     }
-
-    protected _lists: Lists | undefined;
 
     public get lists(): Lists {
         return (this._lists ??= new Lists(this._options));
     }
 
-    protected _notes: Notes | undefined;
-
     public get notes(): Notes {
         return (this._notes ??= new Notes(this._options));
     }
 
-    protected _patients: Patients | undefined;
-
     public get patients(): Patients {
         return (this._patients ??= new Patients(this._options));
     }
-
-    protected _tags: Tags | undefined;
 
     public get tags(): Tags {
         return (this._tags ??= new Tags(this._options));

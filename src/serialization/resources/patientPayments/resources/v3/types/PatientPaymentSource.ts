@@ -22,7 +22,7 @@ export const PatientPaymentSource: core.serialization.Schema<
 ]);
 
 export declare namespace PatientPaymentSource {
-    type Raw =
+    export type Raw =
         | "MANUAL_ENTRY"
         | "CHARGEBEE_PAYMENTS"
         | "CHARGEBEE MANUALLY VOIDED BY CANDID"

@@ -14,7 +14,7 @@ export const BillingNoteBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace BillingNoteBase {
-    interface Raw {
+    export interface Raw {
         text: string;
     }
 }

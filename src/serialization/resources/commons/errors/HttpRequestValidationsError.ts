@@ -13,5 +13,5 @@ export const HttpRequestValidationsError: core.serialization.Schema<
 > = core.serialization.list(RequestValidationError);
 
 export declare namespace HttpRequestValidationsError {
-    type Raw = RequestValidationError.Raw[];
+    export type Raw = RequestValidationError.Raw[];
 }

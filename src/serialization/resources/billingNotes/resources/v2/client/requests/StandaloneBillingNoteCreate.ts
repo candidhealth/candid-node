@@ -18,7 +18,7 @@ export const StandaloneBillingNoteCreate: core.serialization.Schema<
     .extend(BillingNoteBase);
 
 export declare namespace StandaloneBillingNoteCreate {
-    interface Raw extends BillingNoteBase.Raw {
+    export interface Raw extends BillingNoteBase.Raw {
         encounter_id: EncounterId.Raw;
     }
 }

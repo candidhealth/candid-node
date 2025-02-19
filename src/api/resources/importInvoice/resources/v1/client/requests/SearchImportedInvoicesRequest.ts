@@ -12,10 +12,10 @@ import * as CandidApi from "../../../../../../index";
  *         note: "string",
  *         dueDateBefore: "2023-01-15",
  *         dueDateAfter: "2023-01-15",
- *         status: CandidApi.invoices.v2.InvoiceStatus.Draft,
+ *         status: "DRAFT",
  *         limit: 1,
- *         sort: CandidApi.invoices.v2.InvoiceSortField.CreatedAt,
- *         sortDirection: CandidApi.SortDirection.Asc,
+ *         sort: "CREATED_AT",
+ *         sortDirection: "asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
  *     }
  */

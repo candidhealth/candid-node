@@ -43,7 +43,7 @@ export const DenialReasonContent: core.serialization.Schema<
 ]);
 
 export declare namespace DenialReasonContent {
-    type Raw =
+    export type Raw =
         | "Authorization Required"
         | "Referral Required"
         | "Medical Records Requested"

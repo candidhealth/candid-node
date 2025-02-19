@@ -402,7 +402,7 @@ export const ProcedureModifier: core.serialization.Schema<
 ]);
 
 export declare namespace ProcedureModifier {
-    type Raw =
+    export type Raw =
         | "22"
         | "23"
         | "24"

@@ -15,34 +15,34 @@ export type Error =
     | CandidApi.encounterProviders.v2.createOrderingProvider.Error.EntityNotFoundError
     | CandidApi.encounterProviders.v2.createOrderingProvider.Error._Unknown;
 
-export declare namespace Error {
-    interface EntityConflictError extends _Utils {
+export namespace Error {
+    export interface EntityConflictError extends _Utils {
         errorName: "EntityConflictError";
         content: CandidApi.EntityConflictErrorMessage;
     }
 
-    interface HttpRequestValidationsError extends _Utils {
+    export interface HttpRequestValidationsError extends _Utils {
         errorName: "HttpRequestValidationsError";
         content: CandidApi.RequestValidationError[];
     }
 
-    interface EntityNotFoundError extends _Utils {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>
+            visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
@@ -52,14 +52,14 @@ export declare namespace Error {
 
 export const Error = {
     entityConflictError: (
-        value: CandidApi.EntityConflictErrorMessage
+        value: CandidApi.EntityConflictErrorMessage,
     ): CandidApi.encounterProviders.v2.createOrderingProvider.Error.EntityConflictError => {
         return {
             content: value,
             errorName: "EntityConflictError",
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.createOrderingProvider.Error.EntityConflictError,
-                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.createOrderingProvider.Error._visit(this, visitor);
             },
@@ -67,14 +67,14 @@ export const Error = {
     },
 
     httpRequestValidationsError: (
-        value: CandidApi.RequestValidationError[]
+        value: CandidApi.RequestValidationError[],
     ): CandidApi.encounterProviders.v2.createOrderingProvider.Error.HttpRequestValidationsError => {
         return {
             content: value,
             errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.createOrderingProvider.Error.HttpRequestValidationsError,
-                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.createOrderingProvider.Error._visit(this, visitor);
             },
@@ -82,14 +82,14 @@ export const Error = {
     },
 
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.encounterProviders.v2.createOrderingProvider.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.createOrderingProvider.Error.EntityNotFoundError,
-                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.createOrderingProvider.Error._visit(this, visitor);
             },
@@ -97,14 +97,14 @@ export const Error = {
     },
 
     _unknown: (
-        fetcherError: core.Fetcher.Error
+        fetcherError: core.Fetcher.Error,
     ): CandidApi.encounterProviders.v2.createOrderingProvider.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Unknown,
-                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>
+                visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>,
             ) {
                 return CandidApi.encounterProviders.v2.createOrderingProvider.Error._visit(this, visitor);
             },
@@ -113,7 +113,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.encounterProviders.v2.createOrderingProvider.Error,
-        visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>
+        visitor: CandidApi.encounterProviders.v2.createOrderingProvider.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityConflictError":

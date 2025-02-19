@@ -3,7 +3,6 @@
  */
 
 export type ExternalProviderType = "PRIMARY" | "REFERRING" | "ATTENDING";
-
 export const ExternalProviderType = {
     Primary: "PRIMARY",
     Referring: "REFERRING",

@@ -18,7 +18,7 @@ export const SubscriberCreate: core.serialization.ObjectSchema<
     .extend(SubscriberBase);
 
 export declare namespace SubscriberCreate {
-    interface Raw extends SubscriberBase.Raw {
+    export interface Raw extends SubscriberBase.Raw {
         insurance_card: InsuranceCardCreate.Raw;
     }
 }

@@ -3,7 +3,6 @@
  */
 
 export type PatientPaymentSortField = "payment_source" | "amount_cents" | "payment_timestamp" | "payment_note";
-
 export const PatientPaymentSortField = {
     PaymentSource: "payment_source",
     AmountCents: "amount_cents",

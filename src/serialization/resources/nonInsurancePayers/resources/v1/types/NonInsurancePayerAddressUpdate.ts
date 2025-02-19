@@ -23,13 +23,13 @@ export const NonInsurancePayerAddressUpdate: core.serialization.Schema<
     });
 
 export declare namespace NonInsurancePayerAddressUpdate {
-    type Raw = NonInsurancePayerAddressUpdate.Remove | NonInsurancePayerAddressUpdate.Set;
+    export type Raw = NonInsurancePayerAddressUpdate.Remove | NonInsurancePayerAddressUpdate.Set;
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 
-    interface Set {
+    export interface Set {
         type: "set";
         value?: StreetAddressShortZip.Raw | null;
     }

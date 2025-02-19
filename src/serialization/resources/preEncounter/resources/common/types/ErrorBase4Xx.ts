@@ -15,7 +15,7 @@ export const ErrorBase4Xx: core.serialization.ObjectSchema<
 });
 
 export declare namespace ErrorBase4Xx {
-    interface Raw {
+    export interface Raw {
         message: string;
         data?: unknown | null;
     }

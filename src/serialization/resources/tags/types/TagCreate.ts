@@ -16,7 +16,7 @@ export const TagCreate: core.serialization.ObjectSchema<serializers.TagCreate.Ra
     });
 
 export declare namespace TagCreate {
-    interface Raw {
+    export interface Raw {
         tag_id: TagId.Raw;
         description: string;
         color: TagColorEnum.Raw;

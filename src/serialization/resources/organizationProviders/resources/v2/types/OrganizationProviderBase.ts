@@ -29,7 +29,7 @@ export const OrganizationProviderBase: core.serialization.ObjectSchema<
 });
 
 export declare namespace OrganizationProviderBase {
-    interface Raw {
+    export interface Raw {
         npi: string;
         is_rendering: boolean;
         is_billing: boolean;

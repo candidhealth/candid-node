@@ -17,7 +17,7 @@ export const TaskAssignment: core.serialization.ObjectSchema<
 });
 
 export declare namespace TaskAssignment {
-    interface Raw {
+    export interface Raw {
         task_assignment_id: TaskAssignmentId.Raw;
         assignee_user_id?: UserId.Raw | null;
     }

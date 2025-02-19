@@ -17,10 +17,10 @@ import * as CandidApi from "../../../../../../index";
  *             type: "set",
  *             value: {
  *                 type: "states",
- *                 states: [CandidApi.State.Aa]
+ *                 states: ["AA"]
  *             }
  *         },
- *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
+ *         contractStatus: "pending",
  *         authorizedSignatory: {
  *             type: "set",
  *             firstName: "string",

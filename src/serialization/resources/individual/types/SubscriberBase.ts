@@ -14,7 +14,7 @@ export const SubscriberBase: core.serialization.ObjectSchema<serializers.Subscri
         .object({
             patientRelationshipToSubscriberCode: core.serialization.property(
                 "patient_relationship_to_subscriber_code",
-                PatientRelationshipToInsuredCodeAll
+                PatientRelationshipToInsuredCodeAll,
             ),
             dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string().optional()),
             address: StreetAddressShortZip.optional(),
@@ -22,7 +22,7 @@ export const SubscriberBase: core.serialization.ObjectSchema<serializers.Subscri
         .extend(IndividualBase);
 
 export declare namespace SubscriberBase {
-    interface Raw extends IndividualBase.Raw {
+    export interface Raw extends IndividualBase.Raw {
         patient_relationship_to_subscriber_code: PatientRelationshipToInsuredCodeAll.Raw;
         date_of_birth?: string | null;
         address?: StreetAddressShortZip.Raw | null;

@@ -10,29 +10,29 @@ export type Error =
     | CandidApi.guarantor.v1.create.Error.HttpRequestValidationsError
     | CandidApi.guarantor.v1.create.Error._Unknown;
 
-export declare namespace Error {
-    interface EncounterHasExistingGuarantorError extends _Utils {
+export namespace Error {
+    export interface EncounterHasExistingGuarantorError extends _Utils {
         errorName: "EncounterHasExistingGuarantorError";
         content: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType;
     }
 
-    interface HttpRequestValidationsError extends _Utils {
+    export interface HttpRequestValidationsError extends _Utils {
         errorName: "HttpRequestValidationsError";
         content: CandidApi.RequestValidationError[];
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         encounterHasExistingGuarantorError: (
-            value: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType
+            value: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType,
         ) => _Result;
         httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -41,14 +41,14 @@ export declare namespace Error {
 
 export const Error = {
     encounterHasExistingGuarantorError: (
-        value: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType
+        value: CandidApi.guarantor.v1.EncounterHasExistingGuarantorErrorType,
     ): CandidApi.guarantor.v1.create.Error.EncounterHasExistingGuarantorError => {
         return {
             content: value,
             errorName: "EncounterHasExistingGuarantorError",
             _visit: function <_Result>(
                 this: CandidApi.guarantor.v1.create.Error.EncounterHasExistingGuarantorError,
-                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.guarantor.v1.create.Error._visit(this, visitor);
             },
@@ -56,14 +56,14 @@ export const Error = {
     },
 
     httpRequestValidationsError: (
-        value: CandidApi.RequestValidationError[]
+        value: CandidApi.RequestValidationError[],
     ): CandidApi.guarantor.v1.create.Error.HttpRequestValidationsError => {
         return {
             content: value,
             errorName: "HttpRequestValidationsError",
             _visit: function <_Result>(
                 this: CandidApi.guarantor.v1.create.Error.HttpRequestValidationsError,
-                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.guarantor.v1.create.Error._visit(this, visitor);
             },
@@ -76,7 +76,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.guarantor.v1.create.Error._Unknown,
-                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.guarantor.v1.create.Error._visit(this, visitor);
             },
@@ -85,7 +85,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.guarantor.v1.create.Error,
-        visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>
+        visitor: CandidApi.guarantor.v1.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EncounterHasExistingGuarantorError":

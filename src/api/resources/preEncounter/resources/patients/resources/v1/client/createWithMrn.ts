@@ -10,27 +10,27 @@ export type Error =
     | CandidApi.preEncounter.patients.v1.createWithMrn.Error.BadRequestError
     | CandidApi.preEncounter.patients.v1.createWithMrn.Error._Unknown;
 
-export declare namespace Error {
-    interface VersionConflictError extends _Utils {
+export namespace Error {
+    export interface VersionConflictError extends _Utils {
         errorName: "VersionConflictError";
         content: CandidApi.preEncounter.VersionConflictErrorBody;
     }
 
-    interface BadRequestError extends _Utils {
+    export interface BadRequestError extends _Utils {
         errorName: "BadRequestError";
         content: CandidApi.preEncounter.ErrorBase4Xx;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         versionConflictError: (value: CandidApi.preEncounter.VersionConflictErrorBody) => _Result;
         badRequestError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -39,14 +39,14 @@ export declare namespace Error {
 
 export const Error = {
     versionConflictError: (
-        value: CandidApi.preEncounter.VersionConflictErrorBody
+        value: CandidApi.preEncounter.VersionConflictErrorBody,
     ): CandidApi.preEncounter.patients.v1.createWithMrn.Error.VersionConflictError => {
         return {
             content: value,
             errorName: "VersionConflictError",
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.patients.v1.createWithMrn.Error.VersionConflictError,
-                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.patients.v1.createWithMrn.Error._visit(this, visitor);
             },
@@ -54,14 +54,14 @@ export const Error = {
     },
 
     badRequestError: (
-        value: CandidApi.preEncounter.ErrorBase4Xx
+        value: CandidApi.preEncounter.ErrorBase4Xx,
     ): CandidApi.preEncounter.patients.v1.createWithMrn.Error.BadRequestError => {
         return {
             content: value,
             errorName: "BadRequestError",
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.patients.v1.createWithMrn.Error.BadRequestError,
-                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.patients.v1.createWithMrn.Error._visit(this, visitor);
             },
@@ -74,7 +74,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Unknown,
-                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.patients.v1.createWithMrn.Error._visit(this, visitor);
             },
@@ -83,7 +83,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.preEncounter.patients.v1.createWithMrn.Error,
-        visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>
+        visitor: CandidApi.preEncounter.patients.v1.createWithMrn.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "VersionConflictError":

@@ -14,7 +14,7 @@ export const Payee: core.serialization.ObjectSchema<serializers.remits.v1.Payee.
     });
 
 export declare namespace Payee {
-    interface Raw {
+    export interface Raw {
         payee_name: string;
         payee_identifier: PayeeIdentifier.Raw;
     }

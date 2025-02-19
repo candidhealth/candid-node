@@ -14,16 +14,16 @@ export const EpsdtReferral: core.serialization.ObjectSchema<
     conditionIndicator1: core.serialization.property("condition_indicator1", EpsdtReferralConditionIndicatorCode),
     conditionIndicator2: core.serialization.property(
         "condition_indicator2",
-        EpsdtReferralConditionIndicatorCode.optional()
+        EpsdtReferralConditionIndicatorCode.optional(),
     ),
     conditionIndicator3: core.serialization.property(
         "condition_indicator3",
-        EpsdtReferralConditionIndicatorCode.optional()
+        EpsdtReferralConditionIndicatorCode.optional(),
     ),
 });
 
 export declare namespace EpsdtReferral {
-    interface Raw {
+    export interface Raw {
         condition_indicator1: EpsdtReferralConditionIndicatorCode.Raw;
         condition_indicator2?: EpsdtReferralConditionIndicatorCode.Raw | null;
         condition_indicator3?: EpsdtReferralConditionIndicatorCode.Raw | null;

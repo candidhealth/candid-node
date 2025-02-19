@@ -16,7 +16,7 @@ export const MatchCptCode: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchCptCode {
-    interface Raw {
+    export interface Raw {
         value: string;
         match: boolean;
         explanation: string;

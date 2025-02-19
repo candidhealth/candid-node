@@ -38,12 +38,12 @@ export const ServiceLineUpdate: core.serialization.ObjectSchema<
     hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
     hasFamilyPlanningIndicator: core.serialization.property(
         "has_family_planning_indicator",
-        core.serialization.boolean().optional()
+        core.serialization.boolean().optional(),
     ),
 });
 
 export declare namespace ServiceLineUpdate {
-    interface Raw {
+    export interface Raw {
         edit_reason?: string | null;
         modifiers?: ProcedureModifier.Raw[] | null;
         charge_amount_cents?: number | null;

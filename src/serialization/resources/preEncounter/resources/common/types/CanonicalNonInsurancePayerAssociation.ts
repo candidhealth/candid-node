@@ -16,7 +16,7 @@ export const CanonicalNonInsurancePayerAssociation: core.serialization.ObjectSch
 });
 
 export declare namespace CanonicalNonInsurancePayerAssociation {
-    interface Raw {
+    export interface Raw {
         id: CanonicalNonInsurancePayerId.Raw;
         member_id?: string | null;
     }

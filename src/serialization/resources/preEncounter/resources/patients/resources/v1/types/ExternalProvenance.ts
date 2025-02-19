@@ -15,7 +15,7 @@ export const ExternalProvenance: core.serialization.ObjectSchema<
 });
 
 export declare namespace ExternalProvenance {
-    interface Raw {
+    export interface Raw {
         external_id: string;
         system_name: string;
     }

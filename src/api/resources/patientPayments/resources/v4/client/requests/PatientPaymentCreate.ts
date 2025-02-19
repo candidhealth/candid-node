@@ -8,7 +8,7 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         amountCents: 1,
- *         paymentTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+ *         paymentTimestamp: "2024-01-15T09:30:00Z",
  *         paymentNote: "string",
  *         patientExternalId: CandidApi.PatientExternalId("string"),
  *         allocations: [{

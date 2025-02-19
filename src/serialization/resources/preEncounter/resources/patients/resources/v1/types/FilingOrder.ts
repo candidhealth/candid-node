@@ -15,7 +15,7 @@ export const FilingOrder: core.serialization.ObjectSchema<
 });
 
 export declare namespace FilingOrder {
-    interface Raw {
+    export interface Raw {
         coverages: CoverageId.Raw[];
     }
 }

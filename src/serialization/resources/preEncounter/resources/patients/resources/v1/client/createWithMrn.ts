@@ -33,14 +33,14 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.VersionConflictError | Error.BadRequestError;
+    export type Raw = Error.VersionConflictError | Error.BadRequestError;
 
-    interface VersionConflictError {
+    export interface VersionConflictError {
         errorName: "VersionConflictError";
         content: VersionConflictErrorBody.Raw;
     }
 
-    interface BadRequestError {
+    export interface BadRequestError {
         errorName: "BadRequestError";
         content: ErrorBase4Xx.Raw;
     }

@@ -18,7 +18,7 @@ export const ClinicalNote: core.serialization.ObjectSchema<
 });
 
 export declare namespace ClinicalNote {
-    interface Raw {
+    export interface Raw {
         text: string;
         author_name: string;
         author_npi?: Npi.Raw | null;

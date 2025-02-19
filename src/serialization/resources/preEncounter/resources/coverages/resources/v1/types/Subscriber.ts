@@ -20,7 +20,7 @@ export const Subscriber: core.serialization.ObjectSchema<
 });
 
 export declare namespace Subscriber {
-    interface Raw {
+    export interface Raw {
         name: HumanName.Raw;
         date_of_birth: string;
         biological_sex: Sex.Raw;

@@ -7,7 +7,6 @@
  * The DOUBLE and INTEGER primitives must be written as a JSON `number` type.
  */
 export type Primitive = "BOOLEAN" | "DOUBLE" | "INTEGER" | "STRING";
-
 export const Primitive = {
     Boolean: "BOOLEAN",
     Double: "DOUBLE",

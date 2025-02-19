@@ -19,12 +19,12 @@ export const ServiceCoverage: core.serialization.ObjectSchema<
     outOfNetwork: core.serialization.property("out_of_network", ServiceCoverageDetails.optional()),
     outOfNetworkFlat: core.serialization.property(
         "out_of_network_flat",
-        core.serialization.list(CoverageDetails).optional()
+        core.serialization.list(CoverageDetails).optional(),
     ),
 });
 
 export declare namespace ServiceCoverage {
-    interface Raw {
+    export interface Raw {
         service_code: ServiceTypeCode.Raw;
         in_network?: ServiceCoverageDetails.Raw | null;
         in_network_flat?: CoverageDetails.Raw[] | null;

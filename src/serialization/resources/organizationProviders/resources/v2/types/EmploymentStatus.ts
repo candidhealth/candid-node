@@ -12,5 +12,5 @@ export const EmploymentStatus: core.serialization.Schema<
 > = core.serialization.enum_(["ACTIVE", "TERMINATED"]);
 
 export declare namespace EmploymentStatus {
-    type Raw = "ACTIVE" | "TERMINATED";
+    export type Raw = "ACTIVE" | "TERMINATED";
 }

@@ -28,7 +28,6 @@ export type ServiceAuthorizationExceptionCode =
     /**
      * Special Handling */
     | "7";
-
 export const ServiceAuthorizationExceptionCode = {
     C1: "1",
     C2: "2",

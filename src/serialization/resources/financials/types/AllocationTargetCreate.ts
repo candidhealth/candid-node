@@ -37,7 +37,7 @@ export const AllocationTargetCreate: core.serialization.Schema<
     });
 
 export declare namespace AllocationTargetCreate {
-    type Raw =
+    export type Raw =
         | AllocationTargetCreate.ServiceLineById
         | AllocationTargetCreate.ClaimById
         | AllocationTargetCreate.ClaimByEncounterExternalId
@@ -45,31 +45,31 @@ export declare namespace AllocationTargetCreate {
         | AllocationTargetCreate.AppointmentByIdAndPatientExternalId
         | AllocationTargetCreate.Unattributed;
 
-    interface ServiceLineById {
+    export interface ServiceLineById {
         type: "service_line_by_id";
         value: ServiceLineId.Raw;
     }
 
-    interface ClaimById {
+    export interface ClaimById {
         type: "claim_by_id";
         value: ClaimId.Raw;
     }
 
-    interface ClaimByEncounterExternalId {
+    export interface ClaimByEncounterExternalId {
         type: "claim_by_encounter_external_id";
         value: EncounterExternalId.Raw;
     }
 
-    interface BillingProviderById {
+    export interface BillingProviderById {
         type: "billing_provider_by_id";
         value: ProviderId.Raw;
     }
 
-    interface AppointmentByIdAndPatientExternalId extends AppointmentByIdAndPatientExternalId.Raw {
+    export interface AppointmentByIdAndPatientExternalId extends AppointmentByIdAndPatientExternalId.Raw {
         type: "appointment_by_id_and_patient_external_id";
     }
 
-    interface Unattributed {
+    export interface Unattributed {
         type: "unattributed";
     }
 }

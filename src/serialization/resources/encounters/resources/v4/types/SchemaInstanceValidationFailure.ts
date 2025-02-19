@@ -15,7 +15,7 @@ export const SchemaInstanceValidationFailure: core.serialization.ObjectSchema<
 });
 
 export declare namespace SchemaInstanceValidationFailure {
-    interface Raw {
+    export interface Raw {
         errors: SchemaInstanceValidationError.Raw[];
     }
 }

@@ -18,7 +18,7 @@ export const ChargeCaptureBundlePage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace ChargeCaptureBundlePage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: ChargeCaptureBundle.Raw[];
     }
 }

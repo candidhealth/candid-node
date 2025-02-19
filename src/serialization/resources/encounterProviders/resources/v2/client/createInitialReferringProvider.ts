@@ -33,19 +33,19 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "EntityConflictError":
                     return CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.entityConflictError(
-                        value.content
+                        value.content,
                     );
                 case "UnprocessableEntityError":
                     return CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.unprocessableEntityError(
-                        value.content
+                        value.content,
                     );
                 case "HttpRequestValidationsError":
                     return CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.httpRequestValidationsError(
-                        value.content
+                        value.content,
                     );
                 case "EntityNotFoundError":
                     return CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.entityNotFoundError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -53,28 +53,28 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.EntityConflictError
         | Error.UnprocessableEntityError
         | Error.HttpRequestValidationsError
         | Error.EntityNotFoundError;
 
-    interface EntityConflictError {
+    export interface EntityConflictError {
         errorName: "EntityConflictError";
         content: EntityConflictErrorMessage.Raw;
     }
 
-    interface UnprocessableEntityError {
+    export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
     }
 
-    interface HttpRequestValidationsError {
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }

@@ -12,5 +12,5 @@ export const ExpectedNetworkStatus: core.serialization.Schema<
 > = core.serialization.enum_(["in_network", "out_of_network", "unknown"]);
 
 export declare namespace ExpectedNetworkStatus {
-    type Raw = "in_network" | "out_of_network" | "unknown";
+    export type Raw = "in_network" | "out_of_network" | "unknown";
 }

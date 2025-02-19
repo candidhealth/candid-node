@@ -15,24 +15,24 @@ export type AllocationTarget =
     | CandidApi.AllocationTarget.Appointment
     | CandidApi.AllocationTarget.Unattributed;
 
-export declare namespace AllocationTarget {
-    interface ServiceLine extends CandidApi.ServiceLineAllocationTarget {
+export namespace AllocationTarget {
+    export interface ServiceLine extends CandidApi.ServiceLineAllocationTarget {
         type: "service_line";
     }
 
-    interface Claim extends CandidApi.ClaimAllocationTarget {
+    export interface Claim extends CandidApi.ClaimAllocationTarget {
         type: "claim";
     }
 
-    interface BillingProviderId extends CandidApi.BillingProviderAllocationTarget {
+    export interface BillingProviderId extends CandidApi.BillingProviderAllocationTarget {
         type: "billing_provider_id";
     }
 
-    interface Appointment extends CandidApi.AppointmentAllocationTarget {
+    export interface Appointment extends CandidApi.AppointmentAllocationTarget {
         type: "appointment";
     }
 
-    interface Unattributed {
+    export interface Unattributed {
         type: "unattributed";
     }
 }

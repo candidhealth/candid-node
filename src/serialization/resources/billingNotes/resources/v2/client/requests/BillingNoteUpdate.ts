@@ -14,7 +14,7 @@ export const BillingNoteUpdate: core.serialization.Schema<
 });
 
 export declare namespace BillingNoteUpdate {
-    interface Raw {
+    export interface Raw {
         text: string;
     }
 }

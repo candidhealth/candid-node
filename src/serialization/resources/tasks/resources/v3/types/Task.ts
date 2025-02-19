@@ -36,7 +36,7 @@ export const Task: core.serialization.ObjectSchema<serializers.tasks.v3.Task.Raw
     });
 
 export declare namespace Task {
-    interface Raw {
+    export interface Raw {
         task_id: TaskId.Raw;
         encounter_id: EncounterId.Raw;
         task_type: TaskType.Raw;

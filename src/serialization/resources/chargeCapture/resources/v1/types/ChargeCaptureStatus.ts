@@ -20,5 +20,5 @@ export const ChargeCaptureStatus: core.serialization.Schema<
 ]);
 
 export declare namespace ChargeCaptureStatus {
-    type Raw = "planned" | "not-billable" | "billable" | "aborted" | "billed" | "entered-in-error" | "unknown";
+    export type Raw = "planned" | "not-billable" | "billable" | "aborted" | "billed" | "entered-in-error" | "unknown";
 }

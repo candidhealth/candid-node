@@ -3,7 +3,6 @@
  */
 
 export type UniversalServiceIdentifier = "MD_Visit" | "Treatment" | "Tests" | "Activity";
-
 export const UniversalServiceIdentifier = {
     MdVisit: "MD_Visit",
     Treatment: "Treatment",

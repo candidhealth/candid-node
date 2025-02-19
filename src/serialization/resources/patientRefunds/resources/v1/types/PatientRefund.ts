@@ -31,7 +31,7 @@ export const PatientRefund: core.serialization.ObjectSchema<
 });
 
 export declare namespace PatientRefund {
-    interface Raw {
+    export interface Raw {
         patient_refund_id: PatientRefundId.Raw;
         organization_id: OrganizationId.Raw;
         source_internal_id?: string | null;

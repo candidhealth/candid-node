@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.eligibility.v2.submitEligibilityCheck.Error.HttpServiceUnavailableError
     | CandidApi.eligibility.v2.submitEligibilityCheck.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpServiceUnavailableError extends _Utils {
+export namespace Error {
+    export interface HttpServiceUnavailableError extends _Utils {
         errorName: "HttpServiceUnavailableError";
         content: CandidApi.HttpServiceUnavailableErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpServiceUnavailableError: (value: CandidApi.HttpServiceUnavailableErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     httpServiceUnavailableError: (
-        value: CandidApi.HttpServiceUnavailableErrorMessage
+        value: CandidApi.HttpServiceUnavailableErrorMessage,
     ): CandidApi.eligibility.v2.submitEligibilityCheck.Error.HttpServiceUnavailableError => {
         return {
             content: value,
             errorName: "HttpServiceUnavailableError",
             _visit: function <_Result>(
                 this: CandidApi.eligibility.v2.submitEligibilityCheck.Error.HttpServiceUnavailableError,
-                visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>
+                visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>,
             ) {
                 return CandidApi.eligibility.v2.submitEligibilityCheck.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Unknown,
-                visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>
+                visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>,
             ) {
                 return CandidApi.eligibility.v2.submitEligibilityCheck.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.eligibility.v2.submitEligibilityCheck.Error,
-        visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>
+        visitor: CandidApi.eligibility.v2.submitEligibilityCheck.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpServiceUnavailableError":

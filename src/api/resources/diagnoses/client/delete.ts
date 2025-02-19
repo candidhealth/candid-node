@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.diagnoses.delete.Error.DiagnosisNotFoundHttpError
     | CandidApi.diagnoses.delete.Error._Unknown;
 
-export declare namespace Error {
-    interface DiagnosisNotFoundHttpError extends _Utils {
+export namespace Error {
+    export interface DiagnosisNotFoundHttpError extends _Utils {
         errorName: "DiagnosisNotFoundHTTPError";
         content: CandidApi.DiagnosisNotFoundError;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         diagnosisNotFoundHttpError: (value: CandidApi.DiagnosisNotFoundError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     diagnosisNotFoundHttpError: (
-        value: CandidApi.DiagnosisNotFoundError
+        value: CandidApi.DiagnosisNotFoundError,
     ): CandidApi.diagnoses.delete.Error.DiagnosisNotFoundHttpError => {
         return {
             content: value,
             errorName: "DiagnosisNotFoundHTTPError",
             _visit: function <_Result>(
                 this: CandidApi.diagnoses.delete.Error.DiagnosisNotFoundHttpError,
-                visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>
+                visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>,
             ) {
                 return CandidApi.diagnoses.delete.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.diagnoses.delete.Error._Unknown,
-                visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>
+                visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>,
             ) {
                 return CandidApi.diagnoses.delete.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.diagnoses.delete.Error,
-        visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>
+        visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "DiagnosisNotFoundHTTPError":

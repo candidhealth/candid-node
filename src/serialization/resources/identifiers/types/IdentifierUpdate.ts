@@ -21,7 +21,7 @@ export const IdentifierUpdate: core.serialization.ObjectSchema<
 });
 
 export declare namespace IdentifierUpdate {
-    interface Raw {
+    export interface Raw {
         identifier_id: IdentifierId.Raw;
         identifier_code?: IdentifierCode.Raw | null;
         identifier_value?: IdentifierValue.Raw | null;

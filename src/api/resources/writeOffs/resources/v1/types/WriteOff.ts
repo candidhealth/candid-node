@@ -6,12 +6,12 @@ import * as CandidApi from "../../../../../index";
 
 export type WriteOff = CandidApi.writeOffs.v1.WriteOff.Patient | CandidApi.writeOffs.v1.WriteOff.Insurance;
 
-export declare namespace WriteOff {
-    interface Patient extends CandidApi.writeOffs.v1.PatientWriteOff {
+export namespace WriteOff {
+    export interface Patient extends CandidApi.writeOffs.v1.PatientWriteOff {
         type: "patient";
     }
 
-    interface Insurance extends CandidApi.writeOffs.v1.InsuranceWriteOff {
+    export interface Insurance extends CandidApi.writeOffs.v1.InsuranceWriteOff {
         type: "insurance";
     }
 }

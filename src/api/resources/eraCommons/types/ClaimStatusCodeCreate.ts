@@ -6,7 +6,6 @@
  * See https://www.stedi.com/edi/x12/element/1029
  */
 export type ClaimStatusCodeCreate = "1" | "2" | "3" | "4" | "19" | "20" | "21" | "22" | "23";
-
 export const ClaimStatusCodeCreate = {
     ProcessedAsPrimary: "1",
     ProcessedAsSecondary: "2",

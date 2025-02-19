@@ -3,7 +3,6 @@
  */
 
 export type InvoiceStatus = "DRAFT" | "OPEN" | "PAID" | "VOID" | "UNCOLLECTIBLE" | "HELD";
-
 export const InvoiceStatus = {
     Draft: "DRAFT",
     Open: "OPEN",

@@ -8,11 +8,13 @@ import * as core from "../../../../../../core";
 import { EncounterExternalIdUniquenessErrorType } from "../types/EncounterExternalIdUniquenessErrorType";
 import { EncounterPatientControlNumberUniquenessErrorType } from "../types/EncounterPatientControlNumberUniquenessErrorType";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
+import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { EncounterGuarantorMissingContactInfoErrorType } from "../types/EncounterGuarantorMissingContactInfoErrorType";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { CashPayPayerErrorMessage } from "../types/CashPayPayerErrorMessage";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
 import { InvalidTagNamesErrorType } from "../types/InvalidTagNamesErrorType";
+import { PayerPlanGroupPayerDoesNotMatchInsuranceCardError } from "../types/PayerPlanGroupPayerDoesNotMatchInsuranceCardError";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.create.Error.Raw,
@@ -27,6 +29,9 @@ export const Error: core.serialization.Schema<
         }),
         EntityNotFoundError: core.serialization.object({
             content: EntityNotFoundErrorMessage,
+        }),
+        UnauthorizedError: core.serialization.object({
+            content: UnauthorizedErrorMessage,
         }),
         EncounterGuarantorMissingContactInfoError: core.serialization.object({
             content: EncounterGuarantorMissingContactInfoErrorType,
@@ -46,6 +51,9 @@ export const Error: core.serialization.Schema<
         HttpRequestValidationError: core.serialization.object({
             content: RequestValidationError,
         }),
+        PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: core.serialization.object({
+            content: PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
@@ -54,13 +62,15 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.encounterExternalIdUniquenessError(value.content);
                 case "EncounterPatientControlNumberUniquenessError":
                     return CandidApi.encounters.v4.create.Error.encounterPatientControlNumberUniquenessError(
-                        value.content
+                        value.content,
                     );
                 case "EntityNotFoundError":
                     return CandidApi.encounters.v4.create.Error.entityNotFoundError(value.content);
+                case "UnauthorizedError":
+                    return CandidApi.encounters.v4.create.Error.unauthorizedError(value.content);
                 case "EncounterGuarantorMissingContactInfoError":
                     return CandidApi.encounters.v4.create.Error.encounterGuarantorMissingContactInfoError(
-                        value.content
+                        value.content,
                     );
                 case "HttpRequestValidationsError":
                     return CandidApi.encounters.v4.create.Error.httpRequestValidationsError(value.content);
@@ -72,65 +82,81 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.invalidTagNamesError(value.content);
                 case "HttpRequestValidationError":
                     return CandidApi.encounters.v4.create.Error.httpRequestValidationError(value.content);
+                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
+                    return CandidApi.encounters.v4.create.Error.payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError(
+                        value.content,
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.EncounterExternalIdUniquenessError
         | Error.EncounterPatientControlNumberUniquenessError
         | Error.EntityNotFoundError
+        | Error.UnauthorizedError
         | Error.EncounterGuarantorMissingContactInfoError
         | Error.HttpRequestValidationsError
         | Error.CashPayPayerError
         | Error.SchemaInstanceValidationHttpFailure
         | Error.InvalidTagNamesError
-        | Error.HttpRequestValidationError;
+        | Error.HttpRequestValidationError
+        | Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError;
 
-    interface EncounterExternalIdUniquenessError {
+    export interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: EncounterExternalIdUniquenessErrorType.Raw;
     }
 
-    interface EncounterPatientControlNumberUniquenessError {
+    export interface EncounterPatientControlNumberUniquenessError {
         errorName: "EncounterPatientControlNumberUniquenessError";
         content: EncounterPatientControlNumberUniquenessErrorType.Raw;
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface EncounterGuarantorMissingContactInfoError {
+    export interface UnauthorizedError {
+        errorName: "UnauthorizedError";
+        content: UnauthorizedErrorMessage.Raw;
+    }
+
+    export interface EncounterGuarantorMissingContactInfoError {
         errorName: "EncounterGuarantorMissingContactInfoError";
         content: EncounterGuarantorMissingContactInfoErrorType.Raw;
     }
 
-    interface HttpRequestValidationsError {
+    export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
         content: RequestValidationError.Raw[];
     }
 
-    interface CashPayPayerError {
+    export interface CashPayPayerError {
         errorName: "CashPayPayerError";
         content: CashPayPayerErrorMessage.Raw;
     }
 
-    interface SchemaInstanceValidationHttpFailure {
+    export interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
     }
 
-    interface InvalidTagNamesError {
+    export interface InvalidTagNamesError {
         errorName: "InvalidTagNamesError";
         content: InvalidTagNamesErrorType.Raw;
     }
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
+    }
+
+    export interface PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError {
+        errorName: "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError";
+        content: PayerPlanGroupPayerDoesNotMatchInsuranceCardError.Raw;
     }
 }

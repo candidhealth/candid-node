@@ -20,7 +20,7 @@ export const ImportInvoiceUpdateRequest: core.serialization.ObjectSchema<
 });
 
 export declare namespace ImportInvoiceUpdateRequest {
-    interface Raw {
+    export interface Raw {
         customer_invoice_url?: string | null;
         status?: InvoiceStatus.Raw | null;
         note?: string | null;

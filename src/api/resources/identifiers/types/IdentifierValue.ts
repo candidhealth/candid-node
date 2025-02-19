@@ -8,12 +8,12 @@ export type IdentifierValue =
     | CandidApi.IdentifierValue.MedicareProviderIdentifier
     | CandidApi.IdentifierValue.MedicaidProviderIdentifier;
 
-export declare namespace IdentifierValue {
-    interface MedicareProviderIdentifier extends CandidApi.MedicareProviderIdentifier {
+export namespace IdentifierValue {
+    export interface MedicareProviderIdentifier extends CandidApi.MedicareProviderIdentifier {
         type: "medicare_provider_identifier";
     }
 
-    interface MedicaidProviderIdentifier extends CandidApi.MedicaidProviderIdentifier {
+    export interface MedicaidProviderIdentifier extends CandidApi.MedicaidProviderIdentifier {
         type: "medicaid_provider_identifier";
     }
 }

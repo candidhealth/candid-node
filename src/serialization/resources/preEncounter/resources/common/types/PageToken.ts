@@ -15,5 +15,5 @@ export const PageToken: core.serialization.Schema<
 });
 
 export declare namespace PageToken {
-    type Raw = string;
+    export type Raw = string;
 }

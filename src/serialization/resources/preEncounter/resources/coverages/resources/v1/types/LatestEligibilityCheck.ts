@@ -17,7 +17,7 @@ export const LatestEligibilityCheck: core.serialization.ObjectSchema<
 });
 
 export declare namespace LatestEligibilityCheck {
-    interface Raw {
+    export interface Raw {
         check_id: string;
         status: EligibilityStatus.Raw;
         initiated_at: string;

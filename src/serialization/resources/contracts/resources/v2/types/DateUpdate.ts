@@ -23,14 +23,14 @@ export const DateUpdate: core.serialization.Schema<
     });
 
 export declare namespace DateUpdate {
-    type Raw = DateUpdate.Set | DateUpdate.Remove;
+    export type Raw = DateUpdate.Set | DateUpdate.Remove;
 
-    interface Set {
+    export interface Set {
         type: "set";
         value: Date_.Raw;
     }
 
-    interface Remove {
+    export interface Remove {
         type: "remove";
     }
 }

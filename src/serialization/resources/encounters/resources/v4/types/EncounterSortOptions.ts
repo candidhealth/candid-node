@@ -12,5 +12,5 @@ export const EncounterSortOptions: core.serialization.Schema<
 > = core.serialization.enum_(["created_at:asc", "created_at:desc", "date_of_service:asc", "date_of_service:desc"]);
 
 export declare namespace EncounterSortOptions {
-    type Raw = "created_at:asc" | "created_at:desc" | "date_of_service:asc" | "date_of_service:desc";
+    export type Raw = "created_at:asc" | "created_at:desc" | "date_of_service:asc" | "date_of_service:desc";
 }

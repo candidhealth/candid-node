@@ -10,8 +10,8 @@ import * as CandidApi from "../../../../../../index";
  *         limit: 1,
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         patientExternalId: "string",
- *         bundleStatus: CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleStatus.InProgress,
- *         chargeStatus: CandidApi.chargeCapture.v1.ChargeCaptureStatus.Planned,
+ *         bundleStatus: "in-progress",
+ *         chargeStatus: "planned",
  *         chargeExternalId: "string",
  *         dateOfService: "2023-01-15"
  *     }

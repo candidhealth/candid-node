@@ -25,7 +25,7 @@ export const MaritalStatus: core.serialization.Schema<
 ]);
 
 export declare namespace MaritalStatus {
-    type Raw =
+    export type Raw =
         | "ANNULLED"
         | "DIVORCED"
         | "INTERLOCUTORY"

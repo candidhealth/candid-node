@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V3 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -36,7 +40,7 @@ export class V3 {
      */
     public async get(
         organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationProviders.v3.OrganizationProviderV2,
@@ -45,20 +49,23 @@ export class V3 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/organization-providers/v3/${encodeURIComponent(
-                    serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(organizationProviderId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/organization-providers/v3/${encodeURIComponent(serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(organizationProviderId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -90,7 +97,7 @@ export class V3 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -114,12 +121,12 @@ export class V3 {
      *         isRendering: true,
      *         isBilling: true,
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         sort: CandidApi.organizationProviders.v2.OrganizationProviderSortOptions.ProviderNameAsc
+     *         sort: "provider_name:asc"
      *     })
      */
     public async getMulti(
         request: CandidApi.organizationProviders.v3.GetAllOrganizationProvidersRequestV2 = {},
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationProviders.v3.OrganizationProviderPageV2,
@@ -127,7 +134,7 @@ export class V3 {
         >
     > {
         const { limit, searchTerm, npi, isRendering, isBilling, pageToken, sort } = request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -153,23 +160,31 @@ export class V3 {
         }
 
         if (sort != null) {
-            _queryParams["sort"] = sort;
+            _queryParams["sort"] = serializers.organizationProviders.v2.OrganizationProviderSortOptions.jsonOrThrow(
+                sort,
+                { unrecognizedObjectKeys: "strip" },
+            );
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/organization-providers/v3"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/organization-providers/v3",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -208,20 +223,20 @@ export class V3 {
      *         firstName: "string",
      *         lastName: "string",
      *         organizationName: "string",
-     *         providerType: CandidApi.organizationProviders.v2.ProviderType.Individual,
+     *         providerType: "INDIVIDUAL",
      *         taxId: "string",
      *         taxonomyCode: "string",
-     *         licenseType: CandidApi.organizationProviders.v2.LicenseType.Md,
+     *         licenseType: "MD",
      *         addresses: [{
      *                 address: {
      *                     address1: "123 Main St",
      *                     address2: "Apt 1",
      *                     city: "New York",
-     *                     state: CandidApi.State.Ny,
+     *                     state: "NY",
      *                     zipCode: "10001",
      *                     zipPlusFourCode: "1234"
      *                 },
-     *                 addressType: CandidApi.organizationProviders.v2.AddressType.Default
+     *                 addressType: "DEFAULT"
      *             }],
      *         employmentStartDate: "2023-01-15",
      *         employmentTerminationDate: "2023-01-15",
@@ -229,7 +244,7 @@ export class V3 {
      *                 period: {
      *                     startDate: CandidApi.Date_("string")
      *                 },
-     *                 identifierCode: CandidApi.IdentifierCode.Mcr,
+     *                 identifierCode: "MCR",
      *                 identifierValue: {
      *                     type: "medicare_provider_identifier"
      *                 }
@@ -238,7 +253,7 @@ export class V3 {
      */
     public async create(
         request: CandidApi.organizationProviders.v3.OrganizationProviderCreateV2,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationProviders.v3.OrganizationProviderV2,
@@ -247,18 +262,23 @@ export class V3 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/organization-providers/v3"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/organization-providers/v3",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -294,7 +314,7 @@ export class V3 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -319,20 +339,20 @@ export class V3 {
      *         firstName: "string",
      *         lastName: "string",
      *         organizationName: "string",
-     *         providerType: CandidApi.organizationProviders.v2.ProviderType.Individual,
+     *         providerType: "INDIVIDUAL",
      *         taxId: "string",
      *         taxonomyCode: "string",
-     *         licenseType: CandidApi.organizationProviders.v2.LicenseType.Md,
+     *         licenseType: "MD",
      *         addresses: [{
      *                 address: {
      *                     address1: "123 Main St",
      *                     address2: "Apt 1",
      *                     city: "New York",
-     *                     state: CandidApi.State.Ny,
+     *                     state: "NY",
      *                     zipCode: "10001",
      *                     zipPlusFourCode: "1234"
      *                 },
-     *                 addressType: CandidApi.organizationProviders.v2.AddressType.Default
+     *                 addressType: "DEFAULT"
      *             }],
      *         employmentStartDate: CandidApi.Date_("string"),
      *         employmentTerminationDate: CandidApi.Date_("string"),
@@ -341,7 +361,7 @@ export class V3 {
      *                 period: {
      *                     startDate: CandidApi.Date_("string")
      *                 },
-     *                 identifierCode: CandidApi.IdentifierCode.Mcr,
+     *                 identifierCode: "MCR",
      *                 identifierValue: {
      *                     type: "medicare_provider_identifier"
      *                 }
@@ -351,7 +371,7 @@ export class V3 {
     public async update(
         organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId,
         request: CandidApi.organizationProviders.v3.OrganizationProviderUpdateV2,
-        requestOptions?: V3.RequestOptions
+        requestOptions?: V3.RequestOptions,
     ): Promise<
         core.APIResponse<
             CandidApi.organizationProviders.v3.OrganizationProviderV2,
@@ -360,20 +380,23 @@ export class V3 {
     > {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/organization-providers/v3/${encodeURIComponent(
-                    serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(organizationProviderId)
-                )}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/organization-providers/v3/${encodeURIComponent(serializers.organizationProviders.v2.OrganizationProviderId.jsonOrThrow(organizationProviderId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -410,7 +433,7 @@ export class V3 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

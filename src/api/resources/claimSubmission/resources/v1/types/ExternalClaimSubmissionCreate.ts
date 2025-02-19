@@ -7,15 +7,15 @@ import * as CandidApi from "../../../../../index";
 /**
  * @example
  *     {
- *         claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
+ *         claimCreatedAt: "2023-01-01T12:00:00.000000Z",
  *         patientControlNumber: "PATIENT_CONTROL_NUMBER",
  *         submissionRecords: [{
- *                 submittedAt: new Date("2023-01-01T13:00:00.000Z"),
+ *                 submittedAt: "2023-01-01T13:00:00.000000Z",
  *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *                 intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
  *             }, {
- *                 submittedAt: new Date("2023-01-04T12:00:00.000Z"),
+ *                 submittedAt: "2023-01-04T12:00:00.000000Z",
  *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *                 intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
@@ -24,7 +24,7 @@ import * as CandidApi from "../../../../../index";
  *
  * @example
  *     {
- *         claimCreatedAt: new Date("2023-01-01T12:00:00.000Z"),
+ *         claimCreatedAt: "2023-01-01T12:00:00.000000Z",
  *         patientControlNumber: "123XYZABC",
  *         submissionRecords: []
  *     }

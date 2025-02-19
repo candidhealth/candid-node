@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { SourceOfPaymentCode } from "../../../../commons/types/SourceOfPaymentCode";
 import { InsuranceTypeCode } from "../../../../commons/types/InsuranceTypeCode";
+import { PayerPlanGroupId } from "../../../../commons/types/PayerPlanGroupId";
 
 export const InsuranceCardBase: core.serialization.ObjectSchema<
     serializers.insuranceCards.v2.InsuranceCardBase.Raw,
@@ -16,13 +17,15 @@ export const InsuranceCardBase: core.serialization.ObjectSchema<
     planName: core.serialization.property("plan_name", core.serialization.string().optional()),
     planType: core.serialization.property("plan_type", SourceOfPaymentCode.optional()),
     insuranceType: core.serialization.property("insurance_type", InsuranceTypeCode.optional()),
+    payerPlanGroupId: core.serialization.property("payer_plan_group_id", PayerPlanGroupId.optional()),
 });
 
 export declare namespace InsuranceCardBase {
-    interface Raw {
+    export interface Raw {
         group_number?: string | null;
         plan_name?: string | null;
         plan_type?: SourceOfPaymentCode.Raw | null;
         insurance_type?: InsuranceTypeCode.Raw | null;
+        payer_plan_group_id?: PayerPlanGroupId.Raw | null;
     }
 }

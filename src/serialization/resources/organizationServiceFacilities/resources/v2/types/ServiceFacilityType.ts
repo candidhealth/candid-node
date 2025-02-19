@@ -136,7 +136,7 @@ export const ServiceFacilityType: core.serialization.Schema<
 ]);
 
 export declare namespace ServiceFacilityType {
-    type Raw =
+    export type Raw =
         | "DX"
         | "CVDX"
         | "CATH"

@@ -3,7 +3,6 @@
  */
 
 export type InsurancePaymentSortField = "amount_cents" | "payment_timestamp" | "payment_note";
-
 export const InsurancePaymentSortField = {
     AmountCents: "amount_cents",
     PaymentTimestamp: "payment_timestamp",

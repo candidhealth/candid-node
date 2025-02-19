@@ -12,5 +12,5 @@ export const ContractStatus: core.serialization.Schema<
 > = core.serialization.enum_(["pending", "effective", "cancelled"]);
 
 export declare namespace ContractStatus {
-    type Raw = "pending" | "effective" | "cancelled";
+    export type Raw = "pending" | "effective" | "cancelled";
 }

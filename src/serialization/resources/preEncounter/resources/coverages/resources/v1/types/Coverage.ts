@@ -20,7 +20,7 @@ export const Coverage: core.serialization.ObjectSchema<
     .extend(MutableCoverage);
 
 export declare namespace Coverage {
-    interface Raw extends BaseModel.Raw, MutableCoverage.Raw {
+    export interface Raw extends BaseModel.Raw, MutableCoverage.Raw {
         id: CoverageId.Raw;
     }
 }

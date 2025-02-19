@@ -19,7 +19,7 @@ export const AuthorizedSignatory: core.serialization.ObjectSchema<
 });
 
 export declare namespace AuthorizedSignatory {
-    interface Raw {
+    export interface Raw {
         first_name?: string | null;
         last_name?: string | null;
         title?: string | null;

@@ -16,17 +16,17 @@ export const CoverageBenefits: core.serialization.ObjectSchema<
     planCoverage: core.serialization.property("plan_coverage", PlanCoverage.optional()),
     serviceSpecificCoverage: core.serialization.property(
         "service_specific_coverage",
-        core.serialization.list(ServiceCoverage).optional()
+        core.serialization.list(ServiceCoverage).optional(),
     ),
     benefitsRelatedEntities: core.serialization.property(
         "benefits_related_entities",
-        core.serialization.list(BenefitsRelatedEntity).optional()
+        core.serialization.list(BenefitsRelatedEntity).optional(),
     ),
     notes: core.serialization.string().optional(),
 });
 
 export declare namespace CoverageBenefits {
-    interface Raw {
+    export interface Raw {
         plan_coverage?: PlanCoverage.Raw | null;
         service_specific_coverage?: ServiceCoverage.Raw[] | null;
         benefits_related_entities?: BenefitsRelatedEntity.Raw[] | null;

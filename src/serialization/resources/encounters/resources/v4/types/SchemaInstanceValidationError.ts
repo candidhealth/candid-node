@@ -28,30 +28,30 @@ export const SchemaInstanceValidationError: core.serialization.Schema<
     });
 
 export declare namespace SchemaInstanceValidationError {
-    type Raw =
+    export type Raw =
         | SchemaInstanceValidationError.MultipleInstancesForSchema
         | SchemaInstanceValidationError.ValueDoesNotMatchKeyType
         | SchemaInstanceValidationError.KeyDoesNotExist
         | SchemaInstanceValidationError.SchemaDoesNotExist
         | SchemaInstanceValidationError.SchemaUnauthorizedAccess;
 
-    interface MultipleInstancesForSchema extends MultipleInstancesForSchemaError.Raw {
+    export interface MultipleInstancesForSchema extends MultipleInstancesForSchemaError.Raw {
         type: "multiple_instances_for_schema";
     }
 
-    interface ValueDoesNotMatchKeyType extends ValueDoesNotMatchKeyTypeError.Raw {
+    export interface ValueDoesNotMatchKeyType extends ValueDoesNotMatchKeyTypeError.Raw {
         type: "value_does_not_match_key_type";
     }
 
-    interface KeyDoesNotExist extends KeyDoesNotExistError.Raw {
+    export interface KeyDoesNotExist extends KeyDoesNotExistError.Raw {
         type: "key_does_not_exist";
     }
 
-    interface SchemaDoesNotExist extends SchemaDoesNotExistError.Raw {
+    export interface SchemaDoesNotExist extends SchemaDoesNotExistError.Raw {
         type: "schema_does_not_exist";
     }
 
-    interface SchemaUnauthorizedAccess extends SchemaUnauthorizedAccessError.Raw {
+    export interface SchemaUnauthorizedAccess extends SchemaUnauthorizedAccessError.Raw {
         type: "schema_unauthorized_access";
     }
 }

@@ -10,7 +10,6 @@ export type TaskStatus =
     | "blocked"
     | "waiting_for_review"
     | "in_progress";
-
 export const TaskStatus = {
     Finished: "finished",
     AddressedByProviderGroup: "addressed_by_provider_group",

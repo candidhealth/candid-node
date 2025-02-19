@@ -567,7 +567,6 @@ export type ServiceTypeCode =
     /**
      * Urgent Care */
     | "UC";
-
 export const ServiceTypeCode = {
     MedicalCare: "1",
     Surgical: "2",

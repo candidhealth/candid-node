@@ -21,7 +21,7 @@ export const Error: core.serialization.Schema<
             switch (value.errorName) {
                 case "HttpRequestValidationError":
                     return CandidApi.organizationServiceFacilities.v2.create.Error.httpRequestValidationError(
-                        value.content
+                        value.content,
                     );
             }
         },
@@ -29,9 +29,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.HttpRequestValidationError;
+    export type Raw = Error.HttpRequestValidationError;
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
     }

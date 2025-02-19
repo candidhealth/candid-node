@@ -24,7 +24,7 @@ export const InsuranceRefund: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsuranceRefund {
-    interface Raw {
+    export interface Raw {
         insurance_refund_id: InsuranceRefundId.Raw;
         payer: Payer.Raw;
         amount_cents: number;

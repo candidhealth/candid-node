@@ -13,7 +13,7 @@ export const RegionStates: core.serialization.ObjectSchema<serializers.RegionSta
     });
 
 export declare namespace RegionStates {
-    interface Raw {
+    export interface Raw {
         states: State.Raw[];
     }
 }

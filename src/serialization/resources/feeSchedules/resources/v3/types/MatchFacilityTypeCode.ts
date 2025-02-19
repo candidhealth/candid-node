@@ -17,7 +17,7 @@ export const MatchFacilityTypeCode: core.serialization.ObjectSchema<
 });
 
 export declare namespace MatchFacilityTypeCode {
-    interface Raw {
+    export interface Raw {
         value?: FacilityTypeCode.Raw | null;
         match: boolean;
         explanation: string;

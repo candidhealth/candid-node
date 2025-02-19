@@ -8,12 +8,12 @@ export type SchemaValidationError =
     | CandidApi.customSchemas.v1.SchemaValidationError.SchemaNameAlreadyExists
     | CandidApi.customSchemas.v1.SchemaValidationError.KeyNameAlreadyExists;
 
-export declare namespace SchemaValidationError {
-    interface SchemaNameAlreadyExists extends CandidApi.customSchemas.v1.SchemaWithNameAlreadyExistsError {
+export namespace SchemaValidationError {
+    export interface SchemaNameAlreadyExists extends CandidApi.customSchemas.v1.SchemaWithNameAlreadyExistsError {
         type: "schema_name_already_exists";
     }
 
-    interface KeyNameAlreadyExists extends CandidApi.customSchemas.v1.KeyWithNameAlreadyExistsError {
+    export interface KeyNameAlreadyExists extends CandidApi.customSchemas.v1.KeyWithNameAlreadyExistsError {
         type: "key_name_already_exists";
     }
 }

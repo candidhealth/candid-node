@@ -12,5 +12,5 @@ export const ServiceAuthorizationExceptionCode: core.serialization.Schema<
 > = core.serialization.enum_(["1", "2", "3", "4", "5", "6", "7"]);
 
 export declare namespace ServiceAuthorizationExceptionCode {
-    type Raw = "1" | "2" | "3" | "4" | "5" | "6" | "7";
+    export type Raw = "1" | "2" | "3" | "4" | "5" | "6" | "7";
 }

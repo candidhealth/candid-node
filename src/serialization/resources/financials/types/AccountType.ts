@@ -10,5 +10,5 @@ export const AccountType: core.serialization.Schema<serializers.AccountType.Raw,
     core.serialization.enum_(["PATIENT", "INSURANCE", "THIRD_PARTY_PAYER"]);
 
 export declare namespace AccountType {
-    type Raw = "PATIENT" | "INSURANCE" | "THIRD_PARTY_PAYER";
+    export type Raw = "PATIENT" | "INSURANCE" | "THIRD_PARTY_PAYER";
 }

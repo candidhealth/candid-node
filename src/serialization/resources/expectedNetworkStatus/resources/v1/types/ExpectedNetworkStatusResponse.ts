@@ -18,7 +18,7 @@ export const ExpectedNetworkStatusResponse: core.serialization.ObjectSchema<
 });
 
 export declare namespace ExpectedNetworkStatusResponse {
-    interface Raw {
+    export interface Raw {
         expected_network_status: ExpectedNetworkStatus.Raw;
         explanation: string;
         contract_id?: ContractId.Raw | null;

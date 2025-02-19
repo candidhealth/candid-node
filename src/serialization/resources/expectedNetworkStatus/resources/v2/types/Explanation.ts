@@ -21,7 +21,7 @@ export const Explanation: core.serialization.Schema<
 ]);
 
 export declare namespace Explanation {
-    type Raw =
+    export type Raw =
         | "Payer Routing and/or Billing Provider Routing Failed"
         | "No Effective Contract with Payer"
         | "No Effective Contract with Billing Provider"

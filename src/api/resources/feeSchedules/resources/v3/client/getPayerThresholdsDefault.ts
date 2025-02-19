@@ -7,33 +7,33 @@ import * as core from "../../../../../../core";
 
 export type Error = CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Unknown;
 
-export declare namespace Error {
-    interface _Unknown extends _Utils {
+export namespace Error {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Visitor<_Result>
+            visitor: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
     _unknown: (
-        fetcherError: core.Fetcher.Error
+        fetcherError: core.Fetcher.Error,
     ): CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Unknown,
-                visitor: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Visitor<_Result>
+                visitor: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Visitor<_Result>,
             ) {
                 return CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._visit(this, visitor);
             },
@@ -42,7 +42,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error,
-        visitor: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Visitor<_Result>
+        visitor: CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             default:

@@ -12,5 +12,5 @@ export const Ethnicity: core.serialization.Schema<
 > = core.serialization.enum_(["HISPANIC_OR_LATINO", "NOT_HISPANIC_OR_LATINO", "UNKNOWN", "REFUSED"]);
 
 export declare namespace Ethnicity {
-    type Raw = "HISPANIC_OR_LATINO" | "NOT_HISPANIC_OR_LATINO" | "UNKNOWN" | "REFUSED";
+    export type Raw = "HISPANIC_OR_LATINO" | "NOT_HISPANIC_OR_LATINO" | "UNKNOWN" | "REFUSED";
 }

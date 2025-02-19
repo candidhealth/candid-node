@@ -18,7 +18,7 @@ export const RatesPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace RatesPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         rates: Rate.Raw[];
     }
 }

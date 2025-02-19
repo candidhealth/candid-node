@@ -3,7 +3,6 @@
  */
 
 export type BillingProviderCommercialLicenseType = "0" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
-
 export const BillingProviderCommercialLicenseType = {
     LicensedClinicalSocialWorker: "0",
     LicensedProfessionalCounselor: "A",

@@ -14,5 +14,5 @@ export const Email: core.serialization.Schema<serializers.Email.Raw, CandidApi.E
     });
 
 export declare namespace Email {
-    type Raw = string;
+    export type Raw = string;
 }

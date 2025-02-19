@@ -12,5 +12,5 @@ export const ProviderType: core.serialization.Schema<
 > = core.serialization.enum_(["INDIVIDUAL", "ORGANIZATION"]);
 
 export declare namespace ProviderType {
-    type Raw = "INDIVIDUAL" | "ORGANIZATION";
+    export type Raw = "INDIVIDUAL" | "ORGANIZATION";
 }

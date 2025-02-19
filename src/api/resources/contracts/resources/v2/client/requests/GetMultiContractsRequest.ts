@@ -12,8 +12,8 @@ import * as CandidApi from "../../../../../../index";
  *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         renderingProviderIds: CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         payerNames: "string",
- *         states: CandidApi.State.Aa,
- *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending
+ *         states: "AA",
+ *         contractStatus: "pending"
  *     }
  */
 export interface GetMultiContractsRequest {

@@ -75,7 +75,6 @@ export type SourceOfPaymentCode =
     /**
      * Mutually Defined */
     | "ZZ";
-
 export const SourceOfPaymentCode = {
     SelfPay: "09",
     OtherNonFederalPrograms: "11",

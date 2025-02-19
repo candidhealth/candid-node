@@ -15,5 +15,5 @@ export const CanonicalProviderId: core.serialization.Schema<
 });
 
 export declare namespace CanonicalProviderId {
-    type Raw = string;
+    export type Raw = string;
 }

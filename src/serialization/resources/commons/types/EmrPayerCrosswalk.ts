@@ -12,5 +12,5 @@ export const EmrPayerCrosswalk: core.serialization.Schema<
 > = core.serialization.enum_(["HEALTHIE", "CANVAS"]);
 
 export declare namespace EmrPayerCrosswalk {
-    type Raw = "HEALTHIE" | "CANVAS";
+    export type Raw = "HEALTHIE" | "CANVAS";
 }

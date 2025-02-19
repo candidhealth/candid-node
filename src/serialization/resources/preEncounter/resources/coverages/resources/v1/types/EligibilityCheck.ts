@@ -21,7 +21,7 @@ export const EligibilityCheck: core.serialization.ObjectSchema<
 });
 
 export declare namespace EligibilityCheck {
-    interface Raw {
+    export interface Raw {
         raw_json?: unknown;
         errors?: unknown | null;
         eligibility_status: EligibilityStatus.Raw;

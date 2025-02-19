@@ -15,7 +15,7 @@ export const AuthGetTokenRequest: core.serialization.Schema<
 });
 
 export declare namespace AuthGetTokenRequest {
-    interface Raw {
+    export interface Raw {
         client_id: string;
         client_secret: string;
     }

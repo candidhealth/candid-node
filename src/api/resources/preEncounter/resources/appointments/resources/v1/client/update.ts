@@ -10,27 +10,27 @@ export type Error =
     | CandidApi.preEncounter.appointments.v1.update.Error.VersionConflictError
     | CandidApi.preEncounter.appointments.v1.update.Error._Unknown;
 
-export declare namespace Error {
-    interface NotFoundError extends _Utils {
+export namespace Error {
+    export interface NotFoundError extends _Utils {
         errorName: "NotFoundError";
         content: CandidApi.preEncounter.ErrorBase4Xx;
     }
 
-    interface VersionConflictError extends _Utils {
+    export interface VersionConflictError extends _Utils {
         errorName: "VersionConflictError";
         content: CandidApi.preEncounter.VersionConflictErrorBody;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         notFoundError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         versionConflictError: (value: CandidApi.preEncounter.VersionConflictErrorBody) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -39,14 +39,14 @@ export declare namespace Error {
 
 export const Error = {
     notFoundError: (
-        value: CandidApi.preEncounter.ErrorBase4Xx
+        value: CandidApi.preEncounter.ErrorBase4Xx,
     ): CandidApi.preEncounter.appointments.v1.update.Error.NotFoundError => {
         return {
             content: value,
             errorName: "NotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.appointments.v1.update.Error.NotFoundError,
-                visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.appointments.v1.update.Error._visit(this, visitor);
             },
@@ -54,14 +54,14 @@ export const Error = {
     },
 
     versionConflictError: (
-        value: CandidApi.preEncounter.VersionConflictErrorBody
+        value: CandidApi.preEncounter.VersionConflictErrorBody,
     ): CandidApi.preEncounter.appointments.v1.update.Error.VersionConflictError => {
         return {
             content: value,
             errorName: "VersionConflictError",
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.appointments.v1.update.Error.VersionConflictError,
-                visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.appointments.v1.update.Error._visit(this, visitor);
             },
@@ -74,7 +74,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.appointments.v1.update.Error._Unknown,
-                visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.appointments.v1.update.Error._visit(this, visitor);
             },
@@ -83,7 +83,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.preEncounter.appointments.v1.update.Error,
-        visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>
+        visitor: CandidApi.preEncounter.appointments.v1.update.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "NotFoundError":

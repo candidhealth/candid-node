@@ -12,5 +12,5 @@ export const PatientHistoryCategoryEnum: core.serialization.Schema<
 > = core.serialization.enum_(["present_illness", "medical", "family", "social"]);
 
 export declare namespace PatientHistoryCategoryEnum {
-    type Raw = "present_illness" | "medical" | "family" | "social";
+    export type Raw = "present_illness" | "medical" | "family" | "social";
 }

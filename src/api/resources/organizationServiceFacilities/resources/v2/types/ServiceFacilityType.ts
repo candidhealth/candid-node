@@ -376,7 +376,6 @@ export type ServiceFacilityType =
     /**
      * Location where healthcare service was delivered. */
     | "WORK";
-
 export const ServiceFacilityType = {
     DiagnosticsOrTherapeuticsUnit: "DX",
     CardiovascularDiagnosticsOrTherapeuticsUnit: "CVDX",

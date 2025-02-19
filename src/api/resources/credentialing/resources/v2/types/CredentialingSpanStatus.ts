@@ -6,7 +6,6 @@
  * Stage of a credentialing span in the credentialing workflow.
  */
 export type CredentialingSpanStatus = "work_in_progress" | "pending" | "effective" | "expired";
-
 export const CredentialingSpanStatus = {
     WorkInProgress: "work_in_progress",
     Pending: "pending",

@@ -19,7 +19,7 @@ export const ContractUpdate: core.serialization.Schema<
 > = core.serialization.object({
     renderingProviderIds: core.serialization.property(
         "rendering_provider_ids",
-        core.serialization.set(RenderingProviderid).optional()
+        core.serialization.set(RenderingProviderid).optional(),
     ),
     effectiveDate: core.serialization.property("effective_date", Date_.optional()),
     expirationDate: core.serialization.property("expiration_date", DateUpdate.optional()),
@@ -32,7 +32,7 @@ export const ContractUpdate: core.serialization.Schema<
 });
 
 export declare namespace ContractUpdate {
-    interface Raw {
+    export interface Raw {
         rendering_provider_ids?: RenderingProviderid.Raw[] | null;
         effective_date?: Date_.Raw | null;
         expiration_date?: DateUpdate.Raw | null;

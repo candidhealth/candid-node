@@ -26,7 +26,7 @@ export const ExpectedNetworkStatusRequest: core.serialization.Schema<
 });
 
 export declare namespace ExpectedNetworkStatusRequest {
-    interface Raw {
+    export interface Raw {
         external_patient_id?: string | null;
         subscriber_payer_id: string;
         subscriber_payer_name: string;

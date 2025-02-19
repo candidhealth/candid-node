@@ -3,7 +3,6 @@
  */
 
 export type InvoiceSortField = "CREATED_AT" | "UPDATED_AT" | "PATIENT_EXTERNAL_ID" | "NOTE" | "DUE_DATE" | "STATUS";
-
 export const InvoiceSortField = {
     CreatedAt: "CREATED_AT",
     UpdatedAt: "UPDATED_AT",

@@ -27,9 +27,9 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw = Error.SchemaValidationHttpFailure;
+    export type Raw = Error.SchemaValidationHttpFailure;
 
-    interface SchemaValidationHttpFailure {
+    export interface SchemaValidationHttpFailure {
         errorName: "SchemaValidationHttpFailure";
         content: SchemaValidationFailure.Raw;
     }

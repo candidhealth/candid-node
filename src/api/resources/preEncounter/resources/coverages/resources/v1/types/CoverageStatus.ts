@@ -6,7 +6,6 @@
  * enum to represent the statuses defined at https://build.fhir.org/valueset-fm-status.html
  */
 export type CoverageStatus = "ACTIVE" | "CANCELLED" | "DRAFT" | "ENTERED_IN_ERROR";
-
 export const CoverageStatus = {
     Active: "ACTIVE",
     Cancelled: "CANCELLED",

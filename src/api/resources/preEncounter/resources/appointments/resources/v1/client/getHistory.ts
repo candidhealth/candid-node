@@ -9,24 +9,24 @@ export type Error =
     | CandidApi.preEncounter.appointments.v1.getHistory.Error.NotFoundError
     | CandidApi.preEncounter.appointments.v1.getHistory.Error._Unknown;
 
-export declare namespace Error {
-    interface NotFoundError extends _Utils {
+export namespace Error {
+    export interface NotFoundError extends _Utils {
         errorName: "NotFoundError";
         content: CandidApi.preEncounter.ErrorBase4Xx;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>
+            visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         notFoundError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -34,14 +34,14 @@ export declare namespace Error {
 
 export const Error = {
     notFoundError: (
-        value: CandidApi.preEncounter.ErrorBase4Xx
+        value: CandidApi.preEncounter.ErrorBase4Xx,
     ): CandidApi.preEncounter.appointments.v1.getHistory.Error.NotFoundError => {
         return {
             content: value,
             errorName: "NotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.appointments.v1.getHistory.Error.NotFoundError,
-                visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.appointments.v1.getHistory.Error._visit(this, visitor);
             },
@@ -54,7 +54,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.appointments.v1.getHistory.Error._Unknown,
-                visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.appointments.v1.getHistory.Error._visit(this, visitor);
             },
@@ -63,7 +63,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.preEncounter.appointments.v1.getHistory.Error,
-        visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>
+        visitor: CandidApi.preEncounter.appointments.v1.getHistory.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "NotFoundError":

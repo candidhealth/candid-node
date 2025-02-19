@@ -23,7 +23,7 @@ export const Contract: core.serialization.ObjectSchema<
     .extend(ContractBase);
 
 export declare namespace Contract {
-    interface Raw extends ContractBase.Raw {
+    export interface Raw extends ContractBase.Raw {
         contract_id: ContractId.Raw;
         contracting_provider: OrganizationProvider.Raw;
         provider_count: number;

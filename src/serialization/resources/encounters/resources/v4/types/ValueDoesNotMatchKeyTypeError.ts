@@ -19,7 +19,7 @@ export const ValueDoesNotMatchKeyTypeError: core.serialization.ObjectSchema<
 });
 
 export declare namespace ValueDoesNotMatchKeyTypeError {
-    interface Raw {
+    export interface Raw {
         schema_id: SchemaId.Raw;
         key: string;
         expected_value_type: Primitive.Raw;

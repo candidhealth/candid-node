@@ -12,13 +12,13 @@ import * as CandidApi from "../../../../../../index";
  *         activeDate: "2023-01-15",
  *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         states: CandidApi.State.Aa,
+ *         states: "AA",
  *         zipCodes: "string",
- *         licenseTypes: CandidApi.organizationProviders.v2.LicenseType.Md,
- *         facilityTypeCodes: CandidApi.FacilityTypeCode.Pharmacy,
- *         networkTypes: CandidApi.NetworkType.Ppo,
+ *         licenseTypes: "MD",
+ *         facilityTypeCodes: "01",
+ *         networkTypes: "12",
  *         cptCode: "string",
- *         modifiers: CandidApi.ProcedureModifier.TwentyTwo
+ *         modifiers: "22"
  *     }
  */
 export interface GetMultiRequest {

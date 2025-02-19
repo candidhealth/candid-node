@@ -12,18 +12,18 @@ export const AdditionalPayerInformation: core.serialization.ObjectSchema<
 > = core.serialization.object({
     availityEligibilityId: core.serialization.property(
         "availity_eligibility_id",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     availityPayerId: core.serialization.property("availity_payer_id", core.serialization.string().optional()),
     availityPayerName: core.serialization.property("availity_payer_name", core.serialization.string().optional()),
     availityRemittancePayerId: core.serialization.property(
         "availity_remittance_payer_id",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
 });
 
 export declare namespace AdditionalPayerInformation {
-    interface Raw {
+    export interface Raw {
         availity_eligibility_id?: string | null;
         availity_payer_id?: string | null;
         availity_payer_name?: string | null;

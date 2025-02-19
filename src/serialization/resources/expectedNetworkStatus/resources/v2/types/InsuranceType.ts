@@ -17,7 +17,7 @@ export const InsuranceType: core.serialization.ObjectSchema<
 });
 
 export declare namespace InsuranceType {
-    interface Raw {
+    export interface Raw {
         line_of_business: LineOfBusiness.Raw;
         insurance_type_codes: InsuranceTypeCodes.Raw;
     }

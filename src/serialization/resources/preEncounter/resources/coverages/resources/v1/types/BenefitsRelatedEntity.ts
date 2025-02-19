@@ -18,7 +18,7 @@ export const BenefitsRelatedEntity: core.serialization.ObjectSchema<
 });
 
 export declare namespace BenefitsRelatedEntity {
-    interface Raw {
+    export interface Raw {
         entityIdentifier?: string | null;
         entityType?: string | null;
         entityName?: string | null;

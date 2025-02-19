@@ -16,7 +16,7 @@ export const ClaimInvoiceItem: core.serialization.ObjectSchema<
 });
 
 export declare namespace ClaimInvoiceItem {
-    interface Raw {
+    export interface Raw {
         claim_id: ClaimId.Raw;
         amount_cents: number;
     }

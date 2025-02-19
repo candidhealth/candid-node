@@ -13,7 +13,7 @@ export const ProviderCredentialingSpanUpdate: core.serialization.Schema<
 > = core.serialization.object({
     contractingProviderId: core.serialization.property(
         "contracting_provider_id",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
     payerUuid: core.serialization.property("payer_uuid", core.serialization.string().optional()),
     startDate: core.serialization.property("start_date", core.serialization.string().optional()),
@@ -24,7 +24,7 @@ export const ProviderCredentialingSpanUpdate: core.serialization.Schema<
 });
 
 export declare namespace ProviderCredentialingSpanUpdate {
-    interface Raw {
+    export interface Raw {
         contracting_provider_id?: string | null;
         payer_uuid?: string | null;
         start_date?: string | null;

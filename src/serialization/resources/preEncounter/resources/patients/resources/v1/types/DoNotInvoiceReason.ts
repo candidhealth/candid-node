@@ -12,5 +12,5 @@ export const DoNotInvoiceReason: core.serialization.Schema<
 > = core.serialization.enum_(["BANKRUPTCY", "DECEASED", "HARDSHIP", "OTHER"]);
 
 export declare namespace DoNotInvoiceReason {
-    type Raw = "BANKRUPTCY" | "DECEASED" | "HARDSHIP" | "OTHER";
+    export type Raw = "BANKRUPTCY" | "DECEASED" | "HARDSHIP" | "OTHER";
 }

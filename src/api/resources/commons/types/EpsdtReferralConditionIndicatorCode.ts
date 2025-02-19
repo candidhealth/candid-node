@@ -3,7 +3,6 @@
  */
 
 export type EpsdtReferralConditionIndicatorCode = "AV" | "NU" | "S2" | "ST";
-
 export const EpsdtReferralConditionIndicatorCode = {
     Av: "AV",
     Nu: "NU",

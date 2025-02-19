@@ -12,5 +12,5 @@ export const EncounterOwnerOfNextActionType: core.serialization.Schema<
 > = core.serialization.enum_(["CANDID", "CUSTOMER", "CODER", "NONE"]);
 
 export declare namespace EncounterOwnerOfNextActionType {
-    type Raw = "CANDID" | "CUSTOMER" | "CODER" | "NONE";
+    export type Raw = "CANDID" | "CUSTOMER" | "CODER" | "NONE";
 }

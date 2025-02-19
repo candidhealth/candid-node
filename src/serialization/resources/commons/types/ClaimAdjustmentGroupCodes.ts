@@ -12,5 +12,5 @@ export const ClaimAdjustmentGroupCodes: core.serialization.Schema<
 > = core.serialization.enum_(["CO", "CR", "DE", "MA", "OA", "PI", "PR", "RR", "NC", "UNKNOWN"]);
 
 export declare namespace ClaimAdjustmentGroupCodes {
-    type Raw = "CO" | "CR" | "DE" | "MA" | "OA" | "PI" | "PR" | "RR" | "NC" | "UNKNOWN";
+    export type Raw = "CO" | "CR" | "DE" | "MA" | "OA" | "PI" | "PR" | "RR" | "NC" | "UNKNOWN";
 }

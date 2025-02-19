@@ -9,18 +9,22 @@ import * as serializers from "../../../../../../serialization/index";
 import urlJoin from "url-join";
 
 export declare namespace V2 {
-    interface Options {
+    export interface Options {
         environment?: core.Supplier<environments.CandidApiEnvironment | environments.CandidApiEnvironmentUrls>;
+        /** Specify a custom URL to connect the client to. */
+        baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
     }
 
-    interface RequestOptions {
+    export interface RequestOptions {
         /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
         /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional headers to include in the request. */
+        headers?: Record<string, string>;
     }
 }
 
@@ -36,22 +40,27 @@ export class V2 {
      */
     public async get(
         contractId: CandidApi.contracts.v2.ContractId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -83,7 +92,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -106,17 +115,17 @@ export class V2 {
      *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         renderingProviderIds: CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         payerNames: "string",
-     *         states: CandidApi.State.Aa,
-     *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending
+     *         states: "AA",
+     *         contractStatus: "pending"
      *     })
      */
     public async getMulti(
         request: CandidApi.contracts.v2.GetMultiContractsRequest = {},
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractsPage, CandidApi.contracts.v2.getMulti.Error>> {
         const { pageToken, limit, contractingProviderId, renderingProviderIds, payerNames, states, contractStatus } =
             request;
-        const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (pageToken != null) {
             _queryParams["page_token"] = pageToken;
         }
@@ -131,7 +140,9 @@ export class V2 {
 
         if (renderingProviderIds != null) {
             if (Array.isArray(renderingProviderIds)) {
-                _queryParams["rendering_provider_ids"] = renderingProviderIds.map((item) => item);
+                _queryParams["rendering_provider_ids"] = renderingProviderIds.map((item) =>
+                    serializers.contracts.v2.RenderingProviderid.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
                 _queryParams["rendering_provider_ids"] = renderingProviderIds;
             }
@@ -147,30 +158,39 @@ export class V2 {
 
         if (states != null) {
             if (Array.isArray(states)) {
-                _queryParams["states"] = states.map((item) => item);
+                _queryParams["states"] = states.map((item) =>
+                    serializers.State.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
             } else {
-                _queryParams["states"] = states;
+                _queryParams["states"] = serializers.State.jsonOrThrow(states, { unrecognizedObjectKeys: "strip" });
             }
         }
 
         if (contractStatus != null) {
-            _queryParams["contract_status"] = contractStatus;
+            _queryParams["contract_status"] = serializers.contracts.v2.ContractStatus.jsonOrThrow(contractStatus, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/contracts/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/contracts/v2",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -213,7 +233,7 @@ export class V2 {
      *         regions: {
      *             type: "states"
      *         },
-     *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
+     *         contractStatus: "pending",
      *         authorizedSignatory: {
      *             firstName: "string",
      *             lastName: "string",
@@ -235,22 +255,27 @@ export class V2 {
      */
     public async create(
         request: CandidApi.contracts.v2.ContractCreate,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.create.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                "/api/contracts/v2"
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/contracts/v2",
             ),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -286,22 +311,27 @@ export class V2 {
      */
     public async delete(
         contractId: CandidApi.contracts.v2.ContractId,
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<void, CandidApi.contracts.v2.delete.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`,
             ),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -328,7 +358,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }
@@ -357,10 +387,10 @@ export class V2 {
      *             type: "set",
      *             value: {
      *                 type: "states",
-     *                 states: [CandidApi.State.Aa]
+     *                 states: ["AA"]
      *             }
      *         },
-     *         contractStatus: CandidApi.contracts.v2.ContractStatus.Pending,
+     *         contractStatus: "pending",
      *         authorizedSignatory: {
      *             type: "set",
      *             firstName: "string",
@@ -384,22 +414,27 @@ export class V2 {
     public async update(
         contractId: CandidApi.contracts.v2.ContractId,
         request: CandidApi.contracts.v2.ContractUpdate = {},
-        requestOptions?: V2.RequestOptions
+        requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.update.Error>> {
         const _response = await core.fetcher({
             url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.CandidApiEnvironment.Production)
-                    .candidApi,
-                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`,
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.5",
+                "X-Fern-SDK-Version": "0.39.6",
+                "User-Agent": "candidhealth/0.39.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
             },
             contentType: "application/json",
             requestType: "json",
@@ -433,7 +468,7 @@ export class V2 {
                                 allowUnrecognizedUnionMembers: true,
                                 allowUnrecognizedEnumValues: true,
                                 breadcrumbsPrefix: ["response"],
-                            }
+                            },
                         ),
                     };
             }

@@ -24,21 +24,21 @@ export const InsuranceTypeCodes: core.serialization.Schema<
     });
 
 export declare namespace InsuranceTypeCodes {
-    type Raw =
+    export type Raw =
         | InsuranceTypeCodes.InsuranceTypeCode
         | InsuranceTypeCodes.UnknownInsuranceTypeCode
         | InsuranceTypeCodes.NotApplicable;
 
-    interface InsuranceTypeCode {
+    export interface InsuranceTypeCode {
         type: "insurance_type_code";
         value: InsuranceTypeCode.Raw;
     }
 
-    interface UnknownInsuranceTypeCode {
+    export interface UnknownInsuranceTypeCode {
         type: "unknown_insurance_type_code";
     }
 
-    interface NotApplicable {
+    export interface NotApplicable {
         type: "not_applicable";
     }
 }

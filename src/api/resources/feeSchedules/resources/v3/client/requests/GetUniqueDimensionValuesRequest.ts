@@ -9,16 +9,16 @@ import * as CandidApi from "../../../../../../index";
  *     {
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         limit: 1,
- *         pivotDimension: CandidApi.feeSchedules.v3.DimensionName.PayerUuid,
+ *         pivotDimension: "payer_uuid",
  *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         states: CandidApi.State.Aa,
+ *         states: "AA",
  *         zipCodes: "string",
- *         licenseTypes: CandidApi.organizationProviders.v2.LicenseType.Md,
- *         facilityTypeCodes: CandidApi.FacilityTypeCode.Pharmacy,
- *         networkTypes: CandidApi.NetworkType.Ppo,
+ *         licenseTypes: "MD",
+ *         facilityTypeCodes: "01",
+ *         networkTypes: "12",
  *         cptCode: "string",
- *         modifiers: CandidApi.ProcedureModifier.TwentyTwo
+ *         modifiers: "22"
  *     }
  */
 export interface GetUniqueDimensionValuesRequest {

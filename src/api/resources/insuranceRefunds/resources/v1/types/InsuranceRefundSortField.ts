@@ -3,7 +3,6 @@
  */
 
 export type InsuranceRefundSortField = "amount_cents" | "refund_timestamp" | "refund_note" | "refund_reason";
-
 export const InsuranceRefundSortField = {
     AmountCents: "amount_cents",
     RefundTimestamp: "refund_timestamp",

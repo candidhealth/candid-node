@@ -10,27 +10,27 @@ export type Error =
     | CandidApi.nonInsurancePayers.v1.update.Error.EntityConflictError
     | CandidApi.nonInsurancePayers.v1.update.Error._Unknown;
 
-export declare namespace Error {
-    interface EntityNotFoundError extends _Utils {
+export namespace Error {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface EntityConflictError extends _Utils {
+    export interface EntityConflictError extends _Utils {
         errorName: "EntityConflictError";
         content: CandidApi.EntityConflictErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -39,14 +39,14 @@ export declare namespace Error {
 
 export const Error = {
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.nonInsurancePayers.v1.update.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.nonInsurancePayers.v1.update.Error.EntityNotFoundError,
-                visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>
+                visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.nonInsurancePayers.v1.update.Error._visit(this, visitor);
             },
@@ -54,14 +54,14 @@ export const Error = {
     },
 
     entityConflictError: (
-        value: CandidApi.EntityConflictErrorMessage
+        value: CandidApi.EntityConflictErrorMessage,
     ): CandidApi.nonInsurancePayers.v1.update.Error.EntityConflictError => {
         return {
             content: value,
             errorName: "EntityConflictError",
             _visit: function <_Result>(
                 this: CandidApi.nonInsurancePayers.v1.update.Error.EntityConflictError,
-                visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>
+                visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.nonInsurancePayers.v1.update.Error._visit(this, visitor);
             },
@@ -74,7 +74,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.nonInsurancePayers.v1.update.Error._Unknown,
-                visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>
+                visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.nonInsurancePayers.v1.update.Error._visit(this, visitor);
             },
@@ -83,7 +83,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.nonInsurancePayers.v1.update.Error,
-        visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>
+        visitor: CandidApi.nonInsurancePayers.v1.update.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityNotFoundError":

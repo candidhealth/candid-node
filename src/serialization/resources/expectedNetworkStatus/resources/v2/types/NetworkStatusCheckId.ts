@@ -15,5 +15,5 @@ export const NetworkStatusCheckId: core.serialization.Schema<
 });
 
 export declare namespace NetworkStatusCheckId {
-    type Raw = string;
+    export type Raw = string;
 }

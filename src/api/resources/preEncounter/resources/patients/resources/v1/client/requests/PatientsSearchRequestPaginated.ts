@@ -11,7 +11,7 @@ import * as CandidApi from "../../../../../../../../index";
  *         mrn: "string",
  *         pageToken: CandidApi.preEncounter.PageToken("string"),
  *         sortField: CandidApi.preEncounter.patients.v1.PatientSortField("string"),
- *         sortDirection: CandidApi.preEncounter.SortDirection.Asc
+ *         sortDirection: "asc"
  *     }
  */
 export interface PatientsSearchRequestPaginated {

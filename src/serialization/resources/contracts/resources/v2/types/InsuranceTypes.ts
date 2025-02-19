@@ -24,17 +24,17 @@ export const InsuranceTypes: core.serialization.Schema<
     });
 
 export declare namespace InsuranceTypes {
-    type Raw = InsuranceTypes.AllApply | InsuranceTypes.NoneApply | InsuranceTypes.TheseApply;
+    export type Raw = InsuranceTypes.AllApply | InsuranceTypes.NoneApply | InsuranceTypes.TheseApply;
 
-    interface AllApply {
+    export interface AllApply {
         type: "allApply";
     }
 
-    interface NoneApply {
+    export interface NoneApply {
         type: "noneApply";
     }
 
-    interface TheseApply {
+    export interface TheseApply {
         type: "theseApply";
         value: InsuranceTypeCode.Raw[];
     }

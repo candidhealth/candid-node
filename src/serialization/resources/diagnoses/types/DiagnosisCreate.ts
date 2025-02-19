@@ -17,7 +17,7 @@ export const DiagnosisCreate: core.serialization.ObjectSchema<
 });
 
 export declare namespace DiagnosisCreate {
-    interface Raw {
+    export interface Raw {
         name?: string | null;
         code_type: DiagnosisTypeCode.Raw;
         code: string;

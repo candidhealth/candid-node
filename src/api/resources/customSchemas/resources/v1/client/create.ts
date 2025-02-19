@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.customSchemas.v1.create.Error.SchemaValidationHttpFailure
     | CandidApi.customSchemas.v1.create.Error._Unknown;
 
-export declare namespace Error {
-    interface SchemaValidationHttpFailure extends _Utils {
+export namespace Error {
+    export interface SchemaValidationHttpFailure extends _Utils {
         errorName: "SchemaValidationHttpFailure";
         content: CandidApi.customSchemas.v1.SchemaValidationFailure;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         schemaValidationHttpFailure: (value: CandidApi.customSchemas.v1.SchemaValidationFailure) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     schemaValidationHttpFailure: (
-        value: CandidApi.customSchemas.v1.SchemaValidationFailure
+        value: CandidApi.customSchemas.v1.SchemaValidationFailure,
     ): CandidApi.customSchemas.v1.create.Error.SchemaValidationHttpFailure => {
         return {
             content: value,
             errorName: "SchemaValidationHttpFailure",
             _visit: function <_Result>(
                 this: CandidApi.customSchemas.v1.create.Error.SchemaValidationHttpFailure,
-                visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.customSchemas.v1.create.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.customSchemas.v1.create.Error._Unknown,
-                visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.customSchemas.v1.create.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.customSchemas.v1.create.Error,
-        visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>
+        visitor: CandidApi.customSchemas.v1.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "SchemaValidationHttpFailure":

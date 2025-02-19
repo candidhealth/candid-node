@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.chargeCaptureBundles.v1.get.Error.NotImplementedError
     | CandidApi.chargeCaptureBundles.v1.get.Error._Unknown;
 
-export declare namespace Error {
-    interface NotImplementedError extends _Utils {
+export namespace Error {
+    export interface NotImplementedError extends _Utils {
         errorName: "NotImplementedError";
         content: CandidApi.NotImplementedErrorMessage;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         notImplementedError: (value: CandidApi.NotImplementedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     notImplementedError: (
-        value: CandidApi.NotImplementedErrorMessage
+        value: CandidApi.NotImplementedErrorMessage,
     ): CandidApi.chargeCaptureBundles.v1.get.Error.NotImplementedError => {
         return {
             content: value,
             errorName: "NotImplementedError",
             _visit: function <_Result>(
                 this: CandidApi.chargeCaptureBundles.v1.get.Error.NotImplementedError,
-                visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCaptureBundles.v1.get.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.chargeCaptureBundles.v1.get.Error._Unknown,
-                visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>
+                visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>,
             ) {
                 return CandidApi.chargeCaptureBundles.v1.get.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.chargeCaptureBundles.v1.get.Error,
-        visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>
+        visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "NotImplementedError":

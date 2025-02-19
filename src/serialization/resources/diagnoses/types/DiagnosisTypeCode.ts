@@ -12,5 +12,5 @@ export const DiagnosisTypeCode: core.serialization.Schema<
 > = core.serialization.enum_(["ABF", "ABJ", "ABK", "APR", "BF", "BJ", "BK", "PR", "DR", "LOI"]);
 
 export declare namespace DiagnosisTypeCode {
-    type Raw = "ABF" | "ABJ" | "ABK" | "APR" | "BF" | "BJ" | "BK" | "PR" | "DR" | "LOI";
+    export type Raw = "ABF" | "ABJ" | "ABK" | "APR" | "BF" | "BJ" | "BK" | "PR" | "DR" | "LOI";
 }

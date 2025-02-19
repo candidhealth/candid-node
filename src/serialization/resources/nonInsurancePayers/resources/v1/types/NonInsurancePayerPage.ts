@@ -18,7 +18,7 @@ export const NonInsurancePayerPage: core.serialization.ObjectSchema<
     .extend(ResourcePage);
 
 export declare namespace NonInsurancePayerPage {
-    interface Raw extends ResourcePage.Raw {
+    export interface Raw extends ResourcePage.Raw {
         items: NonInsurancePayer.Raw[];
     }
 }

@@ -14,5 +14,5 @@ export const UserId: core.serialization.Schema<serializers.UserId.Raw, CandidApi
     });
 
 export declare namespace UserId {
-    type Raw = string;
+    export type Raw = string;
 }

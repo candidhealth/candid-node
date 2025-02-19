@@ -43,17 +43,17 @@ export const Error: core.serialization.Schema<
                     return CandidApi.medicationDispense.v1.create.Error.httpRequestValidationError(value.content);
                 case "EncounterExternalIdUniquenessError":
                     return CandidApi.medicationDispense.v1.create.Error.encounterExternalIdUniquenessError(
-                        value.content
+                        value.content,
                     );
                 case "EncounterPatientControlNumberUniquenessError":
                     return CandidApi.medicationDispense.v1.create.Error.encounterPatientControlNumberUniquenessError(
-                        value.content
+                        value.content,
                     );
                 case "EntityNotFoundError":
                     return CandidApi.medicationDispense.v1.create.Error.entityNotFoundError(value.content);
                 case "SchemaInstanceValidationHttpFailure":
                     return CandidApi.medicationDispense.v1.create.Error.schemaInstanceValidationHttpFailure(
-                        value.content
+                        value.content,
                     );
                 case "InvalidTagNamesError":
                     return CandidApi.medicationDispense.v1.create.Error.invalidTagNamesError(value.content);
@@ -63,7 +63,7 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    type Raw =
+    export type Raw =
         | Error.HttpRequestValidationError
         | Error.EncounterExternalIdUniquenessError
         | Error.EncounterPatientControlNumberUniquenessError
@@ -71,32 +71,32 @@ export declare namespace Error {
         | Error.SchemaInstanceValidationHttpFailure
         | Error.InvalidTagNamesError;
 
-    interface HttpRequestValidationError {
+    export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
     }
 
-    interface EncounterExternalIdUniquenessError {
+    export interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
         content: EncounterExternalIdUniquenessErrorType.Raw;
     }
 
-    interface EncounterPatientControlNumberUniquenessError {
+    export interface EncounterPatientControlNumberUniquenessError {
         errorName: "EncounterPatientControlNumberUniquenessError";
         content: EncounterPatientControlNumberUniquenessErrorType.Raw;
     }
 
-    interface EntityNotFoundError {
+    export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
     }
 
-    interface SchemaInstanceValidationHttpFailure {
+    export interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
     }
 
-    interface InvalidTagNamesError {
+    export interface InvalidTagNamesError {
         errorName: "InvalidTagNamesError";
         content: InvalidTagNamesErrorType.Raw;
     }

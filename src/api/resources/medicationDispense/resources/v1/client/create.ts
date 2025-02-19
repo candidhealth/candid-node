@@ -14,57 +14,57 @@ export type Error =
     | CandidApi.medicationDispense.v1.create.Error.InvalidTagNamesError
     | CandidApi.medicationDispense.v1.create.Error._Unknown;
 
-export declare namespace Error {
-    interface HttpRequestValidationError extends _Utils {
+export namespace Error {
+    export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
     }
 
-    interface EncounterExternalIdUniquenessError extends _Utils {
+    export interface EncounterExternalIdUniquenessError extends _Utils {
         errorName: "EncounterExternalIdUniquenessError";
         content: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType;
     }
 
-    interface EncounterPatientControlNumberUniquenessError extends _Utils {
+    export interface EncounterPatientControlNumberUniquenessError extends _Utils {
         errorName: "EncounterPatientControlNumberUniquenessError";
         content: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType;
     }
 
-    interface EntityNotFoundError extends _Utils {
+    export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
     }
 
-    interface SchemaInstanceValidationHttpFailure extends _Utils {
+    export interface SchemaInstanceValidationHttpFailure extends _Utils {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
     }
 
-    interface InvalidTagNamesError extends _Utils {
+    export interface InvalidTagNamesError extends _Utils {
         errorName: "InvalidTagNamesError";
         content: CandidApi.encounters.v4.InvalidTagNamesErrorType;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         encounterExternalIdUniquenessError: (
-            value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
+            value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType,
         ) => _Result;
         encounterPatientControlNumberUniquenessError: (
-            value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+            value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType,
         ) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         schemaInstanceValidationHttpFailure: (
-            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+            value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
         ) => _Result;
         invalidTagNamesError: (value: CandidApi.encounters.v4.InvalidTagNamesErrorType) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
@@ -73,14 +73,14 @@ export declare namespace Error {
 
 export const Error = {
     httpRequestValidationError: (
-        value: CandidApi.RequestValidationError
+        value: CandidApi.RequestValidationError,
     ): CandidApi.medicationDispense.v1.create.Error.HttpRequestValidationError => {
         return {
             content: value,
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error.HttpRequestValidationError,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -88,14 +88,14 @@ export const Error = {
     },
 
     encounterExternalIdUniquenessError: (
-        value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType
+        value: CandidApi.encounters.v4.EncounterExternalIdUniquenessErrorType,
     ): CandidApi.medicationDispense.v1.create.Error.EncounterExternalIdUniquenessError => {
         return {
             content: value,
             errorName: "EncounterExternalIdUniquenessError",
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error.EncounterExternalIdUniquenessError,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -103,14 +103,14 @@ export const Error = {
     },
 
     encounterPatientControlNumberUniquenessError: (
-        value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType
+        value: CandidApi.encounters.v4.EncounterPatientControlNumberUniquenessErrorType,
     ): CandidApi.medicationDispense.v1.create.Error.EncounterPatientControlNumberUniquenessError => {
         return {
             content: value,
             errorName: "EncounterPatientControlNumberUniquenessError",
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error.EncounterPatientControlNumberUniquenessError,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -118,14 +118,14 @@ export const Error = {
     },
 
     entityNotFoundError: (
-        value: CandidApi.EntityNotFoundErrorMessage
+        value: CandidApi.EntityNotFoundErrorMessage,
     ): CandidApi.medicationDispense.v1.create.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error.EntityNotFoundError,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -133,14 +133,14 @@ export const Error = {
     },
 
     schemaInstanceValidationHttpFailure: (
-        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure
+        value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
     ): CandidApi.medicationDispense.v1.create.Error.SchemaInstanceValidationHttpFailure => {
         return {
             content: value,
             errorName: "SchemaInstanceValidationHttpFailure",
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error.SchemaInstanceValidationHttpFailure,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -148,14 +148,14 @@ export const Error = {
     },
 
     invalidTagNamesError: (
-        value: CandidApi.encounters.v4.InvalidTagNamesErrorType
+        value: CandidApi.encounters.v4.InvalidTagNamesErrorType,
     ): CandidApi.medicationDispense.v1.create.Error.InvalidTagNamesError => {
         return {
             content: value,
             errorName: "InvalidTagNamesError",
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error.InvalidTagNamesError,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -168,7 +168,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.medicationDispense.v1.create.Error._Unknown,
-                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+                visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.medicationDispense.v1.create.Error._visit(this, visitor);
             },
@@ -177,7 +177,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.medicationDispense.v1.create.Error,
-        visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>
+        visitor: CandidApi.medicationDispense.v1.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "HttpRequestValidationError":

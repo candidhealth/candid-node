@@ -18,7 +18,7 @@ export const InvoiceDestinationMetadata: core.serialization.ObjectSchema<
 });
 
 export declare namespace InvoiceDestinationMetadata {
-    interface Raw {
+    export interface Raw {
         invoice_destination: InvoiceDestination.Raw;
         source_id: string;
         source_customer_id: string;

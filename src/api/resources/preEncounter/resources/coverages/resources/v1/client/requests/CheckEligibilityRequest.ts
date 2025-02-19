@@ -7,7 +7,7 @@ import * as CandidApi from "../../../../../../../../index";
 /**
  * @example
  *     {
- *         serviceCode: CandidApi.preEncounter.coverages.v1.ServiceTypeCode.MedicalCare,
+ *         serviceCode: "1",
  *         dateOfService: "2023-01-15",
  *         npi: "string"
  *     }

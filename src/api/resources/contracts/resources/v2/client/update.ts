@@ -10,30 +10,30 @@ export type Error =
     | CandidApi.contracts.v2.update.Error.ContractInvalidExpirationDateHttpError
     | CandidApi.contracts.v2.update.Error._Unknown;
 
-export declare namespace Error {
-    interface UnprocessableEntityError extends _Utils {
+export namespace Error {
+    export interface UnprocessableEntityError extends _Utils {
         errorName: "UnprocessableEntityError";
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
-    interface ContractInvalidExpirationDateHttpError extends _Utils {
+    export interface ContractInvalidExpirationDateHttpError extends _Utils {
         errorName: "ContractInvalidExpirationDateHttpError";
         content: CandidApi.contracts.v2.ContractInvalidExpirationDateError;
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         contractInvalidExpirationDateHttpError: (
-            value: CandidApi.contracts.v2.ContractInvalidExpirationDateError
+            value: CandidApi.contracts.v2.ContractInvalidExpirationDateError,
         ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -41,14 +41,14 @@ export declare namespace Error {
 
 export const Error = {
     unprocessableEntityError: (
-        value: CandidApi.UnprocessableEntityErrorMessage
+        value: CandidApi.UnprocessableEntityErrorMessage,
     ): CandidApi.contracts.v2.update.Error.UnprocessableEntityError => {
         return {
             content: value,
             errorName: "UnprocessableEntityError",
             _visit: function <_Result>(
                 this: CandidApi.contracts.v2.update.Error.UnprocessableEntityError,
-                visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.contracts.v2.update.Error._visit(this, visitor);
             },
@@ -56,14 +56,14 @@ export const Error = {
     },
 
     contractInvalidExpirationDateHttpError: (
-        value: CandidApi.contracts.v2.ContractInvalidExpirationDateError
+        value: CandidApi.contracts.v2.ContractInvalidExpirationDateError,
     ): CandidApi.contracts.v2.update.Error.ContractInvalidExpirationDateHttpError => {
         return {
             content: value,
             errorName: "ContractInvalidExpirationDateHttpError",
             _visit: function <_Result>(
                 this: CandidApi.contracts.v2.update.Error.ContractInvalidExpirationDateHttpError,
-                visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.contracts.v2.update.Error._visit(this, visitor);
             },
@@ -76,7 +76,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.contracts.v2.update.Error._Unknown,
-                visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>
+                visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.contracts.v2.update.Error._visit(this, visitor);
             },
@@ -85,7 +85,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.contracts.v2.update.Error,
-        visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>
+        visitor: CandidApi.contracts.v2.update.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "UnprocessableEntityError":

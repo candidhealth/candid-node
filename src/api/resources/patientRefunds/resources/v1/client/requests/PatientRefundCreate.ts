@@ -8,7 +8,7 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         amountCents: 1,
- *         refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+ *         refundTimestamp: "2024-01-15T09:30:00Z",
  *         refundNote: "string",
  *         patientExternalId: CandidApi.PatientExternalId("string"),
  *         allocations: [{
@@ -19,7 +19,7 @@ import * as CandidApi from "../../../../../../index";
  *                 }
  *             }],
  *         invoice: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         refundReason: CandidApi.RefundReason.Overcharged
+ *         refundReason: "OVERCHARGED"
  *     }
  */
 export interface PatientRefundCreate {

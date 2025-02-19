@@ -19,7 +19,7 @@ export const OutOfNetworkStatus: core.serialization.ObjectSchema<
 });
 
 export declare namespace OutOfNetworkStatus {
-    interface Raw {
+    export interface Raw {
         explanation: Explanation.Raw;
         routed_payer_uuid: PayerUuid.Raw;
         routed_billing_provider_id: OrganizationProviderId.Raw;

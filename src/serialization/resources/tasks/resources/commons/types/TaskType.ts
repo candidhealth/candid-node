@@ -23,7 +23,7 @@ export const TaskType: core.serialization.Schema<serializers.tasks.TaskType.Raw,
     ]);
 
 export declare namespace TaskType {
-    type Raw =
+    export type Raw =
         | "CUSTOMER_DATA_REQUEST"
         | "CLAIM_SUBMISSION_RUN_VALIDATIONS_FAILURE"
         | "CLAIM_SUBMISSION_SUBMIT_CLAIM_FAILURE"

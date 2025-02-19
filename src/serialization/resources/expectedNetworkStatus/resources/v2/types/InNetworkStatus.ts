@@ -17,7 +17,7 @@ export const InNetworkStatus: core.serialization.ObjectSchema<
 });
 
 export declare namespace InNetworkStatus {
-    interface Raw {
+    export interface Raw {
         routed_payer_uuid: PayerUuid.Raw;
         routed_billing_provider_id: OrganizationProviderId.Raw;
     }

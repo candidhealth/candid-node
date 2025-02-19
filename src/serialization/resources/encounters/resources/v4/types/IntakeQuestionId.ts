@@ -15,5 +15,5 @@ export const IntakeQuestionId: core.serialization.Schema<
 });
 
 export declare namespace IntakeQuestionId {
-    type Raw = string;
+    export type Raw = string;
 }

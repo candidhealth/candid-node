@@ -17,7 +17,7 @@ export const TaskNote: core.serialization.ObjectSchema<serializers.tasks.v3.Task
     });
 
 export declare namespace TaskNote {
-    interface Raw {
+    export interface Raw {
         task_note_id: TaskNoteId.Raw;
         text: string;
         created_at: string;

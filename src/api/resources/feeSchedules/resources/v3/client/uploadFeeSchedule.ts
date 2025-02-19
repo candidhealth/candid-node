@@ -9,22 +9,22 @@ export type Error =
     | CandidApi.feeSchedules.v3.uploadFeeSchedule.Error.FeeScheduleValidationHttpError
     | CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Unknown;
 
-export declare namespace Error {
-    interface FeeScheduleValidationHttpError extends _Utils {
+export namespace Error {
+    export interface FeeScheduleValidationHttpError extends _Utils {
         errorName: "FeeScheduleValidationHttpError";
         content: CandidApi.feeSchedules.v3.RateUploadWithPossibleErrors[];
     }
 
-    interface _Unknown extends _Utils {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         feeScheduleValidationHttpError: (value: CandidApi.feeSchedules.v3.RateUploadWithPossibleErrors[]) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -32,14 +32,14 @@ export declare namespace Error {
 
 export const Error = {
     feeScheduleValidationHttpError: (
-        value: CandidApi.feeSchedules.v3.RateUploadWithPossibleErrors[]
+        value: CandidApi.feeSchedules.v3.RateUploadWithPossibleErrors[],
     ): CandidApi.feeSchedules.v3.uploadFeeSchedule.Error.FeeScheduleValidationHttpError => {
         return {
             content: value,
             errorName: "FeeScheduleValidationHttpError",
             _visit: function <_Result>(
                 this: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error.FeeScheduleValidationHttpError,
-                visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>
+                visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>,
             ) {
                 return CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._visit(this, visitor);
             },
@@ -52,7 +52,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Unknown,
-                visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>
+                visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>,
             ) {
                 return CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._visit(this, visitor);
             },
@@ -61,7 +61,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error,
-        visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>
+        visitor: CandidApi.feeSchedules.v3.uploadFeeSchedule.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "FeeScheduleValidationHttpError":

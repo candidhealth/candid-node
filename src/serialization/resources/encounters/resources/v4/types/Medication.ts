@@ -20,7 +20,7 @@ export const Medication: core.serialization.ObjectSchema<
 });
 
 export declare namespace Medication {
-    interface Raw {
+    export interface Raw {
         name: string;
         rx_cui?: RxCui.Raw | null;
         dosage?: string | null;

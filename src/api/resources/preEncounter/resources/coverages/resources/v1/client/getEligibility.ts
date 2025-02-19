@@ -7,19 +7,19 @@ import * as core from "../../../../../../../../core";
 
 export type Error = CandidApi.preEncounter.coverages.v1.getEligibility.Error._Unknown;
 
-export declare namespace Error {
-    interface _Unknown extends _Utils {
+export namespace Error {
+    export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
     }
 
-    interface _Utils {
+    export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Visitor<_Result>
+            visitor: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Visitor<_Result>,
         ) => _Result;
     }
 
-    interface _Visitor<_Result> {
+    export interface _Visitor<_Result> {
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -31,7 +31,7 @@ export const Error = {
             content: fetcherError,
             _visit: function <_Result>(
                 this: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Unknown,
-                visitor: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Visitor<_Result>
+                visitor: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Visitor<_Result>,
             ) {
                 return CandidApi.preEncounter.coverages.v1.getEligibility.Error._visit(this, visitor);
             },
@@ -40,7 +40,7 @@ export const Error = {
 
     _visit: <_Result>(
         value: CandidApi.preEncounter.coverages.v1.getEligibility.Error,
-        visitor: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Visitor<_Result>
+        visitor: CandidApi.preEncounter.coverages.v1.getEligibility.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             default:

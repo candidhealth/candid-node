@@ -20,7 +20,7 @@ export const InsurancePlan: core.serialization.ObjectSchema<
     payerName: core.serialization.property("payer_name", core.serialization.string()),
     additionalPayerInformation: core.serialization.property(
         "additional_payer_information",
-        AdditionalPayerInformation.optional()
+        AdditionalPayerInformation.optional(),
     ),
     groupNumber: core.serialization.property("group_number", core.serialization.string().optional()),
     name: core.serialization.string().optional(),
@@ -29,12 +29,12 @@ export const InsurancePlan: core.serialization.ObjectSchema<
     period: Period.optional(),
     insuranceCardImageLocator: core.serialization.property(
         "insurance_card_image_locator",
-        core.serialization.string().optional()
+        core.serialization.string().optional(),
     ),
 });
 
 export declare namespace InsurancePlan {
-    interface Raw {
+    export interface Raw {
         member_id: string;
         payer_id: PayerId.Raw;
         payer_name: string;

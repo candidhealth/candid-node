@@ -20,7 +20,7 @@ export const Appointment: core.serialization.ObjectSchema<
     .extend(MutableAppointment);
 
 export declare namespace Appointment {
-    interface Raw extends BaseModel.Raw, MutableAppointment.Raw {
+    export interface Raw extends BaseModel.Raw, MutableAppointment.Raw {
         id: AppointmentId.Raw;
     }
 }

@@ -22,7 +22,7 @@ export const PatientPaymentCreate: core.serialization.Schema<
 });
 
 export declare namespace PatientPaymentCreate {
-    interface Raw {
+    export interface Raw {
         amount_cents: number;
         payment_timestamp?: string | null;
         payment_note?: string | null;

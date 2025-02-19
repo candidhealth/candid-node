@@ -18,7 +18,7 @@ export const IntakeQuestion: core.serialization.ObjectSchema<
 });
 
 export declare namespace IntakeQuestion {
-    interface Raw {
+    export interface Raw {
         id: IntakeQuestionId.Raw;
         text: string;
         responses?: IntakeResponseAndFollowUps.Raw[] | null;

@@ -15,12 +15,12 @@ export const GetExportsResponse: core.serialization.ObjectSchema<
     authenticatedDownloadUrl: core.serialization.property("authenticated_download_url", core.serialization.string()),
     authenticatedDownloadUrlExpiration: core.serialization.property(
         "authenticated_download_url_expiration",
-        core.serialization.date()
+        core.serialization.date(),
     ),
 });
 
 export declare namespace GetExportsResponse {
-    interface Raw {
+    export interface Raw {
         name: string;
         created_at: string;
         authenticated_download_url: string;

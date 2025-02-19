@@ -14,7 +14,7 @@ export const EncounterGuarantorMissingContactInfoErrorType: core.serialization.O
 });
 
 export declare namespace EncounterGuarantorMissingContactInfoErrorType {
-    interface Raw {
+    export interface Raw {
         missing_fields: string[];
     }
 }

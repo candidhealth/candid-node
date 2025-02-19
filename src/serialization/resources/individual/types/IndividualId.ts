@@ -13,5 +13,5 @@ export const IndividualId: core.serialization.Schema<serializers.IndividualId.Ra
     });
 
 export declare namespace IndividualId {
-    type Raw = string;
+    export type Raw = string;
 }

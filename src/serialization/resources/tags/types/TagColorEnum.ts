@@ -10,5 +10,5 @@ export const TagColorEnum: core.serialization.Schema<serializers.TagColorEnum.Ra
     core.serialization.enum_(["black", "white", "gray", "red", "yellow", "green", "blue", "indigo", "purple", "pink"]);
 
 export declare namespace TagColorEnum {
-    type Raw = "black" | "white" | "gray" | "red" | "yellow" | "green" | "blue" | "indigo" | "purple" | "pink";
+    export type Raw = "black" | "white" | "gray" | "red" | "yellow" | "green" | "blue" | "indigo" | "purple" | "pink";
 }

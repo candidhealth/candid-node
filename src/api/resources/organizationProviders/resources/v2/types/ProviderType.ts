@@ -3,7 +3,6 @@
  */
 
 export type ProviderType = "INDIVIDUAL" | "ORGANIZATION";
-
 export const ProviderType = {
     Individual: "INDIVIDUAL",
     Organization: "ORGANIZATION",

@@ -13,28 +13,28 @@ import * as CandidApi from "../../../../../../../../index";
  *             name: {
  *                 family: "string",
  *                 given: ["string"],
- *                 use: CandidApi.preEncounter.NameUse.Usual,
+ *                 use: "USUAL",
  *                 period: {}
  *             },
  *             otherNames: [{
  *                     family: "string",
  *                     given: ["string"],
- *                     use: CandidApi.preEncounter.NameUse.Usual,
+ *                     use: "USUAL",
  *                     period: {}
  *                 }],
- *             gender: CandidApi.preEncounter.Gender.Man,
+ *             gender: "MAN",
  *             birthDate: "2023-01-15",
  *             socialSecurityNumber: "string",
- *             biologicalSex: CandidApi.preEncounter.Sex.Female,
- *             sexualOrientation: CandidApi.preEncounter.SexualOrientation.Heterosexual,
- *             race: CandidApi.preEncounter.Race.AmericanIndianOrAlaskaNative,
- *             ethnicity: CandidApi.preEncounter.Ethnicity.HispanicOrLatino,
- *             disabilityStatus: CandidApi.preEncounter.DisabilityStatus.Disabled,
- *             maritalStatus: CandidApi.preEncounter.patients.v1.MaritalStatus.Annulled,
- *             deceased: new Date("2024-01-15T09:30:00.000Z"),
+ *             biologicalSex: "FEMALE",
+ *             sexualOrientation: "HETEROSEXUAL",
+ *             race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
+ *             ethnicity: "HISPANIC_OR_LATINO",
+ *             disabilityStatus: "DISABLED",
+ *             maritalStatus: "ANNULLED",
+ *             deceased: "2024-01-15T09:30:00Z",
  *             multipleBirth: 1,
  *             primaryAddress: {
- *                 use: CandidApi.preEncounter.AddressUse.Home,
+ *                 use: "HOME",
  *                 line: ["string"],
  *                 city: "string",
  *                 state: "string",
@@ -43,7 +43,7 @@ import * as CandidApi from "../../../../../../../../index";
  *                 period: {}
  *             },
  *             otherAddresses: [{
- *                     use: CandidApi.preEncounter.AddressUse.Home,
+ *                     use: "HOME",
  *                     line: ["string"],
  *                     city: "string",
  *                     state: "string",
@@ -53,11 +53,11 @@ import * as CandidApi from "../../../../../../../../index";
  *                 }],
  *             primaryTelecom: {
  *                 value: "string",
- *                 use: CandidApi.preEncounter.ContactPointUse.Home
+ *                 use: "HOME"
  *             },
  *             otherTelecoms: [{
  *                     value: "string",
- *                     use: CandidApi.preEncounter.ContactPointUse.Home
+ *                     use: "HOME"
  *                 }],
  *             email: "string",
  *             electronicCommunicationOptIn: true,
@@ -68,19 +68,19 @@ import * as CandidApi from "../../../../../../../../index";
  *                 systemName: "string"
  *             },
  *             contacts: [{
- *                     relationship: [CandidApi.preEncounter.Relationship.Self],
+ *                     relationship: ["SELF"],
  *                     name: {
  *                         family: "string",
  *                         given: ["string"],
- *                         use: CandidApi.preEncounter.NameUse.Usual,
+ *                         use: "USUAL",
  *                         period: {}
  *                     },
  *                     telecoms: [{
  *                             value: "string",
- *                             use: CandidApi.preEncounter.ContactPointUse.Home
+ *                             use: "HOME"
  *                         }],
  *                     addresses: [{
- *                             use: CandidApi.preEncounter.AddressUse.Home,
+ *                             use: "HOME",
  *                             line: ["string"],
  *                             city: "string",
  *                             state: "string",
@@ -95,14 +95,14 @@ import * as CandidApi from "../../../../../../../../index";
  *                     name: {
  *                         family: "string",
  *                         given: ["string"],
- *                         use: CandidApi.preEncounter.NameUse.Usual,
+ *                         use: "USUAL",
  *                         period: {}
  *                     },
- *                     type: CandidApi.preEncounter.ExternalProviderType.Primary,
+ *                     type: "PRIMARY",
  *                     npi: "string",
  *                     telecoms: [{
  *                             value: "string",
- *                             use: CandidApi.preEncounter.ContactPointUse.Home
+ *                             use: "HOME"
  *                         }],
  *                     addresses: [],
  *                     period: {},
@@ -119,17 +119,17 @@ import * as CandidApi from "../../../../../../../../index";
  *                 name: {
  *                     family: "string",
  *                     given: ["string"],
- *                     use: CandidApi.preEncounter.NameUse.Usual,
+ *                     use: "USUAL",
  *                     period: {}
  *                 },
  *                 telecom: {
  *                     value: "string",
- *                     use: CandidApi.preEncounter.ContactPointUse.Home
+ *                     use: "HOME"
  *                 },
  *                 email: "string",
  *                 birthDate: "2023-01-15",
  *                 address: {
- *                     use: CandidApi.preEncounter.AddressUse.Home,
+ *                     use: "HOME",
  *                     line: ["string"],
  *                     city: "string",
  *                     state: "string",
@@ -145,7 +145,7 @@ import * as CandidApi from "../../../../../../../../index";
  *                     additionalPayerInformation: {},
  *                     authorizationNumber: "string",
  *                     cptCode: "string",
- *                     units: CandidApi.preEncounter.patients.v1.AuthorizationUnit.Visit,
+ *                     units: "VISIT",
  *                     quantity: 1,
  *                     period: {},
  *                     notes: "string"
@@ -155,14 +155,14 @@ import * as CandidApi from "../../../../../../../../index";
  *                         name: {
  *                             family: "string",
  *                             given: ["string"],
- *                             use: CandidApi.preEncounter.NameUse.Usual,
+ *                             use: "USUAL",
  *                             period: {}
  *                         },
- *                         type: CandidApi.preEncounter.ExternalProviderType.Primary,
+ *                         type: "PRIMARY",
  *                         npi: "string",
  *                         telecoms: [{
  *                                 value: "string",
- *                                 use: CandidApi.preEncounter.ContactPointUse.Home
+ *                                 use: "HOME"
  *                             }],
  *                         addresses: [],
  *                         period: {},
@@ -171,7 +171,7 @@ import * as CandidApi from "../../../../../../../../index";
  *                     referralNumber: "string"
  *                 }],
  *             primaryServiceFacilityId: "string",
- *             doNotInvoiceReason: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason.Bankruptcy,
+ *             doNotInvoiceReason: "BANKRUPTCY",
  *             noteIds: [CandidApi.preEncounter.NoteId("string")],
  *             tagIds: [CandidApi.preEncounter.TagId("string")]
  *         }

@@ -14,5 +14,5 @@ export const ClaimId: core.serialization.Schema<serializers.ClaimId.Raw, CandidA
     });
 
 export declare namespace ClaimId {
-    type Raw = string;
+    export type Raw = string;
 }

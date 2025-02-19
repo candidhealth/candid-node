@@ -7,14 +7,14 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         refundTimestamp: new Date("2024-01-15T09:30:00.000Z"),
+ *         refundTimestamp: "2024-01-15T09:30:00Z",
  *         refundNote: {
  *             type: "set",
  *             value: "string"
  *         },
  *         refundReason: {
  *             type: "set",
- *             value: CandidApi.RefundReason.Overcharged
+ *             value: "OVERCHARGED"
  *         },
  *         invoiceId: {
  *             type: "set",

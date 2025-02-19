@@ -16,7 +16,7 @@ export const FeeScheduleUploadRequest: core.serialization.Schema<
 });
 
 export declare namespace FeeScheduleUploadRequest {
-    interface Raw {
+    export interface Raw {
         dry_run: boolean;
         rates: RateUpload.Raw[];
     }

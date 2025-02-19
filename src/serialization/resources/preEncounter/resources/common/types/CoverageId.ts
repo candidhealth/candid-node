@@ -15,5 +15,5 @@ export const CoverageId: core.serialization.Schema<
 });
 
 export declare namespace CoverageId {
-    type Raw = string;
+    export type Raw = string;
 }

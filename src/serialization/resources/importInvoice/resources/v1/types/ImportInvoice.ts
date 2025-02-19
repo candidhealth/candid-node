@@ -21,7 +21,7 @@ export const ImportInvoice: core.serialization.ObjectSchema<
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
     externalCustomerIdentifier: core.serialization.property(
         "external_customer_identifier",
-        core.serialization.string()
+        core.serialization.string(),
     ),
     status: InvoiceStatus,
     externalIdentifier: core.serialization.property("external_identifier", core.serialization.string()),
@@ -32,7 +32,7 @@ export const ImportInvoice: core.serialization.ObjectSchema<
 });
 
 export declare namespace ImportInvoice {
-    interface Raw {
+    export interface Raw {
         id: InvoiceId.Raw;
         created_at: string;
         updated_at: string;

@@ -75,7 +75,6 @@ export type PatientRelationshipToInsuredCodeAll =
     /**
      * Other Relationship */
     | "G8";
-
 export const PatientRelationshipToInsuredCodeAll = {
     Spouse: "01",
     Grandparent: "04",

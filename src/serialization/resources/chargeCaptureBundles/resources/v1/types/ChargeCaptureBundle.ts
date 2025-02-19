@@ -23,7 +23,7 @@ export const ChargeCaptureBundle: core.serialization.ObjectSchema<
 });
 
 export declare namespace ChargeCaptureBundle {
-    interface Raw {
+    export interface Raw {
         id: ChargeCaptureBundleId.Raw;
         created_encounter_id?: EncounterId.Raw | null;
         status: ChargeCaptureBundleStatus.Raw;

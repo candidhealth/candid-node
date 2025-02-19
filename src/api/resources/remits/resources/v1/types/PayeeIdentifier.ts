@@ -9,18 +9,18 @@ export type PayeeIdentifier =
     | CandidApi.remits.v1.PayeeIdentifier.Tin
     | CandidApi.remits.v1.PayeeIdentifier.CmsPlanId;
 
-export declare namespace PayeeIdentifier {
-    interface Npi {
+export namespace PayeeIdentifier {
+    export interface Npi {
         type: "npi";
         value: CandidApi.Npi;
     }
 
-    interface Tin {
+    export interface Tin {
         type: "tin";
         value: CandidApi.TaxId;
     }
 
-    interface CmsPlanId {
+    export interface CmsPlanId {
         type: "cms_plan_id";
         value: string;
     }

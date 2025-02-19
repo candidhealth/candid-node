@@ -3,7 +3,6 @@
  */
 
 export type ChargeCaptureBundleStatus = "in-progress" | "in-error" | "successful" | "aborted";
-
 export const ChargeCaptureBundleStatus = {
     InProgress: "in-progress",
     InError: "in-error",
