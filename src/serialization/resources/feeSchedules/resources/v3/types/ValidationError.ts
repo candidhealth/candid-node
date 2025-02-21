@@ -8,6 +8,7 @@ import * as core from "../../../../../../core";
 import { OverlappingRateEntriesError } from "./OverlappingRateEntriesError";
 import { EntityConflictErrorMessage } from "../../../../commons/types/EntityConflictErrorMessage";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
+import { PayerPlanGroupDoesNotMatchRatePayerError } from "./PayerPlanGroupDoesNotMatchRatePayerError";
 
 export const ValidationError: core.serialization.Schema<
     serializers.feeSchedules.v3.ValidationError.Raw,
@@ -19,6 +20,8 @@ export const ValidationError: core.serialization.Schema<
         organization_provider_not_found: EntityNotFoundErrorMessage,
         duplicate_rate: core.serialization.object({}),
         empty_entries: core.serialization.object({}),
+        payer_plan_group_not_found: EntityNotFoundErrorMessage,
+        payer_plan_group_does_not_match_rate_payer: PayerPlanGroupDoesNotMatchRatePayerError,
     })
     .transform<CandidApi.feeSchedules.v3.ValidationError>({
         transform: (value) => value,
@@ -31,7 +34,9 @@ export declare namespace ValidationError {
         | ValidationError.VersionConflict
         | ValidationError.OrganizationProviderNotFound
         | ValidationError.DuplicateRate
-        | ValidationError.EmptyEntries;
+        | ValidationError.EmptyEntries
+        | ValidationError.PayerPlanGroupNotFound
+        | ValidationError.PayerPlanGroupDoesNotMatchRatePayer;
 
     export interface OverlappingRateEntries extends OverlappingRateEntriesError.Raw {
         type: "overlapping_rate_entries";
@@ -51,5 +56,13 @@ export declare namespace ValidationError {
 
     export interface EmptyEntries {
         type: "empty_entries";
+    }
+
+    export interface PayerPlanGroupNotFound extends EntityNotFoundErrorMessage.Raw {
+        type: "payer_plan_group_not_found";
+    }
+
+    export interface PayerPlanGroupDoesNotMatchRatePayer extends PayerPlanGroupDoesNotMatchRatePayerError.Raw {
+        type: "payer_plan_group_does_not_match_rate_payer";
     }
 }

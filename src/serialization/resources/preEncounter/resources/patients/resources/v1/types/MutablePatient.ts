@@ -6,6 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { HumanName } from "../../../../common/types/HumanName";
+import { ExternalIdentifier } from "../../../../common/types/ExternalIdentifier";
 import { Gender } from "../../../../common/types/Gender";
 import { Sex } from "../../../../common/types/Sex";
 import { SexualOrientation } from "../../../../common/types/SexualOrientation";
@@ -34,6 +35,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: HumanName,
     otherNames: core.serialization.property("other_names", core.serialization.list(HumanName)),
+    otherIdentifiers: core.serialization.property(
+        "other_identifiers",
+        core.serialization.list(ExternalIdentifier).optional(),
+    ),
     gender: Gender.optional(),
     birthDate: core.serialization.property("birth_date", core.serialization.string()),
     socialSecurityNumber: core.serialization.property("social_security_number", core.serialization.string().optional()),
@@ -88,6 +93,7 @@ export declare namespace MutablePatient {
     export interface Raw {
         name: HumanName.Raw;
         other_names: HumanName.Raw[];
+        other_identifiers?: ExternalIdentifier.Raw[] | null;
         gender?: Gender.Raw | null;
         birth_date: string;
         social_security_number?: string | null;

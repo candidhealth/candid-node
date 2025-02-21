@@ -30,6 +30,6 @@ export interface MutableAppointment {
     locationResourceId?: string;
     /** True if the automated eligibility check has been completed. It is not recommended to change this value manually via API. This refers explicitly to the automated eligibility check that occurs a specific number of days before the appointment. */
     automatedEligibilityCheckComplete?: boolean;
-    /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY or CHECKED_IN, work_queue must be null. */
+    /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY, work_queue must be null. */
     workQueue?: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue;
 }

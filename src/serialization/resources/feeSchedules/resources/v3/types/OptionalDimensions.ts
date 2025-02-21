@@ -11,6 +11,7 @@ import { State } from "../../../../commons/types/State";
 import { LicenseType } from "../../../../organizationProviders/resources/v2/types/LicenseType";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { NetworkType } from "../../../../commons/types/NetworkType";
+import { PayerPlanGroupId } from "../../../../commons/types/PayerPlanGroupId";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 
 export const OptionalDimensions: core.serialization.ObjectSchema<
@@ -27,6 +28,7 @@ export const OptionalDimensions: core.serialization.ObjectSchema<
     licenseTypes: core.serialization.property("license_types", core.serialization.set(LicenseType)),
     facilityTypeCodes: core.serialization.property("facility_type_codes", core.serialization.set(FacilityTypeCode)),
     networkTypes: core.serialization.property("network_types", core.serialization.set(NetworkType)),
+    payerPlanGroupIds: core.serialization.property("payer_plan_group_ids", core.serialization.set(PayerPlanGroupId)),
     cptCode: core.serialization.property("cpt_code", core.serialization.string().optional()),
     modifiers: core.serialization.set(ProcedureModifier),
 });
@@ -40,6 +42,7 @@ export declare namespace OptionalDimensions {
         license_types: LicenseType.Raw[];
         facility_type_codes: FacilityTypeCode.Raw[];
         network_types: NetworkType.Raw[];
+        payer_plan_group_ids: PayerPlanGroupId.Raw[];
         cpt_code?: string | null;
         modifiers: ProcedureModifier.Raw[];
     }

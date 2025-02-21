@@ -18,6 +18,7 @@ import * as CandidApi from "../../../../../../index";
  *                     licenseTypes: new Set(["MD"]),
  *                     facilityTypeCodes: new Set(["01"]),
  *                     networkTypes: new Set(["12"]),
+ *                     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
  *                     cptCode: "string",
  *                     modifiers: new Set(["22"])
  *                 },

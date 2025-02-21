@@ -23,6 +23,7 @@ export const ExternalProvider: core.serialization.ObjectSchema<
     addresses: core.serialization.list(Address).optional(),
     period: Period.optional(),
     canonicalId: core.serialization.property("canonical_id", CanonicalProviderId.optional()),
+    fax: core.serialization.string().optional(),
 });
 
 export declare namespace ExternalProvider {
@@ -34,5 +35,6 @@ export declare namespace ExternalProvider {
         addresses?: Address.Raw[] | null;
         period?: Period.Raw | null;
         canonical_id?: CanonicalProviderId.Raw | null;
+        fax?: string | null;
     }
 }

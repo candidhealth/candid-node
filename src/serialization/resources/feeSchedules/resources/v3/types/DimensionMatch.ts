@@ -14,6 +14,7 @@ import { MatchModifiers } from "./MatchModifiers";
 import { MatchLicenseType } from "./MatchLicenseType";
 import { MatchFacilityTypeCode } from "./MatchFacilityTypeCode";
 import { MatchNetworkTypes } from "./MatchNetworkTypes";
+import { MatchPayerPlanGroups } from "./MatchPayerPlanGroups";
 
 export const DimensionMatch: core.serialization.ObjectSchema<
     serializers.feeSchedules.v3.DimensionMatch.Raw,
@@ -28,6 +29,7 @@ export const DimensionMatch: core.serialization.ObjectSchema<
     licenseType: core.serialization.property("license_type", MatchLicenseType),
     facilityTypeCode: core.serialization.property("facility_type_code", MatchFacilityTypeCode),
     networkTypes: core.serialization.property("network_types", MatchNetworkTypes),
+    payerPlanGroups: core.serialization.property("payer_plan_groups", MatchPayerPlanGroups),
 });
 
 export declare namespace DimensionMatch {
@@ -41,5 +43,6 @@ export declare namespace DimensionMatch {
         license_type: MatchLicenseType.Raw;
         facility_type_code: MatchFacilityTypeCode.Raw;
         network_types: MatchNetworkTypes.Raw;
+        payer_plan_groups: MatchPayerPlanGroups.Raw;
     }
 }

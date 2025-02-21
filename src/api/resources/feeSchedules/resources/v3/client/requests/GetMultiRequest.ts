@@ -17,6 +17,7 @@ import * as CandidApi from "../../../../../../index";
  *         licenseTypes: "MD",
  *         facilityTypeCodes: "01",
  *         networkTypes: "12",
+ *         payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         cptCode: "string",
  *         modifiers: "22"
  *     }
@@ -35,6 +36,7 @@ export interface GetMultiRequest {
     licenseTypes?: CandidApi.organizationProviders.v2.LicenseType | CandidApi.organizationProviders.v2.LicenseType[];
     facilityTypeCodes?: CandidApi.FacilityTypeCode | CandidApi.FacilityTypeCode[];
     networkTypes?: CandidApi.NetworkType | CandidApi.NetworkType[];
+    payerPlanGroupIds?: CandidApi.PayerPlanGroupId | CandidApi.PayerPlanGroupId[];
     cptCode?: string;
     modifiers?: CandidApi.ProcedureModifier | CandidApi.ProcedureModifier[];
 }

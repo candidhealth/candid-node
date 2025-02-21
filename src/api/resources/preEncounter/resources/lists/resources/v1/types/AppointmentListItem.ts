@@ -6,7 +6,7 @@ import * as CandidApi from "../../../../../../../index";
 
 export interface AppointmentListItem {
     appointment: CandidApi.preEncounter.appointments.v1.Appointment;
-    patient: CandidApi.preEncounter.patients.v1.MutablePatient;
+    patient: CandidApi.preEncounter.patients.v1.MutablePatientWithMrn;
     primaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
     primaryServiceType?: CandidApi.preEncounter.appointments.v1.UniversalServiceIdentifier;
 }

@@ -4056,6 +4056,7 @@ await client.feeSchedules.v3.getMulti({
     licenseTypes: "MD",
     facilityTypeCodes: "01",
     networkTypes: "12",
+    payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     cptCode: "string",
     modifiers: "22",
 });
@@ -4132,6 +4133,7 @@ await client.feeSchedules.v3.getUniqueValuesForDimension({
     licenseTypes: "MD",
     facilityTypeCodes: "01",
     networkTypes: "12",
+    payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     cptCode: "string",
     modifiers: "22",
 });
@@ -4273,6 +4275,7 @@ await client.feeSchedules.v3.uploadFeeSchedule({
                 licenseTypes: new Set(["MD"]),
                 facilityTypeCodes: new Set(["01"]),
                 networkTypes: new Set(["12"]),
+                payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
                 cptCode: "string",
                 modifiers: new Set(["22"]),
             },
@@ -9487,6 +9490,7 @@ await client.preEncounter.appointments.v1.create({
         addresses: [],
         period: {},
         canonicalId: CandidApi.CanonicalProviderId("string"),
+        fax: "string",
     },
     estimatedCopayCents: 1,
     estimatedPatientResponsibilityCents: 1,
@@ -9513,6 +9517,75 @@ await client.preEncounter.appointments.v1.create({
 <dd>
 
 **request:** `CandidApi.MutableAppointment`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getVisits</a>({ ...params }) -> core.APIResponse<CandidApi.VisitsPage, CandidApi.preEncounter.appointments.v1.getVisits.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets all Visits within a given time range. The return list is ordered by start_time ascending.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.getVisits({
+    pageToken: CandidApi.PageToken("string"),
+    limit: 1,
+    sortField: CandidApi.SortFieldString("string"),
+    sortDirection: "asc",
+    filters: CandidApi.FilterQueryString("string"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.appointments.v1.VisitsRequest`
 
 </dd>
 </dl>
@@ -9715,6 +9788,7 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("string
         addresses: [],
         period: {},
         canonicalId: CandidApi.CanonicalProviderId("string"),
+        fax: "string",
     },
     estimatedCopayCents: 1,
     estimatedPatientResponsibilityCents: 1,
@@ -9975,17 +10049,10 @@ await client.preEncounter.coverages.v1.create({
         type: "01",
         period: {},
         insuranceCardImageLocator: "string",
+        payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     },
     verified: true,
-    eligibilityChecks: [
-        {
-            checkId: "string",
-            serviceCode: "1",
-            status: "COMPLETED",
-            initiatedBy: CandidApi.UserId("string"),
-            initiatedAt: "2024-01-15T09:30:00Z",
-        },
-    ],
+    eligibilityChecks: [],
     latestEligibilityCheck: {
         checkId: "string",
         status: "ACTIVE",
@@ -10089,17 +10156,10 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
         type: "01",
         period: {},
         insuranceCardImageLocator: "string",
+        payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     },
     verified: true,
-    eligibilityChecks: [
-        {
-            checkId: "string",
-            serviceCode: "1",
-            status: "COMPLETED",
-            initiatedBy: CandidApi.UserId("string"),
-            initiatedAt: "2024-01-15T09:30:00Z",
-        },
-    ],
+    eligibilityChecks: [],
     latestEligibilityCheck: {
         checkId: "string",
         status: "ACTIVE",
@@ -10139,6 +10199,74 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
 <dd>
 
 **request:** `CandidApi.MutableCoverage`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getMultiPaginated</a>({ ...params }) -> core.APIResponse<CandidApi.CoveragesPage, CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a page of Coverages based on the search criteria.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.coverages.v1.getMultiPaginated({
+    patientId: "string",
+    payerPlanGroupId: "string",
+    pageToken: CandidApi.PageToken("string"),
+    limit: 1,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest`
 
 </dd>
 </dl>
@@ -10544,6 +10672,94 @@ await client.preEncounter.coverages.v1.getEligibility(
 <dd>
 
 **checkId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## PreEncounter EligibilityChecks V1
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">post</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.post.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sends real-time eligibility checks to payers through Stedi.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.post({
+    payerId: "string",
+    provider: {
+        firstName: "string",
+        lastName: "string",
+        npi: "string",
+    },
+    subscriber: {
+        memberId: "string",
+        firstName: "string",
+        lastName: "string",
+        dateOfBirth: "2023-01-15",
+    },
+    dependent: {
+        memberId: "string",
+        firstName: "string",
+        lastName: "string",
+        dateOfBirth: "2023-01-15",
+    },
+    encounter: {
+        dateOfService: "2023-01-15",
+        serviceTypeCodes: ["string"],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.EligibilityRequest`
 
 </dd>
 </dl>
@@ -11035,6 +11251,12 @@ await client.preEncounter.patients.v1.create({
                 period: {},
             },
         ],
+        otherIdentifiers: [
+            {
+                value: "string",
+                system: "string",
+            },
+        ],
         gender: "MAN",
         birthDate: "2023-01-15",
         socialSecurityNumber: "string",
@@ -11133,6 +11355,7 @@ await client.preEncounter.patients.v1.create({
                 addresses: [],
                 period: {},
                 canonicalId: CandidApi.CanonicalProviderId("string"),
+                fax: "string",
             },
         ],
         filingOrder: {
@@ -11201,6 +11424,7 @@ await client.preEncounter.patients.v1.create({
                     addresses: [],
                     period: {},
                     canonicalId: CandidApi.CanonicalProviderId("string"),
+                    fax: "string",
                 },
                 referralNumber: "string",
             },
@@ -11291,6 +11515,12 @@ await client.preEncounter.patients.v1.createWithMrn({
                 period: {},
             },
         ],
+        otherIdentifiers: [
+            {
+                value: "string",
+                system: "string",
+            },
+        ],
         gender: "MAN",
         birthDate: "2023-01-15",
         socialSecurityNumber: "string",
@@ -11389,6 +11619,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                 addresses: [],
                 period: {},
                 canonicalId: CandidApi.CanonicalProviderId("string"),
+                fax: "string",
             },
         ],
         filingOrder: {
@@ -11457,6 +11688,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                     addresses: [],
                     period: {},
                     canonicalId: CandidApi.CanonicalProviderId("string"),
+                    fax: "string",
                 },
                 referralNumber: "string",
             },
@@ -11739,6 +11971,12 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             period: {},
         },
     ],
+    otherIdentifiers: [
+        {
+            value: "string",
+            system: "string",
+        },
+    ],
     gender: "MAN",
     birthDate: "2023-01-15",
     socialSecurityNumber: "string",
@@ -11837,6 +12075,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             addresses: [],
             period: {},
             canonicalId: CandidApi.CanonicalProviderId("string"),
+            fax: "string",
         },
     ],
     filingOrder: {
@@ -11905,6 +12144,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                 addresses: [],
                 period: {},
                 canonicalId: CandidApi.CanonicalProviderId("string"),
+                fax: "string",
             },
             referralNumber: "string",
         },
@@ -11976,7 +12216,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
 <dl>
 <dd>
 
-Sets a patient as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the patient will "reactivate" the patient and set the deactivated flag to false.
+Sets a patient as deactivated. The path must contain the most recent version plus 1 to prevent race conditions. Deactivating historic versions is not supported.
 
 </dd>
 </dl>
@@ -11993,6 +12233,77 @@ Sets a patient as deactivated. The path must contain the most recent version to 
 
 ```typescript
 await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("string"), "string");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.PatientId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">reactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.patients.v1.reactivate.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes the deactivated flag for a patient. The path must contain the most recent version plus 1 to prevent race conditions. Reactivating historic versions is not supported.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.reactivate(CandidApi.PatientId("string"), "string");
 ```
 
 </dd>

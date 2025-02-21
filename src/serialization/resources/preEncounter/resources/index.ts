@@ -1,5 +1,6 @@
 export * as appointments from "./appointments";
 export * as coverages from "./coverages";
+export * as eligibilityChecks from "./eligibilityChecks";
 export * as lists from "./lists";
 export * as notes from "./notes";
 export * as patients from "./patients";

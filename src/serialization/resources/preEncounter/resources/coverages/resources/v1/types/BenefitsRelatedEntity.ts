@@ -6,6 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { RelatedEntityContact } from "./RelatedEntityContact";
+import { ServiceTypeCode } from "./ServiceTypeCode";
 
 export const BenefitsRelatedEntity: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.BenefitsRelatedEntity.Raw,
@@ -15,6 +16,7 @@ export const BenefitsRelatedEntity: core.serialization.ObjectSchema<
     entityType: core.serialization.string().optional(),
     entityName: core.serialization.string().optional(),
     contactInformation: core.serialization.list(RelatedEntityContact).optional(),
+    serviceTypeCodes: core.serialization.list(ServiceTypeCode).optional(),
 });
 
 export declare namespace BenefitsRelatedEntity {
@@ -23,5 +25,6 @@ export declare namespace BenefitsRelatedEntity {
         entityType?: string | null;
         entityName?: string | null;
         contactInformation?: RelatedEntityContact.Raw[] | null;
+        serviceTypeCodes?: ServiceTypeCode.Raw[] | null;
     }
 }

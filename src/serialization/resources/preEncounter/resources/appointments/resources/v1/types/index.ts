@@ -4,3 +4,5 @@ export * from "./AppointmentStatus";
 export * from "./Service";
 export * from "./MutableAppointment";
 export * from "./Appointment";
+export * from "./Visit";
+export * from "./VisitsPage";

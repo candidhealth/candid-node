@@ -15,6 +15,7 @@ export interface OptionalDimensions {
     licenseTypes: Set<CandidApi.organizationProviders.v2.LicenseType>;
     facilityTypeCodes: Set<CandidApi.FacilityTypeCode>;
     networkTypes: Set<CandidApi.NetworkType>;
+    payerPlanGroupIds: Set<CandidApi.PayerPlanGroupId>;
     cptCode?: string;
     modifiers: Set<CandidApi.ProcedureModifier>;
 }

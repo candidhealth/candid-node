@@ -17,4 +17,5 @@ export interface DimensionMatch {
     licenseType: CandidApi.feeSchedules.v3.MatchLicenseType;
     facilityTypeCode: CandidApi.feeSchedules.v3.MatchFacilityTypeCode;
     networkTypes: CandidApi.feeSchedules.v3.MatchNetworkTypes;
+    payerPlanGroups: CandidApi.feeSchedules.v3.MatchPayerPlanGroups;
 }

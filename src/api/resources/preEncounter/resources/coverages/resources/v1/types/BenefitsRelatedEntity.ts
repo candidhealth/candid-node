@@ -9,4 +9,5 @@ export interface BenefitsRelatedEntity {
     entityType?: string;
     entityName?: string;
     contactInformation?: CandidApi.preEncounter.coverages.v1.RelatedEntityContact[];
+    serviceTypeCodes?: CandidApi.preEncounter.coverages.v1.ServiceTypeCode[];
 }

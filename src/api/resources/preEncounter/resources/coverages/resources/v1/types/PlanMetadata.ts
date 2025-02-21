@@ -5,6 +5,7 @@
 import * as CandidApi from "../../../../../../../index";
 
 export interface PlanMetadata {
+    payerName?: string;
     insuranceType?: string;
     insuranceTypeCode?: string;
     planName?: string;
@@ -13,4 +14,6 @@ export interface PlanMetadata {
     startDate?: string;
     endDate?: string;
     planDates?: CandidApi.preEncounter.coverages.v1.PlanDate[];
+    subscriber?: CandidApi.preEncounter.coverages.v1.ExpandedMemberInfo;
+    dependent?: CandidApi.preEncounter.coverages.v1.ExpandedMemberInfo;
 }

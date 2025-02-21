@@ -71,16 +71,11 @@ export class V1 {
      *             planType: "09",
      *             type: "01",
      *             period: {},
-     *             insuranceCardImageLocator: "string"
+     *             insuranceCardImageLocator: "string",
+     *             payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *         },
      *         verified: true,
-     *         eligibilityChecks: [{
-     *                 checkId: "string",
-     *                 serviceCode: "1",
-     *                 status: "COMPLETED",
-     *                 initiatedBy: CandidApi.preEncounter.UserId("string"),
-     *                 initiatedAt: "2024-01-15T09:30:00Z"
-     *             }],
+     *         eligibilityChecks: [],
      *         latestEligibilityCheck: {
      *             checkId: "string",
      *             status: "ACTIVE",
@@ -109,8 +104,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -184,16 +179,11 @@ export class V1 {
      *             planType: "09",
      *             type: "01",
      *             period: {},
-     *             insuranceCardImageLocator: "string"
+     *             insuranceCardImageLocator: "string",
+     *             payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *         },
      *         verified: true,
-     *         eligibilityChecks: [{
-     *                 checkId: "string",
-     *                 serviceCode: "1",
-     *                 status: "COMPLETED",
-     *                 initiatedBy: CandidApi.preEncounter.UserId("string"),
-     *                 initiatedAt: "2024-01-15T09:30:00Z"
-     *             }],
+     *         eligibilityChecks: [],
      *         latestEligibilityCheck: {
      *             checkId: "string",
      *             status: "ACTIVE",
@@ -224,8 +214,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -277,6 +267,112 @@ export class V1 {
     }
 
     /**
+     * Returns a page of Coverages based on the search criteria.
+     *
+     * @param {CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.coverages.v1.getMultiPaginated({
+     *         patientId: "string",
+     *         payerPlanGroupId: "string",
+     *         pageToken: CandidApi.preEncounter.PageToken("string"),
+     *         limit: 1
+     *     })
+     */
+    public async getMultiPaginated(
+        request: CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.coverages.v1.CoveragesPage,
+            CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error
+        >
+    > {
+        const { patientId, payerPlanGroupId, pageToken, limit } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (patientId != null) {
+            _queryParams["patient_id"] = patientId;
+        }
+
+        if (payerPlanGroupId != null) {
+            _queryParams["payer_plan_group_id"] = payerPlanGroupId;
+        }
+
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/coverages/v1/get-multi-paginated",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.coverages.v1.CoveragesPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.preEncounter.coverages.v1.getMultiPaginated.Error.Raw)?.errorName
+            ) {
+                case "BadRequestError":
+                    return {
+                        ok: false,
+                        error: serializers.preEncounter.coverages.v1.getMultiPaginated.Error.parseOrThrow(
+                            _response.error.body as serializers.preEncounter.coverages.v1.getMultiPaginated.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * gets a specific Coverage
      *
      * @param {CandidApi.preEncounter.CoverageId} id
@@ -305,8 +401,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -367,8 +463,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -455,8 +551,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -520,8 +616,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -589,8 +685,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -656,8 +752,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.6",
-                "User-Agent": "candidhealth/0.39.6",
+                "X-Fern-SDK-Version": "0.39.7",
+                "User-Agent": "candidhealth/0.39.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -21,6 +21,10 @@ import * as CandidApi from "../../../../../../../../index";
  *                     use: "USUAL",
  *                     period: {}
  *                 }],
+ *             otherIdentifiers: [{
+ *                     value: "string",
+ *                     system: "string"
+ *                 }],
  *             gender: "MAN",
  *             birthDate: "2023-01-15",
  *             socialSecurityNumber: "string",
@@ -105,7 +109,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                         }],
  *                     addresses: [],
  *                     period: {},
- *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
+ *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
+ *                     fax: "string"
  *                 }],
  *             filingOrder: {
  *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
@@ -165,7 +170,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                             }],
  *                         addresses: [],
  *                         period: {},
- *                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("string")
+ *                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
+ *                         fax: "string"
  *                     },
  *                     referralNumber: "string"
  *                 }],

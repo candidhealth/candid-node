@@ -1169,7 +1169,10 @@ export type ProcedureModifier =
     | "XE"
     /**
      * A service that is distinct because it was performed on a separate organ/structure */
-    | "XS";
+    | "XS"
+    /**
+     * The use of a service that is distinct because it does not overlap usual components of the main service */
+    | "XU";
 export const ProcedureModifier = {
     TwentyTwo: "22",
     TwentyThree: "23",
@@ -1560,4 +1563,5 @@ export const ProcedureModifier = {
     V3: "V3",
     Xe: "XE",
     Xs: "XS",
+    Xu: "XU",
 } as const;

@@ -1,3 +1,4 @@
+export * from "./CoveragesPage";
 export * from "./LatestEligibilityCheck";
 export * from "./EligibilityCheckMetadata";
 export * from "./CoverageEligibilityCheckResponse";
@@ -17,6 +18,9 @@ export * from "./EligibilityStatus";
 export * from "./CoverageLevel";
 export * from "./CoverageValueUnit";
 export * from "./Subscriber";
+export * from "./MemberInfo";
+export * from "./Address";
+export * from "./ExpandedMemberInfo";
 export * from "./CoverageStatus";
 export * from "./NetworkType";
 export * from "./InsurancePlan";

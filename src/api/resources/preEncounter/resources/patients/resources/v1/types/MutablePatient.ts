@@ -11,6 +11,8 @@ export interface MutablePatient {
     name: CandidApi.preEncounter.HumanName;
     /** Other names for the patient. */
     otherNames: CandidApi.preEncounter.HumanName[];
+    /** Other identifiers for the patient. */
+    otherIdentifiers?: CandidApi.preEncounter.ExternalIdentifier[];
     gender?: CandidApi.preEncounter.Gender;
     birthDate: string;
     socialSecurityNumber?: string;

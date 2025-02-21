@@ -93,7 +93,11 @@ export type LicenseType =
     | "LSW"
     | "PLMHP"
     | "PCMSW"
-    | "LMHP";
+    | "LMHP"
+    | "OTR/L"
+    | "RPA"
+    | "COTA"
+    | "CRNP";
 export const LicenseType = {
     Md: "MD",
     Np: "NP",
@@ -186,4 +190,8 @@ export const LicenseType = {
     Plmhp: "PLMHP",
     Pcmsw: "PCMSW",
     Lmhp: "LMHP",
+    Otrl: "OTR/L",
+    Rpa: "RPA",
+    Cota: "COTA",
+    Crnp: "CRNP",
 } as const;

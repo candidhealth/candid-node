@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../../index";
 
 /**
- * Dimension values that qualify a rate. For the optional dimensions, a null value signifies "all apply". For set-type dimensions, an empty set signifies "all apply".
+ * Dimension values that qualify a rate. For the optional dimensions, a null value signifies "all apply". For set-type dimensions, an empty set signifies "all apply". Only one of, but not both, of `network_types` and `payer_plan_group_id` may be populated.
  */
 export interface Dimensions {
     payerUuid: CandidApi.payers.v3.PayerUuid;
@@ -15,6 +15,7 @@ export interface Dimensions {
     licenseTypes: Set<CandidApi.organizationProviders.v2.LicenseType>;
     facilityTypeCodes: Set<CandidApi.FacilityTypeCode>;
     networkTypes: Set<CandidApi.NetworkType>;
+    payerPlanGroupIds: Set<CandidApi.PayerPlanGroupId>;
     cptCode: string;
     modifiers: Set<CandidApi.ProcedureModifier>;
 }

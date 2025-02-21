@@ -13,4 +13,5 @@ export interface ExternalProvider {
     addresses?: CandidApi.preEncounter.Address[];
     period?: CandidApi.preEncounter.Period;
     canonicalId?: CandidApi.preEncounter.CanonicalProviderId;
+    fax?: string;
 }

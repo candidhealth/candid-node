@@ -9,7 +9,9 @@ export type ValidationError =
     | CandidApi.feeSchedules.v3.ValidationError.VersionConflict
     | CandidApi.feeSchedules.v3.ValidationError.OrganizationProviderNotFound
     | CandidApi.feeSchedules.v3.ValidationError.DuplicateRate
-    | CandidApi.feeSchedules.v3.ValidationError.EmptyEntries;
+    | CandidApi.feeSchedules.v3.ValidationError.EmptyEntries
+    | CandidApi.feeSchedules.v3.ValidationError.PayerPlanGroupNotFound
+    | CandidApi.feeSchedules.v3.ValidationError.PayerPlanGroupDoesNotMatchRatePayer;
 
 export namespace ValidationError {
     export interface OverlappingRateEntries extends CandidApi.feeSchedules.v3.OverlappingRateEntriesError {
@@ -30,5 +32,14 @@ export namespace ValidationError {
 
     export interface EmptyEntries {
         type: "empty_entries";
+    }
+
+    export interface PayerPlanGroupNotFound extends CandidApi.EntityNotFoundErrorMessage {
+        type: "payer_plan_group_not_found";
+    }
+
+    export interface PayerPlanGroupDoesNotMatchRatePayer
+        extends CandidApi.feeSchedules.v3.PayerPlanGroupDoesNotMatchRatePayerError {
+        type: "payer_plan_group_does_not_match_rate_payer";
     }
 }

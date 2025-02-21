@@ -101,6 +101,10 @@ export const LicenseType: core.serialization.Schema<
     "PLMHP",
     "PCMSW",
     "LMHP",
+    "OTR/L",
+    "RPA",
+    "COTA",
+    "CRNP",
 ]);
 
 export declare namespace LicenseType {
@@ -195,5 +199,9 @@ export declare namespace LicenseType {
         | "LSW"
         | "PLMHP"
         | "PCMSW"
-        | "LMHP";
+        | "LMHP"
+        | "OTR/L"
+        | "RPA"
+        | "COTA"
+        | "CRNP";
 }

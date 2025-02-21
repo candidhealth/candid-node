@@ -6,7 +6,7 @@ import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { Appointment } from "../../../../appointments/resources/v1/types/Appointment";
-import { MutablePatient } from "../../../../patients/resources/v1/types/MutablePatient";
+import { MutablePatientWithMrn } from "../../../../patients/resources/v1/types/MutablePatientWithMrn";
 import { MutableCoverage } from "../../../../coverages/resources/v1/types/MutableCoverage";
 import { UniversalServiceIdentifier } from "../../../../appointments/resources/v1/types/UniversalServiceIdentifier";
 
@@ -15,7 +15,7 @@ export const AppointmentListItem: core.serialization.ObjectSchema<
     CandidApi.preEncounter.lists.v1.AppointmentListItem
 > = core.serialization.object({
     appointment: Appointment,
-    patient: MutablePatient,
+    patient: MutablePatientWithMrn,
     primaryCoverage: core.serialization.property("primary_coverage", MutableCoverage.optional()),
     primaryServiceType: core.serialization.property("primary_service_type", UniversalServiceIdentifier.optional()),
 });
@@ -23,7 +23,7 @@ export const AppointmentListItem: core.serialization.ObjectSchema<
 export declare namespace AppointmentListItem {
     export interface Raw {
         appointment: Appointment.Raw;
-        patient: MutablePatient.Raw;
+        patient: MutablePatientWithMrn.Raw;
         primary_coverage?: MutableCoverage.Raw | null;
         primary_service_type?: UniversalServiceIdentifier.Raw | null;
     }

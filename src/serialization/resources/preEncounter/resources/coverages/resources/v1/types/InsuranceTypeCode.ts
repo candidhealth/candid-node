@@ -68,6 +68,7 @@ export const InsuranceTypeCode: core.serialization.Schema<
     "MV",
     "OA",
     "OT",
+    "PE",
     "PL",
     "PP",
     "PR",
@@ -141,6 +142,7 @@ export declare namespace InsuranceTypeCode {
         | "MV"
         | "OA"
         | "OT"
+        | "PE"
         | "PL"
         | "PP"
         | "PR"
