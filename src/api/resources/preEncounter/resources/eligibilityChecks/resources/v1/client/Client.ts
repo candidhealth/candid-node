@@ -33,6 +33,7 @@ export class V1 {
 
     /**
      * Sends real-time eligibility checks to payers through Stedi.
+     * <Warning>Please only send one concurrent request to this endpoint. Batch requests must be made in succession, otherwise, it will cause this service to fail. A batch endpoint is in development - please reach out to the Candid team for more information.</Warning>
      *
      * @param {CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -86,8 +87,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.7",
-                "User-Agent": "candidhealth/0.39.7",
+                "X-Fern-SDK-Version": "0.39.8",
+                "User-Agent": "candidhealth/0.39.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
