@@ -16,6 +16,7 @@ import * as CandidApi from "../../../../../index";
  *                         clearinghouseClaimId: "5BA7C3AB-2BC2-496C-8B10-6CAC73D0729D",
  *                         payerClaimId: "9BB9F259-9756-4F16-8F53-9DBB9F7EB1BB",
  *                         serviceLines: [{
+ *                                 createdAt: "2023-01-01T00:00:00Z",
  *                                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
  *                                 chargeAmountCents: 10000,
  *                                 allowedAmountCents: 8000,

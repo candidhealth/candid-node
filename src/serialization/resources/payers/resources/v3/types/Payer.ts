@@ -6,6 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { PayerUuid } from "./PayerUuid";
+import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 
 export const Payer: core.serialization.ObjectSchema<serializers.payers.v3.Payer.Raw, CandidApi.payers.v3.Payer> =
     core.serialization.object({
@@ -25,6 +26,7 @@ export const Payer: core.serialization.ObjectSchema<serializers.payers.v3.Payer.
             "availity_remittance_payer_id",
             core.serialization.string().optional(),
         ),
+        streetAddress: core.serialization.property("street_address", StreetAddressLongZip.optional()),
     });
 
 export declare namespace Payer {
@@ -36,5 +38,6 @@ export declare namespace Payer {
         availity_claims_payer_id?: string | null;
         availity_eligibility_id?: string | null;
         availity_remittance_payer_id?: string | null;
+        street_address?: StreetAddressLongZip.Raw | null;
     }
 }

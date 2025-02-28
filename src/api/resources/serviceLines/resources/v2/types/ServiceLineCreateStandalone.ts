@@ -6,6 +6,11 @@ import * as CandidApi from "../../../../../index";
 
 export interface ServiceLineCreateStandalone {
     modifiers?: CandidApi.ProcedureModifier[];
+    /**
+     * The total amount charged for this service line, factoring in quantity. If left unfilled, the system will attempt to set it based on
+     * chargemasters entries and the service line's quantity. For example, if a single unit has an entry of 100 cents and 2 units were rendered,
+     * the `charge_amount_cents` will be set to 200, if this field is unfilled.
+     */
     chargeAmountCents?: number;
     diagnosisIdZero?: CandidApi.DiagnosisId;
     diagnosisIdOne?: CandidApi.DiagnosisId;

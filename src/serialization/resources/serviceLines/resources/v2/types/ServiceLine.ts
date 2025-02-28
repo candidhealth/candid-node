@@ -26,6 +26,7 @@ export const ServiceLine: core.serialization.ObjectSchema<
     serializers.serviceLines.v2.ServiceLine.Raw,
     CandidApi.serviceLines.v2.ServiceLine
 > = core.serialization.object({
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
     modifiers: core.serialization.list(ProcedureModifier).optional(),
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
     allowedAmountCents: core.serialization.property("allowed_amount_cents", core.serialization.number().optional()),
@@ -51,6 +52,9 @@ export const ServiceLine: core.serialization.ObjectSchema<
         "patient_responsibility_cents",
         core.serialization.number().optional(),
     ),
+    copayCents: core.serialization.property("copay_cents", core.serialization.number().optional()),
+    coinsuranceCents: core.serialization.property("coinsurance_cents", core.serialization.number().optional()),
+    deductibleCents: core.serialization.property("deductible_cents", core.serialization.number().optional()),
     diagnosisIdZero: core.serialization.property("diagnosis_id_zero", DiagnosisId.optional()),
     diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
     diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
@@ -92,6 +96,7 @@ export const ServiceLine: core.serialization.ObjectSchema<
 
 export declare namespace ServiceLine {
     export interface Raw {
+        created_at: string;
         modifiers?: ProcedureModifier.Raw[] | null;
         charge_amount_cents?: number | null;
         allowed_amount_cents?: number | null;
@@ -102,6 +107,9 @@ export declare namespace ServiceLine {
         secondary_paid_amount_cents?: number | null;
         tertiary_paid_amount_cents?: number | null;
         patient_responsibility_cents?: number | null;
+        copay_cents?: number | null;
+        coinsurance_cents?: number | null;
+        deductible_cents?: number | null;
         diagnosis_id_zero?: DiagnosisId.Raw | null;
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;

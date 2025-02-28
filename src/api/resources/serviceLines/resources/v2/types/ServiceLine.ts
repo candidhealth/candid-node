@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../index";
 /**
  * @example
  *     {
+ *         createdAt: "2023-01-01T00:00:00Z",
  *         modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
  *         chargeAmountCents: 10000,
  *         allowedAmountCents: 8000,
@@ -75,6 +76,7 @@ import * as CandidApi from "../../../../../index";
  *     }
  */
 export interface ServiceLine {
+    createdAt: Date;
     modifiers?: CandidApi.ProcedureModifier[];
     chargeAmountCents?: number;
     allowedAmountCents?: number;
@@ -85,6 +87,9 @@ export interface ServiceLine {
     secondaryPaidAmountCents?: number;
     tertiaryPaidAmountCents?: number;
     patientResponsibilityCents?: number;
+    copayCents?: number;
+    coinsuranceCents?: number;
+    deductibleCents?: number;
     diagnosisIdZero?: CandidApi.DiagnosisId;
     diagnosisIdOne?: CandidApi.DiagnosisId;
     diagnosisIdTwo?: CandidApi.DiagnosisId;

@@ -31,4 +31,5 @@ export interface Payer {
     availityEligibilityId?: string;
     /** The remittance ID of the payer as it appears in Availity. */
     availityRemittancePayerId?: string;
+    streetAddress?: CandidApi.StreetAddressLongZip;
 }

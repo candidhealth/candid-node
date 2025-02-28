@@ -7,6 +7,11 @@ import * as CandidApi from "../../../../../index";
 export interface ServiceLineUpdate {
     editReason?: string;
     modifiers?: CandidApi.ProcedureModifier[];
+    /**
+     * The total amount charged for this service line, factoring in quantity. If `procedure_code` is updated and this is not, the system will attempt
+     * to set it based on chargemasters entries and the service line's quantity. For example, if a single unit has an entry of 100 cents and 2
+     * units were rendered, the `charge_amount_cents` will be set to 200, if this field is unfilled.
+     */
     chargeAmountCents?: number;
     diagnosisIdZero?: CandidApi.DiagnosisId;
     diagnosisIdOne?: CandidApi.DiagnosisId;
@@ -17,6 +22,7 @@ export interface ServiceLineUpdate {
     /** 837p Loop2300, SV105. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     units?: CandidApi.ServiceLineUnits;
+    /** If `procedure_code` is updated, and `charge_amount_cents` is not, then `charge_amount_cents` will be set by the system. */
     procedureCode?: string;
     /**
      * String representation of a Decimal that can be parsed by most libraries.
