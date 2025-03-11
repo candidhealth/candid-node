@@ -18,12 +18,16 @@ import * as CandidApi from "../../../index";
  *                 city: "San Francisco",
  *                 state: CandidApi.State.Ca,
  *                 zipCode: "94105"
- *             }
+ *             },
+ *             clinicalTrials: []
  *         },
- *         memberId: "123456789"
+ *         memberId: "123456789",
+ *         clinicalTrialInfo: []
  *     }
  */
 export interface PatientNonInsurancePayerInfo {
     nonInsurancePayer: CandidApi.nonInsurancePayers.v1.NonInsurancePayer;
     memberId?: string;
+    /** A patient cannot be associated with a given trial more than once */
+    clinicalTrialInfo: CandidApi.PatientClinicalTrialInfo[];
 }

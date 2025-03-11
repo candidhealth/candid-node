@@ -17,7 +17,8 @@ import * as CandidApi from "../../../../../index";
  *             city: "San Francisco",
  *             state: CandidApi.State.Ca,
  *             zipCode: "94105"
- *         }
+ *         },
+ *         clinicalTrials: []
  *     }
  */
 export interface NonInsurancePayer {
@@ -27,4 +28,5 @@ export interface NonInsurancePayer {
     category?: string;
     enabled: boolean;
     address?: CandidApi.StreetAddressShortZip;
+    clinicalTrials: CandidApi.clinicalTrials.v1.ClinicalTrial[];
 }

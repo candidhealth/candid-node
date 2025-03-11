@@ -7,4 +7,5 @@ import * as CandidApi from "../../../index";
 export interface PatientNonInsurancePayerInfoCreate {
     nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId;
     memberId?: string;
+    clinicalTrialInfo?: CandidApi.PatientClinicalTrialInfoCreate[];
 }

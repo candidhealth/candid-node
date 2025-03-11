@@ -105,7 +105,8 @@ import * as CandidApi from "../../../../../index";
  *                         city: "San Francisco",
  *                         state: CandidApi.State.Ca,
  *                         zipCode: "94105"
- *                     }
+ *                     },
+ *                     clinicalTrials: []
  *                 }],
  *             nonInsurancePayersInfo: [{
  *                     nonInsurancePayer: {
@@ -119,9 +120,11 @@ import * as CandidApi from "../../../../../index";
  *                             city: "San Francisco",
  *                             state: CandidApi.State.Ca,
  *                             zipCode: "94105"
- *                         }
+ *                         },
+ *                         clinicalTrials: []
  *                     },
- *                     memberId: "123456789"
+ *                     memberId: "123456789",
+ *                     clinicalTrialInfo: []
  *                 }],
  *             phoneConsent: true,
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
@@ -421,7 +424,8 @@ import * as CandidApi from "../../../../../index";
  *                     "bmi": 24.2,
  *                     "age": 38
  *                 }
- *             }]
+ *             }],
+ *         createdAt: "2023-01-01T00:00:00Z"
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
@@ -502,4 +506,6 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
     /** The date and time the encounter was last submitted to a payer. */
     lastSubmittedAt?: Date;
+    /** The date and time the encounter was created. */
+    createdAt: Date;
 }

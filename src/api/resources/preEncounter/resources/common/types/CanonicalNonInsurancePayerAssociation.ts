@@ -7,4 +7,6 @@ import * as CandidApi from "../../../../../index";
 export interface CanonicalNonInsurancePayerAssociation {
     id: CandidApi.preEncounter.CanonicalNonInsurancePayerId;
     memberId?: string;
+    /** A patient cannot be associated with a given trial more than once */
+    clinicalTrialInfo?: CandidApi.preEncounter.CanonicalClinicalTrialAssociation[];
 }

@@ -2742,6 +2742,11 @@ await client.encounters.v4.create({
             {
                 nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                 memberId: "string",
+                clinicalTrialInfo: [
+                    {
+                        clinicalTrialId: CandidApi.ClinicalTrialId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                    },
+                ],
             },
         ],
         emailConsent: true,
@@ -3781,6 +3786,9 @@ available by Wednesday at the latest. If file generation is still in progress up
 caller will receive a 422 response. If the file has already been generated, it will be served. Historic files should be available
 up to 90 days in the past by default. Please email our [Support team](mailto:support@joincandidhealth.com) with any data requests
 outside of these stated guarantees.
+
+**New Customers:** This endpoint is not enabled by default for new Candid customers. To have this endpoint enabled for your organization,
+please email our [Support team](mailto:support@joincandidhealth.com) with the request.
 
 </dd>
 </dl>
@@ -9421,6 +9429,136 @@ await client.writeOffs.v1.revert(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dd>
 
 **writeOffId:** `CandidApi.WriteOffId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revertInsuranceBalanceAdjustment</a>(adjustmentId) -> core.APIResponse<CandidApi.WriteOff, CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reverts an Insurance Balance Adjustment given an `adjustment_id`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.writeOffs.v1.revertInsuranceBalanceAdjustment(
+    CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**adjustmentId:** `CandidApi.AdjustmentId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revertEraOriginatedInsuranceBalanceAdjustment</a>(adjustmentId) -> core.APIResponse<CandidApi.AdjustmentId, CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reverts an ERA-originated Insurance Balance Adjustment given an `adjustment_id`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(
+    CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**adjustmentId:** `CandidApi.AdjustmentId`
 
 </dd>
 </dl>

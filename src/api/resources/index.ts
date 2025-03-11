@@ -3,6 +3,7 @@ export * as billingNotes from "./billingNotes";
 export * as chargeCaptureBundles from "./chargeCaptureBundles";
 export * as chargeCapture from "./chargeCapture";
 export * as claimSubmission from "./claimSubmission";
+export * as clinicalTrials from "./clinicalTrials";
 export * as contracts from "./contracts";
 export * as credentialing from "./credentialing";
 export * as customSchemas from "./customSchemas";

@@ -1165,8 +1165,20 @@ export type ProcedureModifier =
      * Three patient visits in a month */
     | "V3"
     /**
+     * Indicates that the service was provided under a state-mandated reimbursement rate for workers' compensation claims */
+    | "W1"
+    /**
+     * Used when a Medicare Set-Aside (MSA) account is used to pay for services related to a workers' compensation settlement */
+    | "W2"
+    /**
+     * The treatment was approved under the workers’ compensation plan */
+    | "W3"
+    /**
      * Two or more separate patient visits on the same date of service */
     | "XE"
+    /**
+     * A service that is distinct because it was performed by a different practitioner */
+    | "XP"
     /**
      * A service that is distinct because it was performed on a separate organ/structure */
     | "XS"
@@ -1561,7 +1573,11 @@ export const ProcedureModifier = {
     V1: "V1",
     V2: "V2",
     V3: "V3",
+    W1: "W1",
+    W2: "W2",
+    W3: "W3",
     Xe: "XE",
+    Xp: "XP",
     Xs: "XS",
     Xu: "XU",
 } as const;

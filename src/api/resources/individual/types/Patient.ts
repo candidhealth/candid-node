@@ -23,7 +23,8 @@ import * as CandidApi from "../../../index";
  *                     city: "San Francisco",
  *                     state: CandidApi.State.Ca,
  *                     zipCode: "94105"
- *                 }
+ *                 },
+ *                 clinicalTrials: []
  *             }],
  *         nonInsurancePayersInfo: [{
  *                 nonInsurancePayer: {
@@ -37,9 +38,11 @@ import * as CandidApi from "../../../index";
  *                         city: "San Francisco",
  *                         state: CandidApi.State.Ca,
  *                         zipCode: "94105"
- *                     }
+ *                     },
+ *                     clinicalTrials: []
  *                 },
- *                 memberId: "123456789"
+ *                 memberId: "123456789",
+ *                 clinicalTrialInfo: []
  *             }],
  *         phoneConsent: true,
  *         email: CandidApi.Email("johndoe@joincandidhealth.com"),

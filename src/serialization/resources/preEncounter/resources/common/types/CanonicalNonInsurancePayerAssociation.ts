@@ -6,6 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { CanonicalNonInsurancePayerId } from "./CanonicalNonInsurancePayerId";
+import { CanonicalClinicalTrialAssociation } from "./CanonicalClinicalTrialAssociation";
 
 export const CanonicalNonInsurancePayerAssociation: core.serialization.ObjectSchema<
     serializers.preEncounter.CanonicalNonInsurancePayerAssociation.Raw,
@@ -13,11 +14,16 @@ export const CanonicalNonInsurancePayerAssociation: core.serialization.ObjectSch
 > = core.serialization.object({
     id: CanonicalNonInsurancePayerId,
     memberId: core.serialization.property("member_id", core.serialization.string().optional()),
+    clinicalTrialInfo: core.serialization.property(
+        "clinical_trial_info",
+        core.serialization.list(CanonicalClinicalTrialAssociation).optional(),
+    ),
 });
 
 export declare namespace CanonicalNonInsurancePayerAssociation {
     export interface Raw {
         id: CanonicalNonInsurancePayerId.Raw;
         member_id?: string | null;
+        clinical_trial_info?: CanonicalClinicalTrialAssociation.Raw[] | null;
     }
 }

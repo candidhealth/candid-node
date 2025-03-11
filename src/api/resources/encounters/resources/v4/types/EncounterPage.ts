@@ -106,7 +106,8 @@ import * as CandidApi from "../../../../../index";
  *                                 city: "San Francisco",
  *                                 state: CandidApi.State.Ca,
  *                                 zipCode: "94105"
- *                             }
+ *                             },
+ *                             clinicalTrials: []
  *                         }],
  *                     nonInsurancePayersInfo: [{
  *                             nonInsurancePayer: {
@@ -120,9 +121,11 @@ import * as CandidApi from "../../../../../index";
  *                                     city: "San Francisco",
  *                                     state: CandidApi.State.Ca,
  *                                     zipCode: "94105"
- *                                 }
+ *                                 },
+ *                                 clinicalTrials: []
  *                             },
- *                             memberId: "123456789"
+ *                             memberId: "123456789",
+ *                             clinicalTrialInfo: []
  *                         }],
  *                     phoneConsent: true,
  *                     email: CandidApi.Email("johndoe@joincandidhealth.com"),
@@ -422,7 +425,8 @@ import * as CandidApi from "../../../../../index";
  *                             "bmi": 24.2,
  *                             "age": 38
  *                         }
- *                     }]
+ *                     }],
+ *                 createdAt: "2023-01-01T00:00:00Z"
  *             }]
  *     }
  */

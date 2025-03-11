@@ -97,7 +97,10 @@ export type LicenseType =
     | "OTR/L"
     | "RPA"
     | "COTA"
-    | "CRNP";
+    | "CRNP"
+    | "SLP-CF"
+    | "NP-C"
+    | "PA-C";
 export const LicenseType = {
     Md: "MD",
     Np: "NP",
@@ -194,4 +197,7 @@ export const LicenseType = {
     Rpa: "RPA",
     Cota: "COTA",
     Crnp: "CRNP",
+    SlpCf: "SLP-CF",
+    NpC: "NP-C",
+    PaC: "PA-C",
 } as const;

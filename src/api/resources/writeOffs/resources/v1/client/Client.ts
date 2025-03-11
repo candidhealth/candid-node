@@ -134,8 +134,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.10",
-                "User-Agent": "candidhealth/0.39.10",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -192,8 +192,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.10",
-                "User-Agent": "candidhealth/0.39.10",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -259,8 +259,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.10",
-                "User-Agent": "candidhealth/0.39.10",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -319,8 +319,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.10",
-                "User-Agent": "candidhealth/0.39.10",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -346,6 +346,127 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.writeOffs.v1.revert.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Reverts an Insurance Balance Adjustment given an `adjustment_id`
+     *
+     * @param {CandidApi.AdjustmentId} adjustmentId
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.writeOffs.v1.revertInsuranceBalanceAdjustment(CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public async revertInsuranceBalanceAdjustment(
+        adjustmentId: CandidApi.AdjustmentId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error>
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/write-offs/v1/${encodeURIComponent(serializers.AdjustmentId.jsonOrThrow(adjustmentId))}/revert`,
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Reverts an ERA-originated Insurance Balance Adjustment given an `adjustment_id`
+     *
+     * @param {CandidApi.AdjustmentId} adjustmentId
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public async revertEraOriginatedInsuranceBalanceAdjustment(
+        adjustmentId: CandidApi.AdjustmentId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.AdjustmentId,
+            CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/write-offs/v1/${encodeURIComponent(serializers.AdjustmentId.jsonOrThrow(adjustmentId))}/revert-era-originated`,
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.AdjustmentId.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error._unknown(_response.error),
         };
     }
 

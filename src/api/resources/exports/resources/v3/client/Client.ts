@@ -46,6 +46,9 @@ export class V3 {
      * up to 90 days in the past by default. Please email our [Support team](mailto:support@joincandidhealth.com) with any data requests
      * outside of these stated guarantees.
      *
+     * **New Customers:** This endpoint is not enabled by default for new Candid customers. To have this endpoint enabled for your organization,
+     * please email our [Support team](mailto:support@joincandidhealth.com) with the request.
+     *
      * @param {CandidApi.exports.v3.GetExportsRequest} request
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -77,8 +80,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.10",
-                "User-Agent": "candidhealth/0.39.10",
+                "X-Fern-SDK-Version": "0.39.11",
+                "User-Agent": "candidhealth/0.39.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

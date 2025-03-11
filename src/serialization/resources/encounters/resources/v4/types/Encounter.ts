@@ -86,6 +86,7 @@ export const Encounter: core.serialization.ObjectSchema<
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
         epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
         lastSubmittedAt: core.serialization.property("last_submitted_at", core.serialization.date().optional()),
+        createdAt: core.serialization.property("created_at", core.serialization.date()),
     })
     .extend(EncounterBase);
 
@@ -124,5 +125,6 @@ export declare namespace Encounter {
         referral_number?: string | null;
         epsdt_referral?: EpsdtReferral.Raw | null;
         last_submitted_at?: string | null;
+        created_at: string;
     }
 }

@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { NonInsurancePayerId } from "./NonInsurancePayerId";
 import { StreetAddressShortZip } from "../../../../commons/types/StreetAddressShortZip";
+import { ClinicalTrial } from "../../../../clinicalTrials/resources/v1/types/ClinicalTrial";
 
 export const NonInsurancePayer: core.serialization.ObjectSchema<
     serializers.nonInsurancePayers.v1.NonInsurancePayer.Raw,
@@ -18,6 +19,7 @@ export const NonInsurancePayer: core.serialization.ObjectSchema<
     category: core.serialization.string().optional(),
     enabled: core.serialization.boolean(),
     address: StreetAddressShortZip.optional(),
+    clinicalTrials: core.serialization.property("clinical_trials", core.serialization.list(ClinicalTrial)),
 });
 
 export declare namespace NonInsurancePayer {
@@ -28,5 +30,6 @@ export declare namespace NonInsurancePayer {
         category?: string | null;
         enabled: boolean;
         address?: StreetAddressShortZip.Raw | null;
+        clinical_trials: ClinicalTrial.Raw[];
     }
 }

@@ -397,7 +397,11 @@ export const ProcedureModifier: core.serialization.Schema<
     "V1",
     "V2",
     "V3",
+    "W1",
+    "W2",
+    "W3",
     "XE",
+    "XP",
     "XS",
     "XU",
 ]);
@@ -791,7 +795,11 @@ export declare namespace ProcedureModifier {
         | "V1"
         | "V2"
         | "V3"
+        | "W1"
+        | "W2"
+        | "W3"
         | "XE"
+        | "XP"
         | "XS"
         | "XU";
 }

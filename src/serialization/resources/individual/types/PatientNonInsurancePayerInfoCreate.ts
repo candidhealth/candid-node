@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import { NonInsurancePayerId } from "../../nonInsurancePayers/resources/v1/types/NonInsurancePayerId";
+import { PatientClinicalTrialInfoCreate } from "./PatientClinicalTrialInfoCreate";
 
 export const PatientNonInsurancePayerInfoCreate: core.serialization.ObjectSchema<
     serializers.PatientNonInsurancePayerInfoCreate.Raw,
@@ -13,11 +14,16 @@ export const PatientNonInsurancePayerInfoCreate: core.serialization.ObjectSchema
 > = core.serialization.object({
     nonInsurancePayerId: core.serialization.property("non_insurance_payer_id", NonInsurancePayerId),
     memberId: core.serialization.property("member_id", core.serialization.string().optional()),
+    clinicalTrialInfo: core.serialization.property(
+        "clinical_trial_info",
+        core.serialization.list(PatientClinicalTrialInfoCreate).optional(),
+    ),
 });
 
 export declare namespace PatientNonInsurancePayerInfoCreate {
     export interface Raw {
         non_insurance_payer_id: NonInsurancePayerId.Raw;
         member_id?: string | null;
+        clinical_trial_info?: PatientClinicalTrialInfoCreate.Raw[] | null;
     }
 }

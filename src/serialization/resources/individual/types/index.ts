@@ -4,6 +4,8 @@ export * from "./SubscriberBase";
 export * from "./SubscriberCreate";
 export * from "./Subscriber";
 export * from "./PatientNonInsurancePayerInfoCreate";
+export * from "./PatientClinicalTrialInfoCreate";
+export * from "./PatientClinicalTrialInfo";
 export * from "./PatientNonInsurancePayerInfo";
 export * from "./PatientCreate";
 export * from "./PatientUpdate";

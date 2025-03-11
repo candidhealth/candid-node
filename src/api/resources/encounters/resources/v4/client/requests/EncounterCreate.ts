@@ -17,7 +17,10 @@ import * as CandidApi from "../../../../../../index";
  *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
  *             nonInsurancePayersInfo: [{
  *                     nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *                     memberId: "string"
+ *                     memberId: "string",
+ *                     clinicalTrialInfo: [{
+ *                             clinicalTrialId: CandidApi.ClinicalTrialId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+ *                         }]
  *                 }],
  *             emailConsent: true,
  *             externalId: "string",

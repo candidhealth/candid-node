@@ -105,6 +105,9 @@ export const LicenseType: core.serialization.Schema<
     "RPA",
     "COTA",
     "CRNP",
+    "SLP-CF",
+    "NP-C",
+    "PA-C",
 ]);
 
 export declare namespace LicenseType {
@@ -203,5 +206,8 @@ export declare namespace LicenseType {
         | "OTR/L"
         | "RPA"
         | "COTA"
-        | "CRNP";
+        | "CRNP"
+        | "SLP-CF"
+        | "NP-C"
+        | "PA-C";
 }

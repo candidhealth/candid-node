@@ -12,6 +12,8 @@ export * from "./CanonicalProviderId";
 export * from "./ExternalIdentifier";
 export * from "./CanonicalNonInsurancePayerAssociation";
 export * from "./CanonicalNonInsurancePayerId";
+export * from "./CanonicalClinicalTrialAssociation";
+export * from "./CanonicalClinicalTrialId";
 export * from "./Relationship";
 export * from "./Gender";
 export * from "./Sex";
