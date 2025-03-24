@@ -7,6 +7,8 @@ export * from "./PatientWriteOffCreate";
 export * from "./InsuranceWriteOff";
 export * from "./InsuranceWriteOffCreate";
 export * from "./InsuranceWriteOffTarget";
+export * from "./NonInsurancePayerWriteOffCreate";
+export * from "./NonInsurancePayerWriteOff";
 export * from "./InsuranceWriteOffReason";
 export * from "./CreateWriteOffsResponse";
 export * from "./WriteOffsPage";

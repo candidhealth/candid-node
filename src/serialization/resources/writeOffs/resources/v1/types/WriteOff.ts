@@ -7,6 +7,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { PatientWriteOff } from "./PatientWriteOff";
 import { InsuranceWriteOff } from "./InsuranceWriteOff";
+import { NonInsurancePayerWriteOff } from "./NonInsurancePayerWriteOff";
 
 export const WriteOff: core.serialization.Schema<
     serializers.writeOffs.v1.WriteOff.Raw,
@@ -15,6 +16,7 @@ export const WriteOff: core.serialization.Schema<
     .union("type", {
         patient: PatientWriteOff,
         insurance: InsuranceWriteOff,
+        non_insurance_payer: NonInsurancePayerWriteOff,
     })
     .transform<CandidApi.writeOffs.v1.WriteOff>({
         transform: (value) => value,
@@ -22,7 +24,7 @@ export const WriteOff: core.serialization.Schema<
     });
 
 export declare namespace WriteOff {
-    export type Raw = WriteOff.Patient | WriteOff.Insurance;
+    export type Raw = WriteOff.Patient | WriteOff.Insurance | WriteOff.NonInsurancePayer;
 
     export interface Patient extends PatientWriteOff.Raw {
         type: "patient";
@@ -30,5 +32,9 @@ export declare namespace WriteOff {
 
     export interface Insurance extends InsuranceWriteOff.Raw {
         type: "insurance";
+    }
+
+    export interface NonInsurancePayer extends NonInsurancePayerWriteOff.Raw {
+        type: "non_insurance_payer";
     }
 }

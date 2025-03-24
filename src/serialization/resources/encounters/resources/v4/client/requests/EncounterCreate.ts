@@ -26,6 +26,7 @@ import { ExternalClaimSubmissionCreate } from "../../../../../claimSubmission/re
 import { TagId } from "../../../../../tags/types/TagId";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { EpsdtReferral } from "../../types/EpsdtReferral";
+import { ClaimSupplementalInformation } from "../../types/ClaimSupplementalInformation";
 import { EncounterBase } from "../../types/EncounterBase";
 
 export const EncounterCreate: core.serialization.Schema<
@@ -77,6 +78,10 @@ export const EncounterCreate: core.serialization.Schema<
         ),
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
         epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
+        claimSupplementalInformation: core.serialization.property(
+            "claim_supplemental_information",
+            core.serialization.list(ClaimSupplementalInformation).optional(),
+        ),
     })
     .extend(EncounterBase);
 
@@ -105,5 +110,6 @@ export declare namespace EncounterCreate {
         schema_instances?: SchemaInstance.Raw[] | null;
         referral_number?: string | null;
         epsdt_referral?: EpsdtReferral.Raw | null;
+        claim_supplemental_information?: ClaimSupplementalInformation.Raw[] | null;
     }
 }

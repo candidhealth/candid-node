@@ -80,6 +80,9 @@ import * as CandidApi from "../../../../../index";
  *                         testResults: [{
  *                                 resultType: CandidApi.serviceLines.v2.TestResultType.Hemoglobin,
  *                                 value: 51
+ *                             }, {
+ *                                 resultType: CandidApi.serviceLines.v2.TestResultType.Ldl,
+ *                                 value: 110
  *                             }]
  *                     }],
  *                 eras: [{
@@ -504,6 +507,8 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     referralNumber?: string;
     /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
+    /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
+    claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
     /** The date and time the encounter was last submitted to a payer. */
     lastSubmittedAt?: Date;
     /** The date and time the encounter was created. */

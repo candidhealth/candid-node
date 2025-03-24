@@ -276,6 +276,10 @@ import * as CandidApi from "../../../../../../index";
  *             conditionIndicator2: "AV",
  *             conditionIndicator3: "AV"
  *         },
+ *         claimSupplementalInformation: [{
+ *                 attachmentReportTypeCode: "03",
+ *                 attachmentTransmissionCode: "BM"
+ *             }],
  *         externalId: CandidApi.EncounterExternalId("string"),
  *         dateOfService: "2023-01-15",
  *         endDateOfService: "2023-01-15",
@@ -454,4 +458,9 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
+    /**
+     * Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted.
+     *
+     */
+    claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
 }

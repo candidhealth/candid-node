@@ -9,4 +9,5 @@ export interface HumanName {
     given: string[];
     use: CandidApi.preEncounter.NameUse;
     period?: CandidApi.preEncounter.Period;
+    suffix?: string;
 }

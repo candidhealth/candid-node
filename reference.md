@@ -3026,6 +3026,12 @@ await client.encounters.v4.create({
         conditionIndicator2: "AV",
         conditionIndicator3: "AV",
     },
+    claimSupplementalInformation: [
+        {
+            attachmentReportTypeCode: "03",
+            attachmentTransmissionCode: "BM",
+        },
+    ],
     externalId: CandidApi.EncounterExternalId("string"),
     dateOfService: "2023-01-15",
     endDateOfService: "2023-01-15",
@@ -6919,6 +6925,13 @@ await client.nonInsurancePayers.v1.create({
         zipCode: "10001",
         zipPlusFourCode: "1234",
     },
+    clinicalTrials: [
+        {
+            name: "string",
+            clinicalTrialNumber: "string",
+            clinicalTrialPhase: "Phase 1",
+        },
+    ],
 });
 ```
 
@@ -9625,6 +9638,7 @@ await client.preEncounter.appointments.v1.create({
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         type: "PRIMARY",
         npi: "string",
@@ -9923,6 +9937,7 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("string
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         type: "PRIMARY",
         npi: "string",
@@ -10170,6 +10185,7 @@ await client.preEncounter.coverages.v1.create({
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         dateOfBirth: "2023-01-15",
         biologicalSex: "FEMALE",
@@ -10277,6 +10293,7 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         dateOfBirth: "2023-01-15",
         biologicalSex: "FEMALE",
@@ -10926,6 +10943,376 @@ await client.preEncounter.eligibilityChecks.v1.post({
 </dl>
 </details>
 
+## PreEncounter Images V1
+
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds an image. VersionConflictError is returned if a front or back of this coverage already exists.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.images.v1.create({
+    fileName: "string",
+    displayName: "string",
+    fileType: "string",
+    status: "PENDING",
+    coverage: {
+        id: CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        side: "FRONT",
+    },
+    patient: {
+        id: CandidApi.PatientId("string"),
+        notes: "string",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableImage`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets an image by imageId.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.images.v1.get(CandidApi.ImageId("string"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.ImageId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an Image. The path must contain the most recent version to prevent races.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.images.v1.update(CandidApi.ImageId("string"), "string", {
+    fileName: "string",
+    displayName: "string",
+    fileType: "string",
+    status: "PENDING",
+    coverage: {
+        id: CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        side: "FRONT",
+    },
+    patient: {
+        id: CandidApi.PatientId("string"),
+        notes: "string",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.ImageId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableImage`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.images.v1.deactivate.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sets an Image as deactivated. The path must contain the most recent version to prevent races.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.images.v1.deactivate(CandidApi.ImageId("string"), "string");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.ImageId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.Image[], CandidApi.preEncounter.images.v1.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for images that match the query parameters.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.images.v1.getMulti({
+    patientId: "string",
+    coverageId: "string",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.images.v1.ImageGetMultiRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## PreEncounter Lists V1
 
 <details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getPatientList</a>({ ...params }) -> core.APIResponse<CandidApi.PatientListPage, CandidApi.preEncounter.lists.v1.getPatientList.Error></code></summary>
@@ -11390,6 +11777,7 @@ await client.preEncounter.patients.v1.create({
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         otherNames: [
             {
@@ -11397,6 +11785,7 @@ await client.preEncounter.patients.v1.create({
                 given: ["string"],
                 use: "USUAL",
                 period: {},
+                suffix: "string",
             },
         ],
         otherIdentifiers: [
@@ -11462,6 +11851,7 @@ await client.preEncounter.patients.v1.create({
                     given: ["string"],
                     use: "USUAL",
                     period: {},
+                    suffix: "string",
                 },
                 telecoms: [
                     {
@@ -11491,6 +11881,7 @@ await client.preEncounter.patients.v1.create({
                     given: ["string"],
                     use: "USUAL",
                     period: {},
+                    suffix: "string",
                 },
                 type: "PRIMARY",
                 npi: "string",
@@ -11521,6 +11912,7 @@ await client.preEncounter.patients.v1.create({
                 given: ["string"],
                 use: "USUAL",
                 period: {},
+                suffix: "string",
             },
             telecom: {
                 value: "string",
@@ -11546,6 +11938,7 @@ await client.preEncounter.patients.v1.create({
                 additionalPayerInformation: {},
                 authorizationNumber: "string",
                 cptCode: "string",
+                applyForAllCptCodes: true,
                 units: "VISIT",
                 quantity: 1,
                 period: {},
@@ -11560,6 +11953,7 @@ await client.preEncounter.patients.v1.create({
                         given: ["string"],
                         use: "USUAL",
                         period: {},
+                        suffix: "string",
                     },
                     type: "PRIMARY",
                     npi: "string",
@@ -11654,6 +12048,7 @@ await client.preEncounter.patients.v1.createWithMrn({
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         otherNames: [
             {
@@ -11661,6 +12056,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                 given: ["string"],
                 use: "USUAL",
                 period: {},
+                suffix: "string",
             },
         ],
         otherIdentifiers: [
@@ -11726,6 +12122,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                     given: ["string"],
                     use: "USUAL",
                     period: {},
+                    suffix: "string",
                 },
                 telecoms: [
                     {
@@ -11755,6 +12152,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                     given: ["string"],
                     use: "USUAL",
                     period: {},
+                    suffix: "string",
                 },
                 type: "PRIMARY",
                 npi: "string",
@@ -11785,6 +12183,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                 given: ["string"],
                 use: "USUAL",
                 period: {},
+                suffix: "string",
             },
             telecom: {
                 value: "string",
@@ -11810,6 +12209,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                 additionalPayerInformation: {},
                 authorizationNumber: "string",
                 cptCode: "string",
+                applyForAllCptCodes: true,
                 units: "VISIT",
                 quantity: 1,
                 period: {},
@@ -11824,6 +12224,7 @@ await client.preEncounter.patients.v1.createWithMrn({
                         given: ["string"],
                         use: "USUAL",
                         period: {},
+                        suffix: "string",
                     },
                     type: "PRIMARY",
                     npi: "string",
@@ -11932,6 +12333,71 @@ await client.preEncounter.patients.v1.getMulti({
 <dd>
 
 **request:** `CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">searchProviders</a>({ ...params }) -> core.APIResponse<CandidApi.ExternalProvider[], CandidApi.preEncounter.patients.v1.searchProviders.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for referring providers that match the query parameters. The search is case-insensitive, supports fuzzy matching, and matches against provider name and NPI. The search criteria must be an alphanumeric string, and the search is limited to the first 20 results.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.searchProviders({
+    searchCriteria: "string",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.patients.v1.SearchProvidersRequest`
 
 </dd>
 </dl>
@@ -12110,6 +12576,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
         given: ["string"],
         use: "USUAL",
         period: {},
+        suffix: "string",
     },
     otherNames: [
         {
@@ -12117,6 +12584,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
     ],
     otherIdentifiers: [
@@ -12182,6 +12650,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                 given: ["string"],
                 use: "USUAL",
                 period: {},
+                suffix: "string",
             },
             telecoms: [
                 {
@@ -12211,6 +12680,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                 given: ["string"],
                 use: "USUAL",
                 period: {},
+                suffix: "string",
             },
             type: "PRIMARY",
             npi: "string",
@@ -12241,6 +12711,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             given: ["string"],
             use: "USUAL",
             period: {},
+            suffix: "string",
         },
         telecom: {
             value: "string",
@@ -12266,6 +12737,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
             additionalPayerInformation: {},
             authorizationNumber: "string",
             cptCode: "string",
+            applyForAllCptCodes: true,
             units: "VISIT",
             quantity: 1,
             period: {},
@@ -12280,6 +12752,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
                     given: ["string"],
                     use: "USUAL",
                     period: {},
+                    suffix: "string",
                 },
                 type: "PRIMARY",
                 npi: "string",

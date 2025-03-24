@@ -36,9 +36,9 @@ export interface ServiceLineUpdate {
     dateOfService?: string;
     endDateOfService?: string;
     /**
-     * Maps to MEA-02 on the 837-P. Updating test results utilizes PUT semantics,
-     * so the test results on the service line will be set to whatever inputs are provided. No more than 5 test
-     * results may be submitted per service line.
+     * Contains a list of test results. Test result types may map to MEA-02 on the 837-P (ex: Hemoglobin, Hematocrit).
+     * No more than 5 MEA-02 test results may be submitted per service line.
+     * Updating test results utilizes PUT semantics, so the test results on the service line will be set to whatever inputs are provided.
      */
     testResults?: CandidApi.serviceLines.v2.TestResult[];
     /**

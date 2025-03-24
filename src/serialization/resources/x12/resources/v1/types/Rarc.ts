@@ -40,7 +40,9 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M30",
         "M31",
         "M32",
+        "M33",
         "M34",
+        "M35",
         "M36",
         "M37",
         "M38",
@@ -48,10 +50,12 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M40",
         "M41",
         "M42",
+        "M43",
         "M44",
         "M45",
         "M46",
         "M47",
+        "M48",
         "M49",
         "M50",
         "M51",
@@ -60,17 +64,22 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M54",
         "M55",
         "M56",
+        "M57",
+        "M58",
         "M59",
         "M60",
         "M61",
         "M62",
+        "M63",
         "M64",
         "M65",
         "M66",
         "M67",
+        "M68",
         "M69",
         "M70",
         "M71",
+        "M72",
         "M73",
         "M74",
         "M75",
@@ -86,22 +95,29 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M85",
         "M86",
         "M87",
+        "M88",
         "M89",
         "M90",
         "M91",
+        "M92",
         "M93",
         "M94",
         "M95",
         "M96",
         "M97",
+        "M98",
         "M99",
         "M100",
+        "M101",
         "M102",
         "M103",
         "M104",
         "M105",
+        "M106",
         "M107",
+        "M108",
         "M109",
+        "M110",
         "M111",
         "M112",
         "M113",
@@ -109,7 +125,9 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M115",
         "M116",
         "M117",
+        "M118",
         "M119",
+        "M120",
         "M121",
         "M122",
         "M123",
@@ -117,6 +135,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M125",
         "M126",
         "M127",
+        "M128",
         "M129",
         "M130",
         "M131",
@@ -128,17 +147,22 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "M137",
         "M138",
         "M139",
+        "M140",
         "M141",
         "M142",
         "M143",
         "M144",
         "MA01",
         "MA02",
+        "MA03",
         "MA04",
+        "MA05",
+        "MA06",
         "MA07",
         "MA08",
         "MA09",
         "MA10",
+        "MA11",
         "MA12",
         "MA13",
         "MA14",
@@ -156,6 +180,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA26",
         "MA27",
         "MA28",
+        "MA29",
         "MA30",
         "MA31",
         "MA32",
@@ -164,6 +189,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA35",
         "MA36",
         "MA37",
+        "MA38",
         "MA39",
         "MA40",
         "MA41",
@@ -174,7 +200,10 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA46",
         "MA47",
         "MA48",
+        "MA49",
         "MA50",
+        "MA51",
+        "MA52",
         "MA53",
         "MA54",
         "MA55",
@@ -200,11 +229,16 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA75",
         "MA76",
         "MA77",
+        "MA78",
         "MA79",
         "MA80",
         "MA81",
+        "MA82",
         "MA83",
         "MA84",
+        "MA85",
+        "MA86",
+        "MA87",
         "MA88",
         "MA89",
         "MA90",
@@ -212,12 +246,17 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA92",
         "MA93",
         "MA94",
+        "MA95",
         "MA96",
         "MA97",
+        "MA98",
         "MA99",
         "MA100",
+        "MA101",
         "MA102",
         "MA103",
+        "MA104",
+        "MA105",
         "MA106",
         "MA107",
         "MA108",
@@ -231,13 +270,17 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "MA116",
         "MA117",
         "MA118",
+        "MA119",
         "MA120",
         "MA121",
         "MA122",
         "MA123",
+        "MA124",
         "MA125",
         "MA126",
+        "MA127",
         "MA128",
+        "MA129",
         "MA130",
         "MA131",
         "MA132",
@@ -259,6 +302,8 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N14",
         "N15",
         "N16",
+        "N17",
+        "N18",
         "N19",
         "N20",
         "N21",
@@ -278,10 +323,13 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N35",
         "N36",
         "N37",
+        "N38",
         "N39",
         "N40",
+        "N41",
         "N42",
         "N43",
+        "N44",
         "N45",
         "N46",
         "N47",
@@ -297,17 +345,20 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N57",
         "N58",
         "N59",
+        "N60",
         "N61",
         "N62",
         "N63",
         "N64",
         "N65",
+        "N66",
         "N67",
         "N68",
         "N69",
         "N70",
         "N71",
         "N72",
+        "N73",
         "N74",
         "N75",
         "N76",
@@ -334,6 +385,8 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N97",
         "N98",
         "N99",
+        "N100",
+        "N101",
         "N102",
         "N103",
         "N104",
@@ -377,6 +430,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N142",
         "N143",
         "N144",
+        "N145",
         "N146",
         "N147",
         "N148",
@@ -395,7 +449,12 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N161",
         "N162",
         "N163",
+        "N164",
+        "N165",
+        "N166",
         "N167",
+        "N168",
+        "N169",
         "N170",
         "N171",
         "N172",
@@ -427,6 +486,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N198",
         "N199",
         "N200",
+        "N201",
         "N202",
         "N203",
         "N204",
@@ -450,6 +510,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N222",
         "N223",
         "N224",
+        "N225",
         "N226",
         "N227",
         "N228",
@@ -585,6 +646,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N358",
         "N359",
         "N360",
+        "N361",
         "N362",
         "N363",
         "N364",
@@ -706,6 +768,8 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N480",
         "N481",
         "N482",
+        "N483",
+        "N484",
         "N485",
         "N486",
         "N487",
@@ -735,6 +799,8 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N511",
         "N512",
         "N513",
+        "N514",
+        "N515",
         "N516",
         "N517",
         "N518",
@@ -772,6 +838,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N550",
         "N551",
         "N552",
+        "N553",
         "N554",
         "N555",
         "N556",
@@ -845,6 +912,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N624",
         "N625",
         "N626",
+        "N627",
         "N628",
         "N629",
         "N630",
@@ -1076,11 +1144,57 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N858",
         "N859",
         "N860",
+        "N861",
+        "N862",
+        "N863",
+        "N864",
+        "N865",
+        "N866",
+        "N867",
+        "N868",
+        "N869",
+        "N870",
+        "N871",
+        "N872",
+        "N873",
+        "N874",
+        "N875",
+        "N876",
+        "N877",
+        "N878",
+        "N879",
         "N880",
+        "N881",
+        "N882",
+        "N883",
+        "N884",
+        "N885",
+        "N886",
         "N887",
         "N888",
+        "N889",
+        "N890",
         "N891",
+        "N892",
+        "N893",
+        "N894",
+        "N895",
+        "N896",
+        "N897",
+        "N898",
+        "N899",
         "N900",
+        "N901",
+        "N902",
+        "N903",
+        "N904",
+        "N905",
+        "N906",
+        "N907",
+        "N908",
+        "N909",
+        "N910",
+        "N911",
     ]);
 
 export declare namespace Rarc {
@@ -1117,7 +1231,9 @@ export declare namespace Rarc {
         | "M30"
         | "M31"
         | "M32"
+        | "M33"
         | "M34"
+        | "M35"
         | "M36"
         | "M37"
         | "M38"
@@ -1125,10 +1241,12 @@ export declare namespace Rarc {
         | "M40"
         | "M41"
         | "M42"
+        | "M43"
         | "M44"
         | "M45"
         | "M46"
         | "M47"
+        | "M48"
         | "M49"
         | "M50"
         | "M51"
@@ -1137,17 +1255,22 @@ export declare namespace Rarc {
         | "M54"
         | "M55"
         | "M56"
+        | "M57"
+        | "M58"
         | "M59"
         | "M60"
         | "M61"
         | "M62"
+        | "M63"
         | "M64"
         | "M65"
         | "M66"
         | "M67"
+        | "M68"
         | "M69"
         | "M70"
         | "M71"
+        | "M72"
         | "M73"
         | "M74"
         | "M75"
@@ -1163,22 +1286,29 @@ export declare namespace Rarc {
         | "M85"
         | "M86"
         | "M87"
+        | "M88"
         | "M89"
         | "M90"
         | "M91"
+        | "M92"
         | "M93"
         | "M94"
         | "M95"
         | "M96"
         | "M97"
+        | "M98"
         | "M99"
         | "M100"
+        | "M101"
         | "M102"
         | "M103"
         | "M104"
         | "M105"
+        | "M106"
         | "M107"
+        | "M108"
         | "M109"
+        | "M110"
         | "M111"
         | "M112"
         | "M113"
@@ -1186,7 +1316,9 @@ export declare namespace Rarc {
         | "M115"
         | "M116"
         | "M117"
+        | "M118"
         | "M119"
+        | "M120"
         | "M121"
         | "M122"
         | "M123"
@@ -1194,6 +1326,7 @@ export declare namespace Rarc {
         | "M125"
         | "M126"
         | "M127"
+        | "M128"
         | "M129"
         | "M130"
         | "M131"
@@ -1205,17 +1338,22 @@ export declare namespace Rarc {
         | "M137"
         | "M138"
         | "M139"
+        | "M140"
         | "M141"
         | "M142"
         | "M143"
         | "M144"
         | "MA01"
         | "MA02"
+        | "MA03"
         | "MA04"
+        | "MA05"
+        | "MA06"
         | "MA07"
         | "MA08"
         | "MA09"
         | "MA10"
+        | "MA11"
         | "MA12"
         | "MA13"
         | "MA14"
@@ -1233,6 +1371,7 @@ export declare namespace Rarc {
         | "MA26"
         | "MA27"
         | "MA28"
+        | "MA29"
         | "MA30"
         | "MA31"
         | "MA32"
@@ -1241,6 +1380,7 @@ export declare namespace Rarc {
         | "MA35"
         | "MA36"
         | "MA37"
+        | "MA38"
         | "MA39"
         | "MA40"
         | "MA41"
@@ -1251,7 +1391,10 @@ export declare namespace Rarc {
         | "MA46"
         | "MA47"
         | "MA48"
+        | "MA49"
         | "MA50"
+        | "MA51"
+        | "MA52"
         | "MA53"
         | "MA54"
         | "MA55"
@@ -1277,11 +1420,16 @@ export declare namespace Rarc {
         | "MA75"
         | "MA76"
         | "MA77"
+        | "MA78"
         | "MA79"
         | "MA80"
         | "MA81"
+        | "MA82"
         | "MA83"
         | "MA84"
+        | "MA85"
+        | "MA86"
+        | "MA87"
         | "MA88"
         | "MA89"
         | "MA90"
@@ -1289,12 +1437,17 @@ export declare namespace Rarc {
         | "MA92"
         | "MA93"
         | "MA94"
+        | "MA95"
         | "MA96"
         | "MA97"
+        | "MA98"
         | "MA99"
         | "MA100"
+        | "MA101"
         | "MA102"
         | "MA103"
+        | "MA104"
+        | "MA105"
         | "MA106"
         | "MA107"
         | "MA108"
@@ -1308,13 +1461,17 @@ export declare namespace Rarc {
         | "MA116"
         | "MA117"
         | "MA118"
+        | "MA119"
         | "MA120"
         | "MA121"
         | "MA122"
         | "MA123"
+        | "MA124"
         | "MA125"
         | "MA126"
+        | "MA127"
         | "MA128"
+        | "MA129"
         | "MA130"
         | "MA131"
         | "MA132"
@@ -1336,6 +1493,8 @@ export declare namespace Rarc {
         | "N14"
         | "N15"
         | "N16"
+        | "N17"
+        | "N18"
         | "N19"
         | "N20"
         | "N21"
@@ -1355,10 +1514,13 @@ export declare namespace Rarc {
         | "N35"
         | "N36"
         | "N37"
+        | "N38"
         | "N39"
         | "N40"
+        | "N41"
         | "N42"
         | "N43"
+        | "N44"
         | "N45"
         | "N46"
         | "N47"
@@ -1374,17 +1536,20 @@ export declare namespace Rarc {
         | "N57"
         | "N58"
         | "N59"
+        | "N60"
         | "N61"
         | "N62"
         | "N63"
         | "N64"
         | "N65"
+        | "N66"
         | "N67"
         | "N68"
         | "N69"
         | "N70"
         | "N71"
         | "N72"
+        | "N73"
         | "N74"
         | "N75"
         | "N76"
@@ -1411,6 +1576,8 @@ export declare namespace Rarc {
         | "N97"
         | "N98"
         | "N99"
+        | "N100"
+        | "N101"
         | "N102"
         | "N103"
         | "N104"
@@ -1454,6 +1621,7 @@ export declare namespace Rarc {
         | "N142"
         | "N143"
         | "N144"
+        | "N145"
         | "N146"
         | "N147"
         | "N148"
@@ -1472,7 +1640,12 @@ export declare namespace Rarc {
         | "N161"
         | "N162"
         | "N163"
+        | "N164"
+        | "N165"
+        | "N166"
         | "N167"
+        | "N168"
+        | "N169"
         | "N170"
         | "N171"
         | "N172"
@@ -1504,6 +1677,7 @@ export declare namespace Rarc {
         | "N198"
         | "N199"
         | "N200"
+        | "N201"
         | "N202"
         | "N203"
         | "N204"
@@ -1527,6 +1701,7 @@ export declare namespace Rarc {
         | "N222"
         | "N223"
         | "N224"
+        | "N225"
         | "N226"
         | "N227"
         | "N228"
@@ -1662,6 +1837,7 @@ export declare namespace Rarc {
         | "N358"
         | "N359"
         | "N360"
+        | "N361"
         | "N362"
         | "N363"
         | "N364"
@@ -1783,6 +1959,8 @@ export declare namespace Rarc {
         | "N480"
         | "N481"
         | "N482"
+        | "N483"
+        | "N484"
         | "N485"
         | "N486"
         | "N487"
@@ -1812,6 +1990,8 @@ export declare namespace Rarc {
         | "N511"
         | "N512"
         | "N513"
+        | "N514"
+        | "N515"
         | "N516"
         | "N517"
         | "N518"
@@ -1849,6 +2029,7 @@ export declare namespace Rarc {
         | "N550"
         | "N551"
         | "N552"
+        | "N553"
         | "N554"
         | "N555"
         | "N556"
@@ -1922,6 +2103,7 @@ export declare namespace Rarc {
         | "N624"
         | "N625"
         | "N626"
+        | "N627"
         | "N628"
         | "N629"
         | "N630"
@@ -2153,9 +2335,55 @@ export declare namespace Rarc {
         | "N858"
         | "N859"
         | "N860"
+        | "N861"
+        | "N862"
+        | "N863"
+        | "N864"
+        | "N865"
+        | "N866"
+        | "N867"
+        | "N868"
+        | "N869"
+        | "N870"
+        | "N871"
+        | "N872"
+        | "N873"
+        | "N874"
+        | "N875"
+        | "N876"
+        | "N877"
+        | "N878"
+        | "N879"
         | "N880"
+        | "N881"
+        | "N882"
+        | "N883"
+        | "N884"
+        | "N885"
+        | "N886"
         | "N887"
         | "N888"
+        | "N889"
+        | "N890"
         | "N891"
-        | "N900";
+        | "N892"
+        | "N893"
+        | "N894"
+        | "N895"
+        | "N896"
+        | "N897"
+        | "N898"
+        | "N899"
+        | "N900"
+        | "N901"
+        | "N902"
+        | "N903"
+        | "N904"
+        | "N905"
+        | "N906"
+        | "N907"
+        | "N908"
+        | "N909"
+        | "N910"
+        | "N911";
 }

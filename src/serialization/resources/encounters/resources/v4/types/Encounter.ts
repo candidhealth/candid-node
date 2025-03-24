@@ -28,6 +28,7 @@ import { EncounterOwnerOfNextActionType } from "./EncounterOwnerOfNextActionType
 import { EncounterSubmissionOriginType } from "./EncounterSubmissionOriginType";
 import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { EpsdtReferral } from "./EpsdtReferral";
+import { ClaimSupplementalInformation } from "./ClaimSupplementalInformation";
 import { EncounterBase } from "./EncounterBase";
 
 export const Encounter: core.serialization.ObjectSchema<
@@ -85,6 +86,10 @@ export const Encounter: core.serialization.ObjectSchema<
         schemaInstances: core.serialization.property("schema_instances", core.serialization.list(SchemaInstance)),
         referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
         epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
+        claimSupplementalInformation: core.serialization.property(
+            "claim_supplemental_information",
+            core.serialization.list(ClaimSupplementalInformation).optional(),
+        ),
         lastSubmittedAt: core.serialization.property("last_submitted_at", core.serialization.date().optional()),
         createdAt: core.serialization.property("created_at", core.serialization.date()),
     })
@@ -124,6 +129,7 @@ export declare namespace Encounter {
         schema_instances: SchemaInstance.Raw[];
         referral_number?: string | null;
         epsdt_referral?: EpsdtReferral.Raw | null;
+        claim_supplemental_information?: ClaimSupplementalInformation.Raw[] | null;
         last_submitted_at?: string | null;
         created_at: string;
     }

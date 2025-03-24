@@ -14,13 +14,15 @@ import * as CandidApi from "../../../../../../../../index";
  *                 family: "string",
  *                 given: ["string"],
  *                 use: "USUAL",
- *                 period: {}
+ *                 period: {},
+ *                 suffix: "string"
  *             },
  *             otherNames: [{
  *                     family: "string",
  *                     given: ["string"],
  *                     use: "USUAL",
- *                     period: {}
+ *                     period: {},
+ *                     suffix: "string"
  *                 }],
  *             otherIdentifiers: [{
  *                     value: "string",
@@ -77,7 +79,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                         family: "string",
  *                         given: ["string"],
  *                         use: "USUAL",
- *                         period: {}
+ *                         period: {},
+ *                         suffix: "string"
  *                     },
  *                     telecoms: [{
  *                             value: "string",
@@ -100,7 +103,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                         family: "string",
  *                         given: ["string"],
  *                         use: "USUAL",
- *                         period: {}
+ *                         period: {},
+ *                         suffix: "string"
  *                     },
  *                     type: "PRIMARY",
  *                     npi: "string",
@@ -125,7 +129,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                     family: "string",
  *                     given: ["string"],
  *                     use: "USUAL",
- *                     period: {}
+ *                     period: {},
+ *                     suffix: "string"
  *                 },
  *                 telecom: {
  *                     value: "string",
@@ -150,6 +155,7 @@ import * as CandidApi from "../../../../../../../../index";
  *                     additionalPayerInformation: {},
  *                     authorizationNumber: "string",
  *                     cptCode: "string",
+ *                     applyForAllCptCodes: true,
  *                     units: "VISIT",
  *                     quantity: 1,
  *                     period: {},
@@ -161,7 +167,8 @@ import * as CandidApi from "../../../../../../../../index";
  *                             family: "string",
  *                             given: ["string"],
  *                             use: "USUAL",
- *                             period: {}
+ *                             period: {},
+ *                             suffix: "string"
  *                         },
  *                         type: "PRIMARY",
  *                         npi: "string",

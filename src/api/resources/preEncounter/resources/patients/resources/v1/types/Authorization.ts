@@ -10,6 +10,8 @@ export interface Authorization {
     additionalPayerInformation?: CandidApi.preEncounter.AdditionalPayerInformation;
     authorizationNumber: string;
     cptCode: string;
+    /** If true, then the authorization will apply for all claims for the payer that fall in range the `period`. */
+    applyForAllCptCodes?: boolean;
     units: CandidApi.preEncounter.patients.v1.AuthorizationUnit;
     quantity?: number;
     period?: CandidApi.preEncounter.Period;

@@ -12,4 +12,6 @@ export interface CreateNonInsurancePayerRequest {
     /** Max 255 characters allowed */
     category?: string;
     address?: CandidApi.StreetAddressShortZip;
+    /** The same name cannot be used across several clinical trials */
+    clinicalTrials?: CandidApi.clinicalTrials.v1.MutableClinicalTrial[];
 }

@@ -38,7 +38,10 @@ export interface ServiceLineCreateStandalone {
      * If not required by this implementation guide, do not send.
      */
     orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
-    /** Maps to MEA-02 on the 837-P. No more than 5 test results may be submitted per service line. */
+    /**
+     * Contains a list of test results. Test result types may map to MEA-02 on the 837-P (ex: Hemoglobin, Hematocrit).
+     * No more than 5 MEA-02 test results may be submitted per service line.
+     */
     testResults?: CandidApi.serviceLines.v2.TestResult[];
     /**
      * Maps to SV1-11 on the 837-P and Box 24H on the CMS-1500.

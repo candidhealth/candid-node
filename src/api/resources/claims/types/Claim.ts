@@ -78,6 +78,9 @@ import * as CandidApi from "../../../index";
  *                 testResults: [{
  *                         resultType: CandidApi.serviceLines.v2.TestResultType.Hemoglobin,
  *                         value: 51
+ *                     }, {
+ *                         resultType: CandidApi.serviceLines.v2.TestResultType.Ldl,
+ *                         value: 110
  *                     }]
  *             }],
  *         eras: [{

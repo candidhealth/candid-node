@@ -45,13 +45,15 @@ export class V1 {
      *                 family: "string",
      *                 given: ["string"],
      *                 use: "USUAL",
-     *                 period: {}
+     *                 period: {},
+     *                 suffix: "string"
      *             },
      *             otherNames: [{
      *                     family: "string",
      *                     given: ["string"],
      *                     use: "USUAL",
-     *                     period: {}
+     *                     period: {},
+     *                     suffix: "string"
      *                 }],
      *             otherIdentifiers: [{
      *                     value: "string",
@@ -108,7 +110,8 @@ export class V1 {
      *                         family: "string",
      *                         given: ["string"],
      *                         use: "USUAL",
-     *                         period: {}
+     *                         period: {},
+     *                         suffix: "string"
      *                     },
      *                     telecoms: [{
      *                             value: "string",
@@ -131,7 +134,8 @@ export class V1 {
      *                         family: "string",
      *                         given: ["string"],
      *                         use: "USUAL",
-     *                         period: {}
+     *                         period: {},
+     *                         suffix: "string"
      *                     },
      *                     type: "PRIMARY",
      *                     npi: "string",
@@ -156,7 +160,8 @@ export class V1 {
      *                     family: "string",
      *                     given: ["string"],
      *                     use: "USUAL",
-     *                     period: {}
+     *                     period: {},
+     *                     suffix: "string"
      *                 },
      *                 telecom: {
      *                     value: "string",
@@ -181,6 +186,7 @@ export class V1 {
      *                     additionalPayerInformation: {},
      *                     authorizationNumber: "string",
      *                     cptCode: "string",
+     *                     applyForAllCptCodes: true,
      *                     units: "VISIT",
      *                     quantity: 1,
      *                     period: {},
@@ -192,7 +198,8 @@ export class V1 {
      *                             family: "string",
      *                             given: ["string"],
      *                             use: "USUAL",
-     *                             period: {}
+     *                             period: {},
+     *                             suffix: "string"
      *                         },
      *                         type: "PRIMARY",
      *                         npi: "string",
@@ -240,8 +247,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -307,13 +314,15 @@ export class V1 {
      *                 family: "string",
      *                 given: ["string"],
      *                 use: "USUAL",
-     *                 period: {}
+     *                 period: {},
+     *                 suffix: "string"
      *             },
      *             otherNames: [{
      *                     family: "string",
      *                     given: ["string"],
      *                     use: "USUAL",
-     *                     period: {}
+     *                     period: {},
+     *                     suffix: "string"
      *                 }],
      *             otherIdentifiers: [{
      *                     value: "string",
@@ -370,7 +379,8 @@ export class V1 {
      *                         family: "string",
      *                         given: ["string"],
      *                         use: "USUAL",
-     *                         period: {}
+     *                         period: {},
+     *                         suffix: "string"
      *                     },
      *                     telecoms: [{
      *                             value: "string",
@@ -393,7 +403,8 @@ export class V1 {
      *                         family: "string",
      *                         given: ["string"],
      *                         use: "USUAL",
-     *                         period: {}
+     *                         period: {},
+     *                         suffix: "string"
      *                     },
      *                     type: "PRIMARY",
      *                     npi: "string",
@@ -418,7 +429,8 @@ export class V1 {
      *                     family: "string",
      *                     given: ["string"],
      *                     use: "USUAL",
-     *                     period: {}
+     *                     period: {},
+     *                     suffix: "string"
      *                 },
      *                 telecom: {
      *                     value: "string",
@@ -443,6 +455,7 @@ export class V1 {
      *                     additionalPayerInformation: {},
      *                     authorizationNumber: "string",
      *                     cptCode: "string",
+     *                     applyForAllCptCodes: true,
      *                     units: "VISIT",
      *                     quantity: 1,
      *                     period: {},
@@ -454,7 +467,8 @@ export class V1 {
      *                             family: "string",
      *                             given: ["string"],
      *                             use: "USUAL",
-     *                             period: {}
+     *                             period: {},
+     *                             suffix: "string"
      *                         },
      *                         type: "PRIMARY",
      *                         npi: "string",
@@ -505,8 +519,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -620,8 +634,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -648,6 +662,74 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.preEncounter.patients.v1.getMulti.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Searches for referring providers that match the query parameters. The search is case-insensitive, supports fuzzy matching, and matches against provider name and NPI. The search criteria must be an alphanumeric string, and the search is limited to the first 20 results.
+     *
+     * @param {CandidApi.preEncounter.patients.v1.SearchProvidersRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.patients.v1.searchProviders({
+     *         searchCriteria: "string"
+     *     })
+     */
+    public async searchProviders(
+        request: CandidApi.preEncounter.patients.v1.SearchProvidersRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.ExternalProvider[],
+            CandidApi.preEncounter.patients.v1.searchProviders.Error
+        >
+    > {
+        const { searchCriteria } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        _queryParams["search_criteria"] = searchCriteria;
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/patients/v1/search_providers",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.patients.v1.searchProviders.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.patients.v1.searchProviders.Error._unknown(_response.error),
         };
     }
 
@@ -680,8 +762,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -760,8 +842,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -822,13 +904,15 @@ export class V1 {
      *             family: "string",
      *             given: ["string"],
      *             use: "USUAL",
-     *             period: {}
+     *             period: {},
+     *             suffix: "string"
      *         },
      *         otherNames: [{
      *                 family: "string",
      *                 given: ["string"],
      *                 use: "USUAL",
-     *                 period: {}
+     *                 period: {},
+     *                 suffix: "string"
      *             }],
      *         otherIdentifiers: [{
      *                 value: "string",
@@ -885,7 +969,8 @@ export class V1 {
      *                     family: "string",
      *                     given: ["string"],
      *                     use: "USUAL",
-     *                     period: {}
+     *                     period: {},
+     *                     suffix: "string"
      *                 },
      *                 telecoms: [{
      *                         value: "string",
@@ -908,7 +993,8 @@ export class V1 {
      *                     family: "string",
      *                     given: ["string"],
      *                     use: "USUAL",
-     *                     period: {}
+     *                     period: {},
+     *                     suffix: "string"
      *                 },
      *                 type: "PRIMARY",
      *                 npi: "string",
@@ -933,7 +1019,8 @@ export class V1 {
      *                 family: "string",
      *                 given: ["string"],
      *                 use: "USUAL",
-     *                 period: {}
+     *                 period: {},
+     *                 suffix: "string"
      *             },
      *             telecom: {
      *                 value: "string",
@@ -958,6 +1045,7 @@ export class V1 {
      *                 additionalPayerInformation: {},
      *                 authorizationNumber: "string",
      *                 cptCode: "string",
+     *                 applyForAllCptCodes: true,
      *                 units: "VISIT",
      *                 quantity: 1,
      *                 period: {},
@@ -969,7 +1057,8 @@ export class V1 {
      *                         family: "string",
      *                         given: ["string"],
      *                         use: "USUAL",
-     *                         period: {}
+     *                         period: {},
+     *                         suffix: "string"
      *                     },
      *                     type: "PRIMARY",
      *                     npi: "string",
@@ -1012,8 +1101,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1093,8 +1182,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1166,8 +1255,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1252,8 +1341,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1317,8 +1406,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.39.11",
-                "User-Agent": "candidhealth/0.39.11",
+                "X-Fern-SDK-Version": "0.40.0",
+                "User-Agent": "candidhealth/0.40.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

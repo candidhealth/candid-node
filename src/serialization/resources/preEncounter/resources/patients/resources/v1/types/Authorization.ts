@@ -22,6 +22,10 @@ export const Authorization: core.serialization.ObjectSchema<
     ),
     authorizationNumber: core.serialization.property("authorization_number", core.serialization.string()),
     cptCode: core.serialization.property("cpt_code", core.serialization.string()),
+    applyForAllCptCodes: core.serialization.property(
+        "apply_for_all_cpt_codes",
+        core.serialization.boolean().optional(),
+    ),
     units: AuthorizationUnit,
     quantity: core.serialization.number().optional(),
     period: Period.optional(),
@@ -35,6 +39,7 @@ export declare namespace Authorization {
         additional_payer_information?: AdditionalPayerInformation.Raw | null;
         authorization_number: string;
         cpt_code: string;
+        apply_for_all_cpt_codes?: boolean | null;
         units: AuthorizationUnit.Raw;
         quantity?: number | null;
         period?: Period.Raw | null;

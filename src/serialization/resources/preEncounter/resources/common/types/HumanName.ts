@@ -16,6 +16,7 @@ export const HumanName: core.serialization.ObjectSchema<
     given: core.serialization.list(core.serialization.string()),
     use: NameUse,
     period: Period.optional(),
+    suffix: core.serialization.string().optional(),
 });
 
 export declare namespace HumanName {
@@ -24,5 +25,6 @@ export declare namespace HumanName {
         given: string[];
         use: NameUse.Raw;
         period?: Period.Raw | null;
+        suffix?: string | null;
     }
 }

@@ -6,7 +6,8 @@ import * as CandidApi from "../../../../../index";
 
 export type WriteOffCreate =
     | CandidApi.writeOffs.v1.WriteOffCreate.Patient
-    | CandidApi.writeOffs.v1.WriteOffCreate.Insurance;
+    | CandidApi.writeOffs.v1.WriteOffCreate.Insurance
+    | CandidApi.writeOffs.v1.WriteOffCreate.NonInsurancePayer;
 
 export namespace WriteOffCreate {
     export interface Patient extends CandidApi.writeOffs.v1.PatientWriteOffCreate {
@@ -15,5 +16,9 @@ export namespace WriteOffCreate {
 
     export interface Insurance extends CandidApi.writeOffs.v1.InsuranceWriteOffCreate {
         type: "insurance";
+    }
+
+    export interface NonInsurancePayer extends CandidApi.writeOffs.v1.NonInsurancePayerWriteOffCreate {
+        type: "non_insurance_payer";
     }
 }

@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const TestResultType: core.serialization.Schema<
     serializers.serviceLines.v2.TestResultType.Raw,
     CandidApi.serviceLines.v2.TestResultType
-> = core.serialization.enum_(["HEMATOCRIT", "HEMOGLOBIN"]);
+> = core.serialization.enum_(["HEMATOCRIT", "HEMOGLOBIN", "LDL"]);
 
 export declare namespace TestResultType {
-    export type Raw = "HEMATOCRIT" | "HEMOGLOBIN";
+    export type Raw = "HEMATOCRIT" | "HEMOGLOBIN" | "LDL";
 }

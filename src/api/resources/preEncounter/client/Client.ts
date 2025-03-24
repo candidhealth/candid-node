@@ -7,6 +7,7 @@ import * as core from "../../../../core";
 import { Appointments } from "../resources/appointments/client/Client";
 import { Coverages } from "../resources/coverages/client/Client";
 import { EligibilityChecks } from "../resources/eligibilityChecks/client/Client";
+import { Images } from "../resources/images/client/Client";
 import { Lists } from "../resources/lists/client/Client";
 import { Notes } from "../resources/notes/client/Client";
 import { Patients } from "../resources/patients/client/Client";
@@ -36,6 +37,7 @@ export class PreEncounter {
     protected _appointments: Appointments | undefined;
     protected _coverages: Coverages | undefined;
     protected _eligibilityChecks: EligibilityChecks | undefined;
+    protected _images: Images | undefined;
     protected _lists: Lists | undefined;
     protected _notes: Notes | undefined;
     protected _patients: Patients | undefined;
@@ -53,6 +55,10 @@ export class PreEncounter {
 
     public get eligibilityChecks(): EligibilityChecks {
         return (this._eligibilityChecks ??= new EligibilityChecks(this._options));
+    }
+
+    public get images(): Images {
+        return (this._images ??= new Images(this._options));
     }
 
     public get lists(): Lists {
