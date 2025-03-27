@@ -632,6 +632,7 @@ await client.chargeCapture.v1.getAll({
     status: "planned",
     chargeExternalId: "string",
     dateOfService: "2023-01-15",
+    excludeBundled: true,
 });
 ```
 
@@ -2886,6 +2887,36 @@ await client.encounters.v4.create({
         gender: "male",
     },
     subscriberSecondary: {
+        insuranceCard: {
+            memberId: "string",
+            payerName: "string",
+            payerId: "string",
+            rxBin: "string",
+            rxPcn: "string",
+            imageUrlFront: "string",
+            imageUrlBack: "string",
+            emrPayerCrosswalk: "HEALTHIE",
+            groupNumber: "string",
+            planName: "string",
+            planType: "09",
+            insuranceType: "01",
+            payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        },
+        patientRelationshipToSubscriberCode: "01",
+        dateOfBirth: "2023-01-15",
+        address: {
+            address1: "123 Main St",
+            address2: "Apt 1",
+            city: "New York",
+            state: "NY",
+            zipCode: "10001",
+            zipPlusFourCode: "1234",
+        },
+        firstName: "string",
+        lastName: "string",
+        gender: "male",
+    },
+    subscriberTertiary: {
         insuranceCard: {
             memberId: "string",
             payerName: "string",

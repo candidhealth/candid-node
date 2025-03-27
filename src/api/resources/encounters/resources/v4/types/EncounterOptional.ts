@@ -53,6 +53,8 @@ export interface EncounterOptional {
     subscriberPrimary?: CandidApi.SubscriberCreate;
     /** Contains details of the secondary insurance subscriber. */
     subscriberSecondary?: CandidApi.SubscriberCreate;
+    /** Contains details of the tertiary insurance subscriber. */
+    subscriberTertiary?: CandidApi.SubscriberCreate;
     /**
      * Defines additional information on the claim needed by the payer.
      * Box 19 on the CMS-1500 claim form.

@@ -55,6 +55,7 @@ export const Encounter: core.serialization.ObjectSchema<
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacility),
         subscriberPrimary: core.serialization.property("subscriber_primary", Subscriber.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", Subscriber.optional()),
+        subscriberTertiary: core.serialization.property("subscriber_tertiary", Subscriber.optional()),
         priorAuthorizationNumber: core.serialization.property(
             "prior_authorization_number",
             PriorAuthorizationNumber.optional(),
@@ -110,6 +111,7 @@ export declare namespace Encounter {
         service_facility: EncounterServiceFacility.Raw;
         subscriber_primary?: Subscriber.Raw | null;
         subscriber_secondary?: Subscriber.Raw | null;
+        subscriber_tertiary?: Subscriber.Raw | null;
         prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
         responsible_party: ResponsiblePartyType.Raw;
         url: LinkUrl.Raw;

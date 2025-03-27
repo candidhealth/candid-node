@@ -46,6 +46,7 @@ export const EncounterCreate: core.serialization.Schema<
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
         subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
+        subscriberTertiary: core.serialization.property("subscriber_tertiary", SubscriberCreate.optional()),
         priorAuthorizationNumber: core.serialization.property(
             "prior_authorization_number",
             PriorAuthorizationNumber.optional(),
@@ -96,6 +97,7 @@ export declare namespace EncounterCreate {
         service_facility?: EncounterServiceFacilityBase.Raw | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;
+        subscriber_tertiary?: SubscriberCreate.Raw | null;
         prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
         responsible_party: ResponsiblePartyType.Raw;
         diagnoses: DiagnosisCreate.Raw[];

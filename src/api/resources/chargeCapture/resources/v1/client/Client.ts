@@ -63,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.0",
-                "User-Agent": "candidhealth/0.40.0",
+                "X-Fern-SDK-Version": "0.40.1",
+                "User-Agent": "candidhealth/0.40.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -143,8 +143,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.0",
-                "User-Agent": "candidhealth/0.40.0",
+                "X-Fern-SDK-Version": "0.40.1",
+                "User-Agent": "candidhealth/0.40.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -221,8 +221,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.0",
-                "User-Agent": "candidhealth/0.40.0",
+                "X-Fern-SDK-Version": "0.40.1",
+                "User-Agent": "candidhealth/0.40.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -301,8 +301,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.0",
-                "User-Agent": "candidhealth/0.40.0",
+                "X-Fern-SDK-Version": "0.40.1",
+                "User-Agent": "candidhealth/0.40.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -342,7 +342,8 @@ export class V1 {
      *         patientExternalId: "string",
      *         status: "planned",
      *         chargeExternalId: "string",
-     *         dateOfService: "2023-01-15"
+     *         dateOfService: "2023-01-15",
+     *         excludeBundled: true
      *     })
      */
     public async getAll(
@@ -351,7 +352,8 @@ export class V1 {
     ): Promise<
         core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
     > {
-        const { limit, pageToken, patientExternalId, status, chargeExternalId, dateOfService } = request;
+        const { limit, pageToken, patientExternalId, status, chargeExternalId, dateOfService, excludeBundled } =
+            request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
@@ -379,6 +381,10 @@ export class V1 {
             _queryParams["date_of_service"] = dateOfService;
         }
 
+        if (excludeBundled != null) {
+            _queryParams["exclude_bundled"] = excludeBundled.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -393,8 +399,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.0",
-                "User-Agent": "candidhealth/0.40.0",
+                "X-Fern-SDK-Version": "0.40.1",
+                "User-Agent": "candidhealth/0.40.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

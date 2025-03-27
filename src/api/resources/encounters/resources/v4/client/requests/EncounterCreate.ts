@@ -188,6 +188,36 @@ import * as CandidApi from "../../../../../../index";
  *             lastName: "string",
  *             gender: "male"
  *         },
+ *         subscriberTertiary: {
+ *             insuranceCard: {
+ *                 memberId: "string",
+ *                 payerName: "string",
+ *                 payerId: "string",
+ *                 rxBin: "string",
+ *                 rxPcn: "string",
+ *                 imageUrlFront: "string",
+ *                 imageUrlBack: "string",
+ *                 emrPayerCrosswalk: "HEALTHIE",
+ *                 groupNumber: "string",
+ *                 planName: "string",
+ *                 planType: "09",
+ *                 insuranceType: "01",
+ *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+ *             },
+ *             patientRelationshipToSubscriberCode: "01",
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: "NY",
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             gender: "male"
+ *         },
  *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
  *         responsibleParty: "INSURANCE_PAY",
  *         diagnoses: [{
@@ -394,6 +424,11 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     subscriberSecondary?: CandidApi.SubscriberCreate;
+    /**
+     * Please always include this when you have it, even for self-pay claims.
+     *
+     */
+    subscriberTertiary?: CandidApi.SubscriberCreate;
     /** Box 23 on the CMS-1500 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
     /**

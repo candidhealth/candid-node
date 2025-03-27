@@ -464,6 +464,8 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     subscriberPrimary?: CandidApi.Subscriber;
     /** Contains details of the secondary insurance subscriber. */
     subscriberSecondary?: CandidApi.Subscriber;
+    /** Contains details of the tertiary insurance subscriber. */
+    subscriberTertiary?: CandidApi.Subscriber;
     /** Box 23 on the CMS-1500 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
     /** Defines the party to be billed with the initial balance owed on the claim. */

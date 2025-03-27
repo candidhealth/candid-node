@@ -63,6 +63,7 @@ export const EncounterOptional: core.serialization.ObjectSchema<
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
     subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
+    subscriberTertiary: core.serialization.property("subscriber_tertiary", SubscriberCreate.optional()),
     additionalInformation: core.serialization.property(
         "additional_information",
         core.serialization.string().optional(),
@@ -132,6 +133,7 @@ export declare namespace EncounterOptional {
         end_date_of_service?: string | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;
+        subscriber_tertiary?: SubscriberCreate.Raw | null;
         additional_information?: string | null;
         service_authorization_exception_code?: ServiceAuthorizationExceptionCode.Raw | null;
         admission_date?: string | null;

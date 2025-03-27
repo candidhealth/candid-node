@@ -12,7 +12,8 @@ import * as CandidApi from "../../../../../../index";
  *         patientExternalId: "string",
  *         status: "planned",
  *         chargeExternalId: "string",
- *         dateOfService: "2023-01-15"
+ *         dateOfService: "2023-01-15",
+ *         excludeBundled: true
  *     }
  */
 export interface GetAllChargeCapturesRequest {
@@ -40,4 +41,8 @@ export interface GetAllChargeCapturesRequest {
      * This date must be the local date in the timezone where the service occurred.
      */
     dateOfService?: string;
+    /**
+     * Whether to exclude charge captures which are associated with a charge capture bundle.
+     */
+    excludeBundled?: boolean;
 }
