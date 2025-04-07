@@ -63,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -143,8 +143,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -221,8 +221,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -301,8 +301,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -338,6 +338,8 @@ export class V1 {
      * @example
      *     await client.chargeCapture.v1.getAll({
      *         limit: 1,
+     *         sort: "created_at",
+     *         sortDirection: "asc",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         patientExternalId: "string",
      *         status: "planned",
@@ -352,11 +354,32 @@ export class V1 {
     ): Promise<
         core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
     > {
-        const { limit, pageToken, patientExternalId, status, chargeExternalId, dateOfService, excludeBundled } =
-            request;
+        const {
+            limit,
+            sort,
+            sortDirection,
+            pageToken,
+            patientExternalId,
+            status,
+            chargeExternalId,
+            dateOfService,
+            excludeBundled,
+        } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
+        }
+
+        if (sort != null) {
+            _queryParams["sort"] = serializers.chargeCapture.v1.ChargeCaptureSortField.jsonOrThrow(sort, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (sortDirection != null) {
+            _queryParams["sort_direction"] = serializers.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (pageToken != null) {
@@ -399,8 +422,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

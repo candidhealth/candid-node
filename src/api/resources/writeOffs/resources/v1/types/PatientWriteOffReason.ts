@@ -11,7 +11,8 @@ export type PatientWriteOffReason =
     | "BAD_DEBT"
     | "COLLECTION_AGENCY"
     | "OTHER"
-    | "UNKNOWN";
+    | "UNKNOWN"
+    | "UNCOLLECTIBLE_OR_NON_BILLABLE";
 export const PatientWriteOffReason = {
     SmallBalance: "SMALL_BALANCE",
     CharityOrFinancialAssistance: "CHARITY_OR_FINANCIAL_ASSISTANCE",
@@ -22,4 +23,5 @@ export const PatientWriteOffReason = {
     CollectionAgency: "COLLECTION_AGENCY",
     Other: "OTHER",
     Unknown: "UNKNOWN",
+    UncollectibleOrNonBillable: "UNCOLLECTIBLE_OR_NON_BILLABLE",
 } as const;

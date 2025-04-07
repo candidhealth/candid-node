@@ -9,8 +9,8 @@ import * as core from "../../../../../../../../core";
 export const AuthorizationUnit: core.serialization.Schema<
     serializers.preEncounter.patients.v1.AuthorizationUnit.Raw,
     CandidApi.preEncounter.patients.v1.AuthorizationUnit
-> = core.serialization.enum_(["VISIT"]);
+> = core.serialization.enum_(["VISIT", "UNIT"]);
 
 export declare namespace AuthorizationUnit {
-    export type Raw = "VISIT";
+    export type Raw = "VISIT" | "UNIT";
 }

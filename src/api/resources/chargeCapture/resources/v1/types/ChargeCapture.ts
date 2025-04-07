@@ -16,4 +16,5 @@ export interface ChargeCapture {
      * This date must be the local date in the timezone where the service occurred.
      */
     dateOfService?: string;
+    updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];
 }

@@ -355,12 +355,15 @@ await client.chargeCaptureBundles.v1.resubmit(CandidApi.ChargeCaptureBundleId("d
 ```typescript
 await client.chargeCaptureBundles.v1.getAll({
     limit: 1,
+    sort: "created_at",
+    sortDirection: "asc",
     pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
     patientExternalId: "string",
     bundleStatus: "in-progress",
     chargeStatus: "planned",
     chargeExternalId: "string",
     dateOfService: "2023-01-15",
+    hasChargeCaptureUpdates: true,
 });
 ```
 
@@ -627,6 +630,8 @@ await client.chargeCapture.v1.get(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-
 ```typescript
 await client.chargeCapture.v1.getAll({
     limit: 1,
+    sort: "created_at",
+    sortDirection: "asc",
     pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
     patientExternalId: "string",
     status: "planned",

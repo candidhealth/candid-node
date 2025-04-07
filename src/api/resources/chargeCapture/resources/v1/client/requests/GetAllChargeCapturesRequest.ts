@@ -8,6 +8,8 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         limit: 1,
+ *         sort: "created_at",
+ *         sortDirection: "asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         patientExternalId: "string",
  *         status: "planned",
@@ -21,6 +23,14 @@ export interface GetAllChargeCapturesRequest {
      * Maximum number of entities per page, defaults to 100.
      */
     limit?: number;
+    /**
+     * Defaults to created_at
+     */
+    sort?: CandidApi.chargeCapture.v1.ChargeCaptureSortField;
+    /**
+     * Sort direction. Defaults to descending order if not provided.
+     */
+    sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
     /**
      * The patient ID from the external EMR platform for the patient

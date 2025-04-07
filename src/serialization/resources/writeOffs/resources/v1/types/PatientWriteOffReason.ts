@@ -19,6 +19,7 @@ export const PatientWriteOffReason: core.serialization.Schema<
     "COLLECTION_AGENCY",
     "OTHER",
     "UNKNOWN",
+    "UNCOLLECTIBLE_OR_NON_BILLABLE",
 ]);
 
 export declare namespace PatientWriteOffReason {
@@ -31,5 +32,6 @@ export declare namespace PatientWriteOffReason {
         | "BAD_DEBT"
         | "COLLECTION_AGENCY"
         | "OTHER"
-        | "UNKNOWN";
+        | "UNKNOWN"
+        | "UNCOLLECTIBLE_OR_NON_BILLABLE";
 }

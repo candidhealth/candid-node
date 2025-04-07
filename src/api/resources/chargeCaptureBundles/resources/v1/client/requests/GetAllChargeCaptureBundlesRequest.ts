@@ -8,12 +8,15 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         limit: 1,
+ *         sort: "created_at",
+ *         sortDirection: "asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         patientExternalId: "string",
  *         bundleStatus: "in-progress",
  *         chargeStatus: "planned",
  *         chargeExternalId: "string",
- *         dateOfService: "2023-01-15"
+ *         dateOfService: "2023-01-15",
+ *         hasChargeCaptureUpdates: true
  *     }
  */
 export interface GetAllChargeCaptureBundlesRequest {
@@ -21,6 +24,14 @@ export interface GetAllChargeCaptureBundlesRequest {
      * Maximum number of entities per page, defaults to 100.
      */
     limit?: number;
+    /**
+     * Defaults to created_at
+     */
+    sort?: CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleSortField;
+    /**
+     * Sort direction. Defaults to descending order if not provided.
+     */
+    sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
     /**
      * The patient ID from the external EMR platform for the patient
@@ -45,4 +56,8 @@ export interface GetAllChargeCaptureBundlesRequest {
      * This date must be the local date in the timezone where the service occurred.
      */
     dateOfService?: string;
+    /**
+     * If true, only return bundles that have charge captures that have been updated since the bundle has had a status of BILLED. See the updates property on ChargeCapture for more details.
+     */
+    hasChargeCaptureUpdates?: boolean;
 }

@@ -1,6 +1,7 @@
 export * from "./EncounterId";
 export * from "./ChargeCaptureId";
 export * from "./ChargeCaptureBundleId";
+export * from "./ChargeCapturePostBilledChangeId";
 export * from "./OrganizationId";
 export * from "./ClaimId";
 export * from "./PreEncounterPatientId";

@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -139,8 +139,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -194,12 +194,15 @@ export class V1 {
      * @example
      *     await client.chargeCaptureBundles.v1.getAll({
      *         limit: 1,
+     *         sort: "created_at",
+     *         sortDirection: "asc",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         patientExternalId: "string",
      *         bundleStatus: "in-progress",
      *         chargeStatus: "planned",
      *         chargeExternalId: "string",
-     *         dateOfService: "2023-01-15"
+     *         dateOfService: "2023-01-15",
+     *         hasChargeCaptureUpdates: true
      *     })
      */
     public async getAll(
@@ -211,11 +214,33 @@ export class V1 {
             CandidApi.chargeCaptureBundles.v1.getAll.Error
         >
     > {
-        const { limit, pageToken, patientExternalId, bundleStatus, chargeStatus, chargeExternalId, dateOfService } =
-            request;
+        const {
+            limit,
+            sort,
+            sortDirection,
+            pageToken,
+            patientExternalId,
+            bundleStatus,
+            chargeStatus,
+            chargeExternalId,
+            dateOfService,
+            hasChargeCaptureUpdates,
+        } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
+        }
+
+        if (sort != null) {
+            _queryParams["sort"] = serializers.chargeCaptureBundles.v1.ChargeCaptureBundleSortField.jsonOrThrow(sort, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (sortDirection != null) {
+            _queryParams["sort_direction"] = serializers.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
         }
 
         if (pageToken != null) {
@@ -247,6 +272,10 @@ export class V1 {
             _queryParams["date_of_service"] = dateOfService;
         }
 
+        if (hasChargeCaptureUpdates != null) {
+            _queryParams["has_charge_capture_updates"] = hasChargeCaptureUpdates.toString();
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -261,8 +290,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.1",
-                "User-Agent": "candidhealth/0.40.1",
+                "X-Fern-SDK-Version": "0.40.2",
+                "User-Agent": "candidhealth/0.40.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
