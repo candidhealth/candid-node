@@ -37,7 +37,7 @@ export class V2 {
      *
      * @example
      *     await client.serviceLines.v2.create({
-     *         modifiers: ["22"],
+     *         modifiers: ["AV"],
      *         chargeAmountCents: 1,
      *         diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -105,8 +105,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.2",
-                "User-Agent": "candidhealth/0.40.2",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -164,7 +164,7 @@ export class V2 {
      * @example
      *     await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         editReason: "string",
-     *         modifiers: ["22"],
+     *         modifiers: ["AV"],
      *         chargeAmountCents: 1,
      *         diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -217,8 +217,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.2",
-                "User-Agent": "candidhealth/0.40.2",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -295,8 +295,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.2",
-                "User-Agent": "candidhealth/0.40.2",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

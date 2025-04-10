@@ -4,6 +4,15 @@
 
 export type ProcedureModifier =
     /**
+     * Ambulance service provided as a volunteer ambulance service organization as defined by the state */
+    | "AV"
+    /**
+     * Item furnished in conjunction with a urological, ostomy, or tracheostomy supply */
+    | "AU"
+    /**
+     * Item furnished in conjunction with dialysis services */
+    | "AW"
+    /**
      * Increased Procedural Services */
     | "22"
     /**
@@ -1186,6 +1195,9 @@ export type ProcedureModifier =
      * The use of a service that is distinct because it does not overlap usual components of the main service */
     | "XU";
 export const ProcedureModifier = {
+    Av: "AV",
+    Au: "AU",
+    Aw: "AW",
     TwentyTwo: "22",
     TwentyThree: "23",
     TwentyFour: "24",

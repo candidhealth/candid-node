@@ -292,6 +292,46 @@ await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureBundleId("d5e9c8
 </dl>
 </details>
 
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">getSummary</a>() -> core.APIResponse<CandidApi.ChargeCaptureBundleSummary, CandidApi.chargeCaptureBundles.v1.getSummary.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCaptureBundles.v1.getSummary();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">resubmit</a>(chargeCaptureBundleId) -> core.APIResponse<CandidApi.ChargeCaptureBundle, CandidApi.chargeCaptureBundles.v1.resubmit.Error></code></summary>
 <dl>
 <dd>
@@ -359,7 +399,7 @@ await client.chargeCaptureBundles.v1.getAll({
     sortDirection: "asc",
     pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
     patientExternalId: "string",
-    bundleStatus: "in-progress",
+    bundleStatus: "not-started",
     chargeStatus: "planned",
     chargeExternalId: "string",
     dateOfService: "2023-01-15",
@@ -637,6 +677,7 @@ await client.chargeCapture.v1.getAll({
     status: "planned",
     chargeExternalId: "string",
     dateOfService: "2023-01-15",
+    bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     excludeBundled: true,
 });
 ```
@@ -4117,7 +4158,7 @@ await client.feeSchedules.v3.getMulti({
     networkTypes: "12",
     payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     cptCode: "string",
-    modifiers: "22",
+    modifiers: "AV",
 });
 ```
 
@@ -4194,7 +4235,7 @@ await client.feeSchedules.v3.getUniqueValuesForDimension({
     networkTypes: "12",
     payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     cptCode: "string",
-    modifiers: "22",
+    modifiers: "AV",
 });
 ```
 
@@ -4336,7 +4377,7 @@ await client.feeSchedules.v3.uploadFeeSchedule({
                 networkTypes: new Set(["12"]),
                 payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
                 cptCode: "string",
-                modifiers: new Set(["22"]),
+                modifiers: new Set(["AV"]),
             },
             entries: [
                 {
@@ -5563,230 +5604,6 @@ await client.insurancePayments.v1.get(CandidApi.InsurancePaymentId("d5e9c84f-c2b
 </dl>
 </details>
 
-<details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.InsurancePayment, CandidApi.insurancePayments.v1.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a new insurance payment record and returns the newly created `InsurancePayment` object. This endpoint
-should only be used for insurance payments that do not have a corresponding ERA (for example: a settlement check
-from a payer). If the payment is an ERA, then you should used the insurance-adjudications API.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.insurancePayments.v1.create({
-    payerIdentifier: {
-        type: "payer_info",
-    },
-    amountCents: 1,
-    paymentTimestamp: "2024-01-15T09:30:00Z",
-    paymentNote: "string",
-    allocations: [
-        {
-            amountCents: 1,
-            target: {
-                type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.InsurancePaymentCreate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">update</a>(insurancePaymentId, { ...params }) -> core.APIResponse<CandidApi.InsurancePayment, CandidApi.insurancePayments.v1.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates the patient payment record matching the provided insurance_payment_id. If updating the payment amount,
-then the allocations must be appropriately updated as well.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.insurancePayments.v1.update(CandidApi.InsurancePaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    paymentTimestamp: "2024-01-15T09:30:00Z",
-    paymentNote: {
-        type: "set",
-        value: "string",
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**insurancePaymentId:** `CandidApi.InsurancePaymentId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.insurancePayments.v1.InsurancePaymentUpdate`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">delete</a>(insurancePaymentId) -> core.APIResponse<void, CandidApi.insurancePayments.v1.delete.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deletes the insurance payment record matching the provided `insurance_payment_id`.
-If the matching record's organization_id does not match the authenticated user's
-current organization_id, then a response code of `403` will be returned.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.insurancePayments.v1.delete(CandidApi.InsurancePaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**insurancePaymentId:** `CandidApi.InsurancePaymentId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## InsuranceRefunds V1
 
 <details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.InsuranceRefundsPage, CandidApi.insuranceRefunds.v1.getMulti.Error></code></summary>
@@ -6188,7 +6005,7 @@ await client.medicationDispense.v1.create({
         drugDescription: "string",
     },
     description: "string",
-    modifiers: ["22"],
+    modifiers: ["AV"],
 });
 ```
 
@@ -8718,7 +8535,7 @@ await client.payers.v3.getAll({
 
 ```typescript
 await client.serviceLines.v2.create({
-    modifiers: ["22"],
+    modifiers: ["AV"],
     chargeAmountCents: 1,
     diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -8818,7 +8635,7 @@ await client.serviceLines.v2.create({
 ```typescript
 await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
     editReason: "string",
-    modifiers: ["22"],
+    modifiers: ["AV"],
     chargeAmountCents: 1,
     diagnosisIdZero: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     diagnosisIdOne: CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),

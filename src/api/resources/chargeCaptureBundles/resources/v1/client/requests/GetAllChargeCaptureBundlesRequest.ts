@@ -12,7 +12,7 @@ import * as CandidApi from "../../../../../../index";
  *         sortDirection: "asc",
  *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
  *         patientExternalId: "string",
- *         bundleStatus: "in-progress",
+ *         bundleStatus: "not-started",
  *         chargeStatus: "planned",
  *         chargeExternalId: "string",
  *         dateOfService: "2023-01-15",

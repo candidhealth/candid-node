@@ -15,6 +15,7 @@ import * as CandidApi from "../../../../../../index";
  *         status: "planned",
  *         chargeExternalId: "string",
  *         dateOfService: "2023-01-15",
+ *         bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         excludeBundled: true
  *     }
  */
@@ -51,6 +52,10 @@ export interface GetAllChargeCapturesRequest {
      * This date must be the local date in the timezone where the service occurred.
      */
     dateOfService?: string;
+    /**
+     * The ID of the charge capture bundle to which this charge capture belongs.
+     */
+    bundleId?: CandidApi.ChargeCaptureBundleId;
     /**
      * Whether to exclude charge captures which are associated with a charge capture bundle.
      */

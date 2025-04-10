@@ -20,7 +20,7 @@ import * as CandidApi from "../../../../../../index";
  *                     networkTypes: new Set(["12"]),
  *                     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
  *                     cptCode: "string",
- *                     modifiers: new Set(["22"])
+ *                     modifiers: new Set(["AV"])
  *                 },
  *                 entries: [{
  *                         startDate: "2024-04-11",

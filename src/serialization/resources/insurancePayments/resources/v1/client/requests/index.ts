@@ -1,1 +1,0 @@
-export { InsurancePaymentUpdate } from "./InsurancePaymentUpdate";

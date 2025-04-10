@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const ChargeCaptureBundleStatus: core.serialization.Schema<
     serializers.chargeCaptureBundles.v1.ChargeCaptureBundleStatus.Raw,
     CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleStatus
-> = core.serialization.enum_(["in-progress", "in-error", "successful", "aborted"]);
+> = core.serialization.enum_(["not-started", "in-progress", "in-error", "successful", "successful-dry-run", "aborted"]);
 
 export declare namespace ChargeCaptureBundleStatus {
-    export type Raw = "in-progress" | "in-error" | "successful" | "aborted";
+    export type Raw = "not-started" | "in-progress" | "in-error" | "successful" | "successful-dry-run" | "aborted";
 }

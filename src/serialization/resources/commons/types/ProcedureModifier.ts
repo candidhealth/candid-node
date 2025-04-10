@@ -10,6 +10,9 @@ export const ProcedureModifier: core.serialization.Schema<
     serializers.ProcedureModifier.Raw,
     CandidApi.ProcedureModifier
 > = core.serialization.enum_([
+    "AV",
+    "AU",
+    "AW",
     "22",
     "23",
     "24",
@@ -408,6 +411,9 @@ export const ProcedureModifier: core.serialization.Schema<
 
 export declare namespace ProcedureModifier {
     export type Raw =
+        | "AV"
+        | "AU"
+        | "AW"
         | "22"
         | "23"
         | "24"

@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.2",
-                "User-Agent": "candidhealth/0.40.2",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -110,6 +110,64 @@ export class V1 {
     }
 
     /**
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.chargeCaptureBundles.v1.getSummary()
+     */
+    public async getSummary(
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleSummary,
+            CandidApi.chargeCaptureBundles.v1.getSummary.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/charge_capture_bundle/v1/summary",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundleSummary.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.chargeCaptureBundles.v1.getSummary.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * @param {CandidApi.ChargeCaptureBundleId} chargeCaptureBundleId
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -139,8 +197,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.2",
-                "User-Agent": "candidhealth/0.40.2",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -198,7 +256,7 @@ export class V1 {
      *         sortDirection: "asc",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         patientExternalId: "string",
-     *         bundleStatus: "in-progress",
+     *         bundleStatus: "not-started",
      *         chargeStatus: "planned",
      *         chargeExternalId: "string",
      *         dateOfService: "2023-01-15",
@@ -290,8 +348,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.2",
-                "User-Agent": "candidhealth/0.40.2",
+                "X-Fern-SDK-Version": "0.40.3",
+                "User-Agent": "candidhealth/0.40.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
