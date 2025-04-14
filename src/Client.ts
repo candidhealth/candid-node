@@ -32,6 +32,7 @@ import { OrganizationServiceFacilities } from "./api/resources/organizationServi
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
 import { PatientPayments } from "./api/resources/patientPayments/client/Client";
 import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
+import { PayerPlanGroups } from "./api/resources/payerPlanGroups/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
 import { ServiceLines } from "./api/resources/serviceLines/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
@@ -90,6 +91,7 @@ export class CandidApiClient {
     protected _organizationProviders: OrganizationProviders | undefined;
     protected _patientPayments: PatientPayments | undefined;
     protected _patientRefunds: PatientRefunds | undefined;
+    protected _payerPlanGroups: PayerPlanGroups | undefined;
     protected _payers: Payers | undefined;
     protected _serviceLines: ServiceLines | undefined;
     protected _tasks: Tasks | undefined;
@@ -292,6 +294,13 @@ export class CandidApiClient {
 
     public get patientRefunds(): PatientRefunds {
         return (this._patientRefunds ??= new PatientRefunds({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    public get payerPlanGroups(): PayerPlanGroups {
+        return (this._payerPlanGroups ??= new PayerPlanGroups({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

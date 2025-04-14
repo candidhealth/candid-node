@@ -30,6 +30,7 @@ export * as organizationServiceFacilities from "./organizationServiceFacilities"
 export * as organizationProviders from "./organizationProviders";
 export * as patientPayments from "./patientPayments";
 export * as patientRefunds from "./patientRefunds";
+export * as payerPlanGroups from "./payerPlanGroups";
 export * as payers from "./payers";
 export * as remitDrafts from "./remitDrafts";
 export * as remits from "./remits";
