@@ -9,7 +9,7 @@ import { ChargeCaptureBundleId } from "../../../../commons/types/ChargeCaptureBu
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { ChargeCaptureBundleStatus } from "./ChargeCaptureBundleStatus";
 import { ChargeCapture } from "../../../../chargeCapture/resources/v1/types/ChargeCapture";
-import { ChargeBundleError } from "./ChargeBundleError";
+import { ChargeCaptureError } from "../../../../chargeCapture/resources/v1/types/ChargeCaptureError";
 
 export const ChargeCaptureBundle: core.serialization.ObjectSchema<
     serializers.chargeCaptureBundles.v1.ChargeCaptureBundle.Raw,
@@ -19,7 +19,7 @@ export const ChargeCaptureBundle: core.serialization.ObjectSchema<
     createdEncounterId: core.serialization.property("created_encounter_id", EncounterId.optional()),
     status: ChargeCaptureBundleStatus,
     chargeCaptures: core.serialization.property("charge_captures", core.serialization.list(ChargeCapture)),
-    errors: core.serialization.list(ChargeBundleError),
+    errors: core.serialization.list(ChargeCaptureError),
 });
 
 export declare namespace ChargeCaptureBundle {
@@ -28,6 +28,6 @@ export declare namespace ChargeCaptureBundle {
         created_encounter_id?: EncounterId.Raw | null;
         status: ChargeCaptureBundleStatus.Raw;
         charge_captures: ChargeCapture.Raw[];
-        errors: ChargeBundleError.Raw[];
+        errors: ChargeCaptureError.Raw[];
     }
 }

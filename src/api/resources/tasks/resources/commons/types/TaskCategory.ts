@@ -43,7 +43,8 @@ export type TaskCategory =
     | "missing_claims_enrollment"
     | "held_by_customer"
     | "pending_manual_remit_posting"
-    | "incorrect_referring_provider_info";
+    | "incorrect_referring_provider_info"
+    | "payer_configuration_error";
 export const TaskCategory = {
     Other: "other",
     ProviderCredentialing: "provider_credentialing",
@@ -86,4 +87,5 @@ export const TaskCategory = {
     HeldByCustomer: "held_by_customer",
     PendingManualRemitPosting: "pending_manual_remit_posting",
     IncorrectReferringProviderInfo: "incorrect_referring_provider_info",
+    PayerConfigurationError: "payer_configuration_error",
 } as const;

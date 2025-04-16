@@ -49,6 +49,7 @@ export const TaskCategory: core.serialization.Schema<serializers.tasks.TaskCateg
         "held_by_customer",
         "pending_manual_remit_posting",
         "incorrect_referring_provider_info",
+        "payer_configuration_error",
     ]);
 
 export declare namespace TaskCategory {
@@ -93,5 +94,6 @@ export declare namespace TaskCategory {
         | "missing_claims_enrollment"
         | "held_by_customer"
         | "pending_manual_remit_posting"
-        | "incorrect_referring_provider_info";
+        | "incorrect_referring_provider_info"
+        | "payer_configuration_error";
 }

@@ -63,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -143,8 +143,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -221,8 +221,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -301,8 +301,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -428,8 +428,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -456,6 +456,94 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.chargeCapture.v1.getAll.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.ChargeCapturePostBilledChangeId} chargeCaptureChangeId
+     * @param {CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.chargeCapture.v1.updatePostBilledChange(CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         resolved: true
+     *     })
+     */
+    public async updatePostBilledChange(
+        chargeCaptureChangeId: CandidApi.ChargeCapturePostBilledChangeId,
+        request: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange,
+            CandidApi.chargeCapture.v1.updatePostBilledChange.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/charge_captures/v1/changes/${encodeURIComponent(serializers.ChargeCapturePostBilledChangeId.jsonOrThrow(chargeCaptureChangeId))}`,
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.chargeCapture.v1.ChargeCapturePostBilledChange.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.chargeCapture.v1.updatePostBilledChange.Error.Raw)?.errorName
+            ) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.chargeCapture.v1.updatePostBilledChange.Error.parseOrThrow(
+                            _response.error.body as serializers.chargeCapture.v1.updatePostBilledChange.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._unknown(_response.error),
         };
     }
 

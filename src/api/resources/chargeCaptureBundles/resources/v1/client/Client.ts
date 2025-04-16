@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -83,24 +83,6 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.chargeCaptureBundles.v1.get.Error.Raw)?.errorName) {
-                case "NotImplementedError":
-                    return {
-                        ok: false,
-                        error: serializers.chargeCaptureBundles.v1.get.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCaptureBundles.v1.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
         }
 
         return {
@@ -130,15 +112,15 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                "/api/charge_capture_bundle/v1/summary",
+                "/api/charge_capture_bundle/v1/all/summary",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -197,8 +179,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -348,8 +330,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.40.4",
-                "User-Agent": "candidhealth/0.40.4",
+                "X-Fern-SDK-Version": "0.41.0",
+                "User-Agent": "candidhealth/0.41.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -371,24 +353,6 @@ export class V1 {
                     breadcrumbsPrefix: ["response"],
                 }),
             };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.chargeCaptureBundles.v1.getAll.Error.Raw)?.errorName) {
-                case "NotImplementedError":
-                    return {
-                        ok: false,
-                        error: serializers.chargeCaptureBundles.v1.getAll.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCaptureBundles.v1.getAll.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
         }
 
         return {

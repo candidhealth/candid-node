@@ -714,6 +714,67 @@ await client.chargeCapture.v1.getAll({
 </dl>
 </details>
 
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">updatePostBilledChange</a>(chargeCaptureChangeId, { ...params }) -> core.APIResponse<CandidApi.ChargeCapturePostBilledChange, CandidApi.chargeCapture.v1.updatePostBilledChange.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCapture.v1.updatePostBilledChange(
+    CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        resolved: true,
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**chargeCaptureChangeId:** `CandidApi.ChargeCapturePostBilledChangeId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Contracts V2
 
 <details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">get</a>(contractId) -> core.APIResponse<CandidApi.ContractWithProviders, CandidApi.contracts.v2.get.Error></code></summary>

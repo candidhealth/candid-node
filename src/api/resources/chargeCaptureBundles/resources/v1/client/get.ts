@@ -5,16 +5,9 @@
 import * as CandidApi from "../../../../../index";
 import * as core from "../../../../../../core";
 
-export type Error =
-    | CandidApi.chargeCaptureBundles.v1.get.Error.NotImplementedError
-    | CandidApi.chargeCaptureBundles.v1.get.Error._Unknown;
+export type Error = CandidApi.chargeCaptureBundles.v1.get.Error._Unknown;
 
 export namespace Error {
-    export interface NotImplementedError extends _Utils {
-        errorName: "NotImplementedError";
-        content: CandidApi.NotImplementedErrorMessage;
-    }
-
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -25,27 +18,11 @@ export namespace Error {
     }
 
     export interface _Visitor<_Result> {
-        notImplementedError: (value: CandidApi.NotImplementedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
-    notImplementedError: (
-        value: CandidApi.NotImplementedErrorMessage,
-    ): CandidApi.chargeCaptureBundles.v1.get.Error.NotImplementedError => {
-        return {
-            content: value,
-            errorName: "NotImplementedError",
-            _visit: function <_Result>(
-                this: CandidApi.chargeCaptureBundles.v1.get.Error.NotImplementedError,
-                visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>,
-            ) {
-                return CandidApi.chargeCaptureBundles.v1.get.Error._visit(this, visitor);
-            },
-        };
-    },
-
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.chargeCaptureBundles.v1.get.Error._Unknown => {
         return {
             errorName: undefined,
@@ -64,8 +41,6 @@ export const Error = {
         visitor: CandidApi.chargeCaptureBundles.v1.get.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
-            case "NotImplementedError":
-                return visitor.notImplementedError(value.content);
             default:
                 return visitor._other(value as any);
         }

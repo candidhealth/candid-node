@@ -8,9 +8,9 @@ import * as core from "../../../../../../core";
 import { ChargeCaptureId } from "../../../../commons/types/ChargeCaptureId";
 import { ChargeCaptureBundleId } from "../../../../commons/types/ChargeCaptureBundleId";
 
-export const ChargeBundleError: core.serialization.ObjectSchema<
-    serializers.chargeCaptureBundles.v1.ChargeBundleError.Raw,
-    CandidApi.chargeCaptureBundles.v1.ChargeBundleError
+export const ChargeCaptureError: core.serialization.ObjectSchema<
+    serializers.chargeCapture.v1.ChargeCaptureError.Raw,
+    CandidApi.chargeCapture.v1.ChargeCaptureError
 > = core.serialization.object({
     id: core.serialization.string(),
     chargeCaptureId: core.serialization.property("charge_capture_id", ChargeCaptureId.optional()),
@@ -19,7 +19,7 @@ export const ChargeBundleError: core.serialization.ObjectSchema<
     bundleId: core.serialization.property("bundle_id", ChargeCaptureBundleId),
 });
 
-export declare namespace ChargeBundleError {
+export declare namespace ChargeCaptureError {
     export interface Raw {
         id: string;
         charge_capture_id?: ChargeCaptureId.Raw | null;

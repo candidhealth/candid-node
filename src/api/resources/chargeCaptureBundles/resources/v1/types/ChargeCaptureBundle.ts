@@ -15,5 +15,5 @@ export interface ChargeCaptureBundle {
      * All errors that were found when the bundle was attempted to be created.
      * Errors can correspond to the Bundle as a whole or specific underlying Charge Captures.
      */
-    errors: CandidApi.chargeCaptureBundles.v1.ChargeBundleError[];
+    errors: CandidApi.chargeCapture.v1.ChargeCaptureError[];
 }

@@ -4,7 +4,7 @@
 
 import * as CandidApi from "../../../../../index";
 
-export interface ChargeBundleError {
+export interface ChargeCaptureError {
     id: string;
     /**
      * The underlying Charge Capture that this error object references.
