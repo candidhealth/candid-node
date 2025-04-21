@@ -10964,6 +10964,85 @@ await client.preEncounter.coverages.v1.scan({
 </dl>
 </details>
 
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">batchUpdatePpg</a>(ppgId, { ...params }) -> core.APIResponse<void, CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Finds all coverages associated with the given ppg_id and updates the ppg_fields for each coverage.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.coverages.v1.batchUpdatePpg(
+    CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        payerId: CandidApi.PayerId("string"),
+        payerName: "string",
+        planType: "09",
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**ppgId:** `CandidApi.PayerPlanGroupId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.PayerPlanGroupFields`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">checkEligibility</a>(id, { ...params }) -> core.APIResponse<CandidApi.EligibilityCheckMetadata, CandidApi.preEncounter.coverages.v1.checkEligibility.Error></code></summary>
 <dl>
 <dd>
@@ -12058,6 +12137,7 @@ await client.preEncounter.patients.v1.create({
         socialSecurityNumber: "string",
         biologicalSex: "FEMALE",
         sexualOrientation: "HETEROSEXUAL",
+        pronouns: ["string"],
         race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
         ethnicity: "HISPANIC_OR_LATINO",
         disabilityStatus: "DISABLED",
@@ -12329,6 +12409,7 @@ await client.preEncounter.patients.v1.createWithMrn({
         socialSecurityNumber: "string",
         biologicalSex: "FEMALE",
         sexualOrientation: "HETEROSEXUAL",
+        pronouns: ["string"],
         race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
         ethnicity: "HISPANIC_OR_LATINO",
         disabilityStatus: "DISABLED",
@@ -12857,6 +12938,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("string"), "str
     socialSecurityNumber: "string",
     biologicalSex: "FEMALE",
     sexualOrientation: "HETEROSEXUAL",
+    pronouns: ["string"],
     race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
     ethnicity: "HISPANIC_OR_LATINO",
     disabilityStatus: "DISABLED",

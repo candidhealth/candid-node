@@ -33,6 +33,7 @@ import * as CandidApi from "../../../../../../../../index";
  *             socialSecurityNumber: "string",
  *             biologicalSex: "FEMALE",
  *             sexualOrientation: "HETEROSEXUAL",
+ *             pronouns: ["string"],
  *             race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
  *             ethnicity: "HISPANIC_OR_LATINO",
  *             disabilityStatus: "DISABLED",

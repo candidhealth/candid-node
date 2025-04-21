@@ -20,6 +20,8 @@ export interface MutablePatient {
     biologicalSex: CandidApi.preEncounter.Sex;
     /** The sexual orientation of the patient. */
     sexualOrientation?: CandidApi.preEncounter.SexualOrientation;
+    /** The pronouns of the patient. */
+    pronouns?: string[];
     race?: CandidApi.preEncounter.Race;
     ethnicity?: CandidApi.preEncounter.Ethnicity;
     disabilityStatus?: CandidApi.preEncounter.DisabilityStatus;

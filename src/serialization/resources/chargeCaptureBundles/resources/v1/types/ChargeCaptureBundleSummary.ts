@@ -14,6 +14,10 @@ export const ChargeCaptureBundleSummary: core.serialization.ObjectSchema<
         "charge_capture_unbundled_count",
         core.serialization.number(),
     ),
+    chargeCaptureBundlesNotStartedCount: core.serialization.property(
+        "charge_capture_bundles_not_started_count",
+        core.serialization.number(),
+    ),
     chargeCaptureBundlesInErrorCount: core.serialization.property(
         "charge_capture_bundles_in_error_count",
         core.serialization.number(),
@@ -27,6 +31,7 @@ export const ChargeCaptureBundleSummary: core.serialization.ObjectSchema<
 export declare namespace ChargeCaptureBundleSummary {
     export interface Raw {
         charge_capture_unbundled_count: number;
+        charge_capture_bundles_not_started_count: number;
         charge_capture_bundles_in_error_count: number;
         charge_capture_unresolved_change_count: number;
     }

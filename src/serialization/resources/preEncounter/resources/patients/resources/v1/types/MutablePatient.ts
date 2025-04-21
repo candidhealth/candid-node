@@ -44,6 +44,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
     socialSecurityNumber: core.serialization.property("social_security_number", core.serialization.string().optional()),
     biologicalSex: core.serialization.property("biological_sex", Sex),
     sexualOrientation: core.serialization.property("sexual_orientation", SexualOrientation.optional()),
+    pronouns: core.serialization.list(core.serialization.string()).optional(),
     race: Race.optional(),
     ethnicity: Ethnicity.optional(),
     disabilityStatus: core.serialization.property("disability_status", DisabilityStatus.optional()),
@@ -99,6 +100,7 @@ export declare namespace MutablePatient {
         social_security_number?: string | null;
         biological_sex: Sex.Raw;
         sexual_orientation?: SexualOrientation.Raw | null;
+        pronouns?: string[] | null;
         race?: Race.Raw | null;
         ethnicity?: Ethnicity.Raw | null;
         disability_status?: DisabilityStatus.Raw | null;
