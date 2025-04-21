@@ -18,4 +18,5 @@ export interface ChargeCapture {
     dateOfService?: string;
     error?: CandidApi.chargeCapture.v1.ChargeCaptureError;
     updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];
+    bundleId?: CandidApi.ChargeCaptureBundleId;
 }

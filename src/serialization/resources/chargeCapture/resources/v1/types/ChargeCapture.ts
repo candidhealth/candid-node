@@ -11,6 +11,7 @@ import { ChargeCaptureData } from "./ChargeCaptureData";
 import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
 import { ChargeCaptureError } from "./ChargeCaptureError";
 import { ChargeCapturePostBilledChange } from "./ChargeCapturePostBilledChange";
+import { ChargeCaptureBundleId } from "../../../../commons/types/ChargeCaptureBundleId";
 
 export const ChargeCapture: core.serialization.ObjectSchema<
     serializers.chargeCapture.v1.ChargeCapture.Raw,
@@ -25,6 +26,7 @@ export const ChargeCapture: core.serialization.ObjectSchema<
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     error: ChargeCaptureError.optional(),
     updates: core.serialization.list(ChargeCapturePostBilledChange),
+    bundleId: core.serialization.property("bundle_id", ChargeCaptureBundleId.optional()),
 });
 
 export declare namespace ChargeCapture {
@@ -38,5 +40,6 @@ export declare namespace ChargeCapture {
         date_of_service?: string | null;
         error?: ChargeCaptureError.Raw | null;
         updates: ChargeCapturePostBilledChange.Raw[];
+        bundle_id?: ChargeCaptureBundleId.Raw | null;
     }
 }
