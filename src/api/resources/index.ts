@@ -33,6 +33,7 @@ export * as payers from "./payers";
 export * as remitDrafts from "./remitDrafts";
 export * as remits from "./remits";
 export * as serviceLines from "./serviceLines";
+export * as superbills from "./superbills";
 export * as tasks from "./tasks";
 export * as writeOffs from "./writeOffs";
 export * as x12 from "./x12";

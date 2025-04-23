@@ -9,6 +9,11 @@ export interface ChargeCaptureBundle {
     createdEncounterId?: CandidApi.EncounterId;
     /** Status of the Bundle, Successful means that the Bundle created a corresponding Claim */
     status: CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleStatus;
+    /**
+     * A dictionary of characteristics that are used to group charge captures together based on the bundling configuration.
+     * Example: {"service_facility.npi": "99999999", "date_of_service": "2023-01-01"}
+     */
+    characteristics: Record<string, string>;
     /** All the underlying ChargeCaptures that are present in a ChargeCaptureBundle. */
     chargeCaptures: CandidApi.chargeCapture.v1.ChargeCapture[];
     /**

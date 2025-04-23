@@ -18,6 +18,7 @@ export const ChargeCaptureBundle: core.serialization.ObjectSchema<
     id: ChargeCaptureBundleId,
     createdEncounterId: core.serialization.property("created_encounter_id", EncounterId.optional()),
     status: ChargeCaptureBundleStatus,
+    characteristics: core.serialization.record(core.serialization.string(), core.serialization.string()),
     chargeCaptures: core.serialization.property("charge_captures", core.serialization.list(ChargeCapture)),
     errors: core.serialization.list(ChargeCaptureError),
 });
@@ -27,6 +28,7 @@ export declare namespace ChargeCaptureBundle {
         id: ChargeCaptureBundleId.Raw;
         created_encounter_id?: EncounterId.Raw | null;
         status: ChargeCaptureBundleStatus.Raw;
+        characteristics: Record<string, string>;
         charge_captures: ChargeCapture.Raw[];
         errors: ChargeCaptureError.Raw[];
     }

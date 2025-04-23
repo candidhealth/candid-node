@@ -35,6 +35,7 @@ import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { PayerPlanGroups } from "./api/resources/payerPlanGroups/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
 import { ServiceLines } from "./api/resources/serviceLines/client/Client";
+import { Superbills } from "./api/resources/superbills/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
 import { WriteOffs } from "./api/resources/writeOffs/client/Client";
 import { PreEncounter } from "./api/resources/preEncounter/client/Client";
@@ -94,6 +95,7 @@ export class CandidApiClient {
     protected _payerPlanGroups: PayerPlanGroups | undefined;
     protected _payers: Payers | undefined;
     protected _serviceLines: ServiceLines | undefined;
+    protected _superbills: Superbills | undefined;
     protected _tasks: Tasks | undefined;
     protected _writeOffs: WriteOffs | undefined;
     protected _preEncounter: PreEncounter | undefined;
@@ -315,6 +317,13 @@ export class CandidApiClient {
 
     public get serviceLines(): ServiceLines {
         return (this._serviceLines ??= new ServiceLines({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    public get superbills(): Superbills {
+        return (this._superbills ??= new Superbills({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

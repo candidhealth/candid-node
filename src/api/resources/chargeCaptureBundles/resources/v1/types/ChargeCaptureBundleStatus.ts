@@ -8,7 +8,10 @@ export type ChargeCaptureBundleStatus =
     | "in-error"
     | "successful"
     | "successful-dry-run"
-    | "aborted";
+    | "aborted"
+    /**
+     * This Bundle has potential charges that are in a planned state, the bundle will be held until those charges are converted */
+    | "held";
 export const ChargeCaptureBundleStatus = {
     NotStarted: "not-started",
     InProgress: "in-progress",
@@ -16,4 +19,5 @@ export const ChargeCaptureBundleStatus = {
     Successful: "successful",
     SuccessfulDryRun: "successful-dry-run",
     Aborted: "aborted",
+    Held: "held",
 } as const;

@@ -9166,6 +9166,68 @@ await client.serviceLines.v2.delete(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 </dl>
 </details>
 
+## Superbills V1
+
+<details><summary><code>client.superbills.v1.<a href="/src/api/resources/superbills/resources/v1/client/Client.ts">createSuperbill</a>({ ...params }) -> core.APIResponse<CandidApi.SuperbillResponse, CandidApi.superbills.v1.createSuperbill.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.superbills.v1.createSuperbill({
+    patientExternalId: CandidApi.PatientExternalId("string"),
+    dateRangeMin: "2023-01-15",
+    dateRangeMax: "2023-01-15",
+    payToAddress: {
+        address1: "123 Main St",
+        address2: "Apt 1",
+        city: "New York",
+        state: "NY",
+        zipCode: "10001",
+        zipPlusFourCode: "1234",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.superbills.v1.CreateSuperbillRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Tasks V3
 
 <details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getActions</a>(taskId) -> core.APIResponse<CandidApi.TaskActions, CandidApi.tasks.v3.getActions.Error></code></summary>
