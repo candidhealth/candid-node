@@ -458,7 +458,6 @@ await client.chargeCapture.v1.create({
     data: {},
     chargeExternalId: "string",
     ehrSourceUrl: "string",
-    dateOfService: "2023-01-15",
     patientExternalId: "string",
     status: "planned",
 });
@@ -563,7 +562,6 @@ await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4b
     ehrSourceUrl: "string",
     patientExternalId: "string",
     status: "planned",
-    dateOfService: "2023-01-15",
 });
 ```
 

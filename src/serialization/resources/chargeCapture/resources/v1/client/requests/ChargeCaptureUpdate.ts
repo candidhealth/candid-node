@@ -17,7 +17,6 @@ export const ChargeCaptureUpdate: core.serialization.Schema<
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
     patientExternalId: core.serialization.property("patient_external_id", core.serialization.string().optional()),
     status: ChargeCaptureStatus.optional(),
-    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
 });
 
 export declare namespace ChargeCaptureUpdate {
@@ -27,6 +26,5 @@ export declare namespace ChargeCaptureUpdate {
         ehr_source_url?: string | null;
         patient_external_id?: string | null;
         status?: ChargeCaptureStatus.Raw | null;
-        date_of_service?: string | null;
     }
 }

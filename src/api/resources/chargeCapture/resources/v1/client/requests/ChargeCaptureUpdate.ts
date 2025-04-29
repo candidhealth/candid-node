@@ -11,8 +11,7 @@ import * as CandidApi from "../../../../../../index";
  *         chargeExternalId: "string",
  *         ehrSourceUrl: "string",
  *         patientExternalId: "string",
- *         status: "planned",
- *         dateOfService: "2023-01-15"
+ *         status: "planned"
  *     }
  */
 export interface ChargeCaptureUpdate {
@@ -34,10 +33,4 @@ export interface ChargeCaptureUpdate {
     patientExternalId?: string;
     /** the status of the charge capture */
     status?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
-    /**
-     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
-     * This date must be the local date in the timezone where the service occurred.
-     *
-     */
-    dateOfService?: string;
 }

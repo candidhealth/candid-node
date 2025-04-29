@@ -11,11 +11,6 @@ export interface ChargeCapture {
     patientExternalId: CandidApi.PatientExternalId;
     chargeExternalId: string;
     ehrSourceUrl?: string;
-    /**
-     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
-     * This date must be the local date in the timezone where the service occurred.
-     */
-    dateOfService?: string;
     error?: CandidApi.chargeCapture.v1.ChargeCaptureError;
     updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];
     bundleId?: CandidApi.ChargeCaptureBundleId;

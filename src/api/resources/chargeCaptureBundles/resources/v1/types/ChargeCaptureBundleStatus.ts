@@ -4,7 +4,6 @@
 
 export type ChargeCaptureBundleStatus =
     | "not-started"
-    | "in-progress"
     | "in-error"
     | "successful"
     | "successful-dry-run"
@@ -14,7 +13,6 @@ export type ChargeCaptureBundleStatus =
     | "held";
 export const ChargeCaptureBundleStatus = {
     NotStarted: "not-started",
-    InProgress: "in-progress",
     InError: "in-error",
     Successful: "successful",
     SuccessfulDryRun: "successful-dry-run",

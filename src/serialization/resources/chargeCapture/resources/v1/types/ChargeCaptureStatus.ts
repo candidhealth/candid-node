@@ -9,16 +9,8 @@ import * as core from "../../../../../../core";
 export const ChargeCaptureStatus: core.serialization.Schema<
     serializers.chargeCapture.v1.ChargeCaptureStatus.Raw,
     CandidApi.chargeCapture.v1.ChargeCaptureStatus
-> = core.serialization.enum_([
-    "planned",
-    "not-billable",
-    "billable",
-    "aborted",
-    "billed",
-    "entered-in-error",
-    "unknown",
-]);
+> = core.serialization.enum_(["planned", "not-billable", "billable", "aborted", "entered-in-error"]);
 
 export declare namespace ChargeCaptureStatus {
-    export type Raw = "planned" | "not-billable" | "billable" | "aborted" | "billed" | "entered-in-error" | "unknown";
+    export type Raw = "planned" | "not-billable" | "billable" | "aborted" | "entered-in-error";
 }
