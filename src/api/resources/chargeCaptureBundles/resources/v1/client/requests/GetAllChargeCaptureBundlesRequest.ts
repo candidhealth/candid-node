@@ -16,6 +16,15 @@ import * as CandidApi from "../../../../../../index";
  *         chargeStatus: "planned",
  *         chargeExternalId: "string",
  *         dateOfService: "2023-01-15",
+ *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         billingProviderNpis: "string",
+ *         serviceFacilityName: "string",
+ *         primaryPayerIds: "string",
+ *         renderingProviderNpis: "string",
+ *         renderingProviderNames: "string",
+ *         supervisingProviderNpis: "string",
+ *         supervisingProviderNames: "string",
  *         hasChargeCaptureUpdates: true
  *     }
  */
@@ -56,6 +65,42 @@ export interface GetAllChargeCaptureBundlesRequest {
      * This date must be the local date in the timezone where the service occurred.
      */
     dateOfService?: string;
+    /**
+     * A list of claim IDs to filter by. This will return all charge capture bundles that have a resulting claim with one of the IDs in this list.
+     */
+    claimIds?: CandidApi.EncounterId | CandidApi.EncounterId[];
+    /**
+     * A list of bundle IDs to filter by.
+     */
+    bundleIds?: CandidApi.ChargeCaptureBundleId | CandidApi.ChargeCaptureBundleId[];
+    /**
+     * A list of billing provider NPIs to filter by. This will return all charge capture bundles which include one or more charges with one of the NPIs in this list.
+     */
+    billingProviderNpis?: string | string[];
+    /**
+     * A string to filter by. This will return all charge capture bundles which include one or more charges with this service facility name.
+     */
+    serviceFacilityName?: string;
+    /**
+     * A list of primary payer IDs to filter by. This will return all charge capture bundles which include one or more charges with one of the primary payer IDs in this list.
+     */
+    primaryPayerIds?: string | string[];
+    /**
+     * A list of rendering provider NPIs to filter by. This will return all charge capture bundles which include one or more charges with one of the NPIs in this list.
+     */
+    renderingProviderNpis?: string | string[];
+    /**
+     * A list of rendering provider names to filter by. This will return all charge capture bundles which include one or more charges with one of the names in this list.
+     */
+    renderingProviderNames?: string | string[];
+    /**
+     * A list of supervising provider NPIs to filter by. This will return all charge capture bundles which include one or more charges with one of the NPIs in this list.
+     */
+    supervisingProviderNpis?: string | string[];
+    /**
+     * A list of supervising provider names to filter by. This will return all charge capture bundles which include one or more charges with one of the names in this list.
+     */
+    supervisingProviderNames?: string | string[];
     /**
      * If true, only return bundles that have charge captures that have been updated since the bundle has had a status of BILLED. See the updates property on ChargeCapture for more details.
      */

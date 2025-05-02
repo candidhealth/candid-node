@@ -10,17 +10,17 @@ export const MemberInfo: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.MemberInfo.Raw,
     CandidApi.preEncounter.coverages.v1.MemberInfo
 > = core.serialization.object({
-    memberId: core.serialization.property("member_id", core.serialization.string()),
+    memberId: core.serialization.property("member_id", core.serialization.string().optional()),
     firstName: core.serialization.property("first_name", core.serialization.string()),
     lastName: core.serialization.property("last_name", core.serialization.string()),
-    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string()),
+    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string().optional()),
 });
 
 export declare namespace MemberInfo {
     export interface Raw {
-        member_id: string;
+        member_id?: string | null;
         first_name: string;
         last_name: string;
-        date_of_birth: string;
+        date_of_birth?: string | null;
     }
 }

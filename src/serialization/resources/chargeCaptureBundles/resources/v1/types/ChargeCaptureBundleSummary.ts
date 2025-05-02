@@ -10,12 +10,16 @@ export const ChargeCaptureBundleSummary: core.serialization.ObjectSchema<
     serializers.chargeCaptureBundles.v1.ChargeCaptureBundleSummary.Raw,
     CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleSummary
 > = core.serialization.object({
-    chargeCaptureUnbundledCount: core.serialization.property(
-        "charge_capture_unbundled_count",
+    chargeCaptureChargesNotLinkedToClaimsCount: core.serialization.property(
+        "charge_capture_charges_not_linked_to_claims_count",
         core.serialization.number(),
     ),
     chargeCaptureBundlesNotStartedCount: core.serialization.property(
         "charge_capture_bundles_not_started_count",
+        core.serialization.number(),
+    ),
+    chargeCaptureHeldBundlesCount: core.serialization.property(
+        "charge_capture_held_bundles_count",
         core.serialization.number(),
     ),
     chargeCaptureBundlesInErrorCount: core.serialization.property(
@@ -30,8 +34,9 @@ export const ChargeCaptureBundleSummary: core.serialization.ObjectSchema<
 
 export declare namespace ChargeCaptureBundleSummary {
     export interface Raw {
-        charge_capture_unbundled_count: number;
+        charge_capture_charges_not_linked_to_claims_count: number;
         charge_capture_bundles_not_started_count: number;
+        charge_capture_held_bundles_count: number;
         charge_capture_bundles_in_error_count: number;
         charge_capture_unresolved_change_count: number;
     }

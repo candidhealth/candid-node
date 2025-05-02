@@ -62,8 +62,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.0",
-                "User-Agent": "candidhealth/0.42.0",
+                "X-Fern-SDK-Version": "0.42.2",
+                "User-Agent": "candidhealth/0.42.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -142,8 +142,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.0",
-                "User-Agent": "candidhealth/0.42.0",
+                "X-Fern-SDK-Version": "0.42.2",
+                "User-Agent": "candidhealth/0.42.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -219,8 +219,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.0",
-                "User-Agent": "candidhealth/0.42.0",
+                "X-Fern-SDK-Version": "0.42.2",
+                "User-Agent": "candidhealth/0.42.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -299,8 +299,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.0",
-                "User-Agent": "candidhealth/0.42.0",
+                "X-Fern-SDK-Version": "0.42.2",
+                "User-Agent": "candidhealth/0.42.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -343,8 +343,17 @@ export class V1 {
      *         status: "planned",
      *         chargeExternalId: "string",
      *         dateOfService: "2023-01-15",
+     *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         excludeBundled: true
+     *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         billingProviderNpis: "string",
+     *         serviceFacilityName: "string",
+     *         primaryPayerIds: "string",
+     *         renderingProviderNpis: "string",
+     *         renderingProviderNames: "string",
+     *         supervisingProviderNpis: "string",
+     *         supervisingProviderNames: "string",
+     *         excludeChargesLinkedToClaims: true
      *     })
      */
     public async getAll(
@@ -362,8 +371,17 @@ export class V1 {
             status,
             chargeExternalId,
             dateOfService,
+            claimIds,
             bundleId,
-            excludeBundled,
+            bundleIds,
+            billingProviderNpis,
+            serviceFacilityName,
+            primaryPayerIds,
+            renderingProviderNpis,
+            renderingProviderNames,
+            supervisingProviderNpis,
+            supervisingProviderNames,
+            excludeChargesLinkedToClaims,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -404,12 +422,84 @@ export class V1 {
             _queryParams["date_of_service"] = dateOfService;
         }
 
+        if (claimIds != null) {
+            if (Array.isArray(claimIds)) {
+                _queryParams["claim_ids"] = claimIds.map((item) =>
+                    serializers.EncounterId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["claim_ids"] = claimIds;
+            }
+        }
+
         if (bundleId != null) {
             _queryParams["bundle_id"] = bundleId;
         }
 
-        if (excludeBundled != null) {
-            _queryParams["exclude_bundled"] = excludeBundled.toString();
+        if (bundleIds != null) {
+            if (Array.isArray(bundleIds)) {
+                _queryParams["bundle_ids"] = bundleIds.map((item) =>
+                    serializers.ChargeCaptureBundleId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["bundle_ids"] = bundleIds;
+            }
+        }
+
+        if (billingProviderNpis != null) {
+            if (Array.isArray(billingProviderNpis)) {
+                _queryParams["billing_provider_npis"] = billingProviderNpis.map((item) => item);
+            } else {
+                _queryParams["billing_provider_npis"] = billingProviderNpis;
+            }
+        }
+
+        if (serviceFacilityName != null) {
+            _queryParams["service_facility_name"] = serviceFacilityName;
+        }
+
+        if (primaryPayerIds != null) {
+            if (Array.isArray(primaryPayerIds)) {
+                _queryParams["primary_payer_ids"] = primaryPayerIds.map((item) => item);
+            } else {
+                _queryParams["primary_payer_ids"] = primaryPayerIds;
+            }
+        }
+
+        if (renderingProviderNpis != null) {
+            if (Array.isArray(renderingProviderNpis)) {
+                _queryParams["rendering_provider_npis"] = renderingProviderNpis.map((item) => item);
+            } else {
+                _queryParams["rendering_provider_npis"] = renderingProviderNpis;
+            }
+        }
+
+        if (renderingProviderNames != null) {
+            if (Array.isArray(renderingProviderNames)) {
+                _queryParams["rendering_provider_names"] = renderingProviderNames.map((item) => item);
+            } else {
+                _queryParams["rendering_provider_names"] = renderingProviderNames;
+            }
+        }
+
+        if (supervisingProviderNpis != null) {
+            if (Array.isArray(supervisingProviderNpis)) {
+                _queryParams["supervising_provider_npis"] = supervisingProviderNpis.map((item) => item);
+            } else {
+                _queryParams["supervising_provider_npis"] = supervisingProviderNpis;
+            }
+        }
+
+        if (supervisingProviderNames != null) {
+            if (Array.isArray(supervisingProviderNames)) {
+                _queryParams["supervising_provider_names"] = supervisingProviderNames.map((item) => item);
+            } else {
+                _queryParams["supervising_provider_names"] = supervisingProviderNames;
+            }
+        }
+
+        if (excludeChargesLinkedToClaims != null) {
+            _queryParams["exclude_charges_linked_to_claims"] = excludeChargesLinkedToClaims.toString();
         }
 
         const _response = await core.fetcher({
@@ -426,8 +516,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.0",
-                "User-Agent": "candidhealth/0.42.0",
+                "X-Fern-SDK-Version": "0.42.2",
+                "User-Agent": "candidhealth/0.42.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -491,8 +581,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.0",
-                "User-Agent": "candidhealth/0.42.0",
+                "X-Fern-SDK-Version": "0.42.2",
+                "User-Agent": "candidhealth/0.42.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

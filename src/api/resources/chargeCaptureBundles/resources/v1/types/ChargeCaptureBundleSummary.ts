@@ -3,10 +3,12 @@
  */
 
 export interface ChargeCaptureBundleSummary {
-    /** The count of charge captures which are not in a bundle or in a bundle with a status other than SUCCESSFUL. */
-    chargeCaptureUnbundledCount: number;
+    /** The count of charge captures which are not part of a bundle with a created claim. */
+    chargeCaptureChargesNotLinkedToClaimsCount: number;
     /** The count of charge capture bundles that have a bundle status of NOT_STARTED. */
     chargeCaptureBundlesNotStartedCount: number;
+    /** The count of charge capture bundles that have a bundle status of HELD. */
+    chargeCaptureHeldBundlesCount: number;
     /** The count of charge capture bundles that have a bundle status of IN_ERROR. */
     chargeCaptureBundlesInErrorCount: number;
     /** The number of ChargeCapturePostBilledChange items that are unresolved. */

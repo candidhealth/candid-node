@@ -403,6 +403,15 @@ await client.chargeCaptureBundles.v1.getAll({
     chargeStatus: "planned",
     chargeExternalId: "string",
     dateOfService: "2023-01-15",
+    claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    billingProviderNpis: "string",
+    serviceFacilityName: "string",
+    primaryPayerIds: "string",
+    renderingProviderNpis: "string",
+    renderingProviderNames: "string",
+    supervisingProviderNpis: "string",
+    supervisingProviderNames: "string",
     hasChargeCaptureUpdates: true,
 });
 ```
@@ -675,8 +684,17 @@ await client.chargeCapture.v1.getAll({
     status: "planned",
     chargeExternalId: "string",
     dateOfService: "2023-01-15",
+    claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    excludeBundled: true,
+    bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    billingProviderNpis: "string",
+    serviceFacilityName: "string",
+    primaryPayerIds: "string",
+    renderingProviderNpis: "string",
+    renderingProviderNames: "string",
+    supervisingProviderNpis: "string",
+    supervisingProviderNames: "string",
+    excludeChargesLinkedToClaims: true,
 });
 ```
 

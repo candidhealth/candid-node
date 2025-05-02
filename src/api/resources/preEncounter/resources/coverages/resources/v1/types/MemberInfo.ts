@@ -3,8 +3,18 @@
  */
 
 export interface MemberInfo {
-    memberId: string;
+    /**
+     * Stedi requires that you supply at least one of these fields in the request: memberId, dateOfBirth, or lastName.
+     * However, each payer has different requirements, so you should supply as many of the fields necessary for each payer
+     * to identify the subscriber/dependent in their system.
+     */
+    memberId?: string;
     firstName: string;
     lastName: string;
-    dateOfBirth: string;
+    /**
+     * Stedi requires that you supply at least one of these fields in the request: memberId, dateOfBirth, or lastName.
+     * However, each payer has different requirements, so you should supply as many of the fields necessary for each payer
+     * to identify the subscriber/dependent in their system.
+     */
+    dateOfBirth?: string;
 }

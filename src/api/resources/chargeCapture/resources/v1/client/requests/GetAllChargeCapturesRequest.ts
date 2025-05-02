@@ -15,8 +15,17 @@ import * as CandidApi from "../../../../../../index";
  *         status: "planned",
  *         chargeExternalId: "string",
  *         dateOfService: "2023-01-15",
+ *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         excludeBundled: true
+ *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         billingProviderNpis: "string",
+ *         serviceFacilityName: "string",
+ *         primaryPayerIds: "string",
+ *         renderingProviderNpis: "string",
+ *         renderingProviderNames: "string",
+ *         supervisingProviderNpis: "string",
+ *         supervisingProviderNames: "string",
+ *         excludeChargesLinkedToClaims: true
  *     }
  */
 export interface GetAllChargeCapturesRequest {
@@ -53,11 +62,47 @@ export interface GetAllChargeCapturesRequest {
      */
     dateOfService?: string;
     /**
-     * The ID of the charge capture bundle to which this charge capture belongs.
+     * A list of claim IDs to filter by. This will return all charge captures that have a resulting claim with one of the IDs in this list.
+     */
+    claimIds?: CandidApi.EncounterId | CandidApi.EncounterId[];
+    /**
+     * A list of bundle IDs to filter by. Use `bundle_ids` instead.
      */
     bundleId?: CandidApi.ChargeCaptureBundleId;
     /**
-     * Whether to exclude charge captures which are associated with a charge capture bundle.
+     * A list of bundle IDs to filter by.
      */
-    excludeBundled?: boolean;
+    bundleIds?: CandidApi.ChargeCaptureBundleId | CandidApi.ChargeCaptureBundleId[];
+    /**
+     * A list of billing provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
+     */
+    billingProviderNpis?: string | string[];
+    /**
+     * A string to filter by. This will return all charge captures with this service facility name.
+     */
+    serviceFacilityName?: string;
+    /**
+     * A list of primary payer IDs to filter by. This will return all charge captures with one of the primary payer IDs in this list.
+     */
+    primaryPayerIds?: string | string[];
+    /**
+     * A list of rendering provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
+     */
+    renderingProviderNpis?: string | string[];
+    /**
+     * A list of rendering provider names to filter by. This will return all charge captures with one of the names in this list.
+     */
+    renderingProviderNames?: string | string[];
+    /**
+     * A list of supervising provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
+     */
+    supervisingProviderNpis?: string | string[];
+    /**
+     * A list of supervising provider names to filter by. This will return all charge captures with one of the names in this list.
+     */
+    supervisingProviderNames?: string | string[];
+    /**
+     * Whether to exclude charge captures which are part of a bundle that has a created claim.
+     */
+    excludeChargesLinkedToClaims?: boolean;
 }
