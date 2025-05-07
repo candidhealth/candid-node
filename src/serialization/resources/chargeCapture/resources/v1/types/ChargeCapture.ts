@@ -20,6 +20,7 @@ export const ChargeCapture: core.serialization.ObjectSchema<
     id: ChargeCaptureId,
     status: ChargeCaptureStatus,
     chargeCaptureData: core.serialization.property("charge_capture_data", ChargeCaptureData),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
     chargeExternalId: core.serialization.property("charge_external_id", core.serialization.string()),
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
@@ -33,6 +34,7 @@ export declare namespace ChargeCapture {
         id: ChargeCaptureId.Raw;
         status: ChargeCaptureStatus.Raw;
         charge_capture_data: ChargeCaptureData.Raw;
+        date_of_service?: string | null;
         patient_external_id: PatientExternalId.Raw;
         charge_external_id: string;
         ehr_source_url?: string | null;

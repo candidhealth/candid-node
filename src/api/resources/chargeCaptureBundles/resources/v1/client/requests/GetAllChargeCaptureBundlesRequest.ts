@@ -15,7 +15,8 @@ import * as CandidApi from "../../../../../../index";
  *         bundleStatus: "not-started",
  *         chargeStatus: "planned",
  *         chargeExternalId: "string",
- *         dateOfService: "2023-01-15",
+ *         dateOfServiceMin: "2023-01-15",
+ *         dateOfServiceMax: "2023-01-15",
  *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         billingProviderNpis: "string",
@@ -64,7 +65,12 @@ export interface GetAllChargeCaptureBundlesRequest {
      * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
      * This date must be the local date in the timezone where the service occurred.
      */
-    dateOfService?: string;
+    dateOfServiceMin?: string;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     */
+    dateOfServiceMax?: string;
     /**
      * A list of claim IDs to filter by. This will return all charge capture bundles that have a resulting claim with one of the IDs in this list.
      */

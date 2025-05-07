@@ -3,7 +3,7 @@
  */
 
 export interface ChargeCaptureBundleSummary {
-    /** The count of charge captures which are not part of a bundle with a created claim. */
+    /** The count of charge captures which are not part of a claim creation. */
     chargeCaptureChargesNotLinkedToClaimsCount: number;
     /** The count of charge capture bundles that have a bundle status of NOT_STARTED. */
     chargeCaptureBundlesNotStartedCount: number;

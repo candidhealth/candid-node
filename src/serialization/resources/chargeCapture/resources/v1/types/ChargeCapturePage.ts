@@ -14,11 +14,13 @@ export const ChargeCapturePage: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         items: core.serialization.list(ChargeCapture),
+        itemCount: core.serialization.property("item_count", core.serialization.number()),
     })
     .extend(ResourcePage);
 
 export declare namespace ChargeCapturePage {
     export interface Raw extends ResourcePage.Raw {
         items: ChargeCapture.Raw[];
+        item_count: number;
     }
 }

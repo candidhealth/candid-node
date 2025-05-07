@@ -14,7 +14,8 @@ import * as CandidApi from "../../../../../../index";
  *         patientExternalId: "string",
  *         status: "planned",
  *         chargeExternalId: "string",
- *         dateOfService: "2023-01-15",
+ *         dateOfServiceMin: "2023-01-15",
+ *         dateOfServiceMax: "2023-01-15",
  *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -25,7 +26,21 @@ import * as CandidApi from "../../../../../../index";
  *         renderingProviderNames: "string",
  *         supervisingProviderNpis: "string",
  *         supervisingProviderNames: "string",
- *         excludeChargesLinkedToClaims: true
+ *         excludeChargesLinkedToClaims: true,
+ *         patientExternalIdRankedSort: "string",
+ *         statusRankedSort: "planned",
+ *         chargeExternalIdRankedSort: "string",
+ *         dateOfServiceMinRankedSort: "2023-01-15",
+ *         dateOfServiceMaxRankedSort: "2023-01-15",
+ *         claimIdsRankedSort: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         bundleIdsRankedSort: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         billingProviderNpisRankedSort: "string",
+ *         serviceFacilityNameRankedSort: "string",
+ *         primaryPayerIdsRankedSort: "string",
+ *         renderingProviderNpisRankedSort: "string",
+ *         renderingProviderNamesRankedSort: "string",
+ *         supervisingProviderNpisRankedSort: "string",
+ *         supervisingProviderNamesRankedSort: "string"
  *     }
  */
 export interface GetAllChargeCapturesRequest {
@@ -60,7 +75,12 @@ export interface GetAllChargeCapturesRequest {
      * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
      * This date must be the local date in the timezone where the service occurred.
      */
-    dateOfService?: string;
+    dateOfServiceMin?: string;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     */
+    dateOfServiceMax?: string;
     /**
      * A list of claim IDs to filter by. This will return all charge captures that have a resulting claim with one of the IDs in this list.
      */
@@ -102,7 +122,67 @@ export interface GetAllChargeCapturesRequest {
      */
     supervisingProviderNames?: string | string[];
     /**
-     * Whether to exclude charge captures which are part of a bundle that has a created claim.
+     * Whether to exclude charge captures which are part of a claim creation.
      */
     excludeChargesLinkedToClaims?: boolean;
+    /**
+     * The patient ID from the external EMR platform for the patient
+     */
+    patientExternalIdRankedSort?: string;
+    /**
+     * The charge capture status to show first
+     */
+    statusRankedSort?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
+    /**
+     * A client-specified unique ID to associate with this encounter;
+     * for example, your internal encounter ID or a Dr. Chrono encounter ID.
+     * This field should not contain PHI.
+     */
+    chargeExternalIdRankedSort?: string;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     */
+    dateOfServiceMinRankedSort?: string;
+    /**
+     * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
+     * This date must be the local date in the timezone where the service occurred.
+     */
+    dateOfServiceMaxRankedSort?: string;
+    /**
+     * A list of claim IDs to show first. This will return all charge captures that have a resulting claim with one of the IDs in this list.
+     */
+    claimIdsRankedSort?: CandidApi.EncounterId | CandidApi.EncounterId[];
+    /**
+     * A list of bundle IDs to show first.
+     */
+    bundleIdsRankedSort?: CandidApi.ChargeCaptureBundleId | CandidApi.ChargeCaptureBundleId[];
+    /**
+     * A list of billing provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
+     */
+    billingProviderNpisRankedSort?: string | string[];
+    /**
+     * A string to show first. This will return all charge captures with this service facility name.
+     */
+    serviceFacilityNameRankedSort?: string;
+    /**
+     * A list of primary payer IDs to show first. This will return all charge captures with one of the primary payer IDs in this list.
+     */
+    primaryPayerIdsRankedSort?: string | string[];
+    /**
+     * A list of rendering provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
+     */
+    renderingProviderNpisRankedSort?: string | string[];
+    /**
+     * A list of rendering provider names to show first. This will return all charge captures with one of the names in this list.
+     */
+    renderingProviderNamesRankedSort?: string | string[];
+    /**
+     * A list of supervising provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
+     */
+    supervisingProviderNpisRankedSort?: string | string[];
+    /**
+     * A list of supervising provider names to show first. This will return all charge captures with one of the names in this list.
+     */
+    supervisingProviderNamesRankedSort?: string | string[];
 }

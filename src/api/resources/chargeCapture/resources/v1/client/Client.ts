@@ -62,8 +62,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -142,8 +142,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -219,8 +219,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -299,8 +299,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -342,7 +342,8 @@ export class V1 {
      *         patientExternalId: "string",
      *         status: "planned",
      *         chargeExternalId: "string",
-     *         dateOfService: "2023-01-15",
+     *         dateOfServiceMin: "2023-01-15",
+     *         dateOfServiceMax: "2023-01-15",
      *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -353,7 +354,21 @@ export class V1 {
      *         renderingProviderNames: "string",
      *         supervisingProviderNpis: "string",
      *         supervisingProviderNames: "string",
-     *         excludeChargesLinkedToClaims: true
+     *         excludeChargesLinkedToClaims: true,
+     *         patientExternalIdRankedSort: "string",
+     *         statusRankedSort: "planned",
+     *         chargeExternalIdRankedSort: "string",
+     *         dateOfServiceMinRankedSort: "2023-01-15",
+     *         dateOfServiceMaxRankedSort: "2023-01-15",
+     *         claimIdsRankedSort: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         bundleIdsRankedSort: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         billingProviderNpisRankedSort: "string",
+     *         serviceFacilityNameRankedSort: "string",
+     *         primaryPayerIdsRankedSort: "string",
+     *         renderingProviderNpisRankedSort: "string",
+     *         renderingProviderNamesRankedSort: "string",
+     *         supervisingProviderNpisRankedSort: "string",
+     *         supervisingProviderNamesRankedSort: "string"
      *     })
      */
     public async getAll(
@@ -370,7 +385,8 @@ export class V1 {
             patientExternalId,
             status,
             chargeExternalId,
-            dateOfService,
+            dateOfServiceMin,
+            dateOfServiceMax,
             claimIds,
             bundleId,
             bundleIds,
@@ -382,6 +398,20 @@ export class V1 {
             supervisingProviderNpis,
             supervisingProviderNames,
             excludeChargesLinkedToClaims,
+            patientExternalIdRankedSort,
+            statusRankedSort,
+            chargeExternalIdRankedSort,
+            dateOfServiceMinRankedSort,
+            dateOfServiceMaxRankedSort,
+            claimIdsRankedSort,
+            bundleIdsRankedSort,
+            billingProviderNpisRankedSort,
+            serviceFacilityNameRankedSort,
+            primaryPayerIdsRankedSort,
+            renderingProviderNpisRankedSort,
+            renderingProviderNamesRankedSort,
+            supervisingProviderNpisRankedSort,
+            supervisingProviderNamesRankedSort,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -418,8 +448,12 @@ export class V1 {
             _queryParams["charge_external_id"] = chargeExternalId;
         }
 
-        if (dateOfService != null) {
-            _queryParams["date_of_service"] = dateOfService;
+        if (dateOfServiceMin != null) {
+            _queryParams["date_of_service_min"] = dateOfServiceMin;
+        }
+
+        if (dateOfServiceMax != null) {
+            _queryParams["date_of_service_max"] = dateOfServiceMax;
         }
 
         if (claimIds != null) {
@@ -502,6 +536,109 @@ export class V1 {
             _queryParams["exclude_charges_linked_to_claims"] = excludeChargesLinkedToClaims.toString();
         }
 
+        if (patientExternalIdRankedSort != null) {
+            _queryParams["patient_external_id_ranked_sort"] = patientExternalIdRankedSort;
+        }
+
+        if (statusRankedSort != null) {
+            _queryParams["status_ranked_sort"] = serializers.chargeCapture.v1.ChargeCaptureStatus.jsonOrThrow(
+                statusRankedSort,
+                { unrecognizedObjectKeys: "strip" },
+            );
+        }
+
+        if (chargeExternalIdRankedSort != null) {
+            _queryParams["charge_external_id_ranked_sort"] = chargeExternalIdRankedSort;
+        }
+
+        if (dateOfServiceMinRankedSort != null) {
+            _queryParams["date_of_service_min_ranked_sort"] = dateOfServiceMinRankedSort;
+        }
+
+        if (dateOfServiceMaxRankedSort != null) {
+            _queryParams["date_of_service_max_ranked_sort"] = dateOfServiceMaxRankedSort;
+        }
+
+        if (claimIdsRankedSort != null) {
+            if (Array.isArray(claimIdsRankedSort)) {
+                _queryParams["claim_ids_ranked_sort"] = claimIdsRankedSort.map((item) =>
+                    serializers.EncounterId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["claim_ids_ranked_sort"] = claimIdsRankedSort;
+            }
+        }
+
+        if (bundleIdsRankedSort != null) {
+            if (Array.isArray(bundleIdsRankedSort)) {
+                _queryParams["bundle_ids_ranked_sort"] = bundleIdsRankedSort.map((item) =>
+                    serializers.ChargeCaptureBundleId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["bundle_ids_ranked_sort"] = bundleIdsRankedSort;
+            }
+        }
+
+        if (billingProviderNpisRankedSort != null) {
+            if (Array.isArray(billingProviderNpisRankedSort)) {
+                _queryParams["billing_provider_npis_ranked_sort"] = billingProviderNpisRankedSort.map((item) => item);
+            } else {
+                _queryParams["billing_provider_npis_ranked_sort"] = billingProviderNpisRankedSort;
+            }
+        }
+
+        if (serviceFacilityNameRankedSort != null) {
+            _queryParams["service_facility_name_ranked_sort"] = serviceFacilityNameRankedSort;
+        }
+
+        if (primaryPayerIdsRankedSort != null) {
+            if (Array.isArray(primaryPayerIdsRankedSort)) {
+                _queryParams["primary_payer_ids_ranked_sort"] = primaryPayerIdsRankedSort.map((item) => item);
+            } else {
+                _queryParams["primary_payer_ids_ranked_sort"] = primaryPayerIdsRankedSort;
+            }
+        }
+
+        if (renderingProviderNpisRankedSort != null) {
+            if (Array.isArray(renderingProviderNpisRankedSort)) {
+                _queryParams["rendering_provider_npis_ranked_sort"] = renderingProviderNpisRankedSort.map(
+                    (item) => item,
+                );
+            } else {
+                _queryParams["rendering_provider_npis_ranked_sort"] = renderingProviderNpisRankedSort;
+            }
+        }
+
+        if (renderingProviderNamesRankedSort != null) {
+            if (Array.isArray(renderingProviderNamesRankedSort)) {
+                _queryParams["rendering_provider_names_ranked_sort"] = renderingProviderNamesRankedSort.map(
+                    (item) => item,
+                );
+            } else {
+                _queryParams["rendering_provider_names_ranked_sort"] = renderingProviderNamesRankedSort;
+            }
+        }
+
+        if (supervisingProviderNpisRankedSort != null) {
+            if (Array.isArray(supervisingProviderNpisRankedSort)) {
+                _queryParams["supervising_provider_npis_ranked_sort"] = supervisingProviderNpisRankedSort.map(
+                    (item) => item,
+                );
+            } else {
+                _queryParams["supervising_provider_npis_ranked_sort"] = supervisingProviderNpisRankedSort;
+            }
+        }
+
+        if (supervisingProviderNamesRankedSort != null) {
+            if (Array.isArray(supervisingProviderNamesRankedSort)) {
+                _queryParams["supervising_provider_names_ranked_sort"] = supervisingProviderNamesRankedSort.map(
+                    (item) => item,
+                );
+            } else {
+                _queryParams["supervising_provider_names_ranked_sort"] = supervisingProviderNamesRankedSort;
+            }
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -516,8 +653,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -581,8 +718,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

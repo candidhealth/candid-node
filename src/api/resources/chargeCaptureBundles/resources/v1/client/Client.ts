@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -119,8 +119,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -179,8 +179,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -241,7 +241,8 @@ export class V1 {
      *         bundleStatus: "not-started",
      *         chargeStatus: "planned",
      *         chargeExternalId: "string",
-     *         dateOfService: "2023-01-15",
+     *         dateOfServiceMin: "2023-01-15",
+     *         dateOfServiceMax: "2023-01-15",
      *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         billingProviderNpis: "string",
@@ -272,7 +273,8 @@ export class V1 {
             bundleStatus,
             chargeStatus,
             chargeExternalId,
-            dateOfService,
+            dateOfServiceMin,
+            dateOfServiceMax,
             claimIds,
             bundleIds,
             billingProviderNpis,
@@ -326,8 +328,12 @@ export class V1 {
             _queryParams["charge_external_id"] = chargeExternalId;
         }
 
-        if (dateOfService != null) {
-            _queryParams["date_of_service"] = dateOfService;
+        if (dateOfServiceMin != null) {
+            _queryParams["date_of_service_min"] = dateOfServiceMin;
+        }
+
+        if (dateOfServiceMax != null) {
+            _queryParams["date_of_service_max"] = dateOfServiceMax;
         }
 
         if (claimIds != null) {
@@ -420,8 +426,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.2",
-                "User-Agent": "candidhealth/0.42.2",
+                "X-Fern-SDK-Version": "0.42.3",
+                "User-Agent": "candidhealth/0.42.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

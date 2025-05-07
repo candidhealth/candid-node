@@ -8,6 +8,7 @@ export interface ChargeCapture {
     id: CandidApi.ChargeCaptureId;
     status: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
     chargeCaptureData: CandidApi.chargeCapture.v1.ChargeCaptureData;
+    dateOfService?: string;
     patientExternalId: CandidApi.PatientExternalId;
     chargeExternalId: string;
     ehrSourceUrl?: string;
