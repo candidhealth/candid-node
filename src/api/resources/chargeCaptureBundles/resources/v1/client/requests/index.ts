@@ -1,1 +1,1 @@
-export { type GetAllChargeCaptureBundlesRequest } from "./GetAllChargeCaptureBundlesRequest";
+export { type GetAllChargeCaptureClaimCreationsRequest } from "./GetAllChargeCaptureClaimCreationsRequest";

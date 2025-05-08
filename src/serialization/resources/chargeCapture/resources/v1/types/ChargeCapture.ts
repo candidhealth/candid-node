@@ -11,7 +11,7 @@ import { ChargeCaptureData } from "./ChargeCaptureData";
 import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
 import { ChargeCaptureError } from "./ChargeCaptureError";
 import { ChargeCapturePostBilledChange } from "./ChargeCapturePostBilledChange";
-import { ChargeCaptureBundleId } from "../../../../commons/types/ChargeCaptureBundleId";
+import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCaptureClaimCreationId";
 
 export const ChargeCapture: core.serialization.ObjectSchema<
     serializers.chargeCapture.v1.ChargeCapture.Raw,
@@ -26,7 +26,7 @@ export const ChargeCapture: core.serialization.ObjectSchema<
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
     error: ChargeCaptureError.optional(),
     updates: core.serialization.list(ChargeCapturePostBilledChange),
-    bundleId: core.serialization.property("bundle_id", ChargeCaptureBundleId.optional()),
+    claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId.optional()),
 });
 
 export declare namespace ChargeCapture {
@@ -40,6 +40,6 @@ export declare namespace ChargeCapture {
         ehr_source_url?: string | null;
         error?: ChargeCaptureError.Raw | null;
         updates: ChargeCapturePostBilledChange.Raw[];
-        bundle_id?: ChargeCaptureBundleId.Raw | null;
+        claim_creation_id?: ChargeCaptureClaimCreationId.Raw | null;
     }
 }

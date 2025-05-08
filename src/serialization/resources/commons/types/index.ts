@@ -1,6 +1,6 @@
 export * from "./EncounterId";
 export * from "./ChargeCaptureId";
-export * from "./ChargeCaptureBundleId";
+export * from "./ChargeCaptureClaimCreationId";
 export * from "./ChargeCapturePostBilledChangeId";
 export * from "./OrganizationId";
 export * from "./ClaimId";
@@ -61,7 +61,6 @@ export * from "./HttpServiceUnavailableErrorMessage";
 export * from "./RequestValidationError";
 export * from "./UpdatesDisabledDueToExternalSystemIntegrationErrorMessage";
 export * from "./OrganizationNotAuthorizedErrorMessage";
-export * from "./NotImplementedErrorMessage";
 export * from "./PhoneNumber";
 export * from "./PhoneNumberType";
 export * from "./Email";

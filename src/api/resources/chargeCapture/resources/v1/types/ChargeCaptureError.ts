@@ -8,17 +8,17 @@ export interface ChargeCaptureError {
     id: string;
     /**
      * The underlying Charge Capture that this error object references.
-     * The Charge Capture referenced will be a part of the bundle tied to this error.
-     * Errors may also refer to all charge_captures present in a bundle, in which case this field will be null.
+     * The Charge Capture referenced will be a part of the Claim Creation tied to this error.
+     * Errors may also refer to all charge_captures present in a Claim Creation, in which case this field will be null.
      */
     chargeCaptureId?: CandidApi.ChargeCaptureId;
-    /** A human readable error explaining why this charge capture bundle failed to create a claim. */
+    /** A human readable error explaining why this charge capture Claim Creation failed to create a claim. */
     message: string;
     /**
      * The field of the corresponding underlying ChargeCapture that has a field that is failing validations,
      * is not present but marked as required, or otherwise in error.
      */
     fieldInError?: string;
-    /** The ID of the ChargeCaptureBundle associated with this Error. */
-    bundleId: CandidApi.ChargeCaptureBundleId;
+    /** The ID of the ChargeCaptureClaimCreation associated with this Error. */
+    claimCreationId: CandidApi.ChargeCaptureClaimCreationId;
 }

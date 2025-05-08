@@ -7,6 +7,7 @@ export * as clinicalTrials from "./clinicalTrials";
 export * as contracts from "./contracts";
 export * as credentialing from "./credentialing";
 export * as customSchemas from "./customSchemas";
+export * as encounterAttachments from "./encounterAttachments";
 export * as encounterProviders from "./encounterProviders";
 export * as encounters from "./encounters";
 export * as expectedNetworkStatus from "./expectedNetworkStatus";

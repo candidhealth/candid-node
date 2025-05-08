@@ -32,18 +32,18 @@ export class V1 {
     constructor(protected readonly _options: V1.Options = {}) {}
 
     /**
-     * @param {CandidApi.ChargeCaptureBundleId} chargeCaptureBundleId
+     * @param {CandidApi.ChargeCaptureClaimCreationId} chargeCaptureClaimCreationId
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async get(
-        chargeCaptureBundleId: CandidApi.ChargeCaptureBundleId,
+        chargeCaptureClaimCreationId: CandidApi.ChargeCaptureClaimCreationId,
         requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
-            CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundle,
+            CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreation,
             CandidApi.chargeCaptureBundles.v1.get.Error
         >
     > {
@@ -54,15 +54,15 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/charge_capture_bundle/v1/${encodeURIComponent(serializers.ChargeCaptureBundleId.jsonOrThrow(chargeCaptureBundleId))}`,
+                `/api/charge_capture_claim_creation/v1/${encodeURIComponent(serializers.ChargeCaptureClaimCreationId.jsonOrThrow(chargeCaptureClaimCreationId))}`,
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.5",
-                "User-Agent": "candidhealth/0.42.5",
+                "X-Fern-SDK-Version": "0.43.0",
+                "User-Agent": "candidhealth/0.43.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -76,7 +76,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundle.parseOrThrow(_response.body, {
+                body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreation.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -101,7 +101,7 @@ export class V1 {
         requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
-            CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleSummary,
+            CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSummary,
             CandidApi.chargeCaptureBundles.v1.getSummary.Error
         >
     > {
@@ -112,15 +112,15 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                "/api/charge_capture_bundle/v1/all/summary",
+                "/api/charge_capture_claim_creation/v1/all/summary",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.5",
-                "User-Agent": "candidhealth/0.42.5",
+                "X-Fern-SDK-Version": "0.43.0",
+                "User-Agent": "candidhealth/0.43.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -134,12 +134,15 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundleSummary.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSummary.parseOrThrow(
+                    _response.body,
+                    {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    },
+                ),
             };
         }
 
@@ -150,85 +153,7 @@ export class V1 {
     }
 
     /**
-     * @param {CandidApi.ChargeCaptureBundleId} chargeCaptureBundleId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.chargeCaptureBundles.v1.resubmit(CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
-     */
-    public async resubmit(
-        chargeCaptureBundleId: CandidApi.ChargeCaptureBundleId,
-        requestOptions?: V1.RequestOptions,
-    ): Promise<
-        core.APIResponse<
-            CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundle,
-            CandidApi.chargeCaptureBundles.v1.resubmit.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.CandidApiEnvironment.Production
-                    ).candidApi,
-                `/api/charge_capture_bundle/v1/${encodeURIComponent(serializers.ChargeCaptureBundleId.jsonOrThrow(chargeCaptureBundleId))}`,
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.5",
-                "User-Agent": "candidhealth/0.42.5",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundle.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.chargeCaptureBundles.v1.resubmit.Error.Raw)?.errorName) {
-                case "NotImplementedError":
-                    return {
-                        ok: false,
-                        error: serializers.chargeCaptureBundles.v1.resubmit.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCaptureBundles.v1.resubmit.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.chargeCaptureBundles.v1.resubmit.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * @param {CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureBundlesRequest} request
+     * @param {CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureClaimCreationsRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -238,13 +163,13 @@ export class V1 {
      *         sortDirection: "asc",
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
      *         patientExternalId: "string",
-     *         bundleStatus: "not-started",
+     *         claimCreationStatus: "not-started",
      *         chargeStatus: "planned",
      *         chargeExternalId: "string",
      *         dateOfServiceMin: "2023-01-15",
      *         dateOfServiceMax: "2023-01-15",
      *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         claimCreationIds: CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         billingProviderNpis: "string",
      *         serviceFacilityName: "string",
      *         primaryPayerIds: "string",
@@ -256,11 +181,11 @@ export class V1 {
      *     })
      */
     public async getAll(
-        request: CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureBundlesRequest = {},
+        request: CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureClaimCreationsRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
-            CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundlePage,
+            CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreationPage,
             CandidApi.chargeCaptureBundles.v1.getAll.Error
         >
     > {
@@ -270,13 +195,13 @@ export class V1 {
             sortDirection,
             pageToken,
             patientExternalId,
-            bundleStatus,
+            claimCreationStatus,
             chargeStatus,
             chargeExternalId,
             dateOfServiceMin,
             dateOfServiceMax,
             claimIds,
-            bundleIds,
+            claimCreationIds,
             billingProviderNpis,
             serviceFacilityName,
             primaryPayerIds,
@@ -292,9 +217,10 @@ export class V1 {
         }
 
         if (sort != null) {
-            _queryParams["sort"] = serializers.chargeCaptureBundles.v1.ChargeCaptureBundleSortField.jsonOrThrow(sort, {
-                unrecognizedObjectKeys: "strip",
-            });
+            _queryParams["sort"] = serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSortField.jsonOrThrow(
+                sort,
+                { unrecognizedObjectKeys: "strip" },
+            );
         }
 
         if (sortDirection != null) {
@@ -311,11 +237,11 @@ export class V1 {
             _queryParams["patient_external_id"] = patientExternalId;
         }
 
-        if (bundleStatus != null) {
-            _queryParams["bundle_status"] = serializers.chargeCaptureBundles.v1.ChargeCaptureBundleStatus.jsonOrThrow(
-                bundleStatus,
-                { unrecognizedObjectKeys: "strip" },
-            );
+        if (claimCreationStatus != null) {
+            _queryParams["claim_creation_status"] =
+                serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationStatus.jsonOrThrow(claimCreationStatus, {
+                    unrecognizedObjectKeys: "strip",
+                });
         }
 
         if (chargeStatus != null) {
@@ -346,13 +272,13 @@ export class V1 {
             }
         }
 
-        if (bundleIds != null) {
-            if (Array.isArray(bundleIds)) {
-                _queryParams["bundle_ids"] = bundleIds.map((item) =>
-                    serializers.ChargeCaptureBundleId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+        if (claimCreationIds != null) {
+            if (Array.isArray(claimCreationIds)) {
+                _queryParams["claim_creation_ids"] = claimCreationIds.map((item) =>
+                    serializers.ChargeCaptureClaimCreationId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
                 );
             } else {
-                _queryParams["bundle_ids"] = bundleIds;
+                _queryParams["claim_creation_ids"] = claimCreationIds;
             }
         }
 
@@ -419,15 +345,15 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                "/api/charge_capture_bundle/v1",
+                "/api/charge_capture_claim_creation/v1",
             ),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.42.5",
-                "User-Agent": "candidhealth/0.42.5",
+                "X-Fern-SDK-Version": "0.43.0",
+                "User-Agent": "candidhealth/0.43.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -442,7 +368,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundlePage.parseOrThrow(_response.body, {
+                body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationPage.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

@@ -6,7 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { ChargeCaptureId } from "../../../../commons/types/ChargeCaptureId";
-import { ChargeCaptureBundleId } from "../../../../commons/types/ChargeCaptureBundleId";
+import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCaptureClaimCreationId";
 
 export const ChargeCaptureError: core.serialization.ObjectSchema<
     serializers.chargeCapture.v1.ChargeCaptureError.Raw,
@@ -16,7 +16,7 @@ export const ChargeCaptureError: core.serialization.ObjectSchema<
     chargeCaptureId: core.serialization.property("charge_capture_id", ChargeCaptureId.optional()),
     message: core.serialization.string(),
     fieldInError: core.serialization.property("field_in_error", core.serialization.string().optional()),
-    bundleId: core.serialization.property("bundle_id", ChargeCaptureBundleId),
+    claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId),
 });
 
 export declare namespace ChargeCaptureError {
@@ -25,6 +25,6 @@ export declare namespace ChargeCaptureError {
         charge_capture_id?: ChargeCaptureId.Raw | null;
         message: string;
         field_in_error?: string | null;
-        bundle_id: ChargeCaptureBundleId.Raw;
+        claim_creation_id: ChargeCaptureClaimCreationId.Raw;
     }
 }

@@ -14,5 +14,5 @@ export interface ChargeCapture {
     ehrSourceUrl?: string;
     error?: CandidApi.chargeCapture.v1.ChargeCaptureError;
     updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];
-    bundleId?: CandidApi.ChargeCaptureBundleId;
+    claimCreationId?: CandidApi.ChargeCaptureClaimCreationId;
 }

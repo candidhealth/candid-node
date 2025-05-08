@@ -13,6 +13,7 @@ import { Contracts } from "./api/resources/contracts/client/Client";
 import { Credentialing } from "./api/resources/credentialing/client/Client";
 import { CustomSchemas } from "./api/resources/customSchemas/client/Client";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
+import { EncounterAttachments } from "./api/resources/encounterAttachments/client/Client";
 import { EncounterProviders } from "./api/resources/encounterProviders/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
@@ -73,6 +74,7 @@ export class CandidApiClient {
     protected _credentialing: Credentialing | undefined;
     protected _customSchemas: CustomSchemas | undefined;
     protected _eligibility: Eligibility | undefined;
+    protected _encounterAttachments: EncounterAttachments | undefined;
     protected _encounterProviders: EncounterProviders | undefined;
     protected _encounters: Encounters | undefined;
     protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
@@ -163,6 +165,13 @@ export class CandidApiClient {
 
     public get eligibility(): Eligibility {
         return (this._eligibility ??= new Eligibility({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    public get encounterAttachments(): EncounterAttachments {
+        return (this._encounterAttachments ??= new EncounterAttachments({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

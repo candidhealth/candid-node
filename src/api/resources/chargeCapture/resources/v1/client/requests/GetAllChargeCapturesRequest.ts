@@ -17,8 +17,7 @@ import * as CandidApi from "../../../../../../index";
  *         dateOfServiceMin: "2023-01-15",
  *         dateOfServiceMax: "2023-01-15",
  *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         bundleId: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         bundleIds: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         claimCreationIds: CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         billingProviderNpis: "string",
  *         serviceFacilityName: "string",
  *         primaryPayerIds: "string",
@@ -33,7 +32,7 @@ import * as CandidApi from "../../../../../../index";
  *         dateOfServiceMinRankedSort: "2023-01-15",
  *         dateOfServiceMaxRankedSort: "2023-01-15",
  *         claimIdsRankedSort: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         bundleIdsRankedSort: CandidApi.ChargeCaptureBundleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         claimCreationIdsRankedSort: CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         billingProviderNpisRankedSort: "string",
  *         serviceFacilityNameRankedSort: "string",
  *         primaryPayerIdsRankedSort: "string",
@@ -86,13 +85,9 @@ export interface GetAllChargeCapturesRequest {
      */
     claimIds?: CandidApi.EncounterId | CandidApi.EncounterId[];
     /**
-     * A list of bundle IDs to filter by. Use `bundle_ids` instead.
+     * A list of Claim Creation IDs to filter by.
      */
-    bundleId?: CandidApi.ChargeCaptureBundleId;
-    /**
-     * A list of bundle IDs to filter by.
-     */
-    bundleIds?: CandidApi.ChargeCaptureBundleId | CandidApi.ChargeCaptureBundleId[];
+    claimCreationIds?: CandidApi.ChargeCaptureClaimCreationId | CandidApi.ChargeCaptureClaimCreationId[];
     /**
      * A list of billing provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
      */
@@ -154,9 +149,9 @@ export interface GetAllChargeCapturesRequest {
      */
     claimIdsRankedSort?: CandidApi.EncounterId | CandidApi.EncounterId[];
     /**
-     * A list of bundle IDs to show first.
+     * A list of Claim Creation IDs to show first.
      */
-    bundleIdsRankedSort?: CandidApi.ChargeCaptureBundleId | CandidApi.ChargeCaptureBundleId[];
+    claimCreationIdsRankedSort?: CandidApi.ChargeCaptureClaimCreationId | CandidApi.ChargeCaptureClaimCreationId[];
     /**
      * A list of billing provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
      */
