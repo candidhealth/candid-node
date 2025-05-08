@@ -29,5 +29,5 @@ export interface ChargeCaptureData extends CandidApi.encounters.v4.EncounterOpti
      * Spot to store misc, human-readable, notes about this encounter to be
      * used in the billing process.
      */
-    billingNotes?: CandidApi.billingNotes.v2.BillingNote[];
+    billingNotes?: CandidApi.billingNotes.v2.BillingNoteOptional[];
 }

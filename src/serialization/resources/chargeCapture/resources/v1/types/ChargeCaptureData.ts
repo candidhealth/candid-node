@@ -10,7 +10,7 @@ import { Intervention } from "../../../../encounters/resources/v4/types/Interven
 import { ExternalClaimSubmissionCreate } from "../../../../claimSubmission/resources/v1/types/ExternalClaimSubmissionCreate";
 import { ServiceLineCreate } from "../../../../serviceLines/resources/v2/types/ServiceLineCreate";
 import { PatientHistoryCategory } from "../../../../encounters/resources/v4/types/PatientHistoryCategory";
-import { BillingNote } from "../../../../billingNotes/resources/v2/types/BillingNote";
+import { BillingNoteOptional } from "../../../../billingNotes/resources/v2/types/BillingNoteOptional";
 import { EncounterOptional } from "../../../../encounters/resources/v4/types/EncounterOptional";
 
 export const ChargeCaptureData: core.serialization.ObjectSchema<
@@ -32,7 +32,10 @@ export const ChargeCaptureData: core.serialization.ObjectSchema<
             "patient_histories",
             core.serialization.list(PatientHistoryCategory).optional(),
         ),
-        billingNotes: core.serialization.property("billing_notes", core.serialization.list(BillingNote).optional()),
+        billingNotes: core.serialization.property(
+            "billing_notes",
+            core.serialization.list(BillingNoteOptional).optional(),
+        ),
     })
     .extend(EncounterOptional);
 
@@ -43,6 +46,6 @@ export declare namespace ChargeCaptureData {
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;
         service_lines?: ServiceLineCreate.Raw[] | null;
         patient_histories?: PatientHistoryCategory.Raw[] | null;
-        billing_notes?: BillingNote.Raw[] | null;
+        billing_notes?: BillingNoteOptional.Raw[] | null;
     }
 }
