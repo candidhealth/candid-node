@@ -11,6 +11,7 @@ export type Error =
     | CandidApi.chargeCapture.v1.create.Error.HttpRequestValidationsError
     | CandidApi.chargeCapture.v1.create.Error.SchemaInstanceValidationHttpFailure
     | CandidApi.chargeCapture.v1.create.Error.UnprocessableEntityError
+    | CandidApi.chargeCapture.v1.create.Error.ChargeExternalIdConflictError
     | CandidApi.chargeCapture.v1.create.Error._Unknown;
 
 export namespace Error {
@@ -39,6 +40,11 @@ export namespace Error {
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
+    export interface ChargeExternalIdConflictError extends _Utils {
+        errorName: "ChargeExternalIdConflictError";
+        content: CandidApi.chargeCapture.v1.ChargeExternalIdConflictErrorMessage;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -56,6 +62,9 @@ export namespace Error {
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
         ) => _Result;
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        chargeExternalIdConflictError: (
+            value: CandidApi.chargeCapture.v1.ChargeExternalIdConflictErrorMessage,
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -136,6 +145,21 @@ export const Error = {
         };
     },
 
+    chargeExternalIdConflictError: (
+        value: CandidApi.chargeCapture.v1.ChargeExternalIdConflictErrorMessage,
+    ): CandidApi.chargeCapture.v1.create.Error.ChargeExternalIdConflictError => {
+        return {
+            content: value,
+            errorName: "ChargeExternalIdConflictError",
+            _visit: function <_Result>(
+                this: CandidApi.chargeCapture.v1.create.Error.ChargeExternalIdConflictError,
+                visitor: CandidApi.chargeCapture.v1.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.chargeCapture.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.chargeCapture.v1.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -164,6 +188,8 @@ export const Error = {
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
             case "UnprocessableEntityError":
                 return visitor.unprocessableEntityError(value.content);
+            case "ChargeExternalIdConflictError":
+                return visitor.chargeExternalIdConflictError(value.content);
             default:
                 return visitor._other(value as any);
         }

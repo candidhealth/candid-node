@@ -37,124 +37,7 @@ export class V1 {
      *
      * @example
      *     await client.chargeCapture.v1.create({
-     *         data: {
-     *             diagnoses: [],
-     *             interventions: [],
-     *             externalClaimSubmission: {
-     *                 claimCreatedAt: "2023-01-01T12:00:00.000000Z",
-     *                 patientControlNumber: "PATIENT_CONTROL_NUMBER",
-     *                 submissionRecords: [{
-     *                         submittedAt: "2023-01-01T13:00:00.000000Z",
-     *                         claimFrequencyCode: "1",
-     *                         payerResponsibility: "primary",
-     *                         intendedSubmissionMedium: "electronic"
-     *                     }, {
-     *                         submittedAt: "2023-01-04T12:00:00.000000Z",
-     *                         claimFrequencyCode: "7",
-     *                         payerResponsibility: "primary",
-     *                         intendedSubmissionMedium: "paper"
-     *                     }]
-     *             },
-     *             serviceLines: [],
-     *             patientHistories: [],
-     *             billingNotes: [],
-     *             benefitsAssignedToProvider: true,
-     *             priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
-     *             externalId: CandidApi.EncounterExternalId("string"),
-     *             dateOfService: "2023-01-15",
-     *             tagIds: [],
-     *             clinicalNotes: [],
-     *             payToAddress: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: "NY",
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             billableStatus: "BILLABLE",
-     *             responsibleParty: "INSURANCE_PAY",
-     *             providerAcceptsAssignment: true,
-     *             synchronicity: "Synchronous",
-     *             placeOfServiceCode: "01",
-     *             appointmentType: "string",
-     *             endDateOfService: "2023-01-15",
-     *             subscriberPrimary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: "01",
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: "male"
-     *             },
-     *             subscriberSecondary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: "01",
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: "male"
-     *             },
-     *             subscriberTertiary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: "01",
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: "male"
-     *             },
-     *             additionalInformation: "string",
-     *             serviceAuthorizationExceptionCode: "1",
-     *             admissionDate: "2023-01-15",
-     *             dischargeDate: "2023-01-15",
-     *             onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-     *             lastMenstrualPeriodDate: "2023-01-15",
-     *             delayReasonCode: "1",
-     *             patient: {},
-     *             patientAuthorizedRelease: true,
-     *             schemaInstances: [],
-     *             vitals: {
-     *                 heightIn: 70,
-     *                 weightLbs: 165,
-     *                 bloodPressureSystolicMmhg: 115,
-     *                 bloodPressureDiastolicMmhg: 85,
-     *                 bodyTemperatureF: 98,
-     *                 hemoglobinGdl: 15.1,
-     *                 hematocritPct: 51.2
-     *             },
-     *             existingMedications: [],
-     *             renderingProvider: {},
-     *             serviceFacility: {
-     *                 organizationName: "Test Organization",
-     *                 address: {
-     *                     address1: "123 Main St",
-     *                     address2: "Apt 1",
-     *                     city: "New York",
-     *                     state: "NY",
-     *                     zipCode: "10001",
-     *                     zipPlusFourCode: "1234"
-     *                 }
-     *             },
-     *             guarantor: {},
-     *             billingProvider: {},
-     *             supervisingProvider: {},
-     *             referringProvider: {},
-     *             initialReferringProvider: {},
-     *             referralNumber: "string",
-     *             epsdtReferral: {
-     *                 conditionIndicator1: "AV"
-     *             },
-     *             claimSupplementalInformation: []
-     *         },
+     *         data: {},
      *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
      *         patientExternalId: "string",
@@ -179,8 +62,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -213,6 +96,7 @@ export class V1 {
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
                 case "UnprocessableEntityError":
+                case "ChargeExternalIdConflictError":
                     return {
                         ok: false,
                         error: serializers.chargeCapture.v1.create.Error.parseOrThrow(
@@ -259,8 +143,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -310,124 +194,7 @@ export class V1 {
      *
      * @example
      *     await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         data: {
-     *             diagnoses: [],
-     *             interventions: [],
-     *             externalClaimSubmission: {
-     *                 claimCreatedAt: "2023-01-01T12:00:00.000000Z",
-     *                 patientControlNumber: "PATIENT_CONTROL_NUMBER",
-     *                 submissionRecords: [{
-     *                         submittedAt: "2023-01-01T13:00:00.000000Z",
-     *                         claimFrequencyCode: "1",
-     *                         payerResponsibility: "primary",
-     *                         intendedSubmissionMedium: "electronic"
-     *                     }, {
-     *                         submittedAt: "2023-01-04T12:00:00.000000Z",
-     *                         claimFrequencyCode: "7",
-     *                         payerResponsibility: "primary",
-     *                         intendedSubmissionMedium: "paper"
-     *                     }]
-     *             },
-     *             serviceLines: [],
-     *             patientHistories: [],
-     *             billingNotes: [],
-     *             benefitsAssignedToProvider: true,
-     *             priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
-     *             externalId: CandidApi.EncounterExternalId("string"),
-     *             dateOfService: "2023-01-15",
-     *             tagIds: [],
-     *             clinicalNotes: [],
-     *             payToAddress: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: "NY",
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             },
-     *             billableStatus: "BILLABLE",
-     *             responsibleParty: "INSURANCE_PAY",
-     *             providerAcceptsAssignment: true,
-     *             synchronicity: "Synchronous",
-     *             placeOfServiceCode: "01",
-     *             appointmentType: "string",
-     *             endDateOfService: "2023-01-15",
-     *             subscriberPrimary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: "01",
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: "male"
-     *             },
-     *             subscriberSecondary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: "01",
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: "male"
-     *             },
-     *             subscriberTertiary: {
-     *                 insuranceCard: {
-     *                     memberId: "string",
-     *                     payerName: "string",
-     *                     payerId: "string"
-     *                 },
-     *                 patientRelationshipToSubscriberCode: "01",
-     *                 firstName: "string",
-     *                 lastName: "string",
-     *                 gender: "male"
-     *             },
-     *             additionalInformation: "string",
-     *             serviceAuthorizationExceptionCode: "1",
-     *             admissionDate: "2023-01-15",
-     *             dischargeDate: "2023-01-15",
-     *             onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-     *             lastMenstrualPeriodDate: "2023-01-15",
-     *             delayReasonCode: "1",
-     *             patient: {},
-     *             patientAuthorizedRelease: true,
-     *             schemaInstances: [],
-     *             vitals: {
-     *                 heightIn: 70,
-     *                 weightLbs: 165,
-     *                 bloodPressureSystolicMmhg: 115,
-     *                 bloodPressureDiastolicMmhg: 85,
-     *                 bodyTemperatureF: 98,
-     *                 hemoglobinGdl: 15.1,
-     *                 hematocritPct: 51.2
-     *             },
-     *             existingMedications: [],
-     *             renderingProvider: {},
-     *             serviceFacility: {
-     *                 organizationName: "Test Organization",
-     *                 address: {
-     *                     address1: "123 Main St",
-     *                     address2: "Apt 1",
-     *                     city: "New York",
-     *                     state: "NY",
-     *                     zipCode: "10001",
-     *                     zipPlusFourCode: "1234"
-     *                 }
-     *             },
-     *             guarantor: {},
-     *             billingProvider: {},
-     *             supervisingProvider: {},
-     *             referringProvider: {},
-     *             initialReferringProvider: {},
-     *             referralNumber: "string",
-     *             epsdtReferral: {
-     *                 conditionIndicator1: "AV"
-     *             },
-     *             claimSupplementalInformation: []
-     *         },
+     *         data: {},
      *         chargeExternalId: "string",
      *         ehrSourceUrl: "string",
      *         patientExternalId: "string",
@@ -453,8 +220,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -533,8 +300,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -881,8 +648,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -913,23 +680,22 @@ export class V1 {
     }
 
     /**
-     * @param {CandidApi.ChargeCapturePostBilledChangeId} chargeCaptureChangeId
      * @param {CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.chargeCapture.v1.updatePostBilledChange(CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *     await client.chargeCapture.v1.updatePostBilledChanges({
+     *         chargeCaptureChangeIds: [CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
      *         resolved: true
      *     })
      */
-    public async updatePostBilledChange(
-        chargeCaptureChangeId: CandidApi.ChargeCapturePostBilledChangeId,
+    public async updatePostBilledChanges(
         request: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate,
         requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
-            CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange,
-            CandidApi.chargeCapture.v1.updatePostBilledChange.Error
+            CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[],
+            CandidApi.chargeCapture.v1.updatePostBilledChanges.Error
         >
     > {
         const _response = await core.fetcher({
@@ -939,15 +705,15 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/charge_captures/v1/changes/${encodeURIComponent(serializers.ChargeCapturePostBilledChangeId.jsonOrThrow(chargeCaptureChangeId))}`,
+                "/api/charge_captures/v1/changes/",
             ),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -964,7 +730,7 @@ export class V1 {
         if (_response.ok) {
             return {
                 ok: true,
-                body: serializers.chargeCapture.v1.ChargeCapturePostBilledChange.parseOrThrow(_response.body, {
+                body: serializers.chargeCapture.v1.updatePostBilledChanges.Response.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -975,14 +741,14 @@ export class V1 {
 
         if (_response.error.reason === "status-code") {
             switch (
-                (_response.error.body as serializers.chargeCapture.v1.updatePostBilledChange.Error.Raw)?.errorName
+                (_response.error.body as serializers.chargeCapture.v1.updatePostBilledChanges.Error.Raw)?.errorName
             ) {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
                         ok: false,
-                        error: serializers.chargeCapture.v1.updatePostBilledChange.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCapture.v1.updatePostBilledChange.Error.Raw,
+                        error: serializers.chargeCapture.v1.updatePostBilledChanges.Error.parseOrThrow(
+                            _response.error.body as serializers.chargeCapture.v1.updatePostBilledChanges.Error.Raw,
                             {
                                 unrecognizedObjectKeys: "passthrough",
                                 allowUnrecognizedUnionMembers: true,
@@ -996,7 +762,7 @@ export class V1 {
 
         return {
             ok: false,
-            error: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._unknown(_response.error),
+            error: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._unknown(_response.error),
         };
     }
 

@@ -5,12 +5,22 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { ChargeCapturePostBilledChange } from "../types/ChargeCapturePostBilledChange";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 
+export const Response: core.serialization.Schema<
+    serializers.chargeCapture.v1.updatePostBilledChanges.Response.Raw,
+    CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[]
+> = core.serialization.list(ChargeCapturePostBilledChange);
+
+export declare namespace Response {
+    export type Raw = ChargeCapturePostBilledChange.Raw[];
+}
+
 export const Error: core.serialization.Schema<
-    serializers.chargeCapture.v1.updatePostBilledChange.Error.Raw,
-    CandidApi.chargeCapture.v1.updatePostBilledChange.Error
+    serializers.chargeCapture.v1.updatePostBilledChanges.Error.Raw,
+    CandidApi.chargeCapture.v1.updatePostBilledChanges.Error
 > = core.serialization
     .union("errorName", {
         EntityNotFoundError: core.serialization.object({
@@ -20,13 +30,13 @@ export const Error: core.serialization.Schema<
             content: UnauthorizedErrorMessage,
         }),
     })
-    .transform<CandidApi.chargeCapture.v1.updatePostBilledChange.Error>({
+    .transform<CandidApi.chargeCapture.v1.updatePostBilledChanges.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "EntityNotFoundError":
-                    return CandidApi.chargeCapture.v1.updatePostBilledChange.Error.entityNotFoundError(value.content);
+                    return CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
-                    return CandidApi.chargeCapture.v1.updatePostBilledChange.Error.unauthorizedError(value.content);
+                    return CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.unauthorizedError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,

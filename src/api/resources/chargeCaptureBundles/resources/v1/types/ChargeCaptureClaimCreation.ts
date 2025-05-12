@@ -13,10 +13,12 @@ export interface ChargeCaptureClaimCreation {
      * A dictionary of characteristics that are used to group charge captures together based on the bundling configuration.
      * Example: {"service_facility.npi": "99999999", "date_of_service": "2023-01-01"}
      */
-    characteristics: Record<string, string | undefined>;
+    characteristics: Record<string, unknown | undefined>;
     /**
      * All errors that were found when the Claim was attempted to be created.
      * Errors can correspond to the Claim Creation as a whole or specific underlying Charge Captures.
      */
     errors: CandidApi.chargeCapture.v1.ChargeCaptureError[];
+    /** If a ChargeCaptureBundle attempts creation, this is the input that was created from the underlying charges and used to attempt encounter creation. */
+    encounterCreationInput?: CandidApi.chargeCapture.v1.ChargeCaptureData;
 }

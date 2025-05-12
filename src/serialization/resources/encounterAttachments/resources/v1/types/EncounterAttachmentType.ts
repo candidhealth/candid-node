@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const EncounterAttachmentType: core.serialization.Schema<
     serializers.encounterAttachments.v1.EncounterAttachmentType.Raw,
     CandidApi.encounterAttachments.v1.EncounterAttachmentType
-> = core.serialization.enum_(["DOCUMENTATION"]);
+> = core.serialization.enum_(["DOCUMENTATION", "EOB", "OTHER"]);
 
 export declare namespace EncounterAttachmentType {
-    export type Raw = "DOCUMENTATION";
+    export type Raw = "DOCUMENTATION" | "EOB" | "OTHER";
 }

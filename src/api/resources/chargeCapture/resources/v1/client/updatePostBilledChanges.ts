@@ -6,9 +6,9 @@ import * as CandidApi from "../../../../../index";
 import * as core from "../../../../../../core";
 
 export type Error =
-    | CandidApi.chargeCapture.v1.updatePostBilledChange.Error.EntityNotFoundError
-    | CandidApi.chargeCapture.v1.updatePostBilledChange.Error.UnauthorizedError
-    | CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Unknown;
+    | CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.EntityNotFoundError
+    | CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.UnauthorizedError
+    | CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Unknown;
 
 export namespace Error {
     export interface EntityNotFoundError extends _Utils {
@@ -28,7 +28,7 @@ export namespace Error {
 
     export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Visitor<_Result>,
+            visitor: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Visitor<_Result>,
         ) => _Result;
     }
 
@@ -42,50 +42,50 @@ export namespace Error {
 export const Error = {
     entityNotFoundError: (
         value: CandidApi.EntityNotFoundErrorMessage,
-    ): CandidApi.chargeCapture.v1.updatePostBilledChange.Error.EntityNotFoundError => {
+    ): CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.EntityNotFoundError => {
         return {
             content: value,
             errorName: "EntityNotFoundError",
             _visit: function <_Result>(
-                this: CandidApi.chargeCapture.v1.updatePostBilledChange.Error.EntityNotFoundError,
-                visitor: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Visitor<_Result>,
+                this: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.EntityNotFoundError,
+                visitor: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Visitor<_Result>,
             ) {
-                return CandidApi.chargeCapture.v1.updatePostBilledChange.Error._visit(this, visitor);
+                return CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._visit(this, visitor);
             },
         };
     },
 
     unauthorizedError: (
         value: CandidApi.UnauthorizedErrorMessage,
-    ): CandidApi.chargeCapture.v1.updatePostBilledChange.Error.UnauthorizedError => {
+    ): CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.UnauthorizedError => {
         return {
             content: value,
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
-                this: CandidApi.chargeCapture.v1.updatePostBilledChange.Error.UnauthorizedError,
-                visitor: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Visitor<_Result>,
+                this: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error.UnauthorizedError,
+                visitor: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Visitor<_Result>,
             ) {
-                return CandidApi.chargeCapture.v1.updatePostBilledChange.Error._visit(this, visitor);
+                return CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._visit(this, visitor);
             },
         };
     },
 
-    _unknown: (fetcherError: core.Fetcher.Error): CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Unknown => {
+    _unknown: (fetcherError: core.Fetcher.Error): CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
-                this: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Unknown,
-                visitor: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Visitor<_Result>,
+                this: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Unknown,
+                visitor: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Visitor<_Result>,
             ) {
-                return CandidApi.chargeCapture.v1.updatePostBilledChange.Error._visit(this, visitor);
+                return CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._visit(this, visitor);
             },
         };
     },
 
     _visit: <_Result>(
-        value: CandidApi.chargeCapture.v1.updatePostBilledChange.Error,
-        visitor: CandidApi.chargeCapture.v1.updatePostBilledChange.Error._Visitor<_Result>,
+        value: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error,
+        visitor: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             case "EntityNotFoundError":

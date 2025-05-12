@@ -49,7 +49,10 @@ import * as CandidApi from "../../../../../../index";
  *             taxId: "string",
  *             npi: "string",
  *             taxonomyCode: "string",
- *             providerCommercialLicenseType: "0"
+ *             providerCommercialLicenseType: "0",
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         renderingProvider: {
  *             npi: "string",
@@ -61,7 +64,10 @@ import * as CandidApi from "../../../../../../index";
  *                 state: "NY",
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         referringProvider: {
  *             npi: "string",
@@ -73,7 +79,10 @@ import * as CandidApi from "../../../../../../index";
  *                 state: "NY",
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         initialReferringProvider: {
  *             npi: "string",
@@ -86,7 +95,10 @@ import * as CandidApi from "../../../../../../index";
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
  *             },
- *             qualifier: "DQ"
+ *             qualifier: "DQ",
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         supervisingProvider: {
  *             npi: "string",
@@ -98,7 +110,10 @@ import * as CandidApi from "../../../../../../index";
  *                 state: "NY",
  *                 zipCode: "10001",
  *                 zipPlusFourCode: "1234"
- *             }
+ *             },
+ *             firstName: "string",
+ *             lastName: "string",
+ *             organizationName: "string"
  *         },
  *         serviceFacility: {
  *             organizationName: "string",
@@ -117,9 +132,28 @@ import * as CandidApi from "../../../../../../index";
  *             insuranceCard: {
  *                 memberId: "string",
  *                 payerName: "string",
- *                 payerId: "string"
+ *                 payerId: "string",
+ *                 rxBin: "string",
+ *                 rxPcn: "string",
+ *                 imageUrlFront: "string",
+ *                 imageUrlBack: "string",
+ *                 emrPayerCrosswalk: "HEALTHIE",
+ *                 groupNumber: "string",
+ *                 planName: "string",
+ *                 planType: "09",
+ *                 insuranceType: "01",
+ *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
  *             },
  *             patientRelationshipToSubscriberCode: "01",
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: "NY",
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
  *             firstName: "string",
  *             lastName: "string",
  *             gender: "male"
@@ -128,9 +162,28 @@ import * as CandidApi from "../../../../../../index";
  *             insuranceCard: {
  *                 memberId: "string",
  *                 payerName: "string",
- *                 payerId: "string"
+ *                 payerId: "string",
+ *                 rxBin: "string",
+ *                 rxPcn: "string",
+ *                 imageUrlFront: "string",
+ *                 imageUrlBack: "string",
+ *                 emrPayerCrosswalk: "HEALTHIE",
+ *                 groupNumber: "string",
+ *                 planName: "string",
+ *                 planType: "09",
+ *                 insuranceType: "01",
+ *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
  *             },
  *             patientRelationshipToSubscriberCode: "01",
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: "NY",
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
  *             firstName: "string",
  *             lastName: "string",
  *             gender: "male"
@@ -139,9 +192,28 @@ import * as CandidApi from "../../../../../../index";
  *             insuranceCard: {
  *                 memberId: "string",
  *                 payerName: "string",
- *                 payerId: "string"
+ *                 payerId: "string",
+ *                 rxBin: "string",
+ *                 rxPcn: "string",
+ *                 imageUrlFront: "string",
+ *                 imageUrlBack: "string",
+ *                 emrPayerCrosswalk: "HEALTHIE",
+ *                 groupNumber: "string",
+ *                 planName: "string",
+ *                 planType: "09",
+ *                 insuranceType: "01",
+ *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
  *             },
  *             patientRelationshipToSubscriberCode: "01",
+ *             dateOfBirth: "2023-01-15",
+ *             address: {
+ *                 address1: "123 Main St",
+ *                 address2: "Apt 1",
+ *                 city: "New York",
+ *                 state: "NY",
+ *                 zipCode: "10001",
+ *                 zipPlusFourCode: "1234"
+ *             },
  *             firstName: "string",
  *             lastName: "string",
  *             gender: "male"
@@ -230,7 +302,9 @@ import * as CandidApi from "../../../../../../index";
  *             }],
  *         referralNumber: "string",
  *         epsdtReferral: {
- *             conditionIndicator1: "AV"
+ *             conditionIndicator1: "AV",
+ *             conditionIndicator2: "AV",
+ *             conditionIndicator3: "AV"
  *         },
  *         claimSupplementalInformation: [{
  *                 attachmentReportTypeCode: "03",

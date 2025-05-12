@@ -168,8 +168,8 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -224,8 +224,8 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -302,7 +302,10 @@ export class V4 {
      *             taxId: "string",
      *             npi: "string",
      *             taxonomyCode: "string",
-     *             providerCommercialLicenseType: "0"
+     *             providerCommercialLicenseType: "0",
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         renderingProvider: {
      *             npi: "string",
@@ -314,7 +317,10 @@ export class V4 {
      *                 state: "NY",
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             }
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         referringProvider: {
      *             npi: "string",
@@ -326,7 +332,10 @@ export class V4 {
      *                 state: "NY",
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             }
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         initialReferringProvider: {
      *             npi: "string",
@@ -339,7 +348,10 @@ export class V4 {
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
-     *             qualifier: "DQ"
+     *             qualifier: "DQ",
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         supervisingProvider: {
      *             npi: "string",
@@ -351,7 +363,10 @@ export class V4 {
      *                 state: "NY",
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             }
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         serviceFacility: {
      *             organizationName: "string",
@@ -370,9 +385,28 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string"
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: "HEALTHIE",
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: "09",
+     *                 insuranceType: "01",
+     *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *             },
      *             patientRelationshipToSubscriberCode: "01",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: "NY",
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: "male"
@@ -381,9 +415,28 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string"
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: "HEALTHIE",
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: "09",
+     *                 insuranceType: "01",
+     *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *             },
      *             patientRelationshipToSubscriberCode: "01",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: "NY",
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: "male"
@@ -392,9 +445,28 @@ export class V4 {
      *             insuranceCard: {
      *                 memberId: "string",
      *                 payerName: "string",
-     *                 payerId: "string"
+     *                 payerId: "string",
+     *                 rxBin: "string",
+     *                 rxPcn: "string",
+     *                 imageUrlFront: "string",
+     *                 imageUrlBack: "string",
+     *                 emrPayerCrosswalk: "HEALTHIE",
+     *                 groupNumber: "string",
+     *                 planName: "string",
+     *                 planType: "09",
+     *                 insuranceType: "01",
+     *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *             },
      *             patientRelationshipToSubscriberCode: "01",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "123 Main St",
+     *                 address2: "Apt 1",
+     *                 city: "New York",
+     *                 state: "NY",
+     *                 zipCode: "10001",
+     *                 zipPlusFourCode: "1234"
+     *             },
      *             firstName: "string",
      *             lastName: "string",
      *             gender: "male"
@@ -483,7 +555,9 @@ export class V4 {
      *             }],
      *         referralNumber: "string",
      *         epsdtReferral: {
-     *             conditionIndicator1: "AV"
+     *             conditionIndicator1: "AV",
+     *             conditionIndicator2: "AV",
+     *             conditionIndicator3: "AV"
      *         },
      *         claimSupplementalInformation: [{
      *                 attachmentReportTypeCode: "03",
@@ -568,8 +642,8 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -665,7 +739,10 @@ export class V4 {
      *             taxId: "string",
      *             npi: "string",
      *             taxonomyCode: "string",
-     *             providerCommercialLicenseType: "0"
+     *             providerCommercialLicenseType: "0",
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         renderingProvider: {
      *             npi: "string",
@@ -677,7 +754,10 @@ export class V4 {
      *                 state: "NY",
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             }
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         initialReferringProvider: {
      *             npi: "string",
@@ -690,7 +770,10 @@ export class V4 {
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
      *             },
-     *             qualifier: "DQ"
+     *             qualifier: "DQ",
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         supervisingProvider: {
      *             npi: "string",
@@ -702,7 +785,10 @@ export class V4 {
      *                 state: "NY",
      *                 zipCode: "10001",
      *                 zipPlusFourCode: "1234"
-     *             }
+     *             },
+     *             firstName: "string",
+     *             lastName: "string",
+     *             organizationName: "string"
      *         },
      *         serviceFacility: {
      *             organizationName: "string",
@@ -857,8 +943,8 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -925,103 +1011,7 @@ export class V4 {
      * @example
      *     await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         diagnosisIds: [CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
-     *         placeOfServiceCodeAsSubmitted: "01",
-     *         benefitsAssignedToProvider: true,
-     *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
-     *         externalId: CandidApi.EncounterExternalId("string"),
-     *         dateOfService: "2023-01-15",
-     *         tagIds: [],
-     *         clinicalNotes: [],
-     *         payToAddress: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         billableStatus: "BILLABLE",
-     *         responsibleParty: "INSURANCE_PAY",
-     *         providerAcceptsAssignment: true,
-     *         synchronicity: "Synchronous",
-     *         placeOfServiceCode: "01",
-     *         appointmentType: "string",
-     *         endDateOfService: "2023-01-15",
-     *         subscriberPrimary: {
-     *             insuranceCard: {
-     *                 memberId: "string",
-     *                 payerName: "string",
-     *                 payerId: "string"
-     *             },
-     *             patientRelationshipToSubscriberCode: "01",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             gender: "male"
-     *         },
-     *         subscriberSecondary: {
-     *             insuranceCard: {
-     *                 memberId: "string",
-     *                 payerName: "string",
-     *                 payerId: "string"
-     *             },
-     *             patientRelationshipToSubscriberCode: "01",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             gender: "male"
-     *         },
-     *         subscriberTertiary: {
-     *             insuranceCard: {
-     *                 memberId: "string",
-     *                 payerName: "string",
-     *                 payerId: "string"
-     *             },
-     *             patientRelationshipToSubscriberCode: "01",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             gender: "male"
-     *         },
-     *         additionalInformation: "string",
-     *         serviceAuthorizationExceptionCode: "1",
-     *         admissionDate: "2023-01-15",
-     *         dischargeDate: "2023-01-15",
-     *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
-     *         lastMenstrualPeriodDate: "2023-01-15",
-     *         delayReasonCode: "1",
-     *         patient: {},
-     *         patientAuthorizedRelease: true,
-     *         schemaInstances: [],
-     *         vitals: {
-     *             heightIn: 70,
-     *             weightLbs: 165,
-     *             bloodPressureSystolicMmhg: 115,
-     *             bloodPressureDiastolicMmhg: 85,
-     *             bodyTemperatureF: 98,
-     *             hemoglobinGdl: 15.1,
-     *             hematocritPct: 51.2
-     *         },
-     *         existingMedications: [],
-     *         renderingProvider: {},
-     *         serviceFacility: {
-     *             organizationName: "Test Organization",
-     *             address: {
-     *                 address1: "123 Main St",
-     *                 address2: "Apt 1",
-     *                 city: "New York",
-     *                 state: "NY",
-     *                 zipCode: "10001",
-     *                 zipPlusFourCode: "1234"
-     *             }
-     *         },
-     *         guarantor: {},
-     *         billingProvider: {},
-     *         supervisingProvider: {},
-     *         referringProvider: {},
-     *         initialReferringProvider: {},
-     *         referralNumber: "string",
-     *         epsdtReferral: {
-     *             conditionIndicator1: "AV"
-     *         },
-     *         claimSupplementalInformation: []
+     *         placeOfServiceCodeAsSubmitted: "01"
      *     })
      */
     public async update(
@@ -1043,8 +1033,8 @@ export class V4 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

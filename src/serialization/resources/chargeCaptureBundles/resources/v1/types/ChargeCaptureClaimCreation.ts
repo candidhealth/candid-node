@@ -9,6 +9,7 @@ import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCa
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { ChargeCaptureClaimCreationStatus } from "./ChargeCaptureClaimCreationStatus";
 import { ChargeCaptureError } from "../../../../chargeCapture/resources/v1/types/ChargeCaptureError";
+import { ChargeCaptureData } from "../../../../chargeCapture/resources/v1/types/ChargeCaptureData";
 
 export const ChargeCaptureClaimCreation: core.serialization.ObjectSchema<
     serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreation.Raw,
@@ -17,8 +18,9 @@ export const ChargeCaptureClaimCreation: core.serialization.ObjectSchema<
     id: ChargeCaptureClaimCreationId,
     createdEncounterId: core.serialization.property("created_encounter_id", EncounterId.optional()),
     status: ChargeCaptureClaimCreationStatus,
-    characteristics: core.serialization.record(core.serialization.string(), core.serialization.string().optional()),
+    characteristics: core.serialization.record(core.serialization.string(), core.serialization.unknown().optional()),
     errors: core.serialization.list(ChargeCaptureError),
+    encounterCreationInput: core.serialization.property("encounter_creation_input", ChargeCaptureData.optional()),
 });
 
 export declare namespace ChargeCaptureClaimCreation {
@@ -26,7 +28,8 @@ export declare namespace ChargeCaptureClaimCreation {
         id: ChargeCaptureClaimCreationId.Raw;
         created_encounter_id?: EncounterId.Raw | null;
         status: ChargeCaptureClaimCreationStatus.Raw;
-        characteristics: Record<string, string | null | undefined>;
+        characteristics: Record<string, unknown | null | undefined>;
         errors: ChargeCaptureError.Raw[];
+        encounter_creation_input?: ChargeCaptureData.Raw | null;
     }
 }

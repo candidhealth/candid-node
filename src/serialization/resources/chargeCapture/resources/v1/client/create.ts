@@ -10,6 +10,7 @@ import { UnauthorizedErrorMessage } from "../../../../commons/types/Unauthorized
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { SchemaInstanceValidationFailure } from "../../../../encounters/resources/v4/types/SchemaInstanceValidationFailure";
 import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
+import { ChargeExternalIdConflictErrorMessage } from "../types/ChargeExternalIdConflictErrorMessage";
 
 export const Error: core.serialization.Schema<
     serializers.chargeCapture.v1.create.Error.Raw,
@@ -31,6 +32,9 @@ export const Error: core.serialization.Schema<
         UnprocessableEntityError: core.serialization.object({
             content: UnprocessableEntityErrorMessage,
         }),
+        ChargeExternalIdConflictError: core.serialization.object({
+            content: ChargeExternalIdConflictErrorMessage,
+        }),
     })
     .transform<CandidApi.chargeCapture.v1.create.Error>({
         transform: (value) => {
@@ -45,6 +49,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.chargeCapture.v1.create.Error.schemaInstanceValidationHttpFailure(value.content);
                 case "UnprocessableEntityError":
                     return CandidApi.chargeCapture.v1.create.Error.unprocessableEntityError(value.content);
+                case "ChargeExternalIdConflictError":
+                    return CandidApi.chargeCapture.v1.create.Error.chargeExternalIdConflictError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -56,7 +62,8 @@ export declare namespace Error {
         | Error.UnauthorizedError
         | Error.HttpRequestValidationsError
         | Error.SchemaInstanceValidationHttpFailure
-        | Error.UnprocessableEntityError;
+        | Error.UnprocessableEntityError
+        | Error.ChargeExternalIdConflictError;
 
     export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -81,5 +88,10 @@ export declare namespace Error {
     export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
+    }
+
+    export interface ChargeExternalIdConflictError {
+        errorName: "ChargeExternalIdConflictError";
+        content: ChargeExternalIdConflictErrorMessage.Raw;
     }
 }

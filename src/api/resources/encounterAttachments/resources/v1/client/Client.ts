@@ -63,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -95,7 +95,7 @@ export class V1 {
 
     /**
      * Uploads a file to the encounter. The file will be stored in the
-     * encounter's attachments. The maximum file size is 25MB.
+     * encounter's attachments.
      *
      * @param {File | fs.ReadStream | Blob} attachmentFile
      * @param {CandidApi.EncounterId} encounterId
@@ -136,8 +136,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ..._maybeEncodedRequest.headers,
@@ -197,8 +197,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.43.0",
-                "User-Agent": "candidhealth/0.43.0",
+                "X-Fern-SDK-Version": "0.43.1",
+                "User-Agent": "candidhealth/0.43.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
