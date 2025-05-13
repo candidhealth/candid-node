@@ -36,6 +36,8 @@ export * from "./Decimal";
 export * from "./RemovableDateRangeOptionalEnd";
 export * from "./ResourcePage";
 export * from "./StreetAddressBase";
+export * from "./StreetAddressOptionalBase";
+export * from "./StreetAddressShortZipOptional";
 export * from "./StreetAddressShortZip";
 export * from "./StreetAddressLongZip";
 export * from "./Regions";

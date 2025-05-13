@@ -83,6 +83,10 @@ export const EncounterCreate: core.serialization.Schema<
             "claim_supplemental_information",
             core.serialization.list(ClaimSupplementalInformation).optional(),
         ),
+        secondaryPayerCarrierCode: core.serialization.property(
+            "secondary_payer_carrier_code",
+            core.serialization.string().optional(),
+        ),
     })
     .extend(EncounterBase);
 
@@ -113,5 +117,6 @@ export declare namespace EncounterCreate {
         referral_number?: string | null;
         epsdt_referral?: EpsdtReferral.Raw | null;
         claim_supplemental_information?: ClaimSupplementalInformation.Raw[] | null;
+        secondary_payer_carrier_code?: string | null;
     }
 }

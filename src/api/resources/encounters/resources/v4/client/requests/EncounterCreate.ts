@@ -310,6 +310,7 @@ import * as CandidApi from "../../../../../../index";
  *                 attachmentReportTypeCode: "03",
  *                 attachmentTransmissionCode: "BM"
  *             }],
+ *         secondaryPayerCarrierCode: "string",
  *         externalId: CandidApi.EncounterExternalId("string"),
  *         dateOfService: "2023-01-15",
  *         endDateOfService: "2023-01-15",
@@ -498,4 +499,9 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      *
      */
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
+    /**
+     * When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states.
+     *
+     */
+    secondaryPayerCarrierCode?: string;
 }

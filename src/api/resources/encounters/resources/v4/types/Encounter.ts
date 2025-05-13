@@ -511,6 +511,8 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
     /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
+    /** When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states. */
+    secondaryPayerCarrierCode?: string;
     /** The date and time the encounter was last submitted to a payer. */
     lastSubmittedAt?: Date;
     /** The date and time the encounter was created. */

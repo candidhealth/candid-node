@@ -27,8 +27,6 @@ export interface EncounterOptional {
     tagIds?: CandidApi.TagId[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
-    /** Specifies the address to which payments for the claim should be sent. */
-    payToAddress?: CandidApi.StreetAddressLongZip;
     /** Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party. */
     billableStatus?: CandidApi.encounters.v4.BillableStatusType;
     /** Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay. */
@@ -96,8 +94,6 @@ export interface EncounterOptional {
      * Code indicating the reason why a request was delayed
      */
     delayReasonCode?: CandidApi.DelayReasonCode;
-    /** Contains the identification information of the individual receiving medical services. */
-    patient?: CandidApi.PatientUpdate;
     /**
      * Whether this patient has authorized the release of medical information
      * for billing purpose.
@@ -121,34 +117,14 @@ export interface EncounterOptional {
      * Note all current existing medications on encounter will be overridden with this list.
      */
     existingMedications?: CandidApi.encounters.v4.Medication[];
-    /**
-     * The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service.
-     * For telehealth services, the rendering provider performs the visit, asynchronous communication, or other service. The rendering provider address should generally be the same as the service facility address.
-     */
-    renderingProvider?: CandidApi.encounterProviders.v2.RenderingProviderUpdate;
-    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process. */
-    serviceFacility?: CandidApi.EncounterServiceFacilityUpdate;
     /** Personal and contact info for the guarantor of the patient responsibility. */
     guarantor?: CandidApi.guarantor.v1.GuarantorUpdate;
-    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form. */
-    billingProvider?: CandidApi.encounterProviders.v2.BillingProviderUpdate;
-    /** Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send. */
-    supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProviderUpdate;
-    /**
-     * The final provider who referred the services that were rendered.
-     * All physicians who order services or refer Medicare beneficiaries must
-     * report this data.
-     */
-    referringProvider?: CandidApi.encounterProviders.v2.ReferringProviderUpdate;
-    /**
-     * The second iteration of Loop ID-2310. Use code "P3 - Primary Care Provider" in this loop to
-     * indicate the initial referral from the primary care provider or whatever provider wrote the initial referral for this patient's episode of care being billed/reported in this transaction.
-     */
-    initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate;
     /** Refers to REF\*9F on the 837p. Value cannot be greater than 50 characters. */
     referralNumber?: string;
     /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
     /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
+    /** When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states. */
+    secondaryPayerCarrierCode?: string;
 }

@@ -5,7 +5,15 @@
 import * as serializers from "../../../../../../index";
 import * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
+import { StreetAddressLongZip } from "../../../../../commons/types/StreetAddressLongZip";
 import { DiagnosisId } from "../../../../../diagnoses/types/DiagnosisId";
+import { InitialReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdate";
+import { ReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/ReferringProviderUpdate";
+import { PatientUpdate } from "../../../../../individual/types/PatientUpdate";
+import { RenderingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/RenderingProviderUpdate";
+import { EncounterServiceFacilityUpdate } from "../../../../../serviceFacility/types/EncounterServiceFacilityUpdate";
+import { SupervisingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdate";
+import { BillingProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/BillingProviderUpdate";
 import { FacilityTypeCode } from "../../../../../commons/types/FacilityTypeCode";
 import { EncounterOptional } from "../../types/EncounterOptional";
 
@@ -14,7 +22,18 @@ export const EncounterUpdate: core.serialization.Schema<
     CandidApi.encounters.v4.EncounterUpdate
 > = core.serialization
     .object({
+        payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
         diagnosisIds: core.serialization.property("diagnosis_ids", core.serialization.list(DiagnosisId).optional()),
+        initialReferringProvider: core.serialization.property(
+            "initial_referring_provider",
+            InitialReferringProviderUpdate.optional(),
+        ),
+        referringProvider: core.serialization.property("referring_provider", ReferringProviderUpdate.optional()),
+        patient: PatientUpdate.optional(),
+        renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
+        serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityUpdate.optional()),
+        supervisingProvider: core.serialization.property("supervising_provider", SupervisingProviderUpdate.optional()),
+        billingProvider: core.serialization.property("billing_provider", BillingProviderUpdate.optional()),
         placeOfServiceCodeAsSubmitted: core.serialization.property(
             "place_of_service_code_as_submitted",
             FacilityTypeCode.optional(),
@@ -24,7 +43,15 @@ export const EncounterUpdate: core.serialization.Schema<
 
 export declare namespace EncounterUpdate {
     export interface Raw extends EncounterOptional.Raw {
+        pay_to_address?: StreetAddressLongZip.Raw | null;
         diagnosis_ids?: DiagnosisId.Raw[] | null;
+        initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;
+        referring_provider?: ReferringProviderUpdate.Raw | null;
+        patient?: PatientUpdate.Raw | null;
+        rendering_provider?: RenderingProviderUpdate.Raw | null;
+        service_facility?: EncounterServiceFacilityUpdate.Raw | null;
+        supervising_provider?: SupervisingProviderUpdate.Raw | null;
+        billing_provider?: BillingProviderUpdate.Raw | null;
         place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
     }
 }

@@ -10,5 +10,6 @@ export * from "./PatientNonInsurancePayerInfo";
 export * from "./PatientCreate";
 export * from "./PatientUpdate";
 export * from "./PatientBase";
+export * from "./PatientUpdateWithOptionalAddress";
 export * from "./Patient";
 export * from "./Gender";

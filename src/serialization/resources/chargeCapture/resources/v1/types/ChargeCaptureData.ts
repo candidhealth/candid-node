@@ -10,7 +10,15 @@ import { Intervention } from "../../../../encounters/resources/v4/types/Interven
 import { ExternalClaimSubmissionCreate } from "../../../../claimSubmission/resources/v1/types/ExternalClaimSubmissionCreate";
 import { ServiceLineCreate } from "../../../../serviceLines/resources/v2/types/ServiceLineCreate";
 import { PatientHistoryCategory } from "../../../../encounters/resources/v4/types/PatientHistoryCategory";
-import { BillingNoteOptional } from "../../../../billingNotes/resources/v2/types/BillingNoteOptional";
+import { BillingNoteBase } from "../../../../billingNotes/resources/v2/types/BillingNoteBase";
+import { PatientUpdateWithOptionalAddress } from "../../../../individual/types/PatientUpdateWithOptionalAddress";
+import { EncounterServiceFacilityUpdateWithOptionalAddress } from "../../../../serviceFacility/types/EncounterServiceFacilityUpdateWithOptionalAddress";
+import { RenderingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/RenderingProviderUpdateWithOptionalAddress";
+import { InitialReferringProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdateWithOptionalAddress";
+import { ReferringProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/ReferringProviderUpdateWithOptionalAddress";
+import { SupervisingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdateWithOptionalAddress";
+import { BillingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/BillingProviderUpdateWithOptionalAddress";
+import { StreetAddressShortZipOptional } from "../../../../commons/types/StreetAddressShortZipOptional";
 import { EncounterOptional } from "../../../../encounters/resources/v4/types/EncounterOptional";
 
 export const ChargeCaptureData: core.serialization.ObjectSchema<
@@ -32,10 +40,33 @@ export const ChargeCaptureData: core.serialization.ObjectSchema<
             "patient_histories",
             core.serialization.list(PatientHistoryCategory).optional(),
         ),
-        billingNotes: core.serialization.property(
-            "billing_notes",
-            core.serialization.list(BillingNoteOptional).optional(),
+        billingNotes: core.serialization.property("billing_notes", core.serialization.list(BillingNoteBase).optional()),
+        patient: PatientUpdateWithOptionalAddress.optional(),
+        serviceFacility: core.serialization.property(
+            "service_facility",
+            EncounterServiceFacilityUpdateWithOptionalAddress.optional(),
         ),
+        renderingProvider: core.serialization.property(
+            "rendering_provider",
+            RenderingProviderUpdateWithOptionalAddress.optional(),
+        ),
+        initialReferringProvider: core.serialization.property(
+            "initial_referring_provider",
+            InitialReferringProviderUpdateWithOptionalAddress.optional(),
+        ),
+        referringProvider: core.serialization.property(
+            "referring_provider",
+            ReferringProviderUpdateWithOptionalAddress.optional(),
+        ),
+        supervisingProvider: core.serialization.property(
+            "supervising_provider",
+            SupervisingProviderUpdateWithOptionalAddress.optional(),
+        ),
+        billingProvider: core.serialization.property(
+            "billing_provider",
+            BillingProviderUpdateWithOptionalAddress.optional(),
+        ),
+        payToAddress: core.serialization.property("pay_to_address", StreetAddressShortZipOptional.optional()),
     })
     .extend(EncounterOptional);
 
@@ -46,6 +77,14 @@ export declare namespace ChargeCaptureData {
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;
         service_lines?: ServiceLineCreate.Raw[] | null;
         patient_histories?: PatientHistoryCategory.Raw[] | null;
-        billing_notes?: BillingNoteOptional.Raw[] | null;
+        billing_notes?: BillingNoteBase.Raw[] | null;
+        patient?: PatientUpdateWithOptionalAddress.Raw | null;
+        service_facility?: EncounterServiceFacilityUpdateWithOptionalAddress.Raw | null;
+        rendering_provider?: RenderingProviderUpdateWithOptionalAddress.Raw | null;
+        initial_referring_provider?: InitialReferringProviderUpdateWithOptionalAddress.Raw | null;
+        referring_provider?: ReferringProviderUpdateWithOptionalAddress.Raw | null;
+        supervising_provider?: SupervisingProviderUpdateWithOptionalAddress.Raw | null;
+        billing_provider?: BillingProviderUpdateWithOptionalAddress.Raw | null;
+        pay_to_address?: StreetAddressShortZipOptional.Raw | null;
     }
 }

@@ -9,7 +9,6 @@ import { PriorAuthorizationNumber } from "./PriorAuthorizationNumber";
 import { EncounterExternalId } from "../../../../commons/types/EncounterExternalId";
 import { TagId } from "../../../../tags/types/TagId";
 import { ClinicalNoteCategoryCreate } from "./ClinicalNoteCategoryCreate";
-import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { BillableStatusType } from "./BillableStatusType";
 import { ResponsiblePartyType } from "./ResponsiblePartyType";
 import { SynchronicityType } from "./SynchronicityType";
@@ -17,17 +16,10 @@ import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { SubscriberCreate } from "../../../../individual/types/SubscriberCreate";
 import { ServiceAuthorizationExceptionCode } from "./ServiceAuthorizationExceptionCode";
 import { DelayReasonCode } from "../../../../commons/types/DelayReasonCode";
-import { PatientUpdate } from "../../../../individual/types/PatientUpdate";
 import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { VitalsUpdate } from "./VitalsUpdate";
 import { Medication } from "./Medication";
-import { RenderingProviderUpdate } from "../../../../encounterProviders/resources/v2/types/RenderingProviderUpdate";
-import { EncounterServiceFacilityUpdate } from "../../../../serviceFacility/types/EncounterServiceFacilityUpdate";
 import { GuarantorUpdate } from "../../../../guarantor/resources/v1/types/GuarantorUpdate";
-import { BillingProviderUpdate } from "../../../../encounterProviders/resources/v2/types/BillingProviderUpdate";
-import { SupervisingProviderUpdate } from "../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdate";
-import { ReferringProviderUpdate } from "../../../../encounterProviders/resources/v2/types/ReferringProviderUpdate";
-import { InitialReferringProviderUpdate } from "../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdate";
 import { EpsdtReferral } from "./EpsdtReferral";
 import { ClaimSupplementalInformation } from "./ClaimSupplementalInformation";
 
@@ -50,7 +42,6 @@ export const EncounterOptional: core.serialization.ObjectSchema<
         "clinical_notes",
         core.serialization.list(ClinicalNoteCategoryCreate).optional(),
     ),
-    payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
     billableStatus: core.serialization.property("billable_status", BillableStatusType.optional()),
     responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType.optional()),
     providerAcceptsAssignment: core.serialization.property(
@@ -83,7 +74,6 @@ export const EncounterOptional: core.serialization.ObjectSchema<
         core.serialization.string().optional(),
     ),
     delayReasonCode: core.serialization.property("delay_reason_code", DelayReasonCode.optional()),
-    patient: PatientUpdate.optional(),
     patientAuthorizedRelease: core.serialization.property(
         "patient_authorized_release",
         core.serialization.boolean().optional(),
@@ -97,21 +87,16 @@ export const EncounterOptional: core.serialization.ObjectSchema<
         "existing_medications",
         core.serialization.list(Medication).optional(),
     ),
-    renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
-    serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityUpdate.optional()),
     guarantor: GuarantorUpdate.optional(),
-    billingProvider: core.serialization.property("billing_provider", BillingProviderUpdate.optional()),
-    supervisingProvider: core.serialization.property("supervising_provider", SupervisingProviderUpdate.optional()),
-    referringProvider: core.serialization.property("referring_provider", ReferringProviderUpdate.optional()),
-    initialReferringProvider: core.serialization.property(
-        "initial_referring_provider",
-        InitialReferringProviderUpdate.optional(),
-    ),
     referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
     epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
     claimSupplementalInformation: core.serialization.property(
         "claim_supplemental_information",
         core.serialization.list(ClaimSupplementalInformation).optional(),
+    ),
+    secondaryPayerCarrierCode: core.serialization.property(
+        "secondary_payer_carrier_code",
+        core.serialization.string().optional(),
     ),
 });
 
@@ -123,7 +108,6 @@ export declare namespace EncounterOptional {
         date_of_service?: string | null;
         tag_ids?: TagId.Raw[] | null;
         clinical_notes?: ClinicalNoteCategoryCreate.Raw[] | null;
-        pay_to_address?: StreetAddressLongZip.Raw | null;
         billable_status?: BillableStatusType.Raw | null;
         responsible_party?: ResponsiblePartyType.Raw | null;
         provider_accepts_assignment?: boolean | null;
@@ -141,20 +125,14 @@ export declare namespace EncounterOptional {
         onset_of_current_illness_or_symptom_date?: string | null;
         last_menstrual_period_date?: string | null;
         delay_reason_code?: DelayReasonCode.Raw | null;
-        patient?: PatientUpdate.Raw | null;
         patient_authorized_release?: boolean | null;
         schema_instances?: SchemaInstance.Raw[] | null;
         vitals?: VitalsUpdate.Raw | null;
         existing_medications?: Medication.Raw[] | null;
-        rendering_provider?: RenderingProviderUpdate.Raw | null;
-        service_facility?: EncounterServiceFacilityUpdate.Raw | null;
         guarantor?: GuarantorUpdate.Raw | null;
-        billing_provider?: BillingProviderUpdate.Raw | null;
-        supervising_provider?: SupervisingProviderUpdate.Raw | null;
-        referring_provider?: ReferringProviderUpdate.Raw | null;
-        initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;
         referral_number?: string | null;
         epsdt_referral?: EpsdtReferral.Raw | null;
         claim_supplemental_information?: ClaimSupplementalInformation.Raw[] | null;
+        secondary_payer_carrier_code?: string | null;
     }
 }
