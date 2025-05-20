@@ -100,7 +100,7 @@ export type InsuranceTypeCode =
      * Special Low Income Medicare Beneficiary - An individual eligible for Medicare for whom Medicaid pays only Medicare premiums */
     | "HS"
     /**
-     * Indemnity - Gives a subscriber the choice to select any provider. Payment is fixed percentage of the cost for covered care after satisfying an annual deductible */
+     * Indemnity - Gives a subscriber the choice to select any provider.  Payment is fixed percentage of the cost for covered care after satisfying an annual deductible */
     | "IN"
     /**
      * Individual Policy */

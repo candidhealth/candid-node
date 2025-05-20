@@ -4,10 +4,7 @@
 
 /**
  * @example
- *     {
- *         patientId: "string",
- *         coverageId: "string"
- *     }
+ *     {}
  */
 export interface ImageGetMultiRequest {
     patientId?: string;

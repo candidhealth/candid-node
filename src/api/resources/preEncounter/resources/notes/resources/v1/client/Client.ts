@@ -38,7 +38,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.notes.v1.get(CandidApi.preEncounter.NoteId("string"))
+     *     await client.preEncounter.notes.v1.get(CandidApi.preEncounter.NoteId("id"))
      */
     public async get(
         id: CandidApi.preEncounter.NoteId,
@@ -58,8 +58,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -96,9 +96,7 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.notes.v1.create({
-     *         value: "string",
-     *         authorEmail: "string",
-     *         authorName: "string"
+     *         value: "value"
      *     })
      */
     public async create(
@@ -119,8 +117,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -161,10 +159,8 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.notes.v1.update(CandidApi.preEncounter.NoteId("string"), "string", {
-     *         value: "string",
-     *         authorEmail: "string",
-     *         authorName: "string"
+     *     await client.preEncounter.notes.v1.update(CandidApi.preEncounter.NoteId("id"), "version", {
+     *         value: "value"
      *     })
      */
     public async update(
@@ -187,8 +183,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -221,14 +217,14 @@ export class V1 {
     }
 
     /**
-     * Sets a note as deactivated. The path must contain the most recent version to prevent races.
+     * Sets a note as deactivated.  The path must contain the most recent version to prevent races.
      *
      * @param {CandidApi.preEncounter.NoteId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.notes.v1.deactivate(CandidApi.preEncounter.NoteId("string"), "string")
+     *     await client.preEncounter.notes.v1.deactivate(CandidApi.preEncounter.NoteId("id"), "version")
      */
     public async deactivate(
         id: CandidApi.preEncounter.NoteId,
@@ -249,8 +245,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

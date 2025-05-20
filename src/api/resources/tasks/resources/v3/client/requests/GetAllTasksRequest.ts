@@ -6,21 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         limit: 1,
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
- *         status: "finished",
- *         taskType: "CUSTOMER_DATA_REQUEST",
- *         categories: "string",
- *         updatedSince: "2024-01-15T09:30:00Z",
- *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         searchTerm: "string",
- *         assignedToId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         dateOfServiceMin: "2023-01-15",
- *         dateOfServiceMax: "2023-01-15",
- *         billingProviderNpi: "string",
- *         sort: "updated_at:asc"
- *     }
+ *     {}
  */
 export interface GetAllTasksRequest {
     /**

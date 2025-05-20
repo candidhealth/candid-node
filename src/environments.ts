@@ -16,6 +16,13 @@ export const CandidApiEnvironment = {
         candidApi: "https://api-staging.joincandidhealth.com",
         preEncounter: "https://pre-api-staging.joincandidhealth.com",
     },
+    CandidStaging: {
+        candidApi: "https://staging-api.joincandidhealth.com",
+        preEncounter: "https://staging-pre-api.joincandidhealth.com",
+    },
 } as const;
 
-export type CandidApiEnvironment = typeof CandidApiEnvironment.Production | typeof CandidApiEnvironment.Staging;
+export type CandidApiEnvironment =
+    | typeof CandidApiEnvironment.Production
+    | typeof CandidApiEnvironment.Staging
+    | typeof CandidApiEnvironment.CandidStaging;

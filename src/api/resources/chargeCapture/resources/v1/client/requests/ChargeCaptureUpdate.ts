@@ -6,13 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         data: {},
- *         chargeExternalId: "string",
- *         ehrSourceUrl: "string",
- *         patientExternalId: "string",
- *         status: "planned"
- *     }
+ *     {}
  */
 export interface ChargeCaptureUpdate {
     data?: CandidApi.chargeCapture.v1.ChargeCaptureData;
@@ -20,13 +14,11 @@ export interface ChargeCaptureUpdate {
      * A client-specified unique ID to associate with this encounter;
      * for example, your internal encounter ID or a Dr. Chrono encounter ID.
      * This field should not contain PHI.
-     *
      */
     chargeExternalId?: string;
     /**
      * External URL reference that links to Charge Capture details within the external system (e.g. the EHR visit page).
      * Send full URL format for the external link (e.g. https://emr_charge_capture_url.com/123).
-     *
      */
     ehrSourceUrl?: string;
     /** The patient ID from the external EMR platform for the patient */

@@ -38,18 +38,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.writeOffs.v1.getMulti({
-     *         limit: 1,
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         sort: "amount_cents",
-     *         sortDirection: "asc",
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         accountTypes: "PATIENT"
-     *     })
+     *     await client.writeOffs.v1.getMulti()
      */
     public async getMulti(
         request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {},
@@ -134,8 +123,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -192,8 +181,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -234,7 +223,12 @@ export class V1 {
      *         writeOffs: [{
      *                 type: "patient",
      *                 writeOffTimestamp: "2024-01-15T09:30:00Z",
-     *                 writeOffNote: "string",
+     *                 writeOffReason: "SMALL_BALANCE",
+     *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *                 amountCents: 1
+     *             }, {
+     *                 type: "patient",
+     *                 writeOffTimestamp: "2024-01-15T09:30:00Z",
      *                 writeOffReason: "SMALL_BALANCE",
      *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *                 amountCents: 1
@@ -259,8 +253,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -319,8 +313,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -378,8 +372,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -440,8 +434,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

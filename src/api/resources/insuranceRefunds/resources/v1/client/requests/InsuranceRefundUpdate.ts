@@ -6,17 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         refundTimestamp: "2024-01-15T09:30:00Z",
- *         refundNote: {
- *             type: "set",
- *             value: "string"
- *         },
- *         refundReason: {
- *             type: "set",
- *             value: "OVERCHARGED"
- *         }
- *     }
+ *     {}
  */
 export interface InsuranceRefundUpdate {
     refundTimestamp?: Date;

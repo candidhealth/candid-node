@@ -38,9 +38,8 @@ export class V1 {
      * @example
      *     await client.chargeCapture.v1.create({
      *         data: {},
-     *         chargeExternalId: "string",
-     *         ehrSourceUrl: "string",
-     *         patientExternalId: "string",
+     *         chargeExternalId: "charge_external_id",
+     *         patientExternalId: "patient_external_id",
      *         status: "planned"
      *     })
      */
@@ -62,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -143,8 +142,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -193,13 +192,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         data: {},
-     *         chargeExternalId: "string",
-     *         ehrSourceUrl: "string",
-     *         patientExternalId: "string",
-     *         status: "planned"
-     *     })
+     *     await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async update(
         chargeCaptureId: CandidApi.ChargeCaptureId,
@@ -220,8 +213,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -300,8 +293,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -335,41 +328,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.chargeCapture.v1.getAll({
-     *         limit: 1,
-     *         sort: "created_at",
-     *         sortDirection: "asc",
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         patientExternalId: "string",
-     *         status: "planned",
-     *         chargeExternalId: "string",
-     *         dateOfServiceMin: "2023-01-15",
-     *         dateOfServiceMax: "2023-01-15",
-     *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         claimCreationIds: CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderNpis: "string",
-     *         serviceFacilityName: "string",
-     *         primaryPayerIds: "string",
-     *         renderingProviderNpis: "string",
-     *         renderingProviderNames: "string",
-     *         supervisingProviderNpis: "string",
-     *         supervisingProviderNames: "string",
-     *         excludeChargesLinkedToClaims: true,
-     *         patientExternalIdRankedSort: "string",
-     *         statusRankedSort: "planned",
-     *         chargeExternalIdRankedSort: "string",
-     *         dateOfServiceMinRankedSort: "2023-01-15",
-     *         dateOfServiceMaxRankedSort: "2023-01-15",
-     *         claimIdsRankedSort: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         claimCreationIdsRankedSort: CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderNpisRankedSort: "string",
-     *         serviceFacilityNameRankedSort: "string",
-     *         primaryPayerIdsRankedSort: "string",
-     *         renderingProviderNpisRankedSort: "string",
-     *         renderingProviderNamesRankedSort: "string",
-     *         supervisingProviderNpisRankedSort: "string",
-     *         supervisingProviderNamesRankedSort: "string"
-     *     })
+     *     await client.chargeCapture.v1.getAll()
      */
     public async getAll(
         request: CandidApi.chargeCapture.v1.GetAllChargeCapturesRequest = {},
@@ -648,8 +607,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -685,7 +644,7 @@ export class V1 {
      *
      * @example
      *     await client.chargeCapture.v1.updatePostBilledChanges({
-     *         chargeCaptureChangeIds: [CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+     *         chargeCaptureChangeIds: [CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
      *         resolved: true
      *     })
      */
@@ -712,8 +671,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

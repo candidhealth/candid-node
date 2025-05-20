@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../../../../index";
 
 /**
- * The field to order by. Valid values are either keys on the patient object or a special ordering "similar_name:<search_string>" (Ex: similar_name:John). Similar name ordering uses trigrams to fuzzy match patient names to the search criteria.
+ * The field to order by.  Valid values are either keys on the patient object or a special ordering "similar_name:<search_string>" (Ex: similar_name:John).  Similar name ordering uses trigrams to fuzzy match patient names to the search criteria.
  */
 export type PatientSortField = string & {
     preEncounter_patients_v1_PatientSortField: void;

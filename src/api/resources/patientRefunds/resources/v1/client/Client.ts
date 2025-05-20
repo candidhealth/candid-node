@@ -39,19 +39,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.patientRefunds.v1.getMulti({
-     *         limit: 1,
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         billingProviderId: CandidApi.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         unattributed: true,
-     *         invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         sources: "MANUAL_ENTRY",
-     *         sort: "refund_source",
-     *         sortDirection: "asc",
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
-     *     })
+     *     await client.patientRefunds.v1.getMulti()
      */
     public async getMulti(
         request: CandidApi.patientRefunds.v1.GetMultiPatientRefundsRequest = {},
@@ -143,8 +131,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -220,8 +208,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -280,18 +268,20 @@ export class V1 {
      * @example
      *     await client.patientRefunds.v1.create({
      *         amountCents: 1,
-     *         refundTimestamp: "2024-01-15T09:30:00Z",
-     *         refundNote: "string",
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
+     *         patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
      *         allocations: [{
      *                 amountCents: 1,
      *                 target: {
      *                     type: "service_line_by_id",
      *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *                 }
-     *             }],
-     *         invoice: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         refundReason: "OVERCHARGED"
+     *             }, {
+     *                 amountCents: 1,
+     *                 target: {
+     *                     type: "service_line_by_id",
+     *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *                 }
+     *             }]
      *     })
      */
     public async create(
@@ -312,8 +302,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -373,21 +363,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.patientRefunds.v1.update(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         refundTimestamp: "2024-01-15T09:30:00Z",
-     *         refundNote: {
-     *             type: "set",
-     *             value: "string"
-     *         },
-     *         invoice: {
-     *             type: "set",
-     *             value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *         },
-     *         refundReason: {
-     *             type: "set",
-     *             value: "OVERCHARGED"
-     *         }
-     *     })
+     *     await client.patientRefunds.v1.update(CandidApi.patientRefunds.v1.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async update(
         patientRefundId: CandidApi.patientRefunds.v1.PatientRefundId,
@@ -408,8 +384,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -488,8 +464,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

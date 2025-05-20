@@ -8,440 +8,87 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         patient: {
- *             phoneNumbers: [{
- *                     number: "1234567890",
- *                     type: "Home"
- *                 }],
- *             phoneConsent: true,
- *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
- *             nonInsurancePayers: [CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
- *             nonInsurancePayersInfo: [{
- *                     nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *                     memberId: "string",
- *                     clinicalTrialInfo: [{
- *                             clinicalTrialId: CandidApi.ClinicalTrialId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
- *                         }]
- *                 }],
- *             emailConsent: true,
- *             externalId: "string",
+ *             firstName: "first_name",
+ *             lastName: "last_name",
+ *             gender: "male",
+ *             externalId: "external_id",
  *             dateOfBirth: "2023-01-15",
  *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             gender: "male"
+ *                 address1: "address1",
+ *                 city: "city",
+ *                 state: "AA",
+ *                 zipCode: "zip_code"
+ *             }
  *         },
  *         billingProvider: {
  *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
+ *                 address1: "address1",
+ *                 city: "city",
+ *                 state: "AA",
+ *                 zipCode: "zip_code",
+ *                 zipPlusFourCode: "zip_plus_four_code"
  *             },
- *             taxId: "string",
- *             npi: "string",
- *             taxonomyCode: "string",
- *             providerCommercialLicenseType: "0",
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
+ *             taxId: "tax_id",
+ *             npi: "npi"
  *         },
  *         renderingProvider: {
- *             npi: "string",
- *             taxonomyCode: "string",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
+ *             npi: "npi"
  *         },
- *         referringProvider: {
- *             npi: "string",
- *             taxonomyCode: "string",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
- *         },
- *         initialReferringProvider: {
- *             npi: "string",
- *             taxonomyCode: "string",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             qualifier: "DQ",
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
- *         },
- *         supervisingProvider: {
- *             npi: "string",
- *             taxonomyCode: "string",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             organizationName: "string"
- *         },
- *         serviceFacility: {
- *             organizationName: "string",
- *             npi: "string",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             secondaryIdentification: "string"
- *         },
- *         subscriberPrimary: {
- *             insuranceCard: {
- *                 memberId: "string",
- *                 payerName: "string",
- *                 payerId: "string",
- *                 rxBin: "string",
- *                 rxPcn: "string",
- *                 imageUrlFront: "string",
- *                 imageUrlBack: "string",
- *                 emrPayerCrosswalk: "HEALTHIE",
- *                 groupNumber: "string",
- *                 planName: "string",
- *                 planType: "09",
- *                 insuranceType: "01",
- *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
- *             },
- *             patientRelationshipToSubscriberCode: "01",
- *             dateOfBirth: "2023-01-15",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             gender: "male"
- *         },
- *         subscriberSecondary: {
- *             insuranceCard: {
- *                 memberId: "string",
- *                 payerName: "string",
- *                 payerId: "string",
- *                 rxBin: "string",
- *                 rxPcn: "string",
- *                 imageUrlFront: "string",
- *                 imageUrlBack: "string",
- *                 emrPayerCrosswalk: "HEALTHIE",
- *                 groupNumber: "string",
- *                 planName: "string",
- *                 planType: "09",
- *                 insuranceType: "01",
- *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
- *             },
- *             patientRelationshipToSubscriberCode: "01",
- *             dateOfBirth: "2023-01-15",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             gender: "male"
- *         },
- *         subscriberTertiary: {
- *             insuranceCard: {
- *                 memberId: "string",
- *                 payerName: "string",
- *                 payerId: "string",
- *                 rxBin: "string",
- *                 rxPcn: "string",
- *                 imageUrlFront: "string",
- *                 imageUrlBack: "string",
- *                 emrPayerCrosswalk: "HEALTHIE",
- *                 groupNumber: "string",
- *                 planName: "string",
- *                 planType: "09",
- *                 insuranceType: "01",
- *                 payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
- *             },
- *             patientRelationshipToSubscriberCode: "01",
- *             dateOfBirth: "2023-01-15",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             },
- *             firstName: "string",
- *             lastName: "string",
- *             gender: "male"
- *         },
- *         priorAuthorizationNumber: CandidApi.encounters.v4.PriorAuthorizationNumber("string"),
  *         responsibleParty: "INSURANCE_PAY",
  *         diagnoses: [{
- *                 name: "string",
  *                 codeType: "ABF",
- *                 code: "string"
+ *                 code: "code"
+ *             }, {
+ *                 codeType: "ABF",
+ *                 code: "code"
  *             }],
- *         clinicalNotes: [{
- *                 category: "clinical",
- *                 notes: []
- *             }],
- *         billingNotes: [{
- *                 text: "string"
- *             }],
- *         placeOfServiceCode: "01",
- *         patientHistories: [{
- *                 category: "present_illness",
- *                 questions: [{
- *                         id: CandidApi.encounters.v4.IntakeQuestionId("6E7FBCE4-A8EA-46D0-A8D8-FF83CA3BB176"),
- *                         text: "Do you have any allergies?",
- *                         responses: [{
- *                                 response: "No allergies",
- *                                 followUps: [{
- *                                         id: CandidApi.encounters.v4.IntakeFollowUpId("4F3D57F9-AC94-49D6-87E4-E804B709917A"),
- *                                         text: "Do you have any allergies?",
- *                                         response: "No allergies"
- *                                     }]
- *                             }]
- *                     }]
- *             }],
- *         serviceLines: [{
- *                 procedureCode: "string",
- *                 quantity: CandidApi.Decimal("string"),
- *                 units: "MJ",
- *                 diagnosisPointers: []
- *             }],
- *         guarantor: {
- *             phoneNumbers: [{
- *                     number: "1234567890",
- *                     type: "Home"
- *                 }],
- *             phoneConsent: true,
- *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
- *             emailConsent: true,
- *             firstName: "string",
- *             lastName: "string",
- *             externalId: "string",
- *             dateOfBirth: "2023-01-15",
- *             address: {
- *                 address1: "123 Main St",
- *                 address2: "Apt 1",
- *                 city: "New York",
- *                 state: "NY",
- *                 zipCode: "10001",
- *                 zipPlusFourCode: "1234"
- *             }
- *         },
- *         externalClaimSubmission: {
- *             claimCreatedAt: "2023-01-01T12:00:00.000000Z",
- *             patientControlNumber: "PATIENT_CONTROL_NUMBER",
- *             submissionRecords: [{
- *                     submittedAt: "2023-01-01T13:00:00.000000Z",
- *                     claimFrequencyCode: "1",
- *                     payerResponsibility: "primary",
- *                     intendedSubmissionMedium: "electronic"
- *                 }, {
- *                     submittedAt: "2023-01-04T12:00:00.000000Z",
- *                     claimFrequencyCode: "7",
- *                     payerResponsibility: "primary",
- *                     intendedSubmissionMedium: "paper"
- *                 }]
- *         },
- *         tagIds: [CandidApi.TagId("string")],
- *         schemaInstances: [{
- *                 schemaId: CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"),
- *                 content: {
- *                     "provider_category": "internist",
- *                     "is_urgent_care": true,
- *                     "bmi": 24.2,
- *                     "age": 38
- *                 }
- *             }],
- *         referralNumber: "string",
- *         epsdtReferral: {
- *             conditionIndicator1: "AV",
- *             conditionIndicator2: "AV",
- *             conditionIndicator3: "AV"
- *         },
- *         claimSupplementalInformation: [{
- *                 attachmentReportTypeCode: "03",
- *                 attachmentTransmissionCode: "BM"
- *             }],
- *         secondaryPayerCarrierCode: "string",
- *         externalId: CandidApi.EncounterExternalId("string"),
- *         dateOfService: "2023-01-15",
- *         endDateOfService: "2023-01-15",
- *         patientAuthorizedRelease: true,
- *         benefitsAssignedToProvider: true,
- *         providerAcceptsAssignment: true,
- *         appointmentType: "string",
- *         existingMedications: [{
- *                 name: "Lisinopril",
- *                 rxCui: CandidApi.encounters.v4.RxCui("860975"),
- *                 dosage: "10mg",
- *                 dosageForm: "Tablet",
- *                 frequency: "Once Daily",
- *                 asNeeded: true
- *             }],
- *         vitals: {
- *             heightIn: 70,
- *             weightLbs: 165,
- *             bloodPressureSystolicMmhg: 115,
- *             bloodPressureDiastolicMmhg: 85,
- *             bodyTemperatureF: 98,
- *             hemoglobinGdl: 15.1,
- *             hematocritPct: 51.2
- *         },
- *         interventions: [{
- *                 name: "Physical Therapy Session",
- *                 category: "lifestyle",
- *                 description: "A session focused on improving muscular strength, flexibility, and range of motion post-injury.",
- *                 medication: {
- *                     name: "Lisinopril",
- *                     rxCui: CandidApi.encounters.v4.RxCui("860975"),
- *                     dosage: "10mg",
- *                     dosageForm: "Tablet",
- *                     frequency: "Once Daily",
- *                     asNeeded: true
- *                 },
- *                 labs: [{
- *                         name: "Genetic Health Labs",
- *                         code: "GH12345",
- *                         codeType: "quest"
- *                     }]
- *             }],
- *         payToAddress: {
- *             address1: "123 Main St",
- *             address2: "Apt 1",
- *             city: "New York",
- *             state: "NY",
- *             zipCode: "10001",
- *             zipPlusFourCode: "1234"
- *         },
- *         synchronicity: "Synchronous",
- *         billableStatus: "BILLABLE",
- *         additionalInformation: "string",
- *         serviceAuthorizationExceptionCode: "1",
- *         admissionDate: "2023-01-15",
- *         dischargeDate: "2023-01-15",
- *         onsetOfCurrentIllnessOrSymptomDate: "2023-01-15",
- *         lastMenstrualPeriodDate: "2023-01-15",
- *         delayReasonCode: "1"
+ *         placeOfServiceCode: "01"
  *     }
  */
 export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
-    /**
-     * Contains the identification information of the individual receiving medical services.
-     *
-     */
+    /** Contains the identification information of the individual receiving medical services. */
     patient: CandidApi.PatientCreate;
-    /**
-     * The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form.
-     *
-     */
+    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form. */
     billingProvider: CandidApi.encounterProviders.v2.BillingProvider;
     /**
      * The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service.
      * For telehealth services, the rendering provider performs the visit, asynchronous communication, or other service. The rendering provider address should generally be the same as the service facility address.
-     *
      */
     renderingProvider: CandidApi.encounterProviders.v2.RenderingProvider;
     /**
      * The final provider who referred the services that were rendered.
      * All physicians who order services or refer Medicare beneficiaries must
      * report this data.
-     *
      */
     referringProvider?: CandidApi.encounterProviders.v2.ReferringProvider;
     /**
      * The second iteration of Loop ID-2310. Use code "P3 - Primary Care Provider" in this loop to
      * indicate the initial referral from the primary care provider or whatever provider wrote the initial referral for this patient's episode of care being billed/reported in this transaction.
-     *
      */
     initialReferringProvider?: CandidApi.encounterProviders.v2.InitialReferringProvider;
-    /**
-     * Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send.
-     *
-     */
+    /** Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send. */
     supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProvider;
-    /**
-     * Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process.
-     *
-     */
+    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process. */
     serviceFacility?: CandidApi.EncounterServiceFacilityBase;
     /**
      * Subscriber_primary is required when responsible_party is INSURANCE_PAY (i.e. when the claim should be billed to insurance).
      * These are not required fields when responsible_party is SELF_PAY (i.e. when the claim should be billed to the patient).
      * However, if you collect this for patients, even self-pay, we recommend including it when sending encounters to Candid.
      * Note: Cash Pay is no longer a valid payer_id in v4, please use responsible party to define self-pay claims.
-     *
      */
     subscriberPrimary?: CandidApi.SubscriberCreate;
-    /**
-     * Please always include this when you have it, even for self-pay claims.
-     *
-     */
+    /** Please always include this when you have it, even for self-pay claims. */
     subscriberSecondary?: CandidApi.SubscriberCreate;
-    /**
-     * Please always include this when you have it, even for self-pay claims.
-     *
-     */
+    /** Please always include this when you have it, even for self-pay claims. */
     subscriberTertiary?: CandidApi.SubscriberCreate;
     /** Box 23 on the CMS-1500 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
-    /**
-     * Defines the party to be billed with the initial balance owed on the claim.
-     *
-     */
+    /** Defines the party to be billed with the initial balance owed on the claim. */
     responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType;
     /**
      * Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses
      * may be submitted at this time, and coders will later prioritize the 12 that will be
      * submitted to the payor.
-     *
      */
     diagnoses: CandidApi.DiagnosisCreate[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
@@ -449,31 +96,22 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     /**
      * Spot to store misc, human-readable, notes about this encounter to be used
      * in the billing process.
-     *
      */
     billingNotes?: CandidApi.billingNotes.v2.BillingNoteBase[];
-    /**
-     * Box 24B on the CMS-1500 claim form. 837p Loop2300, CLM-05-1. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set).
-     *
-     */
+    /** Box 24B on the CMS-1500 claim form. 837p Loop2300, CLM-05-1. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode: CandidApi.FacilityTypeCode;
     patientHistories?: CandidApi.encounters.v4.PatientHistoryCategory[];
     /**
      * Each service line must be linked to a diagnosis. Concretely,
      * `service_line.diagnosis_pointers`must contain at least one entry which should be
      * in bounds of the diagnoses list field.
-     *
      */
     serviceLines?: CandidApi.serviceLines.v2.ServiceLineCreate[];
-    /**
-     * Personal and contact info for the guarantor of the patient responsibility.
-     *
-     */
+    /** Personal and contact info for the guarantor of the patient responsibility. */
     guarantor?: CandidApi.guarantor.v1.GuarantorCreate;
     /**
      * To be included for claims that have been submitted outside of Candid.
      * Candid supports posting remits and payments to these claims and working them in-platform (e.g. editing, resubmitting).
-     *
      */
     externalClaimSubmission?: CandidApi.claimSubmission.v1.ExternalClaimSubmissionCreate;
     /** Names of tags that should be on the encounter. */
@@ -481,27 +119,14 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
     /**
      * Key-value pairs that must adhere to a schema created via the Custom Schema API. Multiple schema
      * instances cannot be created for the same schema on an encounter.
-     *
      */
     schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
-    /**
-     * Refers to REF*9F on the 837p. Value cannot be greater than 50 characters.
-     *
-     */
+    /** Refers to REF*9F on the 837p. Value cannot be greater than 50 characters. */
     referralNumber?: string;
-    /**
-     * Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form
-     *
-     */
+    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
-    /**
-     * Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted.
-     *
-     */
+    /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
-    /**
-     * When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states.
-     *
-     */
+    /** When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states. */
     secondaryPayerCarrierCode?: string;
 }

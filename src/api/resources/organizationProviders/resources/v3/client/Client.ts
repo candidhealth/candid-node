@@ -61,8 +61,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -180,8 +180,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -217,36 +217,24 @@ export class V3 {
      *
      * @example
      *     await client.organizationProviders.v3.create({
-     *         npi: "string",
+     *         npi: "npi",
      *         isRendering: true,
      *         isBilling: true,
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string",
      *         providerType: "INDIVIDUAL",
-     *         taxId: "string",
-     *         taxonomyCode: "string",
      *         licenseType: "MD",
-     *         addresses: [{
-     *                 address: {
-     *                     address1: "123 Main St",
-     *                     address2: "Apt 1",
-     *                     city: "New York",
-     *                     state: "NY",
-     *                     zipCode: "10001",
-     *                     zipPlusFourCode: "1234"
-     *                 },
-     *                 addressType: "DEFAULT"
-     *             }],
-     *         employmentStartDate: "2023-01-15",
-     *         employmentTerminationDate: "2023-01-15",
      *         qualifications: [{
-     *                 period: {
-     *                     startDate: CandidApi.Date_("string")
-     *                 },
      *                 identifierCode: "MCR",
      *                 identifierValue: {
-     *                     type: "medicare_provider_identifier"
+     *                     type: "medicare_provider_identifier",
+     *                     state: "AA",
+     *                     providerNumber: "provider_number"
+     *                 }
+     *             }, {
+     *                 identifierCode: "MCR",
+     *                 identifierValue: {
+     *                     type: "medicare_provider_identifier",
+     *                     state: "AA",
+     *                     providerNumber: "provider_number"
      *                 }
      *             }]
      *     })
@@ -274,8 +262,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -332,41 +320,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.organizationProviders.v3.update(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         isRendering: true,
-     *         isBilling: true,
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string",
-     *         providerType: "INDIVIDUAL",
-     *         taxId: "string",
-     *         taxonomyCode: "string",
-     *         licenseType: "MD",
-     *         addresses: [{
-     *                 address: {
-     *                     address1: "123 Main St",
-     *                     address2: "Apt 1",
-     *                     city: "New York",
-     *                     state: "NY",
-     *                     zipCode: "10001",
-     *                     zipPlusFourCode: "1234"
-     *                 },
-     *                 addressType: "DEFAULT"
-     *             }],
-     *         employmentStartDate: CandidApi.Date_("string"),
-     *         employmentTerminationDate: CandidApi.Date_("string"),
-     *         qualifications: [{
-     *                 type: "add",
-     *                 period: {
-     *                     startDate: CandidApi.Date_("string")
-     *                 },
-     *                 identifierCode: "MCR",
-     *                 identifierValue: {
-     *                     type: "medicare_provider_identifier"
-     *                 }
-     *             }]
-     *     })
+     *     await client.organizationProviders.v3.update(CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async update(
         organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId,
@@ -392,8 +346,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

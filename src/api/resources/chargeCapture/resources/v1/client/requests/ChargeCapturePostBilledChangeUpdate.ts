@@ -7,7 +7,7 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         chargeCaptureChangeIds: [CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+ *         chargeCaptureChangeIds: [CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
  *         resolved: true
  *     }
  */
@@ -15,13 +15,11 @@ export interface ChargeCapturePostBilledChangeUpdate {
     /**
      * A list of UUIDs corresponding to ChargeCapturePostBilledChanges.
      * All of the charges sent will be marked as resolved
-     *
      */
     chargeCaptureChangeIds: CandidApi.ChargeCapturePostBilledChangeId[];
     /**
      * Whether the change has been resolved. If true, the change will be marked as resolved.
      * If false, the change will be marked as unresolved.
-     *
      */
     resolved: boolean;
 }

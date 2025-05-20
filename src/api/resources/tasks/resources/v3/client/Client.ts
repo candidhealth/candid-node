@@ -56,8 +56,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -91,21 +91,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tasks.v3.getMulti({
-     *         limit: 1,
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         status: "finished",
-     *         taskType: "CUSTOMER_DATA_REQUEST",
-     *         categories: "string",
-     *         updatedSince: "2024-01-15T09:30:00Z",
-     *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         searchTerm: "string",
-     *         assignedToId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         dateOfServiceMin: "2023-01-15",
-     *         dateOfServiceMax: "2023-01-15",
-     *         billingProviderNpi: "string",
-     *         sort: "updated_at:asc"
-     *     })
+     *     await client.tasks.v3.getMulti()
      */
     public async getMulti(
         request: CandidApi.tasks.v3.GetAllTasksRequest = {},
@@ -199,8 +185,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -273,8 +259,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -330,11 +316,8 @@ export class V3 {
      *     await client.tasks.v3.create({
      *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         taskType: "CUSTOMER_DATA_REQUEST",
-     *         description: "string",
-     *         blocksClaimSubmission: true,
-     *         assigneeUserId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         category: "other",
-     *         workQueueId: CandidApi.WorkQueueId("string")
+     *         description: "description",
+     *         workQueueId: CandidApi.WorkQueueId("work_queue_id")
      *     })
      */
     public async create(
@@ -355,8 +338,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -392,11 +375,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         status: "finished",
-     *         assigneeUserId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         blocksClaimSubmission: true
-     *     })
+     *     await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async update(
         taskId: CandidApi.TaskId,
@@ -417,8 +396,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

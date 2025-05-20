@@ -63,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -102,27 +102,109 @@ export class V1 {
      * @example
      *     await client.insuranceAdjudications.v1.create({
      *         payerIdentifier: {
-     *             type: "payer_info"
+     *             type: "payer_info",
+     *             payerId: CandidApi.payers.v3.PayerId("payer_id"),
+     *             payerName: CandidApi.payers.v3.PayerName("payer_name")
      *         },
      *         payee: {
-     *             payeeName: "string",
+     *             payeeName: "payee_name",
      *             payeeIdentifier: {
      *                 type: "npi",
-     *                 value: CandidApi.Npi("string")
+     *                 value: CandidApi.Npi("payee_identifier")
      *             }
      *         },
-     *         postDate: "2023-01-15",
-     *         checkNumber: "string",
      *         checkDate: "2023-01-15",
-     *         note: "string",
      *         claims: {
      *             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [{
      *                     claimStatusCode: "1",
-     *                     serviceLines: {},
-     *                     carcs: []
+     *                     serviceLines: {
+     *                         "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [{
+     *                                 carcs: [{
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }, {
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }],
+     *                                 rarcs: [{
+     *                                         reasonCode: "M1"
+     *                                     }, {
+     *                                         reasonCode: "M1"
+     *                                     }]
+     *                             }, {
+     *                                 carcs: [{
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }, {
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }],
+     *                                 rarcs: [{
+     *                                         reasonCode: "M1"
+     *                                     }, {
+     *                                         reasonCode: "M1"
+     *                                     }]
+     *                             }]
+     *                     },
+     *                     carcs: [{
+     *                             groupCode: "CO",
+     *                             reasonCode: "1",
+     *                             amountCents: 1
+     *                         }, {
+     *                             groupCode: "CO",
+     *                             reasonCode: "1",
+     *                             amountCents: 1
+     *                         }]
+     *                 }, {
+     *                     claimStatusCode: "1",
+     *                     serviceLines: {
+     *                         "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [{
+     *                                 carcs: [{
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }, {
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }],
+     *                                 rarcs: [{
+     *                                         reasonCode: "M1"
+     *                                     }, {
+     *                                         reasonCode: "M1"
+     *                                     }]
+     *                             }, {
+     *                                 carcs: [{
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }, {
+     *                                         groupCode: "CO",
+     *                                         reasonCode: "1",
+     *                                         amountCents: 1
+     *                                     }],
+     *                                 rarcs: [{
+     *                                         reasonCode: "M1"
+     *                                     }, {
+     *                                         reasonCode: "M1"
+     *                                     }]
+     *                             }]
+     *                     },
+     *                     carcs: [{
+     *                             groupCode: "CO",
+     *                             reasonCode: "1",
+     *                             amountCents: 1
+     *                         }, {
+     *                             groupCode: "CO",
+     *                             reasonCode: "1",
+     *                             amountCents: 1
+     *                         }]
      *                 }]
-     *         },
-     *         remitDraftId: CandidApi.remitDrafts.v1.RemitDraftId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *         }
      *     })
      */
     public async create(
@@ -148,8 +230,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -226,8 +308,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

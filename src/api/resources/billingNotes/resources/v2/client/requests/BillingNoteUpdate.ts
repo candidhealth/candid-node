@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         text: "string"
+ *         text: "text"
  *     }
  */
 export interface BillingNoteUpdate {

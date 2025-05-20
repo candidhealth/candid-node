@@ -9,6 +9,6 @@ import * as CandidApi from "../../../../../../../index";
  */
 export interface Image extends CandidApi.preEncounter.BaseModel, CandidApi.preEncounter.images.v1.MutableImage {
     id: CandidApi.preEncounter.images.v1.ImageId;
-    /** A signed URL to the image. This url can be used to upload an image to GCP storage or to read the image contents. */
+    /** A signed URL to the image.  This url can be used to upload an image to GCP storage or to read the image contents. */
     signedUrl: string;
 }

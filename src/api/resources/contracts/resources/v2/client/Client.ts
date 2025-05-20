@@ -56,8 +56,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -109,22 +109,23 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.contracts.v2.getMulti({
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         limit: 1,
-     *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         renderingProviderIds: CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         payerNames: "string",
-     *         states: "AA",
-     *         contractStatus: "pending"
-     *     })
+     *     await client.contracts.v2.getMulti()
      */
     public async getMulti(
         request: CandidApi.contracts.v2.GetMultiContractsRequest = {},
         requestOptions?: V2.RequestOptions,
     ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractsPage, CandidApi.contracts.v2.getMulti.Error>> {
-        const { pageToken, limit, contractingProviderId, renderingProviderIds, payerNames, states, contractStatus } =
-            request;
+        const {
+            pageToken,
+            limit,
+            contractingProviderId,
+            renderingProviderIds,
+            payerNames,
+            states,
+            contractStatus,
+            sort,
+            sortDirection,
+        } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (pageToken != null) {
             _queryParams["page_token"] = pageToken;
@@ -172,6 +173,18 @@ export class V2 {
             });
         }
 
+        if (sort != null) {
+            _queryParams["sort"] = serializers.contracts.v2.ContractSortField.jsonOrThrow(sort, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (sortDirection != null) {
+            _queryParams["sort_direction"] = serializers.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -186,8 +199,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -227,30 +240,7 @@ export class V2 {
      *     await client.contracts.v2.create({
      *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-     *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-     *         effectiveDate: CandidApi.Date_("string"),
-     *         expirationDate: CandidApi.Date_("string"),
-     *         regions: {
-     *             type: "states"
-     *         },
-     *         contractStatus: "pending",
-     *         authorizedSignatory: {
-     *             firstName: "string",
-     *             lastName: "string",
-     *             title: "string",
-     *             email: "string",
-     *             phone: "string",
-     *             fax: "string"
-     *         },
-     *         commercialInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicareInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicaidInsuranceTypes: {
-     *             type: "allApply"
-     *         }
+     *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
      *     })
      */
     public async create(
@@ -271,8 +261,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -327,8 +317,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -376,40 +366,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.contracts.v2.update(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-     *         effectiveDate: CandidApi.Date_("string"),
-     *         expirationDate: {
-     *             type: "set",
-     *             value: CandidApi.Date_("string")
-     *         },
-     *         regions: {
-     *             type: "set",
-     *             value: {
-     *                 type: "states",
-     *                 states: ["AA"]
-     *             }
-     *         },
-     *         contractStatus: "pending",
-     *         authorizedSignatory: {
-     *             type: "set",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             title: "string",
-     *             email: "string",
-     *             phone: "string",
-     *             fax: "string"
-     *         },
-     *         commercialInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicareInsuranceTypes: {
-     *             type: "allApply"
-     *         },
-     *         medicaidInsuranceTypes: {
-     *             type: "allApply"
-     *         }
-     *     })
+     *     await client.contracts.v2.update(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public async update(
         contractId: CandidApi.contracts.v2.ContractId,
@@ -430,8 +387,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

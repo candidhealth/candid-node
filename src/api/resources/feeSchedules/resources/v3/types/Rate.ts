@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../../index";
 
 /**
- * A comprehensive rate including the current rate value and all values for historic time ranges. The time ranges specified by each RateEntry are disjoint. A rate must always have at least one entry.
+ * A comprehensive rate including the current rate value and all values for historic time ranges. The time ranges specified by each RateEntry are disjoint.  A rate must always have at least one entry.
  */
 export interface Rate {
     rateId: CandidApi.RateId;

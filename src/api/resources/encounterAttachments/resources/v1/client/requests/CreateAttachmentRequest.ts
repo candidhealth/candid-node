@@ -4,10 +4,6 @@
 
 import * as CandidApi from "../../../../../../index";
 
-/**
- * @example
- *     {}
- */
 export interface CreateAttachmentRequest {
     attachmentType: CandidApi.encounterAttachments.v1.EncounterAttachmentType;
 }

@@ -7,19 +7,7 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
- *         limit: 1,
- *         pivotDimension: "payer_uuid",
- *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         states: "AA",
- *         zipCodes: "string",
- *         licenseTypes: "MD",
- *         facilityTypeCodes: "01",
- *         networkTypes: "12",
- *         payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         cptCode: "string",
- *         modifiers: "AV"
+ *         pivotDimension: "payer_uuid"
  *     }
  */
 export interface GetUniqueDimensionValuesRequest {

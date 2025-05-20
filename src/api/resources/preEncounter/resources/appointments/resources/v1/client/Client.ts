@@ -32,49 +32,17 @@ export class V1 {
     constructor(protected readonly _options: V1.Options = {}) {}
 
     /**
-     * Adds an appointment. VersionConflictError is returned when the placer_appointment_id is already in use.
+     * Adds an appointment.  VersionConflictError is returned when the placer_appointment_id is already in use.
      *
      * @param {CandidApi.preEncounter.appointments.v1.MutableAppointment} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.appointments.v1.create({
-     *         patientId: CandidApi.preEncounter.PatientId("string"),
+     *         patientId: CandidApi.preEncounter.PatientId("patient_id"),
      *         startTimestamp: "2024-01-15T09:30:00Z",
-     *         status: "PENDING",
      *         serviceDuration: 1,
-     *         services: [{
-     *                 universalServiceIdentifier: "MD_Visit",
-     *                 startTimestamp: "2024-01-15T09:30:00Z"
-     *             }],
-     *         placerAppointmentId: "string",
-     *         attendingDoctor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: "USUAL",
-     *                 period: {},
-     *                 suffix: "string"
-     *             },
-     *             type: "PRIMARY",
-     *             npi: "string",
-     *             telecoms: [{
-     *                     value: "string",
-     *                     use: "HOME"
-     *                 }],
-     *             addresses: [],
-     *             period: {},
-     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *             fax: "string"
-     *         },
-     *         estimatedCopayCents: 1,
-     *         estimatedPatientResponsibilityCents: 1,
-     *         patientDepositCents: 1,
-     *         checkedInTimestamp: "2024-01-15T09:30:00Z",
-     *         notes: "string",
-     *         locationResourceId: "string",
-     *         automatedEligibilityCheckComplete: true,
-     *         workQueue: "EMERGENT_ISSUE"
+     *         services: [{}, {}]
      *     })
      */
     public async create(
@@ -100,8 +68,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -159,13 +127,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.getVisits({
-     *         pageToken: CandidApi.preEncounter.PageToken("string"),
-     *         limit: 1,
-     *         sortField: CandidApi.preEncounter.lists.v1.SortFieldString("string"),
-     *         sortDirection: "asc",
-     *         filters: CandidApi.preEncounter.lists.v1.FilterQueryString("string")
-     *     })
+     *     await client.preEncounter.appointments.v1.getVisits()
      */
     public async getVisits(
         request: CandidApi.preEncounter.appointments.v1.VisitsRequest = {},
@@ -214,8 +176,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -270,7 +232,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.get(CandidApi.preEncounter.AppointmentId("string"))
+     *     await client.preEncounter.appointments.v1.get(CandidApi.preEncounter.AppointmentId("id"))
      */
     public async get(
         id: CandidApi.preEncounter.AppointmentId,
@@ -295,8 +257,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -344,13 +306,13 @@ export class V1 {
     }
 
     /**
-     * Gets an appointment along with it's full history. The return list is ordered by version ascending.
+     * Gets an appointment along with it's full history.  The return list is ordered by version ascending.
      *
      * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.getHistory(CandidApi.preEncounter.AppointmentId("string"))
+     *     await client.preEncounter.appointments.v1.getHistory(CandidApi.preEncounter.AppointmentId("id"))
      */
     public async getHistory(
         id: CandidApi.preEncounter.AppointmentId,
@@ -375,8 +337,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -426,7 +388,7 @@ export class V1 {
     }
 
     /**
-     * Updates an appointment. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
+     * Updates an appointment.  The path must contain the most recent version to prevent race conditions.  Updating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {string} version
@@ -434,43 +396,11 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.update(CandidApi.preEncounter.AppointmentId("string"), "string", {
-     *         patientId: CandidApi.preEncounter.PatientId("string"),
+     *     await client.preEncounter.appointments.v1.update(CandidApi.preEncounter.AppointmentId("id"), "version", {
+     *         patientId: CandidApi.preEncounter.PatientId("patient_id"),
      *         startTimestamp: "2024-01-15T09:30:00Z",
-     *         status: "PENDING",
      *         serviceDuration: 1,
-     *         services: [{
-     *                 universalServiceIdentifier: "MD_Visit",
-     *                 startTimestamp: "2024-01-15T09:30:00Z"
-     *             }],
-     *         placerAppointmentId: "string",
-     *         attendingDoctor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: "USUAL",
-     *                 period: {},
-     *                 suffix: "string"
-     *             },
-     *             type: "PRIMARY",
-     *             npi: "string",
-     *             telecoms: [{
-     *                     value: "string",
-     *                     use: "HOME"
-     *                 }],
-     *             addresses: [],
-     *             period: {},
-     *             canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *             fax: "string"
-     *         },
-     *         estimatedCopayCents: 1,
-     *         estimatedPatientResponsibilityCents: 1,
-     *         patientDepositCents: 1,
-     *         checkedInTimestamp: "2024-01-15T09:30:00Z",
-     *         notes: "string",
-     *         locationResourceId: "string",
-     *         automatedEligibilityCheckComplete: true,
-     *         workQueue: "EMERGENT_ISSUE"
+     *         services: [{}, {}]
      *     })
      */
     public async update(
@@ -498,8 +428,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -551,7 +481,7 @@ export class V1 {
     }
 
     /**
-     * Scans up to 100 appointment updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+     * Scans up to 100 appointment updates.  The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
      *
      * @param {CandidApi.preEncounter.appointments.v1.AppointmentScanRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -587,8 +517,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -619,14 +549,14 @@ export class V1 {
     }
 
     /**
-     * Sets an appointment as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
+     * Sets an appointment as deactivated.  The path must contain the most recent version to prevent race conditions.  Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
      *
      * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.appointments.v1.deactivate(CandidApi.preEncounter.AppointmentId("string"), "string")
+     *     await client.preEncounter.appointments.v1.deactivate(CandidApi.preEncounter.AppointmentId("id"), "version")
      */
     public async deactivate(
         id: CandidApi.preEncounter.AppointmentId,
@@ -647,8 +577,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

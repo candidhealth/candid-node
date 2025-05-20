@@ -37,17 +37,7 @@ export class ServiceFacility {
      * @param {ServiceFacility.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         organizationName: "Test Organization",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         }
-     *     })
+     *     await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async update(
         serviceFacilityId: CandidApi.ServiceFacilityId,
@@ -68,8 +58,8 @@ export class ServiceFacility {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

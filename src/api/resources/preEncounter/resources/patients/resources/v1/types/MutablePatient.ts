@@ -26,9 +26,9 @@ export interface MutablePatient {
     ethnicity?: CandidApi.preEncounter.Ethnicity;
     disabilityStatus?: CandidApi.preEncounter.DisabilityStatus;
     maritalStatus?: CandidApi.preEncounter.patients.v1.MaritalStatus;
-    /** Time of death for the patient. Leave unset if the patient is not deceased. */
+    /** Time of death for the patient.  Leave unset if the patient is not deceased. */
     deceased?: Date;
-    /** The number of siblings the patient was born with. Leave unset if the patient was not part of a multiple birth. */
+    /** The number of siblings the patient was born with.  Leave unset if the patient was not part of a multiple birth. */
     multipleBirth?: number;
     /** The primary address for the patient. */
     primaryAddress: CandidApi.preEncounter.Address;
@@ -42,7 +42,7 @@ export interface MutablePatient {
     electronicCommunicationOptIn?: boolean;
     photo?: string;
     language?: string;
-    /** Information about the upstream system that owns this patient data. Leave unset if Candid owns patient data. */
+    /** Information about the upstream system that owns this patient data.  Leave unset if Candid owns patient data. */
     externalProvenance?: CandidApi.preEncounter.patients.v1.ExternalProvenance;
     /** Contacts for the patient. */
     contacts: CandidApi.preEncounter.patients.v1.Contact[];

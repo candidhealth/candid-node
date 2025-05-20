@@ -32,25 +32,17 @@ export class V1 {
     constructor(protected readonly _options: V1.Options = {}) {}
 
     /**
-     * Adds an image. VersionConflictError is returned if a front or back of this coverage already exists.
+     * Adds an image.  VersionConflictError is returned if a front or back of this coverage already exists.
      *
      * @param {CandidApi.preEncounter.images.v1.MutableImage} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.images.v1.create({
-     *         fileName: "string",
-     *         displayName: "string",
-     *         fileType: "string",
-     *         status: "PENDING",
-     *         coverage: {
-     *             id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *             side: "FRONT"
-     *         },
-     *         patient: {
-     *             id: CandidApi.preEncounter.PatientId("string"),
-     *             notes: "string"
-     *         }
+     *         fileName: "file_name",
+     *         displayName: "display_name",
+     *         fileType: "file_type",
+     *         status: "PENDING"
      *     })
      */
     public async create(
@@ -73,8 +65,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -131,7 +123,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.images.v1.get(CandidApi.preEncounter.images.v1.ImageId("string"))
+     *     await client.preEncounter.images.v1.get(CandidApi.preEncounter.images.v1.ImageId("id"))
      */
     public async get(
         id: CandidApi.preEncounter.images.v1.ImageId,
@@ -151,8 +143,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -200,7 +192,7 @@ export class V1 {
     }
 
     /**
-     * Updates an Image. The path must contain the most recent version to prevent races.
+     * Updates an Image.  The path must contain the most recent version to prevent races.
      *
      * @param {CandidApi.preEncounter.images.v1.ImageId} id
      * @param {string} version
@@ -208,19 +200,11 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.images.v1.update(CandidApi.preEncounter.images.v1.ImageId("string"), "string", {
-     *         fileName: "string",
-     *         displayName: "string",
-     *         fileType: "string",
-     *         status: "PENDING",
-     *         coverage: {
-     *             id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *             side: "FRONT"
-     *         },
-     *         patient: {
-     *             id: CandidApi.preEncounter.PatientId("string"),
-     *             notes: "string"
-     *         }
+     *     await client.preEncounter.images.v1.update(CandidApi.preEncounter.images.v1.ImageId("id"), "version", {
+     *         fileName: "file_name",
+     *         displayName: "display_name",
+     *         fileType: "file_type",
+     *         status: "PENDING"
      *     })
      */
     public async update(
@@ -245,8 +229,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -298,14 +282,14 @@ export class V1 {
     }
 
     /**
-     * Sets an Image as deactivated. The path must contain the most recent version to prevent races.
+     * Sets an Image as deactivated.  The path must contain the most recent version to prevent races.
      *
      * @param {CandidApi.preEncounter.images.v1.ImageId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.images.v1.deactivate(CandidApi.preEncounter.images.v1.ImageId("string"), "string")
+     *     await client.preEncounter.images.v1.deactivate(CandidApi.preEncounter.images.v1.ImageId("id"), "version")
      */
     public async deactivate(
         id: CandidApi.preEncounter.images.v1.ImageId,
@@ -326,8 +310,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -377,10 +361,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.images.v1.getMulti({
-     *         patientId: "string",
-     *         coverageId: "string"
-     *     })
+     *     await client.preEncounter.images.v1.getMulti()
      */
     public async getMulti(
         request: CandidApi.preEncounter.images.v1.ImageGetMultiRequest = {},
@@ -412,8 +393,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -6,18 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         patientExternalId: CandidApi.PatientExternalId("string"),
- *         encounterExternalId: CandidApi.EncounterExternalId("string"),
- *         note: "string",
- *         dueDateBefore: "2023-01-15",
- *         dueDateAfter: "2023-01-15",
- *         status: "DRAFT",
- *         limit: 1,
- *         sort: "CREATED_AT",
- *         sortDirection: "asc",
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
- *     }
+ *     {}
  */
 export interface SearchImportedInvoicesRequest {
     patientExternalId?: CandidApi.PatientExternalId;

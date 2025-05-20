@@ -10,8 +10,7 @@ export type Error =
      * The encounter already has an initial referring provider. */
     | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.EntityConflictError
     /**
-     * Cannot set Initial Referring Provider without an existing Referring Provider.
-     *  */
+     * Cannot set Initial Referring Provider without an existing Referring Provider. */
     | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.UnprocessableEntityError
     | CandidApi.encounterProviders.v2.createInitialReferringProvider.Error.HttpRequestValidationsError
     /**

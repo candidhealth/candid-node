@@ -37,24 +37,12 @@ export class V1 {
      *
      * @example
      *     await client.medicationDispense.v1.create({
-     *         medicationDispenseExternalId: "string",
-     *         patientExternalId: "string",
-     *         procedureCode: "string",
-     *         quantity: CandidApi.Decimal("string"),
+     *         medicationDispenseExternalId: "medication_dispense_external_id",
+     *         patientExternalId: "patient_external_id",
+     *         procedureCode: "procedure_code",
+     *         quantity: CandidApi.Decimal("quantity"),
      *         units: "MJ",
-     *         dateOfService: "2023-01-15",
-     *         drugIdentification: {
-     *             serviceIdQualifier: "EN",
-     *             nationalDrugCode: "string",
-     *             nationalDrugUnitCount: "string",
-     *             measurementUnitCode: "ML",
-     *             linkSequenceNumber: "string",
-     *             pharmacyPrescriptionNumber: "string",
-     *             conversionFormula: "string",
-     *             drugDescription: "string"
-     *         },
-     *         description: "string",
-     *         modifiers: ["AV"]
+     *         dateOfService: "2023-01-15"
      *     })
      */
     public async create(
@@ -75,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

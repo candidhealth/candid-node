@@ -6,15 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         limit: 1,
- *         nonInsurancePayerId: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         checkNumber: "string",
- *         invoiceId: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         sort: "amount_cents",
- *         sortDirection: "asc",
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
- *     }
+ *     {}
  */
 export interface GetMultiNonInsurancePayerPaymentRequest {
     /**

@@ -7,16 +7,13 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         externalPatientId: "string",
- *         subscriberPayerId: "string",
- *         subscriberPayerName: "string",
- *         subscriberInsuranceType: "01",
- *         subscriberPlanName: "string",
- *         billingProviderNpi: "string",
- *         billingProviderTin: "string",
- *         renderingProviderNpi: "string",
+ *         subscriberPayerId: "subscriber_payer_id",
+ *         subscriberPayerName: "subscriber_payer_name",
+ *         billingProviderNpi: "billing_provider_npi",
+ *         billingProviderTin: "billing_provider_tin",
+ *         renderingProviderNpi: "rendering_provider_npi",
  *         contractedState: "AA",
- *         dateOfService: CandidApi.Date_("string")
+ *         dateOfService: CandidApi.Date_("date_of_service")
  *     }
  */
 export interface ExpectedNetworkStatusRequest {
@@ -34,9 +31,6 @@ export interface ExpectedNetworkStatusRequest {
     renderingProviderNpi: string;
     /** The state in which the healthcare provider has a contractual agreement with the insurance payer. */
     contractedState: CandidApi.State;
-    /**
-     * Date formatted as YYYY-MM-DD; eg: 2019-08-25.
-     *
-     */
+    /** Date formatted as YYYY-MM-DD; eg: 2019-08-25. */
     dateOfService: CandidApi.Date_;
 }

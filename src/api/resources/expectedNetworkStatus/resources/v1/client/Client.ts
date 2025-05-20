@@ -39,16 +39,13 @@ export class V1 {
      *
      * @example
      *     await client.expectedNetworkStatus.v1.compute({
-     *         externalPatientId: "string",
-     *         subscriberPayerId: "string",
-     *         subscriberPayerName: "string",
-     *         subscriberInsuranceType: "01",
-     *         subscriberPlanName: "string",
-     *         billingProviderNpi: "string",
-     *         billingProviderTin: "string",
-     *         renderingProviderNpi: "string",
+     *         subscriberPayerId: "subscriber_payer_id",
+     *         subscriberPayerName: "subscriber_payer_name",
+     *         billingProviderNpi: "billing_provider_npi",
+     *         billingProviderTin: "billing_provider_tin",
+     *         renderingProviderNpi: "rendering_provider_npi",
      *         contractedState: "AA",
-     *         dateOfService: CandidApi.Date_("string")
+     *         dateOfService: CandidApi.Date_("date_of_service")
      *     })
      */
     public async compute(
@@ -74,8 +71,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -6,19 +6,12 @@ import * as CandidApi from "../../../../index";
 
 /**
  * @example
- *     {
- *         name: "string",
- *         codeType: "ABF",
- *         code: "string"
- *     }
+ *     {}
  */
 export interface DiagnosisUpdate {
     /** Empty string not allowed. */
     name?: string;
-    /**
-     * Typically, providers submitting claims to Candid are using ICD-10 diagnosis codes. If you are using ICD-10 codes, the primary diagnosis code listed on the claim should use the ABK code_type. If more than one diagnosis is being submitted on a claim, please use ABF for the rest of the listed diagnoses. If you are using ICD-9 diagnosis codes, use BK and BF for the principal and following diagnosis code(s) respectively.
-     *
-     */
+    /** Typically, providers submitting claims to Candid are using ICD-10 diagnosis codes. If you are using ICD-10 codes, the primary diagnosis code listed on the claim should use the ABK code_type. If more than one diagnosis is being submitted on a claim, please use ABF for the rest of the listed diagnoses. If you are using ICD-9 diagnosis codes, use BK and BF for the principal and following diagnosis code(s) respectively. */
     codeType?: CandidApi.DiagnosisTypeCode;
     /**
      * Empty string not allowed.
@@ -29,7 +22,6 @@ export interface DiagnosisUpdate {
      *   - Digit or the letter `A` or `B`
      *   - (Optional) Period `.`
      *   - Up to 4 (or as few as 0) letters and digits
-     *
      */
     code?: string;
 }

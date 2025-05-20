@@ -13,7 +13,7 @@ export interface ChargeCaptureData extends CandidApi.encounters.v4.EncounterOpti
     diagnoses?: CandidApi.DiagnosisCreate[];
     interventions?: CandidApi.encounters.v4.Intervention[];
     /**
-     * **_This field is in beta._**
+     * ***This field is in beta.***
      * To be included for claims that have been submitted outside of Candid.
      * Candid supports posting remits and payments to these claims and working them in-platform (e.g. editing, resubmitting).
      */

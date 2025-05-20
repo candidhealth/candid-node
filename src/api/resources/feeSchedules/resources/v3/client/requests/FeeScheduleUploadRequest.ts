@@ -14,18 +14,45 @@ import * as CandidApi from "../../../../../../index";
  *                     payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *                     organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *                     states: new Set(["AA"]),
- *                     zipCodes: new Set(["string"]),
+ *                     zipCodes: new Set(["zip_codes"]),
  *                     licenseTypes: new Set(["MD"]),
  *                     facilityTypeCodes: new Set(["01"]),
  *                     networkTypes: new Set(["12"]),
  *                     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
- *                     cptCode: "string",
+ *                     cptCode: "cpt_code",
  *                     modifiers: new Set(["AV"])
  *                 },
  *                 entries: [{
- *                         startDate: "2024-04-11",
- *                         rateCents: 33000,
- *                         isDeactivated: false
+ *                         startDate: "2023-01-15",
+ *                         rateCents: 1,
+ *                         isDeactivated: true
+ *                     }, {
+ *                         startDate: "2023-01-15",
+ *                         rateCents: 1,
+ *                         isDeactivated: true
+ *                     }]
+ *             }, {
+ *                 type: "new_rate",
+ *                 dimensions: {
+ *                     payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *                     organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *                     states: new Set(["AA"]),
+ *                     zipCodes: new Set(["zip_codes"]),
+ *                     licenseTypes: new Set(["MD"]),
+ *                     facilityTypeCodes: new Set(["01"]),
+ *                     networkTypes: new Set(["12"]),
+ *                     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
+ *                     cptCode: "cpt_code",
+ *                     modifiers: new Set(["AV"])
+ *                 },
+ *                 entries: [{
+ *                         startDate: "2023-01-15",
+ *                         rateCents: 1,
+ *                         isDeactivated: true
+ *                     }, {
+ *                         startDate: "2023-01-15",
+ *                         rateCents: 1,
+ *                         isDeactivated: true
  *                     }]
  *             }]
  *     }

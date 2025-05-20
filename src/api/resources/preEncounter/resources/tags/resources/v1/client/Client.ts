@@ -38,7 +38,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.tags.v1.get(CandidApi.preEncounter.TagId("string"))
+     *     await client.preEncounter.tags.v1.get(CandidApi.preEncounter.TagId("id"))
      */
     public async get(
         id: CandidApi.preEncounter.TagId,
@@ -58,8 +58,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -95,10 +95,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.tags.v1.getAll({
-     *         limit: 1,
-     *         pageToken: CandidApi.preEncounter.PageToken("string")
-     *     })
+     *     await client.preEncounter.tags.v1.getAll()
      */
     public async getAll(
         request: CandidApi.preEncounter.tags.v1.GetAllTagsRequest = {},
@@ -128,8 +125,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -167,7 +164,7 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.tags.v1.create({
-     *         value: "string"
+     *         value: "value"
      *     })
      */
     public async create(
@@ -188,8 +185,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -228,8 +225,8 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.tags.v1.update(CandidApi.preEncounter.TagId("string"), "string", {
-     *         value: "string"
+     *     await client.preEncounter.tags.v1.update(CandidApi.preEncounter.TagId("id"), "version", {
+     *         value: "value"
      *     })
      */
     public async update(
@@ -252,8 +249,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -284,14 +281,14 @@ export class V1 {
     }
 
     /**
-     * Sets a tag as deactivated. The path must contain the most recent version to prevent races.
+     * Sets a tag as deactivated.  The path must contain the most recent version to prevent races.
      *
      * @param {CandidApi.preEncounter.TagId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.tags.v1.deactivate(CandidApi.preEncounter.TagId("string"), "string")
+     *     await client.preEncounter.tags.v1.deactivate(CandidApi.preEncounter.TagId("id"), "version")
      */
     public async deactivate(
         id: CandidApi.preEncounter.TagId,
@@ -312,8 +309,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

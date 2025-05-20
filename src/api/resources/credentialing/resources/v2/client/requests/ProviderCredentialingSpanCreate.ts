@@ -10,23 +10,16 @@ import * as CandidApi from "../../../../../../index";
  *         renderingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
  *         contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
  *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
- *         startDate: "2023-01-15",
- *         endDate: "2023-01-15",
  *         regions: {
  *             type: "states",
- *             states: ["AA"]
- *         },
- *         submittedDate: "2023-01-15",
- *         payerLoadedDate: "2023-01-15"
+ *             states: ["AA", "AA"]
+ *         }
  *     }
  */
 export interface ProviderCredentialingSpanCreate {
     /** The ID of the rendering provider covered by the credentialing span. */
     renderingProviderId: string;
-    /**
-     * The ID of the practice location at which the rendering provider is covered by the credentialing span.
-     *
-     */
+    /** The ID of the practice location at which the rendering provider is covered by the credentialing span. */
     contractingProviderId: string;
     /** The ID of the payer covered by the credentialing span. */
     payerUuid: string;
@@ -34,10 +27,7 @@ export interface ProviderCredentialingSpanCreate {
     startDate?: string;
     /** End date of the credentialing span. */
     endDate?: string;
-    /**
-     * The states covered by the credentialing span. A span may be national and cover all states.
-     *
-     */
+    /** The states covered by the credentialing span. A span may be national and cover all states. */
     regions: CandidApi.Regions;
     /** Date that the credential paperwork was submitted. */
     submittedDate?: string;

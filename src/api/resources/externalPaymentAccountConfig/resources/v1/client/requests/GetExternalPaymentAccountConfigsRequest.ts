@@ -6,10 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         limit: 1,
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
- *     }
+ *     {}
  */
 export interface GetExternalPaymentAccountConfigsRequest {
     /**

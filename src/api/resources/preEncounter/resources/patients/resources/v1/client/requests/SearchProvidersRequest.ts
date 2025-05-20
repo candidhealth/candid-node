@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         searchCriteria: "string"
+ *         searchCriteria: "search_criteria"
  *     }
  */
 export interface SearchProvidersRequest {

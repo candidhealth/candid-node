@@ -1,6 +1,7 @@
 export * from "./NetworkStatusCheckId";
 export * from "./LineOfBusiness";
 export * from "./InsuranceTypeCodes";
+export * from "./EmptyObject";
 export * from "./InsuranceType";
 export * from "./Explanation";
 export * from "./ServiceType";

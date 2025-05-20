@@ -6,17 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         paymentTimestamp: "2024-01-15T09:30:00Z",
- *         paymentNote: {
- *             type: "set",
- *             value: "string"
- *         },
- *         invoice: {
- *             type: "set",
- *             value: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
- *         }
- *     }
+ *     {}
  */
 export interface PatientPaymentUpdate {
     paymentTimestamp?: Date;

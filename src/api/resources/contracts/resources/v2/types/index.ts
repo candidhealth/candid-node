@@ -12,4 +12,5 @@ export * from "./Contract";
 export * from "./ContractWithProviders";
 export * from "./ContractsPage";
 export * from "./ContractStatus";
+export * from "./ContractSortField";
 export * from "./AuthorizedSignatory";

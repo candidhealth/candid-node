@@ -40,11 +40,15 @@ export class V1 {
      * @example
      *     await client.importInvoice.v1.importInvoice({
      *         externalPaymentAccountConfigId: CandidApi.PaymentAccountConfigId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         externalCustomerIdentifier: "string",
-     *         note: "string",
-     *         dueDate: "2023-01-15",
+     *         patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
+     *         externalCustomerIdentifier: "external_customer_identifier",
      *         items: [{
+     *                 attribution: {
+     *                     type: "service_line_id",
+     *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *                 },
+     *                 amountCents: 1
+     *             }, {
      *                 attribution: {
      *                     type: "service_line_id",
      *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -52,8 +56,7 @@ export class V1 {
      *                 amountCents: 1
      *             }],
      *         status: "DRAFT",
-     *         externalIdentifier: "string",
-     *         customerInvoiceUrl: "string"
+     *         externalIdentifier: "external_identifier"
      *     })
      */
     public async importInvoice(
@@ -76,8 +79,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -135,18 +138,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.importInvoice.v1.getMulti({
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
-     *         encounterExternalId: CandidApi.EncounterExternalId("string"),
-     *         note: "string",
-     *         dueDateBefore: "2023-01-15",
-     *         dueDateAfter: "2023-01-15",
-     *         status: "DRAFT",
-     *         limit: 1,
-     *         sort: "CREATED_AT",
-     *         sortDirection: "asc",
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
-     *     })
+     *     await client.importInvoice.v1.getMulti()
      */
     public async getMulti(
         request: CandidApi.importInvoice.v1.SearchImportedInvoicesRequest = {},
@@ -233,8 +225,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -291,8 +283,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -347,22 +339,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         customerInvoiceUrl: "string",
-     *         status: "DRAFT",
-     *         note: "string",
-     *         dueDate: "2023-01-15",
-     *         items: {
-     *             updateType: "APPEND",
-     *             items: [{
-     *                     attribution: {
-     *                         type: "service_line_id",
-     *                         value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *                     },
-     *                     amountCents: 1
-     *                 }]
-     *         }
-     *     })
+     *     await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async update(
         invoiceId: CandidApi.InvoiceId,
@@ -383,8 +360,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

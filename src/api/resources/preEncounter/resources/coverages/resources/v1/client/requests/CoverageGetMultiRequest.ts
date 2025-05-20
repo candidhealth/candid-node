@@ -4,9 +4,7 @@
 
 /**
  * @example
- *     {
- *         patientId: "string"
- *     }
+ *     {}
  */
 export interface CoverageGetMultiRequest {
     patientId?: string;

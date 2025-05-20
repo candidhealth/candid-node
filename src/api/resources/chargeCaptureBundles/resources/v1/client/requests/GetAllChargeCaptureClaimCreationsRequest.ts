@@ -6,28 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         limit: 1,
- *         sort: "created_at",
- *         sortDirection: "asc",
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
- *         patientExternalId: "string",
- *         claimCreationStatus: "not-started",
- *         chargeStatus: "planned",
- *         chargeExternalId: "string",
- *         dateOfServiceMin: "2023-01-15",
- *         dateOfServiceMax: "2023-01-15",
- *         claimIds: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         claimCreationIds: CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         billingProviderNpis: "string",
- *         serviceFacilityName: "string",
- *         primaryPayerIds: "string",
- *         renderingProviderNpis: "string",
- *         renderingProviderNames: "string",
- *         supervisingProviderNpis: "string",
- *         supervisingProviderNames: "string",
- *         hasChargeCaptureUpdates: true
- *     }
+ *     {}
  */
 export interface GetAllChargeCaptureClaimCreationsRequest {
     /**

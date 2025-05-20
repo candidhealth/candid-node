@@ -32,193 +32,153 @@ export class V1 {
     constructor(protected readonly _options: V1.Options = {}) {}
 
     /**
-     * Adds a patient. VersionConflictError is returned when the patient's external ID is already in use.
+     * Adds a patient.  VersionConflictError is returned when the patient's external ID is already in use.
      *
      * @param {CandidApi.preEncounter.patients.v1.CreatePatientRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.patients.v1.create({
-     *         skipDuplicateCheck: true,
      *         body: {
      *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: "USUAL",
-     *                 period: {},
-     *                 suffix: "string"
+     *                 family: "family",
+     *                 given: ["given", "given"],
+     *                 use: "USUAL"
      *             },
      *             otherNames: [{
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: "USUAL",
-     *                     period: {},
-     *                     suffix: "string"
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
+     *                 }, {
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
      *                 }],
-     *             otherIdentifiers: [{
-     *                     value: "string",
-     *                     system: "string"
-     *                 }],
-     *             gender: "MAN",
      *             birthDate: "2023-01-15",
-     *             socialSecurityNumber: "string",
      *             biologicalSex: "FEMALE",
-     *             sexualOrientation: "HETEROSEXUAL",
-     *             pronouns: ["string"],
-     *             race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
-     *             ethnicity: "HISPANIC_OR_LATINO",
-     *             disabilityStatus: "DISABLED",
-     *             maritalStatus: "ANNULLED",
-     *             deceased: "2024-01-15T09:30:00Z",
-     *             multipleBirth: 1,
      *             primaryAddress: {
      *                 use: "HOME",
-     *                 line: ["string"],
-     *                 city: "string",
-     *                 state: "string",
-     *                 postalCode: "string",
-     *                 country: "string",
-     *                 period: {}
+     *                 line: ["line", "line"],
+     *                 city: "city",
+     *                 state: "state",
+     *                 postalCode: "postal_code",
+     *                 country: "country"
      *             },
      *             otherAddresses: [{
      *                     use: "HOME",
-     *                     line: ["string"],
-     *                     city: "string",
-     *                     state: "string",
-     *                     postalCode: "string",
-     *                     country: "string",
-     *                     period: {}
+     *                     line: ["line", "line"],
+     *                     city: "city",
+     *                     state: "state",
+     *                     postalCode: "postal_code",
+     *                     country: "country"
+     *                 }, {
+     *                     use: "HOME",
+     *                     line: ["line", "line"],
+     *                     city: "city",
+     *                     state: "state",
+     *                     postalCode: "postal_code",
+     *                     country: "country"
      *                 }],
      *             primaryTelecom: {
-     *                 value: "string",
+     *                 value: "value",
      *                 use: "HOME"
      *             },
      *             otherTelecoms: [{
-     *                     value: "string",
+     *                     value: "value",
+     *                     use: "HOME"
+     *                 }, {
+     *                     value: "value",
      *                     use: "HOME"
      *                 }],
-     *             email: "string",
-     *             electronicCommunicationOptIn: true,
-     *             photo: "string",
-     *             language: "string",
-     *             externalProvenance: {
-     *                 externalId: "string",
-     *                 systemName: "string"
-     *             },
      *             contacts: [{
-     *                     relationship: ["SELF"],
+     *                     relationship: ["SELF", "SELF"],
      *                     name: {
-     *                         family: "string",
-     *                         given: ["string"],
-     *                         use: "USUAL",
-     *                         period: {},
-     *                         suffix: "string"
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
      *                     },
      *                     telecoms: [{
-     *                             value: "string",
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }, {
+     *                             value: "value",
      *                             use: "HOME"
      *                         }],
      *                     addresses: [{
      *                             use: "HOME",
-     *                             line: ["string"],
-     *                             city: "string",
-     *                             state: "string",
-     *                             postalCode: "string",
-     *                             country: "string",
-     *                             period: {}
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }, {
+     *                             use: "HOME",
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }]
+     *                 }, {
+     *                     relationship: ["SELF", "SELF"],
+     *                     name: {
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
+     *                     },
+     *                     telecoms: [{
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }, {
+     *                             value: "value",
+     *                             use: "HOME"
      *                         }],
-     *                     period: {},
-     *                     hipaaAuthorization: true
+     *                     addresses: [{
+     *                             use: "HOME",
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }, {
+     *                             use: "HOME",
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }]
      *                 }],
      *             generalPractitioners: [{
      *                     name: {
-     *                         family: "string",
-     *                         given: ["string"],
-     *                         use: "USUAL",
-     *                         period: {},
-     *                         suffix: "string"
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
      *                     },
-     *                     type: "PRIMARY",
-     *                     npi: "string",
      *                     telecoms: [{
-     *                             value: "string",
+     *                             value: "value",
      *                             use: "HOME"
-     *                         }],
-     *                     addresses: [],
-     *                     period: {},
-     *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *                     fax: "string"
+     *                         }, {
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }]
+     *                 }, {
+     *                     name: {
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
+     *                     },
+     *                     telecoms: [{
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }, {
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }]
      *                 }],
      *             filingOrder: {
-     *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
-     *             },
-     *             nonInsurancePayers: [CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")],
-     *             nonInsurancePayerAssociations: [{
-     *                     id: CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")
-     *                 }],
-     *             guarantor: {
-     *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: "USUAL",
-     *                     period: {},
-     *                     suffix: "string"
-     *                 },
-     *                 telecom: {
-     *                     value: "string",
-     *                     use: "HOME"
-     *                 },
-     *                 email: "string",
-     *                 birthDate: "2023-01-15",
-     *                 address: {
-     *                     use: "HOME",
-     *                     line: ["string"],
-     *                     city: "string",
-     *                     state: "string",
-     *                     postalCode: "string",
-     *                     country: "string",
-     *                     period: {}
-     *                 }
-     *             },
-     *             selfPay: true,
-     *             authorizations: [{
-     *                     payerId: CandidApi.preEncounter.PayerId("string"),
-     *                     payerName: "string",
-     *                     additionalPayerInformation: {},
-     *                     authorizationNumber: "string",
-     *                     cptCode: "string",
-     *                     applyForAllCptCodes: true,
-     *                     units: "VISIT",
-     *                     quantity: 1,
-     *                     period: {},
-     *                     notes: "string"
-     *                 }],
-     *             referrals: [{
-     *                     provider: {
-     *                         name: {
-     *                             family: "string",
-     *                             given: ["string"],
-     *                             use: "USUAL",
-     *                             period: {},
-     *                             suffix: "string"
-     *                         },
-     *                         type: "PRIMARY",
-     *                         npi: "string",
-     *                         telecoms: [{
-     *                                 value: "string",
-     *                                 use: "HOME"
-     *                             }],
-     *                         addresses: [],
-     *                         period: {},
-     *                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *                         fax: "string"
-     *                     },
-     *                     referralNumber: "string"
-     *                 }],
-     *             primaryServiceFacilityId: "string",
-     *             doNotInvoiceReason: "BANKRUPTCY",
-     *             noteIds: [CandidApi.preEncounter.NoteId("string")],
-     *             tagIds: [CandidApi.preEncounter.TagId("string")]
+     *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+     *             }
      *         }
      *     })
      */
@@ -248,8 +208,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -301,194 +261,154 @@ export class V1 {
     }
 
     /**
-     * Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
+     * Adds a patient and hydrates their MRN with a pre-existing MRN.  Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
      *
      * @param {CandidApi.preEncounter.patients.v1.CreatePatientWithMrnRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.patients.v1.createWithMrn({
-     *         skipDuplicateCheck: true,
      *         body: {
-     *             mrn: "string",
      *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: "USUAL",
-     *                 period: {},
-     *                 suffix: "string"
+     *                 family: "family",
+     *                 given: ["given", "given"],
+     *                 use: "USUAL"
      *             },
      *             otherNames: [{
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: "USUAL",
-     *                     period: {},
-     *                     suffix: "string"
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
+     *                 }, {
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
      *                 }],
-     *             otherIdentifiers: [{
-     *                     value: "string",
-     *                     system: "string"
-     *                 }],
-     *             gender: "MAN",
      *             birthDate: "2023-01-15",
-     *             socialSecurityNumber: "string",
      *             biologicalSex: "FEMALE",
-     *             sexualOrientation: "HETEROSEXUAL",
-     *             pronouns: ["string"],
-     *             race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
-     *             ethnicity: "HISPANIC_OR_LATINO",
-     *             disabilityStatus: "DISABLED",
-     *             maritalStatus: "ANNULLED",
-     *             deceased: "2024-01-15T09:30:00Z",
-     *             multipleBirth: 1,
      *             primaryAddress: {
      *                 use: "HOME",
-     *                 line: ["string"],
-     *                 city: "string",
-     *                 state: "string",
-     *                 postalCode: "string",
-     *                 country: "string",
-     *                 period: {}
+     *                 line: ["line", "line"],
+     *                 city: "city",
+     *                 state: "state",
+     *                 postalCode: "postal_code",
+     *                 country: "country"
      *             },
      *             otherAddresses: [{
      *                     use: "HOME",
-     *                     line: ["string"],
-     *                     city: "string",
-     *                     state: "string",
-     *                     postalCode: "string",
-     *                     country: "string",
-     *                     period: {}
+     *                     line: ["line", "line"],
+     *                     city: "city",
+     *                     state: "state",
+     *                     postalCode: "postal_code",
+     *                     country: "country"
+     *                 }, {
+     *                     use: "HOME",
+     *                     line: ["line", "line"],
+     *                     city: "city",
+     *                     state: "state",
+     *                     postalCode: "postal_code",
+     *                     country: "country"
      *                 }],
      *             primaryTelecom: {
-     *                 value: "string",
+     *                 value: "value",
      *                 use: "HOME"
      *             },
      *             otherTelecoms: [{
-     *                     value: "string",
+     *                     value: "value",
+     *                     use: "HOME"
+     *                 }, {
+     *                     value: "value",
      *                     use: "HOME"
      *                 }],
-     *             email: "string",
-     *             electronicCommunicationOptIn: true,
-     *             photo: "string",
-     *             language: "string",
-     *             externalProvenance: {
-     *                 externalId: "string",
-     *                 systemName: "string"
-     *             },
      *             contacts: [{
-     *                     relationship: ["SELF"],
+     *                     relationship: ["SELF", "SELF"],
      *                     name: {
-     *                         family: "string",
-     *                         given: ["string"],
-     *                         use: "USUAL",
-     *                         period: {},
-     *                         suffix: "string"
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
      *                     },
      *                     telecoms: [{
-     *                             value: "string",
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }, {
+     *                             value: "value",
      *                             use: "HOME"
      *                         }],
      *                     addresses: [{
      *                             use: "HOME",
-     *                             line: ["string"],
-     *                             city: "string",
-     *                             state: "string",
-     *                             postalCode: "string",
-     *                             country: "string",
-     *                             period: {}
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }, {
+     *                             use: "HOME",
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }]
+     *                 }, {
+     *                     relationship: ["SELF", "SELF"],
+     *                     name: {
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
+     *                     },
+     *                     telecoms: [{
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }, {
+     *                             value: "value",
+     *                             use: "HOME"
      *                         }],
-     *                     period: {},
-     *                     hipaaAuthorization: true
+     *                     addresses: [{
+     *                             use: "HOME",
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }, {
+     *                             use: "HOME",
+     *                             line: ["line", "line"],
+     *                             city: "city",
+     *                             state: "state",
+     *                             postalCode: "postal_code",
+     *                             country: "country"
+     *                         }]
      *                 }],
      *             generalPractitioners: [{
      *                     name: {
-     *                         family: "string",
-     *                         given: ["string"],
-     *                         use: "USUAL",
-     *                         period: {},
-     *                         suffix: "string"
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
      *                     },
-     *                     type: "PRIMARY",
-     *                     npi: "string",
      *                     telecoms: [{
-     *                             value: "string",
+     *                             value: "value",
      *                             use: "HOME"
-     *                         }],
-     *                     addresses: [],
-     *                     period: {},
-     *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *                     fax: "string"
+     *                         }, {
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }]
+     *                 }, {
+     *                     name: {
+     *                         family: "family",
+     *                         given: ["given", "given"],
+     *                         use: "USUAL"
+     *                     },
+     *                     telecoms: [{
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }, {
+     *                             value: "value",
+     *                             use: "HOME"
+     *                         }]
      *                 }],
      *             filingOrder: {
-     *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+     *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
      *             },
-     *             nonInsurancePayers: [CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")],
-     *             nonInsurancePayerAssociations: [{
-     *                     id: CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")
-     *                 }],
-     *             guarantor: {
-     *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: "USUAL",
-     *                     period: {},
-     *                     suffix: "string"
-     *                 },
-     *                 telecom: {
-     *                     value: "string",
-     *                     use: "HOME"
-     *                 },
-     *                 email: "string",
-     *                 birthDate: "2023-01-15",
-     *                 address: {
-     *                     use: "HOME",
-     *                     line: ["string"],
-     *                     city: "string",
-     *                     state: "string",
-     *                     postalCode: "string",
-     *                     country: "string",
-     *                     period: {}
-     *                 }
-     *             },
-     *             selfPay: true,
-     *             authorizations: [{
-     *                     payerId: CandidApi.preEncounter.PayerId("string"),
-     *                     payerName: "string",
-     *                     additionalPayerInformation: {},
-     *                     authorizationNumber: "string",
-     *                     cptCode: "string",
-     *                     applyForAllCptCodes: true,
-     *                     units: "VISIT",
-     *                     quantity: 1,
-     *                     period: {},
-     *                     notes: "string"
-     *                 }],
-     *             referrals: [{
-     *                     provider: {
-     *                         name: {
-     *                             family: "string",
-     *                             given: ["string"],
-     *                             use: "USUAL",
-     *                             period: {},
-     *                             suffix: "string"
-     *                         },
-     *                         type: "PRIMARY",
-     *                         npi: "string",
-     *                         telecoms: [{
-     *                                 value: "string",
-     *                                 use: "HOME"
-     *                             }],
-     *                         addresses: [],
-     *                         period: {},
-     *                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *                         fax: "string"
-     *                     },
-     *                     referralNumber: "string"
-     *                 }],
-     *             primaryServiceFacilityId: "string",
-     *             doNotInvoiceReason: "BANKRUPTCY",
-     *             noteIds: [CandidApi.preEncounter.NoteId("string")],
-     *             tagIds: [CandidApi.preEncounter.TagId("string")]
+     *             mrn: "mrn"
      *         }
      *     })
      */
@@ -521,8 +441,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -581,13 +501,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.getMulti({
-     *         limit: 1,
-     *         mrn: "string",
-     *         pageToken: CandidApi.preEncounter.PageToken("string"),
-     *         sortField: CandidApi.preEncounter.patients.v1.PatientSortField("string"),
-     *         sortDirection: "asc"
-     *     })
+     *     await client.preEncounter.patients.v1.getMulti()
      */
     public async getMulti(
         request: CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated = {},
@@ -636,8 +550,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -668,14 +582,14 @@ export class V1 {
     }
 
     /**
-     * Searches for referring providers that match the query parameters. The search is case-insensitive, supports fuzzy matching, and matches against provider name and NPI. The search criteria must be an alphanumeric string, and the search is limited to the first 20 results.
+     * Searches for referring providers that match the query parameters.  The search is case-insensitive, supports fuzzy matching, and matches against provider name and NPI. The search criteria must be an alphanumeric string, and the search is limited to the first 20 results.
      *
      * @param {CandidApi.preEncounter.patients.v1.SearchProvidersRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.preEncounter.patients.v1.searchProviders({
-     *         searchCriteria: "string"
+     *         searchCriteria: "search_criteria"
      *     })
      */
     public async searchProviders(
@@ -704,8 +618,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -742,7 +656,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.get(CandidApi.preEncounter.PatientId("string"))
+     *     await client.preEncounter.patients.v1.get(CandidApi.preEncounter.PatientId("id"))
      */
     public async get(
         id: CandidApi.preEncounter.PatientId,
@@ -764,8 +678,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -813,13 +727,13 @@ export class V1 {
     }
 
     /**
-     * Gets a patient along with it's full history. The return list is ordered by version ascending.
+     * Gets a patient along with it's full history.  The return list is ordered by version ascending.
      *
      * @param {CandidApi.preEncounter.PatientId} id
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.getHistory(CandidApi.preEncounter.PatientId("string"))
+     *     await client.preEncounter.patients.v1.getHistory(CandidApi.preEncounter.PatientId("id"))
      */
     public async getHistory(
         id: CandidApi.preEncounter.PatientId,
@@ -844,8 +758,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -893,7 +807,7 @@ export class V1 {
     }
 
     /**
-     * Updates a patient. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
+     * Updates a patient.  The path must contain the most recent version to prevent race conditions.  Updating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.PatientId} id
      * @param {string} version
@@ -901,185 +815,146 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.update(CandidApi.preEncounter.PatientId("string"), "string", {
+     *     await client.preEncounter.patients.v1.update(CandidApi.preEncounter.PatientId("id"), "version", {
      *         name: {
-     *             family: "string",
-     *             given: ["string"],
-     *             use: "USUAL",
-     *             period: {},
-     *             suffix: "string"
+     *             family: "family",
+     *             given: ["given", "given"],
+     *             use: "USUAL"
      *         },
      *         otherNames: [{
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: "USUAL",
-     *                 period: {},
-     *                 suffix: "string"
+     *                 family: "family",
+     *                 given: ["given", "given"],
+     *                 use: "USUAL"
+     *             }, {
+     *                 family: "family",
+     *                 given: ["given", "given"],
+     *                 use: "USUAL"
      *             }],
-     *         otherIdentifiers: [{
-     *                 value: "string",
-     *                 system: "string"
-     *             }],
-     *         gender: "MAN",
      *         birthDate: "2023-01-15",
-     *         socialSecurityNumber: "string",
      *         biologicalSex: "FEMALE",
-     *         sexualOrientation: "HETEROSEXUAL",
-     *         pronouns: ["string"],
-     *         race: "AMERICAN_INDIAN_OR_ALASKA_NATIVE",
-     *         ethnicity: "HISPANIC_OR_LATINO",
-     *         disabilityStatus: "DISABLED",
-     *         maritalStatus: "ANNULLED",
-     *         deceased: "2024-01-15T09:30:00Z",
-     *         multipleBirth: 1,
      *         primaryAddress: {
      *             use: "HOME",
-     *             line: ["string"],
-     *             city: "string",
-     *             state: "string",
-     *             postalCode: "string",
-     *             country: "string",
-     *             period: {}
+     *             line: ["line", "line"],
+     *             city: "city",
+     *             state: "state",
+     *             postalCode: "postal_code",
+     *             country: "country"
      *         },
      *         otherAddresses: [{
      *                 use: "HOME",
-     *                 line: ["string"],
-     *                 city: "string",
-     *                 state: "string",
-     *                 postalCode: "string",
-     *                 country: "string",
-     *                 period: {}
+     *                 line: ["line", "line"],
+     *                 city: "city",
+     *                 state: "state",
+     *                 postalCode: "postal_code",
+     *                 country: "country"
+     *             }, {
+     *                 use: "HOME",
+     *                 line: ["line", "line"],
+     *                 city: "city",
+     *                 state: "state",
+     *                 postalCode: "postal_code",
+     *                 country: "country"
      *             }],
      *         primaryTelecom: {
-     *             value: "string",
+     *             value: "value",
      *             use: "HOME"
      *         },
      *         otherTelecoms: [{
-     *                 value: "string",
+     *                 value: "value",
+     *                 use: "HOME"
+     *             }, {
+     *                 value: "value",
      *                 use: "HOME"
      *             }],
-     *         email: "string",
-     *         electronicCommunicationOptIn: true,
-     *         photo: "string",
-     *         language: "string",
-     *         externalProvenance: {
-     *             externalId: "string",
-     *             systemName: "string"
-     *         },
      *         contacts: [{
-     *                 relationship: ["SELF"],
+     *                 relationship: ["SELF", "SELF"],
      *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: "USUAL",
-     *                     period: {},
-     *                     suffix: "string"
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
      *                 },
      *                 telecoms: [{
-     *                         value: "string",
+     *                         value: "value",
+     *                         use: "HOME"
+     *                     }, {
+     *                         value: "value",
      *                         use: "HOME"
      *                     }],
      *                 addresses: [{
      *                         use: "HOME",
-     *                         line: ["string"],
-     *                         city: "string",
-     *                         state: "string",
-     *                         postalCode: "string",
-     *                         country: "string",
-     *                         period: {}
+     *                         line: ["line", "line"],
+     *                         city: "city",
+     *                         state: "state",
+     *                         postalCode: "postal_code",
+     *                         country: "country"
+     *                     }, {
+     *                         use: "HOME",
+     *                         line: ["line", "line"],
+     *                         city: "city",
+     *                         state: "state",
+     *                         postalCode: "postal_code",
+     *                         country: "country"
+     *                     }]
+     *             }, {
+     *                 relationship: ["SELF", "SELF"],
+     *                 name: {
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
+     *                 },
+     *                 telecoms: [{
+     *                         value: "value",
+     *                         use: "HOME"
+     *                     }, {
+     *                         value: "value",
+     *                         use: "HOME"
      *                     }],
-     *                 period: {},
-     *                 hipaaAuthorization: true
+     *                 addresses: [{
+     *                         use: "HOME",
+     *                         line: ["line", "line"],
+     *                         city: "city",
+     *                         state: "state",
+     *                         postalCode: "postal_code",
+     *                         country: "country"
+     *                     }, {
+     *                         use: "HOME",
+     *                         line: ["line", "line"],
+     *                         city: "city",
+     *                         state: "state",
+     *                         postalCode: "postal_code",
+     *                         country: "country"
+     *                     }]
      *             }],
      *         generalPractitioners: [{
      *                 name: {
-     *                     family: "string",
-     *                     given: ["string"],
-     *                     use: "USUAL",
-     *                     period: {},
-     *                     suffix: "string"
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
      *                 },
-     *                 type: "PRIMARY",
-     *                 npi: "string",
      *                 telecoms: [{
-     *                         value: "string",
+     *                         value: "value",
      *                         use: "HOME"
-     *                     }],
-     *                 addresses: [],
-     *                 period: {},
-     *                 canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *                 fax: "string"
+     *                     }, {
+     *                         value: "value",
+     *                         use: "HOME"
+     *                     }]
+     *             }, {
+     *                 name: {
+     *                     family: "family",
+     *                     given: ["given", "given"],
+     *                     use: "USUAL"
+     *                 },
+     *                 telecoms: [{
+     *                         value: "value",
+     *                         use: "HOME"
+     *                     }, {
+     *                         value: "value",
+     *                         use: "HOME"
+     *                     }]
      *             }],
      *         filingOrder: {
-     *             coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
-     *         },
-     *         nonInsurancePayers: [CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")],
-     *         nonInsurancePayerAssociations: [{
-     *                 id: CandidApi.preEncounter.CanonicalNonInsurancePayerId("string")
-     *             }],
-     *         guarantor: {
-     *             name: {
-     *                 family: "string",
-     *                 given: ["string"],
-     *                 use: "USUAL",
-     *                 period: {},
-     *                 suffix: "string"
-     *             },
-     *             telecom: {
-     *                 value: "string",
-     *                 use: "HOME"
-     *             },
-     *             email: "string",
-     *             birthDate: "2023-01-15",
-     *             address: {
-     *                 use: "HOME",
-     *                 line: ["string"],
-     *                 city: "string",
-     *                 state: "string",
-     *                 postalCode: "string",
-     *                 country: "string",
-     *                 period: {}
-     *             }
-     *         },
-     *         selfPay: true,
-     *         authorizations: [{
-     *                 payerId: CandidApi.preEncounter.PayerId("string"),
-     *                 payerName: "string",
-     *                 additionalPayerInformation: {},
-     *                 authorizationNumber: "string",
-     *                 cptCode: "string",
-     *                 applyForAllCptCodes: true,
-     *                 units: "VISIT",
-     *                 quantity: 1,
-     *                 period: {},
-     *                 notes: "string"
-     *             }],
-     *         referrals: [{
-     *                 provider: {
-     *                     name: {
-     *                         family: "string",
-     *                         given: ["string"],
-     *                         use: "USUAL",
-     *                         period: {},
-     *                         suffix: "string"
-     *                     },
-     *                     type: "PRIMARY",
-     *                     npi: "string",
-     *                     telecoms: [{
-     *                             value: "string",
-     *                             use: "HOME"
-     *                         }],
-     *                     addresses: [],
-     *                     period: {},
-     *                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("string"),
-     *                     fax: "string"
-     *                 },
-     *                 referralNumber: "string"
-     *             }],
-     *         primaryServiceFacilityId: "string",
-     *         doNotInvoiceReason: "BANKRUPTCY",
-     *         noteIds: [CandidApi.preEncounter.NoteId("string")],
-     *         tagIds: [CandidApi.preEncounter.TagId("string")]
+     *             coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+     *         }
      *     })
      */
     public async update(
@@ -1104,8 +979,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1157,14 +1032,14 @@ export class V1 {
     }
 
     /**
-     * Sets a patient as deactivated. The path must contain the most recent version plus 1 to prevent race conditions. Deactivating historic versions is not supported.
+     * Sets a patient as deactivated.  The path must contain the most recent version plus 1 to prevent race conditions.  Deactivating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.PatientId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.deactivate(CandidApi.preEncounter.PatientId("string"), "string")
+     *     await client.preEncounter.patients.v1.deactivate(CandidApi.preEncounter.PatientId("id"), "version")
      */
     public async deactivate(
         id: CandidApi.preEncounter.PatientId,
@@ -1185,8 +1060,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1230,14 +1105,14 @@ export class V1 {
     }
 
     /**
-     * Removes the deactivated flag for a patient. The path must contain the most recent version plus 1 to prevent race conditions. Reactivating historic versions is not supported.
+     * Removes the deactivated flag for a patient.  The path must contain the most recent version plus 1 to prevent race conditions.  Reactivating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.PatientId} id
      * @param {string} version
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.reactivate(CandidApi.preEncounter.PatientId("string"), "string")
+     *     await client.preEncounter.patients.v1.reactivate(CandidApi.preEncounter.PatientId("id"), "version")
      */
     public async reactivate(
         id: CandidApi.preEncounter.PatientId,
@@ -1258,8 +1133,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1309,10 +1184,7 @@ export class V1 {
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.preEncounter.patients.v1.search({
-     *         mrn: "string",
-     *         similarNameOrdering: "string"
-     *     })
+     *     await client.preEncounter.patients.v1.search()
      */
     public async search(
         request: CandidApi.preEncounter.patients.v1.PatientGetMultiRequest = {},
@@ -1344,8 +1216,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1376,7 +1248,7 @@ export class V1 {
     }
 
     /**
-     * Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+     * Scans up to 100 patient updates.  The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
      *
      * @param {CandidApi.preEncounter.patients.v1.PatientScanRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -1409,8 +1281,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

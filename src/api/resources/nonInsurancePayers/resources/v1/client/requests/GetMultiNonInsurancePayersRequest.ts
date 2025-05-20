@@ -6,15 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         name: "string",
- *         category: "string",
- *         enabled: true,
- *         sort: "NAME",
- *         sortDirection: "asc",
- *         limit: 1,
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
- *     }
+ *     {}
  */
 export interface GetMultiNonInsurancePayersRequest {
     name?: string;

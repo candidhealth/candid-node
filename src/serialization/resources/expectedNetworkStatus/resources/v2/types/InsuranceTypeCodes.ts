@@ -6,6 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { InsuranceTypeCode } from "../../../../commons/types/InsuranceTypeCode";
+import { EmptyObject } from "./EmptyObject";
 
 export const InsuranceTypeCodes: core.serialization.Schema<
     serializers.expectedNetworkStatus.v2.InsuranceTypeCodes.Raw,
@@ -15,8 +16,8 @@ export const InsuranceTypeCodes: core.serialization.Schema<
         insurance_type_code: core.serialization.object({
             value: InsuranceTypeCode,
         }),
-        unknown_insurance_type_code: core.serialization.object({}),
-        not_applicable: core.serialization.object({}),
+        unknown_insurance_type_code: EmptyObject,
+        not_applicable: EmptyObject,
     })
     .transform<CandidApi.expectedNetworkStatus.v2.InsuranceTypeCodes>({
         transform: (value) => value,
@@ -34,11 +35,11 @@ export declare namespace InsuranceTypeCodes {
         value: InsuranceTypeCode.Raw;
     }
 
-    export interface UnknownInsuranceTypeCode {
+    export interface UnknownInsuranceTypeCode extends EmptyObject.Raw {
         type: "unknown_insurance_type_code";
     }
 
-    export interface NotApplicable {
+    export interface NotApplicable extends EmptyObject.Raw {
         type: "not_applicable";
     }
 }

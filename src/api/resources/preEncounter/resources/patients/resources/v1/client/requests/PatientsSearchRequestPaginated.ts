@@ -6,13 +6,7 @@ import * as CandidApi from "../../../../../../../../index";
 
 /**
  * @example
- *     {
- *         limit: 1,
- *         mrn: "string",
- *         pageToken: CandidApi.preEncounter.PageToken("string"),
- *         sortField: CandidApi.preEncounter.patients.v1.PatientSortField("string"),
- *         sortDirection: "asc"
- *     }
+ *     {}
  */
 export interface PatientsSearchRequestPaginated {
     limit?: number;

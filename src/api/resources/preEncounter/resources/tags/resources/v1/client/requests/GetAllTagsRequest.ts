@@ -6,10 +6,7 @@ import * as CandidApi from "../../../../../../../../index";
 
 /**
  * @example
- *     {
- *         limit: 1,
- *         pageToken: CandidApi.preEncounter.PageToken("string")
- *     }
+ *     {}
  */
 export interface GetAllTagsRequest {
     limit?: number;

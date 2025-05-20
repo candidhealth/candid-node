@@ -6,16 +6,13 @@ import * as CandidApi from "../../../../../index";
 
 export type InsuranceTypeCodes =
     /**
-     * Match contracts on the provided insurance type code during the expected network status check.
-     *  */
+     * Match contracts on the provided insurance type code during the expected network status check. */
     | CandidApi.expectedNetworkStatus.v2.InsuranceTypeCodes.InsuranceTypeCode
     /**
-     * Provide this if the insurance type code is unknown; causes the expected network status check to return indeterminate response.
-     *  */
+     * Provide this if the insurance type code is unknown; causes the expected network status check to return indeterminate response. */
     | CandidApi.expectedNetworkStatus.v2.InsuranceTypeCodes.UnknownInsuranceTypeCode
     /**
-     * Skips the insurance type validation when matching contracts in the expected network status check.
-     *  */
+     * Skips the insurance type validation when matching contracts in the expected network status check. */
     | CandidApi.expectedNetworkStatus.v2.InsuranceTypeCodes.NotApplicable;
 
 export namespace InsuranceTypeCodes {
@@ -24,11 +21,11 @@ export namespace InsuranceTypeCodes {
         value: CandidApi.InsuranceTypeCode;
     }
 
-    export interface UnknownInsuranceTypeCode {
+    export interface UnknownInsuranceTypeCode extends CandidApi.expectedNetworkStatus.v2.EmptyObject {
         type: "unknown_insurance_type_code";
     }
 
-    export interface NotApplicable {
+    export interface NotApplicable extends CandidApi.expectedNetworkStatus.v2.EmptyObject {
         type: "not_applicable";
     }
 }

@@ -37,21 +37,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.encounterProviders.v2.updateReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
-     *     })
+     *     await client.encounterProviders.v2.updateReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async updateReferringProvider(
         encounterId: CandidApi.EncounterId,
@@ -77,8 +63,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -137,22 +123,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.encounterProviders.v2.updateInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         qualifier: "DQ",
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
-     *     })
+     *     await client.encounterProviders.v2.updateInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async updateInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
@@ -178,8 +149,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -240,21 +211,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.encounterProviders.v2.updateSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
-     *     })
+     *     await client.encounterProviders.v2.updateSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async updateSupervisingProvider(
         encounterId: CandidApi.EncounterId,
@@ -280,8 +237,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -342,21 +299,7 @@ export class V2 {
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.encounterProviders.v2.updateOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
-     *     })
+     *     await client.encounterProviders.v2.updateOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
     public async updateOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
@@ -382,8 +325,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -443,19 +386,7 @@ export class V2 {
      *
      * @example
      *     await client.encounterProviders.v2.createReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
+     *         npi: "npi"
      *     })
      */
     public async createReferringProvider(
@@ -482,8 +413,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -544,20 +475,7 @@ export class V2 {
      *
      * @example
      *     await client.encounterProviders.v2.createInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         qualifier: "DQ",
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
+     *         npi: "npi"
      *     })
      */
     public async createInitialReferringProvider(
@@ -584,8 +502,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -649,19 +567,7 @@ export class V2 {
      *
      * @example
      *     await client.encounterProviders.v2.createSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
+     *         npi: "npi"
      *     })
      */
     public async createSupervisingProvider(
@@ -688,8 +594,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -752,19 +658,7 @@ export class V2 {
      *
      * @example
      *     await client.encounterProviders.v2.createOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         npi: "string",
-     *         taxonomyCode: "string",
-     *         address: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         },
-     *         firstName: "string",
-     *         lastName: "string",
-     *         organizationName: "string"
+     *         npi: "npi"
      *     })
      */
     public async createOrderingProvider(
@@ -791,8 +685,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -871,8 +765,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -942,8 +836,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1014,8 +908,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1086,8 +980,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

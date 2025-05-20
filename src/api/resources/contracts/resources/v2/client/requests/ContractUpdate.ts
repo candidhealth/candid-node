@@ -6,47 +6,13 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
- *         effectiveDate: CandidApi.Date_("string"),
- *         expirationDate: {
- *             type: "set",
- *             value: CandidApi.Date_("string")
- *         },
- *         regions: {
- *             type: "set",
- *             value: {
- *                 type: "states",
- *                 states: ["AA"]
- *             }
- *         },
- *         contractStatus: "pending",
- *         authorizedSignatory: {
- *             type: "set",
- *             firstName: "string",
- *             lastName: "string",
- *             title: "string",
- *             email: "string",
- *             phone: "string",
- *             fax: "string"
- *         },
- *         commercialInsuranceTypes: {
- *             type: "allApply"
- *         },
- *         medicareInsuranceTypes: {
- *             type: "allApply"
- *         },
- *         medicaidInsuranceTypes: {
- *             type: "allApply"
- *         }
- *     }
+ *     {}
  */
 export interface ContractUpdate {
     /**
      * A rendering provider isn't contracted directly with the payer but can render
      * services under the contract held by the contracting provider.
      * Max items is 100.
-     *
      */
     renderingProviderIds?: Set<CandidApi.contracts.v2.RenderingProviderid>;
     /** The starting day upon which the contract is effective */
@@ -56,7 +22,6 @@ export interface ContractUpdate {
     /**
      * If present, the contract's rendering providers will be patched to this exact
      * value, overriding what was set before.
-     *
      */
     regions?: CandidApi.contracts.v2.RegionsUpdate;
     contractStatus?: CandidApi.contracts.v2.ContractStatus;

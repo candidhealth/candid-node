@@ -10,7 +10,12 @@ import * as CandidApi from "../../../../../../index";
  *         writeOffs: [{
  *                 type: "patient",
  *                 writeOffTimestamp: "2024-01-15T09:30:00Z",
- *                 writeOffNote: "string",
+ *                 writeOffReason: "SMALL_BALANCE",
+ *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *                 amountCents: 1
+ *             }, {
+ *                 type: "patient",
+ *                 writeOffTimestamp: "2024-01-15T09:30:00Z",
  *                 writeOffReason: "SMALL_BALANCE",
  *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *                 amountCents: 1

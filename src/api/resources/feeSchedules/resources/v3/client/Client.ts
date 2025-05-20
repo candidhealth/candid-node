@@ -32,7 +32,7 @@ export class V3 {
     constructor(protected readonly _options: V3.Options = {}) {}
 
     /**
-     * Gets the rate that matches a service line. No result means no rate exists matching the service line's dimensions.
+     * Gets the rate that matches a service line.  No result means no rate exists matching the service line's dimensions.
      *
      * @param {CandidApi.ServiceLineId} serviceLineId
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
@@ -60,8 +60,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -138,8 +138,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -194,21 +194,7 @@ export class V3 {
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.feeSchedules.v3.getMulti({
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         limit: 1,
-     *         activeDate: "2023-01-15",
-     *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         states: "AA",
-     *         zipCodes: "string",
-     *         licenseTypes: "MD",
-     *         facilityTypeCodes: "01",
-     *         networkTypes: "12",
-     *         payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         cptCode: "string",
-     *         modifiers: "AV"
-     *     })
+     *     await client.feeSchedules.v3.getMulti()
      */
     public async getMulti(
         request: CandidApi.feeSchedules.v3.GetMultiRequest = {},
@@ -347,8 +333,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -386,19 +372,7 @@ export class V3 {
      *
      * @example
      *     await client.feeSchedules.v3.getUniqueValuesForDimension({
-     *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-     *         limit: 1,
-     *         pivotDimension: "payer_uuid",
-     *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         states: "AA",
-     *         zipCodes: "string",
-     *         licenseTypes: "MD",
-     *         facilityTypeCodes: "01",
-     *         networkTypes: "12",
-     *         payerPlanGroupIds: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         cptCode: "string",
-     *         modifiers: "AV"
+     *         pivotDimension: "payer_uuid"
      *     })
      */
     public async getUniqueValuesForDimension(
@@ -542,8 +516,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -600,8 +574,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -649,7 +623,7 @@ export class V3 {
     }
 
     /**
-     * Uploads a new fee schedule.\n Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.\n If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will be returned.\n Use the dry run flag to discover already existing rates and to run validations. If validations for any rate fail, no rates will be saved to the system.
+     * Uploads a new fee schedule.\n Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.\n If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will be returned.\n Use the dry run flag to discover already existing rates and to run validations.  If validations for any rate fail, no rates will be saved to the system.
      *
      * @param {CandidApi.feeSchedules.v3.FeeScheduleUploadRequest} request
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
@@ -663,18 +637,45 @@ export class V3 {
      *                     payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *                     organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *                     states: new Set(["AA"]),
-     *                     zipCodes: new Set(["string"]),
+     *                     zipCodes: new Set(["zip_codes"]),
      *                     licenseTypes: new Set(["MD"]),
      *                     facilityTypeCodes: new Set(["01"]),
      *                     networkTypes: new Set(["12"]),
      *                     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-     *                     cptCode: "string",
+     *                     cptCode: "cpt_code",
      *                     modifiers: new Set(["AV"])
      *                 },
      *                 entries: [{
-     *                         startDate: "2024-04-11",
-     *                         rateCents: 33000,
-     *                         isDeactivated: false
+     *                         startDate: "2023-01-15",
+     *                         rateCents: 1,
+     *                         isDeactivated: true
+     *                     }, {
+     *                         startDate: "2023-01-15",
+     *                         rateCents: 1,
+     *                         isDeactivated: true
+     *                     }]
+     *             }, {
+     *                 type: "new_rate",
+     *                 dimensions: {
+     *                     payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *                     organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *                     states: new Set(["AA"]),
+     *                     zipCodes: new Set(["zip_codes"]),
+     *                     licenseTypes: new Set(["MD"]),
+     *                     facilityTypeCodes: new Set(["01"]),
+     *                     networkTypes: new Set(["12"]),
+     *                     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
+     *                     cptCode: "cpt_code",
+     *                     modifiers: new Set(["AV"])
+     *                 },
+     *                 entries: [{
+     *                         startDate: "2023-01-15",
+     *                         rateCents: 1,
+     *                         isDeactivated: true
+     *                     }, {
+     *                         startDate: "2023-01-15",
+     *                         rateCents: 1,
+     *                         isDeactivated: true
      *                     }]
      *             }]
      *     })
@@ -697,8 +698,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -749,7 +750,7 @@ export class V3 {
     }
 
     /**
-     * Soft deletes a rate from the system. Only the most recent version of a rate can be deleted.
+     * Soft deletes a rate from the system.  Only the most recent version of a rate can be deleted.
      *
      * @param {CandidApi.RateId} rateId
      * @param {number} version
@@ -777,8 +778,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -851,8 +852,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -925,8 +926,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -965,8 +966,6 @@ export class V3 {
      *
      * @example
      *     await client.feeSchedules.v3.setPayerThreshold(CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         upperThresholdCents: 1,
-     *         lowerThresholdCents: 1,
      *         disablePaidIncorrectly: true
      *     })
      */
@@ -991,8 +990,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

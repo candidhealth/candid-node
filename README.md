@@ -24,27 +24,13 @@ import { CandidApiClient } from "candidhealth";
 
 const client = new CandidApiClient({ clientId: "YOUR_CLIENT_ID", clientSecret: "YOUR_CLIENT_SECRET" });
 await client.preEncounter.eligibilityChecks.v1.post({
-    payerId: "string",
+    payerId: "payer_id",
     provider: {
-        firstName: "string",
-        lastName: "string",
-        npi: "string",
+        npi: "npi",
     },
     subscriber: {
-        memberId: "string",
-        firstName: "string",
-        lastName: "string",
-        dateOfBirth: "2023-01-15",
-    },
-    dependent: {
-        memberId: "string",
-        firstName: "string",
-        lastName: "string",
-        dateOfBirth: "2023-01-15",
-    },
-    encounter: {
-        dateOfService: "2023-01-15",
-        serviceTypeCodes: ["string"],
+        firstName: "first_name",
+        lastName: "last_name",
     },
 });
 ```

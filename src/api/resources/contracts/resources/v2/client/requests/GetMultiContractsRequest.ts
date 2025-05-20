@@ -6,15 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
- *         limit: 1,
- *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         renderingProviderIds: CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         payerNames: "string",
- *         states: "AA",
- *         contractStatus: "pending"
- *     }
+ *     {}
  */
 export interface GetMultiContractsRequest {
     pageToken?: CandidApi.PageToken;
@@ -33,4 +25,12 @@ export interface GetMultiContractsRequest {
      * The status of the contract. Defaults to `pending`
      */
     contractStatus?: CandidApi.contracts.v2.ContractStatus;
+    /**
+     * Potentially sort by a contract related attribute.  Defaults to created_at
+     */
+    sort?: CandidApi.contracts.v2.ContractSortField;
+    /**
+     * Direction of sort, defaulting to desc
+     */
+    sortDirection?: CandidApi.SortDirection;
 }

@@ -8,17 +8,20 @@ import * as CandidApi from "../../../../../../index";
  * @example
  *     {
  *         amountCents: 1,
- *         paymentTimestamp: "2024-01-15T09:30:00Z",
- *         paymentNote: "string",
- *         patientExternalId: CandidApi.PatientExternalId("string"),
+ *         patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
  *         allocations: [{
  *                 amountCents: 1,
  *                 target: {
  *                     type: "service_line_by_id",
  *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
  *                 }
- *             }],
- *         invoice: CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+ *             }, {
+ *                 amountCents: 1,
+ *                 target: {
+ *                     type: "service_line_by_id",
+ *                     value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+ *                 }
+ *             }]
  *     }
  */
 export interface PatientPaymentCreate {

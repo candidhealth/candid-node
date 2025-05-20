@@ -6,19 +6,7 @@ import * as CandidApi from "../../../../../../index";
 
 /**
  * @example
- *     {
- *         planGroupName: "string",
- *         payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         payerId: CandidApi.payers.v3.PayerId("string"),
- *         planType: "09",
- *         isActive: true,
- *         payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
- *         limit: 1,
- *         sortBySimilarity: "string",
- *         sort: "plan_group_name",
- *         sortDirection: "asc",
- *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
- *     }
+ *     {}
  */
 export interface PayerPlanGroupGetMultiRequest {
     planGroupName?: string | string[];

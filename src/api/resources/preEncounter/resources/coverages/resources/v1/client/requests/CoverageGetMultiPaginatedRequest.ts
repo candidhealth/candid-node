@@ -6,12 +6,7 @@ import * as CandidApi from "../../../../../../../../index";
 
 /**
  * @example
- *     {
- *         patientId: "string",
- *         payerPlanGroupId: "string",
- *         pageToken: CandidApi.preEncounter.PageToken("string"),
- *         limit: 1
- *     }
+ *     {}
  */
 export interface CoverageGetMultiPaginatedRequest {
     patientId?: string;

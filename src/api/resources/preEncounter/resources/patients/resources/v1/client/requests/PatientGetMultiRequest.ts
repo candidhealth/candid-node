@@ -4,10 +4,7 @@
 
 /**
  * @example
- *     {
- *         mrn: "string",
- *         similarNameOrdering: "string"
- *     }
+ *     {}
  */
 export interface PatientGetMultiRequest {
     mrn?: string;

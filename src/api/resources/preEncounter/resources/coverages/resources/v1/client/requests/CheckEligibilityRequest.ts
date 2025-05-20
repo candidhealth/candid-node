@@ -9,7 +9,7 @@ import * as CandidApi from "../../../../../../../../index";
  *     {
  *         serviceCode: "1",
  *         dateOfService: "2023-01-15",
- *         npi: "string"
+ *         npi: "npi"
  *     }
  */
 export interface CheckEligibilityRequest {

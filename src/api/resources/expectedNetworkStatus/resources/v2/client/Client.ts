@@ -46,7 +46,7 @@ export class V2 {
      *         placeOfServiceCode: "01",
      *         subscriberInformation: {
      *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *             memberId: "string",
+     *             memberId: "member_id",
      *             insuranceType: {
      *                 lineOfBusiness: "medicare",
      *                 insuranceTypeCodes: {
@@ -56,15 +56,13 @@ export class V2 {
      *             }
      *         },
      *         patientAddress: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
+     *             address1: "address1",
+     *             city: "city",
+     *             state: "AA",
+     *             zipCode: "zip_code"
      *         },
      *         billingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"),
+     *         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         dateOfService: "2023-01-15"
      *     })
      */
@@ -92,8 +90,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -165,7 +163,7 @@ export class V2 {
      *         placeOfServiceCode: "01",
      *         subscriberInformation: {
      *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *             memberId: "string",
+     *             memberId: "member_id",
      *             insuranceType: {
      *                 lineOfBusiness: "medicare",
      *                 insuranceTypeCodes: {
@@ -175,15 +173,13 @@ export class V2 {
      *             }
      *         },
      *         patientAddress: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
+     *             address1: "address1",
+     *             city: "city",
+     *             state: "AA",
+     *             zipCode: "zip_code"
      *         },
      *         billingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"),
+     *         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         dateOfService: "2023-01-15"
      *     })
      */
@@ -210,8 +206,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

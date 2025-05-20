@@ -40,27 +40,13 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.eligibilityChecks.v1.post({
-     *         payerId: "string",
+     *         payerId: "payer_id",
      *         provider: {
-     *             firstName: "string",
-     *             lastName: "string",
-     *             npi: "string"
+     *             npi: "npi"
      *         },
      *         subscriber: {
-     *             memberId: "string",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             dateOfBirth: "2023-01-15"
-     *         },
-     *         dependent: {
-     *             memberId: "string",
-     *             firstName: "string",
-     *             lastName: "string",
-     *             dateOfBirth: "2023-01-15"
-     *         },
-     *         encounter: {
-     *             dateOfService: "2023-01-15",
-     *             serviceTypeCodes: ["string"]
+     *             firstName: "first_name",
+     *             lastName: "last_name"
      *         }
      *     })
      */
@@ -87,8 +73,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

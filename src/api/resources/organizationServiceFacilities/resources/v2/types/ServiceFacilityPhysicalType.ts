@@ -47,7 +47,7 @@ export type ServiceFacilityPhysicalType =
      * A defined physical boundary of something, such as a flood risk zone, region, postcode. */
     | "area"
     /**
-     * A wide scope that covers a conceptual domain, such as a Nation (Country wide community or Federal Government - e.g. Ministry of Health), Province or State (community or Government), Business (throughout the enterprise), Nation with a business scope of an agency (e.g. CDC, FDA etc.) or a Business segment (UK Pharmacy), not just an physical boundary. */
+     * A wide scope that covers a conceptual domain, such as a Nation (Country wide community or Federal Government - e.g.  Ministry of Health), Province or State (community or Government), Business (throughout the enterprise), Nation with a business  scope of an agency (e.g. CDC, FDA etc.) or a Business segment (UK Pharmacy), not just an physical boundary. */
     | "jdn";
 export const ServiceFacilityPhysicalType = {
     Site: "si",

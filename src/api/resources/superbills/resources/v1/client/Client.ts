@@ -37,17 +37,9 @@ export class V1 {
      *
      * @example
      *     await client.superbills.v1.createSuperbill({
-     *         patientExternalId: CandidApi.PatientExternalId("string"),
+     *         patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
      *         dateRangeMin: "2023-01-15",
-     *         dateRangeMax: "2023-01-15",
-     *         payToAddress: {
-     *             address1: "123 Main St",
-     *             address2: "Apt 1",
-     *             city: "New York",
-     *             state: "NY",
-     *             zipCode: "10001",
-     *             zipPlusFourCode: "1234"
-     *         }
+     *         dateRangeMax: "2023-01-15"
      *     })
      */
     public async createSuperbill(
@@ -70,8 +62,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.45.0",
-                "User-Agent": "candidhealth/0.45.0",
+                "X-Fern-SDK-Version": "0.46.0",
+                "User-Agent": "candidhealth/0.46.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

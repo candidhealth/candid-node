@@ -7,17 +7,9 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         patientExternalId: CandidApi.PatientExternalId("string"),
+ *         patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
  *         dateRangeMin: "2023-01-15",
- *         dateRangeMax: "2023-01-15",
- *         payToAddress: {
- *             address1: "123 Main St",
- *             address2: "Apt 1",
- *             city: "New York",
- *             state: "NY",
- *             zipCode: "10001",
- *             zipPlusFourCode: "1234"
- *         }
+ *         dateRangeMax: "2023-01-15"
  *     }
  */
 export interface CreateSuperbillRequest {
@@ -27,9 +19,6 @@ export interface CreateSuperbillRequest {
     dateRangeMin: string;
     /** Maximum (inclusive) date selected for the superbill */
     dateRangeMax: string;
-    /**
-     * Address that will be displayed on the superbill as the 'Pay to' Address. If not provided this value will be set from available encounter data.
-     *
-     */
+    /** Address that will be displayed on the superbill as the 'Pay to' Address. If not provided this value will be set from available encounter data. */
     payToAddress?: CandidApi.StreetAddressShortZip;
 }
