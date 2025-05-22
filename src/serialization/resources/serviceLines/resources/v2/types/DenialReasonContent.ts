@@ -15,6 +15,7 @@ export const DenialReasonContent: core.serialization.Schema<
     "Medical Records Requested",
     "Timely Filing",
     "Duplicate Claim",
+    "Full Contractual Adjustment",
     "Incorrect Place of Service",
     "Incorrect Patient Gender",
     "Bundled",
@@ -49,6 +50,7 @@ export declare namespace DenialReasonContent {
         | "Medical Records Requested"
         | "Timely Filing"
         | "Duplicate Claim"
+        | "Full Contractual Adjustment"
         | "Incorrect Place of Service"
         | "Incorrect Patient Gender"
         | "Bundled"

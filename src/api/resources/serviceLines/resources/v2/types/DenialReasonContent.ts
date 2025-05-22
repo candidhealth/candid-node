@@ -8,6 +8,7 @@ export type DenialReasonContent =
     | "Medical Records Requested"
     | "Timely Filing"
     | "Duplicate Claim"
+    | "Full Contractual Adjustment"
     | "Incorrect Place of Service"
     | "Incorrect Patient Gender"
     | "Bundled"
@@ -39,6 +40,7 @@ export const DenialReasonContent = {
     MedicalRecordsRequested: "Medical Records Requested",
     TimelyFiling: "Timely Filing",
     DuplicateClaim: "Duplicate Claim",
+    FullContractualAdjustment: "Full Contractual Adjustment",
     IncorrectPlaceOfService: "Incorrect Place of Service",
     IncorrectPatientGender: "Incorrect Patient Gender",
     Bundled: "Bundled",

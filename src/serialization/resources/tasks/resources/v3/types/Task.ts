@@ -12,6 +12,7 @@ import { TaskStatus } from "../../commons/types/TaskStatus";
 import { TaskNote } from "./TaskNote";
 import { TaskAssignment } from "./TaskAssignment";
 import { TaskCategory } from "../../commons/types/TaskCategory";
+import { ConfigurableRuleId } from "../../../../pipelineCommons/types/ConfigurableRuleId";
 
 export const Task: core.serialization.ObjectSchema<serializers.tasks.v3.Task.Raw, CandidApi.tasks.v3.Task> =
     core.serialization.object({
@@ -33,6 +34,7 @@ export const Task: core.serialization.ObjectSchema<serializers.tasks.v3.Task.Raw
         dateOfService: core.serialization.property("date_of_service", core.serialization.string()),
         assignments: core.serialization.list(TaskAssignment),
         category: TaskCategory.optional(),
+        configurableRuleId: core.serialization.property("configurable_rule_id", ConfigurableRuleId.optional()),
     });
 
 export declare namespace Task {
@@ -55,5 +57,6 @@ export declare namespace Task {
         date_of_service: string;
         assignments: TaskAssignment.Raw[];
         category?: TaskCategory.Raw | null;
+        configurable_rule_id?: ConfigurableRuleId.Raw | null;
     }
 }

@@ -25,4 +25,5 @@ export interface Task {
     dateOfService: string;
     assignments: CandidApi.tasks.v3.TaskAssignment[];
     category?: CandidApi.tasks.TaskCategory;
+    configurableRuleId?: CandidApi.ConfigurableRuleId;
 }

@@ -59,6 +59,8 @@ export * from "./individual/types";
 export * from "./invoices/types";
 export * as paymentAccountConfigs from "./paymentAccountConfigs";
 export * from "./paymentAccountConfigs/types";
+export * as pipelineCommons from "./pipelineCommons";
+export * from "./pipelineCommons/types";
 export * as serviceFacility from "./serviceFacility";
 export * from "./serviceFacility/types";
 export * as tags from "./tags";
