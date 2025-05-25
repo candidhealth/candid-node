@@ -5,8 +5,8 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { EligibilityCheckMetadata } from "./EligibilityCheckMetadata";
-import { EligibilityCheck } from "./EligibilityCheck";
+import { EligibilityCheckMetadata } from "../../../../eligibilityChecks/resources/v1/types/EligibilityCheckMetadata";
+import { EligibilityCheck } from "../../../../eligibilityChecks/resources/v1/types/EligibilityCheck";
 
 export const CoverageEligibilityCheckResponse: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.CoverageEligibilityCheckResponse.Raw,

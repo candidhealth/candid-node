@@ -17,7 +17,7 @@ export interface MutableCoverage {
     /** A boolean indicating if the coverage has been verified by a user. */
     verified: boolean;
     /** A list of eligibility check metadata that have been initiated on this coverage. */
-    eligibilityChecks?: CandidApi.preEncounter.coverages.v1.EligibilityCheckMetadata[];
+    eligibilityChecks?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata[];
     /** The latest eligibility check metadata that has been initiated on this coverage. */
     latestEligibilityCheck?: CandidApi.preEncounter.coverages.v1.LatestEligibilityCheck;
     /** The eligibility of the patient for the coverage, manually verified by users. */

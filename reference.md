@@ -436,54 +436,6 @@ await client.chargeCapture.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">delete</a>(chargeCaptureId) -> core.APIResponse<void, CandidApi.chargeCapture.v1.delete.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.chargeCapture.v1.delete(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**chargeCaptureId:** `CandidApi.ChargeCaptureId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">update</a>(chargeCaptureId, { ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.update.Error></code></summary>
 <dl>
 <dd>
@@ -10183,6 +10135,155 @@ await client.preEncounter.eligibilityChecks.v1.post({
 <dd>
 
 **request:** `CandidApi.EligibilityRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">batch</a>({ ...params }) -> core.APIResponse<CandidApi.BatchEligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.batch.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sends a batch of eligibility checks to payers through Stedi.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.batch([
+    {
+        payerId: "payer_id",
+        provider: {
+            npi: "npi",
+        },
+        subscriber: {
+            firstName: "first_name",
+            lastName: "last_name",
+        },
+    },
+    {
+        payerId: "payer_id",
+        provider: {
+            npi: "npi",
+        },
+        subscriber: {
+            firstName: "first_name",
+            lastName: "last_name",
+        },
+    },
+]);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.EligibilityRequest[]`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">pollBatch</a>(batchId) -> core.APIResponse<CandidApi.EligibilityCheckPage, CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Polls the status of a batch eligibility check.
+<Note>Batch eligibility checks are not yet available. Please reach out to the Candid team for more information.</Note>
+path-parameters:
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**batchId:** `string`
 
 </dd>
 </dl>

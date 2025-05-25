@@ -5,6 +5,6 @@
 import * as CandidApi from "../../../../../../../index";
 
 export interface CoverageEligibilityCheckResponse {
-    metadata: CandidApi.preEncounter.coverages.v1.EligibilityCheckMetadata;
-    check?: CandidApi.preEncounter.coverages.v1.EligibilityCheck;
+    metadata: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata;
+    check?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheck;
 }

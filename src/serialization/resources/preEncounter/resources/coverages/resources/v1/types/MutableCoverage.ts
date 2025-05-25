@@ -10,7 +10,7 @@ import { Subscriber } from "./Subscriber";
 import { Relationship } from "../../../../common/types/Relationship";
 import { PatientId } from "../../../../common/types/PatientId";
 import { InsurancePlan } from "./InsurancePlan";
-import { EligibilityCheckMetadata } from "./EligibilityCheckMetadata";
+import { EligibilityCheckMetadata } from "../../../../eligibilityChecks/resources/v1/types/EligibilityCheckMetadata";
 import { LatestEligibilityCheck } from "./LatestEligibilityCheck";
 import { CoverageBenefits } from "./CoverageBenefits";
 

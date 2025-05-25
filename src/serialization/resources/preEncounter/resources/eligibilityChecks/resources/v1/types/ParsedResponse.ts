@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { EligibilityStatus } from "../../../../coverages/resources/v1/types/EligibilityStatus";
+import { EligibilityStatus } from "./EligibilityStatus";
 import { PlanMetadata } from "../../../../coverages/resources/v1/types/PlanMetadata";
 import { CoverageBenefits } from "../../../../coverages/resources/v1/types/CoverageBenefits";
 

@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -119,75 +119,6 @@ export class V1 {
 
     /**
      * @param {CandidApi.ChargeCaptureId} chargeCaptureId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.chargeCapture.v1.delete(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
-     */
-    public async delete(
-        chargeCaptureId: CandidApi.ChargeCaptureId,
-        requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.chargeCapture.v1.delete.Error>> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.CandidApiEnvironment.Production
-                    ).candidApi,
-                `/api/charge_captures/v1/${encodeURIComponent(serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId))}`,
-            ),
-            method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: undefined,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.chargeCapture.v1.delete.Error.Raw)?.errorName) {
-                case "EntityNotFoundError":
-                case "UnauthorizedError":
-                    return {
-                        ok: false,
-                        error: serializers.chargeCapture.v1.delete.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCapture.v1.delete.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.delete.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * @param {CandidApi.ChargeCaptureId} chargeCaptureId
      * @param {CandidApi.chargeCapture.v1.ChargeCaptureUpdate} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -213,8 +144,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -293,8 +224,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -607,8 +538,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -671,8 +602,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -5,7 +5,8 @@
 import * as CandidApi from "../../../../../../../index";
 
 export interface EligibilityCheck {
-    errors?: unknown;
+    batchId?: string;
+    errors?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckError[];
     request?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRequest;
     response?: unknown;
     parsedResponse?: CandidApi.preEncounter.eligibilityChecks.v1.ParsedResponse;

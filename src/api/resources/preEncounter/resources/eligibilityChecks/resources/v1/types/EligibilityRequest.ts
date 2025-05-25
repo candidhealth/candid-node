@@ -8,6 +8,11 @@ import * as CandidApi from "../../../../../../../index";
  * An object representing the data for an eligibility request.
  */
 export interface EligibilityRequest {
+    /**
+     * A unique identifier for the eligibility check within the batch. Candid returns this identifier in the response for the
+     * /batch/{batch_id} polling endpoint so you can correlate benefit responses with the original eligibility check.
+     */
+    submitterTransactionIdentifier?: string;
     /** Supported payer ID values can be found [here](https://www.stedi.com/healthcare/network). */
     payerId: string;
     provider: CandidApi.preEncounter.eligibilityChecks.v1.Provider;

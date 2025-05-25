@@ -73,8 +73,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.46.1",
-                "User-Agent": "candidhealth/0.46.1",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -103,6 +103,156 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.preEncounter.eligibilityChecks.v1.post.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Sends a batch of eligibility checks to payers through Stedi.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRequest[]} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.batch([{
+     *             payerId: "payer_id",
+     *             provider: {
+     *                 npi: "npi"
+     *             },
+     *             subscriber: {
+     *                 firstName: "first_name",
+     *                 lastName: "last_name"
+     *             }
+     *         }, {
+     *             payerId: "payer_id",
+     *             provider: {
+     *                 npi: "npi"
+     *             },
+     *             subscriber: {
+     *                 firstName: "first_name",
+     *                 lastName: "last_name"
+     *             }
+     *         }])
+     */
+    public async batch(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRequest[],
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityResponse,
+            CandidApi.preEncounter.eligibilityChecks.v1.batch.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/batch",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.batch.Request.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.eligibilityChecks.v1.BatchEligibilityResponse.parseOrThrow(
+                    _response.body,
+                    {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    },
+                ),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.eligibilityChecks.v1.batch.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Polls the status of a batch eligibility check.
+     * <Note>Batch eligibility checks are not yet available. Please reach out to the Candid team for more information.</Note>
+     * path-parameters:
+     *
+     * @param {string} batchId
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id")
+     */
+    public async pollBatch(
+        batchId: string,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckPage,
+            CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/eligibility-checks/v1/batch/${encodeURIComponent(batchId)}`,
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.0.0",
+                "User-Agent": "candidhealth/1.0.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.eligibilityChecks.v1.EligibilityCheckPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error._unknown(_response.error),
         };
     }
 

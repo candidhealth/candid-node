@@ -3,7 +3,7 @@
  */
 
 /**
- * enum to represent the statuses of eligibility checks
+ * enum to represent the status of an eligibility checks
  */
 export type EligibilityCheckStatus = "COMPLETED" | "FAILED" | "PENDING";
 export const EligibilityCheckStatus = {

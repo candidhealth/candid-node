@@ -5,6 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
+import { EligibilityCheckError } from "./EligibilityCheckError";
 import { EligibilityRequest } from "./EligibilityRequest";
 import { ParsedResponse } from "./ParsedResponse";
 import { RequestCorrection } from "./RequestCorrection";
@@ -13,7 +14,8 @@ export const EligibilityCheck: core.serialization.ObjectSchema<
     serializers.preEncounter.eligibilityChecks.v1.EligibilityCheck.Raw,
     CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheck
 > = core.serialization.object({
-    errors: core.serialization.unknown().optional(),
+    batchId: core.serialization.property("batch_id", core.serialization.string().optional()),
+    errors: core.serialization.list(EligibilityCheckError).optional(),
     request: EligibilityRequest.optional(),
     response: core.serialization.unknown(),
     parsedResponse: core.serialization.property("parsed_response", ParsedResponse.optional()),
@@ -25,7 +27,8 @@ export const EligibilityCheck: core.serialization.ObjectSchema<
 
 export declare namespace EligibilityCheck {
     export interface Raw {
-        errors?: unknown | null;
+        batch_id?: string | null;
+        errors?: EligibilityCheckError.Raw[] | null;
         request?: EligibilityRequest.Raw | null;
         response?: unknown;
         parsed_response?: ParsedResponse.Raw | null;

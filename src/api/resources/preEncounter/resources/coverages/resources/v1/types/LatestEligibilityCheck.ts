@@ -9,6 +9,6 @@ import * as CandidApi from "../../../../../../../index";
  */
 export interface LatestEligibilityCheck {
     checkId: string;
-    status: CandidApi.preEncounter.coverages.v1.EligibilityStatus;
+    status: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityStatus;
     initiatedAt: Date;
 }

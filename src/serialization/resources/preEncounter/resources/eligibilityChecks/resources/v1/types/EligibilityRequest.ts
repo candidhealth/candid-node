@@ -13,6 +13,10 @@ export const EligibilityRequest: core.serialization.ObjectSchema<
     serializers.preEncounter.eligibilityChecks.v1.EligibilityRequest.Raw,
     CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRequest
 > = core.serialization.object({
+    submitterTransactionIdentifier: core.serialization.property(
+        "submitter_transaction_identifier",
+        core.serialization.string().optional(),
+    ),
     payerId: core.serialization.property("payer_id", core.serialization.string()),
     provider: Provider,
     subscriber: MemberInfo,
@@ -22,6 +26,7 @@ export const EligibilityRequest: core.serialization.ObjectSchema<
 
 export declare namespace EligibilityRequest {
     export interface Raw {
+        submitter_transaction_identifier?: string | null;
         payer_id: string;
         provider: Provider.Raw;
         subscriber: MemberInfo.Raw;

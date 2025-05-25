@@ -7,7 +7,7 @@ import * as CandidApi from "../../../../../../../index";
 export interface EligibilityCheckMetadata {
     checkId: string;
     serviceCode: CandidApi.preEncounter.coverages.v1.ServiceTypeCode;
-    status: CandidApi.preEncounter.coverages.v1.EligibilityCheckStatus;
+    status: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckStatus;
     initiatedBy: CandidApi.preEncounter.UserId;
     initiatedAt: Date;
 }

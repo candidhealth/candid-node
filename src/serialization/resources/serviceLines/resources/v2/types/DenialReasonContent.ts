@@ -18,6 +18,7 @@ export const DenialReasonContent: core.serialization.Schema<
     "Full Contractual Adjustment",
     "Incorrect Place of Service",
     "Incorrect Patient Gender",
+    "Incorrect Patient Info",
     "Bundled",
     "Exceeded Billable Time",
     "Invalid Provider Information",
@@ -53,6 +54,7 @@ export declare namespace DenialReasonContent {
         | "Full Contractual Adjustment"
         | "Incorrect Place of Service"
         | "Incorrect Patient Gender"
+        | "Incorrect Patient Info"
         | "Bundled"
         | "Exceeded Billable Time"
         | "Invalid Provider Information"

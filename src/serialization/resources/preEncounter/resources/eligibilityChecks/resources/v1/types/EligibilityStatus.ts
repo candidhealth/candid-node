@@ -7,8 +7,8 @@ import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 
 export const EligibilityStatus: core.serialization.Schema<
-    serializers.preEncounter.coverages.v1.EligibilityStatus.Raw,
-    CandidApi.preEncounter.coverages.v1.EligibilityStatus
+    serializers.preEncounter.eligibilityChecks.v1.EligibilityStatus.Raw,
+    CandidApi.preEncounter.eligibilityChecks.v1.EligibilityStatus
 > = core.serialization.enum_(["ACTIVE", "INACTIVE", "UNKNOWN"]);
 
 export declare namespace EligibilityStatus {

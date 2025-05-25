@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { EligibilityStatus } from "./EligibilityStatus";
+import { EligibilityStatus } from "../../../../eligibilityChecks/resources/v1/types/EligibilityStatus";
 
 export const LatestEligibilityCheck: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.LatestEligibilityCheck.Raw,

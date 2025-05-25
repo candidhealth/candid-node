@@ -5,13 +5,13 @@
 import * as serializers from "../../../../../../../index";
 import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
-import { ServiceTypeCode } from "./ServiceTypeCode";
+import { ServiceTypeCode } from "../../../../coverages/resources/v1/types/ServiceTypeCode";
 import { EligibilityCheckStatus } from "./EligibilityCheckStatus";
 import { UserId } from "../../../../common/types/UserId";
 
 export const EligibilityCheckMetadata: core.serialization.ObjectSchema<
-    serializers.preEncounter.coverages.v1.EligibilityCheckMetadata.Raw,
-    CandidApi.preEncounter.coverages.v1.EligibilityCheckMetadata
+    serializers.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata.Raw,
+    CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata
 > = core.serialization.object({
     checkId: core.serialization.property("check_id", core.serialization.string()),
     serviceCode: core.serialization.property("service_code", ServiceTypeCode),

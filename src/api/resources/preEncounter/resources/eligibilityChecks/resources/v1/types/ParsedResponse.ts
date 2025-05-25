@@ -5,7 +5,7 @@
 import * as CandidApi from "../../../../../../../index";
 
 export interface ParsedResponse {
-    eligibilityStatus: CandidApi.preEncounter.coverages.v1.EligibilityStatus;
+    eligibilityStatus: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityStatus;
     planMetadata?: CandidApi.preEncounter.coverages.v1.PlanMetadata;
     benefits?: CandidApi.preEncounter.coverages.v1.CoverageBenefits;
 }

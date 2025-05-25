@@ -11,6 +11,7 @@ export type DenialReasonContent =
     | "Full Contractual Adjustment"
     | "Incorrect Place of Service"
     | "Incorrect Patient Gender"
+    | "Incorrect Patient Info"
     | "Bundled"
     | "Exceeded Billable Time"
     | "Invalid Provider Information"
@@ -43,6 +44,7 @@ export const DenialReasonContent = {
     FullContractualAdjustment: "Full Contractual Adjustment",
     IncorrectPlaceOfService: "Incorrect Place of Service",
     IncorrectPatientGender: "Incorrect Patient Gender",
+    IncorrectPatientInfo: "Incorrect Patient Info",
     Bundled: "Bundled",
     ExceededBillableTime: "Exceeded Billable Time",
     InvalidProviderInformation: "Invalid Provider Information",
