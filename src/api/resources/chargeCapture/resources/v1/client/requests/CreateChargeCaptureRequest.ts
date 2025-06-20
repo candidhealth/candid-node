@@ -18,6 +18,10 @@ export interface CreateChargeCaptureRequest {
     data: CandidApi.chargeCapture.v1.ChargeCaptureData;
     /** A client-specified unique ID to associate with this encounter; for example, your internal encounter ID or a Dr. Chrono encounter ID. This field should not contain PHI. */
     chargeExternalId: string;
+    /** An optional string field denoting the originating system of the charge. */
+    originatingSystem?: string;
+    /** An optional string field denoting the user defined category of the claim creation. */
+    claimCreationCategory?: string;
     /** External URL reference that links to Charge Capture details within the external system (e.g. the EHR visit page). Send full URL format for the external link (e.g. https://emr_charge_capture_url.com/123). */
     ehrSourceUrl?: string;
     /** The patient ID from the external EMR platform for the patient */

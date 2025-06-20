@@ -14,6 +14,12 @@ export interface ChargeCaptureError {
     chargeCaptureId?: CandidApi.ChargeCaptureId;
     /** A human readable error explaining why this charge capture Claim Creation failed to create a claim. */
     message: string;
+    /** Whether or not the error has been resolved as part of user workflows */
+    resolved?: boolean;
+    /** A string denoting who resolved the error within candid's system. */
+    resolvedBy?: string;
+    /** A string denoting how or why an error was resolved. */
+    resolutionReason?: string;
     /**
      * The field of the corresponding underlying ChargeCapture that has a field that is failing validations,
      * is not present but marked as required, or otherwise in error.

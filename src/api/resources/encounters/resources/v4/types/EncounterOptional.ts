@@ -25,8 +25,6 @@ export interface EncounterOptional {
     dateOfService?: string;
     /** Names of tags that should be on the encounter.  Note all tags on encounter will be overridden with this list. */
     tagIds?: CandidApi.TagId[];
-    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
-    clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
     /** Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party. */
     billableStatus?: CandidApi.encounters.v4.BillableStatusType;
     /** Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay. */
@@ -47,12 +45,6 @@ export interface EncounterOptional {
      * If service lines have distinct end_date_of_service values, updating the encounter's end_date_of_service will fail. If all service line end_date_of_service values are the same, updating the encounter's end_date_of_service will update all service line date_of_service values.
      */
     endDateOfService?: string;
-    /** Contains details of the primary insurance subscriber. */
-    subscriberPrimary?: CandidApi.SubscriberCreate;
-    /** Contains details of the secondary insurance subscriber. */
-    subscriberSecondary?: CandidApi.SubscriberCreate;
-    /** Contains details of the tertiary insurance subscriber. */
-    subscriberTertiary?: CandidApi.SubscriberCreate;
     /**
      * Defines additional information on the claim needed by the payer.
      * Box 19 on the CMS-1500 claim form.
@@ -101,30 +93,12 @@ export interface EncounterOptional {
      */
     patientAuthorizedRelease?: boolean;
     /**
-     * Key-value pairs that must adhere to a schema created via the Custom Schema API. Multiple schema
-     * instances cannot be created for the same schema on an encounter. Updating schema instances utilizes PUT
-     * semantics, so the schema instances on the encounter will be set to whatever inputs are provided. If null
-     * is provided as an input, then the encounter's schema instances will be cleared.
-     */
-    schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
-    /**
      * If a vitals entity already exists for the encounter, then all values will be updated to the provided values.
      * Otherwise, a new vitals object will be created for the encounter.
      */
     vitals?: CandidApi.encounters.v4.VitalsUpdate;
-    /**
-     * Existing medications that should be on the encounter.
-     * Note all current existing medications on encounter will be overridden with this list.
-     */
-    existingMedications?: CandidApi.encounters.v4.Medication[];
-    /** Personal and contact info for the guarantor of the patient responsibility. */
-    guarantor?: CandidApi.guarantor.v1.GuarantorUpdate;
     /** Refers to REF*9F on the 837p. Value cannot be greater than 50 characters. */
     referralNumber?: string;
-    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
-    epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
-    /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
-    claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
     /** When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states. */
     secondaryPayerCarrierCode?: string;
 }

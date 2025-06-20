@@ -21,6 +21,10 @@ export interface ChargeCaptureUpdate {
      * Send full URL format for the external link (e.g. https://emr_charge_capture_url.com/123).
      */
     ehrSourceUrl?: string;
+    /** An optional string field denoting the originating system of the charge. */
+    originatingSystem?: string;
+    /** An optional string field denoting the user defined category of the claim creation. */
+    claimCreationCategory?: string;
     /** The patient ID from the external EMR platform for the patient */
     patientExternalId?: string;
     /** the status of the charge capture */

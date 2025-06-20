@@ -1,5 +1,6 @@
 export * from "./Schema";
 export * from "./SchemaInstance";
+export * from "./SchemaInstanceOptional";
 export * from "./SchemaField";
 export * from "./SchemaGetMultiResponse";
 export * from "./SchemaWithNameAlreadyExistsError";

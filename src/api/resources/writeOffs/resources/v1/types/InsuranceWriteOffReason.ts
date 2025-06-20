@@ -18,7 +18,8 @@ export type InsuranceWriteOffReason =
     | "CASE_RATE_OR_CAPITATED"
     | "OTHER"
     | "UNKNOWN"
-    | "CONTRACTUAL_ADJUSTMENT";
+    | "CONTRACTUAL_ADJUSTMENT"
+    | "PRIMARY_PAID_MAX_BENEFITS";
 export const InsuranceWriteOffReason = {
     SmallBalance: "SMALL_BALANCE",
     NoAuthorizationReferral: "NO_AUTHORIZATION_REFERRAL",
@@ -36,4 +37,5 @@ export const InsuranceWriteOffReason = {
     Other: "OTHER",
     Unknown: "UNKNOWN",
     ContractualAdjustment: "CONTRACTUAL_ADJUSTMENT",
+    PrimaryPaidMaxBenefits: "PRIMARY_PAID_MAX_BENEFITS",
 } as const;

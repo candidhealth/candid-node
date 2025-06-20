@@ -26,6 +26,10 @@ export const Authorization: core.serialization.ObjectSchema<
         "apply_for_all_cpt_codes",
         core.serialization.boolean().optional(),
     ),
+    noPriorAuthorizationRequired: core.serialization.property(
+        "no_prior_authorization_required",
+        core.serialization.boolean().optional(),
+    ),
     units: AuthorizationUnit,
     quantity: core.serialization.number().optional(),
     period: Period.optional(),
@@ -40,6 +44,7 @@ export declare namespace Authorization {
         authorization_number: string;
         cpt_code: string;
         apply_for_all_cpt_codes?: boolean | null;
+        no_prior_authorization_required?: boolean | null;
         units: AuthorizationUnit.Raw;
         quantity?: number | null;
         period?: Period.Raw | null;

@@ -20,6 +20,7 @@ export const InsuranceAdjudicationCreate: core.serialization.ObjectSchema<
     postDate: core.serialization.property("post_date", core.serialization.string().optional()),
     checkNumber: core.serialization.property("check_number", core.serialization.string().optional()),
     checkDate: core.serialization.property("check_date", core.serialization.string()),
+    checkAmountCents: core.serialization.property("check_amount_cents", core.serialization.number().optional()),
     note: core.serialization.string().optional(),
     claims: core.serialization.record(ClaimId, core.serialization.list(ClaimAdjudicationCreate)),
     remitDraftId: core.serialization.property("remit_draft_id", RemitDraftId.optional()),
@@ -32,6 +33,7 @@ export declare namespace InsuranceAdjudicationCreate {
         post_date?: string | null;
         check_number?: string | null;
         check_date: string;
+        check_amount_cents?: number | null;
         note?: string | null;
         claims: Record<ClaimId.Raw, ClaimAdjudicationCreate.Raw[]>;
         remit_draft_id?: RemitDraftId.Raw | null;

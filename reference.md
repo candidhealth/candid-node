@@ -1,8 +1,8 @@
 # Reference
 
-## Auth V2
+## Auth Default
 
-<details><summary><code>client.auth.v2.<a href="/src/api/resources/auth/resources/v2/client/Client.ts">getToken</a>({ ...params }) -> core.APIResponse<CandidApi.AuthGetTokenResponse, CandidApi.auth.v2.getToken.Error></code></summary>
+<details><summary><code>client.auth.default.<a href="/src/api/resources/auth/resources/default/client/Client.ts">getToken</a>({ ...params }) -> core.APIResponse<CandidApi.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error></code></summary>
 <dl>
 <dd>
 
@@ -20,7 +20,22 @@ Candid Health SDKs automatically handle authentication workflows after configuri
 </Callout>
 
 Candid Health utilizes the [OAuth 2.0 bearer token authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) in our auth flow. You obtain the bearer token for all
-subsequent API requests via the `/auth/token` endpoint defined below, which requires you to provide your `client_id` and `client_secret`. Your `client_id` and `client_secret` can be [generated](https://support.joincandidhealth.com/hc/en-us/articles/23065219476244--Generating-Candid-API-Keys) from the "Users & Credentials" tab by your org admin.
+subsequent API requests via the `/auth/v2/token` endpoint defined below, which requires you to provide your `client_id` and `client_secret`. Your `client_id` and `client_secret` can be [generated](https://support.joincandidhealth.com/hc/en-us/articles/23065219476244--Generating-Candid-API-Keys) from the "Users & Credentials" tab by your org admin.
+
+The `/auth/v2/token` endpoint accepts both `Content-Type: application/json` and `Content-Type: application/x-www-form-urlencoded`. The request body should contain the `client_id` and `client_secret` as follows:
+
+```json
+{
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET"
+}
+```
+
+or as URL-encoded form data:
+
+```
+client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
+```
 
 The bearer token is a signed [JWT](https://jwt.io/). The public key for the JWT can be found [here](https://candidhealth.auth0.com/pem) for any verification workflows.
 
@@ -45,7 +60,7 @@ requests; if the client attempts to generate a token too often, it will be rate-
 <dd>
 
 ```typescript
-await client.auth.v2.getToken({
+await client.auth.default.getToken({
     clientId: "YOUR_CLIENT_ID",
     clientSecret: "YOUR_CLIENT_SECRET",
 });
@@ -64,7 +79,7 @@ await client.auth.v2.getToken({
 <dl>
 <dd>
 
-**request:** `CandidApi.auth.v2.AuthGetTokenRequest`
+**request:** `CandidApi.auth.default_.AuthGetTokenRequest`
 
 </dd>
 </dl>
@@ -72,7 +87,7 @@ await client.auth.v2.getToken({
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `Default.RequestOptions`
 
 </dd>
 </dl>
@@ -318,6 +333,62 @@ await client.chargeCaptureBundles.v1.getSummary();
 
 <dl>
 <dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">resolveChargeCreationError</a>(chargeCaptureBundleErrorId, { ...params }) -> core.APIResponse<void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**chargeCaptureBundleErrorId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution`
+
+</dd>
+</dl>
 
 <dl>
 <dd>

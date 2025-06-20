@@ -12,6 +12,8 @@ export interface ChargeCapture {
     patientExternalId: CandidApi.PatientExternalId;
     chargeExternalId: string;
     ehrSourceUrl?: string;
+    originatingSystem?: string;
+    claimCreationCategory?: string;
     error?: CandidApi.chargeCapture.v1.ChargeCaptureError;
     updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];
     claimCreationId?: CandidApi.ChargeCaptureClaimCreationId;

@@ -5,6 +5,13 @@
 import * as serializers from "../../../../../../index";
 import * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
+import { EpsdtReferral } from "../../types/EpsdtReferral";
+import { ClinicalNoteCategoryCreate } from "../../types/ClinicalNoteCategoryCreate";
+import { ClaimSupplementalInformation } from "../../types/ClaimSupplementalInformation";
+import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
+import { Medication } from "../../types/Medication";
+import { GuarantorUpdate } from "../../../../../guarantor/resources/v1/types/GuarantorUpdate";
+import { SubscriberCreate } from "../../../../../individual/types/SubscriberCreate";
 import { StreetAddressLongZip } from "../../../../../commons/types/StreetAddressLongZip";
 import { DiagnosisId } from "../../../../../diagnoses/types/DiagnosisId";
 import { InitialReferringProviderUpdate } from "../../../../../encounterProviders/resources/v2/types/InitialReferringProviderUpdate";
@@ -22,6 +29,27 @@ export const EncounterUpdate: core.serialization.Schema<
     CandidApi.encounters.v4.EncounterUpdate
 > = core.serialization
     .object({
+        epsdtReferral: core.serialization.property("epsdt_referral", EpsdtReferral.optional()),
+        clinicalNotes: core.serialization.property(
+            "clinical_notes",
+            core.serialization.list(ClinicalNoteCategoryCreate).optional(),
+        ),
+        claimSupplementalInformation: core.serialization.property(
+            "claim_supplemental_information",
+            core.serialization.list(ClaimSupplementalInformation).optional(),
+        ),
+        schemaInstances: core.serialization.property(
+            "schema_instances",
+            core.serialization.list(SchemaInstance).optional(),
+        ),
+        existingMedications: core.serialization.property(
+            "existing_medications",
+            core.serialization.list(Medication).optional(),
+        ),
+        guarantor: GuarantorUpdate.optional(),
+        subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
+        subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
+        subscriberTertiary: core.serialization.property("subscriber_tertiary", SubscriberCreate.optional()),
         payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
         diagnosisIds: core.serialization.property("diagnosis_ids", core.serialization.list(DiagnosisId).optional()),
         initialReferringProvider: core.serialization.property(
@@ -43,6 +71,15 @@ export const EncounterUpdate: core.serialization.Schema<
 
 export declare namespace EncounterUpdate {
     export interface Raw extends EncounterOptional.Raw {
+        epsdt_referral?: EpsdtReferral.Raw | null;
+        clinical_notes?: ClinicalNoteCategoryCreate.Raw[] | null;
+        claim_supplemental_information?: ClaimSupplementalInformation.Raw[] | null;
+        schema_instances?: SchemaInstance.Raw[] | null;
+        existing_medications?: Medication.Raw[] | null;
+        guarantor?: GuarantorUpdate.Raw | null;
+        subscriber_primary?: SubscriberCreate.Raw | null;
+        subscriber_secondary?: SubscriberCreate.Raw | null;
+        subscriber_tertiary?: SubscriberCreate.Raw | null;
         pay_to_address?: StreetAddressLongZip.Raw | null;
         diagnosis_ids?: DiagnosisId.Raw[] | null;
         initial_referring_provider?: InitialReferringProviderUpdate.Raw | null;

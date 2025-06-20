@@ -1,4 +1,5 @@
 export * from "./ServiceLineCreate";
+export * from "./ServiceLineCreateOptional";
 export * from "./ServiceLineCreateStandalone";
 export * from "./ServiceLineUpdate";
 export * from "./ServiceLine";
@@ -6,8 +7,10 @@ export * from "./ServiceLineEraData";
 export * from "./ServiceLineAdjustment";
 export * from "./ServiceLineDenialReason";
 export * from "./DenialReasonContent";
+export * from "./DrugIdentificationOptional";
 export * from "./DrugIdentification";
 export * from "./TestResultType";
+export * from "./TestResultOptional";
 export * from "./TestResult";
 export * from "./ServiceIdQualifier";
 export * from "./MeasurementUnitCode";

@@ -15,6 +15,9 @@ export const ChargeCaptureError: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     chargeCaptureId: core.serialization.property("charge_capture_id", ChargeCaptureId.optional()),
     message: core.serialization.string(),
+    resolved: core.serialization.boolean().optional(),
+    resolvedBy: core.serialization.property("resolved_by", core.serialization.string().optional()),
+    resolutionReason: core.serialization.property("resolution_reason", core.serialization.string().optional()),
     fieldInError: core.serialization.property("field_in_error", core.serialization.string().optional()),
     claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId),
 });
@@ -24,6 +27,9 @@ export declare namespace ChargeCaptureError {
         id: string;
         charge_capture_id?: ChargeCaptureId.Raw | null;
         message: string;
+        resolved?: boolean | null;
+        resolved_by?: string | null;
+        resolution_reason?: string | null;
         field_in_error?: string | null;
         claim_creation_id: ChargeCaptureClaimCreationId.Raw;
     }

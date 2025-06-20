@@ -24,6 +24,11 @@ export const ChargeCapture: core.serialization.ObjectSchema<
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
     chargeExternalId: core.serialization.property("charge_external_id", core.serialization.string()),
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
+    originatingSystem: core.serialization.property("originating_system", core.serialization.string().optional()),
+    claimCreationCategory: core.serialization.property(
+        "claim_creation_category",
+        core.serialization.string().optional(),
+    ),
     error: ChargeCaptureError.optional(),
     updates: core.serialization.list(ChargeCapturePostBilledChange),
     claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId.optional()),
@@ -38,6 +43,8 @@ export declare namespace ChargeCapture {
         patient_external_id: PatientExternalId.Raw;
         charge_external_id: string;
         ehr_source_url?: string | null;
+        originating_system?: string | null;
+        claim_creation_category?: string | null;
         error?: ChargeCaptureError.Raw | null;
         updates: ChargeCapturePostBilledChange.Raw[];
         claim_creation_id?: ChargeCaptureClaimCreationId.Raw | null;

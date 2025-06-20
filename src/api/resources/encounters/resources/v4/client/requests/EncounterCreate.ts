@@ -91,7 +91,7 @@ export interface EncounterCreate extends CandidApi.encounters.v4.EncounterBase {
      * submitted to the payor.
      */
     diagnoses: CandidApi.DiagnosisCreate[];
-    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
+    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. Please note that medical records for appeals should be sent using the Encounter Attachments API. */
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
     /**
      * Spot to store misc, human-readable, notes about this encounter to be used

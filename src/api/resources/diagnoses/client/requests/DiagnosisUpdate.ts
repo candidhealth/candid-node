@@ -24,4 +24,11 @@ export interface DiagnosisUpdate {
      *   - Up to 4 (or as few as 0) letters and digits
      */
     code?: string;
+    /**
+     * For Institutional claims only.
+     * A "Y" indicates that the onset occurred prior to admission to the hospital.
+     * An "N" indicates that the onset did NOT occur prior to admission to the hospital.
+     * A "U" indicates that it is unknown whether the onset occurred prior to admission to the hospital or not.
+     */
+    presentOnAdmissionIndicator?: CandidApi.YesNoIndicator;
 }

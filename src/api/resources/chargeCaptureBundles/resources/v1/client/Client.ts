@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.0.0",
-                "User-Agent": "candidhealth/1.0.0",
+                "X-Fern-SDK-Version": "1.3.0",
+                "User-Agent": "candidhealth/1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -119,8 +119,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.0.0",
-                "User-Agent": "candidhealth/1.0.0",
+                "X-Fern-SDK-Version": "1.3.0",
+                "User-Agent": "candidhealth/1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -149,6 +149,84 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.chargeCaptureBundles.v1.getSummary.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {string} chargeCaptureBundleErrorId
+     * @param {CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     */
+    public async resolveChargeCreationError(
+        chargeCaptureBundleErrorId: string,
+        request: CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<core.APIResponse<void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/charge_capture_claim_creation/v1/error/${encodeURIComponent(chargeCaptureBundleErrorId)}`,
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.3.0",
+                "User-Agent": "candidhealth/1.3.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: undefined,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.Raw)
+                    ?.errorName
+            ) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.parseOrThrow(
+                            _response.error
+                                .body as serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error._unknown(_response.error),
         };
     }
 
@@ -331,8 +409,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.0.0",
-                "User-Agent": "candidhealth/1.0.0",
+                "X-Fern-SDK-Version": "1.3.0",
+                "User-Agent": "candidhealth/1.3.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

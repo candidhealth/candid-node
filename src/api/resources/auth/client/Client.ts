@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { V2 } from "../resources/v2/client/Client";
+import { Default } from "../resources/default/client/Client";
 
 export declare namespace Auth {
     export interface Options {
@@ -27,11 +27,11 @@ export declare namespace Auth {
 }
 
 export class Auth {
-    protected _v2: V2 | undefined;
+    protected _default: Default | undefined;
 
     constructor(protected readonly _options: Auth.Options = {}) {}
 
-    public get v2(): V2 {
-        return (this._v2 ??= new V2(this._options));
+    public get default(): Default {
+        return (this._default ??= new Default(this._options));
     }
 }

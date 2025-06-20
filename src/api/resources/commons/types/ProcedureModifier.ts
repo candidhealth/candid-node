@@ -1183,6 +1183,9 @@ export type ProcedureModifier =
      * The treatment was approved under the workers’ compensation plan */
     | "W3"
     /**
+     * Episodic/Focused Services - Reported by a specialty focused clinician who provides care that is time-limited */
+    | "X4"
+    /**
      * Two or more separate patient visits on the same date of service */
     | "XE"
     /**
@@ -1193,7 +1196,10 @@ export type ProcedureModifier =
     | "XS"
     /**
      * The use of a service that is distinct because it does not overlap usual components of the main service */
-    | "XU";
+    | "XU"
+    /**
+     * Custom modifier */
+    | "XY";
 export const ProcedureModifier = {
     Av: "AV",
     Au: "AU",
@@ -1588,8 +1594,10 @@ export const ProcedureModifier = {
     W1: "W1",
     W2: "W2",
     W3: "W3",
+    X4: "X4",
     Xe: "XE",
     Xp: "XP",
     Xs: "XS",
     Xu: "XU",
+    Xy: "XY",
 } as const;

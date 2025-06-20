@@ -432,6 +432,8 @@ import * as CandidApi from "../../../../../index";
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
+    /** If the encounter was created from ingested charge captures, this is the associated Charge Capture Claim Creation Id. */
+    claimCreationId?: CandidApi.ChargeCaptureClaimCreationId;
     /**
      * A patient control number (PCN) is a unique identifier assigned to a patient within a healthcare system or facility.
      * It's used to track and manage a patient's medical records, treatments, and other healthcare-related information.
@@ -474,7 +476,7 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     url: CandidApi.LinkUrl;
     /** Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses may be submitted at this time, and coders will later prioritize the 12 that will be submitted to the payor. */
     diagnoses: CandidApi.Diagnosis[];
-    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. */
+    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. Please note that medical records for appeals should be sent using the Encounter Attachments API. */
     clinicalNotes: CandidApi.encounters.v4.ClinicalNoteCategory[];
     /**
      * Spot to store misc, human-readable, notes about this encounter to be

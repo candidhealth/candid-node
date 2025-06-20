@@ -8,6 +8,7 @@ export * from "./InitialReferringProviderUpdate";
 export * from "./SupervisingProvider";
 export * from "./SupervisingProviderUpdate";
 export * from "./OrderingProvider";
+export * from "./OrderingProviderOptional";
 export * from "./OrderingProviderUpdate";
 export * from "./BillingProvider";
 export * from "./BillingProviderUpdate";

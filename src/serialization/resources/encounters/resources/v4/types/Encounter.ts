@@ -5,6 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCaptureClaimCreationId";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { Claim } from "../../../../claims/types/Claim";
 import { Patient } from "../../../../individual/types/Patient";
@@ -36,6 +37,7 @@ export const Encounter: core.serialization.ObjectSchema<
     CandidApi.encounters.v4.Encounter
 > = core.serialization
     .object({
+        claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId.optional()),
         patientControlNumber: core.serialization.property(
             "patient_control_number",
             core.serialization.string().optional(),
@@ -102,6 +104,7 @@ export const Encounter: core.serialization.ObjectSchema<
 
 export declare namespace Encounter {
     export interface Raw extends EncounterBase.Raw {
+        claim_creation_id?: ChargeCaptureClaimCreationId.Raw | null;
         patient_control_number?: string | null;
         encounter_id: EncounterId.Raw;
         claims: Claim.Raw[];

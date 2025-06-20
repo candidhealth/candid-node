@@ -6,12 +6,17 @@ import * as serializers from "../../../../index";
 import * as CandidApi from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { DiagnosisTypeCode } from "../../types/DiagnosisTypeCode";
+import { YesNoIndicator } from "../../../yesNoIndicator/types/YesNoIndicator";
 
 export const DiagnosisUpdate: core.serialization.Schema<serializers.DiagnosisUpdate.Raw, CandidApi.DiagnosisUpdate> =
     core.serialization.object({
         name: core.serialization.string().optional(),
         codeType: core.serialization.property("code_type", DiagnosisTypeCode.optional()),
         code: core.serialization.string().optional(),
+        presentOnAdmissionIndicator: core.serialization.property(
+            "present_on_admission_indicator",
+            YesNoIndicator.optional(),
+        ),
     });
 
 export declare namespace DiagnosisUpdate {
@@ -19,5 +24,6 @@ export declare namespace DiagnosisUpdate {
         name?: string | null;
         code_type?: DiagnosisTypeCode.Raw | null;
         code?: string | null;
+        present_on_admission_indicator?: YesNoIndicator.Raw | null;
     }
 }

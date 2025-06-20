@@ -14,12 +14,12 @@ export interface PatientUpdateWithOptionalAddress {
     dateOfBirth?: string;
     /** Box 5 on the CMS-1500 claim form. */
     address?: CandidApi.StreetAddressShortZipOptional;
-    phoneNumbers?: CandidApi.PhoneNumber[];
+    phoneNumbers?: CandidApi.PhoneNumberOptional[];
     phoneConsent?: boolean;
     email?: CandidApi.Email;
     emailConsent?: boolean;
     /** On update, we will replace the existing list of non-insurance payers with the new list if populated. */
     nonInsurancePayers?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId[];
     /** On update, we will replace the existing list of non-insurance payers with the new list if populated. */
-    nonInsurancePayersInfo?: CandidApi.PatientNonInsurancePayerInfoCreate[];
+    nonInsurancePayersInfo?: CandidApi.PatientNonInsurancePayerInfoCreateOptional[];
 }

@@ -13,7 +13,8 @@ export type PatientWriteOffReason =
     | "OTHER"
     | "UNKNOWN"
     | "UNCOLLECTIBLE_OR_NON_BILLABLE"
-    | "DECEASED";
+    | "DECEASED"
+    | "BANKRUPTCY";
 export const PatientWriteOffReason = {
     SmallBalance: "SMALL_BALANCE",
     CharityOrFinancialAssistance: "CHARITY_OR_FINANCIAL_ASSISTANCE",
@@ -26,4 +27,5 @@ export const PatientWriteOffReason = {
     Unknown: "UNKNOWN",
     UncollectibleOrNonBillable: "UNCOLLECTIBLE_OR_NON_BILLABLE",
     Deceased: "DECEASED",
+    Bankruptcy: "BANKRUPTCY",
 } as const;

@@ -9,6 +9,32 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface EncounterUpdate extends CandidApi.encounters.v4.EncounterOptional {
+    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
+    epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
+    /** Holds a collection of clinical observations made by healthcare providers during patient encounters. Please note that medical records for appeals should be sent using the Encounter Attachments API. */
+    clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreate[];
+    /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
+    claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
+    /**
+     * Key-value pairs that must adhere to a schema created via the Custom Schema API. Multiple schema
+     * instances cannot be created for the same schema on an encounter. Updating schema instances utilizes PUT
+     * semantics, so the schema instances on the encounter will be set to whatever inputs are provided. If null
+     * is provided as an input, then the encounter's schema instances will be cleared.
+     */
+    schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
+    /**
+     * Existing medications that should be on the encounter.
+     * Note all current existing medications on encounter will be overridden with this list.
+     */
+    existingMedications?: CandidApi.encounters.v4.Medication[];
+    /** Personal and contact info for the guarantor of the patient responsibility. */
+    guarantor?: CandidApi.guarantor.v1.GuarantorUpdate;
+    /** Contains details of the primary insurance subscriber. */
+    subscriberPrimary?: CandidApi.SubscriberCreate;
+    /** Contains details of the secondary insurance subscriber. */
+    subscriberSecondary?: CandidApi.SubscriberCreate;
+    /** Contains details of the tertiary insurance subscriber. */
+    subscriberTertiary?: CandidApi.SubscriberCreate;
     /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressLongZip;
     /**

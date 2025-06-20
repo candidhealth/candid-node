@@ -14,6 +14,11 @@ export const CreateChargeCaptureRequest: core.serialization.Schema<
 > = core.serialization.object({
     data: ChargeCaptureData,
     chargeExternalId: core.serialization.property("charge_external_id", core.serialization.string()),
+    originatingSystem: core.serialization.property("originating_system", core.serialization.string().optional()),
+    claimCreationCategory: core.serialization.property(
+        "claim_creation_category",
+        core.serialization.string().optional(),
+    ),
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
     patientExternalId: core.serialization.property("patient_external_id", core.serialization.string()),
     status: ChargeCaptureStatus,
@@ -23,6 +28,8 @@ export declare namespace CreateChargeCaptureRequest {
     export interface Raw {
         data: ChargeCaptureData.Raw;
         charge_external_id: string;
+        originating_system?: string | null;
+        claim_creation_category?: string | null;
         ehr_source_url?: string | null;
         patient_external_id: string;
         status: ChargeCaptureStatus.Raw;

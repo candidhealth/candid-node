@@ -4,7 +4,7 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { V2 } from "./api/resources/auth/resources/v2/client/Client";
+import { Default } from "./api/resources/auth/resources/default/client/Client";
 import { Auth } from "./api/resources/auth/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
 import { ChargeCaptureBundles } from "./api/resources/chargeCaptureBundles/client/Client";
@@ -108,7 +108,7 @@ export class CandidApiClient {
         this._oauthTokenProvider = new core.OAuthTokenProvider({
             clientId: this._options.clientId,
             clientSecret: this._options.clientSecret,
-            authClient: new V2({
+            authClient: new Default({
                 environment: this._options.environment,
             }),
         });
