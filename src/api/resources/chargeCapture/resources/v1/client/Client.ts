@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.0",
-                "User-Agent": "candidhealth/1.3.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -144,8 +144,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.0",
-                "User-Agent": "candidhealth/1.3.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -224,8 +224,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.0",
-                "User-Agent": "candidhealth/1.3.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -292,6 +292,9 @@ export class V1 {
             chargeExternalIdRankedSort,
             dateOfServiceMinRankedSort,
             dateOfServiceMaxRankedSort,
+            searchTerm,
+            billableStatus,
+            responsibleParty,
             claimIdsRankedSort,
             claimCreationIdsRankedSort,
             billingProviderNpisRankedSort,
@@ -444,6 +447,23 @@ export class V1 {
             _queryParams["date_of_service_max_ranked_sort"] = dateOfServiceMaxRankedSort;
         }
 
+        if (searchTerm != null) {
+            _queryParams["search_term"] = searchTerm;
+        }
+
+        if (billableStatus != null) {
+            _queryParams["billable_status"] = serializers.encounters.v4.BillableStatusType.jsonOrThrow(billableStatus, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (responsibleParty != null) {
+            _queryParams["responsible_party"] = serializers.encounters.v4.ResponsiblePartyType.jsonOrThrow(
+                responsibleParty,
+                { unrecognizedObjectKeys: "strip" },
+            );
+        }
+
         if (claimIdsRankedSort != null) {
             if (Array.isArray(claimIdsRankedSort)) {
                 _queryParams["claim_ids_ranked_sort"] = claimIdsRankedSort.map((item) =>
@@ -538,8 +558,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.0",
-                "User-Agent": "candidhealth/1.3.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -602,8 +622,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.0",
-                "User-Agent": "candidhealth/1.3.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -51,4 +51,6 @@ export interface ServiceLineUpdate {
      * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
      */
     hasFamilyPlanningIndicator?: boolean;
+    /** Maps to NTE02 loop 2400 on the EDI 837. */
+    note?: string;
 }

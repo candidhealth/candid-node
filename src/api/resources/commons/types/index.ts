@@ -72,3 +72,4 @@ export * from "./DelayReasonCode";
 export * from "./IntendedSubmissionMedium";
 export * from "./BillingProviderCommercialLicenseType";
 export * from "./EpsdtReferralConditionIndicatorCode";
+export * from "./NextResponsibleParty";

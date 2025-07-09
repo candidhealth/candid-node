@@ -429,7 +429,8 @@ import * as CandidApi from "../../../../../index";
  *                             "age": 38
  *                         }
  *                     }],
- *                 createdAt: "2023-01-01T00:00:00Z"
+ *                 createdAt: "2023-01-01T00:00:00Z",
+ *                 nextResponsibleParty: CandidApi.NextResponsibleParty.Primary
  *             }]
  *     }
  */

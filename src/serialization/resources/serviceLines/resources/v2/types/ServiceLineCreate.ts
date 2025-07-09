@@ -38,6 +38,7 @@ export const ServiceLineCreate: core.serialization.ObjectSchema<
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
+    note: core.serialization.string().optional(),
 });
 
 export declare namespace ServiceLineCreate {
@@ -57,5 +58,6 @@ export declare namespace ServiceLineCreate {
         end_date_of_service?: string | null;
         ordering_provider?: OrderingProvider.Raw | null;
         test_results?: TestResult.Raw[] | null;
+        note?: string | null;
     }
 }

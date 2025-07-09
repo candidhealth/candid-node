@@ -92,6 +92,7 @@ export const ServiceLine: core.serialization.ObjectSchema<
         "has_family_planning_indicator",
         core.serialization.boolean().optional(),
     ),
+    note: core.serialization.string().optional(),
 });
 
 export declare namespace ServiceLine {
@@ -135,5 +136,6 @@ export declare namespace ServiceLine {
         test_results?: TestResult.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;
+        note?: string | null;
     }
 }

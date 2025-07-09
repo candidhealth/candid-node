@@ -111,6 +111,20 @@ export interface GetAllChargeCapturesRequest {
      */
     dateOfServiceMaxRankedSort?: string;
     /**
+     * Filter by any of the following fields: charge_id, claim_id, patient external_id,
+     * patient date of birth, patient first name, patient last name,
+     * or charge external id.
+     */
+    searchTerm?: string;
+    /**
+     * Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party.
+     */
+    billableStatus?: CandidApi.encounters.v4.BillableStatusType;
+    /**
+     * Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay.
+     */
+    responsibleParty?: CandidApi.encounters.v4.ResponsiblePartyType;
+    /**
      * A list of claim IDs to show first. This will return all charge captures that have a resulting claim with one of the IDs in this list.
      */
     claimIdsRankedSort?: CandidApi.EncounterId | CandidApi.EncounterId[];

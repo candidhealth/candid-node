@@ -30,6 +30,7 @@ import { EncounterSubmissionOriginType } from "./EncounterSubmissionOriginType";
 import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { EpsdtReferral } from "./EpsdtReferral";
 import { ClaimSupplementalInformation } from "./ClaimSupplementalInformation";
+import { NextResponsibleParty } from "../../../../commons/types/NextResponsibleParty";
 import { EncounterBase } from "./EncounterBase";
 
 export const Encounter: core.serialization.ObjectSchema<
@@ -99,6 +100,7 @@ export const Encounter: core.serialization.ObjectSchema<
         ),
         lastSubmittedAt: core.serialization.property("last_submitted_at", core.serialization.date().optional()),
         createdAt: core.serialization.property("created_at", core.serialization.date()),
+        nextResponsibleParty: core.serialization.property("next_responsible_party", NextResponsibleParty.optional()),
     })
     .extend(EncounterBase);
 
@@ -142,5 +144,6 @@ export declare namespace Encounter {
         secondary_payer_carrier_code?: string | null;
         last_submitted_at?: string | null;
         created_at: string;
+        next_responsible_party?: NextResponsibleParty.Raw | null;
     }
 }

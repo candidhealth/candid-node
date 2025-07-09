@@ -100,7 +100,8 @@ export type LicenseType =
     | "CRNP"
     | "SLP-CF"
     | "NP-C"
-    | "PA-C";
+    | "PA-C"
+    | "AMFT";
 export const LicenseType = {
     Md: "MD",
     Np: "NP",
@@ -200,4 +201,5 @@ export const LicenseType = {
     SlpCf: "SLP-CF",
     NpC: "NP-C",
     PaC: "PA-C",
+    Amft: "AMFT",
 } as const;

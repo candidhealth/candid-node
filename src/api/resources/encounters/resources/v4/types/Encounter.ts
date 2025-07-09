@@ -428,7 +428,8 @@ import * as CandidApi from "../../../../../index";
  *                     "age": 38
  *                 }
  *             }],
- *         createdAt: "2023-01-01T00:00:00Z"
+ *         createdAt: "2023-01-01T00:00:00Z",
+ *         nextResponsibleParty: CandidApi.NextResponsibleParty.Primary
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
@@ -519,4 +520,6 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     lastSubmittedAt?: Date;
     /** The date and time the encounter was created. */
     createdAt: Date;
+    /** The party (payer, patient, etc.) responsible for the remainder of the balance on the claim. */
+    nextResponsibleParty?: CandidApi.NextResponsibleParty;
 }

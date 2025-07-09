@@ -49,4 +49,6 @@ export interface ServiceLineCreateOptional {
      * No more than 5 MEA-02 test results may be submitted per service line.
      */
     testResults?: CandidApi.serviceLines.v2.TestResultOptional[];
+    /** Maps to NTE02 loop 2400 on the EDI 837. */
+    note?: string;
 }

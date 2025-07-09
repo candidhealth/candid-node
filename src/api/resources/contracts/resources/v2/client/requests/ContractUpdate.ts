@@ -12,7 +12,7 @@ export interface ContractUpdate {
     /**
      * A rendering provider isn't contracted directly with the payer but can render
      * services under the contract held by the contracting provider.
-     * Max items is 100.
+     * Max items is 1000.
      */
     renderingProviderIds?: Set<CandidApi.contracts.v2.RenderingProviderid>;
     /** The starting day upon which the contract is effective */
