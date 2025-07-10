@@ -357,7 +357,7 @@ import * as CandidApi from "../../../../../index";
  *                 color: CandidApi.TagColorEnum.Black
  *             }],
  *         codingAttribution: CandidApi.encounters.v4.CodingAttributionType.Candid,
- *         workQueueId: CandidApi.WorkQueueId("000856FE-1024-418F-BF96-2E7347AB4520"),
+ *         workQueueId: CandidApi.WorkQueueId("12"),
  *         workQueueMembershipActivatedAt: "2023-01-01T00:00:00Z",
  *         ownerOfNextAction: CandidApi.encounters.v4.EncounterOwnerOfNextActionType.Candid,
  *         submissionOrigin: CandidApi.encounters.v4.EncounterSubmissionOriginType.Candid,
