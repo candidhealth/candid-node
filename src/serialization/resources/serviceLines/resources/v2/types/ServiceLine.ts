@@ -79,6 +79,7 @@ export const ServiceLine: core.serialization.ObjectSchema<
     serviceLineId: core.serialization.property("service_line_id", ServiceLineId),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
     orderingProvider: core.serialization.property("ordering_provider", EncounterProvider.optional()),
+    revenueCode: core.serialization.property("revenue_code", core.serialization.string().optional()),
     quantity: Decimal,
     units: ServiceLineUnits,
     claimId: core.serialization.property("claim_id", ClaimId),
@@ -126,6 +127,7 @@ export declare namespace ServiceLine {
         service_line_id: ServiceLineId.Raw;
         procedure_code: string;
         ordering_provider?: EncounterProvider.Raw | null;
+        revenue_code?: string | null;
         quantity: Decimal.Raw;
         units: ServiceLineUnits.Raw;
         claim_id: ClaimId.Raw;

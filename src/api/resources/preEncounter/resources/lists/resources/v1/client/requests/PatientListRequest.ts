@@ -19,5 +19,5 @@ export interface PatientListRequest {
      * Defaults to ascending.
      */
     sortDirection?: CandidApi.preEncounter.SortDirection;
-    filters?: CandidApi.preEncounter.lists.v1.FilterQueryString;
+    filters?: CandidApi.preEncounter.FilterQueryString;
 }

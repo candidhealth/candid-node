@@ -7,5 +7,7 @@ import * as CandidApi from "../../../../../../../index";
 export interface PatientListItem {
     patient: CandidApi.preEncounter.patients.v1.Patient;
     primaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
+    secondaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
+    tertiaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
     nextAppointment?: CandidApi.preEncounter.appointments.v1.MutableAppointment;
 }

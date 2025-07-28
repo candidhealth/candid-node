@@ -7,12 +7,18 @@ import * as core from "../../../../core";
 
 export type Error =
     | CandidApi.diagnoses.delete.Error.DiagnosisNotFoundHttpError
+    | CandidApi.diagnoses.delete.Error.ServiceLinesMustHaveAtLeastOneDiagnosisHttpError
     | CandidApi.diagnoses.delete.Error._Unknown;
 
 export namespace Error {
     export interface DiagnosisNotFoundHttpError extends _Utils {
         errorName: "DiagnosisNotFoundHTTPError";
         content: CandidApi.DiagnosisNotFoundError;
+    }
+
+    export interface ServiceLinesMustHaveAtLeastOneDiagnosisHttpError extends _Utils {
+        errorName: "ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError";
+        content: CandidApi.ServiceLinesMustHaveAtLeastOneDiagnosisError;
     }
 
     export interface _Unknown extends _Utils {
@@ -26,6 +32,9 @@ export namespace Error {
 
     export interface _Visitor<_Result> {
         diagnosisNotFoundHttpError: (value: CandidApi.DiagnosisNotFoundError) => _Result;
+        serviceLinesMustHaveAtLeastOneDiagnosisHttpError: (
+            value: CandidApi.ServiceLinesMustHaveAtLeastOneDiagnosisError,
+        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -39,6 +48,21 @@ export const Error = {
             errorName: "DiagnosisNotFoundHTTPError",
             _visit: function <_Result>(
                 this: CandidApi.diagnoses.delete.Error.DiagnosisNotFoundHttpError,
+                visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.diagnoses.delete.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    serviceLinesMustHaveAtLeastOneDiagnosisHttpError: (
+        value: CandidApi.ServiceLinesMustHaveAtLeastOneDiagnosisError,
+    ): CandidApi.diagnoses.delete.Error.ServiceLinesMustHaveAtLeastOneDiagnosisHttpError => {
+        return {
+            content: value,
+            errorName: "ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError",
+            _visit: function <_Result>(
+                this: CandidApi.diagnoses.delete.Error.ServiceLinesMustHaveAtLeastOneDiagnosisHttpError,
                 visitor: CandidApi.diagnoses.delete.Error._Visitor<_Result>,
             ) {
                 return CandidApi.diagnoses.delete.Error._visit(this, visitor);
@@ -66,6 +90,8 @@ export const Error = {
         switch (value.errorName) {
             case "DiagnosisNotFoundHTTPError":
                 return visitor.diagnosisNotFoundHttpError(value.content);
+            case "ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError":
+                return visitor.serviceLinesMustHaveAtLeastOneDiagnosisHttpError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -11,10 +11,14 @@ export const MutableTag: core.serialization.ObjectSchema<
     CandidApi.preEncounter.tags.v1.MutableTag
 > = core.serialization.object({
     value: core.serialization.string(),
+    description: core.serialization.string().optional(),
+    alert: core.serialization.boolean().optional(),
 });
 
 export declare namespace MutableTag {
     export interface Raw {
         value: string;
+        description?: string | null;
+        alert?: boolean | null;
     }
 }

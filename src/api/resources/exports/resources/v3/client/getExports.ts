@@ -11,6 +11,8 @@ export type Error =
     | CandidApi.exports.v3.getExports.Error.MissingDailyIncrementalExportFileError
     | CandidApi.exports.v3.getExports.Error.ExportNotYetAvailableError
     | CandidApi.exports.v3.getExports.Error.ExportDateTooEarlyError
+    | CandidApi.exports.v3.getExports.Error.UnsupportedExportWindowError
+    | CandidApi.exports.v3.getExports.Error.ExportDisabledError
     | CandidApi.exports.v3.getExports.Error._Unknown;
 
 export namespace Error {
@@ -39,6 +41,16 @@ export namespace Error {
         content: CandidApi.ErrorMessage;
     }
 
+    export interface UnsupportedExportWindowError extends _Utils {
+        errorName: "UnsupportedExportWindowError";
+        content: CandidApi.ErrorMessage;
+    }
+
+    export interface ExportDisabledError extends _Utils {
+        errorName: "ExportDisabledError";
+        content: CandidApi.ErrorMessage;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -54,6 +66,8 @@ export namespace Error {
         missingDailyIncrementalExportFileError: (value: CandidApi.ErrorMessage) => _Result;
         exportNotYetAvailableError: (value: CandidApi.ErrorMessage) => _Result;
         exportDateTooEarlyError: (value: CandidApi.ErrorMessage) => _Result;
+        unsupportedExportWindowError: (value: CandidApi.ErrorMessage) => _Result;
+        exportDisabledError: (value: CandidApi.ErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -134,6 +148,34 @@ export const Error = {
         };
     },
 
+    unsupportedExportWindowError: (
+        value: CandidApi.ErrorMessage,
+    ): CandidApi.exports.v3.getExports.Error.UnsupportedExportWindowError => {
+        return {
+            content: value,
+            errorName: "UnsupportedExportWindowError",
+            _visit: function <_Result>(
+                this: CandidApi.exports.v3.getExports.Error.UnsupportedExportWindowError,
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    exportDisabledError: (value: CandidApi.ErrorMessage): CandidApi.exports.v3.getExports.Error.ExportDisabledError => {
+        return {
+            content: value,
+            errorName: "ExportDisabledError",
+            _visit: function <_Result>(
+                this: CandidApi.exports.v3.getExports.Error.ExportDisabledError,
+                visitor: CandidApi.exports.v3.getExports.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.exports.v3.getExports.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.exports.v3.getExports.Error._Unknown => {
         return {
             errorName: undefined,
@@ -162,6 +204,10 @@ export const Error = {
                 return visitor.exportNotYetAvailableError(value.content);
             case "ExportDateTooEarlyError":
                 return visitor.exportDateTooEarlyError(value.content);
+            case "UnsupportedExportWindowError":
+                return visitor.unsupportedExportWindowError(value.content);
+            case "ExportDisabledError":
+                return visitor.exportDisabledError(value.content);
             default:
                 return visitor._other(value as any);
         }

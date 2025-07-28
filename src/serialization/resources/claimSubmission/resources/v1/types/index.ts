@@ -1,4 +1,3 @@
-export * from "./ClaimFrequencyTypeCode";
 export * from "./ExternalClaimSubmissionCreate";
 export * from "./ExternalClaimSubmissionCreateOptional";
 export * from "./ClaimSubmissionRecordCreate";

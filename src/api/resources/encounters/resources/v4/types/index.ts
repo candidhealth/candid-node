@@ -58,3 +58,4 @@ export * from "./ValueDoesNotMatchKeyTypeError";
 export * from "./MultipleInstancesForSchemaError";
 export * from "./SchemaInstanceValidationError";
 export * from "./PayerPlanGroupPayerDoesNotMatchInsuranceCardError";
+export * from "./EncounterSubmissionExpectation";

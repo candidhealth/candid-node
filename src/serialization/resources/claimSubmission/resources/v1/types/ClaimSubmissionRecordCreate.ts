@@ -5,7 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { ClaimFrequencyTypeCode } from "./ClaimFrequencyTypeCode";
+import { TypeOfBillFrequencyCode } from "../../../../x12/resources/v1/types/TypeOfBillFrequencyCode";
 import { ClaimSubmissionPayerResponsibilityType } from "../../../../commons/types/ClaimSubmissionPayerResponsibilityType";
 import { IntendedSubmissionMedium } from "../../../../commons/types/IntendedSubmissionMedium";
 
@@ -14,7 +14,7 @@ export const ClaimSubmissionRecordCreate: core.serialization.ObjectSchema<
     CandidApi.claimSubmission.v1.ClaimSubmissionRecordCreate
 > = core.serialization.object({
     submittedAt: core.serialization.property("submitted_at", core.serialization.date()),
-    claimFrequencyCode: core.serialization.property("claim_frequency_code", ClaimFrequencyTypeCode.optional()),
+    claimFrequencyCode: core.serialization.property("claim_frequency_code", TypeOfBillFrequencyCode.optional()),
     payerResponsibility: core.serialization.property(
         "payer_responsibility",
         ClaimSubmissionPayerResponsibilityType.optional(),
@@ -28,7 +28,7 @@ export const ClaimSubmissionRecordCreate: core.serialization.ObjectSchema<
 export declare namespace ClaimSubmissionRecordCreate {
     export interface Raw {
         submitted_at: string;
-        claim_frequency_code?: ClaimFrequencyTypeCode.Raw | null;
+        claim_frequency_code?: TypeOfBillFrequencyCode.Raw | null;
         payer_responsibility?: ClaimSubmissionPayerResponsibilityType.Raw | null;
         intended_submission_medium?: IntendedSubmissionMedium.Raw | null;
     }

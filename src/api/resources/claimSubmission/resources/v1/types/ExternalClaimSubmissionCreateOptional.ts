@@ -11,12 +11,12 @@ import * as CandidApi from "../../../../../index";
  *         patientControlNumber: "PATIENT_CONTROL_NUMBER",
  *         submissionRecords: [{
  *                 submittedAt: "2023-01-01T13:00:00.000000Z",
- *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
+ *                 claimFrequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode.C1,
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *                 intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
  *             }, {
  *                 submittedAt: "2023-01-04T12:00:00.000000Z",
- *                 claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
+ *                 claimFrequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode.C7,
  *                 payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *                 intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
  *             }]

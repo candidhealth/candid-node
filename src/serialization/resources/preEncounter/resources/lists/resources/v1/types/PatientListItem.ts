@@ -15,6 +15,8 @@ export const PatientListItem: core.serialization.ObjectSchema<
 > = core.serialization.object({
     patient: Patient,
     primaryCoverage: core.serialization.property("primary_coverage", MutableCoverage.optional()),
+    secondaryCoverage: core.serialization.property("secondary_coverage", MutableCoverage.optional()),
+    tertiaryCoverage: core.serialization.property("tertiary_coverage", MutableCoverage.optional()),
     nextAppointment: core.serialization.property("next_appointment", MutableAppointment.optional()),
 });
 
@@ -22,6 +24,8 @@ export declare namespace PatientListItem {
     export interface Raw {
         patient: Patient.Raw;
         primary_coverage?: MutableCoverage.Raw | null;
+        secondary_coverage?: MutableCoverage.Raw | null;
+        tertiary_coverage?: MutableCoverage.Raw | null;
         next_appointment?: MutableAppointment.Raw | null;
     }
 }

@@ -3211,6 +3211,11 @@ await client.expectedNetworkStatus.v2.computeAllInNetworkProviders({
 <dl>
 <dd>
 
+<Warning>
+API-based exports are in the process of being deprecated in favor of Candid Data Share and are not being offered to new customers.
+Please see the [Candid Data Share docs](https://docs.joincandidhealth.com/introduction/candid-data-share) for more information.
+</Warning>
+
 Retrieve CSV-formatted reports on claim submissions and outcomes. This endpoint returns Export objects that contain an
 authenticated URL to a customer's reports with a 2min TTL. The schema for the CSV export can be found [here](https://app.joincandidhealth.com/files/exports_schema.csv).
 
@@ -3224,9 +3229,6 @@ available by Wednesday at the latest. If file generation is still in progress up
 caller will receive a 422 response. If the file has already been generated, it will be served. Historic files should be available
 up to 90 days in the past by default. Please email our [Support team](mailto:support@joincandidhealth.com) with any data requests
 outside of these stated guarantees.
-
-**New Customers:** This endpoint is not enabled by default for new Candid customers. To have this endpoint enabled for your organization,
-please email our [Support team](mailto:support@joincandidhealth.com) with the request.
 
 </dd>
 </dl>
@@ -10308,7 +10310,7 @@ await client.preEncounter.eligibilityChecks.v1.batch([
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">pollBatch</a>(batchId) -> core.APIResponse<CandidApi.EligibilityCheckPage, CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">pollBatch</a>(batchId, { ...params }) -> core.APIResponse<CandidApi.EligibilityCheckPage, CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error></code></summary>
 <dl>
 <dd>
 
@@ -10355,6 +10357,213 @@ await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id");
 <dd>
 
 **batchId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityPollRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">payerSearch</a>({ ...params }) -> core.APIResponse<CandidApi.PayerSearchResponse, CandidApi.preEncounter.eligibilityChecks.v1.payerSearch.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for payers that match the query parameters.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.payerSearch();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.PayerSearchRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">recommendation</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityRecommendation[], CandidApi.preEncounter.eligibilityChecks.v1.recommendation.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets recommendation for eligibility checks based on the request.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.recommendation();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">createRecommendation</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityRecommendation, CandidApi.preEncounter.eligibilityChecks.v1.createRecommendation.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create an eligibiilty recommendation based on the request.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.createRecommendation({
+    eligibilityCheckId: "eligibility_check_id",
+    patient: {},
+    recommendation: {
+        type: "MEDICARE_ADVANTAGE",
+        payload: {
+            payerId: "payer_id",
+            payerName: "payer_name",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.PostEligibilityRecommendationRequest`
 
 </dd>
 </dl>

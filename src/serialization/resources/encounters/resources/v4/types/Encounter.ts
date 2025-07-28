@@ -5,12 +5,19 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { State } from "../../../../commons/types/State";
 import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCaptureClaimCreationId";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { Claim } from "../../../../claims/types/Claim";
 import { Patient } from "../../../../individual/types/Patient";
 import { Guarantor } from "../../../../guarantor/resources/v1/types/Guarantor";
 import { EncounterProvider } from "../../../../encounterProviders/resources/v2/types/EncounterProvider";
+import { RenderingProvider } from "../../../../encounterProviders/resources/v2/types/RenderingProvider";
+import { TypeOfAdmissionOrVisitCode } from "../../../../x12/resources/v1/types/TypeOfAdmissionOrVisitCode";
+import { PointOfOriginForAdmissionOrVisitCode } from "../../../../x12/resources/v1/types/PointOfOriginForAdmissionOrVisitCode";
+import { PatientDischargeStatusCode } from "../../../../x12/resources/v1/types/PatientDischargeStatusCode";
+import { EncounterSubmissionExpectation } from "./EncounterSubmissionExpectation";
+import { TypeOfBillComposite } from "../../../../x12/resources/v1/types/TypeOfBillComposite";
 import { EncounterServiceFacility } from "../../../../serviceFacility/types/EncounterServiceFacility";
 import { Subscriber } from "../../../../individual/types/Subscriber";
 import { PriorAuthorizationNumber } from "./PriorAuthorizationNumber";
@@ -38,6 +45,7 @@ export const Encounter: core.serialization.ObjectSchema<
     CandidApi.encounters.v4.Encounter
 > = core.serialization
     .object({
+        accidentStateOrProvinceCode: core.serialization.property("accident_state_or_province_code", State.optional()),
         claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId.optional()),
         patientControlNumber: core.serialization.property(
             "patient_control_number",
@@ -49,6 +57,22 @@ export const Encounter: core.serialization.ObjectSchema<
         guarantor: Guarantor.optional(),
         billingProvider: core.serialization.property("billing_provider", EncounterProvider),
         renderingProvider: core.serialization.property("rendering_provider", EncounterProvider),
+        attendingProvider: core.serialization.property("attending_provider", RenderingProvider.optional()),
+        admissionHour: core.serialization.property("admission_hour", core.serialization.number().optional()),
+        admissionTypeCode: core.serialization.property("admission_type_code", TypeOfAdmissionOrVisitCode.optional()),
+        admissionSourceCode: core.serialization.property(
+            "admission_source_code",
+            PointOfOriginForAdmissionOrVisitCode.optional(),
+        ),
+        dischargeHour: core.serialization.property("discharge_hour", core.serialization.number().optional()),
+        dischargeStatus: core.serialization.property("discharge_status", PatientDischargeStatusCode.optional()),
+        operatingProvider: core.serialization.property("operating_provider", RenderingProvider.optional()),
+        otherOperatingProvider: core.serialization.property("other_operating_provider", RenderingProvider.optional()),
+        submissionExpectation: core.serialization.property(
+            "submission_expectation",
+            EncounterSubmissionExpectation.optional(),
+        ),
+        typeOfBill: core.serialization.property("type_of_bill", TypeOfBillComposite.optional()),
         referringProvider: core.serialization.property("referring_provider", EncounterProvider.optional()),
         initialReferringProvider: core.serialization.property(
             "initial_referring_provider",
@@ -106,6 +130,7 @@ export const Encounter: core.serialization.ObjectSchema<
 
 export declare namespace Encounter {
     export interface Raw extends EncounterBase.Raw {
+        accident_state_or_province_code?: State.Raw | null;
         claim_creation_id?: ChargeCaptureClaimCreationId.Raw | null;
         patient_control_number?: string | null;
         encounter_id: EncounterId.Raw;
@@ -114,6 +139,16 @@ export declare namespace Encounter {
         guarantor?: Guarantor.Raw | null;
         billing_provider: EncounterProvider.Raw;
         rendering_provider: EncounterProvider.Raw;
+        attending_provider?: RenderingProvider.Raw | null;
+        admission_hour?: number | null;
+        admission_type_code?: TypeOfAdmissionOrVisitCode.Raw | null;
+        admission_source_code?: PointOfOriginForAdmissionOrVisitCode.Raw | null;
+        discharge_hour?: number | null;
+        discharge_status?: PatientDischargeStatusCode.Raw | null;
+        operating_provider?: RenderingProvider.Raw | null;
+        other_operating_provider?: RenderingProvider.Raw | null;
+        submission_expectation?: EncounterSubmissionExpectation.Raw | null;
+        type_of_bill?: TypeOfBillComposite.Raw | null;
         referring_provider?: EncounterProvider.Raw | null;
         initial_referring_provider?: EncounterProvider.Raw | null;
         supervising_provider?: EncounterProvider.Raw | null;

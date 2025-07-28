@@ -73,8 +73,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.1",
-                "User-Agent": "candidhealth/1.3.1",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -156,8 +156,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.1",
-                "User-Agent": "candidhealth/1.3.1",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -198,6 +198,7 @@ export class V1 {
      * path-parameters:
      *
      * @param {string} batchId
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityPollRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -205,6 +206,7 @@ export class V1 {
      */
     public async pollBatch(
         batchId: string,
+        request: CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityPollRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
         core.APIResponse<
@@ -212,6 +214,12 @@ export class V1 {
             CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error
         >
     > {
+        const { pageToken } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -226,13 +234,14 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.3.1",
-                "User-Agent": "candidhealth/1.3.1",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
@@ -253,6 +262,234 @@ export class V1 {
         return {
             ok: false,
             error: CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Searches for payers that match the query parameters.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.PayerSearchRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.payerSearch()
+     */
+    public async payerSearch(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.PayerSearchRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.PayerSearchResponse,
+            CandidApi.preEncounter.eligibilityChecks.v1.payerSearch.Error
+        >
+    > {
+        const { pageSize, pageToken, query } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (pageSize != null) {
+            _queryParams["page_size"] = pageSize.toString();
+        }
+
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
+        if (query != null) {
+            _queryParams["query"] = query;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/payer/search",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.eligibilityChecks.v1.PayerSearchResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.eligibilityChecks.v1.payerSearch.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Gets recommendation for eligibility checks based on the request.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.recommendation()
+     */
+    public async recommendation(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendation[],
+            CandidApi.preEncounter.eligibilityChecks.v1.recommendation.Error
+        >
+    > {
+        const { filters } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (filters != null) {
+            _queryParams["filters"] = filters;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/recommendation",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.eligibilityChecks.v1.recommendation.Response.parseOrThrow(
+                    _response.body,
+                    {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    },
+                ),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.eligibilityChecks.v1.recommendation.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Create an eligibiilty recommendation based on the request.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.PostEligibilityRecommendationRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.createRecommendation({
+     *         eligibilityCheckId: "eligibility_check_id",
+     *         patient: {},
+     *         recommendation: {
+     *             type: "MEDICARE_ADVANTAGE",
+     *             payload: {
+     *                 payerId: "payer_id",
+     *                 payerName: "payer_name"
+     *             }
+     *         }
+     *     })
+     */
+    public async createRecommendation(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.PostEligibilityRecommendationRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendation,
+            CandidApi.preEncounter.eligibilityChecks.v1.createRecommendation.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/recommendation",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.PostEligibilityRecommendationRequest.jsonOrThrow(
+                request,
+                { unrecognizedObjectKeys: "strip" },
+            ),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.preEncounter.eligibilityChecks.v1.EligibilityRecommendation.parseOrThrow(
+                    _response.body,
+                    {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    },
+                ),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.preEncounter.eligibilityChecks.v1.createRecommendation.Error._unknown(_response.error),
         };
     }
 

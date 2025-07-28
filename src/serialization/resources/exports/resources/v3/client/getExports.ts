@@ -28,6 +28,12 @@ export const Error: core.serialization.Schema<
         ExportDateTooEarlyError: core.serialization.object({
             content: ErrorMessage,
         }),
+        UnsupportedExportWindowError: core.serialization.object({
+            content: ErrorMessage,
+        }),
+        ExportDisabledError: core.serialization.object({
+            content: ErrorMessage,
+        }),
     })
     .transform<CandidApi.exports.v3.getExports.Error>({
         transform: (value) => {
@@ -42,6 +48,10 @@ export const Error: core.serialization.Schema<
                     return CandidApi.exports.v3.getExports.Error.exportNotYetAvailableError(value.content);
                 case "ExportDateTooEarlyError":
                     return CandidApi.exports.v3.getExports.Error.exportDateTooEarlyError(value.content);
+                case "UnsupportedExportWindowError":
+                    return CandidApi.exports.v3.getExports.Error.unsupportedExportWindowError(value.content);
+                case "ExportDisabledError":
+                    return CandidApi.exports.v3.getExports.Error.exportDisabledError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -53,7 +63,9 @@ export declare namespace Error {
         | Error.ExportFilesUnavailableError
         | Error.MissingDailyIncrementalExportFileError
         | Error.ExportNotYetAvailableError
-        | Error.ExportDateTooEarlyError;
+        | Error.ExportDateTooEarlyError
+        | Error.UnsupportedExportWindowError
+        | Error.ExportDisabledError;
 
     export interface HttpRequestValidationsError {
         errorName: "HttpRequestValidationsError";
@@ -77,6 +89,16 @@ export declare namespace Error {
 
     export interface ExportDateTooEarlyError {
         errorName: "ExportDateTooEarlyError";
+        content: ErrorMessage.Raw;
+    }
+
+    export interface UnsupportedExportWindowError {
+        errorName: "UnsupportedExportWindowError";
+        content: ErrorMessage.Raw;
+    }
+
+    export interface ExportDisabledError {
+        errorName: "ExportDisabledError";
         content: ErrorMessage.Raw;
     }
 }

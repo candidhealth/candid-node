@@ -5,3 +5,4 @@ export * from "./StandaloneDiagnosisCreate";
 export * from "./DiagnosisTypeCode";
 export * from "./Diagnosis";
 export * from "./DiagnosisNotFoundError";
+export * from "./ServiceLinesMustHaveAtLeastOneDiagnosisError";

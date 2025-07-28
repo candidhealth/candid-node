@@ -7,4 +7,6 @@
  */
 export interface MutableTag {
     value: string;
+    description?: string;
+    alert?: boolean;
 }

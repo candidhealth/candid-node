@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import { DiagnosisNotFoundError } from "../types/DiagnosisNotFoundError";
+import { ServiceLinesMustHaveAtLeastOneDiagnosisError } from "../types/ServiceLinesMustHaveAtLeastOneDiagnosisError";
 
 export const Error: core.serialization.Schema<
     serializers.diagnoses.delete.Error.Raw,
@@ -15,22 +16,34 @@ export const Error: core.serialization.Schema<
         DiagnosisNotFoundHTTPError: core.serialization.object({
             content: DiagnosisNotFoundError,
         }),
+        ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError: core.serialization.object({
+            content: ServiceLinesMustHaveAtLeastOneDiagnosisError,
+        }),
     })
     .transform<CandidApi.diagnoses.delete.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "DiagnosisNotFoundHTTPError":
                     return CandidApi.diagnoses.delete.Error.diagnosisNotFoundHttpError(value.content);
+                case "ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError":
+                    return CandidApi.diagnoses.delete.Error.serviceLinesMustHaveAtLeastOneDiagnosisHttpError(
+                        value.content,
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.DiagnosisNotFoundHttpError;
+    export type Raw = Error.DiagnosisNotFoundHttpError | Error.ServiceLinesMustHaveAtLeastOneDiagnosisHttpError;
 
     export interface DiagnosisNotFoundHttpError {
         errorName: "DiagnosisNotFoundHTTPError";
         content: DiagnosisNotFoundError.Raw;
+    }
+
+    export interface ServiceLinesMustHaveAtLeastOneDiagnosisHttpError {
+        errorName: "ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError";
+        content: ServiceLinesMustHaveAtLeastOneDiagnosisError.Raw;
     }
 }

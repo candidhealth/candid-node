@@ -433,6 +433,8 @@ import * as CandidApi from "../../../../../index";
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
+    /** 837i-REF1000 -- an optional state indicating where an accident related to the encounter occurred. */
+    accidentStateOrProvinceCode?: CandidApi.State;
     /** If the encounter was created from ingested charge captures, this is the associated Charge Capture Claim Creation Id. */
     claimCreationId?: CandidApi.ChargeCaptureClaimCreationId;
     /**
@@ -453,6 +455,43 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
      * For telehealth services, the rendering provider performs the visit, asynchronous communication, or other service. The rendering provider address should generally be the same as the service facility address.
      */
     renderingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
+    /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has overall responsibility for the patient in institutional claims processing. */
+    attendingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
+    /**
+     * 837i Loop 2300 DTP-03
+     * Extension of the admission date with hour (0-23) details.
+     * Required for institutional submission.
+     */
+    admissionHour?: number;
+    /**
+     * 837i Loop 2300 CL1-01
+     * Code used to indicate the priority of an admission or visit.
+     */
+    admissionTypeCode?: CandidApi.x12.v1.TypeOfAdmissionOrVisitCode;
+    /**
+     * 837i Loop 2300 CLI1-02
+     * Code used to indicate the conditions under which an admission occurs.
+     */
+    admissionSourceCode?: CandidApi.x12.v1.PointOfOriginForAdmissionOrVisitCode;
+    /**
+     * 837i Loop 2300 DTP-03
+     * Extension of the discharge date with hour (0-23) details.
+     * Required for institutional submission.
+     */
+    dischargeHour?: number;
+    /**
+     * 837i CL1-03
+     * Code indicating patient status as of the "statement covers through date".
+     */
+    dischargeStatus?: CandidApi.x12.v1.PatientDischargeStatusCode;
+    /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has primary responsibility for surgical procedures in institutional claims processing. */
+    operatingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
+    /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has secondary responsibility for surgical procedures in institutional claims processing.  Only used when operating_provider is also set. */
+    otherOperatingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
+    /** Describes the currently expected target form for this encounter.  This effects what validations and queues the form is processed under.  When this value is not set, it should be assumed to be TARGET_PROFESSIONAL. */
+    submissionExpectation?: CandidApi.encounters.v4.EncounterSubmissionExpectation;
+    /** Used by institutional forms to indicate how the bill is to be interpreted. Professional forms are not required to submit this attribute. */
+    typeOfBill?: CandidApi.x12.v1.TypeOfBillComposite;
     referringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     initialReferringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     supervisingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;

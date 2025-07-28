@@ -4,6 +4,7 @@ export * from "./BaseModel";
 export * from "./PayerId";
 export * from "./PatientId";
 export * from "./CoverageId";
+export * from "./FilterQueryString";
 export * from "./PayerPlanGroupId";
 export * from "./AppointmentId";
 export * from "./NoteId";

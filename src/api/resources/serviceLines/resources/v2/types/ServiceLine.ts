@@ -110,6 +110,7 @@ export interface ServiceLine {
     serviceLineId: CandidApi.ServiceLineId;
     procedureCode: string;
     orderingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
+    revenueCode?: string;
     /**
      * String representation of a Decimal that can be parsed by most libraries.
      * A ServiceLine quantity cannot contain more than one digit of precision.

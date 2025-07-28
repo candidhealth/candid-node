@@ -10,7 +10,7 @@ import * as CandidApi from "../../../../../index";
  * @example
  *     {
  *         submittedAt: "2023-01-01T13:00:00.000000Z",
- *         claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Original,
+ *         claimFrequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode.C1,
  *         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
  *     }
@@ -18,7 +18,7 @@ import * as CandidApi from "../../../../../index";
  * @example
  *     {
  *         submittedAt: "2023-01-04T12:00:00.000000Z",
- *         claimFrequencyCode: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode.Replacement,
+ *         claimFrequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode.C7,
  *         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper
  *     }
@@ -26,7 +26,7 @@ import * as CandidApi from "../../../../../index";
 export interface ClaimSubmissionRecordCreate {
     /** When the claim was submitted to the payer. */
     submittedAt: Date;
-    claimFrequencyCode?: CandidApi.claimSubmission.v1.ClaimFrequencyTypeCode;
+    claimFrequencyCode?: CandidApi.x12.v1.TypeOfBillFrequencyCode;
     payerResponsibility?: CandidApi.ClaimSubmissionPayerResponsibilityType;
     /**
      * The medium by which the claim was submitted to the payer: paper or electronic.

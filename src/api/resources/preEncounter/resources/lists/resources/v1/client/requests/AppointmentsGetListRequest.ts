@@ -22,5 +22,5 @@ export interface AppointmentsGetListRequest {
      */
     limit?: number;
     pageToken?: CandidApi.preEncounter.PageToken;
-    filters?: CandidApi.preEncounter.lists.v1.FilterQueryString;
+    filters?: CandidApi.preEncounter.FilterQueryString;
 }
