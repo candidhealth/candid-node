@@ -10,15 +10,17 @@ export const MedicareAdvantageRecommendationPayload: core.serialization.ObjectSc
     serializers.preEncounter.eligibilityChecks.v1.MedicareAdvantageRecommendationPayload.Raw,
     CandidApi.preEncounter.eligibilityChecks.v1.MedicareAdvantageRecommendationPayload
 > = core.serialization.object({
-    payerId: core.serialization.property("payer_id", core.serialization.string()),
-    payerName: core.serialization.property("payer_name", core.serialization.string()),
+    maBenefit: core.serialization.property("ma_benefit", core.serialization.unknown().optional()),
+    payerId: core.serialization.property("payer_id", core.serialization.string().optional()),
+    payerName: core.serialization.property("payer_name", core.serialization.string().optional()),
     memberId: core.serialization.property("member_id", core.serialization.string().optional()),
 });
 
 export declare namespace MedicareAdvantageRecommendationPayload {
     export interface Raw {
-        payer_id: string;
-        payer_name: string;
+        ma_benefit?: unknown | null;
+        payer_id?: string | null;
+        payer_name?: string | null;
         member_id?: string | null;
     }
 }

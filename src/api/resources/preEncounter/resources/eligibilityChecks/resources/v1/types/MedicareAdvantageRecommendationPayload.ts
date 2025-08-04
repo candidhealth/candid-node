@@ -6,7 +6,8 @@
  * An object representing the payload for a Medicare Advantage recommendation.
  */
 export interface MedicareAdvantageRecommendationPayload {
-    payerId: string;
-    payerName: string;
+    maBenefit?: unknown;
+    payerId?: string;
+    payerName?: string;
     memberId?: string;
 }

@@ -7,12 +7,18 @@ import * as core from "../../../../core";
 
 export type Error =
     | CandidApi.diagnoses.update.Error.DiagnosisNotFoundHttpError
+    | CandidApi.diagnoses.update.Error.DisallowMultiplePrimaryDiagnosisHttpError
     | CandidApi.diagnoses.update.Error._Unknown;
 
 export namespace Error {
     export interface DiagnosisNotFoundHttpError extends _Utils {
         errorName: "DiagnosisNotFoundHTTPError";
         content: CandidApi.DiagnosisNotFoundError;
+    }
+
+    export interface DisallowMultiplePrimaryDiagnosisHttpError extends _Utils {
+        errorName: "DisallowMultiplePrimaryDiagnosisHTTPError";
+        content: CandidApi.DisallowMultiplePrimaryDiagnosisError;
     }
 
     export interface _Unknown extends _Utils {
@@ -26,6 +32,7 @@ export namespace Error {
 
     export interface _Visitor<_Result> {
         diagnosisNotFoundHttpError: (value: CandidApi.DiagnosisNotFoundError) => _Result;
+        disallowMultiplePrimaryDiagnosisHttpError: (value: CandidApi.DisallowMultiplePrimaryDiagnosisError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -39,6 +46,21 @@ export const Error = {
             errorName: "DiagnosisNotFoundHTTPError",
             _visit: function <_Result>(
                 this: CandidApi.diagnoses.update.Error.DiagnosisNotFoundHttpError,
+                visitor: CandidApi.diagnoses.update.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.diagnoses.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    disallowMultiplePrimaryDiagnosisHttpError: (
+        value: CandidApi.DisallowMultiplePrimaryDiagnosisError,
+    ): CandidApi.diagnoses.update.Error.DisallowMultiplePrimaryDiagnosisHttpError => {
+        return {
+            content: value,
+            errorName: "DisallowMultiplePrimaryDiagnosisHTTPError",
+            _visit: function <_Result>(
+                this: CandidApi.diagnoses.update.Error.DisallowMultiplePrimaryDiagnosisHttpError,
                 visitor: CandidApi.diagnoses.update.Error._Visitor<_Result>,
             ) {
                 return CandidApi.diagnoses.update.Error._visit(this, visitor);
@@ -66,6 +88,8 @@ export const Error = {
         switch (value.errorName) {
             case "DiagnosisNotFoundHTTPError":
                 return visitor.diagnosisNotFoundHttpError(value.content);
+            case "DisallowMultiplePrimaryDiagnosisHTTPError":
+                return visitor.disallowMultiplePrimaryDiagnosisHttpError(value.content);
             default:
                 return visitor._other(value as any);
         }

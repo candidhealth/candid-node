@@ -18,7 +18,7 @@ export interface ContractCreate extends CandidApi.contracts.v2.ContractBase {
     /**
      * A rendering provider isn't contracted directly with the payer but can render
      * services under the contract held by the contracting provider.
-     * Max items is 1000.
+     * Max items is 4000.
      */
     renderingProviderIds: Set<CandidApi.contracts.v2.RenderingProviderid>;
     /** The UUID of the insurance company under agreement to the contract */

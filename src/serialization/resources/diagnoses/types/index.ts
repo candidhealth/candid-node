@@ -6,3 +6,4 @@ export * from "./DiagnosisTypeCode";
 export * from "./Diagnosis";
 export * from "./DiagnosisNotFoundError";
 export * from "./ServiceLinesMustHaveAtLeastOneDiagnosisError";
+export * from "./DisallowMultiplePrimaryDiagnosisError";

@@ -33,7 +33,6 @@ export class V1 {
 
     /**
      * Sends real-time eligibility checks to payers through Stedi.
-     * <Warning>Please only send one concurrent request to this endpoint. Batch requests must be made in succession, otherwise, it will cause this service to fail. A batch endpoint is in development - please reach out to the Candid team for more information.</Warning>
      *
      * @param {CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -73,8 +72,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -156,8 +155,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -194,8 +193,6 @@ export class V1 {
 
     /**
      * Polls the status of a batch eligibility check.
-     * <Note>Batch eligibility checks are not yet available. Please reach out to the Candid team for more information.</Note>
-     * path-parameters:
      *
      * @param {string} batchId
      * @param {CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityPollRequest} request
@@ -234,8 +231,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -311,8 +308,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -380,8 +377,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -426,10 +423,7 @@ export class V1 {
      *         patient: {},
      *         recommendation: {
      *             type: "MEDICARE_ADVANTAGE",
-     *             payload: {
-     *                 payerId: "payer_id",
-     *                 payerName: "payer_name"
-     *             }
+     *             payload: {}
      *         }
      *     })
      */
@@ -456,8 +450,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -6,6 +6,7 @@ import * as serializers from "../../../index";
 import * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import { DiagnosisNotFoundError } from "../types/DiagnosisNotFoundError";
+import { DisallowMultiplePrimaryDiagnosisError } from "../types/DisallowMultiplePrimaryDiagnosisError";
 
 export const Error: core.serialization.Schema<
     serializers.diagnoses.update.Error.Raw,
@@ -15,22 +16,32 @@ export const Error: core.serialization.Schema<
         DiagnosisNotFoundHTTPError: core.serialization.object({
             content: DiagnosisNotFoundError,
         }),
+        DisallowMultiplePrimaryDiagnosisHTTPError: core.serialization.object({
+            content: DisallowMultiplePrimaryDiagnosisError,
+        }),
     })
     .transform<CandidApi.diagnoses.update.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "DiagnosisNotFoundHTTPError":
                     return CandidApi.diagnoses.update.Error.diagnosisNotFoundHttpError(value.content);
+                case "DisallowMultiplePrimaryDiagnosisHTTPError":
+                    return CandidApi.diagnoses.update.Error.disallowMultiplePrimaryDiagnosisHttpError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.DiagnosisNotFoundHttpError;
+    export type Raw = Error.DiagnosisNotFoundHttpError | Error.DisallowMultiplePrimaryDiagnosisHttpError;
 
     export interface DiagnosisNotFoundHttpError {
         errorName: "DiagnosisNotFoundHTTPError";
         content: DiagnosisNotFoundError.Raw;
+    }
+
+    export interface DisallowMultiplePrimaryDiagnosisHttpError {
+        errorName: "DisallowMultiplePrimaryDiagnosisHTTPError";
+        content: DisallowMultiplePrimaryDiagnosisError.Raw;
     }
 }

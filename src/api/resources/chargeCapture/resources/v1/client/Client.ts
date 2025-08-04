@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -118,6 +118,121 @@ export class V1 {
     }
 
     /**
+     * Create a Charge Capture from a pre-encounter patient and appointment. This endpoint is intended to be used by consumers who are managing
+     * patients and appointments in the pre-encounter service and is currently under development. Consumers who are not taking advantage
+     * of the pre-encounter service should use the standard create endpoint.
+     *
+     * At encounter creation time, information from the provided patient and appointment objects will be populated
+     * where applicable. In particular, the following fields are populated from the patient and appointment objects:
+     *   - Patient
+     *   - Referring Provider
+     *   - Subscriber Primary
+     *   - Subscriber Secondary
+     *   - Referral Number
+     *   - Responsible Party
+     *   - Guarantor
+     *
+     * Note that these fields should not be populated in the ChargeCaptureData property of this endpoint, as they will be overwritten at encounter creation time.
+     *
+     * Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
+     * encounter has not already been submitted or adjudicated.
+     *
+     * @param {CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.chargeCapture.v1.createFromPreEncounterPatient({
+     *         data: {},
+     *         chargeExternalId: "charge_external_id",
+     *         preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+     *         status: "planned"
+     *     })
+     */
+    public async createFromPreEncounterPatient(
+        request: CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.chargeCapture.v1.ChargeCapture,
+            CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/charge_captures/v1/create-from-pre-encounter",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.Raw)
+                    ?.errorName
+            ) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "HttpRequestValidationsError":
+                case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
+                case "ChargeExternalIdConflictError":
+                    return {
+                        ok: false,
+                        error: serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.parseOrThrow(
+                            _response.error
+                                .body as serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * @param {CandidApi.ChargeCaptureId} chargeCaptureId
      * @param {CandidApi.chargeCapture.v1.ChargeCaptureUpdate} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -144,8 +259,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -224,8 +339,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -558,8 +673,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -622,8 +737,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

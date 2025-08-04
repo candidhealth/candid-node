@@ -62,8 +62,8 @@ export class Diagnoses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -122,8 +122,8 @@ export class Diagnoses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -150,6 +150,7 @@ export class Diagnoses {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.diagnoses.update.Error.Raw)?.errorName) {
                 case "DiagnosisNotFoundHTTPError":
+                case "DisallowMultiplePrimaryDiagnosisHTTPError":
                     return {
                         ok: false,
                         error: serializers.diagnoses.update.Error.parseOrThrow(
@@ -198,8 +199,8 @@ export class Diagnoses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.4.0",
-                "User-Agent": "candidhealth/1.4.0",
+                "X-Fern-SDK-Version": "0.0.0",
+                "User-Agent": "candidhealth/0.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

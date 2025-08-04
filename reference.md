@@ -507,6 +507,96 @@ await client.chargeCapture.v1.create({
 </dl>
 </details>
 
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">createFromPreEncounterPatient</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a Charge Capture from a pre-encounter patient and appointment. This endpoint is intended to be used by consumers who are managing
+patients and appointments in the pre-encounter service and is currently under development. Consumers who are not taking advantage
+of the pre-encounter service should use the standard create endpoint.
+
+At encounter creation time, information from the provided patient and appointment objects will be populated
+where applicable. In particular, the following fields are populated from the patient and appointment objects:
+
+- Patient
+- Referring Provider
+- Subscriber Primary
+- Subscriber Secondary
+- Referral Number
+- Responsible Party
+- Guarantor
+
+Note that these fields should not be populated in the ChargeCaptureData property of this endpoint, as they will be overwritten at encounter creation time.
+
+Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
+encounter has not already been submitted or adjudicated.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCapture.v1.createFromPreEncounterPatient({
+    data: {},
+    chargeExternalId: "charge_external_id",
+    preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    preEncounterAppointmentIds: [
+        CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    ],
+    status: "planned",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">update</a>(chargeCaptureId, { ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.update.Error></code></summary>
 <dl>
 <dd>
@@ -9216,7 +9306,7 @@ await client.preEncounter.appointments.v1.getHistory(CandidApi.AppointmentId("id
 <dl>
 <dd>
 
-Updates an appointment. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
+Updates an appointment. The path must contain the next version number to prevent race conditions. For example, if the current version of the appointment is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the appointment. Updating historic versions is not supported.
 
 </dd>
 </dl>
@@ -9520,7 +9610,7 @@ await client.preEncounter.coverages.v1.create({
 <dl>
 <dd>
 
-Updates a Coverage. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
+Updates a Coverage. The path must contain the next version number to prevent race conditions. For example, if the current version of the coverage is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the coverage. Updating historic versions is not supported.
 
 </dd>
 </dl>
@@ -10166,7 +10256,6 @@ await client.preEncounter.coverages.v1.getEligibility(
 <dd>
 
 Sends real-time eligibility checks to payers through Stedi.
-<Warning>Please only send one concurrent request to this endpoint. Batch requests must be made in succession, otherwise, it will cause this service to fail. A batch endpoint is in development - please reach out to the Candid team for more information.</Warning>
 
 </dd>
 </dl>
@@ -10323,8 +10412,6 @@ await client.preEncounter.eligibilityChecks.v1.batch([
 <dd>
 
 Polls the status of a batch eligibility check.
-<Note>Batch eligibility checks are not yet available. Please reach out to the Candid team for more information.</Note>
-path-parameters:
 
 </dd>
 </dl>
@@ -10542,10 +10629,7 @@ await client.preEncounter.eligibilityChecks.v1.createRecommendation({
     patient: {},
     recommendation: {
         type: "MEDICARE_ADVANTAGE",
-        payload: {
-            payerId: "payer_id",
-            payerName: "payer_name",
-        },
+        payload: {},
     },
 });
 ```
@@ -12094,7 +12178,7 @@ await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("id"));
 <dl>
 <dd>
 
-Updates a patient. The path must contain the most recent version to prevent race conditions. Updating historic versions is not supported.
+Updates a patient. The path must contain the next version number to prevent race conditions. For example, if the current version of the patient is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the patient. Updating historic versions is not supported.
 
 </dd>
 </dl>

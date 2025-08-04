@@ -11,7 +11,7 @@ export interface MutableCoverage {
     subscriber: CandidApi.preEncounter.coverages.v1.Subscriber;
     /** The relationship of beneficiary (patient) to the subscriber. https://hl7.org/fhir/valueset-relationship.html */
     relationship: CandidApi.preEncounter.Relationship;
-    /** The patient who benefits from the insurance coverage */
+    /** The canonical Candid patient UUID corresponding with the patient who benefits from the insurance coverage */
     patient: CandidApi.preEncounter.PatientId;
     insurancePlan: CandidApi.preEncounter.coverages.v1.InsurancePlan;
     /** A boolean indicating if the coverage has been verified by a user. */
