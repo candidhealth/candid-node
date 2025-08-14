@@ -10,7 +10,22 @@ import * as CandidApi from "../../../../../../index";
  */
 export interface GetMultiNonInsurancePayersRequest {
     name?: string;
+    /**
+     * Fuzzy-match category names of non-insurance payers.
+     */
     category?: string;
+    /**
+     * Filter by one or more categories by name.
+     * When multiple are present, non-insurance payers with any of the specified
+     * categories will be matched.
+     */
+    categoriesExact?: string | string[];
+    /**
+     * Filter by one or more clinical trials by their `clinical_trial_id`.
+     * When multiple are present, non-insurance payers with any of the specified
+     * clinical trials will be matched.
+     */
+    clinicalTrialIds?: CandidApi.ClinicalTrialId | CandidApi.ClinicalTrialId[];
     enabled?: boolean;
     sort?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerSortField;
     sortDirection?: CandidApi.SortDirection;

@@ -8,3 +8,4 @@ export * from "./NonInsurancePayerCategoryUpdate";
 export * from "./NonInsurancePayerAddressUpdate";
 export * from "./ToggleNonInsurancePayerEnablementRequest";
 export * from "./NonInsurancePayerUpdateRequest";
+export * from "./NonInsurancePayerCategoriesPage";

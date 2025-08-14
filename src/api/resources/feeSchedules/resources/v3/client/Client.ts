@@ -60,8 +60,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -138,8 +138,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -333,8 +333,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -516,8 +516,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -574,8 +574,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -698,8 +698,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -778,8 +778,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -852,8 +852,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -926,8 +926,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -990,8 +990,8 @@ export class V3 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -1036,6 +1036,74 @@ export class V3 {
         return {
             ok: false,
             error: CandidApi.feeSchedules.v3.setPayerThreshold.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Hard deletes rates from the system that match the provided dimensions.  This is a destructive operation and cannot be undone.  If an empty dimensions object is provided, all rates will be hard deleted.  The maximum number of rates this API will delete at a time is 10000.  Returns the number of rates deleted and if that number is the maximum, the caller should call this API again to continue deleting rates.
+     *
+     * @param {CandidApi.feeSchedules.v3.OptionalDimensions} request
+     * @param {V3.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.feeSchedules.v3.hardDeleteRates({
+     *         states: new Set(["AA"]),
+     *         zipCodes: new Set(["zip_codes"]),
+     *         licenseTypes: new Set(["MD"]),
+     *         facilityTypeCodes: new Set(["01"]),
+     *         networkTypes: new Set(["12"]),
+     *         payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
+     *         modifiers: new Set(["AV"])
+     *     })
+     */
+    public async hardDeleteRates(
+        request: CandidApi.feeSchedules.v3.OptionalDimensions,
+        requestOptions?: V3.RequestOptions,
+    ): Promise<core.APIResponse<number, CandidApi.feeSchedules.v3.hardDeleteRates.Error>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/fee-schedules/v3/hard-delete",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.feeSchedules.v3.OptionalDimensions.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.feeSchedules.v3.hardDeleteRates.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.feeSchedules.v3.hardDeleteRates.Error._unknown(_response.error),
         };
     }
 

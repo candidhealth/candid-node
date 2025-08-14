@@ -28,6 +28,7 @@ export const MutableAppointment: core.serialization.ObjectSchema<
         core.serialization.number().optional(),
     ),
     patientDepositCents: core.serialization.property("patient_deposit_cents", core.serialization.number().optional()),
+    appointmentDetails: core.serialization.property("appointment_details", core.serialization.string().optional()),
     checkedInTimestamp: core.serialization.property("checked_in_timestamp", core.serialization.date().optional()),
     notes: core.serialization.string().optional(),
     locationResourceId: core.serialization.property("location_resource_id", core.serialization.string().optional()),
@@ -50,6 +51,7 @@ export declare namespace MutableAppointment {
         estimated_copay_cents?: number | null;
         estimated_patient_responsibility_cents?: number | null;
         patient_deposit_cents?: number | null;
+        appointment_details?: string | null;
         checked_in_timestamp?: string | null;
         notes?: string | null;
         location_resource_id?: string | null;

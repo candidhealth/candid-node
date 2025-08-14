@@ -63,8 +63,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -149,8 +149,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -216,7 +216,8 @@ export class V1 {
             CandidApi.nonInsurancePayers.v1.getMulti.Error
         >
     > {
-        const { name, category, enabled, sort, sortDirection, limit, pageToken } = request;
+        const { name, category, categoriesExact, clinicalTrialIds, enabled, sort, sortDirection, limit, pageToken } =
+            request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (name != null) {
             _queryParams["name"] = name;
@@ -224,6 +225,24 @@ export class V1 {
 
         if (category != null) {
             _queryParams["category"] = category;
+        }
+
+        if (categoriesExact != null) {
+            if (Array.isArray(categoriesExact)) {
+                _queryParams["categories_exact"] = categoriesExact.map((item) => item);
+            } else {
+                _queryParams["categories_exact"] = categoriesExact;
+            }
+        }
+
+        if (clinicalTrialIds != null) {
+            if (Array.isArray(clinicalTrialIds)) {
+                _queryParams["clinical_trial_ids"] = clinicalTrialIds.map((item) =>
+                    serializers.ClinicalTrialId.jsonOrThrow(item, { unrecognizedObjectKeys: "strip" }),
+                );
+            } else {
+                _queryParams["clinical_trial_ids"] = clinicalTrialIds;
+            }
         }
 
         if (enabled != null) {
@@ -264,8 +283,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -314,6 +333,88 @@ export class V1 {
     }
 
     /**
+     * Returns a paginated list of all non-insurance payer categories.
+     *
+     * Non-insurance payer categories are simply strings and are not stored as a
+     * separate object in Candid. They are created when added to at least one
+     * non-insurance payer's `category` field and are deleted when there are no
+     * longer any non-insurance payers that contain them.
+     *
+     * @param {CandidApi.nonInsurancePayers.v1.GetNonInsurancePayersCategoriesRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.nonInsurancePayers.v1.getCategories()
+     */
+    public async getCategories(
+        request: CandidApi.nonInsurancePayers.v1.GetNonInsurancePayersCategoriesRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.nonInsurancePayers.v1.NonInsurancePayerCategoriesPage,
+            CandidApi.nonInsurancePayers.v1.getCategories.Error
+        >
+    > {
+        const { searchTerm, limit, pageToken } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (searchTerm != null) {
+            _queryParams["search_term"] = searchTerm;
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/non-insurance-payers/v1/categories",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.nonInsurancePayers.v1.NonInsurancePayerCategoriesPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.nonInsurancePayers.v1.getCategories.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * @param {CandidApi.nonInsurancePayers.v1.NonInsurancePayerId} nonInsurancePayerId
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -340,8 +441,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -420,8 +521,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -497,8 +598,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "0.0.0",
-                "User-Agent": "candidhealth/0.0.0",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "candidhealth/1.5.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -9,3 +9,4 @@ export * as deleteRate from "./deleteRate";
 export * as getPayerThresholdsDefault from "./getPayerThresholdsDefault";
 export * as getPayerThresholds from "./getPayerThresholds";
 export * as setPayerThreshold from "./setPayerThreshold";
+export * as hardDeleteRates from "./hardDeleteRates";

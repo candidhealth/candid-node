@@ -5,5 +5,6 @@
 import * as CandidApi from "../../../index";
 
 export interface SubscriberCreate extends CandidApi.SubscriberBase {
+    /** Please reference our [Payer Information](https://docs.joincandidhealth.com/introduction/payer-information) documentation for more details on how to populate the `insurance_card` fields. */
     insuranceCard: CandidApi.insuranceCards.v2.InsuranceCardCreate;
 }

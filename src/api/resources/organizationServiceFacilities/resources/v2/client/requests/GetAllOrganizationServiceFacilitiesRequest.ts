@@ -22,6 +22,12 @@ export interface GetAllOrganizationServiceFacilitiesRequest {
      */
     name?: string;
     /**
+     * Filter to the provided organization service facility IDs.
+     */
+    organizationServiceFacilityIds?:
+        | CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId
+        | CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId[];
+    /**
      * The page token to continue paging through a previous request.
      */
     pageToken?: CandidApi.PageToken;

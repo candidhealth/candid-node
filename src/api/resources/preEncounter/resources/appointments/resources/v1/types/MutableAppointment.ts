@@ -23,6 +23,7 @@ export interface MutableAppointment {
     estimatedCopayCents?: number;
     estimatedPatientResponsibilityCents?: number;
     patientDepositCents?: number;
+    appointmentDetails?: string;
     /** The timestamp when the patient checked in for their appointment. If status is CHECKED_IN, checked_in_timestamp must be set. If checked_in_timestamp is set, status must be CHECKED_IN. */
     checkedInTimestamp?: Date;
     notes?: string;

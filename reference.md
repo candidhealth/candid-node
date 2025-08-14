@@ -4137,6 +4137,77 @@ await client.feeSchedules.v3.setPayerThreshold(CandidApi.PayerUuid("d5e9c84f-c2b
 </dl>
 </details>
 
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">hardDeleteRates</a>({ ...params }) -> core.APIResponse<number, CandidApi.feeSchedules.v3.hardDeleteRates.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Hard deletes rates from the system that match the provided dimensions. This is a destructive operation and cannot be undone. If an empty dimensions object is provided, all rates will be hard deleted. The maximum number of rates this API will delete at a time is 10000. Returns the number of rates deleted and if that number is the maximum, the caller should call this API again to continue deleting rates.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.feeSchedules.v3.hardDeleteRates({
+    states: new Set(["AA"]),
+    zipCodes: new Set(["zip_codes"]),
+    licenseTypes: new Set(["MD"]),
+    facilityTypeCodes: new Set(["01"]),
+    networkTypes: new Set(["12"]),
+    payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
+    modifiers: new Set(["AV"]),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.OptionalDimensions`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Guarantor V1
 
 <details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Guarantor, CandidApi.guarantor.v1.create.Error></code></summary>
@@ -6332,6 +6403,74 @@ await client.nonInsurancePayers.v1.getMulti();
 <dd>
 
 **request:** `CandidApi.nonInsurancePayers.v1.GetMultiNonInsurancePayersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">getCategories</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerCategoriesPage, CandidApi.nonInsurancePayers.v1.getCategories.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of all non-insurance payer categories.
+
+Non-insurance payer categories are simply strings and are not stored as a
+separate object in Candid. They are created when added to at least one
+non-insurance payer's `category` field and are deleted when there are no
+longer any non-insurance payers that contain them.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.nonInsurancePayers.v1.getCategories();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayers.v1.GetNonInsurancePayersCategoriesRequest`
 
 </dd>
 </dl>

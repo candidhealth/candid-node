@@ -38,6 +38,12 @@ export interface GetAllOrganizationProvidersRequestV2 {
      */
     isBilling?: boolean;
     /**
+     * Filter to the provided organization provider IDs.
+     */
+    organizationProviderIds?:
+        | CandidApi.organizationProviders.v2.OrganizationProviderId
+        | CandidApi.organizationProviders.v2.OrganizationProviderId[];
+    /**
      * The page token to continue paging through a previous request.
      */
     pageToken?: CandidApi.PageToken;
