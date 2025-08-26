@@ -98,6 +98,56 @@ await client.auth.default.getToken({
 </dl>
 </details>
 
+<details><summary><code>client.auth.default.<a href="/src/api/resources/auth/resources/default/client/Client.ts">getMachineTokenForOrgId</a>({ ...params }) -> core.APIResponse<CandidApi.AuthGetTokenResponse, CandidApi.auth.default_.getMachineTokenForOrgId.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.auth.default.getMachineTokenForOrgId({
+    orgId: "org_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.auth.default_.AuthGetTokenForOrgRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Default.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## BillingNotes V2
 
 <details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.BillingNote, CandidApi.billingNotes.v2.create.Error></code></summary>
@@ -1073,6 +1123,282 @@ await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 </details>
 
 ## Credentialing V2
+
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">createFacility</a>({ ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.createFacility.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v2.createFacility({
+    serviceFacilityId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v2.FacilityCredentialingSpanCreate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getFacility</a>(facilityCredentialingId) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.getFacility.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v2.getFacility(
+    CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getAllFacilities</a>({ ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpanPage, CandidApi.credentialing.v2.getAllFacilities.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v2.getAllFacilities();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v2.GetAllFacilityCredentialingSpansRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">deleteFacility</a>(facilityCredentialingId) -> core.APIResponse<void, CandidApi.credentialing.v2.deleteFacility.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Soft deletes a credentialing span rate from the system.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v2.deleteFacility(
+    CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">updateFacility</a>(facilityCredentialingId, { ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.updateFacility.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v2.updateFacility(
+    CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {
+        contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    },
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v2.FacilityCredentialingSpanUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
 
 <details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.create.Error></code></summary>
 <dl>
@@ -4425,6 +4751,114 @@ await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-
 </dl>
 </details>
 
+## HealthCareCodeInformation V1
+
+<details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">update</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.healthCareCodeInformation.v1.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.HealthCareCodeInformationUpdate`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">getAllForEncounter</a>(encounterId) -> core.APIResponse<CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.getAllForEncounter.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.healthCareCodeInformation.v1.getAllForEncounter(
+    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## ImportInvoice V1
 
 <details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">importInvoice</a>({ ...params }) -> core.APIResponse<CandidApi.ImportInvoice, CandidApi.importInvoice.v1.importInvoice.Error></code></summary>
@@ -6641,6 +7075,243 @@ await client.nonInsurancePayers.v1.delete(CandidApi.NonInsurancePayerId("d5e9c84
 </dl>
 </details>
 
+## OrganizationProviders V3
+
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">get</a>(organizationProviderId) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A563A-0285-4910-9569-E3739C0F6EAB"));
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationProviderId:** `CandidApi.OrganizationProviderId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationProviderPageV2, CandidApi.organizationProviders.v3.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.getMulti({
+    limit: 100,
+    searchTerm: "john",
+    npi: "1234567890",
+    isRendering: true,
+    isBilling: true,
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+    sort: "provider_name:asc",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.organizationProviders.v3.GetAllOrganizationProvidersRequestV2`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.create({
+    npi: "npi",
+    isRendering: true,
+    isBilling: true,
+    providerType: "INDIVIDUAL",
+    licenseType: "MD",
+    qualifications: [
+        {
+            identifierCode: "MCR",
+            identifierValue: {
+                type: "medicare_provider_identifier",
+                state: "AA",
+                providerNumber: "provider_number",
+            },
+        },
+        {
+            identifierCode: "MCR",
+            identifierValue: {
+                type: "medicare_provider_identifier",
+                state: "AA",
+                providerNumber: "provider_number",
+            },
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.OrganizationProviderCreateV2`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">update</a>(organizationProviderId, { ...params }) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.update(
+    CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    {},
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organizationProviderId:** `CandidApi.OrganizationProviderId`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.OrganizationProviderUpdateV2`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## OrganizationServiceFacilities V2
 
 <details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">get</a>(organizationServiceFacilityId) -> core.APIResponse<CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.get.Error></code></summary>
@@ -6938,11 +7609,29 @@ await client.organizationServiceFacilities.v2.delete(
 </dl>
 </details>
 
-## OrganizationProviders V3
+## PatientAr V1
 
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">get</a>(organizationProviderId) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.get.Error></code></summary>
+<details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">listInventory</a>({ ...params }) -> core.APIResponse<CandidApi.ListInventoryPagedResponse, CandidApi.patientAr.v1.listInventory.Error></code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+NOTE: This service is in-development and can only be used by select partners. Please contact Candid Health to request access.
+
+Retrieve a list of inventory records based on the provided filters. Each inventory record provides the latest invoiceable status of the associated claim.
+The response is paginated, and the `page_token` can be used to retrieve subsequent pages. Initial requests should not include `page_token`.
+
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6953,7 +7642,7 @@ await client.organizationServiceFacilities.v2.delete(
 <dd>
 
 ```typescript
-await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A563A-0285-4910-9569-E3739C0F6EAB"));
+await client.patientAr.v1.listInventory();
 ```
 
 </dd>
@@ -6969,7 +7658,7 @@ await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A
 <dl>
 <dd>
 
-**organizationProviderId:** `CandidApi.OrganizationProviderId`
+**request:** `CandidApi.patientAr.v1.GetInventoryRecordsRequest`
 
 </dd>
 </dl>
@@ -6977,7 +7666,7 @@ await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V1.RequestOptions`
 
 </dd>
 </dl>
@@ -6988,9 +7677,26 @@ await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A
 </dl>
 </details>
 
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationProviderPageV2, CandidApi.organizationProviders.v3.getMulti.Error></code></summary>
+<details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">itemize</a>(claimId) -> core.APIResponse<CandidApi.InvoiceItemizationResponse, CandidApi.patientAr.v1.itemize.Error></code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+NOTE: This service is in-development and can only be used by select partners. Please contact Candid Health to request access.
+
+Provides detailed itemization of invoice data for a specific claim.
+
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7001,15 +7707,7 @@ await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A
 <dd>
 
 ```typescript
-await client.organizationProviders.v3.getMulti({
-    limit: 100,
-    searchTerm: "john",
-    npi: "1234567890",
-    isRendering: true,
-    isBilling: true,
-    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-    sort: "provider_name:asc",
-});
+await client.patientAr.v1.itemize(CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 ```
 
 </dd>
@@ -7025,7 +7723,7 @@ await client.organizationProviders.v3.getMulti({
 <dl>
 <dd>
 
-**request:** `CandidApi.organizationProviders.v3.GetAllOrganizationProvidersRequestV2`
+**claimId:** `CandidApi.ClaimId`
 
 </dd>
 </dl>
@@ -7033,138 +7731,7 @@ await client.organizationProviders.v3.getMulti({
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.create.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.organizationProviders.v3.create({
-    npi: "npi",
-    isRendering: true,
-    isBilling: true,
-    providerType: "INDIVIDUAL",
-    licenseType: "MD",
-    qualifications: [
-        {
-            identifierCode: "MCR",
-            identifierValue: {
-                type: "medicare_provider_identifier",
-                state: "AA",
-                providerNumber: "provider_number",
-            },
-        },
-        {
-            identifierCode: "MCR",
-            identifierValue: {
-                type: "medicare_provider_identifier",
-                state: "AA",
-                providerNumber: "provider_number",
-            },
-        },
-    ],
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.OrganizationProviderCreateV2`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V3.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">update</a>(organizationProviderId, { ...params }) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.organizationProviders.v3.update(
-    CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {},
-);
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**organizationProviderId:** `CandidApi.OrganizationProviderId`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.OrganizationProviderUpdateV2`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V1.RequestOptions`
 
 </dd>
 </dl>

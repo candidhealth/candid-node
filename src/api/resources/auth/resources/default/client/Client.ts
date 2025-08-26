@@ -91,8 +91,8 @@ export class Default {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.6.0",
-                "User-Agent": "candidhealth/1.6.0",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -140,6 +140,71 @@ export class Default {
         return {
             ok: false,
             error: CandidApi.auth.default_.getToken.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.auth.default_.AuthGetTokenForOrgRequest} request
+     * @param {Default.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.auth.default.getMachineTokenForOrgId({
+     *         orgId: "org_id"
+     *     })
+     */
+    public async getMachineTokenForOrgId(
+        request: CandidApi.auth.default_.AuthGetTokenForOrgRequest,
+        requestOptions?: Default.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.auth.default_.AuthGetTokenResponse,
+            CandidApi.auth.default_.getMachineTokenForOrgId.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/auth/v2/machine-token-for-org-id",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.auth.default_.AuthGetTokenForOrgRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.auth.default_.AuthGetTokenResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.auth.default_.getMachineTokenForOrgId.Error._unknown(_response.error),
         };
     }
 

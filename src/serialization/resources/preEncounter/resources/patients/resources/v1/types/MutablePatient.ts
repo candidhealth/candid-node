@@ -28,6 +28,7 @@ import { Referral } from "./Referral";
 import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 import { NoteId } from "../../../../common/types/NoteId";
 import { TagId } from "../../../../common/types/TagId";
+import { OriginationDetail } from "./OriginationDetail";
 
 export const MutablePatient: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.MutablePatient.Raw,
@@ -88,6 +89,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
     doNotInvoiceReason: core.serialization.property("do_not_invoice_reason", DoNotInvoiceReason.optional()),
     noteIds: core.serialization.property("note_ids", core.serialization.list(NoteId).optional()),
     tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
+    originationDetail: core.serialization.property("origination_detail", OriginationDetail.optional()),
 });
 
 export declare namespace MutablePatient {
@@ -129,5 +131,6 @@ export declare namespace MutablePatient {
         do_not_invoice_reason?: DoNotInvoiceReason.Raw | null;
         note_ids?: NoteId.Raw[] | null;
         tag_ids?: TagId.Raw[] | null;
+        origination_detail?: OriginationDetail.Raw | null;
     }
 }

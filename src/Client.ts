@@ -21,6 +21,7 @@ import { Exports } from "./api/resources/exports/client/Client";
 import { ExternalPaymentAccountConfig } from "./api/resources/externalPaymentAccountConfig/client/Client";
 import { FeeSchedules } from "./api/resources/feeSchedules/client/Client";
 import { Guarantor } from "./api/resources/guarantor/client/Client";
+import { HealthCareCodeInformation } from "./api/resources/healthCareCodeInformation/client/Client";
 import { ImportInvoice } from "./api/resources/importInvoice/client/Client";
 import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
 import { InsurancePayments } from "./api/resources/insurancePayments/client/Client";
@@ -29,8 +30,9 @@ import { MedicationDispense } from "./api/resources/medicationDispense/client/Cl
 import { NonInsurancePayerPayments } from "./api/resources/nonInsurancePayerPayments/client/Client";
 import { NonInsurancePayerRefunds } from "./api/resources/nonInsurancePayerRefunds/client/Client";
 import { NonInsurancePayers } from "./api/resources/nonInsurancePayers/client/Client";
-import { OrganizationServiceFacilities } from "./api/resources/organizationServiceFacilities/client/Client";
 import { OrganizationProviders } from "./api/resources/organizationProviders/client/Client";
+import { OrganizationServiceFacilities } from "./api/resources/organizationServiceFacilities/client/Client";
+import { PatientAr } from "./api/resources/patientAr/client/Client";
 import { PatientPayments } from "./api/resources/patientPayments/client/Client";
 import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { PayerPlanGroups } from "./api/resources/payerPlanGroups/client/Client";
@@ -82,6 +84,7 @@ export class CandidApiClient {
     protected _externalPaymentAccountConfig: ExternalPaymentAccountConfig | undefined;
     protected _feeSchedules: FeeSchedules | undefined;
     protected _guarantor: Guarantor | undefined;
+    protected _healthCareCodeInformation: HealthCareCodeInformation | undefined;
     protected _importInvoice: ImportInvoice | undefined;
     protected _insuranceAdjudications: InsuranceAdjudications | undefined;
     protected _insurancePayments: InsurancePayments | undefined;
@@ -90,8 +93,9 @@ export class CandidApiClient {
     protected _nonInsurancePayerPayments: NonInsurancePayerPayments | undefined;
     protected _nonInsurancePayerRefunds: NonInsurancePayerRefunds | undefined;
     protected _nonInsurancePayers: NonInsurancePayers | undefined;
-    protected _organizationServiceFacilities: OrganizationServiceFacilities | undefined;
     protected _organizationProviders: OrganizationProviders | undefined;
+    protected _organizationServiceFacilities: OrganizationServiceFacilities | undefined;
+    protected _patientAr: PatientAr | undefined;
     protected _patientPayments: PatientPayments | undefined;
     protected _patientRefunds: PatientRefunds | undefined;
     protected _payerPlanGroups: PayerPlanGroups | undefined;
@@ -226,6 +230,13 @@ export class CandidApiClient {
         }));
     }
 
+    public get healthCareCodeInformation(): HealthCareCodeInformation {
+        return (this._healthCareCodeInformation ??= new HealthCareCodeInformation({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
     public get importInvoice(): ImportInvoice {
         return (this._importInvoice ??= new ImportInvoice({
             ...this._options,
@@ -282,6 +293,13 @@ export class CandidApiClient {
         }));
     }
 
+    public get organizationProviders(): OrganizationProviders {
+        return (this._organizationProviders ??= new OrganizationProviders({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
     public get organizationServiceFacilities(): OrganizationServiceFacilities {
         return (this._organizationServiceFacilities ??= new OrganizationServiceFacilities({
             ...this._options,
@@ -289,8 +307,8 @@ export class CandidApiClient {
         }));
     }
 
-    public get organizationProviders(): OrganizationProviders {
-        return (this._organizationProviders ??= new OrganizationProviders({
+    public get patientAr(): PatientAr {
+        return (this._patientAr ??= new PatientAr({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

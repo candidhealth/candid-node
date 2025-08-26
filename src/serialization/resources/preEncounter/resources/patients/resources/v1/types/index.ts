@@ -12,3 +12,7 @@ export * from "./AuthorizationUnit";
 export * from "./Authorization";
 export * from "./Referral";
 export * from "./Guarantor";
+export * from "./ReferralSource";
+export * from "./ReferralType";
+export * from "./SpecializationCategory";
+export * from "./OriginationDetail";

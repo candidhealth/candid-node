@@ -59,4 +59,6 @@ export interface MutablePatient {
     doNotInvoiceReason?: CandidApi.preEncounter.patients.v1.DoNotInvoiceReason;
     noteIds?: CandidApi.preEncounter.NoteId[];
     tagIds?: CandidApi.preEncounter.TagId[];
+    /** Information about the patient source, if applicable. */
+    originationDetail?: CandidApi.preEncounter.patients.v1.OriginationDetail;
 }

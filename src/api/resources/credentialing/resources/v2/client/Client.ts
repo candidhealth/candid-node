@@ -32,6 +32,432 @@ export class V2 {
     constructor(protected readonly _options: V2.Options = {}) {}
 
     /**
+     * @param {CandidApi.credentialing.v2.FacilityCredentialingSpanCreate} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.credentialing.v2.createFacility({
+     *         serviceFacilityId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+     *         contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+     *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+     *     })
+     */
+    public async createFacility(
+        request: CandidApi.credentialing.v2.FacilityCredentialingSpanCreate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.credentialing.v2.FacilityCredentialingSpan,
+            CandidApi.credentialing.v2.createFacility.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/provider-credentialing-span/v2/facility",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.credentialing.v2.FacilityCredentialingSpanCreate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.credentialing.v2.FacilityCredentialingSpan.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.credentialing.v2.createFacility.Error.Raw)?.errorName) {
+                case "HttpRequestValidationsError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.credentialing.v2.createFacility.Error.parseOrThrow(
+                            _response.error.body as serializers.credentialing.v2.createFacility.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.credentialing.v2.createFacility.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.credentialing.v2.FacilityCredentialingSpanId} facilityCredentialingId
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.credentialing.v2.getFacility(CandidApi.credentialing.v2.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public async getFacility(
+        facilityCredentialingId: CandidApi.credentialing.v2.FacilityCredentialingSpanId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.credentialing.v2.FacilityCredentialingSpan,
+            CandidApi.credentialing.v2.getFacility.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/provider-credentialing-span/v2/facility/${encodeURIComponent(serializers.credentialing.v2.FacilityCredentialingSpanId.jsonOrThrow(facilityCredentialingId))}`,
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.credentialing.v2.FacilityCredentialingSpan.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.credentialing.v2.getFacility.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.credentialing.v2.getFacility.Error.parseOrThrow(
+                            _response.error.body as serializers.credentialing.v2.getFacility.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.credentialing.v2.getFacility.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.credentialing.v2.GetAllFacilityCredentialingSpansRequest} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.credentialing.v2.getAllFacilities()
+     */
+    public async getAllFacilities(
+        request: CandidApi.credentialing.v2.GetAllFacilityCredentialingSpansRequest = {},
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.credentialing.v2.FacilityCredentialingSpanPage,
+            CandidApi.credentialing.v2.getAllFacilities.Error
+        >
+    > {
+        const { limit, pageToken, payerUuid, contractingProviderId, serviceFacilityId } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        if (pageToken != null) {
+            _queryParams["page_token"] = pageToken;
+        }
+
+        if (payerUuid != null) {
+            _queryParams["payer_uuid"] = payerUuid;
+        }
+
+        if (contractingProviderId != null) {
+            _queryParams["contracting_provider_id"] = contractingProviderId;
+        }
+
+        if (serviceFacilityId != null) {
+            _queryParams["service_facility_id"] = serviceFacilityId;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/provider-credentialing-span/v2/facility",
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.credentialing.v2.FacilityCredentialingSpanPage.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.credentialing.v2.getAllFacilities.Error.Raw)?.errorName) {
+                case "UnauthorizedError":
+                case "UnprocessableEntityError":
+                    return {
+                        ok: false,
+                        error: serializers.credentialing.v2.getAllFacilities.Error.parseOrThrow(
+                            _response.error.body as serializers.credentialing.v2.getAllFacilities.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.credentialing.v2.getAllFacilities.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * Soft deletes a credentialing span rate from the system.
+     *
+     * @param {CandidApi.credentialing.v2.FacilityCredentialingSpanId} facilityCredentialingId
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.credentialing.v2.deleteFacility(CandidApi.credentialing.v2.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public async deleteFacility(
+        facilityCredentialingId: CandidApi.credentialing.v2.FacilityCredentialingSpanId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<core.APIResponse<void, CandidApi.credentialing.v2.deleteFacility.Error>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/provider-credentialing-span/v2/facility/${encodeURIComponent(serializers.credentialing.v2.FacilityCredentialingSpanId.jsonOrThrow(facilityCredentialingId))}`,
+            ),
+            method: "DELETE",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: undefined,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.credentialing.v2.deleteFacility.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                    return {
+                        ok: false,
+                        error: serializers.credentialing.v2.deleteFacility.Error.parseOrThrow(
+                            _response.error.body as serializers.credentialing.v2.deleteFacility.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.credentialing.v2.deleteFacility.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.credentialing.v2.FacilityCredentialingSpanId} facilityCredentialingId
+     * @param {CandidApi.credentialing.v2.FacilityCredentialingSpanUpdate} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.credentialing.v2.updateFacility(CandidApi.credentialing.v2.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+     *     })
+     */
+    public async updateFacility(
+        facilityCredentialingId: CandidApi.credentialing.v2.FacilityCredentialingSpanId,
+        request: CandidApi.credentialing.v2.FacilityCredentialingSpanUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.APIResponse<
+            CandidApi.credentialing.v2.FacilityCredentialingSpan,
+            CandidApi.credentialing.v2.updateFacility.Error
+        >
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/provider-credentialing-span/v2/facility/${encodeURIComponent(serializers.credentialing.v2.FacilityCredentialingSpanId.jsonOrThrow(facilityCredentialingId))}`,
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.credentialing.v2.FacilityCredentialingSpanUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.credentialing.v2.FacilityCredentialingSpan.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.credentialing.v2.updateFacility.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "HttpRequestValidationsError":
+                case "UnauthorizedError":
+                case "UnprocessableEntityError":
+                    return {
+                        ok: false,
+                        error: serializers.credentialing.v2.updateFacility.Error.parseOrThrow(
+                            _response.error.body as serializers.credentialing.v2.updateFacility.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.credentialing.v2.updateFacility.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * @param {CandidApi.credentialing.v2.ProviderCredentialingSpanCreate} request
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -66,8 +492,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.6.0",
-                "User-Agent": "candidhealth/1.6.0",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -145,8 +571,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.6.0",
-                "User-Agent": "candidhealth/1.6.0",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -250,8 +676,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.6.0",
-                "User-Agent": "candidhealth/1.6.0",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -327,8 +753,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.6.0",
-                "User-Agent": "candidhealth/1.6.0",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -400,8 +826,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.6.0",
-                "User-Agent": "candidhealth/1.6.0",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "candidhealth/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

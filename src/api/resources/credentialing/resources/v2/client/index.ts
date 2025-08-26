@@ -1,4 +1,9 @@
 export * from "./requests";
+export * as createFacility from "./createFacility";
+export * as getFacility from "./getFacility";
+export * as getAllFacilities from "./getAllFacilities";
+export * as deleteFacility from "./deleteFacility";
+export * as updateFacility from "./updateFacility";
 export * as create from "./create";
 export * as get from "./get";
 export * as getAll from "./getAll";
