@@ -14,7 +14,6 @@ import { SynchronicityType } from "./SynchronicityType";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ServiceAuthorizationExceptionCode } from "./ServiceAuthorizationExceptionCode";
 import { DelayReasonCode } from "../../../../commons/types/DelayReasonCode";
-import { VitalsUpdate } from "./VitalsUpdate";
 
 export const EncounterOptional: core.serialization.ObjectSchema<
     serializers.encounters.v4.EncounterOptional.Raw,
@@ -64,7 +63,6 @@ export const EncounterOptional: core.serialization.ObjectSchema<
         "patient_authorized_release",
         core.serialization.boolean().optional(),
     ),
-    vitals: VitalsUpdate.optional(),
     referralNumber: core.serialization.property("referral_number", core.serialization.string().optional()),
     secondaryPayerCarrierCode: core.serialization.property(
         "secondary_payer_carrier_code",
@@ -94,7 +92,6 @@ export declare namespace EncounterOptional {
         last_menstrual_period_date?: string | null;
         delay_reason_code?: DelayReasonCode.Raw | null;
         patient_authorized_release?: boolean | null;
-        vitals?: VitalsUpdate.Raw | null;
         referral_number?: string | null;
         secondary_payer_carrier_code?: string | null;
     }

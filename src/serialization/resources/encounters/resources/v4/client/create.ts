@@ -15,6 +15,7 @@ import { CashPayPayerErrorMessage } from "../types/CashPayPayerErrorMessage";
 import { SchemaInstanceValidationFailure } from "../types/SchemaInstanceValidationFailure";
 import { InvalidTagNamesErrorType } from "../types/InvalidTagNamesErrorType";
 import { PayerPlanGroupPayerDoesNotMatchInsuranceCardError } from "../types/PayerPlanGroupPayerDoesNotMatchInsuranceCardError";
+import { EncounterRenderingOrAttendingProviderRequiredError } from "../types/EncounterRenderingOrAttendingProviderRequiredError";
 
 export const Error: core.serialization.Schema<
     serializers.encounters.v4.create.Error.Raw,
@@ -54,6 +55,9 @@ export const Error: core.serialization.Schema<
         PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: core.serialization.object({
             content: PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
         }),
+        EncounterRenderingOrAttendingProviderRequired: core.serialization.object({
+            content: EncounterRenderingOrAttendingProviderRequiredError,
+        }),
     })
     .transform<CandidApi.encounters.v4.create.Error>({
         transform: (value) => {
@@ -86,6 +90,10 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError(
                         value.content,
                     );
+                case "EncounterRenderingOrAttendingProviderRequired":
+                    return CandidApi.encounters.v4.create.Error.encounterRenderingOrAttendingProviderRequired(
+                        value.content,
+                    );
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
@@ -103,7 +111,8 @@ export declare namespace Error {
         | Error.SchemaInstanceValidationHttpFailure
         | Error.InvalidTagNamesError
         | Error.HttpRequestValidationError
-        | Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError;
+        | Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError
+        | Error.EncounterRenderingOrAttendingProviderRequired;
 
     export interface EncounterExternalIdUniquenessError {
         errorName: "EncounterExternalIdUniquenessError";
@@ -158,5 +167,10 @@ export declare namespace Error {
     export interface PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError {
         errorName: "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError";
         content: PayerPlanGroupPayerDoesNotMatchInsuranceCardError.Raw;
+    }
+
+    export interface EncounterRenderingOrAttendingProviderRequired {
+        errorName: "EncounterRenderingOrAttendingProviderRequired";
+        content: EncounterRenderingOrAttendingProviderRequiredError.Raw;
     }
 }

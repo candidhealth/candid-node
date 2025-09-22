@@ -39,6 +39,7 @@ export const ServiceLineCreateOptional: core.serialization.ObjectSchema<
     orderingProvider: core.serialization.property("ordering_provider", OrderingProviderOptional.optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResultOptional).optional()),
     note: core.serialization.string().optional(),
+    revenueCode: core.serialization.property("revenue_code", core.serialization.string().optional()),
 });
 
 export declare namespace ServiceLineCreateOptional {
@@ -59,5 +60,6 @@ export declare namespace ServiceLineCreateOptional {
         ordering_provider?: OrderingProviderOptional.Raw | null;
         test_results?: TestResultOptional.Raw[] | null;
         note?: string | null;
+        revenue_code?: string | null;
     }
 }

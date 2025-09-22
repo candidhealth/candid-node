@@ -12,6 +12,7 @@ export * as credentialing from "./credentialing";
 export * as customSchemas from "./customSchemas";
 export * as encounterAttachments from "./encounterAttachments";
 export * as encounterProviders from "./encounterProviders";
+export * as encountersUniversal from "./encountersUniversal";
 export * as encounters from "./encounters";
 export * as expectedNetworkStatus from "./expectedNetworkStatus";
 export * as exports from "./exports";

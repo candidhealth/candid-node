@@ -377,15 +377,6 @@ import * as CandidApi from "../../../../../index";
  *                 frequency: "Once Daily",
  *                 asNeeded: true
  *             }],
- *         vitals: {
- *             heightIn: 70,
- *             weightLbs: 165,
- *             bloodPressureSystolicMmhg: 115,
- *             bloodPressureDiastolicMmhg: 85,
- *             bodyTemperatureF: 98,
- *             hemoglobinGdl: 15.1,
- *             hematocritPct: 51.2
- *         },
  *         interventions: [{
  *                 name: "Physical Therapy Session",
  *                 category: CandidApi.encounters.v4.InterventionCategory.Lifestyle,
@@ -448,7 +439,7 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     patient: CandidApi.Patient;
     /** Personal and contact info for the guarantor of the patient responsibility. */
     guarantor?: CandidApi.guarantor.v1.Guarantor;
-    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form. */
+    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form or Form Locator 1 on a UB-04 claim form. */
     billingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
     /**
      * The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service.
@@ -456,46 +447,39 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
      */
     renderingProvider: CandidApi.encounterProviders.v2.EncounterProvider;
     /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has overall responsibility for the patient in institutional claims processing. */
-    attendingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
+    attendingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     /**
      * 837i Loop 2300 DTP-03
      * Extension of the admission date with hour (0-23) details.
      * Required for institutional submission.
      */
     admissionHour?: number;
-    /**
-     * 837i Loop 2300 CL1-01
-     * Code used to indicate the priority of an admission or visit.
-     */
+    /** 837i Loop 2300 CL1-01 Code used to indicate the priority of an admission or visit. Equivalent to Form Locator 14 Priority of Admission on a UB-04 claim, not used on CMS-1500 claim forms. */
     admissionTypeCode?: CandidApi.x12.v1.TypeOfAdmissionOrVisitCode;
-    /**
-     * 837i Loop 2300 CLI1-02
-     * Code used to indicate the conditions under which an admission occurs.
-     */
+    /** 837i Loop 2300 CLI1-02 Code used to indicate the conditions under which an admission occurs. Equivalent to Form Locator 15 Point of Origin on a UB-04 claim, not used on CMS-1500 claim forms. */
     admissionSourceCode?: CandidApi.x12.v1.PointOfOriginForAdmissionOrVisitCode;
     /**
      * 837i Loop 2300 DTP-03
      * Extension of the discharge date with hour (0-23) details.
-     * Required for institutional submission.
      */
     dischargeHour?: number;
     /**
-     * 837i CL1-03
+     * 837i CL1-03 or Form Locator 17 on a UB-04 claim form. This is a required field on UB-04 claims.
      * Code indicating patient status as of the "statement covers through date".
      */
     dischargeStatus?: CandidApi.x12.v1.PatientDischargeStatusCode;
     /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has primary responsibility for surgical procedures in institutional claims processing. */
-    operatingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
+    operatingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has secondary responsibility for surgical procedures in institutional claims processing.  Only used when operating_provider is also set. */
-    otherOperatingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
+    otherOperatingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     /** Describes the currently expected target form for this encounter.  This effects what validations and queues the form is processed under.  When this value is not set, it should be assumed to be TARGET_PROFESSIONAL. */
     submissionExpectation?: CandidApi.encounters.v4.EncounterSubmissionExpectation;
-    /** Used by institutional forms to indicate how the bill is to be interpreted. Professional forms are not required to submit this attribute. */
+    /** Four digit code used in institutional forms to indicate the type of bill (e.g., hospital inpatient, hospital outpatient). First digit is a leading 0, followed by the type_of_facility, type_of_care, then frequency_code. Professional forms are not required to submit this attribute. You may send the 4 digit code via raw_code, or each individual digit separately via composite_codes. */
     typeOfBill?: CandidApi.x12.v1.TypeOfBillComposite;
     referringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     initialReferringProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     supervisingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
-    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process. */
+    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. There is no equivalent on the paper UB-04 claim form, but this field is equivalent to Loop 2310E Service Facility Location details on an 837i form, and is used when this is different to the entity identified as the Billing Provider. Note that for an in-network claim to be successfully adjudicated, the service facility address listed */
     serviceFacility: CandidApi.EncounterServiceFacility;
     /**
      * Subscriber_primary is required when responsible_party is INSURANCE_PAY (i.e. when the claim should be billed to insurance).
@@ -508,13 +492,13 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     subscriberSecondary?: CandidApi.Subscriber;
     /** Contains details of the tertiary insurance subscriber. */
     subscriberTertiary?: CandidApi.Subscriber;
-    /** Box 23 on the CMS-1500 claim form. */
+    /** Box 23 on the CMS-1500 claim form or Form Locator 63 on a UB-04 claim form. */
     priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
     /** Defines the party to be billed with the initial balance owed on the claim. */
     responsibleParty: CandidApi.encounters.v4.ResponsiblePartyType;
     /** URL that links directly to the claim created in Candid. */
     url: CandidApi.LinkUrl;
-    /** Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses may be submitted at this time, and coders will later prioritize the 12 that will be submitted to the payor. */
+    /** Contains the primary and other diagnosis health care code information objects associated with this encounter. For professional claims, these diagnoses correspond with those that are set on service lines directly, where as for institutional claims these are only associated directly with the claim itself.  See also Health Care Code Information objects and corresponding apis. */
     diagnoses: CandidApi.Diagnosis[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. Please note that medical records for appeals should be sent using the Encounter Attachments API. */
     clinicalNotes: CandidApi.encounters.v4.ClinicalNoteCategory[];
@@ -549,9 +533,9 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     schemaInstances: CandidApi.customSchemas.v1.SchemaInstance[];
     /** Refers to REF*9F on the 837p. Value cannot be greater than 50 characters. */
     referralNumber?: string;
-    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
+    /** Refers to Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P and 837i form */
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferral;
-    /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
+    /** Refers to Loop 2300 - Segment PWK on the 837P and 837i form. No more than 10 entries are permitted. */
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
     /** When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states. */
     secondaryPayerCarrierCode?: string;

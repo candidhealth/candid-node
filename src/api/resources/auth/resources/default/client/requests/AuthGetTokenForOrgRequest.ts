@@ -5,10 +5,18 @@
 /**
  * @example
  *     {
- *         orgId: "org_id"
+ *         orgId: "org_id",
+ *         clientId: "client_id",
+ *         clientSecret: "client_secret"
  *     }
  */
 export interface AuthGetTokenForOrgRequest {
     /** Organization ID to generate token for. */
     orgId: string;
+    /** Your application's Client ID. */
+    clientId: string;
+    /** Your application's Client Secret. */
+    clientSecret: string;
+    /** Refreshes auth token for a given user <> org pair. */
+    forceTokenRefresh?: boolean;
 }

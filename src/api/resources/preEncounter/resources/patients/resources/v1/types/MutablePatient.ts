@@ -35,7 +35,7 @@ export interface MutablePatient {
     /** Other addresses for the patient. */
     otherAddresses: CandidApi.preEncounter.Address[];
     /** The primary phone number for the patient. */
-    primaryTelecom: CandidApi.preEncounter.ContactPoint;
+    primaryTelecom?: CandidApi.preEncounter.ContactPoint;
     /** Other phone numbers for the patient. */
     otherTelecoms: CandidApi.preEncounter.ContactPoint[];
     email?: string;
@@ -61,4 +61,6 @@ export interface MutablePatient {
     tagIds?: CandidApi.preEncounter.TagId[];
     /** Information about the patient source, if applicable. */
     originationDetail?: CandidApi.preEncounter.patients.v1.OriginationDetail;
+    /** Metadata for the patient used for patient inference from encounters. */
+    inferredPatientMetadata?: CandidApi.preEncounter.patients.v1.InferredPatientMetadata;
 }

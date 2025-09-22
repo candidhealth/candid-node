@@ -378,15 +378,6 @@ import * as CandidApi from "../../../../../index";
  *                         frequency: "Once Daily",
  *                         asNeeded: true
  *                     }],
- *                 vitals: {
- *                     heightIn: 70,
- *                     weightLbs: 165,
- *                     bloodPressureSystolicMmhg: 115,
- *                     bloodPressureDiastolicMmhg: 85,
- *                     bodyTemperatureF: 98,
- *                     hemoglobinGdl: 15.1,
- *                     hematocritPct: 51.2
- *                 },
  *                 interventions: [{
  *                         name: "Physical Therapy Session",
  *                         category: CandidApi.encounters.v4.InterventionCategory.Lifestyle,

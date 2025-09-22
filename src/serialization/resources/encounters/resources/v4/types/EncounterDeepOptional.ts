@@ -5,6 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { VitalsUpdate } from "./VitalsUpdate";
 import { DiagnosisCreateOptional } from "../../../../diagnoses/types/DiagnosisCreateOptional";
 import { ClinicalNoteCategoryCreateOptional } from "./ClinicalNoteCategoryCreateOptional";
 import { ClaimSupplementalInformationOptional } from "./ClaimSupplementalInformationOptional";
@@ -33,6 +34,7 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
     CandidApi.encounters.v4.EncounterDeepOptional
 > = core.serialization
     .object({
+        vitals: VitalsUpdate.optional(),
         diagnoses: core.serialization.list(DiagnosisCreateOptional).optional(),
         clinicalNotes: core.serialization.property(
             "clinical_notes",
@@ -103,6 +105,7 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
 
 export declare namespace EncounterDeepOptional {
     export interface Raw extends EncounterOptional.Raw {
+        vitals?: VitalsUpdate.Raw | null;
         diagnoses?: DiagnosisCreateOptional.Raw[] | null;
         clinical_notes?: ClinicalNoteCategoryCreateOptional.Raw[] | null;
         claim_supplemental_information?: ClaimSupplementalInformationOptional.Raw[] | null;

@@ -14,7 +14,7 @@ export const Subscriber: core.serialization.ObjectSchema<
     CandidApi.preEncounter.coverages.v1.Subscriber
 > = core.serialization.object({
     name: HumanName,
-    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string()),
+    dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string().optional()),
     biologicalSex: core.serialization.property("biological_sex", Sex),
     address: Address.optional(),
 });
@@ -22,7 +22,7 @@ export const Subscriber: core.serialization.ObjectSchema<
 export declare namespace Subscriber {
     export interface Raw {
         name: HumanName.Raw;
-        date_of_birth: string;
+        date_of_birth?: string | null;
         biological_sex: Sex.Raw;
         address?: Address.Raw | null;
     }

@@ -5,59 +5,22 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
-import { Decimal } from "../../../../commons/types/Decimal";
-import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
-import { DrugIdentification } from "./DrugIdentification";
-import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
-import { OrderingProvider } from "../../../../encounterProviders/resources/v2/types/OrderingProvider";
-import { TestResult } from "./TestResult";
+import { ServiceLineCreateBase } from "./ServiceLineCreateBase";
 
 export const ServiceLineCreate: core.serialization.ObjectSchema<
     serializers.serviceLines.v2.ServiceLineCreate.Raw,
     CandidApi.serviceLines.v2.ServiceLineCreate
-> = core.serialization.object({
-    modifiers: core.serialization.list(ProcedureModifier).optional(),
-    hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
-    hasFamilyPlanningIndicator: core.serialization.property(
-        "has_family_planning_indicator",
-        core.serialization.boolean().optional(),
-    ),
-    procedureCode: core.serialization.property("procedure_code", core.serialization.string()),
-    quantity: Decimal,
-    units: ServiceLineUnits,
-    chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
-    diagnosisPointers: core.serialization.property(
-        "diagnosis_pointers",
-        core.serialization.list(core.serialization.number()),
-    ),
-    drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
-    placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
-    description: core.serialization.string().optional(),
-    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
-    endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
-    orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
-    testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
-    note: core.serialization.string().optional(),
-});
+> = core.serialization
+    .object({
+        diagnosisPointers: core.serialization.property(
+            "diagnosis_pointers",
+            core.serialization.list(core.serialization.number()),
+        ),
+    })
+    .extend(ServiceLineCreateBase);
 
 export declare namespace ServiceLineCreate {
-    export interface Raw {
-        modifiers?: ProcedureModifier.Raw[] | null;
-        has_epsdt_indicator?: boolean | null;
-        has_family_planning_indicator?: boolean | null;
-        procedure_code: string;
-        quantity: Decimal.Raw;
-        units: ServiceLineUnits.Raw;
-        charge_amount_cents?: number | null;
+    export interface Raw extends ServiceLineCreateBase.Raw {
         diagnosis_pointers: number[];
-        drug_identification?: DrugIdentification.Raw | null;
-        place_of_service_code?: FacilityTypeCode.Raw | null;
-        description?: string | null;
-        date_of_service?: string | null;
-        end_date_of_service?: string | null;
-        ordering_provider?: OrderingProvider.Raw | null;
-        test_results?: TestResult.Raw[] | null;
-        note?: string | null;
     }
 }

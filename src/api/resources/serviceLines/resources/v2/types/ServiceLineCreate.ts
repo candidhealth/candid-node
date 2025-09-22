@@ -4,51 +4,7 @@
 
 import * as CandidApi from "../../../../../index";
 
-export interface ServiceLineCreate {
-    modifiers?: CandidApi.ProcedureModifier[];
-    /**
-     * Maps to SV1-11 on the 837-P and Box 24H on the CMS-1500.
-     * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
-     */
-    hasEpsdtIndicator?: boolean;
-    /**
-     * Maps to SV1-12 on the 837-P and Box 24I on the CMS-1500.
-     * If the value is true, the box will be populated with "Y". Otherwise, the box will not be populated.
-     */
-    hasFamilyPlanningIndicator?: boolean;
-    procedureCode: string;
-    /**
-     * String representation of a Decimal that can be parsed by most libraries.
-     * A ServiceLine quantity cannot contain more than one digit of precision.
-     * Example: 1.1 is valid, 1.11 is not.
-     */
-    quantity: CandidApi.Decimal;
-    units: CandidApi.ServiceLineUnits;
-    /**
-     * The total amount charged for this service line taking quantity into account. For example, if a single unit
-     * costs 100 cents and 2 units were rendered, the `charge_amount_cents` should be 200. Should be greater than or
-     * equal to 0.
-     */
-    chargeAmountCents?: number;
+export interface ServiceLineCreate extends CandidApi.serviceLines.v2.ServiceLineCreateBase {
     /** Indices (zero-indexed) of all the diagnoses this service line references */
     diagnosisPointers: number[];
-    drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
-    /** 837p Loop2300, SV105. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
-    placeOfServiceCode?: CandidApi.FacilityTypeCode;
-    /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */
-    description?: string;
-    dateOfService?: string;
-    endDateOfService?: string;
-    /**
-     * Required when the service or supply was ordered by a provider who is different than the rendering provider for this service line.
-     * If not required by this implementation guide, do not send.
-     */
-    orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
-    /**
-     * Contains a list of test results. Test result types may map to MEA-02 on the 837-P (ex: Hemoglobin, Hematocrit).
-     * No more than 5 MEA-02 test results may be submitted per service line.
-     */
-    testResults?: CandidApi.serviceLines.v2.TestResult[];
-    /** Maps to NTE02 loop 2400 on the EDI 837. */
-    note?: string;
 }

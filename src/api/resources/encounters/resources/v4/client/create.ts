@@ -17,6 +17,7 @@ export type Error =
     | CandidApi.encounters.v4.create.Error.InvalidTagNamesError
     | CandidApi.encounters.v4.create.Error.HttpRequestValidationError
     | CandidApi.encounters.v4.create.Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError
+    | CandidApi.encounters.v4.create.Error.EncounterRenderingOrAttendingProviderRequired
     | CandidApi.encounters.v4.create.Error._Unknown;
 
 export namespace Error {
@@ -75,6 +76,11 @@ export namespace Error {
         content: CandidApi.encounters.v4.PayerPlanGroupPayerDoesNotMatchInsuranceCardError;
     }
 
+    export interface EncounterRenderingOrAttendingProviderRequired extends _Utils {
+        errorName: "EncounterRenderingOrAttendingProviderRequired";
+        content: CandidApi.encounters.v4.EncounterRenderingOrAttendingProviderRequiredError;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -105,6 +111,9 @@ export namespace Error {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: (
             value: CandidApi.encounters.v4.PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
+        ) => _Result;
+        encounterRenderingOrAttendingProviderRequired: (
+            value: CandidApi.encounters.v4.EncounterRenderingOrAttendingProviderRequiredError,
         ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -276,6 +285,21 @@ export const Error = {
         };
     },
 
+    encounterRenderingOrAttendingProviderRequired: (
+        value: CandidApi.encounters.v4.EncounterRenderingOrAttendingProviderRequiredError,
+    ): CandidApi.encounters.v4.create.Error.EncounterRenderingOrAttendingProviderRequired => {
+        return {
+            content: value,
+            errorName: "EncounterRenderingOrAttendingProviderRequired",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.create.Error.EncounterRenderingOrAttendingProviderRequired,
+                visitor: CandidApi.encounters.v4.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -316,6 +340,8 @@ export const Error = {
                 return visitor.httpRequestValidationError(value.content);
             case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                 return visitor.payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError(value.content);
+            case "EncounterRenderingOrAttendingProviderRequired":
+                return visitor.encounterRenderingOrAttendingProviderRequired(value.content);
             default:
                 return visitor._other(value as any);
         }

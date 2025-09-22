@@ -37,10 +37,10 @@ export class V2 {
      *
      * @example
      *     await client.serviceLines.v2.create({
-     *         procedureCode: "procedure_code",
      *         quantity: CandidApi.Decimal("quantity"),
      *         units: "MJ",
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         procedureCode: "procedure_code"
      *     })
      */
     public async create(
@@ -61,8 +61,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.7.0",
-                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -113,6 +113,170 @@ export class V2 {
     }
 
     /**
+     * @param {CandidApi.serviceLines.v2.UniversalServiceLineCreateStandalone} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.serviceLines.v2.createUniversal({
+     *         quantity: CandidApi.Decimal("quantity"),
+     *         units: "MJ",
+     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *     })
+     */
+    public async createUniversal(
+        request: CandidApi.serviceLines.v2.UniversalServiceLineCreateStandalone,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.createUniversal.Error>
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/service-lines/v2/universal",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.serviceLines.v2.UniversalServiceLineCreateStandalone.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.serviceLines.v2.createUniversal.Error.Raw)?.errorName) {
+                case "HttpRequestValidationError":
+                    return {
+                        ok: false,
+                        error: serializers.serviceLines.v2.createUniversal.Error.parseOrThrow(
+                            _response.error.body as serializers.serviceLines.v2.createUniversal.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.serviceLines.v2.createUniversal.Error._unknown(_response.error),
+        };
+    }
+
+    /**
+     * @param {CandidApi.ServiceLineId} serviceLineId
+     * @param {CandidApi.serviceLines.v2.UniversalServiceLineUpdate} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.serviceLines.v2.updateUniversal(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
+     */
+    public async updateUniversal(
+        serviceLineId: CandidApi.ServiceLineId,
+        request: CandidApi.serviceLines.v2.UniversalServiceLineUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.updateUniversal.Error>
+    > {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/universal`,
+            ),
+            method: "PATCH",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "candidhealth",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.serviceLines.v2.UniversalServiceLineUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                ok: true,
+                body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.serviceLines.v2.updateUniversal.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "HttpRequestValidationError":
+                    return {
+                        ok: false,
+                        error: serializers.serviceLines.v2.updateUniversal.Error.parseOrThrow(
+                            _response.error.body as serializers.serviceLines.v2.updateUniversal.Error.Raw,
+                            {
+                                unrecognizedObjectKeys: "passthrough",
+                                allowUnrecognizedUnionMembers: true,
+                                allowUnrecognizedEnumValues: true,
+                                breadcrumbsPrefix: ["response"],
+                            },
+                        ),
+                    };
+            }
+        }
+
+        return {
+            ok: false,
+            error: CandidApi.serviceLines.v2.updateUniversal.Error._unknown(_response.error),
+        };
+    }
+
+    /**
      * @param {CandidApi.ServiceLineId} serviceLineId
      * @param {CandidApi.serviceLines.v2.ServiceLineUpdate} request
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
@@ -139,8 +303,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.7.0",
-                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -217,8 +381,8 @@ export class V2 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.7.0",
-                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -22,6 +22,7 @@ export const ValidationError: core.serialization.Schema<
         empty_entries: core.serialization.object({}),
         payer_plan_group_not_found: EntityNotFoundErrorMessage,
         payer_plan_group_does_not_match_rate_payer: PayerPlanGroupDoesNotMatchRatePayerError,
+        payer_plan_group_network_type_mutual_exclusion: EntityConflictErrorMessage,
     })
     .transform<CandidApi.feeSchedules.v3.ValidationError>({
         transform: (value) => value,
@@ -36,7 +37,8 @@ export declare namespace ValidationError {
         | ValidationError.DuplicateRate
         | ValidationError.EmptyEntries
         | ValidationError.PayerPlanGroupNotFound
-        | ValidationError.PayerPlanGroupDoesNotMatchRatePayer;
+        | ValidationError.PayerPlanGroupDoesNotMatchRatePayer
+        | ValidationError.PayerPlanGroupNetworkTypeMutualExclusion;
 
     export interface OverlappingRateEntries extends OverlappingRateEntriesError.Raw {
         type: "overlapping_rate_entries";
@@ -64,5 +66,9 @@ export declare namespace ValidationError {
 
     export interface PayerPlanGroupDoesNotMatchRatePayer extends PayerPlanGroupDoesNotMatchRatePayerError.Raw {
         type: "payer_plan_group_does_not_match_rate_payer";
+    }
+
+    export interface PayerPlanGroupNetworkTypeMutualExclusion extends EntityConflictErrorMessage.Raw {
+        type: "payer_plan_group_network_type_mutual_exclusion";
     }
 }

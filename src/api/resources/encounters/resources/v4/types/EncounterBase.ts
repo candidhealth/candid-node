@@ -14,7 +14,7 @@ export interface EncounterBase {
     /**
      * Date formatted as YYYY-MM-DD; eg: 2019-08-24.
      * This date must be the local date in the timezone where the service occurred.
-     * Box 24a on the CMS-1500 claim form.
+     * Box 24a on the CMS-1500 claim form or Form Locator 45 on the UB-04 claim form.
      * If service occurred over a range of dates, this should be the start date.
      * date_of_service must be defined on either the encounter or the service lines but not both.
      * If there are greater than zero service lines, it is recommended to specify date_of_service on the service_line instead of on the encounter to prepare for future API versions.
@@ -31,25 +31,24 @@ export interface EncounterBase {
     /**
      * Whether this patient has authorized the release of medical information
      * for billing purpose.
-     * Box 12 on the CMS-1500 claim form.
+     * Box 12 on the CMS-1500 claim form  or Form Locator 52 on a UB-04 claim form.
      */
     patientAuthorizedRelease: boolean;
     /**
      * Whether this patient has authorized insurance payments to be made to you,
      * not them. If false, patient may receive reimbursement.
-     * Box 13 on the CMS-1500 claim form.
+     * Box 13 on the CMS-1500 claim form or Form Locator 53 on a UB-04 claim form.
      */
     benefitsAssignedToProvider: boolean;
     /**
      * Whether you have accepted the patient's authorization for insurance payments
      * to be made to you, not them.
-     * Box 27 on the CMS-1500 claim form.
+     * Box 27 on the CMS-1500 claim form. There is no exact equivalent of this field on a UB-04 claim, however contributes to the concept of Form Locator 53.
      */
     providerAcceptsAssignment: boolean;
     /** Human-readable description of the appointment type (ex: "Acupuncture - Headaches"). */
     appointmentType?: string;
     existingMedications?: CandidApi.encounters.v4.Medication[];
-    vitals?: CandidApi.encounters.v4.Vitals;
     interventions?: CandidApi.encounters.v4.Intervention[];
     /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressLongZip;
@@ -61,6 +60,7 @@ export interface EncounterBase {
      * directly with the provider, such as over video or a phone call.
      */
     synchronicity?: CandidApi.encounters.v4.SynchronicityType;
+    vitals?: CandidApi.encounters.v4.Vitals;
     /**
      * Defines if the Encounter is to be billed by Candid to the responsible_party.
      * Examples for when this should be set to NOT_BILLABLE include
@@ -69,7 +69,7 @@ export interface EncounterBase {
     billableStatus: CandidApi.encounters.v4.BillableStatusType;
     /**
      * Defines additional information on the claim needed by the payer.
-     * Box 19 on the CMS-1500 claim form.
+     * Box 19 on the CMS-1500 claim form or Form Locator 80 on a UB-04 claim form.
      */
     additionalInformation?: string;
     /**
@@ -80,27 +80,26 @@ export interface EncounterBase {
      */
     serviceAuthorizationExceptionCode?: CandidApi.encounters.v4.ServiceAuthorizationExceptionCode;
     /**
-     * 837p Loop2300 DTP*435, CMS-1500 Box 18
+     * 837p Loop2300 DTP*435, CMS-1500 Box 18 or UB-04 Form Locator 12.
      * Required on all ambulance claims when the patient was known to be admitted to the hospital.
      * OR
      * Required on all claims involving inpatient medical visits.
      */
     admissionDate?: string;
-    /**
-     * 837p Loop2300 DTP*096, CMS-1500 Box 18
-     * Required for inpatient claims when the patient was discharged from the facility and the discharge date is known.
-     */
+    /** 837p Loop2300 DTP*096, CMS-1500 Box 18 Required for inpatient claims when the patient was discharged from the facility and the discharge date is known. Not used on an institutional claim. */
     dischargeDate?: string;
     /**
      * 837p Loop2300 DTP*431, CMS-1500 Box 14
      * Required for the initial medical service or visit performed in response to a medical emergency when the date is available and is different than the date of service.
      * OR
      * This date is the onset of acute symptoms for the current illness or condition.
+     *  For UB-04 claims, this is populated separately via occurrence codes.
      */
     onsetOfCurrentIllnessOrSymptomDate?: string;
     /**
      * 837p Loop2300 DTP*484, CMS-1500 Box 14
      * Required when, in the judgment of the provider, the services on this claim are related to the patient's pregnancy.
+     * This field is populated separately via occurrence codes for UB-04 claim forms.
      */
     lastMenstrualPeriodDate?: string;
     /**

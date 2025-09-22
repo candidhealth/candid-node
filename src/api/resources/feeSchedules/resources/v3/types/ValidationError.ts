@@ -11,7 +11,8 @@ export type ValidationError =
     | CandidApi.feeSchedules.v3.ValidationError.DuplicateRate
     | CandidApi.feeSchedules.v3.ValidationError.EmptyEntries
     | CandidApi.feeSchedules.v3.ValidationError.PayerPlanGroupNotFound
-    | CandidApi.feeSchedules.v3.ValidationError.PayerPlanGroupDoesNotMatchRatePayer;
+    | CandidApi.feeSchedules.v3.ValidationError.PayerPlanGroupDoesNotMatchRatePayer
+    | CandidApi.feeSchedules.v3.ValidationError.PayerPlanGroupNetworkTypeMutualExclusion;
 
 export namespace ValidationError {
     export interface OverlappingRateEntries extends CandidApi.feeSchedules.v3.OverlappingRateEntriesError {
@@ -41,5 +42,9 @@ export namespace ValidationError {
     export interface PayerPlanGroupDoesNotMatchRatePayer
         extends CandidApi.feeSchedules.v3.PayerPlanGroupDoesNotMatchRatePayerError {
         type: "payer_plan_group_does_not_match_rate_payer";
+    }
+
+    export interface PayerPlanGroupNetworkTypeMutualExclusion extends CandidApi.EntityConflictErrorMessage {
+        type: "payer_plan_group_network_type_mutual_exclusion";
     }
 }

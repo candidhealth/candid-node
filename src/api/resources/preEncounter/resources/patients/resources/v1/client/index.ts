@@ -4,6 +4,7 @@ export * as createWithMrn from "./createWithMrn";
 export * as getMulti from "./getMulti";
 export * as searchProviders from "./searchProviders";
 export * as get from "./get";
+export * as getByMrn from "./getByMrn";
 export * as getHistory from "./getHistory";
 export * as update from "./update";
 export * as deactivate from "./deactivate";

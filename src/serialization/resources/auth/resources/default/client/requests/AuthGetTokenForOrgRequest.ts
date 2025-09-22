@@ -11,10 +11,16 @@ export const AuthGetTokenForOrgRequest: core.serialization.Schema<
     CandidApi.auth.default_.AuthGetTokenForOrgRequest
 > = core.serialization.object({
     orgId: core.serialization.property("org_id", core.serialization.string()),
+    clientId: core.serialization.property("client_id", core.serialization.string()),
+    clientSecret: core.serialization.property("client_secret", core.serialization.string()),
+    forceTokenRefresh: core.serialization.property("force_token_refresh", core.serialization.boolean().optional()),
 });
 
 export declare namespace AuthGetTokenForOrgRequest {
     export interface Raw {
         org_id: string;
+        client_id: string;
+        client_secret: string;
+        force_token_refresh?: boolean | null;
     }
 }

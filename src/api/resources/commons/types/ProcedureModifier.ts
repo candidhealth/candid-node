@@ -12,6 +12,16 @@ export type ProcedureModifier =
     /**
      * Item furnished in conjunction with dialysis services */
     | "AW"
+    | "07"
+    | "08"
+    | "09"
+    | "10"
+    | "11"
+    | "12"
+    | "13"
+    | "14"
+    | "15"
+    | "16"
     /**
      * Increased Procedural Services */
     | "22"
@@ -30,6 +40,7 @@ export type ProcedureModifier =
     /**
      * Multiple Outpatient Hospital E/M Encounters on the Same Date */
     | "27"
+    | "28"
     /**
      * Mandated Services */
     | "32"
@@ -1204,12 +1215,23 @@ export const ProcedureModifier = {
     Av: "AV",
     Au: "AU",
     Aw: "AW",
+    Seven: "07",
+    Eight: "08",
+    Nine: "09",
+    Ten: "10",
+    Eleven: "11",
+    Twelve: "12",
+    Thirteen: "13",
+    Fourteen: "14",
+    Fifteen: "15",
+    Sixteen: "16",
     TwentyTwo: "22",
     TwentyThree: "23",
     TwentyFour: "24",
     TwentyFive: "25",
     TwentySix: "26",
     TwentySeven: "27",
+    TwentyEight: "28",
     ThirtyTwo: "32",
     ThirtyThree: "33",
     FortySeven: "47",

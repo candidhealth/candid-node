@@ -9,7 +9,8 @@ export type PatientTransactionSource =
     | "STRIPE"
     | "ELATION"
     | "CEDAR"
-    | "HEALTHIE";
+    | "HEALTHIE"
+    | "REALLOCATION";
 export const PatientTransactionSource = {
     ManualEntry: "MANUAL_ENTRY",
     Chargebee: "CHARGEBEE",
@@ -18,4 +19,5 @@ export const PatientTransactionSource = {
     Elation: "ELATION",
     Cedar: "CEDAR",
     Healthie: "HEALTHIE",
+    Reallocation: "REALLOCATION",
 } as const;

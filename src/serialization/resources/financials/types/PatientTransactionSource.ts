@@ -9,8 +9,25 @@ import * as core from "../../../../core";
 export const PatientTransactionSource: core.serialization.Schema<
     serializers.PatientTransactionSource.Raw,
     CandidApi.PatientTransactionSource
-> = core.serialization.enum_(["MANUAL_ENTRY", "CHARGEBEE", "SQUARE", "STRIPE", "ELATION", "CEDAR", "HEALTHIE"]);
+> = core.serialization.enum_([
+    "MANUAL_ENTRY",
+    "CHARGEBEE",
+    "SQUARE",
+    "STRIPE",
+    "ELATION",
+    "CEDAR",
+    "HEALTHIE",
+    "REALLOCATION",
+]);
 
 export declare namespace PatientTransactionSource {
-    export type Raw = "MANUAL_ENTRY" | "CHARGEBEE" | "SQUARE" | "STRIPE" | "ELATION" | "CEDAR" | "HEALTHIE";
+    export type Raw =
+        | "MANUAL_ENTRY"
+        | "CHARGEBEE"
+        | "SQUARE"
+        | "STRIPE"
+        | "ELATION"
+        | "CEDAR"
+        | "HEALTHIE"
+        | "REALLOCATION";
 }

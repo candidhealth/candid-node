@@ -91,8 +91,8 @@ export class Default {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.7.0",
-                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -149,7 +149,9 @@ export class Default {
      *
      * @example
      *     await client.auth.default.getMachineTokenForOrgId({
-     *         orgId: "org_id"
+     *         orgId: "org_id",
+     *         clientId: "client_id",
+     *         clientSecret: "client_secret"
      *     })
      */
     public async getMachineTokenForOrgId(
@@ -175,8 +177,8 @@ export class Default {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.7.0",
-                "User-Agent": "candidhealth/1.7.0",
+                "X-Fern-SDK-Version": "1.8.0",
+                "User-Agent": "candidhealth/1.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

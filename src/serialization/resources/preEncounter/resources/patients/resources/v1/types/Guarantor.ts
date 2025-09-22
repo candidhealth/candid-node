@@ -16,7 +16,7 @@ export const Guarantor: core.serialization.ObjectSchema<
     name: HumanName,
     telecom: ContactPoint.optional(),
     email: core.serialization.string().optional(),
-    birthDate: core.serialization.property("birth_date", core.serialization.string()),
+    birthDate: core.serialization.property("birth_date", core.serialization.string().optional()),
     address: Address,
 });
 
@@ -25,7 +25,7 @@ export declare namespace Guarantor {
         name: HumanName.Raw;
         telecom?: ContactPoint.Raw | null;
         email?: string | null;
-        birth_date: string;
+        birth_date?: string | null;
         address: Address.Raw;
     }
 }

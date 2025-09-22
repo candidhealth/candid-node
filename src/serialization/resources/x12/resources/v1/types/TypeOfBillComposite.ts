@@ -5,25 +5,19 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
-import { TypeOfFacilityCode } from "./TypeOfFacilityCode";
-import { TypeOfCareCode } from "./TypeOfCareCode";
-import { TypeOfBillFrequencyCode } from "./TypeOfBillFrequencyCode";
+import { TypeOfBillCompositeBase } from "./TypeOfBillCompositeBase";
 
 export const TypeOfBillComposite: core.serialization.ObjectSchema<
     serializers.x12.v1.TypeOfBillComposite.Raw,
     CandidApi.x12.v1.TypeOfBillComposite
-> = core.serialization.object({
-    code: core.serialization.string(),
-    typeOfFacility: core.serialization.property("type_of_facility", TypeOfFacilityCode),
-    typeOfCare: core.serialization.property("type_of_care", TypeOfCareCode),
-    frequencyCode: core.serialization.property("frequency_code", TypeOfBillFrequencyCode),
-});
+> = core.serialization
+    .object({
+        code: core.serialization.string(),
+    })
+    .extend(TypeOfBillCompositeBase);
 
 export declare namespace TypeOfBillComposite {
-    export interface Raw {
+    export interface Raw extends TypeOfBillCompositeBase.Raw {
         code: string;
-        type_of_facility: TypeOfFacilityCode.Raw;
-        type_of_care: TypeOfCareCode.Raw;
-        frequency_code: TypeOfBillFrequencyCode.Raw;
     }
 }

@@ -29,6 +29,7 @@ import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 import { NoteId } from "../../../../common/types/NoteId";
 import { TagId } from "../../../../common/types/TagId";
 import { OriginationDetail } from "./OriginationDetail";
+import { InferredPatientMetadata } from "./InferredPatientMetadata";
 
 export const MutablePatient: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.MutablePatient.Raw,
@@ -54,7 +55,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
     multipleBirth: core.serialization.property("multiple_birth", core.serialization.number().optional()),
     primaryAddress: core.serialization.property("primary_address", Address),
     otherAddresses: core.serialization.property("other_addresses", core.serialization.list(Address)),
-    primaryTelecom: core.serialization.property("primary_telecom", ContactPoint),
+    primaryTelecom: core.serialization.property("primary_telecom", ContactPoint.optional()),
     otherTelecoms: core.serialization.property("other_telecoms", core.serialization.list(ContactPoint)),
     email: core.serialization.string().optional(),
     electronicCommunicationOptIn: core.serialization.property(
@@ -90,6 +91,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
     noteIds: core.serialization.property("note_ids", core.serialization.list(NoteId).optional()),
     tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
     originationDetail: core.serialization.property("origination_detail", OriginationDetail.optional()),
+    inferredPatientMetadata: core.serialization.property(
+        "inferred_patient_metadata",
+        InferredPatientMetadata.optional(),
+    ),
 });
 
 export declare namespace MutablePatient {
@@ -111,7 +116,7 @@ export declare namespace MutablePatient {
         multiple_birth?: number | null;
         primary_address: Address.Raw;
         other_addresses: Address.Raw[];
-        primary_telecom: ContactPoint.Raw;
+        primary_telecom?: ContactPoint.Raw | null;
         other_telecoms: ContactPoint.Raw[];
         email?: string | null;
         electronic_communication_opt_in?: boolean | null;
@@ -132,5 +137,6 @@ export declare namespace MutablePatient {
         note_ids?: NoteId.Raw[] | null;
         tag_ids?: TagId.Raw[] | null;
         origination_detail?: OriginationDetail.Raw | null;
+        inferred_patient_metadata?: InferredPatientMetadata.Raw | null;
     }
 }

@@ -5,6 +5,7 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import { V3 } from "../resources/v3/client/Client";
+import { V4 } from "../resources/v4/client/Client";
 
 export declare namespace Payers {
     export interface Options {
@@ -28,10 +29,15 @@ export declare namespace Payers {
 
 export class Payers {
     protected _v3: V3 | undefined;
+    protected _v4: V4 | undefined;
 
     constructor(protected readonly _options: Payers.Options = {}) {}
 
     public get v3(): V3 {
         return (this._v3 ??= new V3(this._options));
+    }
+
+    public get v4(): V4 {
+        return (this._v4 ??= new V4(this._options));
     }
 }

@@ -6,6 +6,11 @@ import * as CandidApi from "../../../../../index";
 
 export interface EncounterDeepOptional extends CandidApi.encounters.v4.EncounterOptional {
     /**
+     * If a vitals entity already exists for the encounter, then all values will be updated to the provided values.
+     * Otherwise, a new vitals object will be created for the encounter.
+     */
+    vitals?: CandidApi.encounters.v4.VitalsUpdate;
+    /**
      * Ideally, this field should contain no more than 12 diagnoses. However, more diagnoses
      * may be submitted at this time, and coders will later prioritize the 12 that will be
      * submitted to the payor.
@@ -13,9 +18,9 @@ export interface EncounterDeepOptional extends CandidApi.encounters.v4.Encounter
     diagnoses?: CandidApi.DiagnosisCreateOptional[];
     /** Holds a collection of clinical observations made by healthcare providers during patient encounters. Please note that medical records for appeals should be sent using the Encounter Attachments API. */
     clinicalNotes?: CandidApi.encounters.v4.ClinicalNoteCategoryCreateOptional[];
-    /** Refers to Loop 2300 - Segment PWK on the 837P form. No more than 10 entries are permitted. */
+    /** Refers to Loop 2300 - Segment PWK on the 837P and 837i form. No more than 10 entries are permitted. */
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformationOptional[];
-    /** Refers Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P form */
+    /** Refers to Box 24H on the CMS1500 form and Loop 2300 CRC - EPSDT Referral on the 837P and 837i form */
     epsdtReferral?: CandidApi.encounters.v4.EpsdtReferralOptional;
     /**
      * Existing medications that should be on the encounter.
@@ -58,7 +63,7 @@ export interface EncounterDeepOptional extends CandidApi.encounters.v4.Encounter
     billingNotes?: CandidApi.billingNotes.v2.BillingNoteBaseOptional[];
     /** Contains the identification information of the individual receiving medical services. */
     patient?: CandidApi.PatientUpdateWithOptionalAddress;
-    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. Note that for an in-network claim to be successfully adjudicated, the service facility address listed on claims must match what was provided to the payer during the credentialing process. */
+    /** Encounter Service facility is typically the location a medical service was rendered, such as a provider office or hospital. For telehealth, service facility can represent the provider's location when the service was delivered (e.g., home), or the location where an in-person visit would have taken place, whichever is easier to identify. If the provider is in-network, service facility may be defined in payer contracts. Box 32 on the CMS-1500 claim form. There is no equivalent on the paper UB-04 claim form, but this field is equivalent to Loop 2310E Service Facility Location details on an 837i form, and is used when this is different to the entity identified as the Billing Provider. Note that for an in-network claim to be successfully adjudicated, the service facility address listed */
     serviceFacility?: CandidApi.EncounterServiceFacilityUpdateWithOptionalAddress;
     /** The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service. For telehealth services, the rendering provider performs the visit, asynchronous communication, or other service. The rendering provider address should generally be the same as the service facility address. */
     renderingProvider?: CandidApi.encounterProviders.v2.RenderingProviderUpdateWithOptionalAddress;
@@ -75,7 +80,7 @@ export interface EncounterDeepOptional extends CandidApi.encounters.v4.Encounter
     referringProvider?: CandidApi.encounterProviders.v2.ReferringProviderUpdateWithOptionalAddress;
     /** Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send. */
     supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProviderUpdateWithOptionalAddress;
-    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form. */
+    /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim form or Form Locator 1 on a UB-04 claim form. */
     billingProvider?: CandidApi.encounterProviders.v2.BillingProviderUpdateWithOptionalAddress;
     /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressShortZipOptional;

@@ -8,6 +8,6 @@ export interface Guarantor {
     name: CandidApi.preEncounter.HumanName;
     telecom?: CandidApi.preEncounter.ContactPoint;
     email?: string;
-    birthDate: string;
+    birthDate?: string;
     address: CandidApi.preEncounter.Address;
 }

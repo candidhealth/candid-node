@@ -47,10 +47,6 @@ import * as CandidApi from "../../../../../../../../index";
  *                     postalCode: "postal_code",
  *                     country: "country"
  *                 }],
- *             primaryTelecom: {
- *                 value: "value",
- *                 use: "HOME"
- *             },
  *             otherTelecoms: [{
  *                     value: "value",
  *                     use: "HOME"

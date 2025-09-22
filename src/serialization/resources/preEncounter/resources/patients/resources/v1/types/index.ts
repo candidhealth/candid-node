@@ -6,6 +6,7 @@ export * from "./FilingOrder";
 export * from "./DoNotInvoiceReason";
 export * from "./MutablePatient";
 export * from "./MutablePatientWithMrn";
+export * from "./InferredPatientMetadata";
 export * from "./Patient";
 export * from "./PatientPage";
 export * from "./AuthorizationUnit";

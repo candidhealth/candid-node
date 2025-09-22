@@ -6,7 +6,7 @@ import * as CandidApi from "../../../../../../../index";
 
 export interface Subscriber {
     name: CandidApi.preEncounter.HumanName;
-    dateOfBirth: string;
+    dateOfBirth?: string;
     biologicalSex: CandidApi.preEncounter.Sex;
     address?: CandidApi.preEncounter.Address;
 }

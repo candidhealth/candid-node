@@ -19,23 +19,20 @@ export interface ServiceLineCreateOptional {
     procedureCode?: string;
     /**
      * String representation of a Decimal that can be parsed by most libraries.
-     * A ServiceLine quantity cannot contain more than one digit of precision.
-     * Example: 1.1 is valid, 1.11 is not.
+     * For professional claims, a ServiceLine quantity cannot contain more than one digit of precision
+     * (Example: 1.1 is valid, 1.11 is not). For institutional claims, a ServiceLine quantity cannot contain
+     * more than three decimal digits of precision.
      */
     quantity?: CandidApi.Decimal;
     units?: CandidApi.ServiceLineUnits;
-    /**
-     * The total amount charged for this service line taking quantity into account. For example, if a single unit
-     * costs 100 cents and 2 units were rendered, the `charge_amount_cents` should be 200. Should be greater than or
-     * equal to 0.
-     */
+    /** The total amount charged for this service line, factoring in quantity. If procedure_code is updated and this is not, the system will attempt to set it based on chargemasters entries and the service line’s quantity. For example, if a single unit has an entry of 100 cents and 2 units were rendered, the charge_amount_cents will be set to 200, if there is no chargemaster entry, it will default to the amount set in this field. */
     chargeAmountCents?: number;
     /** Indices (zero-indexed) of all the diagnoses this service line references */
     diagnosisPointers?: number[];
     drugIdentification?: CandidApi.serviceLines.v2.DrugIdentificationOptional;
-    /** 837p Loop2300, SV105. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
+    /** 837p Loop2300, SV105. This enum is not used or required in 837i claims. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
-    /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on the 837-P. */
+    /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on a 837-P and SV2-02, C003-07 on a 837-I form. */
     description?: string;
     dateOfService?: string;
     endDateOfService?: string;
@@ -46,9 +43,12 @@ export interface ServiceLineCreateOptional {
     orderingProvider?: CandidApi.encounterProviders.v2.OrderingProviderOptional;
     /**
      * Contains a list of test results. Test result types may map to MEA-02 on the 837-P (ex: Hemoglobin, Hematocrit).
+     * This is unused by 837-i and ignored for institutional service lines.
      * No more than 5 MEA-02 test results may be submitted per service line.
      */
     testResults?: CandidApi.serviceLines.v2.TestResultOptional[];
     /** Maps to NTE02 loop 2400 on the EDI 837. */
     note?: string;
+    /** A 4 digit code that specifies facility department or type of service arrangement for institutional service line items (837i). This code is not required for professional claim billing (837p). */
+    revenueCode?: string;
 }

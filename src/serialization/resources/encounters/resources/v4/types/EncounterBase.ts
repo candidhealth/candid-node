@@ -7,10 +7,10 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { EncounterExternalId } from "../../../../commons/types/EncounterExternalId";
 import { Medication } from "./Medication";
-import { Vitals } from "./Vitals";
 import { Intervention } from "./Intervention";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { SynchronicityType } from "./SynchronicityType";
+import { Vitals } from "./Vitals";
 import { BillableStatusType } from "./BillableStatusType";
 import { ServiceAuthorizationExceptionCode } from "./ServiceAuthorizationExceptionCode";
 import { DelayReasonCode } from "../../../../commons/types/DelayReasonCode";
@@ -33,10 +33,10 @@ export const EncounterBase: core.serialization.ObjectSchema<
         "existing_medications",
         core.serialization.list(Medication).optional(),
     ),
-    vitals: Vitals.optional(),
     interventions: core.serialization.list(Intervention).optional(),
     payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
     synchronicity: SynchronicityType.optional(),
+    vitals: Vitals.optional(),
     billableStatus: core.serialization.property("billable_status", BillableStatusType),
     additionalInformation: core.serialization.property(
         "additional_information",
@@ -69,10 +69,10 @@ export declare namespace EncounterBase {
         provider_accepts_assignment: boolean;
         appointment_type?: string | null;
         existing_medications?: Medication.Raw[] | null;
-        vitals?: Vitals.Raw | null;
         interventions?: Intervention.Raw[] | null;
         pay_to_address?: StreetAddressLongZip.Raw | null;
         synchronicity?: SynchronicityType.Raw | null;
+        vitals?: Vitals.Raw | null;
         billable_status: BillableStatusType.Raw;
         additional_information?: string | null;
         service_authorization_exception_code?: ServiceAuthorizationExceptionCode.Raw | null;

@@ -9,8 +9,8 @@ import * as core from "../../../../../../../../core";
 export const ReferralType: core.serialization.Schema<
     serializers.preEncounter.patients.v1.ReferralType.Raw,
     CandidApi.preEncounter.patients.v1.ReferralType
-> = core.serialization.enum_(["DIRECTED", "ROTATION"]);
+> = core.serialization.enum_(["DIRECTED", "ROTATION", "OVERNIGHT"]);
 
 export declare namespace ReferralType {
-    export type Raw = "DIRECTED" | "ROTATION";
+    export type Raw = "DIRECTED" | "ROTATION" | "OVERNIGHT";
 }

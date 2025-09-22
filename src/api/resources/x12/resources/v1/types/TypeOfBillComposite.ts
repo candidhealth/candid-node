@@ -4,13 +4,7 @@
 
 import * as CandidApi from "../../../../../index";
 
-export interface TypeOfBillComposite {
+export interface TypeOfBillComposite extends CandidApi.x12.v1.TypeOfBillCompositeBase {
     /** The composite, 4 digit code of the composite, starting with a padding code 0. */
     code: string;
-    /** The FL04 Institutional type of facility code for the bill.  The second digit of the composite code. */
-    typeOfFacility: CandidApi.x12.v1.TypeOfFacilityCode;
-    /** The FL04 Institutional type of care code for the bill.  The second digit of the composite code. */
-    typeOfCare: CandidApi.x12.v1.TypeOfCareCode;
-    /** The FL04 Institutional frequency code for the bill.  The fourth digit of the composite code. */
-    frequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode;
 }
