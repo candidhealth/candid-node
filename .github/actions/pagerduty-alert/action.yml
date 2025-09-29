@@ -1,0 +1,21 @@
+name: 'PagerDuty Alert'
+description: 'GitHub Action to send a critical PagerDuty alert, e.g. on action failure.'
+inputs:
+  pagerduty-api-key:
+    description: 'The API key for PagerDuty.'
+    required: true
+  pagerduty-service-id:
+    description: 'The ID of the service in Pagerduty to assign the alert to.'
+    required: true
+  pagerduty-user-id:
+    description: 'The Pagerduty user ID of the person to page.'
+    required: true
+  pagerduty-user-email:
+    description: 'The email of the user to run the Pagerduty alert as.'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
+branding:
+  icon: 'alert-triangle'
+  color: 'red'
