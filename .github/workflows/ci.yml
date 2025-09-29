@@ -55,3 +55,33 @@ jobs:
           fi
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  alert-on-failure:
+    needs: [
+      compile,
+      test,
+      publish,
+    ]
+    if: ${{ !cancelled() && failure() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+        with:
+          sparse-checkout: .github
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies for PagerDuty action
+        run: |
+          cd .github/actions/pagerduty-alert
+          npm install
+      - name: Send PagerDuty Alert
+        uses: ./.github/actions/pagerduty-alert
+        id: pagerduty-alert
+        with:
+          pagerduty-api-key: "${{ secrets.PAGERDUTY_API_KEY }}"
+          pagerduty-service-id:  "${{ secrets.PAGERDUTY_SERVICE_ID }}"
+          pagerduty-user-id: "${{ secrets.PAGERDUTY_USER_ID }}"
+          pagerduty-user-email: "${{ secrets.PAGERDUTY_USER_EMAIL }}"

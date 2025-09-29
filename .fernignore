@@ -2,3 +2,7 @@
 
 # Top-level files and folders
 examples
+
+# Ignore workflow changes
+.github/workflows/ci.yml
+.github/workflows/actions/*
