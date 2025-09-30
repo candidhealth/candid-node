@@ -15,6 +15,7 @@ import * as CandidApi from "../../../../../index";
  *         phoneConsent: true,
  *         email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *         emailConsent: true,
+ *         autoChargeConsent: true,
  *         firstName: "John",
  *         lastName: "Doe",
  *         externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
@@ -35,4 +36,5 @@ export interface Guarantor extends CandidApi.guarantor.v1.GuarantorBase {
     phoneConsent: boolean;
     email?: CandidApi.Email;
     emailConsent: boolean;
+    autoChargeConsent?: boolean;
 }

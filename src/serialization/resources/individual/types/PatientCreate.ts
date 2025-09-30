@@ -26,6 +26,10 @@ export const PatientCreate: core.serialization.ObjectSchema<serializers.PatientC
                 core.serialization.list(PatientNonInsurancePayerInfoCreate).optional(),
             ),
             emailConsent: core.serialization.property("email_consent", core.serialization.boolean().optional()),
+            autoChargeConsent: core.serialization.property(
+                "auto_charge_consent",
+                core.serialization.boolean().optional(),
+            ),
         })
         .extend(PatientBase);
 
@@ -37,5 +41,6 @@ export declare namespace PatientCreate {
         non_insurance_payers?: NonInsurancePayerId.Raw[] | null;
         non_insurance_payers_info?: PatientNonInsurancePayerInfoCreate.Raw[] | null;
         email_consent?: boolean | null;
+        auto_charge_consent?: boolean | null;
     }
 }

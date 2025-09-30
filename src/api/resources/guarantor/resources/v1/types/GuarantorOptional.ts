@@ -16,4 +16,5 @@ export interface GuarantorOptional {
     phoneConsent?: boolean;
     email?: CandidApi.Email;
     emailConsent?: boolean;
+    autoChargeConsent?: boolean;
 }

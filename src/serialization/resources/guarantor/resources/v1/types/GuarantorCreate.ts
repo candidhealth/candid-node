@@ -18,6 +18,7 @@ export const GuarantorCreate: core.serialization.ObjectSchema<
         phoneConsent: core.serialization.property("phone_consent", core.serialization.boolean().optional()),
         email: Email.optional(),
         emailConsent: core.serialization.property("email_consent", core.serialization.boolean().optional()),
+        autoChargeConsent: core.serialization.property("auto_charge_consent", core.serialization.boolean().optional()),
     })
     .extend(GuarantorBase);
 
@@ -27,5 +28,6 @@ export declare namespace GuarantorCreate {
         phone_consent?: boolean | null;
         email?: Email.Raw | null;
         email_consent?: boolean | null;
+        auto_charge_consent?: boolean | null;
     }
 }

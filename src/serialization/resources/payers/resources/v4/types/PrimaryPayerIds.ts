@@ -6,18 +6,18 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 
-export const PayerIds: core.serialization.ObjectSchema<
-    serializers.payers.v4.PayerIds.Raw,
-    CandidApi.payers.v4.PayerIds
+export const PrimaryPayerIds: core.serialization.ObjectSchema<
+    serializers.payers.v4.PrimaryPayerIds.Raw,
+    CandidApi.payers.v4.PrimaryPayerIds
 > = core.serialization.object({
-    claimsPayerId: core.serialization.property("claims_payer_id", core.serialization.string().optional()),
+    claimsPayerId: core.serialization.property("claims_payer_id", core.serialization.string()),
     eligibilityPayerId: core.serialization.property("eligibility_payer_id", core.serialization.string().optional()),
     remittancePayerId: core.serialization.property("remittance_payer_id", core.serialization.string().optional()),
 });
 
-export declare namespace PayerIds {
+export declare namespace PrimaryPayerIds {
     export interface Raw {
-        claims_payer_id?: string | null;
+        claims_payer_id: string;
         eligibility_payer_id?: string | null;
         remittance_payer_id?: string | null;
     }

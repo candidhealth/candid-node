@@ -6,6 +6,7 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { PayerIds } from "./PayerIds";
+import { SupportState } from "./SupportState";
 
 export const ClearinghousePayerInfo: core.serialization.ObjectSchema<
     serializers.payers.v4.ClearinghousePayerInfo.Raw,
@@ -14,6 +15,10 @@ export const ClearinghousePayerInfo: core.serialization.ObjectSchema<
     payerName: core.serialization.property("payer_name", core.serialization.string()),
     professionalPayerIds: core.serialization.property("professional_payer_ids", PayerIds),
     institutionalPayerIds: core.serialization.property("institutional_payer_ids", PayerIds),
+    professionalClaimsSupport: core.serialization.property("professional_claims_support", SupportState),
+    institutionalClaimsSupport: core.serialization.property("institutional_claims_support", SupportState),
+    eligibilitySupport: core.serialization.property("eligibility_support", SupportState),
+    remittanceSupport: core.serialization.property("remittance_support", SupportState),
 });
 
 export declare namespace ClearinghousePayerInfo {
@@ -21,5 +26,9 @@ export declare namespace ClearinghousePayerInfo {
         payer_name: string;
         professional_payer_ids: PayerIds.Raw;
         institutional_payer_ids: PayerIds.Raw;
+        professional_claims_support: SupportState.Raw;
+        institutional_claims_support: SupportState.Raw;
+        eligibility_support: SupportState.Raw;
+        remittance_support: SupportState.Raw;
     }
 }

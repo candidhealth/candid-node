@@ -132,6 +132,7 @@ import * as CandidApi from "../../../../../index";
  *             phoneConsent: true,
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *             emailConsent: true,
+ *             autoChargeConsent: true,
  *             externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",
  *             dateOfBirth: "2000-01-01",
  *             address: {
@@ -155,6 +156,7 @@ import * as CandidApi from "../../../../../index";
  *             phoneConsent: true,
  *             email: CandidApi.Email("johndoe@joincandidhealth.com"),
  *             emailConsent: true,
+ *             autoChargeConsent: true,
  *             firstName: "John",
  *             lastName: "Doe",
  *             externalId: "49460F77-6456-41F1-AC6D-0AED08614D39",

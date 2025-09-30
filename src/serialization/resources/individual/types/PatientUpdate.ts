@@ -24,6 +24,7 @@ export const PatientUpdate: core.serialization.ObjectSchema<serializers.PatientU
         phoneConsent: core.serialization.property("phone_consent", core.serialization.boolean().optional()),
         email: Email.optional(),
         emailConsent: core.serialization.property("email_consent", core.serialization.boolean().optional()),
+        autoChargeConsent: core.serialization.property("auto_charge_consent", core.serialization.boolean().optional()),
         nonInsurancePayers: core.serialization.property(
             "non_insurance_payers",
             core.serialization.list(NonInsurancePayerId).optional(),
@@ -46,6 +47,7 @@ export declare namespace PatientUpdate {
         phone_consent?: boolean | null;
         email?: Email.Raw | null;
         email_consent?: boolean | null;
+        auto_charge_consent?: boolean | null;
         non_insurance_payers?: NonInsurancePayerId.Raw[] | null;
         non_insurance_payers_info?: PatientNonInsurancePayerInfoCreate.Raw[] | null;
     }

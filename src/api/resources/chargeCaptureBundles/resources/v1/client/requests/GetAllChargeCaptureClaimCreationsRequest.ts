@@ -87,6 +87,26 @@ export interface GetAllChargeCaptureClaimCreationsRequest {
      */
     supervisingProviderNames?: string | string[];
     /**
+     * the status of the claim to filter by created from charge capture bundle.
+     */
+    claimStatus?: CandidApi.ClaimStatus;
+    /**
+     * A list of claim creation categories to filter by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list.
+     */
+    claimCreationCategory?: string | string[];
+    /**
+     * A list of tags to filter by. This will return all charge captures with one of the tags.
+     */
+    tags?: string | string[];
+    /**
+     * A list of primary payer names to filter by. This will return all charge captures with one of the names.
+     */
+    primaryPayerNames?: string | string[];
+    /**
+     * A list of patient names to filter by. This will return all charge captures with one of the names.
+     */
+    patientNames?: string | string[];
+    /**
      * If true, only return claim_creations that have charge captures that have been updated since the Claim Creation has had a status of BILLED. See the updates property on ChargeCapture for more details.
      */
     hasChargeCaptureUpdates?: boolean;

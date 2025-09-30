@@ -8,7 +8,7 @@ export interface Payer {
     /** Auto-generated ID set on creation. */
     payerUuid: CandidApi.payers.v4.PayerUuid;
     /** The primary national payer IDs of the payer. */
-    payerIds: CandidApi.payers.v4.PayerIds;
+    payerIds: CandidApi.payers.v4.PrimaryPayerIds;
     /** The primary display name of the payer. */
     payerName: string;
     clearinghousePayerInfo: Record<CandidApi.Clearinghouse, CandidApi.payers.v4.ClearinghousePayerInfo | undefined>;

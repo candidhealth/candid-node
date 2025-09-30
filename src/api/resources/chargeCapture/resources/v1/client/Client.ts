@@ -61,8 +61,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.0",
-                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-SDK-Version": "1.8.1",
+                "User-Agent": "candidhealth/1.8.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -172,8 +172,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.0",
-                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-SDK-Version": "1.8.1",
+                "User-Agent": "candidhealth/1.8.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -259,8 +259,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.0",
-                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-SDK-Version": "1.8.1",
+                "User-Agent": "candidhealth/1.8.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -339,8 +339,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.0",
-                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-SDK-Version": "1.8.1",
+                "User-Agent": "candidhealth/1.8.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -401,6 +401,10 @@ export class V1 {
             renderingProviderNames,
             supervisingProviderNpis,
             supervisingProviderNames,
+            claimCreationCategory,
+            tags,
+            primaryPayerNames,
+            patientNames,
             excludeChargesLinkedToClaims,
             patientExternalIdRankedSort,
             statusRankedSort,
@@ -419,6 +423,11 @@ export class V1 {
             renderingProviderNamesRankedSort,
             supervisingProviderNpisRankedSort,
             supervisingProviderNamesRankedSort,
+            claimStatus,
+            claimCreationCategoryRankedSort,
+            tagsRankedSort,
+            primaryPayerNamesRankedSort,
+            patientNamesRankedSort,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -532,6 +541,38 @@ export class V1 {
                 _queryParams["supervising_provider_names"] = supervisingProviderNames.map((item) => item);
             } else {
                 _queryParams["supervising_provider_names"] = supervisingProviderNames;
+            }
+        }
+
+        if (claimCreationCategory != null) {
+            if (Array.isArray(claimCreationCategory)) {
+                _queryParams["claim_creation_category"] = claimCreationCategory.map((item) => item);
+            } else {
+                _queryParams["claim_creation_category"] = claimCreationCategory;
+            }
+        }
+
+        if (tags != null) {
+            if (Array.isArray(tags)) {
+                _queryParams["tags"] = tags.map((item) => item);
+            } else {
+                _queryParams["tags"] = tags;
+            }
+        }
+
+        if (primaryPayerNames != null) {
+            if (Array.isArray(primaryPayerNames)) {
+                _queryParams["primary_payer_names"] = primaryPayerNames.map((item) => item);
+            } else {
+                _queryParams["primary_payer_names"] = primaryPayerNames;
+            }
+        }
+
+        if (patientNames != null) {
+            if (Array.isArray(patientNames)) {
+                _queryParams["patient_names"] = patientNames.map((item) => item);
+            } else {
+                _queryParams["patient_names"] = patientNames;
             }
         }
 
@@ -659,6 +700,46 @@ export class V1 {
             }
         }
 
+        if (claimStatus != null) {
+            _queryParams["claim_status"] = serializers.ClaimStatus.jsonOrThrow(claimStatus, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (claimCreationCategoryRankedSort != null) {
+            if (Array.isArray(claimCreationCategoryRankedSort)) {
+                _queryParams["claim_creation_category_ranked_sort"] = claimCreationCategoryRankedSort.map(
+                    (item) => item,
+                );
+            } else {
+                _queryParams["claim_creation_category_ranked_sort"] = claimCreationCategoryRankedSort;
+            }
+        }
+
+        if (tagsRankedSort != null) {
+            if (Array.isArray(tagsRankedSort)) {
+                _queryParams["tags_ranked_sort"] = tagsRankedSort.map((item) => item);
+            } else {
+                _queryParams["tags_ranked_sort"] = tagsRankedSort;
+            }
+        }
+
+        if (primaryPayerNamesRankedSort != null) {
+            if (Array.isArray(primaryPayerNamesRankedSort)) {
+                _queryParams["primary_payer_names_ranked_sort"] = primaryPayerNamesRankedSort.map((item) => item);
+            } else {
+                _queryParams["primary_payer_names_ranked_sort"] = primaryPayerNamesRankedSort;
+            }
+        }
+
+        if (patientNamesRankedSort != null) {
+            if (Array.isArray(patientNamesRankedSort)) {
+                _queryParams["patient_names_ranked_sort"] = patientNamesRankedSort.map((item) => item);
+            } else {
+                _queryParams["patient_names_ranked_sort"] = patientNamesRankedSort;
+            }
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -673,8 +754,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.0",
-                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-SDK-Version": "1.8.1",
+                "User-Agent": "candidhealth/1.8.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -737,8 +818,8 @@ export class V1 {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.0",
-                "User-Agent": "candidhealth/1.8.0",
+                "X-Fern-SDK-Version": "1.8.1",
+                "User-Agent": "candidhealth/1.8.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -83,6 +83,22 @@ export interface GetAllChargeCapturesRequest {
      */
     supervisingProviderNames?: string | string[];
     /**
+     * A list of claim creation categories to filter by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list.
+     */
+    claimCreationCategory?: string | string[];
+    /**
+     * A list of tags to filter by. This will return all charge captures with one of the tags.
+     */
+    tags?: string | string[];
+    /**
+     * A list of primary payer names to filter by. This will return all charge captures with one of the names.
+     */
+    primaryPayerNames?: string | string[];
+    /**
+     * A list of patient names to filter by. This will return all charge captures with one of the names.
+     */
+    patientNames?: string | string[];
+    /**
      * Whether to exclude charge captures which are part of a claim creation.
      */
     excludeChargesLinkedToClaims?: boolean;
@@ -160,4 +176,24 @@ export interface GetAllChargeCapturesRequest {
      * A list of supervising provider names to show first. This will return all charge captures with one of the names in this list.
      */
     supervisingProviderNamesRankedSort?: string | string[];
+    /**
+     * the status of the claim to filter by created from charge capture bundle.
+     */
+    claimStatus?: CandidApi.ClaimStatus;
+    /**
+     * A list of claim creation categories to sort by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list.
+     */
+    claimCreationCategoryRankedSort?: string | string[];
+    /**
+     * A list of tags. This will return all charge captures with one of the tags.
+     */
+    tagsRankedSort?: string | string[];
+    /**
+     * A list of primary payer names to sort by. This will return all charge captures with one of the names.
+     */
+    primaryPayerNamesRankedSort?: string | string[];
+    /**
+     * A list of patient names to sort by. This will return all charge captures with one of the names.
+     */
+    patientNamesRankedSort?: string | string[];
 }

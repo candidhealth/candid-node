@@ -11,4 +11,6 @@ export interface GuarantorCreate extends CandidApi.guarantor.v1.GuarantorBase {
     email?: CandidApi.Email;
     /** Defaults to false */
     emailConsent?: boolean;
+    /** Defaults to false */
+    autoChargeConsent?: boolean;
 }

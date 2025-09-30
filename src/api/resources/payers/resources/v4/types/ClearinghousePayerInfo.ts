@@ -11,4 +11,12 @@ export interface ClearinghousePayerInfo {
     professionalPayerIds: CandidApi.payers.v4.PayerIds;
     /** Payer IDs for institutional claims */
     institutionalPayerIds: CandidApi.payers.v4.PayerIds;
+    /** The support state for claims submission */
+    professionalClaimsSupport: CandidApi.payers.v4.SupportState;
+    /** The support state for institutional claims submission */
+    institutionalClaimsSupport: CandidApi.payers.v4.SupportState;
+    /** The support state for eligibility */
+    eligibilitySupport: CandidApi.payers.v4.SupportState;
+    /** The support state for remittance */
+    remittanceSupport: CandidApi.payers.v4.SupportState;
 }

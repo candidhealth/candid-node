@@ -13,4 +13,6 @@ export interface PatientCreate extends CandidApi.PatientBase {
     nonInsurancePayersInfo?: CandidApi.PatientNonInsurancePayerInfoCreate[];
     /** Defaults to false */
     emailConsent?: boolean;
+    /** Defaults to false */
+    autoChargeConsent?: boolean;
 }
