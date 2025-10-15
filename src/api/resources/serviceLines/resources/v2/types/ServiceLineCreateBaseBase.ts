@@ -27,7 +27,7 @@ export interface ServiceLineCreateBaseBase {
     /** The total amount charged for this service line, factoring in quantity. If procedure_code is updated and this is not, the system will attempt to set it based on chargemasters entries and the service line’s quantity. For example, if a single unit has an entry of 100 cents and 2 units were rendered, the charge_amount_cents will be set to 200, if there is no chargemaster entry, it will default to the amount set in this field. */
     chargeAmountCents?: number;
     drugIdentification?: CandidApi.serviceLines.v2.DrugIdentification;
-    /** 837p Loop2300, SV105. This enum is not used or required for institutional claims. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
+    /** 837p Loop2300, SV105. This enum is not used or required in 837i claims. If your organization does not intend to submit claims with a different place of service at the service line level, this field should not be populated. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     /** A free-form description to clarify the related data elements and their content. Maps to SV1-01, C003-07 on a 837-P and SV2-02, C003-07 on a 837-I form. */
     description?: string;

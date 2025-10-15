@@ -12,24 +12,18 @@ export declare namespace Auth {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class Auth {
+    protected readonly _options: Auth.Options;
     protected _default: Default | undefined;
 
-    constructor(protected readonly _options: Auth.Options = {}) {}
+    constructor(_options: Auth.Options = {}) {
+        this._options = _options;
+    }
 
     public get default(): Default {
         return (this._default ??= new Default(this._options));

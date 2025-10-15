@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V2 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V2 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V2 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    protected readonly _options: V2.Options;
+
+    constructor(_options: V2.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.EncounterId} encounterId
@@ -39,18 +47,40 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.updateReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async updateReferringProvider(
+    public updateReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.ReferringProviderUpdate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.updateReferringProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__updateReferringProvider(encounterId, request, requestOptions),
+        );
+    }
+
+    private async __updateReferringProvider(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterProviders.v2.ReferringProviderUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.updateReferringProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -59,17 +89,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.ReferringProviderUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -80,13 +102,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -97,23 +124,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.updateReferringProvider.Error.parseOrThrow(
-                            _response.error.body as serializers.encounterProviders.v2.updateReferringProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.updateReferringProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.updateReferringProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.updateReferringProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.updateReferringProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -125,18 +161,40 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.updateInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async updateInitialReferringProvider(
+    public updateInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__updateInitialReferringProvider(encounterId, request, requestOptions),
+        );
+    }
+
+    private async __updateInitialReferringProvider(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterProviders.v2.InitialReferringProviderUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -145,17 +203,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/initial-referring-provider`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.InitialReferringProviderUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -166,13 +216,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -184,24 +239,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.updateInitialReferringProvider.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounterProviders.v2.updateInitialReferringProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.updateInitialReferringProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.updateInitialReferringProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -213,18 +276,40 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.updateSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async updateSupervisingProvider(
+    public updateSupervisingProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.SupervisingProviderUpdate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.updateSupervisingProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__updateSupervisingProvider(encounterId, request, requestOptions),
+        );
+    }
+
+    private async __updateSupervisingProvider(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterProviders.v2.SupervisingProviderUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.updateSupervisingProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -233,17 +318,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/supervising-provider`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.SupervisingProviderUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -254,13 +331,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -272,24 +354,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.updateSupervisingProvider.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounterProviders.v2.updateSupervisingProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.updateSupervisingProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.updateSupervisingProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.updateSupervisingProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.updateSupervisingProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -301,18 +391,40 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.updateOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async updateOrderingProvider(
+    public updateOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.encounterProviders.v2.OrderingProviderUpdate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.updateOrderingProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__updateOrderingProvider(serviceLineId, request, requestOptions),
+        );
+    }
+
+    private async __updateOrderingProvider(
+        serviceLineId: CandidApi.ServiceLineId,
+        request: CandidApi.encounterProviders.v2.OrderingProviderUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.updateOrderingProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -321,17 +433,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/ordering-provider`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.OrderingProviderUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -342,13 +446,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -359,23 +468,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.updateOrderingProvider.Error.parseOrThrow(
-                            _response.error.body as serializers.encounterProviders.v2.updateOrderingProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.updateOrderingProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.updateOrderingProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.updateOrderingProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.updateOrderingProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -389,18 +507,40 @@ export class V2 {
      *         npi: "npi"
      *     })
      */
-    public async createReferringProvider(
+    public createReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.ReferringProvider,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.createReferringProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createReferringProvider(encounterId, request, requestOptions),
+        );
+    }
+
+    private async __createReferringProvider(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterProviders.v2.ReferringProvider,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.createReferringProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -409,17 +549,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/create-referring-provider`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.ReferringProvider.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -430,13 +562,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -448,23 +585,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.createReferringProvider.Error.parseOrThrow(
-                            _response.error.body as serializers.encounterProviders.v2.createReferringProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.createReferringProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.createReferringProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.createReferringProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.createReferringProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -478,18 +624,40 @@ export class V2 {
      *         npi: "npi"
      *     })
      */
-    public async createInitialReferringProvider(
+    public createInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.InitialReferringProvider,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.createInitialReferringProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createInitialReferringProvider(encounterId, request, requestOptions),
+        );
+    }
+
+    private async __createInitialReferringProvider(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterProviders.v2.InitialReferringProvider,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.createInitialReferringProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -498,17 +666,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/create-initial-referring-provider`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.InitialReferringProvider.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -519,13 +679,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -539,24 +704,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.createInitialReferringProvider.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounterProviders.v2.createInitialReferringProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.createInitialReferringProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.createInitialReferringProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.createInitialReferringProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.createInitialReferringProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -570,18 +743,40 @@ export class V2 {
      *         npi: "npi"
      *     })
      */
-    public async createSupervisingProvider(
+    public createSupervisingProvider(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterProviders.v2.SupervisingProvider,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.createSupervisingProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createSupervisingProvider(encounterId, request, requestOptions),
+        );
+    }
+
+    private async __createSupervisingProvider(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterProviders.v2.SupervisingProvider,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.createSupervisingProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -590,17 +785,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/create-supervising-provider`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.SupervisingProvider.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -611,13 +798,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -630,24 +822,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.createSupervisingProvider.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounterProviders.v2.createSupervisingProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.createSupervisingProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.createSupervisingProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.createSupervisingProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.createSupervisingProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -661,18 +861,40 @@ export class V2 {
      *         npi: "npi"
      *     })
      */
-    public async createOrderingProvider(
+    public createOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.encounterProviders.v2.OrderingProvider,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterProviders.v2.EncounterProvider,
             CandidApi.encounterProviders.v2.createOrderingProvider.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createOrderingProvider(serviceLineId, request, requestOptions),
+        );
+    }
+
+    private async __createOrderingProvider(
+        serviceLineId: CandidApi.ServiceLineId,
+        request: CandidApi.encounterProviders.v2.OrderingProvider,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterProviders.v2.EncounterProvider,
+                CandidApi.encounterProviders.v2.createOrderingProvider.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -681,17 +903,9 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/create-ordering-provider`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterProviders.v2.OrderingProvider.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -702,13 +916,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterProviders.v2.EncounterProvider.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -720,23 +939,32 @@ export class V2 {
                 case "HttpRequestValidationsError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.createOrderingProvider.Error.parseOrThrow(
-                            _response.error.body as serializers.encounterProviders.v2.createOrderingProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.createOrderingProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.createOrderingProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.createOrderingProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.createOrderingProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -747,12 +975,26 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.deleteReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async deleteReferringProvider(
+    public deleteReferringProvider(
         encounterId: CandidApi.EncounterId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteReferringProvider(encounterId, requestOptions));
+    }
+
+    private async __deleteReferringProvider(
+        encounterId: CandidApi.EncounterId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -761,26 +1003,21 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/referring-provider`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -791,23 +1028,32 @@ export class V2 {
                 case "EntityNotFoundError":
                 case "EntityConflictError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.deleteReferringProvider.Error.parseOrThrow(
-                            _response.error.body as serializers.encounterProviders.v2.deleteReferringProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.deleteReferringProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.deleteReferringProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.deleteReferringProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -818,12 +1064,30 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.deleteInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async deleteInitialReferringProvider(
+    public deleteInitialReferringProvider(
         encounterId: CandidApi.EncounterId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__deleteInitialReferringProvider(encounterId, requestOptions));
+    }
+
+    private async __deleteInitialReferringProvider(
+        encounterId: CandidApi.EncounterId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -832,26 +1096,21 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/initial-referring-provider`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -862,24 +1121,32 @@ export class V2 {
             ) {
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.deleteInitialReferringProvider.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounterProviders.v2.deleteInitialReferringProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.deleteInitialReferringProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.deleteInitialReferringProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -890,12 +1157,28 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.deleteSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async deleteSupervisingProvider(
+    public deleteSupervisingProvider(
         encounterId: CandidApi.EncounterId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__deleteSupervisingProvider(encounterId, requestOptions));
+    }
+
+    private async __deleteSupervisingProvider(
+        encounterId: CandidApi.EncounterId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -904,26 +1187,21 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/supervising-provider`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -934,24 +1212,32 @@ export class V2 {
             ) {
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.deleteSupervisingProvider.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounterProviders.v2.deleteSupervisingProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.deleteSupervisingProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.deleteSupervisingProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -962,12 +1248,26 @@ export class V2 {
      * @example
      *     await client.encounterProviders.v2.deleteOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async deleteOrderingProvider(
+    public deleteOrderingProvider(
         serviceLineId: CandidApi.ServiceLineId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteOrderingProvider(serviceLineId, requestOptions));
+    }
+
+    private async __deleteOrderingProvider(
+        serviceLineId: CandidApi.ServiceLineId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -976,26 +1276,21 @@ export class V2 {
                 `/api/encounter-providers/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/ordering-provider`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -1005,23 +1300,32 @@ export class V2 {
             ) {
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.encounterProviders.v2.deleteOrderingProvider.Error.parseOrThrow(
-                            _response.error.body as serializers.encounterProviders.v2.deleteOrderingProvider.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounterProviders.v2.deleteOrderingProvider.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounterProviders.v2.deleteOrderingProvider.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterProviders.v2.deleteOrderingProvider.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterProviders.v2.deleteOrderingProvider.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

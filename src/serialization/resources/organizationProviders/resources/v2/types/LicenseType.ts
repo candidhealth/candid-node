@@ -111,6 +111,8 @@ export const LicenseType: core.serialization.Schema<
     "AMFT",
     "CDN",
     "CNS",
+    "MDPHD",
+    "AuD",
 ]);
 
 export declare namespace LicenseType {
@@ -215,5 +217,7 @@ export declare namespace LicenseType {
         | "PA-C"
         | "AMFT"
         | "CDN"
-        | "CNS";
+        | "CNS"
+        | "MDPHD"
+        | "AuD";
 }

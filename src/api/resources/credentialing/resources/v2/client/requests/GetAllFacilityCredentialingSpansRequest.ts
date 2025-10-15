@@ -9,21 +9,13 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetAllFacilityCredentialingSpansRequest {
-    /**
-     * Maximum number of entities per page, defaults to 100.
-     */
+    /** Maximum number of entities per page, defaults to 100. */
     limit?: number;
     pageToken?: CandidApi.PageToken;
-    /**
-     * Filter by payer.
-     */
+    /** Filter by payer. */
     payerUuid?: string;
-    /**
-     * Filter to a particular contracting provider.
-     */
+    /** Filter to a particular contracting provider. */
     contractingProviderId?: string;
-    /**
-     * Filter to a particular service facility.
-     */
+    /** Filter to a particular service facility. */
     serviceFacilityId?: string;
 }

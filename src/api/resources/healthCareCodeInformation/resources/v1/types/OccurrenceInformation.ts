@@ -10,5 +10,11 @@ import * as CandidApi from "../../../../../index";
 export interface OccurrenceInformation extends CandidApi.healthCareCodeInformation.v1.HealthCareCodeInformation {
     occurrenceCodeQualifier: CandidApi.healthCareCodeInformation.v1.OccurrenceInformationCodeQualifier;
     occurrenceCode: CandidApi.healthCareCodeInformation.v1.OccurrenceCode;
+    /**
+     * An [RFC 3339, section 5.6 datetime](https://ijmacd.github.io/rfc3339-iso8601/).
+     * For example, 2017-07-21T17:32:28Z.
+     * In practice, only the date portion of this is used for claim submission, so
+     * midnight time is fine.
+     */
     occurrenceDate: CandidApi.healthCareCodeInformation.v1.D8Date;
 }

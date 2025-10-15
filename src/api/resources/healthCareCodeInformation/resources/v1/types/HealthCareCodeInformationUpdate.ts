@@ -5,17 +5,30 @@
 import * as CandidApi from "../../../../../index";
 
 export interface HealthCareCodeInformationUpdate {
+    /** Set & Replace semantics.  If the id matches the existing principal_diagnosis, that diagnosis is updated in place.  If the entry has no id, it is created newly, its id will be in the response, and any existing principal_diagnosis is deleted and removed from any service line pointers. */
     principalDiagnosis?: CandidApi.healthCareCodeInformation.v1.SetOrClearPrincipalDiagnosis;
-    admittingDiagnosis?: CandidApi.healthCareCodeInformation.v1.SetOrClearAdmittingDiagnosis;
-    patientReasonsForVisit?: CandidApi.healthCareCodeInformation.v1.PatientReasonForVisit[];
-    externalCausesOfInjury?: CandidApi.healthCareCodeInformation.v1.ExternalCauseOfInjury[];
-    diagnosisRelatedGroups?: CandidApi.healthCareCodeInformation.v1.SetOrClearDiagnosisRelatedGroup;
+    /** Set & Replace semantics.  For each entry that has an id, any previous other_diagnosis_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted, including having it removed from any service line pointers. */
     otherDiagnosisInformation?: CandidApi.healthCareCodeInformation.v1.OtherDiagnosisInformation[];
+    /** Set & Replace semantics.  If the id matches the existing admitting_diagnosis, that diagnosis is updated in place.  If the entry has no id, it is created newly, its id will be in the response, and any existing principal_diagnosis is deleted. This object only applies to 837i institutional claim forms. */
+    admittingDiagnosis?: CandidApi.healthCareCodeInformation.v1.SetOrClearAdmittingDiagnosis;
+    /** Set & Replace semantics.  For each entry that has an id, any previous patient_reasons_for_visit by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
+    patientReasonsForVisit?: CandidApi.healthCareCodeInformation.v1.PatientReasonForVisit[];
+    /** Set & Replace semantics.  For each entry that has an id, any previous external_causes_of_injury by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
+    externalCausesOfInjury?: CandidApi.healthCareCodeInformation.v1.ExternalCauseOfInjury[];
+    /** Set & Replace semantics.  If the id matches the existing diagnosis_related_groups, that diagnosis_related_group is updated in place.  If the entry has no id, it is created newly, its id will be in the response, and any existing diagnosis_related_groups is deleted. This object only applies to 837i institutional claim forms. */
+    diagnosisRelatedGroups?: CandidApi.healthCareCodeInformation.v1.SetOrClearDiagnosisRelatedGroup;
+    /** Set & Replace semantics.  If the id matches the existing principal_procedure, that principal_procedure is updated in place.  If the entry has no id, it is created newly, its id will be in the response, and any existing principal_procedure is deleted. This object only applies to 837i institutional claim forms. */
     principalProcedure?: CandidApi.healthCareCodeInformation.v1.SetOrClearPrincipalProcedureInformation;
+    /** Set & Replace semantics.  For each entry that has an id, any previous other_procedure_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
     otherProcedureInformation?: CandidApi.healthCareCodeInformation.v1.OtherProcedureInformation[];
+    /** Set & Replace semantics.  For each entry that has an id, any previous occurrence_span_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
     occurrenceSpanInformation?: CandidApi.healthCareCodeInformation.v1.OccurrenceSpanInformation[];
+    /** Set & Replace semantics.  For each entry that has an id, any previous occurrence_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
     occurrenceInformation?: CandidApi.healthCareCodeInformation.v1.OccurrenceInformation[];
+    /** Set & Replace semantics.  For each entry that has an id, any previous treatment_code_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
     treatmentCodeInformation?: CandidApi.healthCareCodeInformation.v1.TreatmentCodeInformation[];
+    /** Set & Replace semantics.  For each entry that has an id, any previous value_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
     valueInformation?: CandidApi.healthCareCodeInformation.v1.ValueInformation[];
+    /** Set & Replace semantics.  For each entry that has an id, any previous condition_information by that id is updated in place.  For each entry without an id, it is created newly and its id will be in the response.  For each existing entry that was not referred to by id, it is deleted. This object only applies to 837i institutional claim forms. */
     conditionInformation?: CandidApi.healthCareCodeInformation.v1.ConditionInformation[];
 }

@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V2 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V2 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V2 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    protected readonly _options: V2.Options;
+
+    constructor(_options: V2.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId} organizationServiceFacilityId
@@ -38,17 +46,36 @@ export class V2 {
      * @example
      *     await client.organizationServiceFacilities.v2.get(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
             CandidApi.organizationServiceFacilities.v2.get.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__get(organizationServiceFacilityId, requestOptions));
+    }
+
+    private async __get(
+        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
+                CandidApi.organizationServiceFacilities.v2.get.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -57,34 +84,29 @@ export class V2 {
                 `/api/organization-service-facilities/v2/${encodeURIComponent(serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(organizationServiceFacilityId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -92,23 +114,31 @@ export class V2 {
             switch ((_response.error.body as serializers.organizationServiceFacilities.v2.get.Error.Raw)?.errorName) {
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.organizationServiceFacilities.v2.get.Error.parseOrThrow(
-                            _response.error.body as serializers.organizationServiceFacilities.v2.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.organizationServiceFacilities.v2.get.Error.parseOrThrow(
+                                _response.error.body as serializers.organizationServiceFacilities.v2.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.organizationServiceFacilities.v2.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.organizationServiceFacilities.v2.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -123,16 +153,30 @@ export class V2 {
      *         pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
      *     })
      */
-    public async getMulti(
+    public getMulti(
         request: CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest = {},
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityPage,
             CandidApi.organizationServiceFacilities.v2.getMulti.Error
         >
     > {
-        const { limit, name, organizationServiceFacilityIds, pageToken } = request;
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest = {},
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityPage,
+                CandidApi.organizationServiceFacilities.v2.getMulti.Error
+            >
+        >
+    > {
+        const { limit, name, organizationServiceFacilityIds, externalIds, placeOfServiceCode, pageToken } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
@@ -154,12 +198,31 @@ export class V2 {
             }
         }
 
+        if (externalIds != null) {
+            if (Array.isArray(externalIds)) {
+                _queryParams["external_ids"] = externalIds.map((item) => item);
+            } else {
+                _queryParams["external_ids"] = externalIds;
+            }
+        }
+
+        if (placeOfServiceCode != null) {
+            _queryParams["place_of_service_code"] = serializers.FacilityTypeCode.jsonOrThrow(placeOfServiceCode, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
         if (pageToken != null) {
             _queryParams["page_token"] = pageToken;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -168,41 +231,150 @@ export class V2 {
                 "/api/organization-service-facilities/v2",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityPage.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityPage.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.organizationServiceFacilities.v2.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.organizationServiceFacilities.v2.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Looks up a single organization service facility by its `external_id` field. This can be useful
+     * for finding service facilities within Candid which are associated with service facilities in
+     * an external system.
+     *
+     * @param {string} externalId
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.organizationServiceFacilities.v2.getByExternalId("external_id")
+     */
+    public getByExternalId(
+        externalId: string,
+        requestOptions?: V2.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
+            CandidApi.organizationServiceFacilities.v2.getByExternalId.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getByExternalId(externalId, requestOptions));
+    }
+
+    private async __getByExternalId(
+        externalId: string,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
+                CandidApi.organizationServiceFacilities.v2.getByExternalId.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/organization-service-facilities/v2/external-id/${encodeURIComponent(externalId)}`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.organizationServiceFacilities.v2.getByExternalId.Error.Raw)
+                    ?.errorName
+            ) {
+                case "EntityNotFoundError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.organizationServiceFacilities.v2.getByExternalId.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.organizationServiceFacilities.v2.getByExternalId.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.organizationServiceFacilities.v2.getByExternalId.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -231,17 +403,36 @@ export class V2 {
      *         }
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
             CandidApi.organizationServiceFacilities.v2.create.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
+                CandidApi.organizationServiceFacilities.v2.create.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -250,17 +441,9 @@ export class V2 {
                 "/api/organization-service-facilities/v2",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -271,16 +454,21 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -290,23 +478,31 @@ export class V2 {
             ) {
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.organizationServiceFacilities.v2.create.Error.parseOrThrow(
-                            _response.error.body as serializers.organizationServiceFacilities.v2.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.organizationServiceFacilities.v2.create.Error.parseOrThrow(
+                                _response.error.body as serializers.organizationServiceFacilities.v2.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.organizationServiceFacilities.v2.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.organizationServiceFacilities.v2.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -336,18 +532,40 @@ export class V2 {
      *         }
      *     })
      */
-    public async update(
+    public update(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
         request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
             CandidApi.organizationServiceFacilities.v2.update.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__update(organizationServiceFacilityId, request, requestOptions),
+        );
+    }
+
+    private async __update(
+        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
+        request: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacility,
+                CandidApi.organizationServiceFacilities.v2.update.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -356,17 +574,9 @@ export class V2 {
                 `/api/organization-service-facilities/v2/${encodeURIComponent(serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(organizationServiceFacilityId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -377,16 +587,21 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.organizationServiceFacilities.v2.OrganizationServiceFacility.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -397,23 +612,31 @@ export class V2 {
                 case "HttpRequestValidationError":
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.organizationServiceFacilities.v2.update.Error.parseOrThrow(
-                            _response.error.body as serializers.organizationServiceFacilities.v2.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.organizationServiceFacilities.v2.update.Error.parseOrThrow(
+                                _response.error.body as serializers.organizationServiceFacilities.v2.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.organizationServiceFacilities.v2.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.organizationServiceFacilities.v2.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -424,12 +647,24 @@ export class V2 {
      * @example
      *     await client.organizationServiceFacilities.v2.delete(CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"))
      */
-    public async delete(
+    public delete(
         organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.organizationServiceFacilities.v2.delete.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.organizationServiceFacilities.v2.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(organizationServiceFacilityId, requestOptions));
+    }
+
+    private async __delete(
+        organizationServiceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.organizationServiceFacilities.v2.delete.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -438,26 +673,21 @@ export class V2 {
                 `/api/organization-service-facilities/v2/${encodeURIComponent(serializers.organizationServiceFacilities.v2.OrganizationServiceFacilityId.jsonOrThrow(organizationServiceFacilityId))}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -467,23 +697,31 @@ export class V2 {
             ) {
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.organizationServiceFacilities.v2.delete.Error.parseOrThrow(
-                            _response.error.body as serializers.organizationServiceFacilities.v2.delete.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.organizationServiceFacilities.v2.delete.Error.parseOrThrow(
+                                _response.error.body as serializers.organizationServiceFacilities.v2.delete.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.organizationServiceFacilities.v2.delete.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.organizationServiceFacilities.v2.delete.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

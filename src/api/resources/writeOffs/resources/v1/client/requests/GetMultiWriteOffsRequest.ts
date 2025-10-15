@@ -9,26 +9,18 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetMultiWriteOffsRequest {
-    /**
-     * Defaults to 100. The value must be greater than 0 and less than 1000.
-     */
+    /** Defaults to 100. The value must be greater than 0 and less than 1000. */
     limit?: number;
     patientExternalId?: CandidApi.PatientExternalId;
     payerUuid?: CandidApi.payers.v3.PayerUuid;
     serviceLineId?: CandidApi.ServiceLineId;
     claimId?: CandidApi.ClaimId;
     billingProviderId?: CandidApi.ProviderId;
-    /**
-     * Defaults to write_off_timestamp
-     */
+    /** Defaults to write_off_timestamp */
     sort?: CandidApi.writeOffs.v1.WriteOffSortField;
-    /**
-     * Sort direction. Defaults to descending order if not provided.
-     */
+    /** Sort direction. Defaults to descending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
-    /**
-     * Filters the returned values to include only the provided account types.
-     */
+    /** Filters the returned values to include only the provided account types. */
     accountTypes?: CandidApi.AccountType | CandidApi.AccountType[];
 }

@@ -10,9 +10,7 @@ import * as CandidApi from "../../../../../../index";
  */
 export interface GetMultiRequest {
     pageToken?: CandidApi.PageToken;
-    /**
-     * Max number of dimensions returned. Defaults to 100. Max is 100.
-     */
+    /** Max number of dimensions returned. Defaults to 100. Max is 100. */
     limit?: number;
     activeDate?: string;
     payerUuid?: CandidApi.payers.v3.PayerUuid;

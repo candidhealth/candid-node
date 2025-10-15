@@ -9,27 +9,19 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetMultiPatientRefundsRequest {
-    /**
-     * Defaults to 100. The value must be greater than 0 and less than 1000.
-     */
+    /** Defaults to 100. The value must be greater than 0 and less than 1000. */
     limit?: number;
     patientExternalId?: CandidApi.PatientExternalId;
     claimId?: CandidApi.ClaimId;
     serviceLineId?: CandidApi.ServiceLineId;
     billingProviderId?: CandidApi.ProviderId;
-    /**
-     * returns payments with unattributed allocations if set to true
-     */
+    /** returns payments with unattributed allocations if set to true */
     unattributed?: boolean;
     invoiceId?: CandidApi.InvoiceId;
     sources?: CandidApi.PatientTransactionSource | CandidApi.PatientTransactionSource[];
-    /**
-     * Defaults to refund_timestamp
-     */
+    /** Defaults to refund_timestamp */
     sort?: CandidApi.patientRefunds.v1.PatientRefundSortField;
-    /**
-     * Sort direction. Defaults to descending order if not provided.
-     */
+    /** Sort direction. Defaults to descending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
 }

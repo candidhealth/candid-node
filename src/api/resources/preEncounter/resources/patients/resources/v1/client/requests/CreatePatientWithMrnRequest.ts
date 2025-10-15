@@ -8,6 +8,7 @@ import * as CandidApi from "../../../../../../../../index";
  * @example
  *     {
  *         body: {
+ *             mrn: "mrn",
  *             name: {
  *                 family: "family",
  *                 given: ["given", "given"],
@@ -142,8 +143,7 @@ import * as CandidApi from "../../../../../../../../index";
  *                 }],
  *             filingOrder: {
  *                 coverages: [CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
- *             },
- *             mrn: "mrn"
+ *             }
  *         }
  *     }
  */

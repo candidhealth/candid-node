@@ -6,7 +6,7 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 
 export declare namespace V4 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V4 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V4 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V4 {
-    constructor(protected readonly _options: V4.Options = {}) {}
+    protected readonly _options: V4.Options;
+
+    constructor(_options: V4.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Returns all patient payments satisfying the search criteria AND whose organization_id matches
@@ -41,11 +49,25 @@ export class V4 {
      * @example
      *     await client.patientPayments.v4.getMulti()
      */
-    public async getMulti(
+    public getMulti(
+        request: CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest = {},
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.patientPayments.v4.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
         request: CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest = {},
         requestOptions?: V4.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.patientPayments.v4.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.patientPayments.v4.PatientPaymentsPage,
+                CandidApi.patientPayments.v4.getMulti.Error
+            >
+        >
     > {
         const {
             limit,
@@ -117,8 +139,13 @@ export class V4 {
             _queryParams["page_token"] = pageToken;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -127,32 +154,26 @@ export class V4 {
                 "/api/patient-payments/v4",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.patientPayments.v4.PatientPaymentsPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.patientPayments.v4.PatientPaymentsPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -161,23 +182,31 @@ export class V4 {
                 case "UnauthorizedError":
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.patientPayments.v4.getMulti.Error.parseOrThrow(
-                            _response.error.body as serializers.patientPayments.v4.getMulti.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.patientPayments.v4.getMulti.Error.parseOrThrow(
+                                _response.error.body as serializers.patientPayments.v4.getMulti.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.patientPayments.v4.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.patientPayments.v4.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -190,12 +219,30 @@ export class V4 {
      * @example
      *     await client.patientPayments.v4.get(CandidApi.patientPayments.v4.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.get.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(patientPaymentId, requestOptions));
+    }
+
+    private async __get(
+        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.get.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -204,31 +251,26 @@ export class V4 {
                 `/api/patient-payments/v4/${encodeURIComponent(serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(patientPaymentId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -237,23 +279,31 @@ export class V4 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.patientPayments.v4.get.Error.parseOrThrow(
-                            _response.error.body as serializers.patientPayments.v4.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.patientPayments.v4.get.Error.parseOrThrow(
+                                _response.error.body as serializers.patientPayments.v4.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.patientPayments.v4.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.patientPayments.v4.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -284,14 +334,30 @@ export class V4 {
      *             }]
      *     })
      */
-    public async create(
+    public create(
+        request: CandidApi.patientPayments.v4.PatientPaymentCreate,
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
         request: CandidApi.patientPayments.v4.PatientPaymentCreate,
         requestOptions?: V4.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.create.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.create.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -300,17 +366,9 @@ export class V4 {
                 "/api/patient-payments/v4",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.patientPayments.v4.PatientPaymentCreate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -321,13 +379,18 @@ export class V4 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -337,23 +400,31 @@ export class V4 {
                 case "UnauthorizedError":
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.patientPayments.v4.create.Error.parseOrThrow(
-                            _response.error.body as serializers.patientPayments.v4.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.patientPayments.v4.create.Error.parseOrThrow(
+                                _response.error.body as serializers.patientPayments.v4.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.patientPayments.v4.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.patientPayments.v4.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -367,15 +438,32 @@ export class V4 {
      * @example
      *     await client.patientPayments.v4.update(CandidApi.patientPayments.v4.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async update(
+    public update(
+        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
+        request: CandidApi.patientPayments.v4.PatientPaymentUpdate = {},
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(patientPaymentId, request, requestOptions));
+    }
+
+    private async __update(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
         request: CandidApi.patientPayments.v4.PatientPaymentUpdate = {},
         requestOptions?: V4.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.update.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.patientPayments.v4.PatientPayment, CandidApi.patientPayments.v4.update.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -384,17 +472,9 @@ export class V4 {
                 `/api/patient-payments/v4/${encodeURIComponent(serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(patientPaymentId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.patientPayments.v4.PatientPaymentUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -405,13 +485,18 @@ export class V4 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.patientPayments.v4.PatientPayment.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -421,23 +506,31 @@ export class V4 {
                 case "UnauthorizedError":
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.patientPayments.v4.update.Error.parseOrThrow(
-                            _response.error.body as serializers.patientPayments.v4.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.patientPayments.v4.update.Error.parseOrThrow(
+                                _response.error.body as serializers.patientPayments.v4.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.patientPayments.v4.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.patientPayments.v4.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -450,12 +543,24 @@ export class V4 {
      * @example
      *     await client.patientPayments.v4.delete(CandidApi.patientPayments.v4.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async delete(
+    public delete(
         patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.patientPayments.v4.delete.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.patientPayments.v4.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(patientPaymentId, requestOptions));
+    }
+
+    private async __delete(
+        patientPaymentId: CandidApi.patientPayments.v4.PatientPaymentId,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.patientPayments.v4.delete.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -464,26 +569,21 @@ export class V4 {
                 `/api/patient-payments/v4/${encodeURIComponent(serializers.patientPayments.v4.PatientPaymentId.jsonOrThrow(patientPaymentId))}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -493,23 +593,31 @@ export class V4 {
                 case "UnauthorizedError":
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.patientPayments.v4.delete.Error.parseOrThrow(
-                            _response.error.body as serializers.patientPayments.v4.delete.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.patientPayments.v4.delete.Error.parseOrThrow(
+                                _response.error.body as serializers.patientPayments.v4.delete.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.patientPayments.v4.delete.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.patientPayments.v4.delete.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

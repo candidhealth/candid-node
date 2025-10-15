@@ -6,7 +6,7 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Returns all non-ERA originated insurance payments satisfying the search criteria
@@ -40,13 +48,27 @@ export class V1 {
      * @example
      *     await client.insurancePayments.v1.getMulti()
      */
-    public async getMulti(
+    public getMulti(
         request: CandidApi.insurancePayments.v1.GetMultiInsurancePaymentRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.insurancePayments.v1.InsurancePaymentsPage,
             CandidApi.insurancePayments.v1.getMulti.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.insurancePayments.v1.GetMultiInsurancePaymentRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.insurancePayments.v1.InsurancePaymentsPage,
+                CandidApi.insurancePayments.v1.getMulti.Error
+            >
         >
     > {
         const { limit, payerUuid, claimId, serviceLineId, billingProviderId, sort, sortDirection, pageToken } = request;
@@ -87,8 +109,13 @@ export class V1 {
             _queryParams["page_token"] = pageToken;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -97,32 +124,26 @@ export class V1 {
                 "/api/insurance-payments/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.insurancePayments.v1.InsurancePaymentsPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.insurancePayments.v1.InsurancePaymentsPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -131,23 +152,31 @@ export class V1 {
                 case "UnauthorizedError":
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.insurancePayments.v1.getMulti.Error.parseOrThrow(
-                            _response.error.body as serializers.insurancePayments.v1.getMulti.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.insurancePayments.v1.getMulti.Error.parseOrThrow(
+                                _response.error.body as serializers.insurancePayments.v1.getMulti.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.insurancePayments.v1.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.insurancePayments.v1.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -161,14 +190,30 @@ export class V1 {
      * @example
      *     await client.insurancePayments.v1.get(CandidApi.insurancePayments.v1.InsurancePaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
+        insurancePaymentId: CandidApi.insurancePayments.v1.InsurancePaymentId,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.insurancePayments.v1.InsurancePayment, CandidApi.insurancePayments.v1.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(insurancePaymentId, requestOptions));
+    }
+
+    private async __get(
         insurancePaymentId: CandidApi.insurancePayments.v1.InsurancePaymentId,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.insurancePayments.v1.InsurancePayment, CandidApi.insurancePayments.v1.get.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.insurancePayments.v1.InsurancePayment, CandidApi.insurancePayments.v1.get.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -177,31 +222,26 @@ export class V1 {
                 `/api/insurance-payments/v1/${encodeURIComponent(serializers.insurancePayments.v1.InsurancePaymentId.jsonOrThrow(insurancePaymentId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.insurancePayments.v1.InsurancePayment.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.insurancePayments.v1.InsurancePayment.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -210,23 +250,31 @@ export class V1 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.insurancePayments.v1.get.Error.parseOrThrow(
-                            _response.error.body as serializers.insurancePayments.v1.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.insurancePayments.v1.get.Error.parseOrThrow(
+                                _response.error.body as serializers.insurancePayments.v1.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.insurancePayments.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.insurancePayments.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

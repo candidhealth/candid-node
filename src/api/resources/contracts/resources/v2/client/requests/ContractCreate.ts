@@ -9,7 +9,21 @@ import * as CandidApi from "../../../../../../index";
  *     {
  *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
  *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
- *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+ *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+ *         effectiveDate: CandidApi.Date_("effective_date"),
+ *         regions: {
+ *             type: "states",
+ *             states: ["AA", "AA"]
+ *         },
+ *         commercialInsuranceTypes: {
+ *             type: "allApply"
+ *         },
+ *         medicareInsuranceTypes: {
+ *             type: "allApply"
+ *         },
+ *         medicaidInsuranceTypes: {
+ *             type: "allApply"
+ *         }
  *     }
  */
 export interface ContractCreate extends CandidApi.contracts.v2.ContractBase {

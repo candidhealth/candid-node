@@ -12,24 +12,18 @@ export declare namespace PatientPayments {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class PatientPayments {
+    protected readonly _options: PatientPayments.Options;
     protected _v4: V4 | undefined;
 
-    constructor(protected readonly _options: PatientPayments.Options = {}) {}
+    constructor(_options: PatientPayments.Options = {}) {
+        this._options = _options;
+    }
 
     public get v4(): V4 {
         return (this._v4 ??= new V4(this._options));

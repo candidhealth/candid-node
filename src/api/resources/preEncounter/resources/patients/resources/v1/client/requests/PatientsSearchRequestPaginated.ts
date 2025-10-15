@@ -13,8 +13,6 @@ export interface PatientsSearchRequestPaginated {
     mrn?: string;
     pageToken?: CandidApi.preEncounter.PageToken;
     sortField?: CandidApi.preEncounter.patients.v1.PatientSortField;
-    /**
-     * Defaults to ascending.
-     */
+    /** Defaults to ascending. */
     sortDirection?: CandidApi.preEncounter.SortDirection;
 }

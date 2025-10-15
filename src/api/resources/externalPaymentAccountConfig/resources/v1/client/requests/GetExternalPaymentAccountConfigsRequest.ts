@@ -9,9 +9,7 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetExternalPaymentAccountConfigsRequest {
-    /**
-     * Defaults to 100
-     */
+    /** Defaults to 100 */
     limit?: number;
     pageToken?: CandidApi.PageToken;
 }

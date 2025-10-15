@@ -103,7 +103,9 @@ export type LicenseType =
     | "PA-C"
     | "AMFT"
     | "CDN"
-    | "CNS";
+    | "CNS"
+    | "MDPHD"
+    | "AuD";
 export const LicenseType = {
     Md: "MD",
     Np: "NP",
@@ -206,4 +208,6 @@ export const LicenseType = {
     Amft: "AMFT",
     Cdn: "CDN",
     Cns: "CNS",
+    Mdphd: "MDPHD",
+    Aud: "AuD",
 } as const;

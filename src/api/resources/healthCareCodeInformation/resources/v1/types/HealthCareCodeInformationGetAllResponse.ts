@@ -6,16 +6,27 @@ import * as CandidApi from "../../../../../index";
 
 export interface HealthCareCodeInformationGetAllResponse {
     principalDiagnosis?: CandidApi.healthCareCodeInformation.v1.PrincipalDiagnosis;
-    admittingDiagnosis?: CandidApi.healthCareCodeInformation.v1.AdmittingDiagnosis;
-    patientReasonsForVisit: CandidApi.healthCareCodeInformation.v1.PatientReasonForVisit[];
-    externalCausesOfInjury: CandidApi.healthCareCodeInformation.v1.ExternalCauseOfInjury[];
-    diagnosisRelatedGroups?: CandidApi.healthCareCodeInformation.v1.DiagnosisRelatedGroup;
     otherDiagnosisInformation: CandidApi.healthCareCodeInformation.v1.OtherDiagnosisInformation[];
+    /** This object only applies to 837i institutional claim forms. */
+    admittingDiagnosis?: CandidApi.healthCareCodeInformation.v1.AdmittingDiagnosis;
+    /** This object only applies to 837i institutional claim forms. */
+    patientReasonsForVisit: CandidApi.healthCareCodeInformation.v1.PatientReasonForVisit[];
+    /** This object only applies to 837i institutional claim forms. */
+    externalCausesOfInjury: CandidApi.healthCareCodeInformation.v1.ExternalCauseOfInjury[];
+    /** This object only applies to 837i institutional claim forms. */
+    diagnosisRelatedGroups?: CandidApi.healthCareCodeInformation.v1.DiagnosisRelatedGroup;
+    /** This object only applies to 837i institutional claim forms. */
     principalProcedure?: CandidApi.healthCareCodeInformation.v1.PrincipalProcedureInformation;
+    /** This object only applies to 837i institutional claim forms. */
     otherProcedureInformation: CandidApi.healthCareCodeInformation.v1.OtherProcedureInformation[];
+    /** This object only applies to 837i institutional claim forms. */
     occurrenceSpanInformation: CandidApi.healthCareCodeInformation.v1.OccurrenceSpanInformation[];
+    /** This object only applies to 837i institutional claim forms. */
     occurrenceInformation: CandidApi.healthCareCodeInformation.v1.OccurrenceInformation[];
+    /** This object only applies to 837i institutional claim forms. */
     treatmentCodeInformation: CandidApi.healthCareCodeInformation.v1.TreatmentCodeInformation[];
+    /** This object only applies to 837i institutional claim forms. */
     valueInformation: CandidApi.healthCareCodeInformation.v1.ValueInformation[];
+    /** This object only applies to 837i institutional claim forms. */
     conditionInformation: CandidApi.healthCareCodeInformation.v1.ConditionInformation[];
 }

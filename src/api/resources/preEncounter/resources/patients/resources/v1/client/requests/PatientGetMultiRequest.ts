@@ -8,8 +8,6 @@
  */
 export interface PatientGetMultiRequest {
     mrn?: string;
-    /**
-     * A string that is used to order similar names in search results.
-     */
+    /** A string that is used to order similar names in search results. */
     similarNameOrdering?: string;
 }

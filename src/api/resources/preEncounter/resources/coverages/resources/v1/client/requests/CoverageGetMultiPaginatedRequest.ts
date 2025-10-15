@@ -12,8 +12,6 @@ export interface CoverageGetMultiPaginatedRequest {
     patientId?: string;
     payerPlanGroupId?: string;
     pageToken?: CandidApi.preEncounter.PageToken;
-    /**
-     * Must be between 0 and 1000. Defaults to 100
-     */
+    /** Must be between 0 and 1000. Defaults to 100 */
     limit?: number;
 }

@@ -13,25 +13,19 @@ export declare namespace ExpectedNetworkStatus {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class ExpectedNetworkStatus {
+    protected readonly _options: ExpectedNetworkStatus.Options;
     protected _v1: V1 | undefined;
     protected _v2: V2 | undefined;
 
-    constructor(protected readonly _options: ExpectedNetworkStatus.Options = {}) {}
+    constructor(_options: ExpectedNetworkStatus.Options = {}) {
+        this._options = _options;
+    }
 
     public get v1(): V1 {
         return (this._v1 ??= new V1(this._options));

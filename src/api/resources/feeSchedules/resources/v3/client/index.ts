@@ -1,4 +1,3 @@
-export * from "./requests";
 export * as getMatch from "./getMatch";
 export * as testMatch from "./testMatch";
 export * as getMulti from "./getMulti";
@@ -11,3 +10,4 @@ export * as getPayerThresholds from "./getPayerThresholds";
 export * as setPayerThreshold from "./setPayerThreshold";
 export * as hardDeleteRates from "./hardDeleteRates";
 export * as hardDeleteRatesByIds from "./hardDeleteRatesByIds";
+export * from "./requests";

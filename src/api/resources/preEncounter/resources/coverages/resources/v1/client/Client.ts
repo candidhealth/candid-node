@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
 import * as CandidApi from "../../../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../../../core/headers";
 import * as serializers from "../../../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Creates a new Coverage. A Coverage provides the high-level identifiers and descriptors of a specific insurance plan for a specific individual - typically the information you can find on an insurance card. Additionally a coverage will include detailed benefits information covered by the specific plan for the individual.
@@ -58,14 +66,33 @@ export class V1 {
      *         verified: true
      *     })
      */
-    public async create(
+    public create(
+        request: CandidApi.preEncounter.coverages.v1.MutableCoverage,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
         request: CandidApi.preEncounter.coverages.v1.MutableCoverage,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.create.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.Coverage,
+                CandidApi.preEncounter.coverages.v1.create.Error
+            >
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -74,17 +101,9 @@ export class V1 {
                 "/coverages/v1",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.preEncounter.coverages.v1.MutableCoverage.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -95,19 +114,28 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -140,16 +168,37 @@ export class V1 {
      *         verified: true
      *     })
      */
-    public async update(
+    public update(
+        id: CandidApi.preEncounter.CoverageId,
+        version: string,
+        request: CandidApi.preEncounter.coverages.v1.MutableCoverage,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(id, version, request, requestOptions));
+    }
+
+    private async __update(
         id: CandidApi.preEncounter.CoverageId,
         version: string,
         request: CandidApi.preEncounter.coverages.v1.MutableCoverage,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.update.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.Coverage,
+                CandidApi.preEncounter.coverages.v1.update.Error
+            >
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -158,17 +207,9 @@ export class V1 {
                 `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}/${encodeURIComponent(version)}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.preEncounter.coverages.v1.MutableCoverage.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -179,13 +220,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -194,23 +240,31 @@ export class V1 {
                 case "NotFoundError":
                 case "VersionConflictError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.coverages.v1.update.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.coverages.v1.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.coverages.v1.update.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.coverages.v1.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -223,13 +277,27 @@ export class V1 {
      * @example
      *     await client.preEncounter.coverages.v1.getMultiPaginated()
      */
-    public async getMultiPaginated(
+    public getMultiPaginated(
         request: CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.coverages.v1.CoveragesPage,
             CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMultiPaginated(request, requestOptions));
+    }
+
+    private async __getMultiPaginated(
+        request: CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.CoveragesPage,
+                CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error
+            >
         >
     > {
         const { patientId, payerPlanGroupId, pageToken, limit } = request;
@@ -250,8 +318,13 @@ export class V1 {
             _queryParams["limit"] = limit.toString();
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -260,32 +333,26 @@ export class V1 {
                 "/coverages/v1/get-multi-paginated",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.CoveragesPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.CoveragesPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -295,23 +362,32 @@ export class V1 {
             ) {
                 case "BadRequestError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.coverages.v1.getMultiPaginated.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.coverages.v1.getMultiPaginated.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.coverages.v1.getMultiPaginated.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.preEncounter.coverages.v1.getMultiPaginated.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -324,14 +400,33 @@ export class V1 {
      * @example
      *     await client.preEncounter.coverages.v1.get(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
+        id: CandidApi.preEncounter.CoverageId,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
+    }
+
+    private async __get(
         id: CandidApi.preEncounter.CoverageId,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage, CandidApi.preEncounter.coverages.v1.get.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.Coverage,
+                CandidApi.preEncounter.coverages.v1.get.Error
+            >
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -340,37 +435,36 @@ export class V1 {
                 `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.Coverage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -383,17 +477,36 @@ export class V1 {
      * @example
      *     await client.preEncounter.coverages.v1.getHistory(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async getHistory(
+    public getHistory(
         id: CandidApi.preEncounter.CoverageId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.coverages.v1.Coverage[],
             CandidApi.preEncounter.coverages.v1.getHistory.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__getHistory(id, requestOptions));
+    }
+
+    private async __getHistory(
+        id: CandidApi.preEncounter.CoverageId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.Coverage[],
+                CandidApi.preEncounter.coverages.v1.getHistory.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -402,31 +515,26 @@ export class V1 {
                 `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}/history`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.getHistory.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.getHistory.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -434,23 +542,31 @@ export class V1 {
             switch ((_response.error.body as serializers.preEncounter.coverages.v1.getHistory.Error.Raw)?.errorName) {
                 case "NotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.coverages.v1.getHistory.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.coverages.v1.getHistory.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.coverages.v1.getHistory.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.coverages.v1.getHistory.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.getHistory.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.getHistory.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -463,13 +579,27 @@ export class V1 {
      * @example
      *     await client.preEncounter.coverages.v1.getMulti()
      */
-    public async getMulti(
+    public getMulti(
         request: CandidApi.preEncounter.coverages.v1.CoverageGetMultiRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.coverages.v1.Coverage[],
             CandidApi.preEncounter.coverages.v1.getMulti.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.preEncounter.coverages.v1.CoverageGetMultiRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.Coverage[],
+                CandidApi.preEncounter.coverages.v1.getMulti.Error
+            >
         >
     > {
         const { patientId } = request;
@@ -478,8 +608,13 @@ export class V1 {
             _queryParams["patient_id"] = patientId;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -488,38 +623,36 @@ export class V1 {
                 "/coverages/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.getMulti.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.getMulti.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -531,20 +664,39 @@ export class V1 {
      *
      * @example
      *     await client.preEncounter.coverages.v1.scan({
-     *         since: "2024-01-15T09:30:00Z"
+     *         since: new Date("2024-01-15T09:30:00.000Z")
      *     })
      */
-    public async scan(
+    public scan(
+        request: CandidApi.preEncounter.coverages.v1.CoverageScanRequest,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage[], CandidApi.preEncounter.coverages.v1.scan.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__scan(request, requestOptions));
+    }
+
+    private async __scan(
         request: CandidApi.preEncounter.coverages.v1.CoverageScanRequest,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.coverages.v1.Coverage[], CandidApi.preEncounter.coverages.v1.scan.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.Coverage[],
+                CandidApi.preEncounter.coverages.v1.scan.Error
+            >
+        >
     > {
         const { since } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["since"] = since.toISOString();
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -553,38 +705,36 @@ export class V1 {
                 "/coverages/v1/updates/scan",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.scan.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.scan.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.scan.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.scan.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -603,13 +753,26 @@ export class V1 {
      *         planType: "09"
      *     })
      */
-    public async batchUpdatePpg(
+    public batchUpdatePpg(
         ppgId: CandidApi.preEncounter.PayerPlanGroupId,
         request: CandidApi.preEncounter.coverages.v1.PayerPlanGroupFields,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__batchUpdatePpg(ppgId, request, requestOptions));
+    }
+
+    private async __batchUpdatePpg(
+        ppgId: CandidApi.preEncounter.PayerPlanGroupId,
+        request: CandidApi.preEncounter.coverages.v1.PayerPlanGroupFields,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -618,17 +781,9 @@ export class V1 {
                 `/coverages/v1/batch-update-ppg/${encodeURIComponent(serializers.preEncounter.PayerPlanGroupId.jsonOrThrow(ppgId))}`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.preEncounter.coverages.v1.PayerPlanGroupFields.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -639,14 +794,23 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -664,18 +828,38 @@ export class V1 {
      *         npi: "npi"
      *     })
      */
-    public async checkEligibility(
+    public checkEligibility(
         id: CandidApi.preEncounter.CoverageId,
         request: CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata,
             CandidApi.preEncounter.coverages.v1.checkEligibility.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__checkEligibility(id, request, requestOptions));
+    }
+
+    private async __checkEligibility(
+        id: CandidApi.preEncounter.CoverageId,
+        request: CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata,
+                CandidApi.preEncounter.coverages.v1.checkEligibility.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -684,17 +868,9 @@ export class V1 {
                 `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}/eligibility`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.preEncounter.coverages.v1.CheckEligibilityRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -705,22 +881,31 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.EligibilityCheckMetadata.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.checkEligibility.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.checkEligibility.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -734,18 +919,38 @@ export class V1 {
      * @example
      *     await client.preEncounter.coverages.v1.getEligibility(CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "check_id")
      */
-    public async getEligibility(
+    public getEligibility(
         id: CandidApi.preEncounter.CoverageId,
         checkId: string,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.coverages.v1.CoverageEligibilityCheckResponse,
             CandidApi.preEncounter.coverages.v1.getEligibility.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__getEligibility(id, checkId, requestOptions));
+    }
+
+    private async __getEligibility(
+        id: CandidApi.preEncounter.CoverageId,
+        checkId: string,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.coverages.v1.CoverageEligibilityCheckResponse,
+                CandidApi.preEncounter.coverages.v1.getEligibility.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -754,40 +959,39 @@ export class V1 {
                 `/coverages/v1/${encodeURIComponent(serializers.preEncounter.CoverageId.jsonOrThrow(id))}/eligibility/${encodeURIComponent(checkId)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.coverages.v1.CoverageEligibilityCheckResponse.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.CoverageEligibilityCheckResponse.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.coverages.v1.getEligibility.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.getEligibility.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

@@ -16,7 +16,7 @@ import * as CandidApi from "../../../../../index";
  *                         clearinghouseClaimId: "5BA7C3AB-2BC2-496C-8B10-6CAC73D0729D",
  *                         payerClaimId: "9BB9F259-9756-4F16-8F53-9DBB9F7EB1BB",
  *                         serviceLines: [{
- *                                 createdAt: "2023-01-01T00:00:00Z",
+ *                                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
  *                                 modifiers: [CandidApi.ProcedureModifier.TwentyTwo],
  *                                 chargeAmountCents: 10000,
  *                                 allowedAmountCents: 8000,
@@ -30,7 +30,7 @@ import * as CandidApi from "../../../../../index";
  *                                 diagnosisIdThree: CandidApi.DiagnosisId("81795126-A3AC-443C-B47E-7259A16AB4A2"),
  *                                 serviceLineEraData: {
  *                                     serviceLineAdjustments: [{
- *                                             createdAt: "2023-01-01T00:00:00Z",
+ *                                             createdAt: new Date("2023-01-01T00:00:00.000Z"),
  *                                             adjustmentGroupCode: "CO",
  *                                             adjustmentReasonCode: "CO",
  *                                             adjustmentAmountCents: 1000,
@@ -39,7 +39,7 @@ import * as CandidApi from "../../../../../index";
  *                                     remittanceAdviceRemarkCodes: ["N362"]
  *                                 },
  *                                 serviceLineManualAdjustments: [{
- *                                         createdAt: "2023-01-01T00:00:00Z",
+ *                                         createdAt: new Date("2023-01-01T00:00:00.000Z"),
  *                                         adjustmentGroupCode: "CO",
  *                                         adjustmentReasonCode: "CO",
  *                                         adjustmentAmountCents: 1000,
@@ -47,8 +47,8 @@ import * as CandidApi from "../../../../../index";
  *                                     }],
  *                                 relatedInvoices: [{
  *                                         id: CandidApi.InvoiceId("901BE2F1-41BC-456E-9987-4FE2F84F9D75"),
- *                                         createdAt: "2023-01-01T00:00:00Z",
- *                                         updatedAt: "2023-01-01T00:00:00Z",
+ *                                         createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                                         updatedAt: new Date("2023-01-01T00:00:00.000Z"),
  *                                         organzationId: CandidApi.OrganizationId("F13F73D4-4344-46EA-9D93-33BCFFBB9F36"),
  *                                         sourceId: "9B626577-8808-4F28-9ED1-F0DFF0D49BBC",
  *                                         sourceCustomerId: "624D1972-8C69-4C2F-AEFA-10856F734DB3",
@@ -297,8 +297,8 @@ import * as CandidApi from "../../../../../index";
  *                 url: CandidApi.LinkUrl("https://example.com"),
  *                 diagnoses: [{
  *                         diagnosisId: CandidApi.DiagnosisId("5C770E00-4BBF-42AF-A73F-99C5E91FC0DB"),
- *                         createdAt: "2023-01-01T00:00:00Z",
- *                         updatedAt: "2023-01-01T00:00:00Z",
+ *                         createdAt: new Date("2023-01-01T00:00:00.000Z"),
+ *                         updatedAt: new Date("2023-01-01T00:00:00.000Z"),
  *                         encounterId: CandidApi.EncounterId("3F63985B-51A4-4DD4-9418-7D50B2520792"),
  *                         name: "John Doe",
  *                         codeType: CandidApi.DiagnosisTypeCode.Abf,
@@ -311,13 +311,13 @@ import * as CandidApi from "../../../../../index";
  *                                 text: "Mild chest pain since morning.",
  *                                 authorName: "John Doe",
  *                                 authorNpi: CandidApi.Npi("1234567890"),
- *                                 timestamp: "2023-01-01T00:00:00Z"
+ *                                 timestamp: new Date("2023-01-01T00:00:00.000Z")
  *                             }]
  *                     }],
  *                 billingNotes: [{
  *                         billingNoteId: CandidApi.billingNotes.v2.BillingNoteId("99882EEA-936F-4E71-BC4F-520E4D14E3E2"),
  *                         encounterId: CandidApi.EncounterId("8BCFB6A8-2876-4111-9E3F-602B541FCF62"),
- *                         createdAt: "2023-01-01T00:00:00Z",
+ *                         createdAt: new Date("2023-01-01T00:00:00.000Z"),
  *                         authorAuth0Id: "F0DE3BF9-F9A1-4FA7-BF6B-28C0B46BADD8",
  *                         authorName: "John Doe",
  *                         text: "Patient was billed for an MRI."
@@ -345,7 +345,7 @@ import * as CandidApi from "../../../../../index";
  *                         sourceInternalId: "D1A76039-D5C5-4323-A2FC-B7C8B6AEF6A4",
  *                         source: CandidApi.patientPayments.v3.PatientPaymentSource.ManualEntry,
  *                         amountCents: 2000,
- *                         paymentTimestamp: "2023-01-01T00:00:00Z",
+ *                         paymentTimestamp: new Date("2023-01-01T00:00:00.000Z"),
  *                         status: CandidApi.patientPayments.v3.PatientPaymentStatus.Pending,
  *                         paymentName: "John Doe",
  *                         paymentNote: "test payment note",
@@ -361,7 +361,7 @@ import * as CandidApi from "../../../../../index";
  *                     }],
  *                 codingAttribution: CandidApi.encounters.v4.CodingAttributionType.Candid,
  *                 workQueueId: CandidApi.WorkQueueId("12"),
- *                 workQueueMembershipActivatedAt: "2023-01-01T00:00:00Z",
+ *                 workQueueMembershipActivatedAt: new Date("2023-01-01T00:00:00.000Z"),
  *                 ownerOfNextAction: CandidApi.encounters.v4.EncounterOwnerOfNextActionType.Candid,
  *                 submissionOrigin: CandidApi.encounters.v4.EncounterSubmissionOriginType.Candid,
  *                 externalId: CandidApi.EncounterExternalId("5C21490F-A9C0-45F4-B5DB-136E3AEC617A"),
@@ -422,7 +422,7 @@ import * as CandidApi from "../../../../../index";
  *                             "age": 38
  *                         }
  *                     }],
- *                 createdAt: "2023-01-01T00:00:00Z",
+ *                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
  *                 nextResponsibleParty: CandidApi.NextResponsibleParty.Primary
  *             }]
  *     }

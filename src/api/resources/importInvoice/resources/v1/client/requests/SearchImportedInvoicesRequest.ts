@@ -11,33 +11,19 @@ import * as CandidApi from "../../../../../../index";
 export interface SearchImportedInvoicesRequest {
     patientExternalId?: CandidApi.PatientExternalId;
     encounterExternalId?: CandidApi.EncounterExternalId;
-    /**
-     * partial match supported
-     */
+    /** partial match supported */
     note?: string;
-    /**
-     * all invoices whose due date is before this due date, not inclusive
-     */
+    /** all invoices whose due date is before this due date, not inclusive */
     dueDateBefore?: string;
-    /**
-     * all invoices whose due date is after this due date, not inclusive
-     */
+    /** all invoices whose due date is after this due date, not inclusive */
     dueDateAfter?: string;
-    /**
-     * all invoices that match any of the provided statuses
-     */
+    /** all invoices that match any of the provided statuses */
     status?: CandidApi.invoices.v2.InvoiceStatus | CandidApi.invoices.v2.InvoiceStatus[];
-    /**
-     * Defaults to 100
-     */
+    /** Defaults to 100 */
     limit?: number;
-    /**
-     * Defaults to created_at
-     */
+    /** Defaults to created_at */
     sort?: CandidApi.invoices.v2.InvoiceSortField;
-    /**
-     * Sort direction. Defaults to descending order
-     */
+    /** Sort direction. Defaults to descending order */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
 }

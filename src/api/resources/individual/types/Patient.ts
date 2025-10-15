@@ -69,7 +69,7 @@ export interface Patient extends CandidApi.PatientBase {
     phoneConsent: boolean;
     email?: CandidApi.Email;
     emailConsent: boolean;
-    autoChargeConsent?: boolean;
+    autoChargeConsent: boolean;
     nonInsurancePayers: CandidApi.nonInsurancePayers.v1.NonInsurancePayer[];
     nonInsurancePayersInfo: CandidApi.PatientNonInsurancePayerInfo[];
 }

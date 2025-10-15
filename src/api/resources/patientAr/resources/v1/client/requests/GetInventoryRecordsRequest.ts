@@ -9,13 +9,9 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetInventoryRecordsRequest {
-    /**
-     * Timestamp to filter records since, inclusive
-     */
+    /** Timestamp to filter records since, inclusive */
     since?: Date;
-    /**
-     * Maximum number of records to return, default is 100
-     */
+    /** Maximum number of records to return, default is 100 */
     limit?: number;
     pageToken?: CandidApi.PageToken;
 }

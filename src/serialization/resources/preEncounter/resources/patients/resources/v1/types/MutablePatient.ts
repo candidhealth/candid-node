@@ -25,6 +25,7 @@ import { CanonicalNonInsurancePayerAssociation } from "../../../../common/types/
 import { Guarantor } from "./Guarantor";
 import { Authorization } from "./Authorization";
 import { Referral } from "./Referral";
+import { PatientServiceFacility } from "./PatientServiceFacility";
 import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 import { NoteId } from "../../../../common/types/NoteId";
 import { TagId } from "../../../../common/types/TagId";
@@ -87,6 +88,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
         "primary_service_facility_id",
         core.serialization.string().optional(),
     ),
+    serviceFacilities: core.serialization.property(
+        "service_facilities",
+        core.serialization.list(PatientServiceFacility).optional(),
+    ),
     doNotInvoiceReason: core.serialization.property("do_not_invoice_reason", DoNotInvoiceReason.optional()),
     noteIds: core.serialization.property("note_ids", core.serialization.list(NoteId).optional()),
     tagIds: core.serialization.property("tag_ids", core.serialization.list(TagId).optional()),
@@ -133,6 +138,7 @@ export declare namespace MutablePatient {
         authorizations?: Authorization.Raw[] | null;
         referrals?: Referral.Raw[] | null;
         primary_service_facility_id?: string | null;
+        service_facilities?: PatientServiceFacility.Raw[] | null;
         do_not_invoice_reason?: DoNotInvoiceReason.Raw | null;
         note_ids?: NoteId.Raw[] | null;
         tag_ids?: TagId.Raw[] | null;

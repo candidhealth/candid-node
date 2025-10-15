@@ -9,8 +9,43 @@ import * as core from "../../../../../../core";
 export const OccurrenceSpanCode: core.serialization.Schema<
     serializers.healthCareCodeInformation.v1.OccurrenceSpanCode.Raw,
     CandidApi.healthCareCodeInformation.v1.OccurrenceSpanCode
-> = core.serialization.enum_(["70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82"]);
+> = core.serialization.enum_([
+    "70",
+    "71",
+    "72",
+    "73",
+    "74",
+    "75",
+    "76",
+    "77",
+    "78",
+    "80",
+    "81",
+    "82",
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+]);
 
 export declare namespace OccurrenceSpanCode {
-    export type Raw = "70" | "71" | "72" | "73" | "74" | "75" | "76" | "77" | "78" | "79" | "80" | "81" | "82";
+    export type Raw =
+        | "70"
+        | "71"
+        | "72"
+        | "73"
+        | "74"
+        | "75"
+        | "76"
+        | "77"
+        | "78"
+        | "80"
+        | "81"
+        | "82"
+        | "M0"
+        | "M1"
+        | "M2"
+        | "M3"
+        | "M4";
 }

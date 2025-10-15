@@ -9,20 +9,14 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetMultiNonInsurancePayerRefundsRequest {
-    /**
-     * Defaults to 100. The value must be greater than 0 and less than 1000.
-     */
+    /** Defaults to 100. The value must be greater than 0 and less than 1000. */
     limit?: number;
     nonInsurancePayerId?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId;
     checkNumber?: string | string[];
     invoiceId?: CandidApi.InvoiceId;
-    /**
-     * Defaults to refund_timestamp
-     */
+    /** Defaults to refund_timestamp */
     sort?: CandidApi.nonInsurancePayerRefunds.v1.NonInsurancePayerRefundSortField;
-    /**
-     * Sort direction. Defaults to descending order if not provided.
-     */
+    /** Sort direction. Defaults to descending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
 }

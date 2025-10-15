@@ -6,7 +6,7 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Returns all write-offs satisfying the search criteria.
@@ -40,10 +48,23 @@ export class V1 {
      * @example
      *     await client.writeOffs.v1.getMulti()
      */
-    public async getMulti(
+    public getMulti(
         request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.writeOffs.v1.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.writeOffs.v1.GetMultiWriteOffsRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.writeOffs.v1.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error>
+        >
+    > {
         const {
             limit,
             patientExternalId,
@@ -109,8 +130,13 @@ export class V1 {
             }
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -119,38 +145,36 @@ export class V1 {
                 "/api/write-offs/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.writeOffs.v1.WriteOffsPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.writeOffs.v1.WriteOffsPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.writeOffs.v1.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.writeOffs.v1.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -163,12 +187,26 @@ export class V1 {
      * @example
      *     await client.writeOffs.v1.get(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         writeOffId: CandidApi.writeOffs.v1.WriteOffId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.get.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.get.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__get(writeOffId, requestOptions));
+    }
+
+    private async __get(
+        writeOffId: CandidApi.writeOffs.v1.WriteOffId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.get.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -177,37 +215,36 @@ export class V1 {
                 `/api/write-offs/v1/${encodeURIComponent(serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.writeOffs.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.writeOffs.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -222,25 +259,43 @@ export class V1 {
      *     await client.writeOffs.v1.create({
      *         writeOffs: [{
      *                 type: "patient",
-     *                 writeOffTimestamp: "2024-01-15T09:30:00Z",
+     *                 writeOffTimestamp: new Date("2024-01-15T09:30:00.000Z"),
      *                 writeOffReason: "SMALL_BALANCE",
      *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *                 amountCents: 1
      *             }, {
      *                 type: "patient",
-     *                 writeOffTimestamp: "2024-01-15T09:30:00Z",
+     *                 writeOffTimestamp: new Date("2024-01-15T09:30:00.000Z"),
      *                 writeOffReason: "SMALL_BALANCE",
      *                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *                 amountCents: 1
      *             }]
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.writeOffs.v1.CreateWriteOffsRequest,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.writeOffs.v1.CreateWriteOffsResponse, CandidApi.writeOffs.v1.create.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.writeOffs.v1.CreateWriteOffsResponse, CandidApi.writeOffs.v1.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.writeOffs.v1.CreateWriteOffsRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.writeOffs.v1.CreateWriteOffsResponse, CandidApi.writeOffs.v1.create.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -249,17 +304,9 @@ export class V1 {
                 "/api/write-offs/v1",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.writeOffs.v1.CreateWriteOffsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -270,19 +317,28 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.writeOffs.v1.CreateWriteOffsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.writeOffs.v1.CreateWriteOffsResponse.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.writeOffs.v1.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.writeOffs.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -295,12 +351,28 @@ export class V1 {
      * @example
      *     await client.writeOffs.v1.revert(CandidApi.writeOffs.v1.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async revert(
+    public revert(
         writeOffId: CandidApi.writeOffs.v1.WriteOffId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revert.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revert.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__revert(writeOffId, requestOptions));
+    }
+
+    private async __revert(
+        writeOffId: CandidApi.writeOffs.v1.WriteOffId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revert.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -309,37 +381,36 @@ export class V1 {
                 `/api/write-offs/v1/${encodeURIComponent(serializers.writeOffs.v1.WriteOffId.jsonOrThrow(writeOffId))}/revert`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.writeOffs.v1.revert.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.writeOffs.v1.revert.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -352,14 +423,35 @@ export class V1 {
      * @example
      *     await client.writeOffs.v1.revertInsuranceBalanceAdjustment(CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async revertInsuranceBalanceAdjustment(
+    public revertInsuranceBalanceAdjustment(
+        adjustmentId: CandidApi.AdjustmentId,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__revertInsuranceBalanceAdjustment(adjustmentId, requestOptions),
+        );
+    }
+
+    private async __revertInsuranceBalanceAdjustment(
         adjustmentId: CandidApi.AdjustmentId,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.writeOffs.v1.WriteOff, CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.writeOffs.v1.WriteOff,
+                CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error
+            >
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -368,37 +460,36 @@ export class V1 {
                 `/api/write-offs/v1/${encodeURIComponent(serializers.AdjustmentId.jsonOrThrow(adjustmentId))}/revert`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.writeOffs.v1.WriteOff.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -411,17 +502,38 @@ export class V1 {
      * @example
      *     await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async revertEraOriginatedInsuranceBalanceAdjustment(
+    public revertEraOriginatedInsuranceBalanceAdjustment(
         adjustmentId: CandidApi.AdjustmentId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.AdjustmentId,
             CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__revertEraOriginatedInsuranceBalanceAdjustment(adjustmentId, requestOptions),
+        );
+    }
+
+    private async __revertEraOriginatedInsuranceBalanceAdjustment(
+        adjustmentId: CandidApi.AdjustmentId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.AdjustmentId,
+                CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -430,37 +542,38 @@ export class V1 {
                 `/api/write-offs/v1/${encodeURIComponent(serializers.AdjustmentId.jsonOrThrow(adjustmentId))}/revert-era-originated`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.AdjustmentId.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.AdjustmentId.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

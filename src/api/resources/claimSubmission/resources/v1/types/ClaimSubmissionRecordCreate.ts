@@ -9,7 +9,7 @@ import * as CandidApi from "../../../../../index";
  *
  * @example
  *     {
- *         submittedAt: "2023-01-01T13:00:00.000000Z",
+ *         submittedAt: new Date("2023-01-01T13:00:00.000Z"),
  *         claimFrequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode.C1,
  *         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Electronic
@@ -17,7 +17,7 @@ import * as CandidApi from "../../../../../index";
  *
  * @example
  *     {
- *         submittedAt: "2023-01-04T12:00:00.000000Z",
+ *         submittedAt: new Date("2023-01-04T12:00:00.000Z"),
  *         claimFrequencyCode: CandidApi.x12.v1.TypeOfBillFrequencyCode.C7,
  *         payerResponsibility: CandidApi.ClaimSubmissionPayerResponsibilityType.Primary,
  *         intendedSubmissionMedium: CandidApi.IntendedSubmissionMedium.Paper

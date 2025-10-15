@@ -12,24 +12,18 @@ export declare namespace BillingNotes {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class BillingNotes {
+    protected readonly _options: BillingNotes.Options;
     protected _v2: V2 | undefined;
 
-    constructor(protected readonly _options: BillingNotes.Options = {}) {}
+    constructor(_options: BillingNotes.Options = {}) {
+        this._options = _options;
+    }
 
     public get v2(): V2 {
         return (this._v2 ??= new V2(this._options));

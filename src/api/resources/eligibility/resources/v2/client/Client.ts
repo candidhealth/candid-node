@@ -5,7 +5,7 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
 
 export declare namespace V2 {
@@ -14,6 +14,8 @@ export declare namespace V2 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V2 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    protected readonly _options: V2.Options;
+
+    constructor(_options: V2.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * <Tip>Candid is deprecating support for this endpoint. It is instead recommended to use [Candid's Stedi passthrough endpoint](https://docs.joincandidhealth.com/api-reference/pre-encounter/eligibility-checks/v-1/post).
@@ -58,12 +66,24 @@ export class V2 {
      *         "key": "value"
      *     })
      */
-    public async submitEligibilityCheck(
+    public submitEligibilityCheck(
         request?: unknown,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheck.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheck.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__submitEligibilityCheck(request, requestOptions));
+    }
+
+    private async __submitEligibilityCheck(
+        request?: unknown,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheck.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -72,17 +92,9 @@ export class V2 {
                 "/api/eligibility/v2",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: request,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -91,8 +103,13 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: _response.body,
+                data: {
+                    ok: true,
+                    body: _response.body,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -100,23 +117,31 @@ export class V2 {
             switch ((_response.error.body as serializers.eligibility.v2.submitEligibilityCheck.Error.Raw)?.errorName) {
                 case "HttpServiceUnavailableError":
                     return {
-                        ok: false,
-                        error: serializers.eligibility.v2.submitEligibilityCheck.Error.parseOrThrow(
-                            _response.error.body as serializers.eligibility.v2.submitEligibilityCheck.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.eligibility.v2.submitEligibilityCheck.Error.parseOrThrow(
+                                _response.error.body as serializers.eligibility.v2.submitEligibilityCheck.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.eligibility.v2.submitEligibilityCheck.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.eligibility.v2.submitEligibilityCheck.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -146,11 +171,26 @@ export class V2 {
      * @example
      *     await client.eligibility.v2.submitEligibilityCheckAvaility()
      */
-    public async submitEligibilityCheckAvaility(
+    public submitEligibilityCheckAvaility(
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__submitEligibilityCheckAvaility(requestOptions));
+    }
+
+    private async __submitEligibilityCheckAvaility(
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -159,26 +199,21 @@ export class V2 {
                 "/api/eligibility/v2/availity",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: _response.body,
+                data: {
+                    ok: true,
+                    body: _response.body,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -188,23 +223,32 @@ export class V2 {
             ) {
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.parseOrThrow(
-                            _response.error.body as serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.eligibility.v2.submitEligibilityCheckAvaility.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -233,12 +277,30 @@ export class V2 {
      *         "key": "value"
      *     })
      */
-    public async submitEligibilityCheckAvailityPost(
+    public submitEligibilityCheckAvailityPost(
         request?: unknown,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__submitEligibilityCheckAvailityPost(request, requestOptions));
+    }
+
+    private async __submitEligibilityCheckAvailityPost(
+        request?: unknown,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -247,17 +309,9 @@ export class V2 {
                 "/api/eligibility/v2/availity",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: request,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -266,8 +320,13 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: _response.body,
+                data: {
+                    ok: true,
+                    body: _response.body,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -278,24 +337,32 @@ export class V2 {
             ) {
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.eligibility.v2.submitEligibilityCheckAvailityPost.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.eligibility.v2.submitEligibilityCheckAvailityPost.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.eligibility.v2.submitEligibilityCheckAvailityPost.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.eligibility.v2.submitEligibilityCheckAvailityPost.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

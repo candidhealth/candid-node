@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace Default {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace Default {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace Default {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class Default {
-    constructor(protected readonly _options: Default.Options = {}) {}
+    protected readonly _options: Default.Options;
+
+    constructor(_options: Default.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * <Callout intent="info">
@@ -73,12 +81,30 @@ export class Default {
      *         clientSecret: "YOUR_CLIENT_SECRET"
      *     })
      */
-    public async getToken(
+    public getToken(
         request: CandidApi.auth.default_.AuthGetTokenRequest,
         requestOptions?: Default.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.auth.default_.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.auth.default_.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getToken(request, requestOptions));
+    }
+
+    private async __getToken(
+        request: CandidApi.auth.default_.AuthGetTokenRequest,
+        requestOptions?: Default.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.auth.default_.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -87,17 +113,9 @@ export class Default {
                 "/api/auth/v2/token",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.auth.default_.AuthGetTokenRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -108,13 +126,18 @@ export class Default {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.auth.default_.AuthGetTokenResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.auth.default_.AuthGetTokenResponse.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -123,90 +146,31 @@ export class Default {
                 case "TooManyRequestsError":
                 case "InvalidContentTypeError":
                     return {
-                        ok: false,
-                        error: serializers.auth.default_.getToken.Error.parseOrThrow(
-                            _response.error.body as serializers.auth.default_.getToken.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.auth.default_.getToken.Error.parseOrThrow(
+                                _response.error.body as serializers.auth.default_.getToken.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.auth.default_.getToken.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * @param {CandidApi.auth.default_.AuthGetTokenForOrgRequest} request
-     * @param {Default.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.auth.default.getMachineTokenForOrgId({
-     *         orgId: "org_id",
-     *         clientId: "client_id",
-     *         clientSecret: "client_secret"
-     *     })
-     */
-    public async getMachineTokenForOrgId(
-        request: CandidApi.auth.default_.AuthGetTokenForOrgRequest,
-        requestOptions?: Default.RequestOptions,
-    ): Promise<
-        core.APIResponse<
-            CandidApi.auth.default_.AuthGetTokenResponse,
-            CandidApi.auth.default_.getMachineTokenForOrgId.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.CandidApiEnvironment.Production
-                    ).candidApi,
-                "/api/auth/v2/machine-token-for-org-id",
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
+            data: {
+                ok: false,
+                error: CandidApi.auth.default_.getToken.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
             },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.auth.default_.AuthGetTokenForOrgRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.auth.default_.AuthGetTokenResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.auth.default_.getMachineTokenForOrgId.Error._unknown(_response.error),
+            rawResponse: _response.rawResponse,
         };
     }
 

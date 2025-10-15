@@ -11,13 +11,9 @@ import * as CandidApi from "../../../../../../../../index";
 export interface PatientListRequest {
     pageToken?: CandidApi.preEncounter.PageToken;
     limit?: number;
-    /**
-     * Defaults to patient.updatedAt.
-     */
+    /** Defaults to patient.updatedAt. */
     sortField?: CandidApi.preEncounter.lists.v1.SortFieldString;
-    /**
-     * Defaults to ascending.
-     */
+    /** Defaults to ascending. */
     sortDirection?: CandidApi.preEncounter.SortDirection;
     filters?: CandidApi.preEncounter.FilterQueryString;
 }

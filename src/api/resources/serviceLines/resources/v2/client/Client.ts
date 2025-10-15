@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V2 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V2 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V2 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    protected readonly _options: V2.Options;
+
+    constructor(_options: V2.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.serviceLines.v2.ServiceLineCreateStandalone} request
@@ -37,18 +45,36 @@ export class V2 {
      *
      * @example
      *     await client.serviceLines.v2.create({
+     *         procedureCode: "procedure_code",
      *         quantity: CandidApi.Decimal("quantity"),
      *         units: "MJ",
-     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         procedureCode: "procedure_code"
+     *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.serviceLines.v2.ServiceLineCreateStandalone,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.create.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.serviceLines.v2.ServiceLineCreateStandalone,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.create.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -57,17 +83,9 @@ export class V2 {
                 "/api/service-lines/v2",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.serviceLines.v2.ServiceLineCreateStandalone.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -78,13 +96,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -92,23 +115,31 @@ export class V2 {
             switch ((_response.error.body as serializers.serviceLines.v2.create.Error.Raw)?.errorName) {
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.serviceLines.v2.create.Error.parseOrThrow(
-                            _response.error.body as serializers.serviceLines.v2.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.serviceLines.v2.create.Error.parseOrThrow(
+                                _response.error.body as serializers.serviceLines.v2.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.serviceLines.v2.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.serviceLines.v2.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -123,14 +154,30 @@ export class V2 {
      *         claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *     })
      */
-    public async createUniversal(
+    public createUniversal(
+        request: CandidApi.serviceLines.v2.UniversalServiceLineCreateStandalone,
+        requestOptions?: V2.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.createUniversal.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__createUniversal(request, requestOptions));
+    }
+
+    private async __createUniversal(
         request: CandidApi.serviceLines.v2.UniversalServiceLineCreateStandalone,
         requestOptions?: V2.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.createUniversal.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.createUniversal.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -139,17 +186,9 @@ export class V2 {
                 "/api/service-lines/v2/universal",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.serviceLines.v2.UniversalServiceLineCreateStandalone.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -160,13 +199,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -174,23 +218,31 @@ export class V2 {
             switch ((_response.error.body as serializers.serviceLines.v2.createUniversal.Error.Raw)?.errorName) {
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.serviceLines.v2.createUniversal.Error.parseOrThrow(
-                            _response.error.body as serializers.serviceLines.v2.createUniversal.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.serviceLines.v2.createUniversal.Error.parseOrThrow(
+                                _response.error.body as serializers.serviceLines.v2.createUniversal.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.serviceLines.v2.createUniversal.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.serviceLines.v2.createUniversal.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -202,15 +254,32 @@ export class V2 {
      * @example
      *     await client.serviceLines.v2.updateUniversal(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async updateUniversal(
+    public updateUniversal(
+        serviceLineId: CandidApi.ServiceLineId,
+        request: CandidApi.serviceLines.v2.UniversalServiceLineUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.updateUniversal.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__updateUniversal(serviceLineId, request, requestOptions));
+    }
+
+    private async __updateUniversal(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.serviceLines.v2.UniversalServiceLineUpdate,
         requestOptions?: V2.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.updateUniversal.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.updateUniversal.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -219,17 +288,9 @@ export class V2 {
                 `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}/universal`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.serviceLines.v2.UniversalServiceLineUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -240,13 +301,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -256,23 +322,31 @@ export class V2 {
                 case "UnauthorizedError":
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.serviceLines.v2.updateUniversal.Error.parseOrThrow(
-                            _response.error.body as serializers.serviceLines.v2.updateUniversal.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.serviceLines.v2.updateUniversal.Error.parseOrThrow(
+                                _response.error.body as serializers.serviceLines.v2.updateUniversal.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.serviceLines.v2.updateUniversal.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.serviceLines.v2.updateUniversal.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -284,13 +358,32 @@ export class V2 {
      * @example
      *     await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async update(
+    public update(
         serviceLineId: CandidApi.ServiceLineId,
         request: CandidApi.serviceLines.v2.ServiceLineUpdate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.update.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(serviceLineId, request, requestOptions));
+    }
+
+    private async __update(
+        serviceLineId: CandidApi.ServiceLineId,
+        request: CandidApi.serviceLines.v2.ServiceLineUpdate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.serviceLines.v2.ServiceLine, CandidApi.serviceLines.v2.update.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -299,17 +392,9 @@ export class V2 {
                 `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.serviceLines.v2.ServiceLineUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -320,13 +405,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.serviceLines.v2.ServiceLine.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -336,23 +426,31 @@ export class V2 {
                 case "UnauthorizedError":
                 case "HttpRequestValidationError":
                     return {
-                        ok: false,
-                        error: serializers.serviceLines.v2.update.Error.parseOrThrow(
-                            _response.error.body as serializers.serviceLines.v2.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.serviceLines.v2.update.Error.parseOrThrow(
+                                _response.error.body as serializers.serviceLines.v2.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.serviceLines.v2.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.serviceLines.v2.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -363,12 +461,24 @@ export class V2 {
      * @example
      *     await client.serviceLines.v2.delete(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async delete(
+    public delete(
         serviceLineId: CandidApi.ServiceLineId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.serviceLines.v2.delete.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.serviceLines.v2.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(serviceLineId, requestOptions));
+    }
+
+    private async __delete(
+        serviceLineId: CandidApi.ServiceLineId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.serviceLines.v2.delete.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -377,26 +487,21 @@ export class V2 {
                 `/api/service-lines/v2/${encodeURIComponent(serializers.ServiceLineId.jsonOrThrow(serviceLineId))}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -405,23 +510,31 @@ export class V2 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.serviceLines.v2.delete.Error.parseOrThrow(
-                            _response.error.body as serializers.serviceLines.v2.delete.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.serviceLines.v2.delete.Error.parseOrThrow(
+                                _response.error.body as serializers.serviceLines.v2.delete.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.serviceLines.v2.delete.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.serviceLines.v2.delete.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

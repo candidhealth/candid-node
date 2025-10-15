@@ -9,26 +9,16 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetAllChargeCapturesRequest {
-    /**
-     * Maximum number of entities per page, defaults to 100.
-     */
+    /** Maximum number of entities per page, defaults to 100. */
     limit?: number;
-    /**
-     * Defaults to created_at
-     */
+    /** Defaults to created_at */
     sort?: CandidApi.chargeCapture.v1.ChargeCaptureSortField;
-    /**
-     * Sort direction. Defaults to descending order if not provided.
-     */
+    /** Sort direction. Defaults to descending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
-    /**
-     * The patient ID from the external EMR platform for the patient
-     */
+    /** The patient ID from the external EMR platform for the patient */
     patientExternalId?: string;
-    /**
-     * the status of the charge captures
-     */
+    /** the status of the charge captures */
     status?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
     /**
      * A client-specified unique ID to associate with this encounter;
@@ -46,69 +36,37 @@ export interface GetAllChargeCapturesRequest {
      * This date must be the local date in the timezone where the service occurred.
      */
     dateOfServiceMax?: string;
-    /**
-     * A list of claim IDs to filter by. This will return all charge captures that have a resulting claim with one of the IDs in this list.
-     */
+    /** A list of claim IDs to filter by. This will return all charge captures that have a resulting claim with one of the IDs in this list. */
     claimIds?: CandidApi.EncounterId | CandidApi.EncounterId[];
-    /**
-     * A list of Claim Creation IDs to filter by.
-     */
+    /** A list of Claim Creation IDs to filter by. */
     claimCreationIds?: CandidApi.ChargeCaptureClaimCreationId | CandidApi.ChargeCaptureClaimCreationId[];
-    /**
-     * A list of billing provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
-     */
+    /** A list of billing provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list. */
     billingProviderNpis?: string | string[];
-    /**
-     * A string to filter by. This will return all charge captures with this service facility name.
-     */
+    /** A string to filter by. This will return all charge captures with this service facility name. */
     serviceFacilityName?: string;
-    /**
-     * A list of primary payer IDs to filter by. This will return all charge captures with one of the primary payer IDs in this list.
-     */
+    /** A list of primary payer IDs to filter by. This will return all charge captures with one of the primary payer IDs in this list. */
     primaryPayerIds?: string | string[];
-    /**
-     * A list of rendering provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
-     */
+    /** A list of rendering provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list. */
     renderingProviderNpis?: string | string[];
-    /**
-     * A list of rendering provider names to filter by. This will return all charge captures with one of the names in this list.
-     */
+    /** A list of rendering provider names to filter by. This will return all charge captures with one of the names in this list. */
     renderingProviderNames?: string | string[];
-    /**
-     * A list of supervising provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list.
-     */
+    /** A list of supervising provider NPIs to filter by. This will return all charge captures with one of the NPIs in this list. */
     supervisingProviderNpis?: string | string[];
-    /**
-     * A list of supervising provider names to filter by. This will return all charge captures with one of the names in this list.
-     */
+    /** A list of supervising provider names to filter by. This will return all charge captures with one of the names in this list. */
     supervisingProviderNames?: string | string[];
-    /**
-     * A list of claim creation categories to filter by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list.
-     */
+    /** A list of claim creation categories to filter by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list. */
     claimCreationCategory?: string | string[];
-    /**
-     * A list of tags to filter by. This will return all charge captures with one of the tags.
-     */
+    /** A list of tags to filter by. This will return all charge captures with one of the tags. */
     tags?: string | string[];
-    /**
-     * A list of primary payer names to filter by. This will return all charge captures with one of the names.
-     */
+    /** A list of primary payer names to filter by. This will return all charge captures with one of the names. */
     primaryPayerNames?: string | string[];
-    /**
-     * A list of patient names to filter by. This will return all charge captures with one of the names.
-     */
+    /** A list of patient names to filter by. This will return all charge captures with one of the names. */
     patientNames?: string | string[];
-    /**
-     * Whether to exclude charge captures which are part of a claim creation.
-     */
+    /** Whether to exclude charge captures which are part of a claim creation. */
     excludeChargesLinkedToClaims?: boolean;
-    /**
-     * The patient ID from the external EMR platform for the patient
-     */
+    /** The patient ID from the external EMR platform for the patient */
     patientExternalIdRankedSort?: string;
-    /**
-     * The charge capture status to show first
-     */
+    /** The charge capture status to show first */
     statusRankedSort?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
     /**
      * A client-specified unique ID to associate with this encounter;
@@ -132,68 +90,36 @@ export interface GetAllChargeCapturesRequest {
      * or charge external id.
      */
     searchTerm?: string;
-    /**
-     * Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party.
-     */
+    /** Defines if the Encounter is to be billed by Candid to the responsible_party. Examples for when this should be set to NOT_BILLABLE include if the Encounter has not occurred yet or if there is no intention of ever billing the responsible_party. */
     billableStatus?: CandidApi.encounters.v4.BillableStatusType;
-    /**
-     * Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay.
-     */
+    /** Defines the party to be billed with the initial balance owed on the claim. Use SELF_PAY if you intend to bill self pay/cash pay. */
     responsibleParty?: CandidApi.encounters.v4.ResponsiblePartyType;
-    /**
-     * A list of claim IDs to show first. This will return all charge captures that have a resulting claim with one of the IDs in this list.
-     */
+    /** A list of claim IDs to show first. This will return all charge captures that have a resulting claim with one of the IDs in this list. */
     claimIdsRankedSort?: CandidApi.EncounterId | CandidApi.EncounterId[];
-    /**
-     * A list of Claim Creation IDs to show first.
-     */
+    /** A list of Claim Creation IDs to show first. */
     claimCreationIdsRankedSort?: CandidApi.ChargeCaptureClaimCreationId | CandidApi.ChargeCaptureClaimCreationId[];
-    /**
-     * A list of billing provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
-     */
+    /** A list of billing provider NPIs to show first. This will return all charge captures with one of the NPIs in this list. */
     billingProviderNpisRankedSort?: string | string[];
-    /**
-     * A string to show first. This will return all charge captures with this service facility name.
-     */
+    /** A string to show first. This will return all charge captures with this service facility name. */
     serviceFacilityNameRankedSort?: string;
-    /**
-     * A list of primary payer IDs to show first. This will return all charge captures with one of the primary payer IDs in this list.
-     */
+    /** A list of primary payer IDs to show first. This will return all charge captures with one of the primary payer IDs in this list. */
     primaryPayerIdsRankedSort?: string | string[];
-    /**
-     * A list of rendering provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
-     */
+    /** A list of rendering provider NPIs to show first. This will return all charge captures with one of the NPIs in this list. */
     renderingProviderNpisRankedSort?: string | string[];
-    /**
-     * A list of rendering provider names to show first. This will return all charge captures with one of the names in this list.
-     */
+    /** A list of rendering provider names to show first. This will return all charge captures with one of the names in this list. */
     renderingProviderNamesRankedSort?: string | string[];
-    /**
-     * A list of supervising provider NPIs to show first. This will return all charge captures with one of the NPIs in this list.
-     */
+    /** A list of supervising provider NPIs to show first. This will return all charge captures with one of the NPIs in this list. */
     supervisingProviderNpisRankedSort?: string | string[];
-    /**
-     * A list of supervising provider names to show first. This will return all charge captures with one of the names in this list.
-     */
+    /** A list of supervising provider names to show first. This will return all charge captures with one of the names in this list. */
     supervisingProviderNamesRankedSort?: string | string[];
-    /**
-     * the status of the claim to filter by created from charge capture bundle.
-     */
+    /** the status of the claim to filter by created from charge capture bundle. */
     claimStatus?: CandidApi.ClaimStatus;
-    /**
-     * A list of claim creation categories to sort by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list.
-     */
+    /** A list of claim creation categories to sort by. This will return all charge capture claim_creations which include one or more charges with one of the names in this list. */
     claimCreationCategoryRankedSort?: string | string[];
-    /**
-     * A list of tags. This will return all charge captures with one of the tags.
-     */
+    /** A list of tags. This will return all charge captures with one of the tags. */
     tagsRankedSort?: string | string[];
-    /**
-     * A list of primary payer names to sort by. This will return all charge captures with one of the names.
-     */
+    /** A list of primary payer names to sort by. This will return all charge captures with one of the names. */
     primaryPayerNamesRankedSort?: string | string[];
-    /**
-     * A list of patient names to sort by. This will return all charge captures with one of the names.
-     */
+    /** A list of patient names to sort by. This will return all charge captures with one of the names. */
     patientNamesRankedSort?: string | string[];
 }

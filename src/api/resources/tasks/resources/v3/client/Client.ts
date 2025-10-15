@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V3 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V3 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V3 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V3 {
-    constructor(protected readonly _options: V3.Options = {}) {}
+    protected readonly _options: V3.Options;
+
+    constructor(_options: V3.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.TaskId} taskId
@@ -38,12 +46,26 @@ export class V3 {
      * @example
      *     await client.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async getActions(
+    public getActions(
         taskId: CandidApi.TaskId,
         requestOptions?: V3.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskActions, CandidApi.tasks.v3.getActions.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.tasks.v3.TaskActions, CandidApi.tasks.v3.getActions.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__getActions(taskId, requestOptions));
+    }
+
+    private async __getActions(
+        taskId: CandidApi.TaskId,
+        requestOptions?: V3.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.tasks.v3.TaskActions, CandidApi.tasks.v3.getActions.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -52,37 +74,36 @@ export class V3 {
                 `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}/actions`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.tasks.v3.TaskActions.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.tasks.v3.TaskActions.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.tasks.v3.getActions.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.tasks.v3.getActions.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -93,10 +114,17 @@ export class V3 {
      * @example
      *     await client.tasks.v3.getMulti()
      */
-    public async getMulti(
+    public getMulti(
         request: CandidApi.tasks.v3.GetAllTasksRequest = {},
         requestOptions?: V3.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.tasks.v3.TaskPage, CandidApi.tasks.v3.getMulti.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.tasks.v3.TaskPage, CandidApi.tasks.v3.getMulti.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.tasks.v3.GetAllTasksRequest = {},
+        requestOptions?: V3.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.tasks.v3.TaskPage, CandidApi.tasks.v3.getMulti.Error>>> {
         const {
             limit,
             pageToken,
@@ -171,8 +199,13 @@ export class V3 {
             });
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -181,32 +214,26 @@ export class V3 {
                 "/api/tasks/v3",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.tasks.v3.TaskPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.tasks.v3.TaskPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -214,23 +241,31 @@ export class V3 {
             switch ((_response.error.body as serializers.tasks.v3.getMulti.Error.Raw)?.errorName) {
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.tasks.v3.getMulti.Error.parseOrThrow(
-                            _response.error.body as serializers.tasks.v3.getMulti.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.tasks.v3.getMulti.Error.parseOrThrow(
+                                _response.error.body as serializers.tasks.v3.getMulti.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.tasks.v3.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.tasks.v3.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -241,12 +276,24 @@ export class V3 {
      * @example
      *     await client.tasks.v3.get(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         taskId: CandidApi.TaskId,
         requestOptions?: V3.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.get.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.get.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__get(taskId, requestOptions));
+    }
+
+    private async __get(
+        taskId: CandidApi.TaskId,
+        requestOptions?: V3.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.get.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -255,31 +302,26 @@ export class V3 {
                 `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -288,23 +330,31 @@ export class V3 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.tasks.v3.get.Error.parseOrThrow(
-                            _response.error.body as serializers.tasks.v3.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.tasks.v3.get.Error.parseOrThrow(
+                                _response.error.body as serializers.tasks.v3.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.tasks.v3.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.tasks.v3.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -320,12 +370,24 @@ export class V3 {
      *         workQueueId: CandidApi.WorkQueueId("work_queue_id")
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.tasks.v3.TaskCreateV3,
         requestOptions?: V3.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.create.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.create.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.tasks.v3.TaskCreateV3,
+        requestOptions?: V3.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.create.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -334,17 +396,9 @@ export class V3 {
                 "/api/tasks/v3",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.tasks.v3.TaskCreateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -353,19 +407,28 @@ export class V3 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.tasks.v3.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.tasks.v3.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -377,13 +440,26 @@ export class V3 {
      * @example
      *     await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async update(
+    public update(
         taskId: CandidApi.TaskId,
         request: CandidApi.tasks.v3.TaskUpdateV3,
         requestOptions?: V3.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.update.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.update.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__update(taskId, request, requestOptions));
+    }
+
+    private async __update(
+        taskId: CandidApi.TaskId,
+        request: CandidApi.tasks.v3.TaskUpdateV3,
+        requestOptions?: V3.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.tasks.v3.Task, CandidApi.tasks.v3.update.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -392,17 +468,9 @@ export class V3 {
                 `/api/tasks/v3/${encodeURIComponent(serializers.TaskId.jsonOrThrow(taskId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.tasks.v3.TaskUpdateV3.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -411,13 +479,18 @@ export class V3 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.tasks.v3.Task.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -427,23 +500,31 @@ export class V3 {
                 case "UnauthorizedError":
                 case "TaskUpdatedToDeprecatedStatusError":
                     return {
-                        ok: false,
-                        error: serializers.tasks.v3.update.Error.parseOrThrow(
-                            _response.error.body as serializers.tasks.v3.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.tasks.v3.update.Error.parseOrThrow(
+                                _response.error.body as serializers.tasks.v3.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.tasks.v3.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.tasks.v3.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

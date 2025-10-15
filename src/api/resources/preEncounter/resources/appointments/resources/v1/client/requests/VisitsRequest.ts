@@ -11,13 +11,9 @@ import * as CandidApi from "../../../../../../../../index";
 export interface VisitsRequest {
     pageToken?: CandidApi.preEncounter.PageToken;
     limit?: number;
-    /**
-     * Defaults to appointment.start_time.
-     */
+    /** Defaults to appointment.start_time. */
     sortField?: CandidApi.preEncounter.lists.v1.SortFieldString;
-    /**
-     * Defaults to ascending.
-     */
+    /** Defaults to ascending. */
     sortDirection?: CandidApi.preEncounter.SortDirection;
     filters?: CandidApi.preEncounter.FilterQueryString;
 }

@@ -15,9 +15,7 @@ export interface PayerPlanGroupGetMultiRequest {
     planType?: CandidApi.SourceOfPaymentCode | CandidApi.SourceOfPaymentCode[];
     isActive?: boolean;
     payerPlanGroupId?: CandidApi.PayerPlanGroupId | CandidApi.PayerPlanGroupId[];
-    /**
-     * Defaults to 100. Cannot exc
-     */
+    /** Defaults to 100. Cannot exc */
     limit?: number;
     /**
      * If this property is passed, the results will be ordered by those that contain a payer_id, payer_name, plan_group_name, or
@@ -25,13 +23,9 @@ export interface PayerPlanGroupGetMultiRequest {
      * will always sort in order of most similar to least similar.
      */
     sortBySimilarity?: string;
-    /**
-     * Defaults to plan_group_name. If sort_by_similarity is passed, that sort will takes precedence over this property.
-     */
+    /** Defaults to plan_group_name. If sort_by_similarity is passed, that sort will takes precedence over this property. */
     sort?: CandidApi.payerPlanGroups.v1.PayerPlanGroupSortField;
-    /**
-     * Sort direction. Defaults to ascending order if not provided.
-     */
+    /** Sort direction. Defaults to ascending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
 }

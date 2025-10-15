@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 import * as fs from "fs";
 import { Blob } from "buffer";
 
@@ -16,6 +16,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -25,13 +27,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.EncounterId} encounterId
@@ -40,17 +48,36 @@ export class V1 {
      * @example
      *     await client.encounterAttachments.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         encounterId: CandidApi.EncounterId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterAttachments.v1.EncounterAttachment[],
             CandidApi.encounterAttachments.v1.get.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__get(encounterId, requestOptions));
+    }
+
+    private async __get(
+        encounterId: CandidApi.EncounterId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterAttachments.v1.EncounterAttachment[],
+                CandidApi.encounterAttachments.v1.get.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -59,37 +86,36 @@ export class V1 {
                 `/api/encounter-attachments/v1/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterAttachments.v1.get.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterAttachments.v1.get.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterAttachments.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -102,13 +128,31 @@ export class V1 {
      * @param {CandidApi.encounterAttachments.v1.CreateAttachmentRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      */
-    public async create(
+    public create(
+        attachmentFile: File | fs.ReadStream | Blob,
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterAttachments.v1.CreateAttachmentRequest,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounterAttachments.v1.AttachmentId, CandidApi.encounterAttachments.v1.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__create(attachmentFile, encounterId, request, requestOptions),
+        );
+    }
+
+    private async __create(
         attachmentFile: File | fs.ReadStream | Blob,
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterAttachments.v1.CreateAttachmentRequest,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.encounterAttachments.v1.AttachmentId, CandidApi.encounterAttachments.v1.create.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterAttachments.v1.AttachmentId,
+                CandidApi.encounterAttachments.v1.create.Error
+            >
+        >
     > {
         const _request = await core.newFormData();
         await _request.appendFile("attachment_file", attachmentFile);
@@ -119,8 +163,16 @@ export class V1 {
             }),
         );
         const _maybeEncodedRequest = await _request.getRequest();
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                Authorization: await this._getAuthorizationHeader(),
+                ..._maybeEncodedRequest.headers,
+            }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -129,17 +181,8 @@ export class V1 {
                 `/api/encounter-attachments/v1/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ..._maybeEncodedRequest.headers,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             requestType: "file",
             duplex: _maybeEncodedRequest.duplex,
             body: _maybeEncodedRequest.body,
@@ -149,19 +192,28 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounterAttachments.v1.AttachmentId.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounterAttachments.v1.AttachmentId.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterAttachments.v1.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -175,13 +227,26 @@ export class V1 {
      *         attachmentId: CandidApi.encounterAttachments.v1.AttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      *     })
      */
-    public async delete(
+    public delete(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounterAttachments.v1.DeleteAttachmentRequest,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(encounterId, request, requestOptions));
+    }
+
+    private async __delete(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterAttachments.v1.DeleteAttachmentRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -190,17 +255,9 @@ export class V1 {
                 `/api/encounter-attachments/v1/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounterAttachments.v1.DeleteAttachmentRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -211,14 +268,23 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounterAttachments.v1.delete.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.delete.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

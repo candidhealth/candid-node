@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.ChargeCaptureClaimCreationId} chargeCaptureClaimCreationId
@@ -38,17 +46,36 @@ export class V1 {
      * @example
      *     await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         chargeCaptureClaimCreationId: CandidApi.ChargeCaptureClaimCreationId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreation,
             CandidApi.chargeCaptureBundles.v1.get.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__get(chargeCaptureClaimCreationId, requestOptions));
+    }
+
+    private async __get(
+        chargeCaptureClaimCreationId: CandidApi.ChargeCaptureClaimCreationId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreation,
+                CandidApi.chargeCaptureBundles.v1.get.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -57,37 +84,36 @@ export class V1 {
                 `/api/charge_capture_claim_creation/v1/${encodeURIComponent(serializers.ChargeCaptureClaimCreationId.jsonOrThrow(chargeCaptureClaimCreationId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreation.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreation.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCaptureBundles.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCaptureBundles.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -97,16 +123,34 @@ export class V1 {
      * @example
      *     await client.chargeCaptureBundles.v1.getSummary()
      */
-    public async getSummary(
+    public getSummary(
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSummary,
             CandidApi.chargeCaptureBundles.v1.getSummary.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__getSummary(requestOptions));
+    }
+
+    private async __getSummary(
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSummary,
+                CandidApi.chargeCaptureBundles.v1.getSummary.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -115,40 +159,39 @@ export class V1 {
                 "/api/charge_capture_claim_creation/v1/all/summary",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSummary.parseOrThrow(
-                    _response.body,
-                    {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    },
-                ),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationSummary.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCaptureBundles.v1.getSummary.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCaptureBundles.v1.getSummary.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -160,13 +203,32 @@ export class V1 {
      * @example
      *     await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
      */
-    public async resolveChargeCreationError(
+    public resolveChargeCreationError(
         chargeCaptureBundleErrorId: string,
         request: CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__resolveChargeCreationError(chargeCaptureBundleErrorId, request, requestOptions),
+        );
+    }
+
+    private async __resolveChargeCreationError(
+        chargeCaptureBundleErrorId: string,
+        request: CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -175,17 +237,9 @@ export class V1 {
                 `/api/charge_capture_claim_creation/v1/error/${encodeURIComponent(chargeCaptureBundleErrorId)}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -196,8 +250,13 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -209,24 +268,32 @@ export class V1 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.chargeCaptureBundles.v1.resolveChargeCreationError.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -237,13 +304,27 @@ export class V1 {
      * @example
      *     await client.chargeCaptureBundles.v1.getAll()
      */
-    public async getAll(
+    public getAll(
         request: CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureClaimCreationsRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreationPage,
             CandidApi.chargeCaptureBundles.v1.getAll.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getAll(request, requestOptions));
+    }
+
+    private async __getAll(
+        request: CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureClaimCreationsRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.chargeCaptureBundles.v1.ChargeCaptureClaimCreationPage,
+                CandidApi.chargeCaptureBundles.v1.getAll.Error
+            >
         >
     > {
         const {
@@ -438,8 +519,13 @@ export class V1 {
             _queryParams["has_charge_capture_updates"] = hasChargeCaptureUpdates.toString();
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -448,38 +534,39 @@ export class V1 {
                 "/api/charge_capture_claim_creation/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCaptureBundles.v1.ChargeCaptureClaimCreationPage.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCaptureBundles.v1.getAll.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCaptureBundles.v1.getAll.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

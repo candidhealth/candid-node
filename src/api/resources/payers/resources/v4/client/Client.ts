@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V4 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V4 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V4 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V4 {
-    constructor(protected readonly _options: V4.Options = {}) {}
+    protected readonly _options: V4.Options;
+
+    constructor(_options: V4.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.payers.v4.PayerUuid} payerUuid
@@ -38,12 +46,24 @@ export class V4 {
      * @example
      *     await client.payers.v4.get(CandidApi.payers.v4.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         payerUuid: CandidApi.payers.v4.PayerUuid,
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.payers.v4.Payer, CandidApi.payers.v4.get.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.payers.v4.Payer, CandidApi.payers.v4.get.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__get(payerUuid, requestOptions));
+    }
+
+    private async __get(
+        payerUuid: CandidApi.payers.v4.PayerUuid,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.payers.v4.Payer, CandidApi.payers.v4.get.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -52,37 +72,36 @@ export class V4 {
                 `/api/payers/v4/${encodeURIComponent(serializers.payers.v4.PayerUuid.jsonOrThrow(payerUuid))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payers.v4.Payer.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payers.v4.Payer.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.payers.v4.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payers.v4.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -93,10 +112,19 @@ export class V4 {
      * @example
      *     await client.payers.v4.getAll()
      */
-    public async getAll(
+    public getAll(
         request: CandidApi.payers.v4.GetAllPayersRequest = {},
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.payers.v4.PayerPage, CandidApi.payers.v4.getAll.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.payers.v4.PayerPage, CandidApi.payers.v4.getAll.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__getAll(request, requestOptions));
+    }
+
+    private async __getAll(
+        request: CandidApi.payers.v4.GetAllPayersRequest = {},
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.payers.v4.PayerPage, CandidApi.payers.v4.getAll.Error>>
+    > {
         const { limit, searchTerm, pageToken } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -111,8 +139,13 @@ export class V4 {
             _queryParams["page_token"] = pageToken;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -121,38 +154,36 @@ export class V4 {
                 "/api/payers/v4",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payers.v4.PayerPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payers.v4.PayerPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.payers.v4.getAll.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payers.v4.getAll.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

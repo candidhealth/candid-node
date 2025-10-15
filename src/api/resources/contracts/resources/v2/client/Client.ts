@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V2 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V2 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V2 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V2 {
-    constructor(protected readonly _options: V2.Options = {}) {}
+    protected readonly _options: V2.Options;
+
+    constructor(_options: V2.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.contracts.v2.ContractId} contractId
@@ -38,12 +46,30 @@ export class V2 {
      * @example
      *     await client.contracts.v2.get(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         contractId: CandidApi.contracts.v2.ContractId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(contractId, requestOptions));
+    }
+
+    private async __get(
+        contractId: CandidApi.contracts.v2.ContractId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -52,31 +78,26 @@ export class V2 {
                 `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -84,23 +105,31 @@ export class V2 {
             switch ((_response.error.body as serializers.contracts.v2.get.Error.Raw)?.errorName) {
                 case "EntityNotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.contracts.v2.get.Error.parseOrThrow(
-                            _response.error.body as serializers.contracts.v2.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v2.get.Error.parseOrThrow(
+                                _response.error.body as serializers.contracts.v2.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.contracts.v2.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v2.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -111,10 +140,23 @@ export class V2 {
      * @example
      *     await client.contracts.v2.getMulti()
      */
-    public async getMulti(
+    public getMulti(
         request: CandidApi.contracts.v2.GetMultiContractsRequest = {},
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractsPage, CandidApi.contracts.v2.getMulti.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.contracts.v2.ContractsPage, CandidApi.contracts.v2.getMulti.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.contracts.v2.GetMultiContractsRequest = {},
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.contracts.v2.ContractsPage, CandidApi.contracts.v2.getMulti.Error>
+        >
+    > {
         const {
             pageToken,
             limit,
@@ -185,8 +227,13 @@ export class V2 {
             });
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -195,38 +242,36 @@ export class V2 {
                 "/api/contracts/v2",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.contracts.v2.ContractsPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v2.ContractsPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.contracts.v2.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v2.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -240,15 +285,47 @@ export class V2 {
      *     await client.contracts.v2.create({
      *         contractingProviderId: CandidApi.contracts.v2.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         renderingProviderIds: new Set([CandidApi.contracts.v2.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-     *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+     *         payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+     *         effectiveDate: CandidApi.Date_("effective_date"),
+     *         regions: {
+     *             type: "states",
+     *             states: ["AA", "AA"]
+     *         },
+     *         commercialInsuranceTypes: {
+     *             type: "allApply"
+     *         },
+     *         medicareInsuranceTypes: {
+     *             type: "allApply"
+     *         },
+     *         medicaidInsuranceTypes: {
+     *             type: "allApply"
+     *         }
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.contracts.v2.ContractCreate,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.create.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.contracts.v2.ContractCreate,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.create.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -257,17 +334,9 @@ export class V2 {
                 "/api/contracts/v2",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.contracts.v2.ContractCreate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -276,19 +345,28 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.contracts.v2.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v2.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -299,12 +377,24 @@ export class V2 {
      * @example
      *     await client.contracts.v2.delete(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async delete(
+    public delete(
         contractId: CandidApi.contracts.v2.ContractId,
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.contracts.v2.delete.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.contracts.v2.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(contractId, requestOptions));
+    }
+
+    private async __delete(
+        contractId: CandidApi.contracts.v2.ContractId,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.contracts.v2.delete.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -313,26 +403,21 @@ export class V2 {
                 `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -340,23 +425,31 @@ export class V2 {
             switch ((_response.error.body as serializers.contracts.v2.delete.Error.Raw)?.errorName) {
                 case "ContractIsLinkedToFeeScheduleHttpError":
                     return {
-                        ok: false,
-                        error: serializers.contracts.v2.delete.Error.parseOrThrow(
-                            _response.error.body as serializers.contracts.v2.delete.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v2.delete.Error.parseOrThrow(
+                                _response.error.body as serializers.contracts.v2.delete.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.contracts.v2.delete.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v2.delete.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -368,13 +461,32 @@ export class V2 {
      * @example
      *     await client.contracts.v2.update(CandidApi.contracts.v2.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async update(
+    public update(
         contractId: CandidApi.contracts.v2.ContractId,
         request: CandidApi.contracts.v2.ContractUpdate = {},
         requestOptions?: V2.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.update.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(contractId, request, requestOptions));
+    }
+
+    private async __update(
+        contractId: CandidApi.contracts.v2.ContractId,
+        request: CandidApi.contracts.v2.ContractUpdate = {},
+        requestOptions?: V2.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.update.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -383,17 +495,9 @@ export class V2 {
                 `/api/contracts/v2/${encodeURIComponent(serializers.contracts.v2.ContractId.jsonOrThrow(contractId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.contracts.v2.ContractUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -402,13 +506,18 @@ export class V2 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v2.ContractWithProviders.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -417,23 +526,31 @@ export class V2 {
                 case "UnprocessableEntityError":
                 case "ContractInvalidExpirationDateHttpError":
                     return {
-                        ok: false,
-                        error: serializers.contracts.v2.update.Error.parseOrThrow(
-                            _response.error.body as serializers.contracts.v2.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v2.update.Error.parseOrThrow(
+                                _response.error.body as serializers.contracts.v2.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.contracts.v2.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v2.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

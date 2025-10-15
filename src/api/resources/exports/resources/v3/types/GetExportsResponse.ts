@@ -6,9 +6,9 @@
  * @example
  *     {
  *         name: "John Doe",
- *         createdAt: "2021-10-07T00:00:00Z",
+ *         createdAt: new Date("2021-10-07T00:00:00.000Z"),
  *         authenticatedDownloadUrl: "https://example.com",
- *         authenticatedDownloadUrlExpiration: "2021-10-07T00:02:00Z"
+ *         authenticatedDownloadUrlExpiration: new Date("2021-10-07T00:02:00.000Z")
  *     }
  */
 export interface GetExportsResponse {

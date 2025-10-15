@@ -17,38 +17,22 @@ import * as CandidApi from "../../../../../../index";
  *     }
  */
 export interface GetAllOrganizationProvidersRequestV2 {
-    /**
-     * Limit the number of results returned. Defaults to 100.
-     */
+    /** Limit the number of results returned. Defaults to 100. */
     limit?: number;
-    /**
-     * Filter to a name or a part of a name.
-     */
+    /** Filter to a name or a part of a name. */
     searchTerm?: string;
-    /**
-     * Filter to a specific NPI.
-     */
+    /** Filter to a specific NPI. */
     npi?: string;
-    /**
-     * Filter to only rendering providers.
-     */
+    /** Filter to only rendering providers. */
     isRendering?: boolean;
-    /**
-     * Filter to only billing providers.
-     */
+    /** Filter to only billing providers. */
     isBilling?: boolean;
-    /**
-     * Filter to the provided organization provider IDs.
-     */
+    /** Filter to the provided organization provider IDs. */
     organizationProviderIds?:
         | CandidApi.organizationProviders.v2.OrganizationProviderId
         | CandidApi.organizationProviders.v2.OrganizationProviderId[];
-    /**
-     * The page token to continue paging through a previous request.
-     */
+    /** The page token to continue paging through a previous request. */
     pageToken?: CandidApi.PageToken;
-    /**
-     * Defaults to PROVIDER_NAME_ASC.
-     */
+    /** Defaults to PROVIDER_NAME_ASC. */
     sort?: CandidApi.organizationProviders.v2.OrganizationProviderSortOptions;
 }

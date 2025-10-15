@@ -7,7 +7,8 @@ import * as CandidApi from "../../../../../../index";
 /**
  * @example
  *     {
- *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+ *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+ *         text: "text"
  *     }
  */
 export interface StandaloneBillingNoteCreate extends CandidApi.billingNotes.v2.BillingNoteBase {

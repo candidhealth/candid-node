@@ -19,21 +19,13 @@ export declare namespace PreEncounter {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class PreEncounter {
+    protected readonly _options: PreEncounter.Options;
     protected _appointments: Appointments | undefined;
     protected _coverages: Coverages | undefined;
     protected _eligibilityChecks: EligibilityChecks | undefined;
@@ -43,7 +35,9 @@ export class PreEncounter {
     protected _patients: Patients | undefined;
     protected _tags: Tags | undefined;
 
-    constructor(protected readonly _options: PreEncounter.Options = {}) {}
+    constructor(_options: PreEncounter.Options = {}) {
+        this._options = _options;
+    }
 
     public get appointments(): Appointments {
         return (this._appointments ??= new Appointments(this._options));

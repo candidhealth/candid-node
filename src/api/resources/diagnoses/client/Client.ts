@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as CandidApi from "../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers";
 import * as serializers from "../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace Diagnoses {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace Diagnoses {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace Diagnoses {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class Diagnoses {
-    constructor(protected readonly _options: Diagnoses.Options = {}) {}
+    protected readonly _options: Diagnoses.Options;
+
+    constructor(_options: Diagnoses.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Creates a new diagnosis for an encounter
@@ -39,17 +47,29 @@ export class Diagnoses {
      *
      * @example
      *     await client.diagnoses.create({
+     *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
      *         codeType: "ABF",
-     *         code: "code",
-     *         encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *         code: "code"
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.StandaloneDiagnosisCreate,
         requestOptions?: Diagnoses.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.create.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.create.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.StandaloneDiagnosisCreate,
+        requestOptions?: Diagnoses.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.create.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -58,17 +78,9 @@ export class Diagnoses {
                 "/api/diagnoses/v2",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.StandaloneDiagnosisCreate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -77,19 +89,28 @@ export class Diagnoses {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.Diagnosis.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.Diagnosis.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.diagnoses.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.diagnoses.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -103,13 +124,26 @@ export class Diagnoses {
      * @example
      *     await client.diagnoses.update(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async update(
+    public update(
         diagnosisId: CandidApi.DiagnosisId,
         request: CandidApi.DiagnosisUpdate = {},
         requestOptions?: Diagnoses.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.update.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.update.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__update(diagnosisId, request, requestOptions));
+    }
+
+    private async __update(
+        diagnosisId: CandidApi.DiagnosisId,
+        request: CandidApi.DiagnosisUpdate = {},
+        requestOptions?: Diagnoses.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.update.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -118,17 +152,9 @@ export class Diagnoses {
                 `/api/diagnoses/v2/${encodeURIComponent(serializers.DiagnosisId.jsonOrThrow(diagnosisId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.DiagnosisUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -137,13 +163,18 @@ export class Diagnoses {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.Diagnosis.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.Diagnosis.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -152,23 +183,31 @@ export class Diagnoses {
                 case "DiagnosisNotFoundHTTPError":
                 case "DisallowMultiplePrimaryDiagnosisHTTPError":
                     return {
-                        ok: false,
-                        error: serializers.diagnoses.update.Error.parseOrThrow(
-                            _response.error.body as serializers.diagnoses.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.diagnoses.update.Error.parseOrThrow(
+                                _response.error.body as serializers.diagnoses.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.diagnoses.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.diagnoses.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -181,12 +220,24 @@ export class Diagnoses {
      * @example
      *     await client.diagnoses.delete(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async delete(
+    public delete(
         diagnosisId: CandidApi.DiagnosisId,
         requestOptions?: Diagnoses.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.diagnoses.delete.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.diagnoses.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(diagnosisId, requestOptions));
+    }
+
+    private async __delete(
+        diagnosisId: CandidApi.DiagnosisId,
+        requestOptions?: Diagnoses.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.diagnoses.delete.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -195,26 +246,21 @@ export class Diagnoses {
                 `/api/diagnoses/v2/${encodeURIComponent(serializers.DiagnosisId.jsonOrThrow(diagnosisId))}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -223,23 +269,31 @@ export class Diagnoses {
                 case "DiagnosisNotFoundHTTPError":
                 case "ServiceLinesMustHaveAtLeastOneDiagnosisHTTPError":
                     return {
-                        ok: false,
-                        error: serializers.diagnoses.delete.Error.parseOrThrow(
-                            _response.error.body as serializers.diagnoses.delete.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.diagnoses.delete.Error.parseOrThrow(
+                                _response.error.body as serializers.diagnoses.delete.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.diagnoses.delete.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.diagnoses.delete.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

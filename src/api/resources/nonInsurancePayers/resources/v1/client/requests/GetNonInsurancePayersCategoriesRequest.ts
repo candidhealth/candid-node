@@ -9,16 +9,10 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetNonInsurancePayersCategoriesRequest {
-    /**
-     * Filters categories by fuzzy matching on name.
-     */
+    /** Filters categories by fuzzy matching on name. */
     searchTerm?: string;
-    /**
-     * Limits the maximum number of categories that will be returned. Defaults to 100.
-     */
+    /** Limits the maximum number of categories that will be returned. Defaults to 100. */
     limit?: number;
-    /**
-     * The page token to continue paging through a previous request.
-     */
+    /** The page token to continue paging through a previous request. */
     pageToken?: CandidApi.PageToken;
 }

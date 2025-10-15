@@ -6,11 +6,11 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { SetOrClearPrincipalDiagnosis } from "./SetOrClearPrincipalDiagnosis";
+import { OtherDiagnosisInformation } from "./OtherDiagnosisInformation";
 import { SetOrClearAdmittingDiagnosis } from "./SetOrClearAdmittingDiagnosis";
 import { PatientReasonForVisit } from "./PatientReasonForVisit";
 import { ExternalCauseOfInjury } from "./ExternalCauseOfInjury";
 import { SetOrClearDiagnosisRelatedGroup } from "./SetOrClearDiagnosisRelatedGroup";
-import { OtherDiagnosisInformation } from "./OtherDiagnosisInformation";
 import { SetOrClearPrincipalProcedureInformation } from "./SetOrClearPrincipalProcedureInformation";
 import { OtherProcedureInformation } from "./OtherProcedureInformation";
 import { OccurrenceSpanInformation } from "./OccurrenceSpanInformation";
@@ -24,6 +24,10 @@ export const HealthCareCodeInformationUpdate: core.serialization.ObjectSchema<
     CandidApi.healthCareCodeInformation.v1.HealthCareCodeInformationUpdate
 > = core.serialization.object({
     principalDiagnosis: core.serialization.property("principal_diagnosis", SetOrClearPrincipalDiagnosis.optional()),
+    otherDiagnosisInformation: core.serialization.property(
+        "other_diagnosis_information",
+        core.serialization.list(OtherDiagnosisInformation).optional(),
+    ),
     admittingDiagnosis: core.serialization.property("admitting_diagnosis", SetOrClearAdmittingDiagnosis.optional()),
     patientReasonsForVisit: core.serialization.property(
         "patient_reasons_for_visit",
@@ -36,10 +40,6 @@ export const HealthCareCodeInformationUpdate: core.serialization.ObjectSchema<
     diagnosisRelatedGroups: core.serialization.property(
         "diagnosis_related_groups",
         SetOrClearDiagnosisRelatedGroup.optional(),
-    ),
-    otherDiagnosisInformation: core.serialization.property(
-        "other_diagnosis_information",
-        core.serialization.list(OtherDiagnosisInformation).optional(),
     ),
     principalProcedure: core.serialization.property(
         "principal_procedure",
@@ -74,11 +74,11 @@ export const HealthCareCodeInformationUpdate: core.serialization.ObjectSchema<
 export declare namespace HealthCareCodeInformationUpdate {
     export interface Raw {
         principal_diagnosis?: SetOrClearPrincipalDiagnosis.Raw | null;
+        other_diagnosis_information?: OtherDiagnosisInformation.Raw[] | null;
         admitting_diagnosis?: SetOrClearAdmittingDiagnosis.Raw | null;
         patient_reasons_for_visit?: PatientReasonForVisit.Raw[] | null;
         external_causes_of_injury?: ExternalCauseOfInjury.Raw[] | null;
         diagnosis_related_groups?: SetOrClearDiagnosisRelatedGroup.Raw | null;
-        other_diagnosis_information?: OtherDiagnosisInformation.Raw[] | null;
         principal_procedure?: SetOrClearPrincipalProcedureInformation.Raw | null;
         other_procedure_information?: OtherProcedureInformation.Raw[] | null;
         occurrence_span_information?: OccurrenceSpanInformation.Raw[] | null;

@@ -5,6 +5,7 @@
 import * as environments from "./environments";
 import * as core from "./core";
 import { Default } from "./api/resources/auth/resources/default/client/Client";
+import { mergeHeaders } from "./core/headers";
 import { Auth } from "./api/resources/auth/client/Client";
 import { BillingNotes } from "./api/resources/billingNotes/client/Client";
 import { ChargeCaptureBundles } from "./api/resources/chargeCaptureBundles/client/Client";
@@ -52,6 +53,8 @@ export declare namespace CandidApiClient {
         baseUrl?: core.Supplier<string>;
         clientId: core.Supplier<string>;
         clientSecret: core.Supplier<string>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -61,12 +64,15 @@ export declare namespace CandidApiClient {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class CandidApiClient {
+    protected readonly _options: CandidApiClient.Options;
     private readonly _oauthTokenProvider: core.OAuthTokenProvider;
     protected _auth: Auth | undefined;
     protected _billingNotes: BillingNotes | undefined;
@@ -108,11 +114,27 @@ export class CandidApiClient {
     protected _diagnoses: Diagnoses | undefined;
     protected _serviceFacility: ServiceFacility | undefined;
 
-    constructor(protected readonly _options: CandidApiClient.Options) {
+    constructor(_options: CandidApiClient.Options) {
+        this._options = {
+            ..._options,
+            headers: mergeHeaders(
+                {
+                    "X-Fern-Language": "JavaScript",
+                    "X-Fern-SDK-Name": "candidhealth",
+                    "X-Fern-SDK-Version": "1.9.0",
+                    "User-Agent": "candidhealth/1.9.0",
+                    "X-Fern-Runtime": core.RUNTIME.type,
+                    "X-Fern-Runtime-Version": core.RUNTIME.version,
+                },
+                _options?.headers,
+            ),
+        };
+
         this._oauthTokenProvider = new core.OAuthTokenProvider({
             clientId: this._options.clientId,
             clientSecret: this._options.clientSecret,
             authClient: new Default({
+                ...this._options,
                 environment: this._options.environment,
             }),
         });

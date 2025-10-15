@@ -1,5 +1,4 @@
 export * from "./ServiceLineCreate";
-export * from "./UniversalServiceLineCreate";
 export * from "./ServiceLineCreateBase";
 export * from "./ServiceLineCreateBaseBase";
 export * from "./ServiceLineCreateOptional";

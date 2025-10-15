@@ -6,11 +6,11 @@ import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import { PrincipalDiagnosis } from "./PrincipalDiagnosis";
+import { OtherDiagnosisInformation } from "./OtherDiagnosisInformation";
 import { AdmittingDiagnosis } from "./AdmittingDiagnosis";
 import { PatientReasonForVisit } from "./PatientReasonForVisit";
 import { ExternalCauseOfInjury } from "./ExternalCauseOfInjury";
 import { DiagnosisRelatedGroup } from "./DiagnosisRelatedGroup";
-import { OtherDiagnosisInformation } from "./OtherDiagnosisInformation";
 import { PrincipalProcedureInformation } from "./PrincipalProcedureInformation";
 import { OtherProcedureInformation } from "./OtherProcedureInformation";
 import { OccurrenceSpanInformation } from "./OccurrenceSpanInformation";
@@ -24,6 +24,10 @@ export const HealthCareCodeInformationGetAllResponse: core.serialization.ObjectS
     CandidApi.healthCareCodeInformation.v1.HealthCareCodeInformationGetAllResponse
 > = core.serialization.object({
     principalDiagnosis: core.serialization.property("principal_diagnosis", PrincipalDiagnosis.optional()),
+    otherDiagnosisInformation: core.serialization.property(
+        "other_diagnosis_information",
+        core.serialization.list(OtherDiagnosisInformation),
+    ),
     admittingDiagnosis: core.serialization.property("admitting_diagnosis", AdmittingDiagnosis.optional()),
     patientReasonsForVisit: core.serialization.property(
         "patient_reasons_for_visit",
@@ -34,10 +38,6 @@ export const HealthCareCodeInformationGetAllResponse: core.serialization.ObjectS
         core.serialization.list(ExternalCauseOfInjury),
     ),
     diagnosisRelatedGroups: core.serialization.property("diagnosis_related_groups", DiagnosisRelatedGroup.optional()),
-    otherDiagnosisInformation: core.serialization.property(
-        "other_diagnosis_information",
-        core.serialization.list(OtherDiagnosisInformation),
-    ),
     principalProcedure: core.serialization.property("principal_procedure", PrincipalProcedureInformation.optional()),
     otherProcedureInformation: core.serialization.property(
         "other_procedure_information",
@@ -65,11 +65,11 @@ export const HealthCareCodeInformationGetAllResponse: core.serialization.ObjectS
 export declare namespace HealthCareCodeInformationGetAllResponse {
     export interface Raw {
         principal_diagnosis?: PrincipalDiagnosis.Raw | null;
+        other_diagnosis_information: OtherDiagnosisInformation.Raw[];
         admitting_diagnosis?: AdmittingDiagnosis.Raw | null;
         patient_reasons_for_visit: PatientReasonForVisit.Raw[];
         external_causes_of_injury: ExternalCauseOfInjury.Raw[];
         diagnosis_related_groups?: DiagnosisRelatedGroup.Raw | null;
-        other_diagnosis_information: OtherDiagnosisInformation.Raw[];
         principal_procedure?: PrincipalProcedureInformation.Raw | null;
         other_procedure_information: OtherProcedureInformation.Raw[];
         occurrence_span_information: OccurrenceSpanInformation.Raw[];

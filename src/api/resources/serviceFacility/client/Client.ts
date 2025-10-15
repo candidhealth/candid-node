@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as CandidApi from "../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers";
 import * as serializers from "../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace ServiceFacility {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace ServiceFacility {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace ServiceFacility {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class ServiceFacility {
-    constructor(protected readonly _options: ServiceFacility.Options = {}) {}
+    protected readonly _options: ServiceFacility.Options;
+
+    constructor(_options: ServiceFacility.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.ServiceFacilityId} serviceFacilityId
@@ -39,13 +47,32 @@ export class ServiceFacility {
      * @example
      *     await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async update(
+    public update(
         serviceFacilityId: CandidApi.ServiceFacilityId,
         request: CandidApi.EncounterServiceFacilityUpdate,
         requestOptions?: ServiceFacility.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(serviceFacilityId, request, requestOptions));
+    }
+
+    private async __update(
+        serviceFacilityId: CandidApi.ServiceFacilityId,
+        request: CandidApi.EncounterServiceFacilityUpdate,
+        requestOptions?: ServiceFacility.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -54,17 +81,9 @@ export class ServiceFacility {
                 `/api/service_facility/v2/${encodeURIComponent(serializers.ServiceFacilityId.jsonOrThrow(serviceFacilityId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.EncounterServiceFacilityUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -73,19 +92,28 @@ export class ServiceFacility {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.EncounterServiceFacility.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.EncounterServiceFacility.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.serviceFacility.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.serviceFacility.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

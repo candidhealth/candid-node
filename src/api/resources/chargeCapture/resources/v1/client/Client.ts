@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.chargeCapture.v1.CreateChargeCaptureRequest} request
@@ -43,12 +51,30 @@ export class V1 {
      *         status: "planned"
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.chargeCapture.v1.CreateChargeCaptureRequest,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.create.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.chargeCapture.v1.CreateChargeCaptureRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.create.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -57,17 +83,9 @@ export class V1 {
                 "/api/charge_captures/v1",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.chargeCapture.v1.CreateChargeCaptureRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -78,13 +96,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -97,23 +120,31 @@ export class V1 {
                 case "UnprocessableEntityError":
                 case "ChargeExternalIdConflictError":
                     return {
-                        ok: false,
-                        error: serializers.chargeCapture.v1.create.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCapture.v1.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.chargeCapture.v1.create.Error.parseOrThrow(
+                                _response.error.body as serializers.chargeCapture.v1.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -149,17 +180,36 @@ export class V1 {
      *         status: "planned"
      *     })
      */
-    public async createFromPreEncounterPatient(
+    public createFromPreEncounterPatient(
         request: CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.chargeCapture.v1.ChargeCapture,
             CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__createFromPreEncounterPatient(request, requestOptions));
+    }
+
+    private async __createFromPreEncounterPatient(
+        request: CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.chargeCapture.v1.ChargeCapture,
+                CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -168,17 +218,9 @@ export class V1 {
                 "/api/charge_captures/v1/create-from-pre-encounter",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -189,13 +231,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -211,24 +258,32 @@ export class V1 {
                 case "UnprocessableEntityError":
                 case "ChargeExternalIdConflictError":
                     return {
-                        ok: false,
-                        error: serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.chargeCapture.v1.createFromPreEncounterPatient.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -240,13 +295,32 @@ export class V1 {
      * @example
      *     await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async update(
+    public update(
         chargeCaptureId: CandidApi.ChargeCaptureId,
         request: CandidApi.chargeCapture.v1.ChargeCaptureUpdate = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.update.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(chargeCaptureId, request, requestOptions));
+    }
+
+    private async __update(
+        chargeCaptureId: CandidApi.ChargeCaptureId,
+        request: CandidApi.chargeCapture.v1.ChargeCaptureUpdate = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.update.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -255,17 +329,9 @@ export class V1 {
                 `/api/charge_captures/v1/${encodeURIComponent(serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.chargeCapture.v1.ChargeCaptureUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -276,13 +342,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -294,23 +365,31 @@ export class V1 {
                 case "SchemaInstanceValidationHttpFailure":
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.chargeCapture.v1.update.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCapture.v1.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.chargeCapture.v1.update.Error.parseOrThrow(
+                                _response.error.body as serializers.chargeCapture.v1.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -321,12 +400,30 @@ export class V1 {
      * @example
      *     await client.chargeCapture.v1.get(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         chargeCaptureId: CandidApi.ChargeCaptureId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.get.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(chargeCaptureId, requestOptions));
+    }
+
+    private async __get(
+        chargeCaptureId: CandidApi.ChargeCaptureId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapture, CandidApi.chargeCapture.v1.get.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -335,37 +432,36 @@ export class V1 {
                 `/api/charge_captures/v1/${encodeURIComponent(serializers.ChargeCaptureId.jsonOrThrow(chargeCaptureId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.ChargeCapture.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -376,11 +472,22 @@ export class V1 {
      * @example
      *     await client.chargeCapture.v1.getAll()
      */
-    public async getAll(
+    public getAll(
+        request: CandidApi.chargeCapture.v1.GetAllChargeCapturesRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getAll(request, requestOptions));
+    }
+
+    private async __getAll(
         request: CandidApi.chargeCapture.v1.GetAllChargeCapturesRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error>
+        >
     > {
         const {
             limit,
@@ -740,8 +847,13 @@ export class V1 {
             }
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -750,38 +862,36 @@ export class V1 {
                 "/api/charge_captures/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCapture.v1.ChargeCapturePage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.ChargeCapturePage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.getAll.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.getAll.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -795,17 +905,36 @@ export class V1 {
      *         resolved: true
      *     })
      */
-    public async updatePostBilledChanges(
+    public updatePostBilledChanges(
         request: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[],
             CandidApi.chargeCapture.v1.updatePostBilledChanges.Error
         >
     > {
+        return core.HttpResponsePromise.fromPromise(this.__updatePostBilledChanges(request, requestOptions));
+    }
+
+    private async __updatePostBilledChanges(
+        request: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[],
+                CandidApi.chargeCapture.v1.updatePostBilledChanges.Error
+            >
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -814,17 +943,9 @@ export class V1 {
                 "/api/charge_captures/v1/changes/",
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -835,13 +956,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.chargeCapture.v1.updatePostBilledChanges.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.updatePostBilledChanges.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -852,23 +978,31 @@ export class V1 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.chargeCapture.v1.updatePostBilledChanges.Error.parseOrThrow(
-                            _response.error.body as serializers.chargeCapture.v1.updatePostBilledChanges.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.chargeCapture.v1.updatePostBilledChanges.Error.parseOrThrow(
+                                _response.error.body as serializers.chargeCapture.v1.updatePostBilledChanges.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.updatePostBilledChanges.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

@@ -5,7 +5,6 @@ export * from "./Rarc";
 export * from "./TypeOfFacilityCode";
 export * from "./TypeOfCareCode";
 export * from "./TypeOfBillFrequencyCode";
-export * from "./TypeOfBillCompositeUpdate";
 export * from "./TypeOfBillComposite";
 export * from "./TypeOfBillCompositeBase";
 export * from "./TypeOfAdmissionOrVisitCode";

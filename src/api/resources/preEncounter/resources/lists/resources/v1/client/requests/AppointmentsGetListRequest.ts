@@ -9,17 +9,11 @@ import * as CandidApi from "../../../../../../../../index";
  *     {}
  */
 export interface AppointmentsGetListRequest {
-    /**
-     * Defaults to appointment.startTimestamp.
-     */
+    /** Defaults to appointment.startTimestamp. */
     sortField?: CandidApi.preEncounter.lists.v1.SortFieldString;
-    /**
-     * Defaults to asc.
-     */
+    /** Defaults to asc. */
     sortDirection?: CandidApi.preEncounter.SortDirection;
-    /**
-     * Defaults to 100.
-     */
+    /** Defaults to 100. */
     limit?: number;
     pageToken?: CandidApi.preEncounter.PageToken;
     filters?: CandidApi.preEncounter.FilterQueryString;

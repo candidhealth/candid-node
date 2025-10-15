@@ -17,3 +17,4 @@ export * from "./ReferralSource";
 export * from "./ReferralType";
 export * from "./SpecializationCategory";
 export * from "./OriginationDetail";
+export * from "./PatientServiceFacility";

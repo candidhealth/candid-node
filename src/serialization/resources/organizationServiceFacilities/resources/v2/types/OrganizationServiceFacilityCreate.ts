@@ -5,6 +5,7 @@
 import * as serializers from "../../../../../index";
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
+import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ServiceFacilityStatus } from "./ServiceFacilityStatus";
 import { ServiceFacilityOperationalStatus } from "./ServiceFacilityOperationalStatus";
 import { ServiceFacilityMode } from "./ServiceFacilityMode";
@@ -19,7 +20,9 @@ export const OrganizationServiceFacilityCreate: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     aliases: core.serialization.list(core.serialization.string()),
     description: core.serialization.string().optional(),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     npi: core.serialization.string().optional(),
+    placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
     status: ServiceFacilityStatus.optional(),
     operationalStatus: core.serialization.property("operational_status", ServiceFacilityOperationalStatus.optional()),
     mode: ServiceFacilityMode.optional(),
@@ -34,7 +37,9 @@ export declare namespace OrganizationServiceFacilityCreate {
         name: string;
         aliases: string[];
         description?: string | null;
+        external_id?: string | null;
         npi?: string | null;
+        place_of_service_code?: FacilityTypeCode.Raw | null;
         status?: ServiceFacilityStatus.Raw | null;
         operational_status?: ServiceFacilityOperationalStatus.Raw | null;
         mode?: ServiceFacilityMode.Raw | null;

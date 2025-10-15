@@ -36,5 +36,5 @@ export interface Guarantor extends CandidApi.guarantor.v1.GuarantorBase {
     phoneConsent: boolean;
     email?: CandidApi.Email;
     emailConsent: boolean;
-    autoChargeConsent?: boolean;
+    autoChargeConsent: boolean;
 }

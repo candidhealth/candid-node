@@ -6,7 +6,7 @@ import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
 import * as CandidApi from "../../../../../../../index";
 import * as serializers from "../../../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../../../core/headers";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Gets patients with dependent objects for patients that match the query parameters.
@@ -40,13 +48,27 @@ export class V1 {
      * @example
      *     await client.preEncounter.lists.v1.getPatientList()
      */
-    public async getPatientList(
+    public getPatientList(
         request: CandidApi.preEncounter.lists.v1.PatientListRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.lists.v1.PatientListPage,
             CandidApi.preEncounter.lists.v1.getPatientList.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getPatientList(request, requestOptions));
+    }
+
+    private async __getPatientList(
+        request: CandidApi.preEncounter.lists.v1.PatientListRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.lists.v1.PatientListPage,
+                CandidApi.preEncounter.lists.v1.getPatientList.Error
+            >
         >
     > {
         const { pageToken, limit, sortField, sortDirection, filters } = request;
@@ -73,8 +95,13 @@ export class V1 {
             _queryParams["filters"] = filters;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -83,32 +110,26 @@ export class V1 {
                 "/lists/v1/patient",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.lists.v1.PatientListPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.lists.v1.PatientListPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -116,23 +137,31 @@ export class V1 {
             switch ((_response.error.body as serializers.preEncounter.lists.v1.getPatientList.Error.Raw)?.errorName) {
                 case "BadRequestError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.lists.v1.getPatientList.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.lists.v1.getPatientList.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.lists.v1.getPatientList.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.lists.v1.getPatientList.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.lists.v1.getPatientList.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.lists.v1.getPatientList.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -145,13 +174,27 @@ export class V1 {
      * @example
      *     await client.preEncounter.lists.v1.getAppointmentList()
      */
-    public async getAppointmentList(
+    public getAppointmentList(
         request: CandidApi.preEncounter.lists.v1.AppointmentsGetListRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): Promise<
+    ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.preEncounter.lists.v1.AppointmentListPage,
             CandidApi.preEncounter.lists.v1.getAppointmentList.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getAppointmentList(request, requestOptions));
+    }
+
+    private async __getAppointmentList(
+        request: CandidApi.preEncounter.lists.v1.AppointmentsGetListRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.lists.v1.AppointmentListPage,
+                CandidApi.preEncounter.lists.v1.getAppointmentList.Error
+            >
         >
     > {
         const { sortField, sortDirection, limit, pageToken, filters } = request;
@@ -178,8 +221,13 @@ export class V1 {
             _queryParams["filters"] = filters;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -188,38 +236,36 @@ export class V1 {
                 "/lists/v1/appointment",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.lists.v1.AppointmentListPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.lists.v1.AppointmentListPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.lists.v1.getAppointmentList.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.lists.v1.getAppointmentList.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

@@ -9,25 +9,15 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetAllProviderCredentialingSpansRequest {
-    /**
-     * Maximum number of entities per page, defaults to 100.
-     */
+    /** Maximum number of entities per page, defaults to 100. */
     limit?: number;
     pageToken?: CandidApi.PageToken;
-    /**
-     * Filter by payer.
-     */
+    /** Filter by payer. */
     payerUuid?: string;
-    /**
-     * Filter to a particular provider. Use in conjunction as_rendering_provider and as_contracting_provider.
-     */
+    /** Filter to a particular provider. Use in conjunction as_rendering_provider and as_contracting_provider. */
     providerId?: string;
-    /**
-     * Filter to credentialing spans where the provider is a rendering provider. To use this filter provider_id is required.
-     */
+    /** Filter to credentialing spans where the provider is a rendering provider. To use this filter provider_id is required. */
     asRenderingProvider?: boolean;
-    /**
-     * Filter to credentialing spans where the provider is a contracting provider. To use this filter provider_id is required.
-     */
+    /** Filter to credentialing spans where the provider is a contracting provider. To use this filter provider_id is required. */
     asContractingProvider?: boolean;
 }

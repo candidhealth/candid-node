@@ -12,13 +12,9 @@ import * as CandidApi from "../../../../../../index";
  */
 export interface GetUniqueDimensionValuesRequest {
     pageToken?: CandidApi.PageToken;
-    /**
-     * Max number of values returned. Defaults to 1000. Max is 1000.
-     */
+    /** Max number of values returned. Defaults to 1000. Max is 1000. */
     limit?: number;
-    /**
-     * The name of the dimension to fetch unique values for.
-     */
+    /** The name of the dimension to fetch unique values for. */
     pivotDimension: CandidApi.feeSchedules.v3.DimensionName;
     payerUuid?: CandidApi.payers.v3.PayerUuid;
     organizationBillingProviderId?: CandidApi.organizationProviders.v2.OrganizationProviderId;

@@ -9,21 +9,15 @@ import * as CandidApi from "../../../../../../index";
  *     {}
  */
 export interface GetMultiInsurancePaymentRequest {
-    /**
-     * Defaults to 100. The value must be greater than 0 and less than 1000.
-     */
+    /** Defaults to 100. The value must be greater than 0 and less than 1000. */
     limit?: number;
     payerUuid?: CandidApi.payers.v3.PayerUuid;
     claimId?: CandidApi.ClaimId;
     serviceLineId?: CandidApi.ServiceLineId;
     billingProviderId?: CandidApi.ProviderId;
-    /**
-     * Defaults to payment_timestamp
-     */
+    /** Defaults to payment_timestamp */
     sort?: CandidApi.insurancePayments.v1.InsurancePaymentSortField;
-    /**
-     * Sort direction. Defaults to descending order if not provided.
-     */
+    /** Sort direction. Defaults to descending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
 }

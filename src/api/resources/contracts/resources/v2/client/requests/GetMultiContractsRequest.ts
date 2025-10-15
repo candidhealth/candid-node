@@ -10,27 +10,17 @@ import * as CandidApi from "../../../../../../index";
  */
 export interface GetMultiContractsRequest {
     pageToken?: CandidApi.PageToken;
-    /**
-     * Max number of contracts returned. Defaults to 1000. Max is 1000.
-     */
+    /** Max number of contracts returned. Defaults to 1000. Max is 1000. */
     limit?: number;
     contractingProviderId?: CandidApi.contracts.v2.ContractingProviderId;
     renderingProviderIds?: CandidApi.contracts.v2.RenderingProviderid | CandidApi.contracts.v2.RenderingProviderid[];
-    /**
-     * Filter to contracts that include any of the included payer names.
-     */
+    /** Filter to contracts that include any of the included payer names. */
     payerNames?: string | string[];
     states?: CandidApi.State | CandidApi.State[];
-    /**
-     * The status of the contract. Defaults to `pending`
-     */
+    /** The status of the contract. Defaults to `pending` */
     contractStatus?: CandidApi.contracts.v2.ContractStatus;
-    /**
-     * Potentially sort by a contract related attribute.  Defaults to created_at
-     */
+    /** Potentially sort by a contract related attribute.  Defaults to created_at */
     sort?: CandidApi.contracts.v2.ContractSortField;
-    /**
-     * Direction of sort, defaulting to desc
-     */
+    /** Direction of sort, defaulting to desc */
     sortDirection?: CandidApi.SortDirection;
 }

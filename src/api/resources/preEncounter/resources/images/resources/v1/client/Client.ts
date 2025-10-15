@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../../../environments";
 import * as core from "../../../../../../../../core";
 import * as CandidApi from "../../../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../../../core/headers";
 import * as serializers from "../../../../../../../../serialization/index";
-import urlJoin from "url-join";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Adds an image.  VersionConflictError is returned if a front or back of this coverage already exists.
@@ -45,14 +53,30 @@ export class V1 {
      *         status: "PENDING"
      *     })
      */
-    public async create(
+    public create(
+        request: CandidApi.preEncounter.images.v1.MutableImage,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
         request: CandidApi.preEncounter.images.v1.MutableImage,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.create.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.create.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -61,17 +85,9 @@ export class V1 {
                 "/images/v1",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.preEncounter.images.v1.MutableImage.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -82,13 +98,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.images.v1.Image.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.images.v1.Image.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -96,23 +117,31 @@ export class V1 {
             switch ((_response.error.body as serializers.preEncounter.images.v1.create.Error.Raw)?.errorName) {
                 case "VersionConflictError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.images.v1.create.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.images.v1.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.images.v1.create.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.images.v1.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.images.v1.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.images.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -125,12 +154,30 @@ export class V1 {
      * @example
      *     await client.preEncounter.images.v1.get(CandidApi.preEncounter.images.v1.ImageId("id"))
      */
-    public async get(
+    public get(
         id: CandidApi.preEncounter.images.v1.ImageId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.get.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
+    }
+
+    private async __get(
+        id: CandidApi.preEncounter.images.v1.ImageId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.get.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -139,31 +186,26 @@ export class V1 {
                 `/images/v1/${encodeURIComponent(serializers.preEncounter.images.v1.ImageId.jsonOrThrow(id))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.images.v1.Image.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.images.v1.Image.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -171,23 +213,31 @@ export class V1 {
             switch ((_response.error.body as serializers.preEncounter.images.v1.get.Error.Raw)?.errorName) {
                 case "NotFoundError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.images.v1.get.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.images.v1.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.images.v1.get.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.images.v1.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.images.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.images.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -207,16 +257,34 @@ export class V1 {
      *         status: "PENDING"
      *     })
      */
-    public async update(
+    public update(
+        id: CandidApi.preEncounter.images.v1.ImageId,
+        version: string,
+        request: CandidApi.preEncounter.images.v1.MutableImage,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(id, version, request, requestOptions));
+    }
+
+    private async __update(
         id: CandidApi.preEncounter.images.v1.ImageId,
         version: string,
         request: CandidApi.preEncounter.images.v1.MutableImage,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.update.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.preEncounter.images.v1.Image, CandidApi.preEncounter.images.v1.update.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -225,17 +293,9 @@ export class V1 {
                 `/images/v1/${encodeURIComponent(serializers.preEncounter.images.v1.ImageId.jsonOrThrow(id))}/${encodeURIComponent(version)}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.preEncounter.images.v1.MutableImage.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -246,13 +306,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.images.v1.Image.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.images.v1.Image.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -261,23 +326,31 @@ export class V1 {
                 case "NotFoundError":
                 case "VersionConflictError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.images.v1.update.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.images.v1.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.images.v1.update.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.images.v1.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.images.v1.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.images.v1.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -291,13 +364,26 @@ export class V1 {
      * @example
      *     await client.preEncounter.images.v1.deactivate(CandidApi.preEncounter.images.v1.ImageId("id"), "version")
      */
-    public async deactivate(
+    public deactivate(
         id: CandidApi.preEncounter.images.v1.ImageId,
         version: string,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<void, CandidApi.preEncounter.images.v1.deactivate.Error>> {
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.preEncounter.images.v1.deactivate.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__deactivate(id, version, requestOptions));
+    }
+
+    private async __deactivate(
+        id: CandidApi.preEncounter.images.v1.ImageId,
+        version: string,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.preEncounter.images.v1.deactivate.Error>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -306,26 +392,21 @@ export class V1 {
                 `/images/v1/${encodeURIComponent(serializers.preEncounter.images.v1.ImageId.jsonOrThrow(id))}/${encodeURIComponent(version)}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: undefined,
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -334,23 +415,31 @@ export class V1 {
                 case "NotFoundError":
                 case "VersionConflictError":
                     return {
-                        ok: false,
-                        error: serializers.preEncounter.images.v1.deactivate.Error.parseOrThrow(
-                            _response.error.body as serializers.preEncounter.images.v1.deactivate.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.images.v1.deactivate.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.images.v1.deactivate.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.images.v1.deactivate.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.images.v1.deactivate.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -363,11 +452,22 @@ export class V1 {
      * @example
      *     await client.preEncounter.images.v1.getMulti()
      */
-    public async getMulti(
+    public getMulti(
+        request: CandidApi.preEncounter.images.v1.ImageGetMultiRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.preEncounter.images.v1.Image[], CandidApi.preEncounter.images.v1.getMulti.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
         request: CandidApi.preEncounter.images.v1.ImageGetMultiRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.preEncounter.images.v1.Image[], CandidApi.preEncounter.images.v1.getMulti.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.preEncounter.images.v1.Image[], CandidApi.preEncounter.images.v1.getMulti.Error>
+        >
     > {
         const { patientId, coverageId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -379,8 +479,13 @@ export class V1 {
             _queryParams["coverage_id"] = coverageId;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -389,38 +494,36 @@ export class V1 {
                 "/images/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.preEncounter.images.v1.getMulti.Response.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.images.v1.getMulti.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.preEncounter.images.v1.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.images.v1.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

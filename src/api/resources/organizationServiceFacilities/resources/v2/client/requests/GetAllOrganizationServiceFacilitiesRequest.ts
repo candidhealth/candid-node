@@ -13,22 +13,18 @@ import * as CandidApi from "../../../../../../index";
  *     }
  */
 export interface GetAllOrganizationServiceFacilitiesRequest {
-    /**
-     * Limit the number of results returned. Defaults to 100.
-     */
+    /** Limit the number of results returned. Defaults to 100. */
     limit?: number;
-    /**
-     * Filter to a name or a part of a name.
-     */
+    /** Filter to a name or a part of a name. */
     name?: string;
-    /**
-     * Filter to the provided organization service facility IDs.
-     */
+    /** Filter to the provided organization service facility IDs. */
     organizationServiceFacilityIds?:
         | CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId
         | CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId[];
-    /**
-     * The page token to continue paging through a previous request.
-     */
+    /** Filter by one or more external_ids. */
+    externalIds?: string | string[];
+    /** Filter by Place of Service (POS) code. */
+    placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    /** The page token to continue paging through a previous request. */
     pageToken?: CandidApi.PageToken;
 }

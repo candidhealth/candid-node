@@ -16,6 +16,10 @@ export const Payer: core.serialization.ObjectSchema<serializers.payers.v4.Payer.
         payerUuid: core.serialization.property("payer_uuid", PayerUuid),
         payerIds: core.serialization.property("payer_ids", PrimaryPayerIds),
         payerName: core.serialization.property("payer_name", core.serialization.string()),
+        alternatePayerNames: core.serialization.property(
+            "alternate_payer_names",
+            core.serialization.list(core.serialization.string()),
+        ),
         clearinghousePayerInfo: core.serialization.property(
             "clearinghouse_payer_info",
             core.serialization.record(Clearinghouse, ClearinghousePayerInfo.optional()),
@@ -28,6 +32,7 @@ export declare namespace Payer {
         payer_uuid: PayerUuid.Raw;
         payer_ids: PrimaryPayerIds.Raw;
         payer_name: string;
+        alternate_payer_names: string[];
         clearinghouse_payer_info: Record<Clearinghouse.Raw, ClearinghousePayerInfo.Raw | null | undefined>;
         street_address?: StreetAddressLongZip.Raw | null;
     }

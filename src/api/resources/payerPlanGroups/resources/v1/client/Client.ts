@@ -6,7 +6,7 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 
 export declare namespace V1 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V1 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V1 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V1 {
-    constructor(protected readonly _options: V1.Options = {}) {}
+    protected readonly _options: V1.Options;
+
+    constructor(_options: V1.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Returns all payer plan groups matching filter criteria.
@@ -40,11 +48,25 @@ export class V1 {
      * @example
      *     await client.payerPlanGroups.v1.getMulti()
      */
-    public async getMulti(
+    public getMulti(
+        request: CandidApi.payerPlanGroups.v1.PayerPlanGroupGetMultiRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroupPage, CandidApi.payerPlanGroups.v1.getMulti.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
         request: CandidApi.payerPlanGroups.v1.PayerPlanGroupGetMultiRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroupPage, CandidApi.payerPlanGroups.v1.getMulti.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.payerPlanGroups.v1.PayerPlanGroupPage,
+                CandidApi.payerPlanGroups.v1.getMulti.Error
+            >
+        >
     > {
         const {
             planGroupName,
@@ -138,8 +160,13 @@ export class V1 {
             _queryParams["page_token"] = pageToken;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -148,32 +175,26 @@ export class V1 {
                 "/api/payer-plan-groups/v1",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payerPlanGroups.v1.PayerPlanGroupPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payerPlanGroups.v1.PayerPlanGroupPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -181,23 +202,31 @@ export class V1 {
             switch ((_response.error.body as serializers.payerPlanGroups.v1.getMulti.Error.Raw)?.errorName) {
                 case "UnprocessableEntityError":
                     return {
-                        ok: false,
-                        error: serializers.payerPlanGroups.v1.getMulti.Error.parseOrThrow(
-                            _response.error.body as serializers.payerPlanGroups.v1.getMulti.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.payerPlanGroups.v1.getMulti.Error.parseOrThrow(
+                                _response.error.body as serializers.payerPlanGroups.v1.getMulti.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.payerPlanGroups.v1.getMulti.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payerPlanGroups.v1.getMulti.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -210,12 +239,30 @@ export class V1 {
      * @example
      *     await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         payerPlanGroupId: CandidApi.PayerPlanGroupId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.get.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(payerPlanGroupId, requestOptions));
+    }
+
+    private async __get(
+        payerPlanGroupId: CandidApi.PayerPlanGroupId,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.get.Error>
+        >
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -224,31 +271,26 @@ export class V1 {
                 `/api/payer-plan-groups/v1/${encodeURIComponent(serializers.PayerPlanGroupId.jsonOrThrow(payerPlanGroupId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -257,23 +299,31 @@ export class V1 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.payerPlanGroups.v1.get.Error.parseOrThrow(
-                            _response.error.body as serializers.payerPlanGroups.v1.get.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.payerPlanGroups.v1.get.Error.parseOrThrow(
+                                _response.error.body as serializers.payerPlanGroups.v1.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.payerPlanGroups.v1.get.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payerPlanGroups.v1.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -290,14 +340,30 @@ export class V1 {
      *         planType: "09"
      *     })
      */
-    public async create(
+    public create(
+        request: CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
         request: CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.create.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.create.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -306,17 +372,9 @@ export class V1 {
                 "/api/payer-plan-groups/v1",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.payerPlanGroups.v1.MutablePayerPlanGroup.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -327,13 +385,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -342,23 +405,31 @@ export class V1 {
                 case "EntityNotFoundError":
                 case "PayerPlanGroupAlreadyExistsHttpError":
                     return {
-                        ok: false,
-                        error: serializers.payerPlanGroups.v1.create.Error.parseOrThrow(
-                            _response.error.body as serializers.payerPlanGroups.v1.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.payerPlanGroups.v1.create.Error.parseOrThrow(
+                                _response.error.body as serializers.payerPlanGroups.v1.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.payerPlanGroups.v1.create.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payerPlanGroups.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -376,15 +447,32 @@ export class V1 {
      *         planType: "09"
      *     })
      */
-    public async update(
+    public update(
+        payerPlanGroupId: CandidApi.PayerPlanGroupId,
+        request: CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(payerPlanGroupId, request, requestOptions));
+    }
+
+    private async __update(
         payerPlanGroupId: CandidApi.PayerPlanGroupId,
         request: CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.update.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.update.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -393,17 +481,9 @@ export class V1 {
                 `/api/payer-plan-groups/v1/${encodeURIComponent(serializers.PayerPlanGroupId.jsonOrThrow(payerPlanGroupId))}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.payerPlanGroups.v1.MutablePayerPlanGroup.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -414,13 +494,18 @@ export class V1 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -430,23 +515,31 @@ export class V1 {
                 case "UnauthorizedError":
                 case "PayerPlanGroupAlreadyExistsHttpError":
                     return {
-                        ok: false,
-                        error: serializers.payerPlanGroups.v1.update.Error.parseOrThrow(
-                            _response.error.body as serializers.payerPlanGroups.v1.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.payerPlanGroups.v1.update.Error.parseOrThrow(
+                                _response.error.body as serializers.payerPlanGroups.v1.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.payerPlanGroups.v1.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payerPlanGroups.v1.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -459,14 +552,30 @@ export class V1 {
      * @example
      *     await client.payerPlanGroups.v1.deactivate(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async deactivate(
+    public deactivate(
+        payerPlanGroupId: CandidApi.PayerPlanGroupId,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.deactivate.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__deactivate(payerPlanGroupId, requestOptions));
+    }
+
+    private async __deactivate(
         payerPlanGroupId: CandidApi.PayerPlanGroupId,
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.deactivate.Error>
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.payerPlanGroups.v1.PayerPlanGroup, CandidApi.payerPlanGroups.v1.deactivate.Error>
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -475,31 +584,26 @@ export class V1 {
                 `/api/payer-plan-groups/v1/${encodeURIComponent(serializers.PayerPlanGroupId.jsonOrThrow(payerPlanGroupId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.payerPlanGroups.v1.PayerPlanGroup.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -508,23 +612,31 @@ export class V1 {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                     return {
-                        ok: false,
-                        error: serializers.payerPlanGroups.v1.deactivate.Error.parseOrThrow(
-                            _response.error.body as serializers.payerPlanGroups.v1.deactivate.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.payerPlanGroups.v1.deactivate.Error.parseOrThrow(
+                                _response.error.body as serializers.payerPlanGroups.v1.deactivate.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.payerPlanGroups.v1.deactivate.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.payerPlanGroups.v1.deactivate.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

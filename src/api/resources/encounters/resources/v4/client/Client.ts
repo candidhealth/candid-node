@@ -6,7 +6,7 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 
 export declare namespace V4 {
     export interface Options {
@@ -14,6 +14,8 @@ export declare namespace V4 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 
     export interface RequestOptions {
@@ -23,13 +25,19 @@ export declare namespace V4 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Additional query string parameters to include in the request. */
+        queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     }
 }
 
 export class V4 {
-    constructor(protected readonly _options: V4.Options = {}) {}
+    protected readonly _options: V4.Options;
+
+    constructor(_options: V4.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * @param {CandidApi.encounters.v4.GetAllEncountersRequest} request
@@ -46,13 +54,26 @@ export class V4 {
      *         primaryPayerNames: "Medicare,Medicaid",
      *         searchTerm: "doe",
      *         externalId: CandidApi.EncounterExternalId("123456"),
-     *         diagnosesUpdatedSince: "2019-08-24T14:15:22Z"
+     *         diagnosesUpdatedSince: new Date("2019-08-24T14:15:22.000Z")
      *     })
      */
-    public async getAll(
+    public getAll(
         request: CandidApi.encounters.v4.GetAllEncountersRequest = {},
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.encounters.v4.EncounterPage, CandidApi.encounters.v4.getAll.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.EncounterPage, CandidApi.encounters.v4.getAll.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getAll(request, requestOptions));
+    }
+
+    private async __getAll(
+        request: CandidApi.encounters.v4.GetAllEncountersRequest = {},
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.encounters.v4.EncounterPage, CandidApi.encounters.v4.getAll.Error>
+        >
+    > {
         const {
             limit,
             claimStatus,
@@ -154,8 +175,13 @@ export class V4 {
             _queryParams["patient_external_id"] = patientExternalId;
         }
 
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -164,38 +190,36 @@ export class V4 {
                 "/api/encounters/v4",
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            queryParameters: _queryParams,
-            requestType: "json",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounters.v4.EncounterPage.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.EncounterPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounters.v4.getAll.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.getAll.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -206,12 +230,28 @@ export class V4 {
      * @example
      *     await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public async get(
+    public get(
         encounterId: CandidApi.EncounterId,
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.get.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.get.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__get(encounterId, requestOptions));
+    }
+
+    private async __get(
+        encounterId: CandidApi.EncounterId,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.get.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -220,156 +260,36 @@ export class V4 {
                 `/api/encounters/v4/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounters.v4.get.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * @param {CandidApi.encountersUniversal.UniversalEncounterCreate} request
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.encounters.v4.createUniversal({
-     *         externalId: CandidApi.EncounterExternalId("external_id"),
-     *         patientAuthorizedRelease: true,
-     *         benefitsAssignedToProvider: true,
-     *         providerAcceptsAssignment: true,
-     *         billableStatus: "BILLABLE",
-     *         patient: {
-     *             firstName: "first_name",
-     *             lastName: "last_name",
-     *             gender: "male",
-     *             externalId: "external_id",
-     *             dateOfBirth: "2023-01-15",
-     *             address: {
-     *                 address1: "address1",
-     *                 city: "city",
-     *                 state: "AA",
-     *                 zipCode: "zip_code"
-     *             }
-     *         },
-     *         responsibleParty: "INSURANCE_PAY",
-     *         billingProvider: {
-     *             address: {
-     *                 address1: "address1",
-     *                 city: "city",
-     *                 state: "AA",
-     *                 zipCode: "zip_code",
-     *                 zipPlusFourCode: "zip_plus_four_code"
-     *             },
-     *             taxId: "tax_id",
-     *             npi: "npi"
-     *         },
-     *         submissionExpectation: "TARGET_PROFESSIONAL"
-     *     })
-     */
-    public async createUniversal(
-        request: CandidApi.encountersUniversal.UniversalEncounterCreate,
-        requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.createUniversal.Error>> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.CandidApiEnvironment.Production
-                    ).candidApi,
-                "/api/encounters/v4/universal",
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.get.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
             },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.encountersUniversal.UniversalEncounterCreate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.encounters.v4.createUniversal.Error.Raw)?.errorName) {
-                case "EncounterExternalIdUniquenessError":
-                case "EncounterPatientControlNumberUniquenessError":
-                case "EntityNotFoundError":
-                case "UnauthorizedError":
-                case "EncounterGuarantorMissingContactInfoError":
-                case "HttpRequestValidationsError":
-                case "CashPayPayerError":
-                case "SchemaInstanceValidationHttpFailure":
-                case "InvalidTagNamesError":
-                case "HttpRequestValidationError":
-                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
-                case "EncounterRenderingOrAttendingProviderRequired":
-                    return {
-                        ok: false,
-                        error: serializers.encounters.v4.createUniversal.Error.parseOrThrow(
-                            _response.error.body as serializers.encounters.v4.createUniversal.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.createUniversal.Error._unknown(_response.error),
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -379,32 +299,13 @@ export class V4 {
      *
      * @example
      *     await client.encounters.v4.create({
-     *         externalId: CandidApi.EncounterExternalId("external_id"),
-     *         patientAuthorizedRelease: true,
-     *         benefitsAssignedToProvider: true,
-     *         providerAcceptsAssignment: true,
-     *         billableStatus: "BILLABLE",
-     *         patient: {
-     *             firstName: "first_name",
-     *             lastName: "last_name",
-     *             gender: "male",
-     *             externalId: "external_id",
-     *             dateOfBirth: "2023-01-15",
+     *         billingProvider: {
      *             address: {
+     *                 zipPlusFourCode: "zip_plus_four_code",
      *                 address1: "address1",
      *                 city: "city",
      *                 state: "AA",
      *                 zipCode: "zip_code"
-     *             }
-     *         },
-     *         responsibleParty: "INSURANCE_PAY",
-     *         billingProvider: {
-     *             address: {
-     *                 address1: "address1",
-     *                 city: "city",
-     *                 state: "AA",
-     *                 zipCode: "zip_code",
-     *                 zipPlusFourCode: "zip_plus_four_code"
      *             },
      *             taxId: "tax_id",
      *             npi: "npi"
@@ -419,15 +320,50 @@ export class V4 {
      *         placeOfServiceCode: "01",
      *         renderingProvider: {
      *             npi: "npi"
-     *         }
+     *         },
+     *         patient: {
+     *             externalId: "external_id",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "address1",
+     *                 city: "city",
+     *                 state: "AA",
+     *                 zipCode: "zip_code"
+     *             },
+     *             firstName: "first_name",
+     *             lastName: "last_name",
+     *             gender: "male"
+     *         },
+     *         responsibleParty: "INSURANCE_PAY",
+     *         externalId: CandidApi.EncounterExternalId("external_id"),
+     *         patientAuthorizedRelease: true,
+     *         benefitsAssignedToProvider: true,
+     *         providerAcceptsAssignment: true,
+     *         billableStatus: "BILLABLE"
      *     })
      */
-    public async create(
+    public create(
         request: CandidApi.encounters.v4.EncounterCreate,
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.create.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.create.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: CandidApi.encounters.v4.EncounterCreate,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.create.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -436,17 +372,9 @@ export class V4 {
                 "/api/encounters/v4",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounters.v4.EncounterCreate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -455,13 +383,18 @@ export class V4 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -480,152 +413,31 @@ export class V4 {
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                 case "EncounterRenderingOrAttendingProviderRequired":
                     return {
-                        ok: false,
-                        error: serializers.encounters.v4.create.Error.parseOrThrow(
-                            _response.error.body as serializers.encounters.v4.create.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.create.Error.parseOrThrow(
+                                _response.error.body as serializers.encounters.v4.create.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounters.v4.create.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * Create an encounter from a pre-encounter patient and appointment. This endpoint is intended to be used by consumers who are managing
-     * patients and appointments in the pre-encounter service and is currently under development. Consumers who are not taking advantage
-     * of the pre-encounter service should use the standard create endpoint.
-     *
-     * The endpoint will create an encounter from the provided fields, pulling information from the provided patient and appointment objects
-     * where applicable. In particular, the following fields are populated from the patient and appointment objects:
-     *   - Patient
-     *   - Referring Provider
-     *   - Subscriber Primary
-     *   - Subscriber Secondary
-     *   - Referral Number
-     *   - Responsible Party
-     *   - Guarantor
-     *
-     * Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
-     * encounter has not already been submitted or adjudicated.
-     *
-     * @param {CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounter} request
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.encounters.v4.createFromPreEncounterPatientUniversal({
-     *         externalId: CandidApi.EncounterExternalId("external_id"),
-     *         patientAuthorizedRelease: true,
-     *         benefitsAssignedToProvider: true,
-     *         providerAcceptsAssignment: true,
-     *         billableStatus: "BILLABLE",
-     *         preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
-     *         billingProvider: {
-     *             address: {
-     *                 address1: "address1",
-     *                 city: "city",
-     *                 state: "AA",
-     *                 zipCode: "zip_code",
-     *                 zipPlusFourCode: "zip_plus_four_code"
-     *             },
-     *             taxId: "tax_id",
-     *             npi: "npi"
-     *         },
-     *         submissionExpectation: "TARGET_PROFESSIONAL"
-     *     })
-     */
-    public async createFromPreEncounterPatientUniversal(
-        request: CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounter,
-        requestOptions?: V4.RequestOptions,
-    ): Promise<
-        core.APIResponse<
-            CandidApi.encounters.v4.Encounter,
-            CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error
-        >
-    > {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.CandidApiEnvironment.Production
-                    ).candidApi,
-                "/api/encounters/v4/create-from-pre-encounter/universal",
-            ),
-            method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
             },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.encountersUniversal.UniversalEncounterCreateFromPreEncounter.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (
-                (_response.error.body as serializers.encounters.v4.createFromPreEncounterPatientUniversal.Error.Raw)
-                    ?.errorName
-            ) {
-                case "EncounterExternalIdUniquenessError":
-                case "EncounterPatientControlNumberUniquenessError":
-                case "EntityNotFoundError":
-                case "UnauthorizedError":
-                case "HttpRequestValidationsError":
-                case "SchemaInstanceValidationHttpFailure":
-                case "HttpRequestValidationError":
-                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
-                    return {
-                        ok: false,
-                        error: serializers.encounters.v4.createFromPreEncounterPatientUniversal.Error.parseOrThrow(
-                            _response.error
-                                .body as serializers.encounters.v4.createFromPreEncounterPatientUniversal.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error._unknown(_response.error),
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -652,24 +464,6 @@ export class V4 {
      *
      * @example
      *     await client.encounters.v4.createFromPreEncounterPatient({
-     *         externalId: CandidApi.EncounterExternalId("external_id"),
-     *         patientAuthorizedRelease: true,
-     *         benefitsAssignedToProvider: true,
-     *         providerAcceptsAssignment: true,
-     *         billableStatus: "BILLABLE",
-     *         preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-     *         preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
-     *         billingProvider: {
-     *             address: {
-     *                 address1: "address1",
-     *                 city: "city",
-     *                 state: "AA",
-     *                 zipCode: "zip_code",
-     *                 zipPlusFourCode: "zip_plus_four_code"
-     *             },
-     *             taxId: "tax_id",
-     *             npi: "npi"
-     *         },
      *         renderingProvider: {
      *             npi: "npi"
      *         },
@@ -680,17 +474,54 @@ export class V4 {
      *             }, {
      *                 codeType: "ABF",
      *                 code: "code"
-     *             }]
+     *             }],
+     *         preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+     *         billingProvider: {
+     *             address: {
+     *                 zipPlusFourCode: "zip_plus_four_code",
+     *                 address1: "address1",
+     *                 city: "city",
+     *                 state: "AA",
+     *                 zipCode: "zip_code"
+     *             },
+     *             taxId: "tax_id",
+     *             npi: "npi"
+     *         },
+     *         externalId: CandidApi.EncounterExternalId("external_id"),
+     *         patientAuthorizedRelease: true,
+     *         benefitsAssignedToProvider: true,
+     *         providerAcceptsAssignment: true,
+     *         billableStatus: "BILLABLE"
      *     })
      */
-    public async createFromPreEncounterPatient(
+    public createFromPreEncounterPatient(
+        request: CandidApi.encounters.v4.EncounterCreateFromPreEncounter,
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatient.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__createFromPreEncounterPatient(request, requestOptions));
+    }
+
+    private async __createFromPreEncounterPatient(
         request: CandidApi.encounters.v4.EncounterCreateFromPreEncounter,
         requestOptions?: V4.RequestOptions,
     ): Promise<
-        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatient.Error>
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounters.v4.Encounter,
+                CandidApi.encounters.v4.createFromPreEncounterPatient.Error
+            >
+        >
     > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -699,17 +530,9 @@ export class V4 {
                 "/api/encounters/v4/create-from-pre-encounter",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounters.v4.EncounterCreateFromPreEncounter.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -720,13 +543,18 @@ export class V4 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -743,108 +571,32 @@ export class V4 {
                 case "HttpRequestValidationError":
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                     return {
-                        ok: false,
-                        error: serializers.encounters.v4.createFromPreEncounterPatient.Error.parseOrThrow(
-                            _response.error.body as serializers.encounters.v4.createFromPreEncounterPatient.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.createFromPreEncounterPatient.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounters.v4.createFromPreEncounterPatient.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounters.v4.createFromPreEncounterPatient.Error._unknown(_response.error),
-        };
-    }
-
-    /**
-     * @param {CandidApi.EncounterId} encounterId
-     * @param {CandidApi.encountersUniversal.UniversalEncounterUpdate} request
-     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.encounters.v4.updateUniversal(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
-     */
-    public async updateUniversal(
-        encounterId: CandidApi.EncounterId,
-        request: CandidApi.encountersUniversal.UniversalEncounterUpdate,
-        requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.updateUniversal.Error>> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.CandidApiEnvironment.Production
-                    ).candidApi,
-                `/api/encounters/v4/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}/universal`,
-            ),
-            method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.createFromPreEncounterPatient.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
             },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.encountersUniversal.UniversalEncounterUpdate.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.encounters.v4.updateUniversal.Error.Raw)?.errorName) {
-                case "EncounterExternalIdUniquenessError":
-                case "EntityNotFoundError":
-                case "UnauthorizedError":
-                case "HttpRequestValidationsError":
-                case "SchemaInstanceValidationHttpFailure":
-                case "UnprocessableEntityError":
-                case "InvalidTagNamesError":
-                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
-                    return {
-                        ok: false,
-                        error: serializers.encounters.v4.updateUniversal.Error.parseOrThrow(
-                            _response.error.body as serializers.encounters.v4.updateUniversal.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
-                    };
-            }
-        }
-
-        return {
-            ok: false,
-            error: CandidApi.encounters.v4.updateUniversal.Error._unknown(_response.error),
+            rawResponse: _response.rawResponse,
         };
     }
 
@@ -856,13 +608,30 @@ export class V4 {
      * @example
      *     await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
      */
-    public async update(
+    public update(
         encounterId: CandidApi.EncounterId,
         request: CandidApi.encounters.v4.EncounterUpdate,
         requestOptions?: V4.RequestOptions,
-    ): Promise<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.update.Error>> {
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.update.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__update(encounterId, request, requestOptions));
+    }
+
+    private async __update(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounters.v4.EncounterUpdate,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.update.Error>>
+    > {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
         const _response = await core.fetcher({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (
                         (await core.Supplier.get(this._options.environment)) ??
@@ -871,17 +640,9 @@ export class V4 {
                 `/api/encounters/v4/${encodeURIComponent(serializers.EncounterId.jsonOrThrow(encounterId))}`,
             ),
             method: "PATCH",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "candidhealth",
-                "X-Fern-SDK-Version": "1.8.1",
-                "User-Agent": "candidhealth/1.8.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: _headers,
             contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
             requestType: "json",
             body: serializers.encounters.v4.EncounterUpdate.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
@@ -890,13 +651,18 @@ export class V4 {
         });
         if (_response.ok) {
             return {
-                ok: true,
-                body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
             };
         }
 
@@ -911,23 +677,31 @@ export class V4 {
                 case "InvalidTagNamesError":
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                     return {
-                        ok: false,
-                        error: serializers.encounters.v4.update.Error.parseOrThrow(
-                            _response.error.body as serializers.encounters.v4.update.Error.Raw,
-                            {
-                                unrecognizedObjectKeys: "passthrough",
-                                allowUnrecognizedUnionMembers: true,
-                                allowUnrecognizedEnumValues: true,
-                                breadcrumbsPrefix: ["response"],
-                            },
-                        ),
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.update.Error.parseOrThrow(
+                                _response.error.body as serializers.encounters.v4.update.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
                     };
             }
         }
 
         return {
-            ok: false,
-            error: CandidApi.encounters.v4.update.Error._unknown(_response.error),
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.update.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
         };
     }
 

@@ -10,9 +10,7 @@ import * as CandidApi from "../../../../../../index";
  */
 export interface GetMultiNonInsurancePayersRequest {
     name?: string;
-    /**
-     * Fuzzy-match category names of non-insurance payers.
-     */
+    /** Fuzzy-match category names of non-insurance payers. */
     category?: string;
     /**
      * Filter by one or more categories by name.
@@ -29,9 +27,7 @@ export interface GetMultiNonInsurancePayersRequest {
     enabled?: boolean;
     sort?: CandidApi.nonInsurancePayers.v1.NonInsurancePayerSortField;
     sortDirection?: CandidApi.SortDirection;
-    /**
-     * Defaults to 100
-     */
+    /** Defaults to 100 */
     limit?: number;
     pageToken?: CandidApi.PageToken;
 }
