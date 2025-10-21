@@ -14,7 +14,7 @@ describe("Test fetcherImpl", () => {
             responseType: "json",
         };
 
-        global.fetch = vi.fn().mockResolvedValue(
+        global.fetch = jest.fn().mockResolvedValue(
             new Response(JSON.stringify({ data: "test" }), {
                 status: 200,
                 statusText: "OK",
@@ -49,7 +49,7 @@ describe("Test fetcherImpl", () => {
             body: fs.createReadStream(join(__dirname, "test-file.txt")),
         };
 
-        global.fetch = vi.fn().mockResolvedValue(
+        global.fetch = jest.fn().mockResolvedValue(
             new Response(JSON.stringify({ data: "test" }), {
                 status: 200,
                 statusText: "OK",
