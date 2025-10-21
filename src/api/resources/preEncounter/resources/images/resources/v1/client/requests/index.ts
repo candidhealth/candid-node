@@ -1,1 +1,1 @@
-export { type ImageGetMultiRequest } from "./ImageGetMultiRequest";
+export type { ImageGetMultiRequest } from "./ImageGetMultiRequest";

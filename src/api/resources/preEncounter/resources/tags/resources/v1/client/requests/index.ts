@@ -1,1 +1,1 @@
-export { type GetAllTagsRequest } from "./GetAllTagsRequest";
+export type { GetAllTagsRequest } from "./GetAllTagsRequest";

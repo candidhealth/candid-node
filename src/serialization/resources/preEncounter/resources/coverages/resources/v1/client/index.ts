@@ -1,6 +1,6 @@
-export * as update from "./update";
-export * as getMultiPaginated from "./getMultiPaginated";
 export * as getHistory from "./getHistory";
 export * as getMulti from "./getMulti";
-export * as scan from "./scan";
+export * as getMultiPaginated from "./getMultiPaginated";
 export * from "./requests";
+export * as scan from "./scan";
+export * as update from "./update";

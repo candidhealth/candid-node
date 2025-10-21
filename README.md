@@ -26,12 +26,12 @@ const client = new CandidApiClient({ clientId: "YOUR_CLIENT_ID", clientSecret: "
 await client.preEncounter.eligibilityChecks.v1.post({
     payerId: "payer_id",
     provider: {
-        npi: "npi",
+        npi: "npi"
     },
     subscriber: {
         firstName: "first_name",
-        lastName: "last_name",
-    },
+        lastName: "last_name"
+    }
 });
 ```
 
@@ -150,8 +150,11 @@ console.log(rawResponse.headers['X-My-Header']);
 
 ### Runtime Compatibility
 
+
 The SDK defaults to `node-fetch` but will use the global fetch client if present. The SDK works in the following
 runtimes:
+
+
 
 - Node.js 18+
 - Vercel

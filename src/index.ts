@@ -1,5 +1,7 @@
 export * as CandidApi from "./api";
-export { CandidApiError, CandidApiTimeoutError } from "./errors";
-export * as serialization from "./serialization";
+export type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
 export { CandidApiClient } from "./Client";
-export { CandidApiEnvironment, CandidApiEnvironmentUrls } from "./environments";
+export { CandidApiEnvironment, type CandidApiEnvironmentUrls } from "./environments";
+export { CandidApiError, CandidApiTimeoutError } from "./errors";
+export * from "./exports";
+export * as serialization from "./serialization";

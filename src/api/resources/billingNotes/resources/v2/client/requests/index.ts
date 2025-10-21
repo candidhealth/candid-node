@@ -1,2 +1,2 @@
-export { type StandaloneBillingNoteCreate } from "./StandaloneBillingNoteCreate";
-export { type BillingNoteUpdate } from "./BillingNoteUpdate";
+export type { BillingNoteUpdate } from "./BillingNoteUpdate";
+export type { StandaloneBillingNoteCreate } from "./StandaloneBillingNoteCreate";

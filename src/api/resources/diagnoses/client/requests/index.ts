@@ -1,1 +1,1 @@
-export { type DiagnosisUpdate } from "./DiagnosisUpdate";
+export type { DiagnosisUpdate } from "./DiagnosisUpdate";

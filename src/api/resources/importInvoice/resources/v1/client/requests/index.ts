@@ -1,1 +1,1 @@
-export { type SearchImportedInvoicesRequest } from "./SearchImportedInvoicesRequest";
+export type { SearchImportedInvoicesRequest } from "./SearchImportedInvoicesRequest";

@@ -1,2 +1,2 @@
-export { type VisitsRequest } from "./VisitsRequest";
-export { type AppointmentScanRequest } from "./AppointmentScanRequest";
+export type { AppointmentScanRequest } from "./AppointmentScanRequest";
+export type { VisitsRequest } from "./VisitsRequest";

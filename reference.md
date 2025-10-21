@@ -1,7 +1,5 @@
 # Reference
-
 ## Auth Default
-
 <details><summary><code>client.auth.default.<a href="/src/api/resources/auth/resources/default/client/Client.ts">getToken</a>({ ...params }) -> core.APIResponse<CandidApi.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error></code></summary>
 <dl>
 <dd>
@@ -26,11 +24,10 @@ The `/auth/v2/token` endpoint accepts both `Content-Type: application/json` and 
 
 ```json
 {
-    "client_id": "YOUR_CLIENT_ID",
-    "client_secret": "YOUR_CLIENT_SECRET"
+  "client_id": "YOUR_CLIENT_ID",
+  "client_secret": "YOUR_CLIENT_SECRET"
 }
 ```
-
 or as URL-encoded form data:
 
 ```
@@ -62,10 +59,10 @@ requests; if the client attempts to generate a token too often, it will be rate-
 ```typescript
 await client.auth.default.getToken({
     clientId: "YOUR_CLIENT_ID",
-    clientSecret: "YOUR_CLIENT_SECRET",
+    clientSecret: "YOUR_CLIENT_SECRET"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -79,27 +76,27 @@ await client.auth.default.getToken({
 <dl>
 <dd>
 
-**request:** `CandidApi.auth.default_.AuthGetTokenRequest`
-
+**request:** `CandidApi.auth.default_.AuthGetTokenRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Default.RequestOptions`
+**requestOptions:** `Default.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## BillingNotes V2
-
 <details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.BillingNote, CandidApi.billingNotes.v2.create.Error></code></summary>
 <dl>
 <dd>
@@ -115,10 +112,10 @@ await client.auth.default.getToken({
 ```typescript
 await client.billingNotes.v2.create({
     encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    text: "text",
+    text: "text"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -132,20 +129,21 @@ await client.billingNotes.v2.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.billingNotes.v2.StandaloneBillingNoteCreate`
-
+**request:** `CandidApi.billingNotes.v2.StandaloneBillingNoteCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -165,8 +163,8 @@ await client.billingNotes.v2.create({
 
 ```typescript
 await client.billingNotes.v2.delete(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -180,20 +178,21 @@ await client.billingNotes.v2.delete(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 <dl>
 <dd>
 
-**billingNoteId:** `CandidApi.BillingNoteId`
-
+**billingNoteId:** `CandidApi.BillingNoteId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -213,10 +212,10 @@ await client.billingNotes.v2.delete(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 
 ```typescript
 await client.billingNotes.v2.update(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    text: "text",
+    text: "text"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -230,35 +229,35 @@ await client.billingNotes.v2.update(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 <dl>
 <dd>
 
-**billingNoteId:** `CandidApi.BillingNoteId`
-
+**billingNoteId:** `CandidApi.BillingNoteId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.billingNotes.v2.BillingNoteUpdate`
-
+**request:** `CandidApi.billingNotes.v2.BillingNoteUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ChargeCaptureBundles V1
-
 <details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">get</a>(chargeCaptureClaimCreationId) -> core.APIResponse<CandidApi.ChargeCaptureClaimCreation, CandidApi.chargeCaptureBundles.v1.get.Error></code></summary>
 <dl>
 <dd>
@@ -272,11 +271,9 @@ await client.billingNotes.v2.update(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 <dd>
 
 ```typescript
-await client.chargeCaptureBundles.v1.get(
-    CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureClaimCreationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -290,20 +287,21 @@ await client.chargeCaptureBundles.v1.get(
 <dl>
 <dd>
 
-**chargeCaptureClaimCreationId:** `CandidApi.ChargeCaptureClaimCreationId`
-
+**chargeCaptureClaimCreationId:** `CandidApi.ChargeCaptureClaimCreationId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -323,8 +321,8 @@ await client.chargeCaptureBundles.v1.get(
 
 ```typescript
 await client.chargeCaptureBundles.v1.getSummary();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -338,12 +336,13 @@ await client.chargeCaptureBundles.v1.getSummary();
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -363,8 +362,8 @@ await client.chargeCaptureBundles.v1.getSummary();
 
 ```typescript
 await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -378,28 +377,29 @@ await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-**chargeCaptureBundleErrorId:** `string`
-
+**chargeCaptureBundleErrorId:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution`
-
+**request:** `CandidApi.chargeCaptureBundles.v1.ChargeCaptureBundleErrorResolution` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -419,8 +419,8 @@ await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4
 
 ```typescript
 await client.chargeCaptureBundles.v1.getAll();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -434,27 +434,27 @@ await client.chargeCaptureBundles.v1.getAll();
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureClaimCreationsRequest`
-
+**request:** `CandidApi.chargeCaptureBundles.v1.GetAllChargeCaptureClaimCreationsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ChargeCapture V1
-
 <details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -472,10 +472,10 @@ await client.chargeCapture.v1.create({
     data: {},
     chargeExternalId: "charge_external_id",
     patientExternalId: "patient_external_id",
-    status: "planned",
+    status: "planned"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -489,20 +489,21 @@ await client.chargeCapture.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCapture.v1.CreateChargeCaptureRequest`
-
+**request:** `CandidApi.chargeCapture.v1.CreateChargeCaptureRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -526,20 +527,18 @@ of the pre-encounter service should use the standard create endpoint.
 
 At encounter creation time, information from the provided patient and appointment objects will be populated
 where applicable. In particular, the following fields are populated from the patient and appointment objects:
-
-- Patient
-- Referring Provider
-- Subscriber Primary
-- Subscriber Secondary
-- Referral Number
-- Responsible Party
-- Guarantor
+  - Patient
+  - Referring Provider
+  - Subscriber Primary
+  - Subscriber Secondary
+  - Referral Number
+  - Responsible Party
+  - Guarantor
 
 Note that these fields should not be populated in the ChargeCaptureData property of this endpoint, as they will be overwritten at encounter creation time.
 
 Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
 encounter has not already been submitted or adjudicated.
-
 </dd>
 </dl>
 </dd>
@@ -558,14 +557,11 @@ await client.chargeCapture.v1.createFromPreEncounterPatient({
     data: {},
     chargeExternalId: "charge_external_id",
     preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    preEncounterAppointmentIds: [
-        CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    ],
-    status: "planned",
+    preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+    status: "planned"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -579,20 +575,21 @@ await client.chargeCapture.v1.createFromPreEncounterPatient({
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest`
-
+**request:** `CandidApi.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -612,8 +609,8 @@ await client.chargeCapture.v1.createFromPreEncounterPatient({
 
 ```typescript
 await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -627,28 +624,29 @@ await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4b
 <dl>
 <dd>
 
-**chargeCaptureId:** `CandidApi.ChargeCaptureId`
-
+**chargeCaptureId:** `CandidApi.ChargeCaptureId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCapture.v1.ChargeCaptureUpdate`
-
+**request:** `CandidApi.chargeCapture.v1.ChargeCaptureUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -668,8 +666,8 @@ await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4b
 
 ```typescript
 await client.chargeCapture.v1.get(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -683,20 +681,21 @@ await client.chargeCapture.v1.get(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-
 <dl>
 <dd>
 
-**chargeCaptureId:** `CandidApi.ChargeCaptureId`
-
+**chargeCaptureId:** `CandidApi.ChargeCaptureId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -716,8 +715,8 @@ await client.chargeCapture.v1.get(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-
 
 ```typescript
 await client.chargeCapture.v1.getAll();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -731,20 +730,21 @@ await client.chargeCapture.v1.getAll();
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCapture.v1.GetAllChargeCapturesRequest`
-
+**request:** `CandidApi.chargeCapture.v1.GetAllChargeCapturesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -764,14 +764,11 @@ await client.chargeCapture.v1.getAll();
 
 ```typescript
 await client.chargeCapture.v1.updatePostBilledChanges({
-    chargeCaptureChangeIds: [
-        CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    ],
-    resolved: true,
+    chargeCaptureChangeIds: [CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ChargeCapturePostBilledChangeId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+    resolved: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -785,27 +782,27 @@ await client.chargeCapture.v1.updatePostBilledChanges({
 <dl>
 <dd>
 
-**request:** `CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate`
-
+**request:** `CandidApi.chargeCapture.v1.ChargeCapturePostBilledChangeUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Contracts V2
-
 <details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">get</a>(contractId) -> core.APIResponse<CandidApi.ContractWithProviders, CandidApi.contracts.v2.get.Error></code></summary>
 <dl>
 <dd>
@@ -820,8 +817,8 @@ await client.chargeCapture.v1.updatePostBilledChanges({
 
 ```typescript
 await client.contracts.v2.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -835,20 +832,21 @@ await client.contracts.v2.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 <dl>
 <dd>
 
-**contractId:** `CandidApi.ContractId`
-
+**contractId:** `CandidApi.ContractId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -868,8 +866,8 @@ await client.contracts.v2.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 
 ```typescript
 await client.contracts.v2.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -883,20 +881,21 @@ await client.contracts.v2.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.contracts.v2.GetMultiContractsRequest`
-
+**request:** `CandidApi.contracts.v2.GetMultiContractsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -915,7 +914,6 @@ await client.contracts.v2.getMulti();
 <dd>
 
 Creates a new contract within the user's current organization
-
 </dd>
 </dl>
 </dd>
@@ -937,20 +935,20 @@ await client.contracts.v2.create({
     effectiveDate: CandidApi.Date_("effective_date"),
     regions: {
         type: "states",
-        states: ["AA", "AA"],
+        states: ["AA", "AA"]
     },
     commercialInsuranceTypes: {
-        type: "allApply",
+        type: "allApply"
     },
     medicareInsuranceTypes: {
-        type: "allApply",
+        type: "allApply"
     },
     medicaidInsuranceTypes: {
-        type: "allApply",
-    },
+        type: "allApply"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -964,20 +962,21 @@ await client.contracts.v2.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.contracts.v2.ContractCreate`
-
+**request:** `CandidApi.contracts.v2.ContractCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -997,8 +996,8 @@ await client.contracts.v2.create({
 
 ```typescript
 await client.contracts.v2.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1012,20 +1011,21 @@ await client.contracts.v2.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dl>
 <dd>
 
-**contractId:** `CandidApi.ContractId`
-
+**contractId:** `CandidApi.ContractId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1045,8 +1045,8 @@ await client.contracts.v2.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 
 ```typescript
 await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1060,35 +1060,35 @@ await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dl>
 <dd>
 
-**contractId:** `CandidApi.ContractId`
-
+**contractId:** `CandidApi.ContractId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.contracts.v2.ContractUpdate`
-
+**request:** `CandidApi.contracts.v2.ContractUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Credentialing V2
-
 <details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">createFacility</a>({ ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.createFacility.Error></code></summary>
 <dl>
 <dd>
@@ -1105,10 +1105,10 @@ await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 await client.credentialing.v2.createFacility({
     serviceFacilityId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
     contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-    payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1122,20 +1122,21 @@ await client.credentialing.v2.createFacility({
 <dl>
 <dd>
 
-**request:** `CandidApi.credentialing.v2.FacilityCredentialingSpanCreate`
-
+**request:** `CandidApi.credentialing.v2.FacilityCredentialingSpanCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1154,11 +1155,9 @@ await client.credentialing.v2.createFacility({
 <dd>
 
 ```typescript
-await client.credentialing.v2.getFacility(
-    CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.credentialing.v2.getFacility(CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -1172,20 +1171,21 @@ await client.credentialing.v2.getFacility(
 <dl>
 <dd>
 
-**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId`
-
+**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1205,8 +1205,8 @@ await client.credentialing.v2.getFacility(
 
 ```typescript
 await client.credentialing.v2.getAllFacilities();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1220,20 +1220,21 @@ await client.credentialing.v2.getAllFacilities();
 <dl>
 <dd>
 
-**request:** `CandidApi.credentialing.v2.GetAllFacilityCredentialingSpansRequest`
-
+**request:** `CandidApi.credentialing.v2.GetAllFacilityCredentialingSpansRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1252,7 +1253,6 @@ await client.credentialing.v2.getAllFacilities();
 <dd>
 
 Soft deletes a credentialing span rate from the system.
-
 </dd>
 </dl>
 </dd>
@@ -1267,11 +1267,9 @@ Soft deletes a credentialing span rate from the system.
 <dd>
 
 ```typescript
-await client.credentialing.v2.deleteFacility(
-    CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.credentialing.v2.deleteFacility(CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -1285,20 +1283,21 @@ await client.credentialing.v2.deleteFacility(
 <dl>
 <dd>
 
-**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId`
-
+**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1317,14 +1316,11 @@ await client.credentialing.v2.deleteFacility(
 <dd>
 
 ```typescript
-await client.credentialing.v2.updateFacility(
-    CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-    },
-);
-```
+await client.credentialing.v2.updateFacility(CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -1338,28 +1334,29 @@ await client.credentialing.v2.updateFacility(
 <dl>
 <dd>
 
-**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId`
-
+**facilityCredentialingId:** `CandidApi.FacilityCredentialingSpanId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.credentialing.v2.FacilityCredentialingSpanUpdate`
-
+**request:** `CandidApi.credentialing.v2.FacilityCredentialingSpanUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1384,11 +1381,11 @@ await client.credentialing.v2.create({
     payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
     regions: {
         type: "states",
-        states: ["AA", "AA"],
-    },
+        states: ["AA", "AA"]
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1402,20 +1399,21 @@ await client.credentialing.v2.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.credentialing.v2.ProviderCredentialingSpanCreate`
-
+**request:** `CandidApi.credentialing.v2.ProviderCredentialingSpanCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1435,8 +1433,8 @@ await client.credentialing.v2.create({
 
 ```typescript
 await client.credentialing.v2.get(CandidApi.ProviderCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1450,20 +1448,21 @@ await client.credentialing.v2.get(CandidApi.ProviderCredentialingSpanId("d5e9c84
 <dl>
 <dd>
 
-**providerCredentialingId:** `CandidApi.ProviderCredentialingSpanId`
-
+**providerCredentialingId:** `CandidApi.ProviderCredentialingSpanId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1483,8 +1482,8 @@ await client.credentialing.v2.get(CandidApi.ProviderCredentialingSpanId("d5e9c84
 
 ```typescript
 await client.credentialing.v2.getAll();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1498,20 +1497,21 @@ await client.credentialing.v2.getAll();
 <dl>
 <dd>
 
-**request:** `CandidApi.credentialing.v2.GetAllProviderCredentialingSpansRequest`
-
+**request:** `CandidApi.credentialing.v2.GetAllProviderCredentialingSpansRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1530,7 +1530,6 @@ await client.credentialing.v2.getAll();
 <dd>
 
 Soft deletes a credentialing span rate from the system.
-
 </dd>
 </dl>
 </dd>
@@ -1546,8 +1545,8 @@ Soft deletes a credentialing span rate from the system.
 
 ```typescript
 await client.credentialing.v2.delete(CandidApi.ProviderCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1561,20 +1560,21 @@ await client.credentialing.v2.delete(CandidApi.ProviderCredentialingSpanId("d5e9
 <dl>
 <dd>
 
-**providerCredentialingId:** `CandidApi.ProviderCredentialingSpanId`
-
+**providerCredentialingId:** `CandidApi.ProviderCredentialingSpanId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1594,8 +1594,8 @@ await client.credentialing.v2.delete(CandidApi.ProviderCredentialingSpanId("d5e9
 
 ```typescript
 await client.credentialing.v2.update(CandidApi.ProviderCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1609,35 +1609,35 @@ await client.credentialing.v2.update(CandidApi.ProviderCredentialingSpanId("d5e9
 <dl>
 <dd>
 
-**providerCredentialingId:** `CandidApi.ProviderCredentialingSpanId`
-
+**providerCredentialingId:** `CandidApi.ProviderCredentialingSpanId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.credentialing.v2.ProviderCredentialingSpanUpdate`
-
+**request:** `CandidApi.credentialing.v2.ProviderCredentialingSpanUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## CustomSchemas V1
-
 <details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">getMulti</a>() -> core.APIResponse<CandidApi.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -1651,7 +1651,6 @@ await client.credentialing.v2.update(CandidApi.ProviderCredentialingSpanId("d5e9
 <dd>
 
 Returns all custom schemas.
-
 </dd>
 </dl>
 </dd>
@@ -1667,8 +1666,8 @@ Returns all custom schemas.
 
 ```typescript
 await client.customSchemas.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1682,12 +1681,13 @@ await client.customSchemas.v1.getMulti();
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1706,7 +1706,6 @@ await client.customSchemas.v1.getMulti();
 <dd>
 
 Return a custom schema with a given ID.
-
 </dd>
 </dl>
 </dd>
@@ -1722,8 +1721,8 @@ Return a custom schema with a given ID.
 
 ```typescript
 await client.customSchemas.v1.get(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1737,20 +1736,21 @@ await client.customSchemas.v1.get(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54
 <dl>
 <dd>
 
-**schemaId:** `CandidApi.SchemaId`
-
+**schemaId:** `CandidApi.SchemaId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1770,7 +1770,6 @@ await client.customSchemas.v1.get(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54
 
 Create custom schema with a set of typed keys. Schema keys can be referenced as inputs in user-configurable rules in the Rules
 Engine, and key-value pairs can be attached to claims via the Encounters API.
-
 </dd>
 </dl>
 </dd>
@@ -1788,27 +1787,22 @@ Engine, and key-value pairs can be attached to claims via the Encounters API.
 await client.customSchemas.v1.create({
     name: "General Medicine",
     description: "Values associated with a generic visit",
-    fields: [
-        {
+    fields: [{
             key: "provider_category",
-            type: "STRING",
-        },
-        {
+            type: "STRING"
+        }, {
             key: "is_urgent_care",
-            type: "BOOLEAN",
-        },
-        {
+            type: "BOOLEAN"
+        }, {
             key: "bmi",
-            type: "DOUBLE",
-        },
-        {
+            type: "DOUBLE"
+        }, {
             key: "age",
-            type: "INTEGER",
-        },
-    ],
+            type: "INTEGER"
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1822,20 +1816,21 @@ await client.customSchemas.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.customSchemas.v1.SchemaCreate`
-
+**request:** `CandidApi.customSchemas.v1.SchemaCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1854,7 +1849,6 @@ await client.customSchemas.v1.create({
 <dd>
 
 Update the name, description, or keys on a preexisting schema.
-
 </dd>
 </dl>
 </dd>
@@ -1872,15 +1866,13 @@ Update the name, description, or keys on a preexisting schema.
 await client.customSchemas.v1.update(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54b021c9d582"), {
     name: "General Medicine and Health",
     description: "Values collected during all visits",
-    fieldsToAdd: [
-        {
+    fieldsToAdd: [{
             key: "visit_type",
-            type: "STRING",
-        },
-    ],
+            type: "STRING"
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1894,35 +1886,35 @@ await client.customSchemas.v1.update(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb
 <dl>
 <dd>
 
-**schemaId:** `CandidApi.SchemaId`
-
+**schemaId:** `CandidApi.SchemaId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.customSchemas.v1.SchemaUpdate`
-
+**request:** `CandidApi.customSchemas.v1.SchemaUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Eligibility V2
-
 <details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheck</a>({ ...params }) -> core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheck.Error></code></summary>
 <dl>
 <dd>
@@ -1952,7 +1944,6 @@ This API is a wrapper around Change Healthcare's eligibility API. Below are some
 - [Change Healthcare - Guides: Using Test Payers in the Sandbox](https://developers.changehealthcare.com/eligibilityandclaims/docs/use-the-test-payers-in-the-sandbox-api)
 
 A schema of the response object can be found here: [Change Healthcare Docs](https://developers.changehealthcare.com/eligibilityandclaims/reference/medicaleligibility)
-
 </dd>
 </dl>
 </dd>
@@ -1968,10 +1959,10 @@ A schema of the response object can be found here: [Change Healthcare Docs](http
 
 ```typescript
 await client.eligibility.v2.submitEligibilityCheck({
-    key: "value",
+    "key": "value"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1985,20 +1976,21 @@ await client.eligibility.v2.submitEligibilityCheck({
 <dl>
 <dd>
 
-**request:** `unknown`
-
+**request:** `unknown` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2031,16 +2023,14 @@ This API is a wrapper around Availity's coverages API. Below are some helpful do
 - [Candid Availity Eligibility Integration Guide](https://support.joincandidhealth.com/hc/en-us/articles/24218441631892--Availity-Eligibility-Integration-Guide)
 
 A schema of the response object can be found here: [Availity Docs](https://developer.availity.com/partner/product/191210/api/190898#/Coverages_100/operation/%2Fcoverages%2F{id}/get)
-
-- Note Availity requires a free developer account to access this documentation.
+* Note Availity requires a free developer account to access this documentation.
 
 Check connection status of Availity API and partners here:
-
 - [Availity Trading Partner Connection Status](https://www.availity.com/status/)
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2052,8 +2042,8 @@ Check connection status of Availity API and partners here:
 
 ```typescript
 await client.eligibility.v2.submitEligibilityCheckAvaility();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2067,12 +2057,13 @@ await client.eligibility.v2.submitEligibilityCheckAvaility();
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2101,16 +2092,14 @@ This API is a wrapper around Availity's coverages API. Below are some helpful do
 - [Candid Availity Eligibility Integration Guide](https://support.joincandidhealth.com/hc/en-us/articles/24218441631892--Availity-Eligibility-Integration-Guide)
 
 A schema of the response object can be found here: [Availity Docs](https://developer.availity.com/partner/product/191210/api/190898#/Coverages_100/operation/%2Fcoverages%2F{id}/get)
-
-- Note Availity requires a free developer account to access this documentation.
+* Note Availity requires a free developer account to access this documentation.
 
 Check connection status of Availity API and partners here:
-
 - [Availity Trading Partner Connection Status](https://www.availity.com/status/)
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2122,10 +2111,10 @@ Check connection status of Availity API and partners here:
 
 ```typescript
 await client.eligibility.v2.submitEligibilityCheckAvailityPost({
-    key: "value",
+    "key": "value"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2139,27 +2128,27 @@ await client.eligibility.v2.submitEligibilityCheckAvailityPost({
 <dl>
 <dd>
 
-**request:** `unknown`
-
+**request:** `unknown` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## EncounterAttachments V1
-
 <details><summary><code>client.encounterAttachments.v1.<a href="/src/api/resources/encounterAttachments/resources/v1/client/Client.ts">get</a>(encounterId) -> core.APIResponse<CandidApi.EncounterAttachment[], CandidApi.encounterAttachments.v1.get.Error></code></summary>
 <dl>
 <dd>
@@ -2174,8 +2163,8 @@ await client.eligibility.v2.submitEligibilityCheckAvailityPost({
 
 ```typescript
 await client.encounterAttachments.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2189,20 +2178,21 @@ await client.encounterAttachments.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4b
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2222,10 +2212,10 @@ await client.encounterAttachments.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4b
 
 ```typescript
 await client.encounterAttachments.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    attachmentId: CandidApi.AttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    attachmentId: CandidApi.AttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2239,35 +2229,35 @@ await client.encounterAttachments.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.encounterAttachments.v1.DeleteAttachmentRequest`
-
+**request:** `CandidApi.encounterAttachments.v1.DeleteAttachmentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## EncounterProviders V2
-
 <details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateReferringProvider.Error></code></summary>
 <dl>
 <dd>
@@ -2281,12 +2271,9 @@ await client.encounterAttachments.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.updateReferringProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {},
-);
-```
+await client.encounterProviders.v2.updateReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2300,28 +2287,29 @@ await client.encounterProviders.v2.updateReferringProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.ReferringProviderUpdate`
-
+**request:** `CandidApi.ReferringProviderUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2340,12 +2328,9 @@ await client.encounterProviders.v2.updateReferringProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.updateInitialReferringProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {},
-);
-```
+await client.encounterProviders.v2.updateInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2359,28 +2344,29 @@ await client.encounterProviders.v2.updateInitialReferringProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.InitialReferringProviderUpdate`
-
+**request:** `CandidApi.InitialReferringProviderUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2399,12 +2385,9 @@ await client.encounterProviders.v2.updateInitialReferringProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.updateSupervisingProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {},
-);
-```
+await client.encounterProviders.v2.updateSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2418,28 +2401,29 @@ await client.encounterProviders.v2.updateSupervisingProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.SupervisingProviderUpdate`
-
+**request:** `CandidApi.SupervisingProviderUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2458,12 +2442,9 @@ await client.encounterProviders.v2.updateSupervisingProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.updateOrderingProvider(
-    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {},
-);
-```
+await client.encounterProviders.v2.updateOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2477,28 +2458,29 @@ await client.encounterProviders.v2.updateOrderingProvider(
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.OrderingProviderUpdate`
-
+**request:** `CandidApi.OrderingProviderUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2517,14 +2499,11 @@ await client.encounterProviders.v2.updateOrderingProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.createReferringProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        npi: "npi",
-    },
-);
-```
+await client.encounterProviders.v2.createReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    npi: "npi"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2538,28 +2517,29 @@ await client.encounterProviders.v2.createReferringProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.ReferringProvider`
-
+**request:** `CandidApi.ReferringProvider` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2578,14 +2558,11 @@ await client.encounterProviders.v2.createReferringProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.createInitialReferringProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        npi: "npi",
-    },
-);
-```
+await client.encounterProviders.v2.createInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    npi: "npi"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2599,28 +2576,29 @@ await client.encounterProviders.v2.createInitialReferringProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.InitialReferringProvider`
-
+**request:** `CandidApi.InitialReferringProvider` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2639,14 +2617,11 @@ await client.encounterProviders.v2.createInitialReferringProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.createSupervisingProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        npi: "npi",
-    },
-);
-```
+await client.encounterProviders.v2.createSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    npi: "npi"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2660,28 +2635,29 @@ await client.encounterProviders.v2.createSupervisingProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.SupervisingProvider`
-
+**request:** `CandidApi.SupervisingProvider` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2700,14 +2676,11 @@ await client.encounterProviders.v2.createSupervisingProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.createOrderingProvider(
-    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        npi: "npi",
-    },
-);
-```
+await client.encounterProviders.v2.createOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    npi: "npi"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -2721,28 +2694,29 @@ await client.encounterProviders.v2.createOrderingProvider(
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.OrderingProvider`
-
+**request:** `CandidApi.OrderingProvider` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2761,11 +2735,9 @@ await client.encounterProviders.v2.createOrderingProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.deleteReferringProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.encounterProviders.v2.deleteReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -2779,20 +2751,21 @@ await client.encounterProviders.v2.deleteReferringProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2811,11 +2784,9 @@ await client.encounterProviders.v2.deleteReferringProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.deleteInitialReferringProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.encounterProviders.v2.deleteInitialReferringProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -2829,20 +2800,21 @@ await client.encounterProviders.v2.deleteInitialReferringProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2861,11 +2833,9 @@ await client.encounterProviders.v2.deleteInitialReferringProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.deleteSupervisingProvider(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.encounterProviders.v2.deleteSupervisingProvider(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -2879,20 +2849,21 @@ await client.encounterProviders.v2.deleteSupervisingProvider(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2911,11 +2882,9 @@ await client.encounterProviders.v2.deleteSupervisingProvider(
 <dd>
 
 ```typescript
-await client.encounterProviders.v2.deleteOrderingProvider(
-    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.encounterProviders.v2.deleteOrderingProvider(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -2929,27 +2898,27 @@ await client.encounterProviders.v2.deleteOrderingProvider(
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Encounters V4
-
 <details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.EncounterPage, CandidApi.encounters.v4.getAll.Error></code></summary>
 <dl>
 <dd>
@@ -2973,10 +2942,10 @@ await client.encounters.v4.getAll({
     primaryPayerNames: "Medicare,Medicaid",
     searchTerm: "doe",
     externalId: CandidApi.EncounterExternalId("123456"),
-    diagnosesUpdatedSince: new Date("2019-08-24T14:15:22.000Z"),
+    diagnosesUpdatedSince: new Date("2019-08-24T14:15:22.000Z")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2990,20 +2959,21 @@ await client.encounters.v4.getAll({
 <dl>
 <dd>
 
-**request:** `CandidApi.encounters.v4.GetAllEncountersRequest`
-
+**request:** `CandidApi.encounters.v4.GetAllEncountersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3023,8 +2993,8 @@ await client.encounters.v4.getAll({
 
 ```typescript
 await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3038,20 +3008,21 @@ await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7f
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3077,24 +3048,21 @@ await client.encounters.v4.create({
             address1: "address1",
             city: "city",
             state: "AA",
-            zipCode: "zip_code",
+            zipCode: "zip_code"
         },
         taxId: "tax_id",
-        npi: "npi",
+        npi: "npi"
     },
-    diagnoses: [
-        {
+    diagnoses: [{
             codeType: "ABF",
-            code: "code",
-        },
-        {
+            code: "code"
+        }, {
             codeType: "ABF",
-            code: "code",
-        },
-    ],
+            code: "code"
+        }],
     placeOfServiceCode: "01",
     renderingProvider: {
-        npi: "npi",
+        npi: "npi"
     },
     patient: {
         externalId: "external_id",
@@ -3103,21 +3071,21 @@ await client.encounters.v4.create({
             address1: "address1",
             city: "city",
             state: "AA",
-            zipCode: "zip_code",
+            zipCode: "zip_code"
         },
         firstName: "first_name",
         lastName: "last_name",
-        gender: "male",
+        gender: "male"
     },
     responsibleParty: "INSURANCE_PAY",
     externalId: CandidApi.EncounterExternalId("external_id"),
     patientAuthorizedRelease: true,
     benefitsAssignedToProvider: true,
     providerAcceptsAssignment: true,
-    billableStatus: "BILLABLE",
+    billableStatus: "BILLABLE"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3131,20 +3099,21 @@ await client.encounters.v4.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.EncounterCreate`
-
+**request:** `CandidApi.EncounterCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3168,18 +3137,16 @@ of the pre-encounter service should use the standard create endpoint.
 
 The endpoint will create an encounter from the provided fields, pulling information from the provided patient and appointment objects
 where applicable. In particular, the following fields are populated from the patient and appointment objects:
-
-- Patient
-- Referring Provider
-- Subscriber Primary
-- Subscriber Secondary
-- Referral Number
-- Responsible Party
-- Guarantor
+  - Patient
+  - Referring Provider
+  - Subscriber Primary
+  - Subscriber Secondary
+  - Referral Number
+  - Responsible Party
+  - Guarantor
 
 Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
 encounter has not already been submitted or adjudicated.
-
 </dd>
 </dl>
 </dd>
@@ -3196,43 +3163,37 @@ encounter has not already been submitted or adjudicated.
 ```typescript
 await client.encounters.v4.createFromPreEncounterPatient({
     renderingProvider: {
-        npi: "npi",
+        npi: "npi"
     },
     placeOfServiceCode: "01",
-    diagnoses: [
-        {
+    diagnoses: [{
             codeType: "ABF",
-            code: "code",
-        },
-        {
+            code: "code"
+        }, {
             codeType: "ABF",
-            code: "code",
-        },
-    ],
+            code: "code"
+        }],
     preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    preEncounterAppointmentIds: [
-        CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    ],
+    preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
     billingProvider: {
         address: {
             zipPlusFourCode: "zip_plus_four_code",
             address1: "address1",
             city: "city",
             state: "AA",
-            zipCode: "zip_code",
+            zipCode: "zip_code"
         },
         taxId: "tax_id",
-        npi: "npi",
+        npi: "npi"
     },
     externalId: CandidApi.EncounterExternalId("external_id"),
     patientAuthorizedRelease: true,
     benefitsAssignedToProvider: true,
     providerAcceptsAssignment: true,
-    billableStatus: "BILLABLE",
+    billableStatus: "BILLABLE"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3246,20 +3207,21 @@ await client.encounters.v4.createFromPreEncounterPatient({
 <dl>
 <dd>
 
-**request:** `CandidApi.EncounterCreateFromPreEncounter`
-
+**request:** `CandidApi.EncounterCreateFromPreEncounter` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3279,8 +3241,8 @@ await client.encounters.v4.createFromPreEncounterPatient({
 
 ```typescript
 await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3294,35 +3256,35 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.EncounterUpdate`
-
+**request:** `CandidApi.EncounterUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ExpectedNetworkStatus V1
-
 <details><summary><code>client.expectedNetworkStatus.v1.<a href="/src/api/resources/expectedNetworkStatus/resources/v1/client/Client.ts">compute</a>({ ...params }) -> core.APIResponse<CandidApi.ExpectedNetworkStatusResponse, CandidApi.expectedNetworkStatus.v1.compute.Error></code></summary>
 <dl>
 <dd>
@@ -3336,7 +3298,6 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
 <dd>
 
 Computes the expected network status given the provided information.
-
 </dd>
 </dl>
 </dd>
@@ -3358,10 +3319,10 @@ await client.expectedNetworkStatus.v1.compute({
     billingProviderTin: "billing_provider_tin",
     renderingProviderNpi: "rendering_provider_npi",
     contractedState: "AA",
-    dateOfService: CandidApi.Date_("date_of_service"),
+    dateOfService: CandidApi.Date_("date_of_service")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3375,27 +3336,27 @@ await client.expectedNetworkStatus.v1.compute({
 <dl>
 <dd>
 
-**request:** `CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest`
-
+**request:** `CandidApi.expectedNetworkStatus.v1.ExpectedNetworkStatusRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ExpectedNetworkStatus V2
-
 <details><summary><code>client.expectedNetworkStatus.v2.<a href="/src/api/resources/expectedNetworkStatus/resources/v2/client/Client.ts">computeForRenderingProvider</a>(renderingProviderId, { ...params }) -> core.APIResponse<CandidApi.ExpectedNetworkStatusResponseV2, CandidApi.expectedNetworkStatus.v2.computeForRenderingProvider.Error></code></summary>
 <dl>
 <dd>
@@ -3411,7 +3372,6 @@ await client.expectedNetworkStatus.v1.compute({
 Computes the expected network status for a given rendering provider.
 This endpoint is not available to all customers. Reach out to the Candid sales team
 to discuss enabling this endpoint if it is not available for your organization.
-
 </dd>
 </dl>
 </dd>
@@ -3426,35 +3386,32 @@ to discuss enabling this endpoint if it is not available for your organization.
 <dd>
 
 ```typescript
-await client.expectedNetworkStatus.v2.computeForRenderingProvider(
-    CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        serviceType: "new_patient_video_appt",
-        placeOfServiceCode: "01",
-        subscriberInformation: {
-            payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            memberId: "member_id",
-            insuranceType: {
-                lineOfBusiness: "medicare",
-                insuranceTypeCodes: {
-                    type: "insurance_type_code",
-                    value: "01",
-                },
-            },
-        },
-        patientAddress: {
-            address1: "address1",
-            city: "city",
-            state: "AA",
-            zipCode: "zip_code",
-        },
-        billingProviderId: CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        organizationServiceFacilityId: CandidApi.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        dateOfService: "2023-01-15",
+await client.expectedNetworkStatus.v2.computeForRenderingProvider(CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    serviceType: "new_patient_video_appt",
+    placeOfServiceCode: "01",
+    subscriberInformation: {
+        payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        memberId: "member_id",
+        insuranceType: {
+            lineOfBusiness: "medicare",
+            insuranceTypeCodes: {
+                type: "insurance_type_code",
+                value: "01"
+            }
+        }
     },
-);
-```
+    patientAddress: {
+        address1: "address1",
+        city: "city",
+        state: "AA",
+        zipCode: "zip_code"
+    },
+    billingProviderId: CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    organizationServiceFacilityId: CandidApi.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    dateOfService: "2023-01-15"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -3468,28 +3425,29 @@ await client.expectedNetworkStatus.v2.computeForRenderingProvider(
 <dl>
 <dd>
 
-**renderingProviderId:** `CandidApi.OrganizationProviderId`
-
+**renderingProviderId:** `CandidApi.OrganizationProviderId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.ExpectedNetworkStatusRequestV2`
-
+**request:** `CandidApi.ExpectedNetworkStatusRequestV2` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3510,7 +3468,6 @@ await client.expectedNetworkStatus.v2.computeForRenderingProvider(
 Computes all the in network providers for a given set of inputs.
 This endpoint is not available to all customers. Reach out to the Candid sales team
 to discuss enabling this endpoint if it is not available for your organization.
-
 </dd>
 </dl>
 </dd>
@@ -3535,22 +3492,22 @@ await client.expectedNetworkStatus.v2.computeAllInNetworkProviders({
             lineOfBusiness: "medicare",
             insuranceTypeCodes: {
                 type: "insurance_type_code",
-                value: "01",
-            },
-        },
+                value: "01"
+            }
+        }
     },
     patientAddress: {
         address1: "address1",
         city: "city",
         state: "AA",
-        zipCode: "zip_code",
+        zipCode: "zip_code"
     },
     billingProviderId: CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     organizationServiceFacilityId: CandidApi.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    dateOfService: "2023-01-15",
+    dateOfService: "2023-01-15"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3564,27 +3521,27 @@ await client.expectedNetworkStatus.v2.computeAllInNetworkProviders({
 <dl>
 <dd>
 
-**request:** `CandidApi.ComputeAllInNetworkProvidersRequest`
-
+**request:** `CandidApi.ComputeAllInNetworkProvidersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Exports V3
-
 <details><summary><code>client.exports.v3.<a href="/src/api/resources/exports/resources/v3/client/Client.ts">getExports</a>({ ...params }) -> core.APIResponse<CandidApi.GetExportsResponse, CandidApi.exports.v3.getExports.Error></code></summary>
 <dl>
 <dd>
@@ -3615,7 +3572,6 @@ available by Wednesday at the latest. If file generation is still in progress up
 caller will receive a 422 response. If the file has already been generated, it will be served. Historic files should be available
 up to 90 days in the past by default. Please email our [Support team](mailto:support@joincandidhealth.com) with any data requests
 outside of these stated guarantees.
-
 </dd>
 </dl>
 </dd>
@@ -3632,10 +3588,10 @@ outside of these stated guarantees.
 ```typescript
 await client.exports.v3.getExports({
     startDate: "2023-10-01",
-    endDate: "2023-10-02",
+    endDate: "2023-10-02"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3649,27 +3605,27 @@ await client.exports.v3.getExports({
 <dl>
 <dd>
 
-**request:** `CandidApi.exports.v3.GetExportsRequest`
-
+**request:** `CandidApi.exports.v3.GetExportsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ExternalPaymentAccountConfig V1
-
 <details><summary><code>client.externalPaymentAccountConfig.v1.<a href="/src/api/resources/externalPaymentAccountConfig/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ExternalPaymentAccountConfigPage, CandidApi.externalPaymentAccountConfig.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -3684,8 +3640,8 @@ await client.exports.v3.getExports({
 
 ```typescript
 await client.externalPaymentAccountConfig.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3699,27 +3655,27 @@ await client.externalPaymentAccountConfig.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.externalPaymentAccountConfig.v1.GetExternalPaymentAccountConfigsRequest`
-
+**request:** `CandidApi.externalPaymentAccountConfig.v1.GetExternalPaymentAccountConfigsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## FeeSchedules V3
-
 <details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getMatch</a>(serviceLineId) -> core.APIResponse<CandidApi.MatchResult | undefined, CandidApi.feeSchedules.v3.getMatch.Error></code></summary>
 <dl>
 <dd>
@@ -3732,8 +3688,7 @@ await client.externalPaymentAccountConfig.v1.getMulti();
 <dl>
 <dd>
 
-Gets the rate that matches a service line. No result means no rate exists matching the service line's dimensions.
-
+Gets the rate that matches a service line.  No result means no rate exists matching the service line's dimensions.
 </dd>
 </dl>
 </dd>
@@ -3749,8 +3704,8 @@ Gets the rate that matches a service line. No result means no rate exists matchi
 
 ```typescript
 await client.feeSchedules.v3.getMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3764,20 +3719,21 @@ await client.feeSchedules.v3.getMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3796,7 +3752,6 @@ await client.feeSchedules.v3.getMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf
 <dd>
 
 Tests a service line against a rate to see if it matches.
-
 </dd>
 </dl>
 </dd>
@@ -3811,12 +3766,9 @@ Tests a service line against a rate to see if it matches.
 <dd>
 
 ```typescript
-await client.feeSchedules.v3.testMatch(
-    CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.feeSchedules.v3.testMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -3830,28 +3782,29 @@ await client.feeSchedules.v3.testMatch(
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**rateId:** `CandidApi.RateId`
-
+**rateId:** `CandidApi.RateId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3870,7 +3823,6 @@ await client.feeSchedules.v3.testMatch(
 <dd>
 
 Gets a list of dimensions with their rates. The rates returned will always be the most recent versions of those rates.
-
 </dd>
 </dl>
 </dd>
@@ -3886,8 +3838,8 @@ Gets a list of dimensions with their rates. The rates returned will always be th
 
 ```typescript
 await client.feeSchedules.v3.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3901,20 +3853,21 @@ await client.feeSchedules.v3.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.feeSchedules.v3.GetMultiRequest`
-
+**request:** `CandidApi.feeSchedules.v3.GetMultiRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3933,7 +3886,6 @@ await client.feeSchedules.v3.getMulti();
 <dd>
 
 Gets unique values for a dimension based on other selection criteria. The response is a list of dimensions with your criteria and the unique values populated. This API is useful for driving pivots on dimension values.
-
 </dd>
 </dl>
 </dd>
@@ -3949,10 +3901,10 @@ Gets unique values for a dimension based on other selection criteria. The respon
 
 ```typescript
 await client.feeSchedules.v3.getUniqueValuesForDimension({
-    pivotDimension: "payer_uuid",
+    pivotDimension: "payer_uuid"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3966,20 +3918,21 @@ await client.feeSchedules.v3.getUniqueValuesForDimension({
 <dl>
 <dd>
 
-**request:** `CandidApi.feeSchedules.v3.GetUniqueDimensionValuesRequest`
-
+**request:** `CandidApi.feeSchedules.v3.GetUniqueDimensionValuesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3998,7 +3951,6 @@ await client.feeSchedules.v3.getUniqueValuesForDimension({
 <dd>
 
 Gets every version of a rate.
-
 </dd>
 </dl>
 </dd>
@@ -4014,8 +3966,8 @@ Gets every version of a rate.
 
 ```typescript
 await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4029,20 +3981,21 @@ await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4
 <dl>
 <dd>
 
-**rateId:** `CandidApi.RateId`
-
+**rateId:** `CandidApi.RateId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4060,8 +4013,7 @@ await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4
 <dl>
 <dd>
 
-Uploads a new fee schedule.\n Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.\n If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will be returned.\n Use the dry run flag to discover already existing rates and to run validations. If validations for any rate fail, no rates will be saved to the system.
-
+Uploads a new fee schedule.\n Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.\n If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will be returned.\n Use the dry run flag to discover already existing rates and to run validations.  If validations for any rate fail, no rates will be saved to the system.
 </dd>
 </dl>
 </dd>
@@ -4078,8 +4030,7 @@ Uploads a new fee schedule.\n Each rate may either be totally new as qualified b
 ```typescript
 await client.feeSchedules.v3.uploadFeeSchedule({
     dryRun: true,
-    rates: [
-        {
+    rates: [{
             type: "new_rate",
             dimensions: {
                 payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -4091,22 +4042,18 @@ await client.feeSchedules.v3.uploadFeeSchedule({
                 networkTypes: new Set(["12"]),
                 payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
                 cptCode: "cpt_code",
-                modifiers: new Set(["AV"]),
+                modifiers: new Set(["AV"])
             },
-            entries: [
-                {
+            entries: [{
                     startDate: "2023-01-15",
                     rateCents: 1,
-                    isDeactivated: true,
-                },
-                {
+                    isDeactivated: true
+                }, {
                     startDate: "2023-01-15",
                     rateCents: 1,
-                    isDeactivated: true,
-                },
-            ],
-        },
-        {
+                    isDeactivated: true
+                }]
+        }, {
             type: "new_rate",
             dimensions: {
                 payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -4118,25 +4065,21 @@ await client.feeSchedules.v3.uploadFeeSchedule({
                 networkTypes: new Set(["12"]),
                 payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
                 cptCode: "cpt_code",
-                modifiers: new Set(["AV"]),
+                modifiers: new Set(["AV"])
             },
-            entries: [
-                {
+            entries: [{
                     startDate: "2023-01-15",
                     rateCents: 1,
-                    isDeactivated: true,
-                },
-                {
+                    isDeactivated: true
+                }, {
                     startDate: "2023-01-15",
                     rateCents: 1,
-                    isDeactivated: true,
-                },
-            ],
-        },
-    ],
+                    isDeactivated: true
+                }]
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4150,20 +4093,21 @@ await client.feeSchedules.v3.uploadFeeSchedule({
 <dl>
 <dd>
 
-**request:** `CandidApi.feeSchedules.v3.FeeScheduleUploadRequest`
-
+**request:** `CandidApi.feeSchedules.v3.FeeScheduleUploadRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4181,8 +4125,7 @@ await client.feeSchedules.v3.uploadFeeSchedule({
 <dl>
 <dd>
 
-Soft deletes a rate from the system. Only the most recent version of a rate can be deleted.
-
+Soft deletes a rate from the system.  Only the most recent version of a rate can be deleted.
 </dd>
 </dl>
 </dd>
@@ -4198,8 +4141,8 @@ Soft deletes a rate from the system. Only the most recent version of a rate can 
 
 ```typescript
 await client.feeSchedules.v3.deleteRate(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), 1);
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4213,28 +4156,29 @@ await client.feeSchedules.v3.deleteRate(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b
 <dl>
 <dd>
 
-**rateId:** `CandidApi.RateId`
-
+**rateId:** `CandidApi.RateId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `number`
-
+**version:** `number` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4253,7 +4197,6 @@ await client.feeSchedules.v3.deleteRate(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b
 <dd>
 
 Gets the default payer threshold
-
 </dd>
 </dl>
 </dd>
@@ -4269,8 +4212,8 @@ Gets the default payer threshold
 
 ```typescript
 await client.feeSchedules.v3.getPayerThresholdsDefault();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4284,12 +4227,13 @@ await client.feeSchedules.v3.getPayerThresholdsDefault();
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4308,7 +4252,6 @@ await client.feeSchedules.v3.getPayerThresholdsDefault();
 <dd>
 
 Gets a list of payers and thresholds by their uuids
-
 </dd>
 </dl>
 </dd>
@@ -4324,10 +4267,10 @@ Gets a list of payers and thresholds by their uuids
 
 ```typescript
 await client.feeSchedules.v3.getPayerThresholds({
-    payerUuids: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    payerUuids: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4341,20 +4284,21 @@ await client.feeSchedules.v3.getPayerThresholds({
 <dl>
 <dd>
 
-**request:** `CandidApi.feeSchedules.v3.PayerThresholdGetRequest`
-
+**request:** `CandidApi.feeSchedules.v3.PayerThresholdGetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4373,7 +4317,6 @@ await client.feeSchedules.v3.getPayerThresholds({
 <dd>
 
 Sets the threshold information for a payer
-
 </dd>
 </dl>
 </dd>
@@ -4389,10 +4332,10 @@ Sets the threshold information for a payer
 
 ```typescript
 await client.feeSchedules.v3.setPayerThreshold(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-    disablePaidIncorrectly: true,
+    disablePaidIncorrectly: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4406,28 +4349,29 @@ await client.feeSchedules.v3.setPayerThreshold(CandidApi.PayerUuid("d5e9c84f-c2b
 <dl>
 <dd>
 
-**payerUuid:** `CandidApi.PayerUuid`
-
+**payerUuid:** `CandidApi.PayerUuid` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.PayerThreshold`
-
+**request:** `CandidApi.PayerThreshold` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4445,8 +4389,7 @@ await client.feeSchedules.v3.setPayerThreshold(CandidApi.PayerUuid("d5e9c84f-c2b
 <dl>
 <dd>
 
-Hard deletes rates from the system that match the provided dimensions. This is a destructive operation and cannot be undone. If an empty dimensions object is provided, all rates will be hard deleted. The maximum number of rates this API will delete at a time is 10000. Returns the number of rates deleted and if that number is the maximum, the caller should call this API again to continue deleting rates.
-
+Hard deletes rates from the system that match the provided dimensions.  This is a destructive operation and cannot be undone.  If an empty dimensions object is provided, all rates will be hard deleted.  The maximum number of rates this API will delete at a time is 10000.  Returns the number of rates deleted and if that number is the maximum, the caller should call this API again to continue deleting rates.
 </dd>
 </dl>
 </dd>
@@ -4468,10 +4411,10 @@ await client.feeSchedules.v3.hardDeleteRates({
     facilityTypeCodes: new Set(["01"]),
     networkTypes: new Set(["12"]),
     payerPlanGroupIds: new Set([CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
-    modifiers: new Set(["AV"]),
+    modifiers: new Set(["AV"])
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4485,20 +4428,21 @@ await client.feeSchedules.v3.hardDeleteRates({
 <dl>
 <dd>
 
-**request:** `CandidApi.OptionalDimensions`
-
+**request:** `CandidApi.OptionalDimensions` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4517,7 +4461,6 @@ await client.feeSchedules.v3.hardDeleteRates({
 <dd>
 
 Hard deletes specific rates from the system by their IDs. This is a destructive operation and cannot be undone. Limited to 100 rate IDs maximum per request. For bulk deletion of more than 100 rates, use the hard_delete_rates endpoint with dimension filters. Returns the number of rates deleted.
-
 </dd>
 </dl>
 </dd>
@@ -4533,13 +4476,10 @@ Hard deletes specific rates from the system by their IDs. This is a destructive 
 
 ```typescript
 await client.feeSchedules.v3.hardDeleteRatesByIds({
-    rateIds: [
-        CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    ],
+    rateIds: [CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4553,27 +4493,27 @@ await client.feeSchedules.v3.hardDeleteRatesByIds({
 <dl>
 <dd>
 
-**request:** `CandidApi.feeSchedules.v3.HardDeleteRatesByIdsRequest`
-
+**request:** `CandidApi.feeSchedules.v3.HardDeleteRatesByIdsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Guarantor V1
-
 <details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Guarantor, CandidApi.guarantor.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -4587,7 +4527,6 @@ await client.feeSchedules.v3.hardDeleteRatesByIds({
 <dd>
 
 Creates a new guarantor and returns the newly created Guarantor object.
-
 </dd>
 </dl>
 </dd>
@@ -4610,11 +4549,11 @@ await client.guarantor.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-
         address1: "address1",
         city: "city",
         state: "AA",
-        zipCode: "zip_code",
-    },
+        zipCode: "zip_code"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4628,28 +4567,29 @@ await client.guarantor.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.GuarantorCreate`
-
+**request:** `CandidApi.GuarantorCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4668,7 +4608,6 @@ await client.guarantor.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-
 <dd>
 
 Retrieves a guarantor by its `guarantor_id`.
-
 </dd>
 </dl>
 </dd>
@@ -4684,8 +4623,8 @@ Retrieves a guarantor by its `guarantor_id`.
 
 ```typescript
 await client.guarantor.v1.get(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4699,20 +4638,21 @@ await client.guarantor.v1.get(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dl>
 <dd>
 
-**guarantorId:** `CandidApi.GuarantorId`
-
+**guarantorId:** `CandidApi.GuarantorId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4731,7 +4671,6 @@ await client.guarantor.v1.get(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dd>
 
 Updates a guarantor by its `guarantor_id`.
-
 </dd>
 </dl>
 </dd>
@@ -4747,8 +4686,8 @@ Updates a guarantor by its `guarantor_id`.
 
 ```typescript
 await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4762,35 +4701,35 @@ await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-
 <dl>
 <dd>
 
-**guarantorId:** `CandidApi.GuarantorId`
-
+**guarantorId:** `CandidApi.GuarantorId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.GuarantorUpdate`
-
+**request:** `CandidApi.GuarantorUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## HealthCareCodeInformation V1
-
 <details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">update</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.update.Error></code></summary>
 <dl>
 <dd>
@@ -4805,8 +4744,8 @@ await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-
 
 ```typescript
 await client.healthCareCodeInformation.v1.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4820,28 +4759,29 @@ await client.healthCareCodeInformation.v1.update(CandidApi.EncounterId("d5e9c84f
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.HealthCareCodeInformationUpdate`
-
+**request:** `CandidApi.HealthCareCodeInformationUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4860,11 +4800,9 @@ await client.healthCareCodeInformation.v1.update(CandidApi.EncounterId("d5e9c84f
 <dd>
 
 ```typescript
-await client.healthCareCodeInformation.v1.getAllForEncounter(
-    CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.healthCareCodeInformation.v1.getAllForEncounter(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -4878,27 +4816,27 @@ await client.healthCareCodeInformation.v1.getAllForEncounter(
 <dl>
 <dd>
 
-**encounterId:** `CandidApi.EncounterId`
-
+**encounterId:** `CandidApi.EncounterId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ImportInvoice V1
-
 <details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">importInvoice</a>({ ...params }) -> core.APIResponse<CandidApi.ImportInvoice, CandidApi.importInvoice.v1.importInvoice.Error></code></summary>
 <dl>
 <dd>
@@ -4912,7 +4850,6 @@ await client.healthCareCodeInformation.v1.getAllForEncounter(
 <dd>
 
 Import an existing invoice from a third party service to reflect state in Candid.
-
 </dd>
 </dl>
 </dd>
@@ -4931,27 +4868,24 @@ await client.importInvoice.v1.importInvoice({
     externalPaymentAccountConfigId: CandidApi.PaymentAccountConfigId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
     externalCustomerIdentifier: "external_customer_identifier",
-    items: [
-        {
+    items: [{
             attribution: {
                 type: "service_line_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
             },
-            amountCents: 1,
-        },
-        {
+            amountCents: 1
+        }, {
             attribution: {
                 type: "service_line_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
             },
-            amountCents: 1,
-        },
-    ],
+            amountCents: 1
+        }],
     status: "DRAFT",
-    externalIdentifier: "external_identifier",
+    externalIdentifier: "external_identifier"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4965,20 +4899,21 @@ await client.importInvoice.v1.importInvoice({
 <dl>
 <dd>
 
-**request:** `CandidApi.CreateImportInvoiceRequest`
-
+**request:** `CandidApi.CreateImportInvoiceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4997,7 +4932,6 @@ await client.importInvoice.v1.importInvoice({
 <dd>
 
 Returns all Invoices for the authenticated user's organziation with all filters applied.
-
 </dd>
 </dl>
 </dd>
@@ -5013,8 +4947,8 @@ Returns all Invoices for the authenticated user's organziation with all filters 
 
 ```typescript
 await client.importInvoice.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5028,20 +4962,21 @@ await client.importInvoice.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.importInvoice.v1.SearchImportedInvoicesRequest`
-
+**request:** `CandidApi.importInvoice.v1.SearchImportedInvoicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5060,7 +4995,6 @@ await client.importInvoice.v1.getMulti();
 <dd>
 
 Retrieve and view an import invoice
-
 </dd>
 </dl>
 </dd>
@@ -5076,8 +5010,8 @@ Retrieve and view an import invoice
 
 ```typescript
 await client.importInvoice.v1.get(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5092,19 +5026,20 @@ await client.importInvoice.v1.get(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dd>
 
 **invoiceId:** `CandidApi.InvoiceId` — InvoiceId to be returned
-
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5123,7 +5058,6 @@ await client.importInvoice.v1.get(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dd>
 
 Update the information on the imported invoice
-
 </dd>
 </dl>
 </dd>
@@ -5139,8 +5073,8 @@ Update the information on the imported invoice
 
 ```typescript
 await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5154,35 +5088,35 @@ await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b
 <dl>
 <dd>
 
-**invoiceId:** `CandidApi.InvoiceId`
-
+**invoiceId:** `CandidApi.InvoiceId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.ImportInvoiceUpdateRequest`
-
+**request:** `CandidApi.ImportInvoiceUpdateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## InsuranceAdjudications V1
-
 <details><summary><code>client.insuranceAdjudications.v1.<a href="/src/api/resources/insuranceAdjudications/resources/v1/client/Client.ts">get</a>(insuranceAdjudicationId) -> core.APIResponse<CandidApi.InsuranceAdjudication, CandidApi.insuranceAdjudications.v1.get.Error></code></summary>
 <dl>
 <dd>
@@ -5196,7 +5130,6 @@ await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b
 <dd>
 
 Retrieves a previously created insurance adjudication by its `insurance_adjudication_id`.
-
 </dd>
 </dl>
 </dd>
@@ -5212,8 +5145,8 @@ Retrieves a previously created insurance adjudication by its `insurance_adjudica
 
 ```typescript
 await client.insuranceAdjudications.v1.get(CandidApi.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5227,20 +5160,21 @@ await client.insuranceAdjudications.v1.get(CandidApi.InsuranceAdjudicationId("d5
 <dl>
 <dd>
 
-**insuranceAdjudicationId:** `CandidApi.InsuranceAdjudicationId`
-
+**insuranceAdjudicationId:** `CandidApi.InsuranceAdjudicationId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5259,7 +5193,6 @@ await client.insuranceAdjudications.v1.get(CandidApi.InsuranceAdjudicationId("d5
 <dd>
 
 Creates a new insurance adjudication record and returns the newly created InsuranceAdjudication object.
-
 </dd>
 </dl>
 </dd>
@@ -5278,149 +5211,110 @@ await client.insuranceAdjudications.v1.create({
     payerIdentifier: {
         type: "payer_info",
         payerId: CandidApi.PayerId("payer_id"),
-        payerName: CandidApi.PayerName("payer_name"),
+        payerName: CandidApi.PayerName("payer_name")
     },
     payee: {
         payeeName: "payee_name",
         payeeIdentifier: {
             type: "npi",
-            value: CandidApi.Npi("payee_identifier"),
-        },
+            value: CandidApi.Npi("payee_identifier")
+        }
     },
     checkDate: "2023-01-15",
     claims: {
-        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [
-            {
+        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [{
                 claimStatusCode: "1",
                 serviceLines: {
-                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [
-                        {
-                            carcs: [
-                                {
+                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [{
+                            carcs: [{
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                                {
+                                    amountCents: 1
+                                }, {
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                            ],
-                            rarcs: [
-                                {
-                                    reasonCode: "M1",
-                                },
-                                {
-                                    reasonCode: "M1",
-                                },
-                            ],
-                        },
-                        {
-                            carcs: [
-                                {
+                                    amountCents: 1
+                                }],
+                            rarcs: [{
+                                    reasonCode: "M1"
+                                }, {
+                                    reasonCode: "M1"
+                                }]
+                        }, {
+                            carcs: [{
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                                {
+                                    amountCents: 1
+                                }, {
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                            ],
-                            rarcs: [
-                                {
-                                    reasonCode: "M1",
-                                },
-                                {
-                                    reasonCode: "M1",
-                                },
-                            ],
-                        },
-                    ],
+                                    amountCents: 1
+                                }],
+                            rarcs: [{
+                                    reasonCode: "M1"
+                                }, {
+                                    reasonCode: "M1"
+                                }]
+                        }]
                 },
-                carcs: [
-                    {
+                carcs: [{
                         groupCode: "CO",
                         reasonCode: "1",
-                        amountCents: 1,
-                    },
-                    {
+                        amountCents: 1
+                    }, {
                         groupCode: "CO",
                         reasonCode: "1",
-                        amountCents: 1,
-                    },
-                ],
-            },
-            {
+                        amountCents: 1
+                    }]
+            }, {
                 claimStatusCode: "1",
                 serviceLines: {
-                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [
-                        {
-                            carcs: [
-                                {
+                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32": [{
+                            carcs: [{
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                                {
+                                    amountCents: 1
+                                }, {
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                            ],
-                            rarcs: [
-                                {
-                                    reasonCode: "M1",
-                                },
-                                {
-                                    reasonCode: "M1",
-                                },
-                            ],
-                        },
-                        {
-                            carcs: [
-                                {
+                                    amountCents: 1
+                                }],
+                            rarcs: [{
+                                    reasonCode: "M1"
+                                }, {
+                                    reasonCode: "M1"
+                                }]
+                        }, {
+                            carcs: [{
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                                {
+                                    amountCents: 1
+                                }, {
                                     groupCode: "CO",
                                     reasonCode: "1",
-                                    amountCents: 1,
-                                },
-                            ],
-                            rarcs: [
-                                {
-                                    reasonCode: "M1",
-                                },
-                                {
-                                    reasonCode: "M1",
-                                },
-                            ],
-                        },
-                    ],
+                                    amountCents: 1
+                                }],
+                            rarcs: [{
+                                    reasonCode: "M1"
+                                }, {
+                                    reasonCode: "M1"
+                                }]
+                        }]
                 },
-                carcs: [
-                    {
+                carcs: [{
                         groupCode: "CO",
                         reasonCode: "1",
-                        amountCents: 1,
-                    },
-                    {
+                        amountCents: 1
+                    }, {
                         groupCode: "CO",
                         reasonCode: "1",
-                        amountCents: 1,
-                    },
-                ],
-            },
-        ],
-    },
+                        amountCents: 1
+                    }]
+            }]
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5434,20 +5328,21 @@ await client.insuranceAdjudications.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.InsuranceAdjudicationCreate`
-
+**request:** `CandidApi.InsuranceAdjudicationCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5466,7 +5361,6 @@ await client.insuranceAdjudications.v1.create({
 <dd>
 
 Deletes the insurance adjudication record matching the provided insurance_adjudication_id.
-
 </dd>
 </dl>
 </dd>
@@ -5481,11 +5375,9 @@ Deletes the insurance adjudication record matching the provided insurance_adjudi
 <dd>
 
 ```typescript
-await client.insuranceAdjudications.v1.delete(
-    CandidApi.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.insuranceAdjudications.v1.delete(CandidApi.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -5499,27 +5391,27 @@ await client.insuranceAdjudications.v1.delete(
 <dl>
 <dd>
 
-**insuranceAdjudicationId:** `CandidApi.InsuranceAdjudicationId`
-
+**insuranceAdjudicationId:** `CandidApi.InsuranceAdjudicationId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## InsurancePayments V1
-
 <details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.InsurancePaymentsPage, CandidApi.insurancePayments.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -5533,7 +5425,6 @@ await client.insuranceAdjudications.v1.delete(
 <dd>
 
 Returns all non-ERA originated insurance payments satisfying the search criteria
-
 </dd>
 </dl>
 </dd>
@@ -5549,8 +5440,8 @@ Returns all non-ERA originated insurance payments satisfying the search criteria
 
 ```typescript
 await client.insurancePayments.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5564,20 +5455,21 @@ await client.insurancePayments.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.insurancePayments.v1.GetMultiInsurancePaymentRequest`
-
+**request:** `CandidApi.insurancePayments.v1.GetMultiInsurancePaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5597,7 +5489,6 @@ await client.insurancePayments.v1.getMulti();
 
 Retrieves a previously created insurance payment by its `insurance_payment_id`.
 If the payment does not exist, a `403` will be thrown.
-
 </dd>
 </dl>
 </dd>
@@ -5613,8 +5504,8 @@ If the payment does not exist, a `403` will be thrown.
 
 ```typescript
 await client.insurancePayments.v1.get(CandidApi.InsurancePaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5628,27 +5519,27 @@ await client.insurancePayments.v1.get(CandidApi.InsurancePaymentId("d5e9c84f-c2b
 <dl>
 <dd>
 
-**insurancePaymentId:** `CandidApi.InsurancePaymentId`
-
+**insurancePaymentId:** `CandidApi.InsurancePaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## InsuranceRefunds V1
-
 <details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.InsuranceRefundsPage, CandidApi.insuranceRefunds.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -5663,7 +5554,6 @@ await client.insurancePayments.v1.get(CandidApi.InsurancePaymentId("d5e9c84f-c2b
 
 Returns all insurance refunds satisfying the search criteria AND whose organization_id matches
 the current organization_id of the authenticated user.
-
 </dd>
 </dl>
 </dd>
@@ -5679,8 +5569,8 @@ the current organization_id of the authenticated user.
 
 ```typescript
 await client.insuranceRefunds.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5694,20 +5584,21 @@ await client.insuranceRefunds.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.insuranceRefunds.v1.GetMultiInsuranceRefundsRequest`
-
+**request:** `CandidApi.insuranceRefunds.v1.GetMultiInsuranceRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5727,7 +5618,6 @@ await client.insuranceRefunds.v1.getMulti();
 
 Retrieves a previously created insurance refund by its `insurance_refund_id`.
 If the refund does not exist, a `403` will be thrown.
-
 </dd>
 </dl>
 </dd>
@@ -5743,8 +5633,8 @@ If the refund does not exist, a `403` will be thrown.
 
 ```typescript
 await client.insuranceRefunds.v1.get(CandidApi.InsuranceRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5758,20 +5648,21 @@ await client.insuranceRefunds.v1.get(CandidApi.InsuranceRefundId("d5e9c84f-c2b2-
 <dl>
 <dd>
 
-**insuranceRefundId:** `CandidApi.InsuranceRefundId`
-
+**insuranceRefundId:** `CandidApi.InsuranceRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5792,7 +5683,6 @@ await client.insuranceRefunds.v1.get(CandidApi.InsuranceRefundId("d5e9c84f-c2b2-
 Creates a new insurance refund record and returns the newly created `InsuranceRefund` object.
 The allocations can describe whether the refund is being applied toward a specific service line,
 claim, or billing provider.
-
 </dd>
 </dl>
 </dd>
@@ -5811,28 +5701,25 @@ await client.insuranceRefunds.v1.create({
     payerIdentifier: {
         type: "payer_info",
         payerId: CandidApi.PayerId("payer_id"),
-        payerName: CandidApi.PayerName("payer_name"),
+        payerName: CandidApi.PayerName("payer_name")
     },
     amountCents: 1,
-    allocations: [
-        {
+    allocations: [{
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-        {
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }, {
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5846,20 +5733,21 @@ await client.insuranceRefunds.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.InsuranceRefundCreate`
-
+**request:** `CandidApi.InsuranceRefundCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5879,7 +5767,6 @@ await client.insuranceRefunds.v1.create({
 
 Updates the patient refund record matching the provided insurance_refund_id. If updating the refund amount,
 then the allocations must be appropriately updated as well.
-
 </dd>
 </dl>
 </dd>
@@ -5895,8 +5782,8 @@ then the allocations must be appropriately updated as well.
 
 ```typescript
 await client.insuranceRefunds.v1.update(CandidApi.InsuranceRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5910,28 +5797,29 @@ await client.insuranceRefunds.v1.update(CandidApi.InsuranceRefundId("d5e9c84f-c2
 <dl>
 <dd>
 
-**insuranceRefundId:** `CandidApi.InsuranceRefundId`
-
+**insuranceRefundId:** `CandidApi.InsuranceRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.insuranceRefunds.v1.InsuranceRefundUpdate`
-
+**request:** `CandidApi.insuranceRefunds.v1.InsuranceRefundUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5952,7 +5840,6 @@ await client.insuranceRefunds.v1.update(CandidApi.InsuranceRefundId("d5e9c84f-c2
 Deletes the insurance refund record matching the provided `insurance_refund_id`.
 If the matching record's organization_id does not match the authenticated user's
 current organization_id, then a response code of `403` will be returned.
-
 </dd>
 </dl>
 </dd>
@@ -5968,8 +5855,8 @@ current organization_id, then a response code of `403` will be returned.
 
 ```typescript
 await client.insuranceRefunds.v1.delete(CandidApi.InsuranceRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5983,27 +5870,27 @@ await client.insuranceRefunds.v1.delete(CandidApi.InsuranceRefundId("d5e9c84f-c2
 <dl>
 <dd>
 
-**insuranceRefundId:** `CandidApi.InsuranceRefundId`
-
+**insuranceRefundId:** `CandidApi.InsuranceRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## MedicationDispense V1
-
 <details><summary><code>client.medicationDispense.v1.<a href="/src/api/resources/medicationDispense/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.medicationDispense.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -6023,10 +5910,10 @@ await client.medicationDispense.v1.create({
     procedureCode: "procedure_code",
     quantity: CandidApi.Decimal("quantity"),
     units: "MJ",
-    dateOfService: "2023-01-15",
+    dateOfService: "2023-01-15"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6040,27 +5927,27 @@ await client.medicationDispense.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MedicationDispenseCreate`
-
+**request:** `CandidApi.MedicationDispenseCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## NonInsurancePayerPayments V1
-
 <details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPaymentsPage, CandidApi.nonInsurancePayerPayments.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -6074,7 +5961,6 @@ await client.medicationDispense.v1.create({
 <dd>
 
 Returns all non-insurance payer payments
-
 </dd>
 </dl>
 </dd>
@@ -6090,8 +5976,8 @@ Returns all non-insurance payer payments
 
 ```typescript
 await client.nonInsurancePayerPayments.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6105,20 +5991,21 @@ await client.nonInsurancePayerPayments.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.nonInsurancePayerPayments.v1.GetMultiNonInsurancePayerPaymentRequest`
-
+**request:** `CandidApi.nonInsurancePayerPayments.v1.GetMultiNonInsurancePayerPaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6137,7 +6024,6 @@ await client.nonInsurancePayerPayments.v1.getMulti();
 <dd>
 
 Retrieves a previously created non-insurance payer payment by its `non_insurance_payer_payment_id`.
-
 </dd>
 </dl>
 </dd>
@@ -6152,11 +6038,9 @@ Retrieves a previously created non-insurance payer payment by its `non_insurance
 <dd>
 
 ```typescript
-await client.nonInsurancePayerPayments.v1.get(
-    CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.nonInsurancePayerPayments.v1.get(CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -6170,20 +6054,21 @@ await client.nonInsurancePayerPayments.v1.get(
 <dl>
 <dd>
 
-**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId`
-
+**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6205,25 +6090,22 @@ await client.nonInsurancePayerPayments.v1.get(
 await client.nonInsurancePayerPayments.v1.create({
     nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     amountCents: 1,
-    allocations: [
-        {
+    allocations: [{
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-        {
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }, {
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6237,20 +6119,21 @@ await client.nonInsurancePayerPayments.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.NonInsurancePayerPaymentCreate`
-
+**request:** `CandidApi.NonInsurancePayerPaymentCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6269,11 +6152,9 @@ await client.nonInsurancePayerPayments.v1.create({
 <dd>
 
 ```typescript
-await client.nonInsurancePayerPayments.v1.update(
-    CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.nonInsurancePayerPayments.v1.update(CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -6287,28 +6168,29 @@ await client.nonInsurancePayerPayments.v1.update(
 <dl>
 <dd>
 
-**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId`
-
+**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.nonInsurancePayerPayments.v1.UpdateNonInsurancePayerPaymentRequest`
-
+**request:** `CandidApi.nonInsurancePayerPayments.v1.UpdateNonInsurancePayerPaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6327,7 +6209,6 @@ await client.nonInsurancePayerPayments.v1.update(
 <dd>
 
 Deletes the non-insurance payer payment record matching the provided `non_insurance_payer_payment_id`.
-
 </dd>
 </dl>
 </dd>
@@ -6342,11 +6223,9 @@ Deletes the non-insurance payer payment record matching the provided `non_insura
 <dd>
 
 ```typescript
-await client.nonInsurancePayerPayments.v1.delete(
-    CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.nonInsurancePayerPayments.v1.delete(CandidApi.NonInsurancePayerPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -6360,27 +6239,27 @@ await client.nonInsurancePayerPayments.v1.delete(
 <dl>
 <dd>
 
-**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId`
-
+**nonInsurancePayerPaymentId:** `CandidApi.NonInsurancePayerPaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## NonInsurancePayerRefunds V1
-
 <details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefundsPage, CandidApi.nonInsurancePayerRefunds.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -6394,7 +6273,6 @@ await client.nonInsurancePayerPayments.v1.delete(
 <dd>
 
 Returns all non-insurance payer refunds satisfying the search criteria
-
 </dd>
 </dl>
 </dd>
@@ -6410,8 +6288,8 @@ Returns all non-insurance payer refunds satisfying the search criteria
 
 ```typescript
 await client.nonInsurancePayerRefunds.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6425,20 +6303,21 @@ await client.nonInsurancePayerRefunds.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.nonInsurancePayerRefunds.v1.GetMultiNonInsurancePayerRefundsRequest`
-
+**request:** `CandidApi.nonInsurancePayerRefunds.v1.GetMultiNonInsurancePayerRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6457,7 +6336,6 @@ await client.nonInsurancePayerRefunds.v1.getMulti();
 <dd>
 
 Retrieves a previously created non-insurance payer refund by its `non_insurance_payer_refund_id`.
-
 </dd>
 </dl>
 </dd>
@@ -6472,11 +6350,9 @@ Retrieves a previously created non-insurance payer refund by its `non_insurance_
 <dd>
 
 ```typescript
-await client.nonInsurancePayerRefunds.v1.get(
-    CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.nonInsurancePayerRefunds.v1.get(CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -6490,20 +6366,21 @@ await client.nonInsurancePayerRefunds.v1.get(
 <dl>
 <dd>
 
-**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId`
-
+**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6524,7 +6401,6 @@ await client.nonInsurancePayerRefunds.v1.get(
 Creates a new non-insurance payer refund record and returns the newly created `NonInsurancePayerRefund` object.
 The allocations can describe whether the refund is being applied toward a specific service line,
 claim, or billing provider.
-
 </dd>
 </dl>
 </dd>
@@ -6542,25 +6418,22 @@ claim, or billing provider.
 await client.nonInsurancePayerRefunds.v1.create({
     nonInsurancePayerId: CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     amountCents: 1,
-    allocations: [
-        {
+    allocations: [{
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-        {
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }, {
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6574,20 +6447,21 @@ await client.nonInsurancePayerRefunds.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.NonInsurancePayerRefundCreate`
-
+**request:** `CandidApi.NonInsurancePayerRefundCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6607,7 +6481,6 @@ await client.nonInsurancePayerRefunds.v1.create({
 
 Updates the non-insurance payer refund record matching the provided non_insurance_payer_refund_id. If updating the refund amount,
 then the allocations must be appropriately updated as well.
-
 </dd>
 </dl>
 </dd>
@@ -6622,11 +6495,9 @@ then the allocations must be appropriately updated as well.
 <dd>
 
 ```typescript
-await client.nonInsurancePayerRefunds.v1.update(
-    CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.nonInsurancePayerRefunds.v1.update(CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -6640,28 +6511,29 @@ await client.nonInsurancePayerRefunds.v1.update(
 <dl>
 <dd>
 
-**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId`
-
+**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.nonInsurancePayerRefunds.v1.NonInsurancePayerRefundUpdate`
-
+**request:** `CandidApi.nonInsurancePayerRefunds.v1.NonInsurancePayerRefundUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6680,7 +6552,6 @@ await client.nonInsurancePayerRefunds.v1.update(
 <dd>
 
 Deletes the non-insurance payer refund record matching the provided `non_insurance_payer_refund_id`.
-
 </dd>
 </dl>
 </dd>
@@ -6695,11 +6566,9 @@ Deletes the non-insurance payer refund record matching the provided `non_insuran
 <dd>
 
 ```typescript
-await client.nonInsurancePayerRefunds.v1.delete(
-    CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.nonInsurancePayerRefunds.v1.delete(CandidApi.NonInsurancePayerRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -6713,27 +6582,27 @@ await client.nonInsurancePayerRefunds.v1.delete(
 <dl>
 <dd>
 
-**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId`
-
+**nonInsurancePayerRefundId:** `CandidApi.NonInsurancePayerRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## NonInsurancePayers V1
-
 <details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -6748,10 +6617,10 @@ await client.nonInsurancePayerRefunds.v1.delete(
 
 ```typescript
 await client.nonInsurancePayers.v1.create({
-    name: "name",
+    name: "name"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6765,20 +6634,21 @@ await client.nonInsurancePayers.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.CreateNonInsurancePayerRequest`
-
+**request:** `CandidApi.CreateNonInsurancePayerRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6797,14 +6667,11 @@ await client.nonInsurancePayers.v1.create({
 <dd>
 
 ```typescript
-await client.nonInsurancePayers.v1.toggleEnablement(
-    CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        enabled: true,
-    },
-);
-```
+await client.nonInsurancePayers.v1.toggleEnablement(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    enabled: true
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -6818,28 +6685,29 @@ await client.nonInsurancePayers.v1.toggleEnablement(
 <dl>
 <dd>
 
-**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
-
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.ToggleNonInsurancePayerEnablementRequest`
-
+**request:** `CandidApi.ToggleNonInsurancePayerEnablementRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6859,8 +6727,8 @@ await client.nonInsurancePayers.v1.toggleEnablement(
 
 ```typescript
 await client.nonInsurancePayers.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6874,20 +6742,21 @@ await client.nonInsurancePayers.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.nonInsurancePayers.v1.GetMultiNonInsurancePayersRequest`
-
+**request:** `CandidApi.nonInsurancePayers.v1.GetMultiNonInsurancePayersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6911,7 +6780,6 @@ Non-insurance payer categories are simply strings and are not stored as a
 separate object in Candid. They are created when added to at least one
 non-insurance payer's `category` field and are deleted when there are no
 longer any non-insurance payers that contain them.
-
 </dd>
 </dl>
 </dd>
@@ -6927,8 +6795,8 @@ longer any non-insurance payers that contain them.
 
 ```typescript
 await client.nonInsurancePayers.v1.getCategories();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6942,20 +6810,21 @@ await client.nonInsurancePayers.v1.getCategories();
 <dl>
 <dd>
 
-**request:** `CandidApi.nonInsurancePayers.v1.GetNonInsurancePayersCategoriesRequest`
-
+**request:** `CandidApi.nonInsurancePayers.v1.GetNonInsurancePayersCategoriesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6975,8 +6844,8 @@ await client.nonInsurancePayers.v1.getCategories();
 
 ```typescript
 await client.nonInsurancePayers.v1.get(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6990,20 +6859,21 @@ await client.nonInsurancePayers.v1.get(CandidApi.NonInsurancePayerId("d5e9c84f-c
 <dl>
 <dd>
 
-**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
-
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7023,8 +6893,8 @@ await client.nonInsurancePayers.v1.get(CandidApi.NonInsurancePayerId("d5e9c84f-c
 
 ```typescript
 await client.nonInsurancePayers.v1.update(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7038,28 +6908,29 @@ await client.nonInsurancePayers.v1.update(CandidApi.NonInsurancePayerId("d5e9c84
 <dl>
 <dd>
 
-**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
-
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.NonInsurancePayerUpdateRequest`
-
+**request:** `CandidApi.NonInsurancePayerUpdateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7079,8 +6950,8 @@ await client.nonInsurancePayers.v1.update(CandidApi.NonInsurancePayerId("d5e9c84
 
 ```typescript
 await client.nonInsurancePayers.v1.delete(CandidApi.NonInsurancePayerId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7094,27 +6965,27 @@ await client.nonInsurancePayers.v1.delete(CandidApi.NonInsurancePayerId("d5e9c84
 <dl>
 <dd>
 
-**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId`
-
+**nonInsurancePayerId:** `CandidApi.NonInsurancePayerId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## OrganizationProviders V3
-
 <details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">get</a>(organizationProviderId) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.get.Error></code></summary>
 <dl>
 <dd>
@@ -7129,8 +7000,8 @@ await client.nonInsurancePayers.v1.delete(CandidApi.NonInsurancePayerId("d5e9c84
 
 ```typescript
 await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A563A-0285-4910-9569-E3739C0F6EAB"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7144,20 +7015,21 @@ await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A
 <dl>
 <dd>
 
-**organizationProviderId:** `CandidApi.OrganizationProviderId`
-
+**organizationProviderId:** `CandidApi.OrganizationProviderId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7183,10 +7055,10 @@ await client.organizationProviders.v3.getMulti({
     isRendering: true,
     isBilling: true,
     pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
-    sort: "provider_name:asc",
+    sort: "provider_name:asc"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7200,20 +7072,21 @@ await client.organizationProviders.v3.getMulti({
 <dl>
 <dd>
 
-**request:** `CandidApi.organizationProviders.v3.GetAllOrganizationProvidersRequestV2`
-
+**request:** `CandidApi.organizationProviders.v3.GetAllOrganizationProvidersRequestV2` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7238,27 +7111,24 @@ await client.organizationProviders.v3.create({
     isBilling: true,
     providerType: "INDIVIDUAL",
     licenseType: "MD",
-    qualifications: [
-        {
+    qualifications: [{
             identifierCode: "MCR",
             identifierValue: {
                 type: "medicare_provider_identifier",
                 state: "AA",
-                providerNumber: "provider_number",
-            },
-        },
-        {
+                providerNumber: "provider_number"
+            }
+        }, {
             identifierCode: "MCR",
             identifierValue: {
                 type: "medicare_provider_identifier",
                 state: "AA",
-                providerNumber: "provider_number",
-            },
-        },
-    ],
+                providerNumber: "provider_number"
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7272,20 +7142,21 @@ await client.organizationProviders.v3.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.OrganizationProviderCreateV2`
-
+**request:** `CandidApi.OrganizationProviderCreateV2` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7304,12 +7175,9 @@ await client.organizationProviders.v3.create({
 <dd>
 
 ```typescript
-await client.organizationProviders.v3.update(
-    CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {},
-);
-```
+await client.organizationProviders.v3.update(CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
 
+```
 </dd>
 </dl>
 </dd>
@@ -7323,35 +7191,35 @@ await client.organizationProviders.v3.update(
 <dl>
 <dd>
 
-**organizationProviderId:** `CandidApi.OrganizationProviderId`
-
+**organizationProviderId:** `CandidApi.OrganizationProviderId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.OrganizationProviderUpdateV2`
-
+**request:** `CandidApi.OrganizationProviderUpdateV2` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## OrganizationServiceFacilities V2
-
 <details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">get</a>(organizationServiceFacilityId) -> core.APIResponse<CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.get.Error></code></summary>
 <dl>
 <dd>
@@ -7365,11 +7233,9 @@ await client.organizationProviders.v3.update(
 <dd>
 
 ```typescript
-await client.organizationServiceFacilities.v2.get(
-    CandidApi.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.organizationServiceFacilities.v2.get(CandidApi.OrganizationServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -7383,20 +7249,21 @@ await client.organizationServiceFacilities.v2.get(
 <dl>
 <dd>
 
-**organizationServiceFacilityId:** `CandidApi.OrganizationServiceFacilityId`
-
+**organizationServiceFacilityId:** `CandidApi.OrganizationServiceFacilityId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7418,10 +7285,10 @@ await client.organizationServiceFacilities.v2.get(
 await client.organizationServiceFacilities.v2.getMulti({
     limit: 100,
     name: "Test Service Facility",
-    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7435,20 +7302,21 @@ await client.organizationServiceFacilities.v2.getMulti({
 <dl>
 <dd>
 
-**request:** `CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest`
-
+**request:** `CandidApi.organizationServiceFacilities.v2.GetAllOrganizationServiceFacilitiesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7469,7 +7337,6 @@ await client.organizationServiceFacilities.v2.getMulti({
 Looks up a single organization service facility by its `external_id` field. This can be useful
 for finding service facilities within Candid which are associated with service facilities in
 an external system.
-
 </dd>
 </dl>
 </dd>
@@ -7485,8 +7352,8 @@ an external system.
 
 ```typescript
 await client.organizationServiceFacilities.v2.getByExternalId("external_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7500,20 +7367,21 @@ await client.organizationServiceFacilities.v2.getByExternalId("external_id");
 <dl>
 <dd>
 
-**externalId:** `string`
-
+**externalId:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7548,11 +7416,11 @@ await client.organizationServiceFacilities.v2.create({
         city: "New York",
         state: "NY",
         zipCode: "10001",
-        zipPlusFourCode: "1234",
-    },
+        zipPlusFourCode: "1234"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7566,20 +7434,21 @@ await client.organizationServiceFacilities.v2.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.OrganizationServiceFacilityCreate`
-
+**request:** `CandidApi.OrganizationServiceFacilityCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7598,30 +7467,27 @@ await client.organizationServiceFacilities.v2.create({
 <dd>
 
 ```typescript
-await client.organizationServiceFacilities.v2.update(
-    CandidApi.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"),
-    {
-        name: "Test Service Facility",
-        aliases: ["Test Service Facility Alias"],
-        description: "Test Service Facility Description",
-        status: "active",
-        operationalStatus: "C",
-        mode: "instance",
-        type: "DX",
-        physicalType: "si",
-        telecoms: ["555-555-5555"],
-        address: {
-            address1: "123 Main St",
-            address2: "Apt 1",
-            city: "New York",
-            state: "NY",
-            zipCode: "10001",
-            zipPlusFourCode: "1234",
-        },
-    },
-);
-```
+await client.organizationServiceFacilities.v2.update(CandidApi.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"), {
+    name: "Test Service Facility",
+    aliases: ["Test Service Facility Alias"],
+    description: "Test Service Facility Description",
+    status: "active",
+    operationalStatus: "C",
+    mode: "instance",
+    type: "DX",
+    physicalType: "si",
+    telecoms: ["555-555-5555"],
+    address: {
+        address1: "123 Main St",
+        address2: "Apt 1",
+        city: "New York",
+        state: "NY",
+        zipCode: "10001",
+        zipPlusFourCode: "1234"
+    }
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -7635,28 +7501,29 @@ await client.organizationServiceFacilities.v2.update(
 <dl>
 <dd>
 
-**organizationServiceFacilityId:** `CandidApi.OrganizationServiceFacilityId`
-
+**organizationServiceFacilityId:** `CandidApi.OrganizationServiceFacilityId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.OrganizationServiceFacilityUpdate`
-
+**request:** `CandidApi.OrganizationServiceFacilityUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7675,11 +7542,9 @@ await client.organizationServiceFacilities.v2.update(
 <dd>
 
 ```typescript
-await client.organizationServiceFacilities.v2.delete(
-    CandidApi.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"),
-);
-```
+await client.organizationServiceFacilities.v2.delete(CandidApi.OrganizationServiceFacilityId("30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -7693,27 +7558,27 @@ await client.organizationServiceFacilities.v2.delete(
 <dl>
 <dd>
 
-**organizationServiceFacilityId:** `CandidApi.OrganizationServiceFacilityId`
-
+**organizationServiceFacilityId:** `CandidApi.OrganizationServiceFacilityId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PatientAr V1
-
 <details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">listInventory</a>({ ...params }) -> core.APIResponse<CandidApi.ListInventoryPagedResponse, CandidApi.patientAr.v1.listInventory.Error></code></summary>
 <dl>
 <dd>
@@ -7730,7 +7595,6 @@ NOTE: This service is in-development and can only be used by select partners. Pl
 
 Retrieve a list of inventory records based on the provided filters. Each inventory record provides the latest invoiceable status of the associated claim.
 The response is paginated, and the `page_token` can be used to retrieve subsequent pages. Initial requests should not include `page_token`.
-
 </dd>
 </dl>
 </dd>
@@ -7746,8 +7610,8 @@ The response is paginated, and the `page_token` can be used to retrieve subseque
 
 ```typescript
 await client.patientAr.v1.listInventory();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7761,20 +7625,21 @@ await client.patientAr.v1.listInventory();
 <dl>
 <dd>
 
-**request:** `CandidApi.patientAr.v1.GetInventoryRecordsRequest`
-
+**request:** `CandidApi.patientAr.v1.GetInventoryRecordsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7795,7 +7660,6 @@ await client.patientAr.v1.listInventory();
 NOTE: This service is in-development and can only be used by select partners. Please contact Candid Health to request access.
 
 Provides detailed itemization of invoice data for a specific claim.
-
 </dd>
 </dl>
 </dd>
@@ -7811,8 +7675,8 @@ Provides detailed itemization of invoice data for a specific claim.
 
 ```typescript
 await client.patientAr.v1.itemize(CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7826,27 +7690,27 @@ await client.patientAr.v1.itemize(CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dl>
 <dd>
 
-**claimId:** `CandidApi.ClaimId`
-
+**claimId:** `CandidApi.ClaimId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PatientPayments V4
-
 <details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -7861,7 +7725,6 @@ await client.patientAr.v1.itemize(CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 
 Returns all patient payments satisfying the search criteria AND whose organization_id matches
 the current organization_id of the authenticated user.
-
 </dd>
 </dl>
 </dd>
@@ -7877,8 +7740,8 @@ the current organization_id of the authenticated user.
 
 ```typescript
 await client.patientPayments.v4.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7892,20 +7755,21 @@ await client.patientPayments.v4.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest`
-
+**request:** `CandidApi.patientPayments.v4.GetMultiPatientPaymentsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7924,7 +7788,6 @@ await client.patientPayments.v4.getMulti();
 <dd>
 
 Retrieves a previously created patient payment by its `patient_payment_id`.
-
 </dd>
 </dl>
 </dd>
@@ -7940,8 +7803,8 @@ Retrieves a previously created patient payment by its `patient_payment_id`.
 
 ```typescript
 await client.patientPayments.v4.get(CandidApi.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7955,20 +7818,21 @@ await client.patientPayments.v4.get(CandidApi.PatientPaymentId("d5e9c84f-c2b2-4b
 <dl>
 <dd>
 
-**patientPaymentId:** `CandidApi.PatientPaymentId`
-
+**patientPaymentId:** `CandidApi.PatientPaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7989,7 +7853,6 @@ await client.patientPayments.v4.get(CandidApi.PatientPaymentId("d5e9c84f-c2b2-4b
 Creates a new patient payment record and returns the newly created PatientPayment object.
 The allocations can describe whether the payment is being applied toward a specific service line,
 claim, or billing provider.
-
 </dd>
 </dl>
 </dd>
@@ -8007,25 +7870,22 @@ claim, or billing provider.
 await client.patientPayments.v4.create({
     amountCents: 1,
     patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
-    allocations: [
-        {
+    allocations: [{
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-        {
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }, {
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8039,20 +7899,21 @@ await client.patientPayments.v4.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.patientPayments.v4.PatientPaymentCreate`
-
+**request:** `CandidApi.patientPayments.v4.PatientPaymentCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8071,7 +7932,6 @@ await client.patientPayments.v4.create({
 <dd>
 
 Updates the patient payment record matching the provided patient_payment_id.
-
 </dd>
 </dl>
 </dd>
@@ -8087,8 +7947,8 @@ Updates the patient payment record matching the provided patient_payment_id.
 
 ```typescript
 await client.patientPayments.v4.update(CandidApi.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8102,28 +7962,29 @@ await client.patientPayments.v4.update(CandidApi.PatientPaymentId("d5e9c84f-c2b2
 <dl>
 <dd>
 
-**patientPaymentId:** `CandidApi.PatientPaymentId`
-
+**patientPaymentId:** `CandidApi.PatientPaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.patientPayments.v4.PatientPaymentUpdate`
-
+**request:** `CandidApi.patientPayments.v4.PatientPaymentUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8142,7 +8003,6 @@ await client.patientPayments.v4.update(CandidApi.PatientPaymentId("d5e9c84f-c2b2
 <dd>
 
 Deletes the patient payment record matching the provided patient_payment_id.
-
 </dd>
 </dl>
 </dd>
@@ -8158,8 +8018,8 @@ Deletes the patient payment record matching the provided patient_payment_id.
 
 ```typescript
 await client.patientPayments.v4.delete(CandidApi.PatientPaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8173,27 +8033,27 @@ await client.patientPayments.v4.delete(CandidApi.PatientPaymentId("d5e9c84f-c2b2
 <dl>
 <dd>
 
-**patientPaymentId:** `CandidApi.PatientPaymentId`
-
+**patientPaymentId:** `CandidApi.PatientPaymentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PatientRefunds V1
-
 <details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientRefundsPage, CandidApi.patientRefunds.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -8208,7 +8068,6 @@ await client.patientPayments.v4.delete(CandidApi.PatientPaymentId("d5e9c84f-c2b2
 
 Returns all patient refunds satisfying the search criteria AND whose organization_id matches
 the current organization_id of the authenticated user.
-
 </dd>
 </dl>
 </dd>
@@ -8224,8 +8083,8 @@ the current organization_id of the authenticated user.
 
 ```typescript
 await client.patientRefunds.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8239,20 +8098,21 @@ await client.patientRefunds.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.patientRefunds.v1.GetMultiPatientRefundsRequest`
-
+**request:** `CandidApi.patientRefunds.v1.GetMultiPatientRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8271,7 +8131,6 @@ await client.patientRefunds.v1.getMulti();
 <dd>
 
 Retrieves a previously created patient refund by its `patient_refund_id`.
-
 </dd>
 </dl>
 </dd>
@@ -8287,8 +8146,8 @@ Retrieves a previously created patient refund by its `patient_refund_id`.
 
 ```typescript
 await client.patientRefunds.v1.get(CandidApi.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8302,20 +8161,21 @@ await client.patientRefunds.v1.get(CandidApi.PatientRefundId("d5e9c84f-c2b2-4bf4
 <dl>
 <dd>
 
-**patientRefundId:** `CandidApi.PatientRefundId`
-
+**patientRefundId:** `CandidApi.PatientRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8336,7 +8196,6 @@ await client.patientRefunds.v1.get(CandidApi.PatientRefundId("d5e9c84f-c2b2-4bf4
 Creates a new patient refund record and returns the newly created PatientRefund object.
 The allocations can describe whether the refund is being applied toward a specific service line,
 claim, or billing provider.
-
 </dd>
 </dl>
 </dd>
@@ -8354,25 +8213,22 @@ claim, or billing provider.
 await client.patientRefunds.v1.create({
     amountCents: 1,
     patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
-    allocations: [
-        {
+    allocations: [{
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-        {
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }, {
             amountCents: 1,
             target: {
                 type: "service_line_by_id",
-                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
-        },
-    ],
+                value: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8386,20 +8242,21 @@ await client.patientRefunds.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.patientRefunds.v1.PatientRefundCreate`
-
+**request:** `CandidApi.patientRefunds.v1.PatientRefundCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8418,7 +8275,6 @@ await client.patientRefunds.v1.create({
 <dd>
 
 Updates the patient refund record matching the provided patient_refund_id.
-
 </dd>
 </dl>
 </dd>
@@ -8434,8 +8290,8 @@ Updates the patient refund record matching the provided patient_refund_id.
 
 ```typescript
 await client.patientRefunds.v1.update(CandidApi.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8449,28 +8305,29 @@ await client.patientRefunds.v1.update(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-**patientRefundId:** `CandidApi.PatientRefundId`
-
+**patientRefundId:** `CandidApi.PatientRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.patientRefunds.v1.PatientRefundUpdate`
-
+**request:** `CandidApi.patientRefunds.v1.PatientRefundUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8489,7 +8346,6 @@ await client.patientRefunds.v1.update(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 <dd>
 
 Deletes the patient refund record matching the provided patient_refund_id.
-
 </dd>
 </dl>
 </dd>
@@ -8505,8 +8361,8 @@ Deletes the patient refund record matching the provided patient_refund_id.
 
 ```typescript
 await client.patientRefunds.v1.delete(CandidApi.PatientRefundId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8520,27 +8376,27 @@ await client.patientRefunds.v1.delete(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-**patientRefundId:** `CandidApi.PatientRefundId`
-
+**patientRefundId:** `CandidApi.PatientRefundId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PayerPlanGroups V1
-
 <details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PayerPlanGroupPage, CandidApi.payerPlanGroups.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -8554,7 +8410,6 @@ await client.patientRefunds.v1.delete(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 <dd>
 
 Returns all payer plan groups matching filter criteria.
-
 </dd>
 </dl>
 </dd>
@@ -8570,8 +8425,8 @@ Returns all payer plan groups matching filter criteria.
 
 ```typescript
 await client.payerPlanGroups.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8585,20 +8440,21 @@ await client.payerPlanGroups.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.payerPlanGroups.v1.PayerPlanGroupGetMultiRequest`
-
+**request:** `CandidApi.payerPlanGroups.v1.PayerPlanGroupGetMultiRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8617,7 +8473,6 @@ await client.payerPlanGroups.v1.getMulti();
 <dd>
 
 Return a plan group with a given ID.
-
 </dd>
 </dl>
 </dd>
@@ -8633,8 +8488,8 @@ Return a plan group with a given ID.
 
 ```typescript
 await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8648,20 +8503,21 @@ await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4b
 <dl>
 <dd>
 
-**payerPlanGroupId:** `CandidApi.PayerPlanGroupId`
-
+**payerPlanGroupId:** `CandidApi.PayerPlanGroupId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8680,7 +8536,6 @@ await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4b
 <dd>
 
 Create a payer plan group
-
 </dd>
 </dl>
 </dd>
@@ -8698,10 +8553,10 @@ Create a payer plan group
 await client.payerPlanGroups.v1.create({
     planGroupName: "plan_group_name",
     payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    planType: "09",
+    planType: "09"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8715,20 +8570,21 @@ await client.payerPlanGroups.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MutablePayerPlanGroup`
-
+**request:** `CandidApi.MutablePayerPlanGroup` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8747,7 +8603,6 @@ await client.payerPlanGroups.v1.create({
 <dd>
 
 Update any of the fields on a payer plan group
-
 </dd>
 </dl>
 </dd>
@@ -8765,10 +8620,10 @@ Update any of the fields on a payer plan group
 await client.payerPlanGroups.v1.update(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
     planGroupName: "plan_group_name",
     payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    planType: "09",
+    planType: "09"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8782,28 +8637,29 @@ await client.payerPlanGroups.v1.update(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2
 <dl>
 <dd>
 
-**payerPlanGroupId:** `CandidApi.PayerPlanGroupId`
-
+**payerPlanGroupId:** `CandidApi.PayerPlanGroupId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutablePayerPlanGroup`
-
+**request:** `CandidApi.MutablePayerPlanGroup` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8822,7 +8678,6 @@ await client.payerPlanGroups.v1.update(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2
 <dd>
 
 Marks the payer plan group as deactivated
-
 </dd>
 </dl>
 </dd>
@@ -8838,8 +8693,8 @@ Marks the payer plan group as deactivated
 
 ```typescript
 await client.payerPlanGroups.v1.deactivate(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8853,27 +8708,27 @@ await client.payerPlanGroups.v1.deactivate(CandidApi.PayerPlanGroupId("d5e9c84f-
 <dl>
 <dd>
 
-**payerPlanGroupId:** `CandidApi.PayerPlanGroupId`
-
+**payerPlanGroupId:** `CandidApi.PayerPlanGroupId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Payers V3
-
 <details><summary><code>client.payers.v3.<a href="/src/api/resources/payers/resources/v3/client/Client.ts">get</a>(payerUuid) -> core.APIResponse<CandidApi.Payer, CandidApi.payers.v3.get.Error></code></summary>
 <dl>
 <dd>
@@ -8888,8 +8743,8 @@ await client.payerPlanGroups.v1.deactivate(CandidApi.PayerPlanGroupId("d5e9c84f-
 
 ```typescript
 await client.payers.v3.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8903,20 +8758,21 @@ await client.payers.v3.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9f
 <dl>
 <dd>
 
-**payerUuid:** `CandidApi.PayerUuid`
-
+**payerUuid:** `CandidApi.PayerUuid` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8938,10 +8794,10 @@ await client.payers.v3.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9f
 await client.payers.v3.getAll({
     limit: 100,
     searchTerm: "john",
-    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9"),
+    pageToken: CandidApi.PageToken("eyJ0b2tlbiI6IjEiLCJwYWdlX3Rva2VuIjoiMiJ9")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8955,27 +8811,27 @@ await client.payers.v3.getAll({
 <dl>
 <dd>
 
-**request:** `CandidApi.payers.v3.GetAllPayersRequest`
-
+**request:** `CandidApi.payers.v3.GetAllPayersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Payers V4
-
 <details><summary><code>client.payers.v4.<a href="/src/api/resources/payers/resources/v4/client/Client.ts">get</a>(payerUuid) -> core.APIResponse<CandidApi.Payer, CandidApi.payers.v4.get.Error></code></summary>
 <dl>
 <dd>
@@ -8990,8 +8846,8 @@ await client.payers.v3.getAll({
 
 ```typescript
 await client.payers.v4.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9005,20 +8861,21 @@ await client.payers.v4.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9f
 <dl>
 <dd>
 
-**payerUuid:** `CandidApi.PayerUuid`
-
+**payerUuid:** `CandidApi.PayerUuid` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9038,8 +8895,8 @@ await client.payers.v4.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9f
 
 ```typescript
 await client.payers.v4.getAll();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9053,27 +8910,27 @@ await client.payers.v4.getAll();
 <dl>
 <dd>
 
-**request:** `CandidApi.payers.v4.GetAllPayersRequest`
-
+**request:** `CandidApi.payers.v4.GetAllPayersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V4.RequestOptions`
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ServiceLines V2
-
 <details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.create.Error></code></summary>
 <dl>
 <dd>
@@ -9091,10 +8948,10 @@ await client.serviceLines.v2.create({
     procedureCode: "procedure_code",
     quantity: CandidApi.Decimal("quantity"),
     units: "MJ",
-    claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9108,20 +8965,21 @@ await client.serviceLines.v2.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.ServiceLineCreateStandalone`
-
+**request:** `CandidApi.ServiceLineCreateStandalone` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9143,10 +9001,10 @@ await client.serviceLines.v2.create({
 await client.serviceLines.v2.createUniversal({
     quantity: CandidApi.Decimal("quantity"),
     units: "MJ",
-    claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    claimId: CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9160,20 +9018,21 @@ await client.serviceLines.v2.createUniversal({
 <dl>
 <dd>
 
-**request:** `CandidApi.UniversalServiceLineCreateStandalone`
-
+**request:** `CandidApi.UniversalServiceLineCreateStandalone` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9193,8 +9052,8 @@ await client.serviceLines.v2.createUniversal({
 
 ```typescript
 await client.serviceLines.v2.updateUniversal(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9208,28 +9067,29 @@ await client.serviceLines.v2.updateUniversal(CandidApi.ServiceLineId("d5e9c84f-c
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.UniversalServiceLineUpdate`
-
+**request:** `CandidApi.UniversalServiceLineUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9249,8 +9109,8 @@ await client.serviceLines.v2.updateUniversal(CandidApi.ServiceLineId("d5e9c84f-c
 
 ```typescript
 await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9264,28 +9124,29 @@ await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.ServiceLineUpdate`
-
+**request:** `CandidApi.ServiceLineUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9305,8 +9166,8 @@ await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 
 ```typescript
 await client.serviceLines.v2.delete(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9320,27 +9181,27 @@ await client.serviceLines.v2.delete(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 <dl>
 <dd>
 
-**serviceLineId:** `CandidApi.ServiceLineId`
-
+**serviceLineId:** `CandidApi.ServiceLineId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V2.RequestOptions`
+**requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Superbills V1
-
 <details><summary><code>client.superbills.v1.<a href="/src/api/resources/superbills/resources/v1/client/Client.ts">createSuperbill</a>({ ...params }) -> core.APIResponse<CandidApi.SuperbillResponse, CandidApi.superbills.v1.createSuperbill.Error></code></summary>
 <dl>
 <dd>
@@ -9357,10 +9218,10 @@ await client.serviceLines.v2.delete(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 await client.superbills.v1.createSuperbill({
     patientExternalId: CandidApi.PatientExternalId("patient_external_id"),
     dateRangeMin: "2023-01-15",
-    dateRangeMax: "2023-01-15",
+    dateRangeMax: "2023-01-15"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9374,27 +9235,27 @@ await client.superbills.v1.createSuperbill({
 <dl>
 <dd>
 
-**request:** `CandidApi.superbills.v1.CreateSuperbillRequest`
-
+**request:** `CandidApi.superbills.v1.CreateSuperbillRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Tasks V3
-
 <details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getActions</a>(taskId) -> core.APIResponse<CandidApi.TaskActions, CandidApi.tasks.v3.getActions.Error></code></summary>
 <dl>
 <dd>
@@ -9409,8 +9270,8 @@ await client.superbills.v1.createSuperbill({
 
 ```typescript
 await client.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9424,20 +9285,21 @@ await client.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7
 <dl>
 <dd>
 
-**taskId:** `CandidApi.TaskId`
-
+**taskId:** `CandidApi.TaskId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9457,8 +9319,8 @@ await client.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7
 
 ```typescript
 await client.tasks.v3.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9472,20 +9334,21 @@ await client.tasks.v3.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.tasks.v3.GetAllTasksRequest`
-
+**request:** `CandidApi.tasks.v3.GetAllTasksRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9505,8 +9368,8 @@ await client.tasks.v3.getMulti();
 
 ```typescript
 await client.tasks.v3.get(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9520,20 +9383,21 @@ await client.tasks.v3.get(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32
 <dl>
 <dd>
 
-**taskId:** `CandidApi.TaskId`
-
+**taskId:** `CandidApi.TaskId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9556,10 +9420,10 @@ await client.tasks.v3.create({
     encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     taskType: "CUSTOMER_DATA_REQUEST",
     description: "description",
-    workQueueId: CandidApi.WorkQueueId("work_queue_id"),
+    workQueueId: CandidApi.WorkQueueId("work_queue_id")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9573,20 +9437,21 @@ await client.tasks.v3.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.TaskCreateV3`
-
+**request:** `CandidApi.TaskCreateV3` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9606,8 +9471,8 @@ await client.tasks.v3.create({
 
 ```typescript
 await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9621,35 +9486,35 @@ await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ff
 <dl>
 <dd>
 
-**taskId:** `CandidApi.TaskId`
-
+**taskId:** `CandidApi.TaskId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.TaskUpdateV3`
-
+**request:** `CandidApi.TaskUpdateV3` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V3.RequestOptions`
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## WriteOffs V1
-
 <details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error></code></summary>
 <dl>
 <dd>
@@ -9663,7 +9528,6 @@ await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ff
 <dd>
 
 Returns all write-offs satisfying the search criteria.
-
 </dd>
 </dl>
 </dd>
@@ -9679,8 +9543,8 @@ Returns all write-offs satisfying the search criteria.
 
 ```typescript
 await client.writeOffs.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9694,20 +9558,21 @@ await client.writeOffs.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.writeOffs.v1.GetMultiWriteOffsRequest`
-
+**request:** `CandidApi.writeOffs.v1.GetMultiWriteOffsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9726,7 +9591,6 @@ await client.writeOffs.v1.getMulti();
 <dd>
 
 Retrieves a previously created write off by its `write_off_id`.
-
 </dd>
 </dl>
 </dd>
@@ -9742,8 +9606,8 @@ Retrieves a previously created write off by its `write_off_id`.
 
 ```typescript
 await client.writeOffs.v1.get(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9757,20 +9621,21 @@ await client.writeOffs.v1.get(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 <dl>
 <dd>
 
-**writeOffId:** `CandidApi.WriteOffId`
-
+**writeOffId:** `CandidApi.WriteOffId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9790,7 +9655,6 @@ await client.writeOffs.v1.get(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 
 Creates one or many write-offs applied toward a specific service line,
 claim, or billing provider.
-
 </dd>
 </dl>
 </dd>
@@ -9806,25 +9670,22 @@ claim, or billing provider.
 
 ```typescript
 await client.writeOffs.v1.create({
-    writeOffs: [
-        {
+    writeOffs: [{
             type: "patient",
             writeOffTimestamp: new Date("2024-01-15T09:30:00.000Z"),
             writeOffReason: "SMALL_BALANCE",
             serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            amountCents: 1,
-        },
-        {
+            amountCents: 1
+        }, {
             type: "patient",
             writeOffTimestamp: new Date("2024-01-15T09:30:00.000Z"),
             writeOffReason: "SMALL_BALANCE",
             serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            amountCents: 1,
-        },
-    ],
+            amountCents: 1
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9838,20 +9699,21 @@ await client.writeOffs.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.writeOffs.v1.CreateWriteOffsRequest`
-
+**request:** `CandidApi.writeOffs.v1.CreateWriteOffsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9870,7 +9732,6 @@ await client.writeOffs.v1.create({
 <dd>
 
 Reverts a write off given a `write_off_id`.
-
 </dd>
 </dl>
 </dd>
@@ -9886,8 +9747,8 @@ Reverts a write off given a `write_off_id`.
 
 ```typescript
 await client.writeOffs.v1.revert(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9901,20 +9762,21 @@ await client.writeOffs.v1.revert(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dl>
 <dd>
 
-**writeOffId:** `CandidApi.WriteOffId`
-
+**writeOffId:** `CandidApi.WriteOffId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9933,7 +9795,6 @@ await client.writeOffs.v1.revert(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dd>
 
 Reverts an Insurance Balance Adjustment given an `adjustment_id`
-
 </dd>
 </dl>
 </dd>
@@ -9948,11 +9809,9 @@ Reverts an Insurance Balance Adjustment given an `adjustment_id`
 <dd>
 
 ```typescript
-await client.writeOffs.v1.revertInsuranceBalanceAdjustment(
-    CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.writeOffs.v1.revertInsuranceBalanceAdjustment(CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -9966,20 +9825,21 @@ await client.writeOffs.v1.revertInsuranceBalanceAdjustment(
 <dl>
 <dd>
 
-**adjustmentId:** `CandidApi.AdjustmentId`
-
+**adjustmentId:** `CandidApi.AdjustmentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9998,7 +9858,6 @@ await client.writeOffs.v1.revertInsuranceBalanceAdjustment(
 <dd>
 
 Reverts an ERA-originated Insurance Balance Adjustment given an `adjustment_id`
-
 </dd>
 </dl>
 </dd>
@@ -10013,11 +9872,9 @@ Reverts an ERA-originated Insurance Balance Adjustment given an `adjustment_id`
 <dd>
 
 ```typescript
-await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(
-    CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-);
-```
+await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(CandidApi.AdjustmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
 
+```
 </dd>
 </dl>
 </dd>
@@ -10031,27 +9888,27 @@ await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(
 <dl>
 <dd>
 
-**adjustmentId:** `CandidApi.AdjustmentId`
-
+**adjustmentId:** `CandidApi.AdjustmentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Appointments V1
-
 <details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -10064,8 +9921,7 @@ await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(
 <dl>
 <dd>
 
-Adds an appointment. VersionConflictError is returned when the placer_appointment_id is already in use.
-
+Adds an appointment.  VersionConflictError is returned when the placer_appointment_id is already in use.
 </dd>
 </dl>
 </dd>
@@ -10084,10 +9940,10 @@ await client.preEncounter.appointments.v1.create({
     patientId: CandidApi.PatientId("patient_id"),
     startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
     serviceDuration: 1,
-    services: [{}, {}],
+    services: [{}, {}]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10101,20 +9957,21 @@ await client.preEncounter.appointments.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableAppointment`
-
+**request:** `CandidApi.MutableAppointment` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10133,7 +9990,6 @@ await client.preEncounter.appointments.v1.create({
 <dd>
 
 Gets all Visits within a given time range. The return list is ordered by start_time ascending.
-
 </dd>
 </dl>
 </dd>
@@ -10149,8 +10005,8 @@ Gets all Visits within a given time range. The return list is ordered by start_t
 
 ```typescript
 await client.preEncounter.appointments.v1.getVisits();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10164,20 +10020,21 @@ await client.preEncounter.appointments.v1.getVisits();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.appointments.v1.VisitsRequest`
-
+**request:** `CandidApi.preEncounter.appointments.v1.VisitsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10196,7 +10053,6 @@ await client.preEncounter.appointments.v1.getVisits();
 <dd>
 
 Gets an appointment.
-
 </dd>
 </dl>
 </dd>
@@ -10212,8 +10068,8 @@ Gets an appointment.
 
 ```typescript
 await client.preEncounter.appointments.v1.get(CandidApi.AppointmentId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10227,20 +10083,21 @@ await client.preEncounter.appointments.v1.get(CandidApi.AppointmentId("id"));
 <dl>
 <dd>
 
-**id:** `CandidApi.AppointmentId`
-
+**id:** `CandidApi.AppointmentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10258,8 +10115,7 @@ await client.preEncounter.appointments.v1.get(CandidApi.AppointmentId("id"));
 <dl>
 <dd>
 
-Gets an appointment along with it's full history. The return list is ordered by version ascending.
-
+Gets an appointment along with it's full history.  The return list is ordered by version ascending.
 </dd>
 </dl>
 </dd>
@@ -10275,8 +10131,8 @@ Gets an appointment along with it's full history. The return list is ordered by 
 
 ```typescript
 await client.preEncounter.appointments.v1.getHistory(CandidApi.AppointmentId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10290,20 +10146,21 @@ await client.preEncounter.appointments.v1.getHistory(CandidApi.AppointmentId("id
 <dl>
 <dd>
 
-**id:** `CandidApi.AppointmentId`
-
+**id:** `CandidApi.AppointmentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10322,7 +10179,6 @@ await client.preEncounter.appointments.v1.getHistory(CandidApi.AppointmentId("id
 <dd>
 
 Updates an appointment. The path must contain the next version number to prevent race conditions. For example, if the current version of the appointment is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the appointment. Updating historic versions is not supported.
-
 </dd>
 </dl>
 </dd>
@@ -10341,10 +10197,10 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("id"), 
     patientId: CandidApi.PatientId("patient_id"),
     startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
     serviceDuration: 1,
-    services: [{}, {}],
+    services: [{}, {}]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10358,36 +10214,37 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("id"), 
 <dl>
 <dd>
 
-**id:** `CandidApi.AppointmentId`
-
+**id:** `CandidApi.AppointmentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableAppointment`
-
+**request:** `CandidApi.MutableAppointment` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10405,8 +10262,7 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("id"), 
 <dl>
 <dd>
 
-Scans up to 100 appointment updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
-
+Scans up to 100 appointment updates.  The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
 </dd>
 </dl>
 </dd>
@@ -10422,10 +10278,10 @@ Scans up to 100 appointment updates. The since query parameter is inclusive, and
 
 ```typescript
 await client.preEncounter.appointments.v1.scan({
-    since: new Date("2024-01-15T09:30:00.000Z"),
+    since: new Date("2024-01-15T09:30:00.000Z")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10439,20 +10295,21 @@ await client.preEncounter.appointments.v1.scan({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.appointments.v1.AppointmentScanRequest`
-
+**request:** `CandidApi.preEncounter.appointments.v1.AppointmentScanRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10470,8 +10327,7 @@ await client.preEncounter.appointments.v1.scan({
 <dl>
 <dd>
 
-Sets an appointment as deactivated. The path must contain the most recent version to prevent race conditions. Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
-
+Sets an appointment as deactivated.  The path must contain the most recent version to prevent race conditions.  Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
 </dd>
 </dl>
 </dd>
@@ -10487,8 +10343,8 @@ Sets an appointment as deactivated. The path must contain the most recent versio
 
 ```typescript
 await client.preEncounter.appointments.v1.deactivate(CandidApi.AppointmentId("id"), "version");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10502,35 +10358,35 @@ await client.preEncounter.appointments.v1.deactivate(CandidApi.AppointmentId("id
 <dl>
 <dd>
 
-**id:** `CandidApi.AppointmentId`
-
+**id:** `CandidApi.AppointmentId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Coverages V1
-
 <details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -10544,7 +10400,6 @@ await client.preEncounter.appointments.v1.deactivate(CandidApi.AppointmentId("id
 <dd>
 
 Creates a new Coverage. A Coverage provides the high-level identifiers and descriptors of a specific insurance plan for a specific individual - typically the information you can find on an insurance card. Additionally a coverage will include detailed benefits information covered by the specific plan for the individual.
-
 </dd>
 </dl>
 </dd>
@@ -10565,21 +10420,21 @@ await client.preEncounter.coverages.v1.create({
         name: {
             family: "family",
             given: ["given", "given"],
-            use: "USUAL",
+            use: "USUAL"
         },
-        biologicalSex: "FEMALE",
+        biologicalSex: "FEMALE"
     },
     relationship: "SELF",
     patient: CandidApi.PatientId("patient"),
     insurancePlan: {
         memberId: "member_id",
         payerId: CandidApi.PayerId("payer_id"),
-        payerName: "payer_name",
+        payerName: "payer_name"
     },
-    verified: true,
+    verified: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10593,20 +10448,21 @@ await client.preEncounter.coverages.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableCoverage`
-
+**request:** `CandidApi.MutableCoverage` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10625,7 +10481,6 @@ await client.preEncounter.coverages.v1.create({
 <dd>
 
 Updates a Coverage. The path must contain the next version number to prevent race conditions. For example, if the current version of the coverage is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the coverage. Updating historic versions is not supported.
-
 </dd>
 </dl>
 </dd>
@@ -10646,21 +10501,21 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
         name: {
             family: "family",
             given: ["given", "given"],
-            use: "USUAL",
+            use: "USUAL"
         },
-        biologicalSex: "FEMALE",
+        biologicalSex: "FEMALE"
     },
     relationship: "SELF",
     patient: CandidApi.PatientId("patient"),
     insurancePlan: {
         memberId: "member_id",
         payerId: CandidApi.PayerId("payer_id"),
-        payerName: "payer_name",
+        payerName: "payer_name"
     },
-    verified: true,
+    verified: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10674,36 +10529,37 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
 <dl>
 <dd>
 
-**id:** `CandidApi.CoverageId`
-
+**id:** `CandidApi.CoverageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableCoverage`
-
+**request:** `CandidApi.MutableCoverage` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10722,7 +10578,6 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
 <dd>
 
 Returns a page of Coverages based on the search criteria.
-
 </dd>
 </dl>
 </dd>
@@ -10738,8 +10593,8 @@ Returns a page of Coverages based on the search criteria.
 
 ```typescript
 await client.preEncounter.coverages.v1.getMultiPaginated();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10753,20 +10608,21 @@ await client.preEncounter.coverages.v1.getMultiPaginated();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest`
-
+**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiPaginatedRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10785,7 +10641,6 @@ await client.preEncounter.coverages.v1.getMultiPaginated();
 <dd>
 
 gets a specific Coverage
-
 </dd>
 </dl>
 </dd>
@@ -10801,8 +10656,8 @@ gets a specific Coverage
 
 ```typescript
 await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10816,20 +10671,21 @@ await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-**id:** `CandidApi.CoverageId`
-
+**id:** `CandidApi.CoverageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10847,8 +10703,7 @@ await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-Gets a coverage along with it's full history. The return list is ordered by version ascending.
-
+Gets a coverage along with it's full history.  The return list is ordered by version ascending.
 </dd>
 </dl>
 </dd>
@@ -10864,8 +10719,8 @@ Gets a coverage along with it's full history. The return list is ordered by vers
 
 ```typescript
 await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10879,20 +10734,21 @@ await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f
 <dl>
 <dd>
 
-**id:** `CandidApi.CoverageId`
-
+**id:** `CandidApi.CoverageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10911,7 +10767,6 @@ await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f
 <dd>
 
 Returns a list of Coverages based on the search criteria.
-
 </dd>
 </dl>
 </dd>
@@ -10927,8 +10782,8 @@ Returns a list of Coverages based on the search criteria.
 
 ```typescript
 await client.preEncounter.coverages.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10942,20 +10797,21 @@ await client.preEncounter.coverages.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiRequest`
-
+**request:** `CandidApi.preEncounter.coverages.v1.CoverageGetMultiRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10973,8 +10829,7 @@ await client.preEncounter.coverages.v1.getMulti();
 <dl>
 <dd>
 
-Scans up to 100 coverage updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
-
+Scans up to 100 coverage updates.  The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
 </dd>
 </dl>
 </dd>
@@ -10990,10 +10845,10 @@ Scans up to 100 coverage updates. The since query parameter is inclusive, and th
 
 ```typescript
 await client.preEncounter.coverages.v1.scan({
-    since: new Date("2024-01-15T09:30:00.000Z"),
+    since: new Date("2024-01-15T09:30:00.000Z")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11007,20 +10862,21 @@ await client.preEncounter.coverages.v1.scan({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.coverages.v1.CoverageScanRequest`
-
+**request:** `CandidApi.preEncounter.coverages.v1.CoverageScanRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11039,7 +10895,6 @@ await client.preEncounter.coverages.v1.scan({
 <dd>
 
 Finds all coverages associated with the given ppg_id and updates the ppg_fields for each coverage.
-
 </dd>
 </dl>
 </dd>
@@ -11054,17 +10909,14 @@ Finds all coverages associated with the given ppg_id and updates the ppg_fields 
 <dd>
 
 ```typescript
-await client.preEncounter.coverages.v1.batchUpdatePpg(
-    CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    {
-        payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        payerId: CandidApi.PayerId("payer_id"),
-        payerName: "payer_name",
-        planType: "09",
-    },
-);
-```
+await client.preEncounter.coverages.v1.batchUpdatePpg(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    payerId: CandidApi.PayerId("payer_id"),
+    payerName: "payer_name",
+    planType: "09"
+});
 
+```
 </dd>
 </dl>
 </dd>
@@ -11078,28 +10930,29 @@ await client.preEncounter.coverages.v1.batchUpdatePpg(
 <dl>
 <dd>
 
-**ppgId:** `CandidApi.PayerPlanGroupId`
-
+**ppgId:** `CandidApi.PayerPlanGroupId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.PayerPlanGroupFields`
-
+**request:** `CandidApi.PayerPlanGroupFields` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11118,7 +10971,6 @@ await client.preEncounter.coverages.v1.batchUpdatePpg(
 <dd>
 
 Initiates an eligibility check. Returns the metadata of the check if successfully initiated.
-
 </dd>
 </dl>
 </dd>
@@ -11136,10 +10988,10 @@ Initiates an eligibility check. Returns the metadata of the check if successfull
 await client.preEncounter.coverages.v1.checkEligibility(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
     serviceCode: "1",
     dateOfService: "2023-01-15",
-    npi: "npi",
+    npi: "npi"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11153,28 +11005,29 @@ await client.preEncounter.coverages.v1.checkEligibility(CandidApi.CoverageId("d5
 <dl>
 <dd>
 
-**id:** `CandidApi.CoverageId`
-
+**id:** `CandidApi.CoverageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest`
-
+**request:** `CandidApi.preEncounter.coverages.v1.CheckEligibilityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11193,7 +11046,6 @@ await client.preEncounter.coverages.v1.checkEligibility(CandidApi.CoverageId("d5
 <dd>
 
 Gets the eligibility of a patient for a specific coverage if successful.
-
 </dd>
 </dl>
 </dd>
@@ -11208,12 +11060,9 @@ Gets the eligibility of a patient for a specific coverage if successful.
 <dd>
 
 ```typescript
-await client.preEncounter.coverages.v1.getEligibility(
-    CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-    "check_id",
-);
-```
+await client.preEncounter.coverages.v1.getEligibility(CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "check_id");
 
+```
 </dd>
 </dl>
 </dd>
@@ -11227,35 +11076,35 @@ await client.preEncounter.coverages.v1.getEligibility(
 <dl>
 <dd>
 
-**id:** `CandidApi.CoverageId`
-
+**id:** `CandidApi.CoverageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**checkId:** `string`
-
+**checkId:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter EligibilityChecks V1
-
 <details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">post</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.post.Error></code></summary>
 <dl>
 <dd>
@@ -11269,7 +11118,6 @@ await client.preEncounter.coverages.v1.getEligibility(
 <dd>
 
 Sends real-time eligibility checks to payers through Stedi.
-
 </dd>
 </dl>
 </dd>
@@ -11287,15 +11135,15 @@ Sends real-time eligibility checks to payers through Stedi.
 await client.preEncounter.eligibilityChecks.v1.post({
     payerId: "payer_id",
     provider: {
-        npi: "npi",
+        npi: "npi"
     },
     subscriber: {
         firstName: "first_name",
-        lastName: "last_name",
-    },
+        lastName: "last_name"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11309,20 +11157,21 @@ await client.preEncounter.eligibilityChecks.v1.post({
 <dl>
 <dd>
 
-**request:** `CandidApi.EligibilityRequest`
-
+**request:** `CandidApi.EligibilityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11341,7 +11190,6 @@ await client.preEncounter.eligibilityChecks.v1.post({
 <dd>
 
 Sends a batch of eligibility checks to payers through Stedi.
-
 </dd>
 </dl>
 </dd>
@@ -11356,30 +11204,27 @@ Sends a batch of eligibility checks to payers through Stedi.
 <dd>
 
 ```typescript
-await client.preEncounter.eligibilityChecks.v1.batch([
-    {
+await client.preEncounter.eligibilityChecks.v1.batch([{
         payerId: "payer_id",
         provider: {
-            npi: "npi",
+            npi: "npi"
         },
         subscriber: {
             firstName: "first_name",
-            lastName: "last_name",
-        },
-    },
-    {
+            lastName: "last_name"
+        }
+    }, {
         payerId: "payer_id",
         provider: {
-            npi: "npi",
+            npi: "npi"
         },
         subscriber: {
             firstName: "first_name",
-            lastName: "last_name",
-        },
-    },
-]);
-```
+            lastName: "last_name"
+        }
+    }]);
 
+```
 </dd>
 </dl>
 </dd>
@@ -11393,20 +11238,21 @@ await client.preEncounter.eligibilityChecks.v1.batch([
 <dl>
 <dd>
 
-**request:** `CandidApi.EligibilityRequest[]`
-
+**request:** `CandidApi.EligibilityRequest[]` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11425,7 +11271,6 @@ await client.preEncounter.eligibilityChecks.v1.batch([
 <dd>
 
 Polls the status of a batch eligibility check.
-
 </dd>
 </dl>
 </dd>
@@ -11441,8 +11286,8 @@ Polls the status of a batch eligibility check.
 
 ```typescript
 await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11456,28 +11301,29 @@ await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id");
 <dl>
 <dd>
 
-**batchId:** `string`
-
+**batchId:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityPollRequest`
-
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.BatchEligibilityPollRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11496,7 +11342,6 @@ await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id");
 <dd>
 
 Searches for payers that match the query parameters.
-
 </dd>
 </dl>
 </dd>
@@ -11512,8 +11357,8 @@ Searches for payers that match the query parameters.
 
 ```typescript
 await client.preEncounter.eligibilityChecks.v1.payerSearch();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11527,20 +11372,21 @@ await client.preEncounter.eligibilityChecks.v1.payerSearch();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.eligibilityChecks.v1.PayerSearchRequest`
-
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.PayerSearchRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11559,7 +11405,6 @@ await client.preEncounter.eligibilityChecks.v1.payerSearch();
 <dd>
 
 Gets recommendation for eligibility checks based on the request.
-
 </dd>
 </dl>
 </dd>
@@ -11575,8 +11420,8 @@ Gets recommendation for eligibility checks based on the request.
 
 ```typescript
 await client.preEncounter.eligibilityChecks.v1.recommendation();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11590,20 +11435,21 @@ await client.preEncounter.eligibilityChecks.v1.recommendation();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationRequest`
-
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11622,7 +11468,6 @@ await client.preEncounter.eligibilityChecks.v1.recommendation();
 <dd>
 
 Create an eligibiilty recommendation based on the request.
-
 </dd>
 </dl>
 </dd>
@@ -11642,11 +11487,11 @@ await client.preEncounter.eligibilityChecks.v1.createRecommendation({
     patient: {},
     recommendation: {
         type: "MEDICARE_ADVANTAGE",
-        payload: {},
-    },
+        payload: {}
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11660,27 +11505,27 @@ await client.preEncounter.eligibilityChecks.v1.createRecommendation({
 <dl>
 <dd>
 
-**request:** `CandidApi.PostEligibilityRecommendationRequest`
-
+**request:** `CandidApi.PostEligibilityRecommendationRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Images V1
-
 <details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -11693,8 +11538,7 @@ await client.preEncounter.eligibilityChecks.v1.createRecommendation({
 <dl>
 <dd>
 
-Adds an image. VersionConflictError is returned if a front or back of this coverage already exists.
-
+Adds an image.  VersionConflictError is returned if a front or back of this coverage already exists.
 </dd>
 </dl>
 </dd>
@@ -11713,10 +11557,10 @@ await client.preEncounter.images.v1.create({
     fileName: "file_name",
     displayName: "display_name",
     fileType: "file_type",
-    status: "PENDING",
+    status: "PENDING"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11730,20 +11574,21 @@ await client.preEncounter.images.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableImage`
-
+**request:** `CandidApi.MutableImage` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11762,7 +11607,6 @@ await client.preEncounter.images.v1.create({
 <dd>
 
 Gets an image by imageId.
-
 </dd>
 </dl>
 </dd>
@@ -11778,8 +11622,8 @@ Gets an image by imageId.
 
 ```typescript
 await client.preEncounter.images.v1.get(CandidApi.ImageId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11793,20 +11637,21 @@ await client.preEncounter.images.v1.get(CandidApi.ImageId("id"));
 <dl>
 <dd>
 
-**id:** `CandidApi.ImageId`
-
+**id:** `CandidApi.ImageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11824,8 +11669,7 @@ await client.preEncounter.images.v1.get(CandidApi.ImageId("id"));
 <dl>
 <dd>
 
-Updates an Image. The path must contain the most recent version to prevent races.
-
+Updates an Image.  The path must contain the most recent version to prevent races.
 </dd>
 </dl>
 </dd>
@@ -11844,10 +11688,10 @@ await client.preEncounter.images.v1.update(CandidApi.ImageId("id"), "version", {
     fileName: "file_name",
     displayName: "display_name",
     fileType: "file_type",
-    status: "PENDING",
+    status: "PENDING"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11861,36 +11705,37 @@ await client.preEncounter.images.v1.update(CandidApi.ImageId("id"), "version", {
 <dl>
 <dd>
 
-**id:** `CandidApi.ImageId`
-
+**id:** `CandidApi.ImageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableImage`
-
+**request:** `CandidApi.MutableImage` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11908,8 +11753,7 @@ await client.preEncounter.images.v1.update(CandidApi.ImageId("id"), "version", {
 <dl>
 <dd>
 
-Sets an Image as deactivated. The path must contain the most recent version to prevent races.
-
+Sets an Image as deactivated.  The path must contain the most recent version to prevent races.
 </dd>
 </dl>
 </dd>
@@ -11925,8 +11769,8 @@ Sets an Image as deactivated. The path must contain the most recent version to p
 
 ```typescript
 await client.preEncounter.images.v1.deactivate(CandidApi.ImageId("id"), "version");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11940,28 +11784,29 @@ await client.preEncounter.images.v1.deactivate(CandidApi.ImageId("id"), "version
 <dl>
 <dd>
 
-**id:** `CandidApi.ImageId`
-
+**id:** `CandidApi.ImageId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11980,7 +11825,6 @@ await client.preEncounter.images.v1.deactivate(CandidApi.ImageId("id"), "version
 <dd>
 
 Searches for images that match the query parameters.
-
 </dd>
 </dl>
 </dd>
@@ -11996,8 +11840,8 @@ Searches for images that match the query parameters.
 
 ```typescript
 await client.preEncounter.images.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12011,27 +11855,27 @@ await client.preEncounter.images.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.images.v1.ImageGetMultiRequest`
-
+**request:** `CandidApi.preEncounter.images.v1.ImageGetMultiRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Lists V1
-
 <details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getPatientList</a>({ ...params }) -> core.APIResponse<CandidApi.PatientListPage, CandidApi.preEncounter.lists.v1.getPatientList.Error></code></summary>
 <dl>
 <dd>
@@ -12045,7 +11889,6 @@ await client.preEncounter.images.v1.getMulti();
 <dd>
 
 Gets patients with dependent objects for patients that match the query parameters.
-
 </dd>
 </dl>
 </dd>
@@ -12061,8 +11904,8 @@ Gets patients with dependent objects for patients that match the query parameter
 
 ```typescript
 await client.preEncounter.lists.v1.getPatientList();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12076,20 +11919,21 @@ await client.preEncounter.lists.v1.getPatientList();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.lists.v1.PatientListRequest`
-
+**request:** `CandidApi.preEncounter.lists.v1.PatientListRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12108,7 +11952,6 @@ await client.preEncounter.lists.v1.getPatientList();
 <dd>
 
 Searches for appointments that match the query parameters.
-
 </dd>
 </dl>
 </dd>
@@ -12124,8 +11967,8 @@ Searches for appointments that match the query parameters.
 
 ```typescript
 await client.preEncounter.lists.v1.getAppointmentList();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12139,27 +11982,27 @@ await client.preEncounter.lists.v1.getAppointmentList();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.lists.v1.AppointmentsGetListRequest`
-
+**request:** `CandidApi.preEncounter.lists.v1.AppointmentsGetListRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Notes V1
-
 <details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.get.Error></code></summary>
 <dl>
 <dd>
@@ -12173,7 +12016,6 @@ await client.preEncounter.lists.v1.getAppointmentList();
 <dd>
 
 Gets a note by NoteId.
-
 </dd>
 </dl>
 </dd>
@@ -12189,8 +12031,8 @@ Gets a note by NoteId.
 
 ```typescript
 await client.preEncounter.notes.v1.get(CandidApi.NoteId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12204,20 +12046,21 @@ await client.preEncounter.notes.v1.get(CandidApi.NoteId("id"));
 <dl>
 <dd>
 
-**id:** `CandidApi.NoteId`
-
+**id:** `CandidApi.NoteId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12236,7 +12079,6 @@ await client.preEncounter.notes.v1.get(CandidApi.NoteId("id"));
 <dd>
 
 Adds a new note.
-
 </dd>
 </dl>
 </dd>
@@ -12252,10 +12094,10 @@ Adds a new note.
 
 ```typescript
 await client.preEncounter.notes.v1.create({
-    value: "value",
+    value: "value"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12269,20 +12111,21 @@ await client.preEncounter.notes.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableNote`
-
+**request:** `CandidApi.MutableNote` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12301,7 +12144,6 @@ await client.preEncounter.notes.v1.create({
 <dd>
 
 Updates a note. The path must contain the most recent version to prevent races.
-
 </dd>
 </dl>
 </dd>
@@ -12317,10 +12159,10 @@ Updates a note. The path must contain the most recent version to prevent races.
 
 ```typescript
 await client.preEncounter.notes.v1.update(CandidApi.NoteId("id"), "version", {
-    value: "value",
+    value: "value"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12334,36 +12176,37 @@ await client.preEncounter.notes.v1.update(CandidApi.NoteId("id"), "version", {
 <dl>
 <dd>
 
-**id:** `CandidApi.NoteId`
-
+**id:** `CandidApi.NoteId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableNote`
-
+**request:** `CandidApi.MutableNote` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12381,8 +12224,7 @@ await client.preEncounter.notes.v1.update(CandidApi.NoteId("id"), "version", {
 <dl>
 <dd>
 
-Sets a note as deactivated. The path must contain the most recent version to prevent races.
-
+Sets a note as deactivated.  The path must contain the most recent version to prevent races.
 </dd>
 </dl>
 </dd>
@@ -12398,8 +12240,8 @@ Sets a note as deactivated. The path must contain the most recent version to pre
 
 ```typescript
 await client.preEncounter.notes.v1.deactivate(CandidApi.NoteId("id"), "version");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12413,35 +12255,35 @@ await client.preEncounter.notes.v1.deactivate(CandidApi.NoteId("id"), "version")
 <dl>
 <dd>
 
-**id:** `CandidApi.NoteId`
-
+**id:** `CandidApi.NoteId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Patients V1
-
 <details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.create.Error></code></summary>
 <dl>
 <dd>
@@ -12454,8 +12296,7 @@ await client.preEncounter.notes.v1.deactivate(CandidApi.NoteId("id"), "version")
 <dl>
 <dd>
 
-Adds a patient. VersionConflictError is returned when the patient's external ID is already in use.
-
+Adds a patient.  VersionConflictError is returned when the patient's external ID is already in use.
 </dd>
 </dl>
 </dd>
@@ -12475,20 +12316,17 @@ await client.preEncounter.patients.v1.create({
         name: {
             family: "family",
             given: ["given", "given"],
-            use: "USUAL",
+            use: "USUAL"
         },
-        otherNames: [
-            {
+        otherNames: [{
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
-            },
-            {
+                use: "USUAL"
+            }, {
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
-            },
-        ],
+                use: "USUAL"
+            }],
         birthDate: "2023-01-15",
         biologicalSex: "FEMALE",
         primaryAddress: {
@@ -12497,156 +12335,123 @@ await client.preEncounter.patients.v1.create({
             city: "city",
             state: "state",
             postalCode: "postal_code",
-            country: "country",
+            country: "country"
         },
-        otherAddresses: [
-            {
+        otherAddresses: [{
                 use: "HOME",
                 line: ["line", "line"],
                 city: "city",
                 state: "state",
                 postalCode: "postal_code",
-                country: "country",
-            },
-            {
+                country: "country"
+            }, {
                 use: "HOME",
                 line: ["line", "line"],
                 city: "city",
                 state: "state",
                 postalCode: "postal_code",
-                country: "country",
-            },
-        ],
-        otherTelecoms: [
-            {
+                country: "country"
+            }],
+        otherTelecoms: [{
                 value: "value",
-                use: "HOME",
-            },
-            {
+                use: "HOME"
+            }, {
                 value: "value",
-                use: "HOME",
-            },
-        ],
-        contacts: [
-            {
+                use: "HOME"
+            }],
+        contacts: [{
                 relationship: ["SELF", "SELF"],
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-                addresses: [
-                    {
+                        use: "HOME"
+                    }],
+                addresses: [{
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                    {
+                        country: "country"
+                    }, {
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                ],
-            },
-            {
+                        country: "country"
+                    }]
+            }, {
                 relationship: ["SELF", "SELF"],
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-                addresses: [
-                    {
+                        use: "HOME"
+                    }],
+                addresses: [{
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                    {
+                        country: "country"
+                    }, {
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                ],
-            },
-        ],
-        generalPractitioners: [
-            {
+                        country: "country"
+                    }]
+            }],
+        generalPractitioners: [{
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-            },
-            {
+                        use: "HOME"
+                    }]
+            }, {
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-            },
-        ],
+                        use: "HOME"
+                    }]
+            }],
         filingOrder: {
-            coverages: [
-                CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-                CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            ],
-        },
-    },
+            coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12660,20 +12465,21 @@ await client.preEncounter.patients.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.CreatePatientRequest`
-
+**request:** `CandidApi.preEncounter.patients.v1.CreatePatientRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12691,8 +12497,7 @@ await client.preEncounter.patients.v1.create({
 <dl>
 <dd>
 
-Adds a patient and hydrates their MRN with a pre-existing MRN. Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
-
+Adds a patient and hydrates their MRN with a pre-existing MRN.  Once this patient is created their MRN will not be editable. BadRequestError is returned when the MRN is greater than 20 characters. VersionConflictError is returned when the patient's external ID is already in use.
 </dd>
 </dl>
 </dd>
@@ -12713,20 +12518,17 @@ await client.preEncounter.patients.v1.createWithMrn({
         name: {
             family: "family",
             given: ["given", "given"],
-            use: "USUAL",
+            use: "USUAL"
         },
-        otherNames: [
-            {
+        otherNames: [{
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
-            },
-            {
+                use: "USUAL"
+            }, {
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
-            },
-        ],
+                use: "USUAL"
+            }],
         birthDate: "2023-01-15",
         biologicalSex: "FEMALE",
         primaryAddress: {
@@ -12735,156 +12537,123 @@ await client.preEncounter.patients.v1.createWithMrn({
             city: "city",
             state: "state",
             postalCode: "postal_code",
-            country: "country",
+            country: "country"
         },
-        otherAddresses: [
-            {
+        otherAddresses: [{
                 use: "HOME",
                 line: ["line", "line"],
                 city: "city",
                 state: "state",
                 postalCode: "postal_code",
-                country: "country",
-            },
-            {
+                country: "country"
+            }, {
                 use: "HOME",
                 line: ["line", "line"],
                 city: "city",
                 state: "state",
                 postalCode: "postal_code",
-                country: "country",
-            },
-        ],
-        otherTelecoms: [
-            {
+                country: "country"
+            }],
+        otherTelecoms: [{
                 value: "value",
-                use: "HOME",
-            },
-            {
+                use: "HOME"
+            }, {
                 value: "value",
-                use: "HOME",
-            },
-        ],
-        contacts: [
-            {
+                use: "HOME"
+            }],
+        contacts: [{
                 relationship: ["SELF", "SELF"],
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-                addresses: [
-                    {
+                        use: "HOME"
+                    }],
+                addresses: [{
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                    {
+                        country: "country"
+                    }, {
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                ],
-            },
-            {
+                        country: "country"
+                    }]
+            }, {
                 relationship: ["SELF", "SELF"],
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-                addresses: [
-                    {
+                        use: "HOME"
+                    }],
+                addresses: [{
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                    {
+                        country: "country"
+                    }, {
                         use: "HOME",
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
                         postalCode: "postal_code",
-                        country: "country",
-                    },
-                ],
-            },
-        ],
-        generalPractitioners: [
-            {
+                        country: "country"
+                    }]
+            }],
+        generalPractitioners: [{
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-            },
-            {
+                        use: "HOME"
+                    }]
+            }, {
                 name: {
                     family: "family",
                     given: ["given", "given"],
-                    use: "USUAL",
+                    use: "USUAL"
                 },
-                telecoms: [
-                    {
+                telecoms: [{
                         value: "value",
-                        use: "HOME",
-                    },
-                    {
+                        use: "HOME"
+                    }, {
                         value: "value",
-                        use: "HOME",
-                    },
-                ],
-            },
-        ],
+                        use: "HOME"
+                    }]
+            }],
         filingOrder: {
-            coverages: [
-                CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-                CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            ],
-        },
-    },
+            coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12898,20 +12667,21 @@ await client.preEncounter.patients.v1.createWithMrn({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.CreatePatientWithMrnRequest`
-
+**request:** `CandidApi.preEncounter.patients.v1.CreatePatientWithMrnRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12930,7 +12700,6 @@ await client.preEncounter.patients.v1.createWithMrn({
 <dd>
 
 Searches for patients that match the query parameters.
-
 </dd>
 </dl>
 </dd>
@@ -12946,8 +12715,8 @@ Searches for patients that match the query parameters.
 
 ```typescript
 await client.preEncounter.patients.v1.getMulti();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12961,20 +12730,21 @@ await client.preEncounter.patients.v1.getMulti();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated`
-
+**request:** `CandidApi.preEncounter.patients.v1.PatientsSearchRequestPaginated` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12992,8 +12762,7 @@ await client.preEncounter.patients.v1.getMulti();
 <dl>
 <dd>
 
-Searches for referring providers that match the query parameters. The search is case-insensitive, supports fuzzy matching, and matches against provider name and NPI. The search criteria must be an alphanumeric string, and the search is limited to the first 20 results.
-
+Searches for referring providers that match the query parameters.  The search is case-insensitive, supports fuzzy matching, and matches against provider name and NPI. The search criteria must be an alphanumeric string, and the search is limited to the first 20 results.
 </dd>
 </dl>
 </dd>
@@ -13009,10 +12778,10 @@ Searches for referring providers that match the query parameters. The search is 
 
 ```typescript
 await client.preEncounter.patients.v1.searchProviders({
-    searchCriteria: "search_criteria",
+    searchCriteria: "search_criteria"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13026,20 +12795,21 @@ await client.preEncounter.patients.v1.searchProviders({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.SearchProvidersRequest`
-
+**request:** `CandidApi.preEncounter.patients.v1.SearchProvidersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13058,7 +12828,6 @@ await client.preEncounter.patients.v1.searchProviders({
 <dd>
 
 Gets a patient.
-
 </dd>
 </dl>
 </dd>
@@ -13074,8 +12843,8 @@ Gets a patient.
 
 ```typescript
 await client.preEncounter.patients.v1.get(CandidApi.PatientId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13089,20 +12858,21 @@ await client.preEncounter.patients.v1.get(CandidApi.PatientId("id"));
 <dl>
 <dd>
 
-**id:** `CandidApi.PatientId`
-
+**id:** `CandidApi.PatientId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13121,7 +12891,6 @@ await client.preEncounter.patients.v1.get(CandidApi.PatientId("id"));
 <dd>
 
 Gets a patient by mrn.
-
 </dd>
 </dl>
 </dd>
@@ -13137,8 +12906,8 @@ Gets a patient by mrn.
 
 ```typescript
 await client.preEncounter.patients.v1.getByMrn("mrn");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13152,20 +12921,21 @@ await client.preEncounter.patients.v1.getByMrn("mrn");
 <dl>
 <dd>
 
-**mrn:** `string`
-
+**mrn:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13183,8 +12953,7 @@ await client.preEncounter.patients.v1.getByMrn("mrn");
 <dl>
 <dd>
 
-Gets a patient along with it's full history. The return list is ordered by version ascending.
-
+Gets a patient along with it's full history.  The return list is ordered by version ascending.
 </dd>
 </dl>
 </dd>
@@ -13200,8 +12969,8 @@ Gets a patient along with it's full history. The return list is ordered by versi
 
 ```typescript
 await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13215,20 +12984,21 @@ await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("id"));
 <dl>
 <dd>
 
-**id:** `CandidApi.PatientId`
-
+**id:** `CandidApi.PatientId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13247,7 +13017,6 @@ await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("id"));
 <dd>
 
 Updates a patient. The path must contain the next version number to prevent race conditions. For example, if the current version of the patient is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the patient. Updating historic versions is not supported.
-
 </dd>
 </dl>
 </dd>
@@ -13266,20 +13035,17 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("id"), "version
     name: {
         family: "family",
         given: ["given", "given"],
-        use: "USUAL",
+        use: "USUAL"
     },
-    otherNames: [
-        {
+    otherNames: [{
             family: "family",
             given: ["given", "given"],
-            use: "USUAL",
-        },
-        {
+            use: "USUAL"
+        }, {
             family: "family",
             given: ["given", "given"],
-            use: "USUAL",
-        },
-    ],
+            use: "USUAL"
+        }],
     birthDate: "2023-01-15",
     biologicalSex: "FEMALE",
     primaryAddress: {
@@ -13288,155 +13054,122 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("id"), "version
         city: "city",
         state: "state",
         postalCode: "postal_code",
-        country: "country",
+        country: "country"
     },
-    otherAddresses: [
-        {
+    otherAddresses: [{
             use: "HOME",
             line: ["line", "line"],
             city: "city",
             state: "state",
             postalCode: "postal_code",
-            country: "country",
-        },
-        {
+            country: "country"
+        }, {
             use: "HOME",
             line: ["line", "line"],
             city: "city",
             state: "state",
             postalCode: "postal_code",
-            country: "country",
-        },
-    ],
-    otherTelecoms: [
-        {
+            country: "country"
+        }],
+    otherTelecoms: [{
             value: "value",
-            use: "HOME",
-        },
-        {
+            use: "HOME"
+        }, {
             value: "value",
-            use: "HOME",
-        },
-    ],
-    contacts: [
-        {
+            use: "HOME"
+        }],
+    contacts: [{
             relationship: ["SELF", "SELF"],
             name: {
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
+                use: "USUAL"
             },
-            telecoms: [
-                {
+            telecoms: [{
                     value: "value",
-                    use: "HOME",
-                },
-                {
+                    use: "HOME"
+                }, {
                     value: "value",
-                    use: "HOME",
-                },
-            ],
-            addresses: [
-                {
+                    use: "HOME"
+                }],
+            addresses: [{
                     use: "HOME",
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
                     postalCode: "postal_code",
-                    country: "country",
-                },
-                {
+                    country: "country"
+                }, {
                     use: "HOME",
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
                     postalCode: "postal_code",
-                    country: "country",
-                },
-            ],
-        },
-        {
+                    country: "country"
+                }]
+        }, {
             relationship: ["SELF", "SELF"],
             name: {
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
+                use: "USUAL"
             },
-            telecoms: [
-                {
+            telecoms: [{
                     value: "value",
-                    use: "HOME",
-                },
-                {
+                    use: "HOME"
+                }, {
                     value: "value",
-                    use: "HOME",
-                },
-            ],
-            addresses: [
-                {
+                    use: "HOME"
+                }],
+            addresses: [{
                     use: "HOME",
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
                     postalCode: "postal_code",
-                    country: "country",
-                },
-                {
+                    country: "country"
+                }, {
                     use: "HOME",
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
                     postalCode: "postal_code",
-                    country: "country",
-                },
-            ],
-        },
-    ],
-    generalPractitioners: [
-        {
+                    country: "country"
+                }]
+        }],
+    generalPractitioners: [{
             name: {
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
+                use: "USUAL"
             },
-            telecoms: [
-                {
+            telecoms: [{
                     value: "value",
-                    use: "HOME",
-                },
-                {
+                    use: "HOME"
+                }, {
                     value: "value",
-                    use: "HOME",
-                },
-            ],
-        },
-        {
+                    use: "HOME"
+                }]
+        }, {
             name: {
                 family: "family",
                 given: ["given", "given"],
-                use: "USUAL",
+                use: "USUAL"
             },
-            telecoms: [
-                {
+            telecoms: [{
                     value: "value",
-                    use: "HOME",
-                },
-                {
+                    use: "HOME"
+                }, {
                     value: "value",
-                    use: "HOME",
-                },
-            ],
-        },
-    ],
+                    use: "HOME"
+                }]
+        }],
     filingOrder: {
-        coverages: [
-            CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-        ],
-    },
+        coverages: [CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13450,36 +13183,37 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("id"), "version
 <dl>
 <dd>
 
-**id:** `CandidApi.PatientId`
-
+**id:** `CandidApi.PatientId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutablePatient`
-
+**request:** `CandidApi.MutablePatient` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13497,8 +13231,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("id"), "version
 <dl>
 <dd>
 
-Sets a patient as deactivated. The path must contain the most recent version plus 1 to prevent race conditions. Deactivating historic versions is not supported.
-
+Sets a patient as deactivated.  The path must contain the most recent version plus 1 to prevent race conditions.  Deactivating historic versions is not supported.
 </dd>
 </dl>
 </dd>
@@ -13514,8 +13247,8 @@ Sets a patient as deactivated. The path must contain the most recent version plu
 
 ```typescript
 await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("id"), "version");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13529,28 +13262,29 @@ await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("id"), "ver
 <dl>
 <dd>
 
-**id:** `CandidApi.PatientId`
-
+**id:** `CandidApi.PatientId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13568,8 +13302,7 @@ await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("id"), "ver
 <dl>
 <dd>
 
-Removes the deactivated flag for a patient. The path must contain the most recent version plus 1 to prevent race conditions. Reactivating historic versions is not supported.
-
+Removes the deactivated flag for a patient.  The path must contain the most recent version plus 1 to prevent race conditions.  Reactivating historic versions is not supported.
 </dd>
 </dl>
 </dd>
@@ -13585,8 +13318,8 @@ Removes the deactivated flag for a patient. The path must contain the most recen
 
 ```typescript
 await client.preEncounter.patients.v1.reactivate(CandidApi.PatientId("id"), "version");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13600,28 +13333,29 @@ await client.preEncounter.patients.v1.reactivate(CandidApi.PatientId("id"), "ver
 <dl>
 <dd>
 
-**id:** `CandidApi.PatientId`
-
+**id:** `CandidApi.PatientId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13640,7 +13374,6 @@ await client.preEncounter.patients.v1.reactivate(CandidApi.PatientId("id"), "ver
 <dd>
 
 Returns a list of Patients based on the search criteria.
-
 </dd>
 </dl>
 </dd>
@@ -13656,8 +13389,8 @@ Returns a list of Patients based on the search criteria.
 
 ```typescript
 await client.preEncounter.patients.v1.search();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13671,20 +13404,21 @@ await client.preEncounter.patients.v1.search();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.PatientGetMultiRequest`
-
+**request:** `CandidApi.preEncounter.patients.v1.PatientGetMultiRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13702,8 +13436,7 @@ await client.preEncounter.patients.v1.search();
 <dl>
 <dd>
 
-Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
-
+Scans up to 100 patient updates.  The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
 </dd>
 </dl>
 </dd>
@@ -13719,10 +13452,10 @@ Scans up to 100 patient updates. The since query parameter is inclusive, and the
 
 ```typescript
 await client.preEncounter.patients.v1.scan({
-    since: new Date("2024-01-15T09:30:00.000Z"),
+    since: new Date("2024-01-15T09:30:00.000Z")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13736,27 +13469,27 @@ await client.preEncounter.patients.v1.scan({
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.patients.v1.PatientScanRequest`
-
+**request:** `CandidApi.preEncounter.patients.v1.PatientScanRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## PreEncounter Tags V1
-
 <details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.get.Error></code></summary>
 <dl>
 <dd>
@@ -13770,7 +13503,6 @@ await client.preEncounter.patients.v1.scan({
 <dd>
 
 Gets a tag by TagId.
-
 </dd>
 </dl>
 </dd>
@@ -13786,8 +13518,8 @@ Gets a tag by TagId.
 
 ```typescript
 await client.preEncounter.tags.v1.get(CandidApi.TagId("id"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13801,20 +13533,21 @@ await client.preEncounter.tags.v1.get(CandidApi.TagId("id"));
 <dl>
 <dd>
 
-**id:** `CandidApi.TagId`
-
+**id:** `CandidApi.TagId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13833,7 +13566,6 @@ await client.preEncounter.tags.v1.get(CandidApi.TagId("id"));
 <dd>
 
 Gets all tags. Defaults to page size of 1000.
-
 </dd>
 </dl>
 </dd>
@@ -13849,8 +13581,8 @@ Gets all tags. Defaults to page size of 1000.
 
 ```typescript
 await client.preEncounter.tags.v1.getAll();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13864,20 +13596,21 @@ await client.preEncounter.tags.v1.getAll();
 <dl>
 <dd>
 
-**request:** `CandidApi.preEncounter.tags.v1.GetAllTagsRequest`
-
+**request:** `CandidApi.preEncounter.tags.v1.GetAllTagsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13896,7 +13629,6 @@ await client.preEncounter.tags.v1.getAll();
 <dd>
 
 Adds a new tag if it does not already exist, otherwise, returns the existing tag.
-
 </dd>
 </dl>
 </dd>
@@ -13912,10 +13644,10 @@ Adds a new tag if it does not already exist, otherwise, returns the existing tag
 
 ```typescript
 await client.preEncounter.tags.v1.create({
-    value: "value",
+    value: "value"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13929,20 +13661,21 @@ await client.preEncounter.tags.v1.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableTag`
-
+**request:** `CandidApi.MutableTag` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13961,7 +13694,6 @@ await client.preEncounter.tags.v1.create({
 <dd>
 
 Updates a tag. The path must contain the most recent version to prevent races.
-
 </dd>
 </dl>
 </dd>
@@ -13977,10 +13709,10 @@ Updates a tag. The path must contain the most recent version to prevent races.
 
 ```typescript
 await client.preEncounter.tags.v1.update(CandidApi.TagId("id"), "version", {
-    value: "value",
+    value: "value"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13994,36 +13726,37 @@ await client.preEncounter.tags.v1.update(CandidApi.TagId("id"), "version", {
 <dl>
 <dd>
 
-**id:** `CandidApi.TagId`
-
+**id:** `CandidApi.TagId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.MutableTag`
-
+**request:** `CandidApi.MutableTag` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14041,8 +13774,7 @@ await client.preEncounter.tags.v1.update(CandidApi.TagId("id"), "version", {
 <dl>
 <dd>
 
-Sets a tag as deactivated. The path must contain the most recent version to prevent races.
-
+Sets a tag as deactivated.  The path must contain the most recent version to prevent races.
 </dd>
 </dl>
 </dd>
@@ -14058,8 +13790,8 @@ Sets a tag as deactivated. The path must contain the most recent version to prev
 
 ```typescript
 await client.preEncounter.tags.v1.deactivate(CandidApi.TagId("id"), "version");
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14073,35 +13805,35 @@ await client.preEncounter.tags.v1.deactivate(CandidApi.TagId("id"), "version");
 <dl>
 <dd>
 
-**id:** `CandidApi.TagId`
-
+**id:** `CandidApi.TagId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**version:** `string`
-
+**version:** `string` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1.RequestOptions`
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Diagnoses
-
 <details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.create.Error></code></summary>
 <dl>
 <dd>
@@ -14115,7 +13847,6 @@ await client.preEncounter.tags.v1.deactivate(CandidApi.TagId("id"), "version");
 <dd>
 
 Creates a new diagnosis for an encounter
-
 </dd>
 </dl>
 </dd>
@@ -14133,10 +13864,10 @@ Creates a new diagnosis for an encounter
 await client.diagnoses.create({
     encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
     codeType: "ABF",
-    code: "code",
+    code: "code"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14150,20 +13881,21 @@ await client.diagnoses.create({
 <dl>
 <dd>
 
-**request:** `CandidApi.StandaloneDiagnosisCreate`
-
+**request:** `CandidApi.StandaloneDiagnosisCreate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Diagnoses.RequestOptions`
+**requestOptions:** `Diagnoses.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14182,7 +13914,6 @@ await client.diagnoses.create({
 <dd>
 
 Updates the diagnosis record matching the provided `diagnosis_id`
-
 </dd>
 </dl>
 </dd>
@@ -14198,8 +13929,8 @@ Updates the diagnosis record matching the provided `diagnosis_id`
 
 ```typescript
 await client.diagnoses.update(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14213,28 +13944,29 @@ await client.diagnoses.update(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dl>
 <dd>
 
-**diagnosisId:** `CandidApi.DiagnosisId`
-
+**diagnosisId:** `CandidApi.DiagnosisId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.DiagnosisUpdate`
-
+**request:** `CandidApi.DiagnosisUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Diagnoses.RequestOptions`
+**requestOptions:** `Diagnoses.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14253,7 +13985,6 @@ await client.diagnoses.update(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dd>
 
 Deletes the diagnosis record associated with the provided `diagnosis_id`
-
 </dd>
 </dl>
 </dd>
@@ -14269,8 +14000,8 @@ Deletes the diagnosis record associated with the provided `diagnosis_id`
 
 ```typescript
 await client.diagnoses.delete(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14284,27 +14015,27 @@ await client.diagnoses.delete(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dl>
 <dd>
 
-**diagnosisId:** `CandidApi.DiagnosisId`
-
+**diagnosisId:** `CandidApi.DiagnosisId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Diagnoses.RequestOptions`
+**requestOptions:** `Diagnoses.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ServiceFacility
-
 <details><summary><code>client.serviceFacility.<a href="/src/api/resources/serviceFacility/client/Client.ts">update</a>(serviceFacilityId, { ...params }) -> core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error></code></summary>
 <dl>
 <dd>
@@ -14319,8 +14050,8 @@ await client.diagnoses.delete(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 
 ```typescript
 await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14334,28 +14065,29 @@ await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-**serviceFacilityId:** `CandidApi.ServiceFacilityId`
-
+**serviceFacilityId:** `CandidApi.ServiceFacilityId` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**request:** `CandidApi.EncounterServiceFacilityUpdate`
-
+**request:** `CandidApi.EncounterServiceFacilityUpdate` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `ServiceFacility.RequestOptions`
+**requestOptions:** `ServiceFacility.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>

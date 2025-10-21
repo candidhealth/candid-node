@@ -1,1 +1,1 @@
-export { type GetMultiInsurancePaymentRequest } from "./GetMultiInsurancePaymentRequest";
+export type { GetMultiInsurancePaymentRequest } from "./GetMultiInsurancePaymentRequest";

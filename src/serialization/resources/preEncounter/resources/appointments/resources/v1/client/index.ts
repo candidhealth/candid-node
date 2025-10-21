@@ -1,7 +1,7 @@
 export * as create from "./create";
-export * as getVisits from "./getVisits";
+export * as deactivate from "./deactivate";
 export * as get from "./get";
 export * as getHistory from "./getHistory";
-export * as update from "./update";
+export * as getVisits from "./getVisits";
 export * as scan from "./scan";
-export * as deactivate from "./deactivate";
+export * as update from "./update";

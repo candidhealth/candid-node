@@ -1,4 +1,4 @@
-export * from "./PatientPaymentId";
 export * from "./PatientPayment";
-export * from "./PatientPaymentsPage";
+export * from "./PatientPaymentId";
 export * from "./PatientPaymentSortField";
+export * from "./PatientPaymentsPage";

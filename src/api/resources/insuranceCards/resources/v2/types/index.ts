@@ -1,5 +1,5 @@
-export * from "./InsuranceCardId";
+export * from "./InsuranceCard";
 export * from "./InsuranceCardBase";
 export * from "./InsuranceCardCreate";
 export * from "./InsuranceCardCreateOptional";
-export * from "./InsuranceCard";
+export * from "./InsuranceCardId";

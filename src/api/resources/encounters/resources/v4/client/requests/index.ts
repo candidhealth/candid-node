@@ -1,1 +1,1 @@
-export { type GetAllEncountersRequest } from "./GetAllEncountersRequest";
+export type { GetAllEncountersRequest } from "./GetAllEncountersRequest";

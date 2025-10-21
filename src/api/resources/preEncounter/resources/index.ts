@@ -1,4 +1,6 @@
 export * as appointments from "./appointments";
+export * as common from "./common";
+export * from "./common/types";
 export * as coverages from "./coverages";
 export * as eligibilityChecks from "./eligibilityChecks";
 export * as images from "./images";
@@ -6,5 +8,3 @@ export * as lists from "./lists";
 export * as notes from "./notes";
 export * as patients from "./patients";
 export * as tags from "./tags";
-export * as common from "./common";
-export * from "./common/types";

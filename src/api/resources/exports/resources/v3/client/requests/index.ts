@@ -1,1 +1,1 @@
-export { type GetExportsRequest } from "./GetExportsRequest";
+export type { GetExportsRequest } from "./GetExportsRequest";

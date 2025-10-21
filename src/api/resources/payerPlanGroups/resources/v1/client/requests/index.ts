@@ -1,1 +1,1 @@
-export { type PayerPlanGroupGetMultiRequest } from "./PayerPlanGroupGetMultiRequest";
+export type { PayerPlanGroupGetMultiRequest } from "./PayerPlanGroupGetMultiRequest";

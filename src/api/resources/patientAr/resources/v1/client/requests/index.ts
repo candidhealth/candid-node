@@ -1,1 +1,1 @@
-export { type GetInventoryRecordsRequest } from "./GetInventoryRecordsRequest";
+export type { GetInventoryRecordsRequest } from "./GetInventoryRecordsRequest";

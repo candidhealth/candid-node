@@ -1,1 +1,1 @@
-export { type GetExternalPaymentAccountConfigsRequest } from "./GetExternalPaymentAccountConfigsRequest";
+export type { GetExternalPaymentAccountConfigsRequest } from "./GetExternalPaymentAccountConfigsRequest";

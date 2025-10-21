@@ -1,1 +1,1 @@
-export { type CreateSuperbillRequest } from "./CreateSuperbillRequest";
+export type { CreateSuperbillRequest } from "./CreateSuperbillRequest";

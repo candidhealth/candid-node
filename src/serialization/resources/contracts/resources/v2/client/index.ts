@@ -1,4 +1,4 @@
-export * as get from "./get";
 export * as delete from "./delete";
-export * as update from "./update";
+export * as get from "./get";
 export * from "./requests";
+export * as update from "./update";

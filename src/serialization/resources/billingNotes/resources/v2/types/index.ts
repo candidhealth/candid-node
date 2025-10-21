@@ -1,4 +1,4 @@
-export * from "./BillingNoteId";
-export * from "./BillingNoteBaseOptional";
-export * from "./BillingNoteBase";
 export * from "./BillingNote";
+export * from "./BillingNoteBase";
+export * from "./BillingNoteBaseOptional";
+export * from "./BillingNoteId";
