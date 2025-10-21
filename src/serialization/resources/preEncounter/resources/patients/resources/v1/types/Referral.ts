@@ -7,6 +7,8 @@ import * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import { ExternalProvider } from "../../../../common/types/ExternalProvider";
 import { Period } from "../../../../common/types/Period";
+import { PatientServiceFacility } from "../../../../common/types/PatientServiceFacility";
+import { ReferralUnit } from "./ReferralUnit";
 
 export const Referral: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.Referral.Raw,
@@ -16,6 +18,11 @@ export const Referral: core.serialization.ObjectSchema<
     referralNumber: core.serialization.property("referral_number", core.serialization.string()),
     period: Period.optional(),
     notes: core.serialization.string().optional(),
+    serviceFacility: PatientServiceFacility.optional(),
+    units: ReferralUnit.optional(),
+    quantity: core.serialization.number().optional(),
+    cptCodes: core.serialization.list(core.serialization.string()).optional(),
+    applyForAllCptCodes: core.serialization.boolean().optional(),
 });
 
 export declare namespace Referral {
@@ -24,5 +31,10 @@ export declare namespace Referral {
         referral_number: string;
         period?: Period.Raw | null;
         notes?: string | null;
+        serviceFacility?: PatientServiceFacility.Raw | null;
+        units?: ReferralUnit.Raw | null;
+        quantity?: number | null;
+        cptCodes?: string[] | null;
+        applyForAllCptCodes?: boolean | null;
     }
 }

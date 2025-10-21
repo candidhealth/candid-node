@@ -25,7 +25,7 @@ import { CanonicalNonInsurancePayerAssociation } from "../../../../common/types/
 import { Guarantor } from "./Guarantor";
 import { Authorization } from "./Authorization";
 import { Referral } from "./Referral";
-import { PatientServiceFacility } from "./PatientServiceFacility";
+import { PatientServiceFacility } from "../../../../common/types/PatientServiceFacility";
 import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 import { NoteId } from "../../../../common/types/NoteId";
 import { TagId } from "../../../../common/types/TagId";

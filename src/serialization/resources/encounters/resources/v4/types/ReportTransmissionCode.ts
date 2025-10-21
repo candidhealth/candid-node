@@ -9,8 +9,8 @@ import * as core from "../../../../../../core";
 export const ReportTransmissionCode: core.serialization.Schema<
     serializers.encounters.v4.ReportTransmissionCode.Raw,
     CandidApi.encounters.v4.ReportTransmissionCode
-> = core.serialization.enum_(["BM", "FX"]);
+> = core.serialization.enum_(["BM", "EL", "FX"]);
 
 export declare namespace ReportTransmissionCode {
-    export type Raw = "BM" | "FX";
+    export type Raw = "BM" | "EL" | "FX";
 }

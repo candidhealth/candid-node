@@ -7,9 +7,13 @@ export type ReportTransmissionCode =
      * By Mail */
     | "BM"
     /**
+     * Electronically Only */
+    | "EL"
+    /**
      * By Fax */
     | "FX";
 export const ReportTransmissionCode = {
     Cbm: "BM",
+    Cel: "EL",
     Cfx: "FX",
 } as const;

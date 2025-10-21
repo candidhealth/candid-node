@@ -9,4 +9,9 @@ export interface Referral {
     referralNumber: string;
     period?: CandidApi.preEncounter.Period;
     notes?: string;
+    serviceFacility?: CandidApi.preEncounter.PatientServiceFacility;
+    units?: CandidApi.preEncounter.patients.v1.ReferralUnit;
+    quantity?: number;
+    cptCodes?: string[];
+    applyForAllCptCodes?: boolean;
 }

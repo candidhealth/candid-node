@@ -9,8 +9,23 @@ import * as core from "../../../../../../../../core";
 export const DoNotInvoiceReason: core.serialization.Schema<
     serializers.preEncounter.patients.v1.DoNotInvoiceReason.Raw,
     CandidApi.preEncounter.patients.v1.DoNotInvoiceReason
-> = core.serialization.enum_(["BANKRUPTCY", "DECEASED", "HARDSHIP", "OTHER"]);
+> = core.serialization.enum_([
+    "BANKRUPTCY",
+    "DECEASED",
+    "HARDSHIP",
+    "OTHER",
+    "COLLECTIONS",
+    "BAD_ADDRESS",
+    "PROFESSIONAL_COURTESY",
+]);
 
 export declare namespace DoNotInvoiceReason {
-    export type Raw = "BANKRUPTCY" | "DECEASED" | "HARDSHIP" | "OTHER";
+    export type Raw =
+        | "BANKRUPTCY"
+        | "DECEASED"
+        | "HARDSHIP"
+        | "OTHER"
+        | "COLLECTIONS"
+        | "BAD_ADDRESS"
+        | "PROFESSIONAL_COURTESY";
 }
