@@ -5,4 +5,4 @@ examples
 
 # Ignore workflow changes
 .github/workflows/ci.yml
-.github/actions/*
+.github/actions/
