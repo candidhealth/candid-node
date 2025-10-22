@@ -63,4 +63,6 @@ export interface MutablePatient {
     originationDetail?: CandidApi.preEncounter.patients.v1.OriginationDetail;
     /** Metadata for the patient used for patient inference from encounters. */
     inferredPatientMetadata?: CandidApi.preEncounter.patients.v1.InferredPatientMetadata;
+    /** ORCON (Originator Controlled) - When set to true, the Candid system will hide this patient from downstream integrations. Defaults to false. */
+    orcon?: boolean;
 }

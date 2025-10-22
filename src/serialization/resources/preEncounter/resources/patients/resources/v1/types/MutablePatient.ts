@@ -98,6 +98,7 @@ export const MutablePatient: core.serialization.ObjectSchema<
         "inferred_patient_metadata",
         InferredPatientMetadata.optional(),
     ),
+    orcon: core.serialization.boolean().optional(),
 });
 
 export declare namespace MutablePatient {
@@ -142,5 +143,6 @@ export declare namespace MutablePatient {
         tag_ids?: TagId.Raw[] | null;
         origination_detail?: OriginationDetail.Raw | null;
         inferred_patient_metadata?: InferredPatientMetadata.Raw | null;
+        orcon?: boolean | null;
     }
 }

@@ -28,6 +28,7 @@ export const MutableCoverage: core.serialization.ObjectSchema<
     ),
     latestEligibilityCheck: core.serialization.property("latest_eligibility_check", LatestEligibilityCheck.optional()),
     benefits: CoverageBenefits.optional(),
+    orcon: core.serialization.boolean().optional(),
 });
 
 export declare namespace MutableCoverage {
@@ -41,5 +42,6 @@ export declare namespace MutableCoverage {
         eligibility_checks?: EligibilityCheckMetadata.Raw[] | null;
         latest_eligibility_check?: LatestEligibilityCheck.Raw | null;
         benefits?: CoverageBenefits.Raw | null;
+        orcon?: boolean | null;
     }
 }
