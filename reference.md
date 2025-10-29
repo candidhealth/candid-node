@@ -2918,6 +2918,239 @@ await client.encounterProviders.v2.deleteOrderingProvider(CandidApi.ServiceLineI
 </dl>
 </details>
 
+## EncounterSupplementalInformation V1
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">get</a>(encounterId) -> core.APIResponse<CandidApi.SupplementalInformation[], CandidApi.encounterSupplementalInformation.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterSupplementalInformation.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.SupplementalInformation, CandidApi.encounterSupplementalInformation.v1.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterSupplementalInformation.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    attachmentReportTypeCode: "03",
+    attachmentTransmissionCode: "BM",
+    attachmentInclusion: "not_included"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.CreateSupplementalInformationRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">update</a>(encounterId, supplementalInformationId, { ...params }) -> core.APIResponse<CandidApi.SupplementalInformation, CandidApi.encounterSupplementalInformation.v1.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterSupplementalInformation.v1.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.SupplementalInformationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**supplementalInformationId:** `CandidApi.SupplementalInformationId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.UpdateSupplementalInformationRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">delete</a>(encounterId, supplementalInformationId) -> core.APIResponse<void, CandidApi.encounterSupplementalInformation.v1.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounterSupplementalInformation.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.SupplementalInformationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**supplementalInformationId:** `CandidApi.SupplementalInformationId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Encounters V4
 <details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.EncounterPage, CandidApi.encounters.v4.getAll.Error></code></summary>
 <dl>
@@ -13449,12 +13682,12 @@ await client.preEncounter.patients.v1.search();
 <dl>
 <dd>
 
-Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+Scans up to 1000 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
 
 **Polling Pattern:**
 To continuously poll for updates without gaps:
 1. Make your initial request with a `since` timestamp (e.g., `since=2020-01-01T13:00:00.000Z`)
-2. The API returns up to 100 patient records, sorted by `updated_at` ascending
+2. The API returns 100 by default and up to 1000 patient records, sorted by `updated_at` ascending
 3. Find the `updated_at` value from the last record in the response
 4. Use that `updated_at` value as the `since` parameter in your next request
 5. Repeat steps 2-4 to ingest updates until you receive an empty list

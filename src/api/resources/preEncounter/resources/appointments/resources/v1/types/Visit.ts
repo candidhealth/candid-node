@@ -10,5 +10,5 @@ export interface Visit {
     patient: CandidApi.preEncounter.patients.v1.MutablePatientWithMrn;
     startTime: Date;
     status: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
-    primaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
+    primaryCoverageStatus?: CandidApi.preEncounter.coverages.v1.CoverageStatus;
 }

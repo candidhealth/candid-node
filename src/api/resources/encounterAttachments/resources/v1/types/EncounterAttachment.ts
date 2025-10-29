@@ -5,4 +5,6 @@ import type * as CandidApi from "../../../../../index";
 export interface EncounterAttachment extends CandidApi.encounterAttachments.v1.BaseAttachment {
     encounterId: CandidApi.EncounterId;
     attachmentType: CandidApi.encounterAttachments.v1.EncounterAttachmentType;
+    createdAt: Date;
+    createdBy: CandidApi.users.v2.UserV2;
 }

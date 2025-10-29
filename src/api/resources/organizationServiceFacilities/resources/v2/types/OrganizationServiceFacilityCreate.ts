@@ -40,6 +40,8 @@ export interface OrganizationServiceFacilityCreate {
     npi?: string;
     /** The Place of Service (POS) code for this service facility. */
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
+    /** The associated CLIA number with this service facility. Can be used to populate CLIA numbers on encounters. */
+    cliaNumber?: string;
     /** The status of the service facility. */
     status?: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus;
     /** The operational status of the service facility. */

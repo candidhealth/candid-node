@@ -8,4 +8,5 @@
  */
 export interface PatientScanRequest {
     since: Date;
+    maxResults?: number;
 }

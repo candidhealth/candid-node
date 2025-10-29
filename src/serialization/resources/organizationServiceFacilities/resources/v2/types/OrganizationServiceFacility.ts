@@ -26,6 +26,7 @@ export const OrganizationServiceFacility: core.serialization.ObjectSchema<
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     npi: core.serialization.string().optional(),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
+    cliaNumber: core.serialization.property("clia_number", core.serialization.string().optional()),
     status: ServiceFacilityStatus.optional(),
     operationalStatus: core.serialization.property("operational_status", ServiceFacilityOperationalStatus.optional()),
     mode: ServiceFacilityMode.optional(),
@@ -44,6 +45,7 @@ export declare namespace OrganizationServiceFacility {
         external_id?: string | null;
         npi?: string | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
+        clia_number?: string | null;
         status?: ServiceFacilityStatus.Raw | null;
         operational_status?: ServiceFacilityOperationalStatus.Raw | null;
         mode?: ServiceFacilityMode.Raw | null;

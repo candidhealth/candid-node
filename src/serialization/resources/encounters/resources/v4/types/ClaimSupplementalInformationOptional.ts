@@ -3,8 +3,8 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
-import { ReportTransmissionCode } from "./ReportTransmissionCode";
-import { ReportTypeCode } from "./ReportTypeCode";
+import { ReportTransmissionCode } from "../../../../commons/types/ReportTransmissionCode";
+import { ReportTypeCode } from "../../../../commons/types/ReportTypeCode";
 
 export const ClaimSupplementalInformationOptional: core.serialization.ObjectSchema<
     serializers.encounters.v4.ClaimSupplementalInformationOptional.Raw,

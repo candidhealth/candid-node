@@ -4,7 +4,7 @@ import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { PatientId } from "../../../../common/types/PatientId";
-import { MutableCoverage } from "../../../../coverages/resources/v1/types/MutableCoverage";
+import { CoverageStatus } from "../../../../coverages/resources/v1/types/CoverageStatus";
 import { MutablePatientWithMrn } from "../../../../patients/resources/v1/types/MutablePatientWithMrn";
 import { AppointmentStatus } from "./AppointmentStatus";
 
@@ -16,7 +16,7 @@ export const Visit: core.serialization.ObjectSchema<
     patient: MutablePatientWithMrn,
     startTime: core.serialization.property("start_time", core.serialization.date()),
     status: AppointmentStatus,
-    primaryCoverage: core.serialization.property("primary_coverage", MutableCoverage.optional()),
+    primaryCoverageStatus: core.serialization.property("primary_coverage_status", CoverageStatus.optional()),
 });
 
 export declare namespace Visit {
@@ -25,6 +25,6 @@ export declare namespace Visit {
         patient: MutablePatientWithMrn.Raw;
         start_time: string;
         status: AppointmentStatus.Raw;
-        primary_coverage?: MutableCoverage.Raw | null;
+        primary_coverage_status?: CoverageStatus.Raw | null;
     }
 }

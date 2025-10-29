@@ -301,6 +301,7 @@ export const Carc: core.serialization.Schema<serializers.x12.v1.Carc.Raw, Candid
         "P30",
         "P31",
         "P32",
+        "15",
         "17",
         "25",
         "28",
@@ -708,6 +709,7 @@ export declare namespace Carc {
         | "P30"
         | "P31"
         | "P32"
+        | "15"
         | "17"
         | "25"
         | "28"

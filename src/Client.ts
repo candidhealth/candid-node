@@ -12,6 +12,7 @@ import { Diagnoses } from "./api/resources/diagnoses/client/Client";
 import { Eligibility } from "./api/resources/eligibility/client/Client";
 import { EncounterAttachments } from "./api/resources/encounterAttachments/client/Client";
 import { EncounterProviders } from "./api/resources/encounterProviders/client/Client";
+import { EncounterSupplementalInformation } from "./api/resources/encounterSupplementalInformation/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
@@ -66,6 +67,7 @@ export class CandidApiClient {
     protected _eligibility: Eligibility | undefined;
     protected _encounterAttachments: EncounterAttachments | undefined;
     protected _encounterProviders: EncounterProviders | undefined;
+    protected _encounterSupplementalInformation: EncounterSupplementalInformation | undefined;
     protected _encounters: Encounters | undefined;
     protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
     protected _exports: Exports | undefined;
@@ -103,8 +105,8 @@ export class CandidApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "candidhealth",
-                    "X-Fern-SDK-Version": "1.12.1",
-                    "User-Agent": "candidhealth/1.12.1",
+                    "X-Fern-SDK-Version": "1.13.0",
+                    "User-Agent": "candidhealth/1.13.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -188,6 +190,13 @@ export class CandidApiClient {
 
     public get encounterProviders(): EncounterProviders {
         return (this._encounterProviders ??= new EncounterProviders({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    public get encounterSupplementalInformation(): EncounterSupplementalInformation {
+        return (this._encounterSupplementalInformation ??= new EncounterSupplementalInformation({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

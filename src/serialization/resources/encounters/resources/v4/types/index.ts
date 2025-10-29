@@ -49,8 +49,6 @@ export * from "./PatientHistoryCategoryEnum";
 export * from "./PatientHistoryCategoryOptional";
 export * from "./PayerPlanGroupPayerDoesNotMatchInsuranceCardError";
 export * from "./PriorAuthorizationNumber";
-export * from "./ReportTransmissionCode";
-export * from "./ReportTypeCode";
 export * from "./ResponsiblePartyType";
 export * from "./RxCui";
 export * from "./SchemaDoesNotExistError";

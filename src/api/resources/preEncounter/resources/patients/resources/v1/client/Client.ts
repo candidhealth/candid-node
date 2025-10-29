@@ -1522,12 +1522,12 @@ export class V1 {
     }
 
     /**
-     * Scans up to 100 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+     * Scans up to 1000 patient updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
      *
      * **Polling Pattern:**
      * To continuously poll for updates without gaps:
      * 1. Make your initial request with a `since` timestamp (e.g., `since=2020-01-01T13:00:00.000Z`)
-     * 2. The API returns up to 100 patient records, sorted by `updated_at` ascending
+     * 2. The API returns 100 by default and up to 1000 patient records, sorted by `updated_at` ascending
      * 3. Find the `updated_at` value from the last record in the response
      * 4. Use that `updated_at` value as the `since` parameter in your next request
      * 5. Repeat steps 2-4 to ingest updates until you receive an empty list
@@ -1565,9 +1565,13 @@ export class V1 {
             >
         >
     > {
-        const { since } = request;
+        const { since, maxResults } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams.since = since.toISOString();
+        if (maxResults != null) {
+            _queryParams.maxResults = maxResults.toString();
+        }
+
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),

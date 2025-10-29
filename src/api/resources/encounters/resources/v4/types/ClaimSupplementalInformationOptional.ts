@@ -3,7 +3,7 @@
 import type * as CandidApi from "../../../../../index";
 
 export interface ClaimSupplementalInformationOptional {
-    attachmentReportTypeCode?: CandidApi.encounters.v4.ReportTypeCode;
-    attachmentTransmissionCode?: CandidApi.encounters.v4.ReportTransmissionCode;
+    attachmentReportTypeCode?: CandidApi.ReportTypeCode;
+    attachmentTransmissionCode?: CandidApi.ReportTransmissionCode;
     attachmentControlNumber?: string;
 }

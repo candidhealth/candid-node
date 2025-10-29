@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { EncounterId } from "../../../../commons/types/EncounterId";
+import { UserV2 } from "../../../../users/resources/v2/types/UserV2";
 import { BaseAttachment } from "./BaseAttachment";
 import { EncounterAttachmentType } from "./EncounterAttachmentType";
 
@@ -14,6 +15,8 @@ export const EncounterAttachment: core.serialization.ObjectSchema<
     .object({
         encounterId: core.serialization.property("encounter_id", EncounterId),
         attachmentType: core.serialization.property("attachment_type", EncounterAttachmentType),
+        createdAt: core.serialization.property("created_at", core.serialization.date()),
+        createdBy: core.serialization.property("created_by", UserV2),
     })
     .extend(BaseAttachment);
 
@@ -21,5 +24,7 @@ export declare namespace EncounterAttachment {
     export interface Raw extends BaseAttachment.Raw {
         encounter_id: EncounterId.Raw;
         attachment_type: EncounterAttachmentType.Raw;
+        created_at: string;
+        created_by: UserV2.Raw;
     }
 }

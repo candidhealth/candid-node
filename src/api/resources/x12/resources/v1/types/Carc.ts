@@ -296,6 +296,7 @@ export const Carc = {
     CarcP30: "P30",
     CarcP31: "P31",
     CarcP32: "P32",
+    Carc15: "15",
     Carc17: "17",
     Carc25: "25",
     Carc28: "28",

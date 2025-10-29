@@ -104,7 +104,7 @@ export class V1 {
 
     /**
      * Uploads a file to the encounter. The file will be stored in the
-     * encounter's attachments.
+     * encounter's attachments. Deprecated: Use create-v2 instead.
      *
      * @param {File | fs.ReadStream | Blob} attachmentFile
      * @param {CandidApi.EncounterId} encounterId
@@ -194,6 +194,111 @@ export class V1 {
             data: {
                 ok: false,
                 error: CandidApi.encounterAttachments.v1.create.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Uploads a file to the encounter. The file will be stored in the
+     * encounter's attachments.
+     *
+     * @param {File | fs.ReadStream | Blob} attachmentFile
+     * @param {CandidApi.EncounterId} encounterId
+     * @param {CandidApi.encounterAttachments.v1.CreateAttachmentV2Request} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     */
+    public createWithDescription(
+        attachmentFile: File | fs.ReadStream | Blob,
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterAttachments.v1.CreateAttachmentV2Request,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.encounterAttachments.v1.AttachmentId,
+            CandidApi.encounterAttachments.v1.createWithDescription.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createWithDescription(attachmentFile, encounterId, request, requestOptions),
+        );
+    }
+
+    private async __createWithDescription(
+        attachmentFile: File | fs.ReadStream | Blob,
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encounterAttachments.v1.CreateAttachmentV2Request,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterAttachments.v1.AttachmentId,
+                CandidApi.encounterAttachments.v1.createWithDescription.Error
+            >
+        >
+    > {
+        const _request = await core.newFormData();
+        await _request.appendFile("attachment_file", attachmentFile);
+        _request.append(
+            "attachment_type",
+            serializers.encounterAttachments.v1.EncounterAttachmentType.jsonOrThrow(request.attachmentType, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        );
+        if (request.description != null) {
+            _request.append("description", request.description);
+        }
+
+        const _maybeEncodedRequest = await _request.getRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                Authorization: await this._getAuthorizationHeader(),
+                ..._maybeEncodedRequest.headers,
+            }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounterId))}/v2`,
+            ),
+            method: "PUT",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            requestType: "file",
+            duplex: _maybeEncodedRequest.duplex,
+            body: _maybeEncodedRequest.body,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.encounterAttachments.v1.AttachmentId.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.createWithDescription.Error._unknown(_response.error),
                 rawResponse: _response.rawResponse,
             },
             rawResponse: _response.rawResponse,

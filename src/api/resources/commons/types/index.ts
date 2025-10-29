@@ -51,6 +51,8 @@ export * from "./RegionNational";
 export * from "./RegionStates";
 export * from "./Regions";
 export * from "./RemovableDateRangeOptionalEnd";
+export * from "./ReportTransmissionCode";
+export * from "./ReportTypeCode";
 export * from "./RequestValidationError";
 export * from "./ResourcePage";
 export * from "./SchemaId";
