@@ -19,5 +19,6 @@ export * from "./ServiceLineUpdateBase";
 export * from "./TestResult";
 export * from "./TestResultOptional";
 export * from "./TestResultType";
+export * from "./UniversalServiceLineCreate";
 export * from "./UniversalServiceLineCreateStandalone";
 export * from "./UniversalServiceLineUpdate";

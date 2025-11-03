@@ -127,6 +127,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "EP",
     "ER",
     "ET",
+    "EV",
     "EX",
     "EY",
     "F1",
@@ -541,6 +542,7 @@ export declare namespace ProcedureModifier {
         | "EP"
         | "ER"
         | "ET"
+        | "EV"
         | "EX"
         | "EY"
         | "F1"

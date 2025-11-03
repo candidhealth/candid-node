@@ -36,7 +36,6 @@ import { PatientRefunds } from "./api/resources/patientRefunds/client/Client";
 import { PayerPlanGroups } from "./api/resources/payerPlanGroups/client/Client";
 import { Payers } from "./api/resources/payers/client/Client";
 import { PreEncounter } from "./api/resources/preEncounter/client/Client";
-import { ServiceFacility } from "./api/resources/serviceFacility/client/Client";
 import { ServiceLines } from "./api/resources/serviceLines/client/Client";
 import { Superbills } from "./api/resources/superbills/client/Client";
 import { Tasks } from "./api/resources/tasks/client/Client";
@@ -96,7 +95,6 @@ export class CandidApiClient {
     protected _writeOffs: WriteOffs | undefined;
     protected _preEncounter: PreEncounter | undefined;
     protected _diagnoses: Diagnoses | undefined;
-    protected _serviceFacility: ServiceFacility | undefined;
 
     constructor(_options: CandidApiClient.Options) {
         this._options = {
@@ -105,8 +103,8 @@ export class CandidApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "candidhealth",
-                    "X-Fern-SDK-Version": "1.13.0",
-                    "User-Agent": "candidhealth/1.13.0",
+                    "X-Fern-SDK-Version": "1.14.0",
+                    "User-Agent": "candidhealth/1.14.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -393,13 +391,6 @@ export class CandidApiClient {
 
     public get diagnoses(): Diagnoses {
         return (this._diagnoses ??= new Diagnoses({
-            ...this._options,
-            token: async () => await this._oauthTokenProvider.getToken(),
-        }));
-    }
-
-    public get serviceFacility(): ServiceFacility {
-        return (this._serviceFacility ??= new ServiceFacility({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

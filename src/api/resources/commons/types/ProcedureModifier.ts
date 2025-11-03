@@ -337,6 +337,9 @@ export const ProcedureModifier = {
      * Emergency services */
     Et: "ET",
     /**
+     * Electronic visit verification */
+    Ev: "EV",
+    /**
      * Expatriate beneficiary */
     Ex: "EX",
     /**

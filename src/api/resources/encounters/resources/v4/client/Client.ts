@@ -277,6 +277,148 @@ export class V4 {
     }
 
     /**
+     * @param {CandidApi.encountersUniversal.UniversalEncounterCreate} request
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.encounters.v4.createUniversal({
+     *         billingProvider: {
+     *             address: {
+     *                 zipPlusFourCode: "zip_plus_four_code",
+     *                 address1: "address1",
+     *                 city: "city",
+     *                 state: "AA",
+     *                 zipCode: "zip_code"
+     *             },
+     *             taxId: "tax_id",
+     *             npi: "npi"
+     *         },
+     *         submissionExpectation: "TARGET_PROFESSIONAL",
+     *         patient: {
+     *             externalId: "external_id",
+     *             dateOfBirth: "2023-01-15",
+     *             address: {
+     *                 address1: "address1",
+     *                 city: "city",
+     *                 state: "AA",
+     *                 zipCode: "zip_code"
+     *             },
+     *             firstName: "first_name",
+     *             lastName: "last_name",
+     *             gender: "male"
+     *         },
+     *         responsibleParty: "INSURANCE_PAY",
+     *         externalId: CandidApi.EncounterExternalId("external_id"),
+     *         patientAuthorizedRelease: true,
+     *         benefitsAssignedToProvider: true,
+     *         providerAcceptsAssignment: true,
+     *         billableStatus: "BILLABLE"
+     *     })
+     */
+    public createUniversal(
+        request: CandidApi.encountersUniversal.UniversalEncounterCreate,
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.createUniversal.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__createUniversal(request, requestOptions));
+    }
+
+    private async __createUniversal(
+        request: CandidApi.encountersUniversal.UniversalEncounterCreate,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.createUniversal.Error>
+        >
+    > {
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/encounters/v4/universal",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.encountersUniversal.UniversalEncounterCreate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.encounters.v4.createUniversal.Error.Raw)?.errorName) {
+                case "EncounterExternalIdUniquenessError":
+                case "EncounterPatientControlNumberUniquenessError":
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "EncounterGuarantorMissingContactInfoError":
+                case "HttpRequestValidationsError":
+                case "CashPayPayerError":
+                case "SchemaInstanceValidationHttpFailure":
+                case "InvalidTagNamesError":
+                case "HttpRequestValidationError":
+                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
+                case "EncounterRenderingOrAttendingProviderRequired":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.createUniversal.Error.parseOrThrow(
+                                _response.error.body as serializers.encounters.v4.createUniversal.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.createUniversal.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * @param {CandidApi.encounters.v4.EncounterCreate} request
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -442,6 +584,161 @@ export class V4 {
      * Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
      * encounter has not already been submitted or adjudicated.
      *
+     * @param {CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounter} request
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.encounters.v4.createFromPreEncounterPatientUniversal({
+     *         submissionExpectation: "TARGET_PROFESSIONAL",
+     *         preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *         preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+     *         billingProvider: {
+     *             address: {
+     *                 zipPlusFourCode: "zip_plus_four_code",
+     *                 address1: "address1",
+     *                 city: "city",
+     *                 state: "AA",
+     *                 zipCode: "zip_code"
+     *             },
+     *             taxId: "tax_id",
+     *             npi: "npi"
+     *         },
+     *         externalId: CandidApi.EncounterExternalId("external_id"),
+     *         patientAuthorizedRelease: true,
+     *         benefitsAssignedToProvider: true,
+     *         providerAcceptsAssignment: true,
+     *         billableStatus: "BILLABLE"
+     *     })
+     */
+    public createFromPreEncounterPatientUniversal(
+        request: CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounter,
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.encounters.v4.Encounter,
+            CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createFromPreEncounterPatientUniversal(request, requestOptions),
+        );
+    }
+
+    private async __createFromPreEncounterPatientUniversal(
+        request: CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounter,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounters.v4.Encounter,
+                CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error
+            >
+        >
+    > {
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/encounters/v4/create-from-pre-encounter/universal",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.encountersUniversal.UniversalEncounterCreateFromPreEncounter.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.encounters.v4.createFromPreEncounterPatientUniversal.Error.Raw)
+                    ?.errorName
+            ) {
+                case "EncounterExternalIdUniquenessError":
+                case "EncounterPatientControlNumberUniquenessError":
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "HttpRequestValidationsError":
+                case "SchemaInstanceValidationHttpFailure":
+                case "HttpRequestValidationError":
+                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.createFromPreEncounterPatientUniversal.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.encounters.v4.createFromPreEncounterPatientUniversal.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Create an encounter from a pre-encounter patient and appointment. This endpoint is intended to be used by consumers who are managing
+     * patients and appointments in the pre-encounter service and is currently under development. Consumers who are not taking advantage
+     * of the pre-encounter service should use the standard create endpoint.
+     *
+     * The endpoint will create an encounter from the provided fields, pulling information from the provided patient and appointment objects
+     * where applicable. In particular, the following fields are populated from the patient and appointment objects:
+     *   - Patient
+     *   - Referring Provider
+     *   - Subscriber Primary
+     *   - Subscriber Secondary
+     *   - Referral Number
+     *   - Responsible Party
+     *   - Guarantor
+     *
+     * Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
+     * encounter has not already been submitted or adjudicated.
+     *
      * @param {CandidApi.encounters.v4.EncounterCreateFromPreEncounter} request
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -577,6 +874,115 @@ export class V4 {
             data: {
                 ok: false,
                 error: CandidApi.encounters.v4.createFromPreEncounterPatient.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @param {CandidApi.EncounterId} encounterId
+     * @param {CandidApi.encountersUniversal.UniversalEncounterUpdate} request
+     * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.encounters.v4.updateUniversal(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {})
+     */
+    public updateUniversal(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encountersUniversal.UniversalEncounterUpdate,
+        requestOptions?: V4.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.updateUniversal.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__updateUniversal(encounterId, request, requestOptions));
+    }
+
+    private async __updateUniversal(
+        encounterId: CandidApi.EncounterId,
+        request: CandidApi.encountersUniversal.UniversalEncounterUpdate,
+        requestOptions?: V4.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.encounters.v4.Encounter, CandidApi.encounters.v4.updateUniversal.Error>
+        >
+    > {
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounters/v4/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounterId))}/universal`,
+            ),
+            method: "PATCH",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.encountersUniversal.UniversalEncounterUpdate.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.encounters.v4.Encounter.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.encounters.v4.updateUniversal.Error.Raw)?.errorName) {
+                case "EncounterExternalIdUniquenessError":
+                case "EntityNotFoundError":
+                case "UnauthorizedError":
+                case "HttpRequestValidationsError":
+                case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
+                case "InvalidTagNamesError":
+                case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.updateUniversal.Error.parseOrThrow(
+                                _response.error.body as serializers.encounters.v4.updateUniversal.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounters.v4.updateUniversal.Error._unknown(_response.error),
                 rawResponse: _response.rawResponse,
             },
             rawResponse: _response.rawResponse,

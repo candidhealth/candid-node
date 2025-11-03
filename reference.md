@@ -3261,6 +3261,87 @@ await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7f
 </dl>
 </details>
 
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createUniversal</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.createUniversal.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounters.v4.createUniversal({
+    billingProvider: {
+        address: {
+            zipPlusFourCode: "zip_plus_four_code",
+            address1: "address1",
+            city: "city",
+            state: "AA",
+            zipCode: "zip_code"
+        },
+        taxId: "tax_id",
+        npi: "npi"
+    },
+    submissionExpectation: "TARGET_PROFESSIONAL",
+    patient: {
+        externalId: "external_id",
+        dateOfBirth: "2023-01-15",
+        address: {
+            address1: "address1",
+            city: "city",
+            state: "AA",
+            zipCode: "zip_code"
+        },
+        firstName: "first_name",
+        lastName: "last_name",
+        gender: "male"
+    },
+    responsibleParty: "INSURANCE_PAY",
+    externalId: CandidApi.EncounterExternalId("external_id"),
+    patientAuthorizedRelease: true,
+    benefitsAssignedToProvider: true,
+    providerAcceptsAssignment: true,
+    billableStatus: "BILLABLE"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.UniversalEncounterCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.create.Error></code></summary>
 <dl>
 <dd>
@@ -3333,6 +3414,104 @@ await client.encounters.v4.create({
 <dd>
 
 **request:** `CandidApi.EncounterCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createFromPreEncounterPatientUniversal</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create an encounter from a pre-encounter patient and appointment. This endpoint is intended to be used by consumers who are managing
+patients and appointments in the pre-encounter service and is currently under development. Consumers who are not taking advantage
+of the pre-encounter service should use the standard create endpoint.
+
+The endpoint will create an encounter from the provided fields, pulling information from the provided patient and appointment objects
+where applicable. In particular, the following fields are populated from the patient and appointment objects:
+  - Patient
+  - Referring Provider
+  - Subscriber Primary
+  - Subscriber Secondary
+  - Referral Number
+  - Responsible Party
+  - Guarantor
+
+Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
+encounter has not already been submitted or adjudicated.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounters.v4.createFromPreEncounterPatientUniversal({
+    submissionExpectation: "TARGET_PROFESSIONAL",
+    preEncounterPatientId: CandidApi.PreEncounterPatientId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    preEncounterAppointmentIds: [CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.PreEncounterAppointmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")],
+    billingProvider: {
+        address: {
+            zipPlusFourCode: "zip_plus_four_code",
+            address1: "address1",
+            city: "city",
+            state: "AA",
+            zipCode: "zip_code"
+        },
+        taxId: "tax_id",
+        npi: "npi"
+    },
+    externalId: CandidApi.EncounterExternalId("external_id"),
+    patientAuthorizedRelease: true,
+    benefitsAssignedToProvider: true,
+    providerAcceptsAssignment: true,
+    billableStatus: "BILLABLE"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.UniversalEncounterCreateFromPreEncounter` 
     
 </dd>
 </dl>
@@ -3441,6 +3620,63 @@ await client.encounters.v4.createFromPreEncounterPatient({
 <dd>
 
 **request:** `CandidApi.EncounterCreateFromPreEncounter` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">updateUniversal</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.updateUniversal.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.encounters.v4.updateUniversal(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**encounterId:** `CandidApi.EncounterId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.UniversalEncounterUpdate` 
     
 </dd>
 </dl>
@@ -14283,64 +14519,6 @@ await client.diagnoses.delete(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 <dd>
 
 **requestOptions:** `Diagnoses.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## ServiceFacility
-<details><summary><code>client.serviceFacility.<a href="/src/api/resources/serviceFacility/client/Client.ts">update</a>(serviceFacilityId, { ...params }) -> core.APIResponse<CandidApi.EncounterServiceFacility, CandidApi.serviceFacility.update.Error></code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.serviceFacility.update(CandidApi.ServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**serviceFacilityId:** `CandidApi.ServiceFacilityId` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.EncounterServiceFacilityUpdate` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ServiceFacility.RequestOptions` 
     
 </dd>
 </dl>

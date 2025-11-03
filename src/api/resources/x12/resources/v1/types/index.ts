@@ -7,6 +7,7 @@ export * from "./RemittanceAdviceRemarkCode";
 export * from "./TypeOfAdmissionOrVisitCode";
 export * from "./TypeOfBillComposite";
 export * from "./TypeOfBillCompositeBase";
+export * from "./TypeOfBillCompositeUpdate";
 export * from "./TypeOfBillFrequencyCode";
 export * from "./TypeOfCareCode";
 export * from "./TypeOfFacilityCode";
