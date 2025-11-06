@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../../index";
 export type Error =
     | CandidApi.serviceLines.v2.delete.Error.EntityNotFoundError
     | CandidApi.serviceLines.v2.delete.Error.UnauthorizedError
+    | CandidApi.serviceLines.v2.delete.Error.EntityConflictError
     | CandidApi.serviceLines.v2.delete.Error._Unknown;
 
 export namespace Error {
@@ -17,6 +18,11 @@ export namespace Error {
     export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    export interface EntityConflictError extends _Utils {
+        errorName: "EntityConflictError";
+        content: CandidApi.EntityConflictErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -31,6 +37,7 @@ export namespace Error {
     export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -66,6 +73,21 @@ export const Error = {
         };
     },
 
+    entityConflictError: (
+        value: CandidApi.EntityConflictErrorMessage,
+    ): CandidApi.serviceLines.v2.delete.Error.EntityConflictError => {
+        return {
+            content: value,
+            errorName: "EntityConflictError",
+            _visit: function <_Result>(
+                this: CandidApi.serviceLines.v2.delete.Error.EntityConflictError,
+                visitor: CandidApi.serviceLines.v2.delete.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.serviceLines.v2.delete.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.serviceLines.v2.delete.Error._Unknown => {
         return {
             errorName: undefined,
@@ -88,6 +110,8 @@ export const Error = {
                 return visitor.entityNotFoundError(value.content);
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
+            case "EntityConflictError":
+                return visitor.entityConflictError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -492,6 +492,7 @@ export class V2 {
             switch ((_response.error.body as serializers.serviceLines.v2.delete.Error.Raw)?.errorName) {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
+                case "EntityConflictError":
                     return {
                         data: {
                             ok: false,

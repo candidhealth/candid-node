@@ -3,6 +3,7 @@
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { EntityConflictErrorMessage } from "../../../../commons/types/EntityConflictErrorMessage";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 
@@ -17,6 +18,9 @@ export const Error: core.serialization.Schema<
         UnauthorizedError: core.serialization.object({
             content: UnauthorizedErrorMessage,
         }),
+        EntityConflictError: core.serialization.object({
+            content: EntityConflictErrorMessage,
+        }),
     })
     .transform<CandidApi.serviceLines.v2.delete.Error>({
         transform: (value) => {
@@ -25,13 +29,15 @@ export const Error: core.serialization.Schema<
                     return CandidApi.serviceLines.v2.delete.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
                     return CandidApi.serviceLines.v2.delete.Error.unauthorizedError(value.content);
+                case "EntityConflictError":
+                    return CandidApi.serviceLines.v2.delete.Error.entityConflictError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError;
+    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.EntityConflictError;
 
     export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -41,5 +47,10 @@ export declare namespace Error {
     export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
+    }
+
+    export interface EntityConflictError {
+        errorName: "EntityConflictError";
+        content: EntityConflictErrorMessage.Raw;
     }
 }
