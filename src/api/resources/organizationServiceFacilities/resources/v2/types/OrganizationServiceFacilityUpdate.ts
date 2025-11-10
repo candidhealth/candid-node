@@ -42,6 +42,8 @@ export interface OrganizationServiceFacilityUpdate {
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     /** The associated CLIA number with this service facility. Can be used to populate CLIA numbers on encounters. */
     cliaNumber?: string;
+    /** The associated mammography certification number for this service facility. This is a 6 digit code assigned by the FDA. */
+    mammographyCertificationNumber?: string;
     /** The status of the service facility. */
     status?: CandidApi.organizationServiceFacilities.v2.ServiceFacilityStatus;
     /** The operational status of the service facility. */
