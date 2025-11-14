@@ -16,6 +16,10 @@ export const EncounterServiceFacilityUpdateWithOptionalAddress: core.serializati
         "secondary_identification",
         core.serialization.string().optional(),
     ),
+    mammographyCertificationNumber: core.serialization.property(
+        "mammography_certification_number",
+        core.serialization.string().optional(),
+    ),
 });
 
 export declare namespace EncounterServiceFacilityUpdateWithOptionalAddress {
@@ -24,5 +28,6 @@ export declare namespace EncounterServiceFacilityUpdateWithOptionalAddress {
         npi?: string | null;
         address?: StreetAddressShortZipOptional.Raw | null;
         secondary_identification?: string | null;
+        mammography_certification_number?: string | null;
     }
 }

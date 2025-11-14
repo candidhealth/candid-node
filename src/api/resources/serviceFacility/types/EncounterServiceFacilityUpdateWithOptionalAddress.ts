@@ -17,4 +17,6 @@ export interface EncounterServiceFacilityUpdateWithOptionalAddress {
      * Box 32 section (b) of the CMS-1500 claim form.
      */
     secondaryIdentification?: string;
+    /** The associated mammography certification number for this service facility. This is a 6 digit code assigned by the FDA. */
+    mammographyCertificationNumber?: string;
 }
