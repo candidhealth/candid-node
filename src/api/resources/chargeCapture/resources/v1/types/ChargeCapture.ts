@@ -13,6 +13,7 @@ export interface ChargeCapture {
     originatingSystem?: string;
     claimCreationCategory?: string;
     error?: CandidApi.chargeCapture.v1.ChargeCaptureError;
+    /** This list of updates will always return at most 1 update that is not resolved. The singular update will contain the difference between the updated charge and the created encounter. */
     updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];
     claimCreationId?: CandidApi.ChargeCaptureClaimCreationId;
 }
