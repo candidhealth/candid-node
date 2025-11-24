@@ -9,6 +9,7 @@ import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
 import { Allocation } from "../../../../financials/types/Allocation";
 import { PatientTransactionSource } from "../../../../financials/types/PatientTransactionSource";
 import { PatientPaymentId } from "./PatientPaymentId";
+import { PaymentMethodDetail } from "./PaymentMethodDetail";
 
 export const PatientPayment: core.serialization.ObjectSchema<
     serializers.patientPayments.v4.PatientPayment.Raw,
@@ -24,6 +25,7 @@ export const PatientPayment: core.serialization.ObjectSchema<
     paymentNote: core.serialization.property("payment_note", core.serialization.string().optional()),
     allocations: core.serialization.list(Allocation),
     invoice: InvoiceId.optional(),
+    paymentMethodDetail: core.serialization.property("payment_method_detail", PaymentMethodDetail.optional()),
 });
 
 export declare namespace PatientPayment {
@@ -38,5 +40,6 @@ export declare namespace PatientPayment {
         payment_note?: string | null;
         allocations: Allocation.Raw[];
         invoice?: InvoiceId.Raw | null;
+        payment_method_detail?: PaymentMethodDetail.Raw | null;
     }
 }

@@ -20,6 +20,11 @@ export const EligibilityRequest: core.serialization.ObjectSchema<
     subscriber: MemberInfo,
     dependent: MemberInfo.optional(),
     encounter: Encounter.optional(),
+    getExistingCheckInitiatedAfter: core.serialization.property(
+        "get_existing_check_initiated_after",
+        core.serialization.date().optional(),
+    ),
+    source: core.serialization.string().optional(),
 });
 
 export declare namespace EligibilityRequest {
@@ -30,5 +35,7 @@ export declare namespace EligibilityRequest {
         subscriber: MemberInfo.Raw;
         dependent?: MemberInfo.Raw | null;
         encounter?: Encounter.Raw | null;
+        get_existing_check_initiated_after?: string | null;
+        source?: string | null;
     }
 }

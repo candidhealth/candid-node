@@ -5585,6 +5585,70 @@ await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b
 </dl>
 </details>
 
+## InsuranceAdjudications V1
+<details><summary><code>client.insuranceAdjudications.v1.<a href="/src/api/resources/insuranceAdjudications/resources/v1/client/Client.ts">get</a>(insuranceAdjudicationId) -> core.APIResponse<CandidApi.InsuranceAdjudication, CandidApi.insuranceAdjudications.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a previously created insurance adjudication by its `insurance_adjudication_id`.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.insuranceAdjudications.v1.get(CandidApi.InsuranceAdjudicationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**insuranceAdjudicationId:** `CandidApi.InsuranceAdjudicationId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## InsurancePayments V1
 <details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.InsurancePaymentsPage, CandidApi.insurancePayments.v1.getMulti.Error></code></summary>
 <dl>

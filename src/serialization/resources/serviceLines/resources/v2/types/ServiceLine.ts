@@ -92,6 +92,10 @@ export const ServiceLine: core.serialization.ObjectSchema<
         core.serialization.boolean().optional(),
     ),
     note: core.serialization.string().optional(),
+    priorAuthorizationNumber: core.serialization.property(
+        "prior_authorization_number",
+        core.serialization.string().optional(),
+    ),
 });
 
 export declare namespace ServiceLine {
@@ -137,5 +141,6 @@ export declare namespace ServiceLine {
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;
         note?: string | null;
+        prior_authorization_number?: string | null;
     }
 }

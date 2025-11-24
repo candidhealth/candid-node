@@ -15,6 +15,10 @@ export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
         diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
         diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
         diagnosisIdThree: core.serialization.property("diagnosis_id_three", DiagnosisId.optional()),
+        priorAuthorizationNumber: core.serialization.property(
+            "prior_authorization_number",
+            core.serialization.string().optional(),
+        ),
     })
     .extend(ServiceLineCreateStandaloneBase);
 
@@ -24,5 +28,6 @@ export declare namespace ServiceLineCreateStandalone {
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;
         diagnosis_id_three?: DiagnosisId.Raw | null;
+        prior_authorization_number?: string | null;
     }
 }

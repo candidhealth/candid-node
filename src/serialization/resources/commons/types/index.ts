@@ -4,6 +4,7 @@ export * from "./BillingProviderCommercialLicenseType";
 export * from "./ChargeCaptureClaimCreationId";
 export * from "./ChargeCaptureId";
 export * from "./ChargeCapturePostBilledChangeId";
+export * from "./ClaimAdjustmentGroupCodes";
 export * from "./ClaimId";
 export * from "./ClaimSubmissionPayerResponsibilityType";
 export * from "./Clearinghouse";

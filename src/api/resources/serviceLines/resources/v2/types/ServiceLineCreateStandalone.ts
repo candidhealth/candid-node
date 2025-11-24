@@ -7,4 +7,6 @@ export interface ServiceLineCreateStandalone extends CandidApi.serviceLines.v2.S
     diagnosisIdOne?: CandidApi.DiagnosisId;
     diagnosisIdTwo?: CandidApi.DiagnosisId;
     diagnosisIdThree?: CandidApi.DiagnosisId;
+    /** Prior authorization number for this service line. Maps to the appropriate REF segment on Loop 2400 of the EDI 837p. This is not used for institutional claims (EDI 837i). */
+    priorAuthorizationNumber?: string;
 }

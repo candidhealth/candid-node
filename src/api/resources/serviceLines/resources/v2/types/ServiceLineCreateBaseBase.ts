@@ -44,4 +44,6 @@ export interface ServiceLineCreateBaseBase {
     testResults?: CandidApi.serviceLines.v2.TestResult[];
     /** Maps to NTE02 loop 2400 on the EDI 837. */
     note?: string;
+    /** Prior authorization number for this service line. Maps to the appropriate REF segment on Loop 2400 of the EDI 837p. This is not used for institutional claims (EDI 837i). */
+    priorAuthorizationNumber?: string;
 }

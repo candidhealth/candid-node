@@ -19,4 +19,7 @@ export interface EligibilityRequest {
     /** <Note>If a dependent has a unique member ID, include their information as subscriber and leave this field undefined.</Note> */
     dependent?: CandidApi.preEncounter.coverages.v1.MemberInfo;
     encounter?: CandidApi.preEncounter.eligibilityChecks.v1.Encounter;
+    /** If not provided, this endpoint will run a fresh eligibility check. If provided, it will return an existing successful eligibility check if one exists that was initiated after provided date with the same parameters (Date of Service, Payer ID, Provider, Subscriber, Dependent, and Encounter). */
+    getExistingCheckInitiatedAfter?: Date;
+    source?: string;
 }

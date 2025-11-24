@@ -36,6 +36,7 @@ export * from "./identifiers/types";
 export * as importInvoice from "./importInvoice";
 export * as individual from "./individual";
 export * from "./individual/types";
+export * as insuranceAdjudications from "./insuranceAdjudications";
 export * as insuranceCards from "./insuranceCards";
 export * as insurancePayments from "./insurancePayments";
 export * as insuranceRefunds from "./insuranceRefunds";
