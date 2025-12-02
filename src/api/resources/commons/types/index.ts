@@ -1,5 +1,6 @@
 export * from "./AdjustmentId";
 export * from "./AppointmentId";
+export * from "./BadRequestErrorMessage";
 export * from "./BillingProviderCommercialLicenseType";
 export * from "./ChargeCaptureClaimCreationId";
 export * from "./ChargeCaptureId";
@@ -25,6 +26,7 @@ export * from "./FacilityTypeCode";
 export * from "./HttpServiceUnavailableErrorMessage";
 export * from "./InsuranceTypeCode";
 export * from "./IntendedSubmissionMedium";
+export * from "./InternalErrorMessage";
 export * from "./InvoiceId";
 export * from "./LinkUrl";
 export * from "./NetworkType";

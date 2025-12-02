@@ -3753,6 +3753,119 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
 </dl>
 </details>
 
+## Events V1
+<details><summary><code>client.events.v1.<a href="/src/api/resources/events/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.EventScanPage, CandidApi.events.v1.scan.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Scans the last 30 days of events. All results are sorted by created date, descending.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.events.v1.scan();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.events.v1.GetEventScanRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.events.v1.<a href="/src/api/resources/events/resources/v1/client/Client.ts">get</a>(eventId) -> core.APIResponse<CandidApi.Event, CandidApi.events.v1.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.events.v1.get(CandidApi.EventId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**eventId:** `CandidApi.EventId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## ExpectedNetworkStatus V1
 <details><summary><code>client.expectedNetworkStatus.v1.<a href="/src/api/resources/expectedNetworkStatus/resources/v1/client/Client.ts">compute</a>({ ...params }) -> core.APIResponse<CandidApi.ExpectedNetworkStatusResponse, CandidApi.expectedNetworkStatus.v1.compute.Error></code></summary>
 <dl>
@@ -7829,8 +7942,6 @@ await client.organizationServiceFacilities.v2.delete(CandidApi.OrganizationServi
 <dl>
 <dd>
 
-NOTE: This service is in-development and can only be used by select partners. Please contact Candid Health to request access.
-
 Retrieve a list of inventory records based on the provided filters. Each inventory record provides the latest invoiceable status of the associated claim.
 The response is paginated, and the `page_token` can be used to retrieve subsequent pages. Initial requests should not include `page_token`.
 </dd>
@@ -7894,8 +8005,6 @@ await client.patientAr.v1.listInventory();
 
 <dl>
 <dd>
-
-NOTE: This service is in-development and can only be used by select partners. Please contact Candid Health to request access.
 
 Provides detailed itemization of invoice data for a specific claim.
 </dd>

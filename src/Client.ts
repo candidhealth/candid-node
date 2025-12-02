@@ -14,6 +14,7 @@ import { EncounterAttachments } from "./api/resources/encounterAttachments/clien
 import { EncounterProviders } from "./api/resources/encounterProviders/client/Client";
 import { EncounterSupplementalInformation } from "./api/resources/encounterSupplementalInformation/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
+import { Events } from "./api/resources/events/client/Client";
 import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
 import { ExternalPaymentAccountConfig } from "./api/resources/externalPaymentAccountConfig/client/Client";
@@ -68,6 +69,7 @@ export class CandidApiClient {
     protected _encounterProviders: EncounterProviders | undefined;
     protected _encounterSupplementalInformation: EncounterSupplementalInformation | undefined;
     protected _encounters: Encounters | undefined;
+    protected _events: Events | undefined;
     protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
     protected _exports: Exports | undefined;
     protected _externalPaymentAccountConfig: ExternalPaymentAccountConfig | undefined;
@@ -103,8 +105,8 @@ export class CandidApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "candidhealth",
-                    "X-Fern-SDK-Version": "1.15.0",
-                    "User-Agent": "candidhealth/1.15.0",
+                    "X-Fern-SDK-Version": "1.16.0",
+                    "User-Agent": "candidhealth/1.16.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -202,6 +204,13 @@ export class CandidApiClient {
 
     public get encounters(): Encounters {
         return (this._encounters ??= new Encounters({
+            ...this._options,
+            token: async () => await this._oauthTokenProvider.getToken(),
+        }));
+    }
+
+    public get events(): Events {
+        return (this._events ??= new Events({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

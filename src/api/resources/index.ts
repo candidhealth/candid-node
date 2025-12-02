@@ -22,6 +22,7 @@ export * as encounters from "./encounters";
 export * as encountersUniversal from "./encountersUniversal";
 export * as era from "./era";
 export * from "./era/types";
+export * as events from "./events";
 export * as expectedNetworkStatus from "./expectedNetworkStatus";
 export * as exports from "./exports";
 export * as externalPaymentAccountConfig from "./externalPaymentAccountConfig";

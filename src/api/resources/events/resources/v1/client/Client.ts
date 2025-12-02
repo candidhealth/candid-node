@@ -23,47 +23,51 @@ export class V1 {
     }
 
     /**
-     * Retrieve a list of inventory records based on the provided filters. Each inventory record provides the latest invoiceable status of the associated claim.
-     * The response is paginated, and the `page_token` can be used to retrieve subsequent pages. Initial requests should not include `page_token`.
+     * Scans the last 30 days of events. All results are sorted by created date, descending.
      *
-     * @param {CandidApi.patientAr.v1.GetInventoryRecordsRequest} request
+     * @param {CandidApi.events.v1.GetEventScanRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.patientAr.v1.listInventory()
+     *     await client.events.v1.scan()
      */
-    public listInventory(
-        request: CandidApi.patientAr.v1.GetInventoryRecordsRequest = {},
+    public scan(
+        request: CandidApi.events.v1.GetEventScanRequest = {},
         requestOptions?: V1.RequestOptions,
-    ): core.HttpResponsePromise<
-        core.APIResponse<CandidApi.patientAr.v1.ListInventoryPagedResponse, CandidApi.patientAr.v1.listInventory.Error>
-    > {
-        return core.HttpResponsePromise.fromPromise(this.__listInventory(request, requestOptions));
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.events.v1.EventScanPage, CandidApi.events.v1.scan.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__scan(request, requestOptions));
     }
 
-    private async __listInventory(
-        request: CandidApi.patientAr.v1.GetInventoryRecordsRequest = {},
+    private async __scan(
+        request: CandidApi.events.v1.GetEventScanRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
-        core.WithRawResponse<
-            core.APIResponse<
-                CandidApi.patientAr.v1.ListInventoryPagedResponse,
-                CandidApi.patientAr.v1.listInventory.Error
-            >
-        >
+        core.WithRawResponse<core.APIResponse<CandidApi.events.v1.EventScanPage, CandidApi.events.v1.scan.Error>>
     > {
-        const { since, limit, pageToken } = request;
+        const { pageToken, limit, eventTypes, createdBefore, createdAfter } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (since != null) {
-            _queryParams.since = since.toISOString();
+        if (pageToken != null) {
+            _queryParams.page_token = pageToken;
         }
 
         if (limit != null) {
             _queryParams.limit = limit.toString();
         }
 
-        if (pageToken != null) {
-            _queryParams.page_token = pageToken;
+        if (eventTypes != null) {
+            if (Array.isArray(eventTypes)) {
+                _queryParams.event_types = eventTypes.map((item) => item);
+            } else {
+                _queryParams.event_types = eventTypes;
+            }
+        }
+
+        if (createdBefore != null) {
+            _queryParams.created_before = createdBefore.toISOString();
+        }
+
+        if (createdAfter != null) {
+            _queryParams.created_after = createdAfter.toISOString();
         }
 
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -78,7 +82,7 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                "/api/patient-ar/v1/inventory",
+                "/api/events/v1/",
             ),
             method: "GET",
             headers: _headers,
@@ -91,7 +95,7 @@ export class V1 {
             return {
                 data: {
                     ok: true,
-                    body: serializers.patientAr.v1.ListInventoryPagedResponse.parseOrThrow(_response.body, {
+                    body: serializers.events.v1.EventScanPage.parseOrThrow(_response.body, {
                         unrecognizedObjectKeys: "passthrough",
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
@@ -105,14 +109,14 @@ export class V1 {
         }
 
         if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.patientAr.v1.listInventory.Error.Raw)?.errorName) {
-                case "InvalidFiltersError":
-                case "UnauthorizedError":
+            switch ((_response.error.body as serializers.events.v1.scan.Error.Raw)?.errorName) {
+                case "BadRequestError":
+                case "InternalError":
                     return {
                         data: {
                             ok: false,
-                            error: serializers.patientAr.v1.listInventory.Error.parseOrThrow(
-                                _response.error.body as serializers.patientAr.v1.listInventory.Error.Raw,
+                            error: serializers.events.v1.scan.Error.parseOrThrow(
+                                _response.error.body as serializers.events.v1.scan.Error.Raw,
                                 {
                                     unrecognizedObjectKeys: "passthrough",
                                     allowUnrecognizedUnionMembers: true,
@@ -130,7 +134,7 @@ export class V1 {
         return {
             data: {
                 ok: false,
-                error: CandidApi.patientAr.v1.listInventory.Error._unknown(_response.error),
+                error: CandidApi.events.v1.scan.Error._unknown(_response.error),
                 rawResponse: _response.rawResponse,
             },
             rawResponse: _response.rawResponse,
@@ -138,31 +142,23 @@ export class V1 {
     }
 
     /**
-     * Provides detailed itemization of invoice data for a specific claim.
-     *
-     * @param {CandidApi.ClaimId} claimId
+     * @param {CandidApi.events.v1.EventId} eventId
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.patientAr.v1.itemize(CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     *     await client.events.v1.get(CandidApi.events.v1.EventId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
-    public itemize(
-        claimId: CandidApi.ClaimId,
+    public get(
+        eventId: CandidApi.events.v1.EventId,
         requestOptions?: V1.RequestOptions,
-    ): core.HttpResponsePromise<
-        core.APIResponse<CandidApi.patientAr.v1.InvoiceItemizationResponse, CandidApi.patientAr.v1.itemize.Error>
-    > {
-        return core.HttpResponsePromise.fromPromise(this.__itemize(claimId, requestOptions));
+    ): core.HttpResponsePromise<core.APIResponse<CandidApi.events.v1.Event, CandidApi.events.v1.get.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__get(eventId, requestOptions));
     }
 
-    private async __itemize(
-        claimId: CandidApi.ClaimId,
+    private async __get(
+        eventId: CandidApi.events.v1.EventId,
         requestOptions?: V1.RequestOptions,
-    ): Promise<
-        core.WithRawResponse<
-            core.APIResponse<CandidApi.patientAr.v1.InvoiceItemizationResponse, CandidApi.patientAr.v1.itemize.Error>
-        >
-    > {
+    ): Promise<core.WithRawResponse<core.APIResponse<CandidApi.events.v1.Event, CandidApi.events.v1.get.Error>>> {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
@@ -175,7 +171,7 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/patient-ar/v1/invoice-itemization/${core.url.encodePathParam(serializers.ClaimId.jsonOrThrow(claimId))}`,
+                `/api/events/v1/${core.url.encodePathParam(serializers.events.v1.EventId.jsonOrThrow(eventId))}`,
             ),
             method: "GET",
             headers: _headers,
@@ -188,7 +184,7 @@ export class V1 {
             return {
                 data: {
                     ok: true,
-                    body: serializers.patientAr.v1.InvoiceItemizationResponse.parseOrThrow(_response.body, {
+                    body: serializers.events.v1.Event.parseOrThrow(_response.body, {
                         unrecognizedObjectKeys: "passthrough",
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
@@ -202,14 +198,15 @@ export class V1 {
         }
 
         if (_response.error.reason === "status-code") {
-            switch ((_response.error.body as serializers.patientAr.v1.itemize.Error.Raw)?.errorName) {
+            switch ((_response.error.body as serializers.events.v1.get.Error.Raw)?.errorName) {
+                case "BadRequestError":
+                case "InternalError":
                 case "EntityNotFoundError":
-                case "UnauthorizedError":
                     return {
                         data: {
                             ok: false,
-                            error: serializers.patientAr.v1.itemize.Error.parseOrThrow(
-                                _response.error.body as serializers.patientAr.v1.itemize.Error.Raw,
+                            error: serializers.events.v1.get.Error.parseOrThrow(
+                                _response.error.body as serializers.events.v1.get.Error.Raw,
                                 {
                                     unrecognizedObjectKeys: "passthrough",
                                     allowUnrecognizedUnionMembers: true,
@@ -227,7 +224,7 @@ export class V1 {
         return {
             data: {
                 ok: false,
-                error: CandidApi.patientAr.v1.itemize.Error._unknown(_response.error),
+                error: CandidApi.events.v1.get.Error._unknown(_response.error),
                 rawResponse: _response.rawResponse,
             },
             rawResponse: _response.rawResponse,
