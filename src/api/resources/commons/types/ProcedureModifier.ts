@@ -1212,5 +1212,8 @@ export const ProcedureModifier = {
     /**
      * Custom modifier */
     Xy: "XY",
+    /**
+     * Custom modifier representing an invalid modifier */
+    Zz: "ZZ",
 } as const;
 export type ProcedureModifier = (typeof ProcedureModifier)[keyof typeof ProcedureModifier];

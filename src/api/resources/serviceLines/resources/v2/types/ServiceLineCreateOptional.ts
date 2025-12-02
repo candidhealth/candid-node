@@ -49,4 +49,6 @@ export interface ServiceLineCreateOptional {
     note?: string;
     /** A 4 digit code that specifies facility department or type of service arrangement for institutional service line items (837i). This code is not required for professional claim billing (837p). */
     revenueCode?: string;
+    /** Prior authorization number for this service line. Maps to the appropriate REF segment on Loop 2400 of the EDI 837p. This is not used for institutional claims (EDI 837i). */
+    priorAuthorizationNumber?: string;
 }
