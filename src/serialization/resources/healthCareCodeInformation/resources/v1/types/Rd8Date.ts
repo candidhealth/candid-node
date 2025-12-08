@@ -8,8 +8,8 @@ export const Rd8Date: core.serialization.ObjectSchema<
     serializers.healthCareCodeInformation.v1.Rd8Date.Raw,
     CandidApi.healthCareCodeInformation.v1.Rd8Date
 > = core.serialization.object({
-    start: core.serialization.date(),
-    end: core.serialization.date(),
+    start: core.serialization.string(),
+    end: core.serialization.string(),
 });
 
 export declare namespace Rd8Date {

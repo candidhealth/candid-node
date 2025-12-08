@@ -807,6 +807,20 @@ await client.chargeCapture.v1.updatePostBilledChanges({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API provides access to Professional Contracts. For Professional and Institutional Contracts use Contracts V3.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -855,6 +869,20 @@ await client.contracts.v2.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 <details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ContractsPage, CandidApi.contracts.v2.getMulti.Error></code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This API provides access to Professional Contracts. For Professional and Institutional Contracts use Contracts V3.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -1077,6 +1105,421 @@ await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dd>
 
 **requestOptions:** `V2.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Contracts V3
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">get</a>(contractId) -> core.APIResponse<CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.get.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contractId:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ContractsPage, CandidApi.contracts.v3.getMulti.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.getMulti();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.GetMultiContractsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.create.Error></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new contract within the user's current organization
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.create({
+    type: "professional",
+    renderingProviderIds: new Set([CandidApi.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")]),
+    contractType: "professional",
+    contractingProviderId: CandidApi.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    payerUuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    effectiveDate: CandidApi.Date_("effective_date"),
+    regions: {
+        type: "states",
+        states: ["AA", "AA"]
+    },
+    commercialInsuranceTypes: {
+        type: "allApply"
+    },
+    medicareInsuranceTypes: {
+        type: "allApply"
+    },
+    medicaidInsuranceTypes: {
+        type: "allApply"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ContractCreateUnion` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">delete</a>(contractId) -> core.APIResponse<void, CandidApi.contracts.v3.delete.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contractId:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">update</a>(contractId, { ...params }) -> core.APIResponse<CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.update.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    type: "professional"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contractId:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ContractUpdateUnion` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">createContractServiceFacility</a>(contractId, { ...params }) -> core.APIResponse<CandidApi.ContractServiceFacility, CandidApi.contracts.v3.createContractServiceFacility.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.createContractServiceFacility(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    serviceFacilityId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    providerIds: new Set(["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contractId:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.ContractServiceFacilityCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">updateContractServiceFacility</a>(contractId, contractServiceFacilityId, { ...params }) -> core.APIResponse<CandidApi.ContractServiceFacility, CandidApi.contracts.v3.updateContractServiceFacility.Error></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.updateContractServiceFacility(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ContractServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contractId:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contractServiceFacilityId:** `CandidApi.ContractServiceFacilityId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.ContractServiceFacilityUpdate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3.RequestOptions` 
     
 </dd>
 </dl>

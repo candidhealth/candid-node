@@ -23,6 +23,8 @@ export class V2 {
     }
 
     /**
+     * This API provides access to Professional Contracts. For Professional and Institutional Contracts use Contracts V3.
+     *
      * @param {CandidApi.contracts.v2.ContractId} contractId
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -117,6 +119,8 @@ export class V2 {
     }
 
     /**
+     * This API provides access to Professional Contracts. For Professional and Institutional Contracts use Contracts V3.
+     *
      * @param {CandidApi.contracts.v2.GetMultiContractsRequest} request
      * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
      *

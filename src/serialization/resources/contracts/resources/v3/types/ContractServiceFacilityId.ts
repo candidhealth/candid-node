@@ -4,14 +4,14 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 
-export const D8Date: core.serialization.Schema<
-    serializers.healthCareCodeInformation.v1.D8Date.Raw,
-    CandidApi.healthCareCodeInformation.v1.D8Date
+export const ContractServiceFacilityId: core.serialization.Schema<
+    serializers.contracts.v3.ContractServiceFacilityId.Raw,
+    CandidApi.contracts.v3.ContractServiceFacilityId
 > = core.serialization.string().transform({
-    transform: CandidApi.healthCareCodeInformation.v1.D8Date,
+    transform: CandidApi.contracts.v3.ContractServiceFacilityId,
     untransform: (value) => value,
 });
 
-export declare namespace D8Date {
+export declare namespace ContractServiceFacilityId {
     export type Raw = string;
 }

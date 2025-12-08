@@ -3,6 +3,7 @@
 import type { BaseClientOptions } from "../../../../BaseClient";
 import type * as core from "../../../../core";
 import { V2 } from "../resources/v2/client/Client";
+import { V3 } from "../resources/v3/client/Client";
 
 export declare namespace Contracts {
     export interface Options extends BaseClientOptions {
@@ -13,6 +14,7 @@ export declare namespace Contracts {
 export class Contracts {
     protected readonly _options: Contracts.Options;
     protected _v2: V2 | undefined;
+    protected _v3: V3 | undefined;
 
     constructor(_options: Contracts.Options = {}) {
         this._options = _options;
@@ -20,5 +22,9 @@ export class Contracts {
 
     public get v2(): V2 {
         return (this._v2 ??= new V2(this._options));
+    }
+
+    public get v3(): V3 {
+        return (this._v3 ??= new V3(this._options));
     }
 }
