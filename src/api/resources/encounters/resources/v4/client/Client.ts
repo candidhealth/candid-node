@@ -277,6 +277,11 @@ export class V4 {
     }
 
     /**
+     * Notice: The UB-04 Data File, 2025, is copyrighted by American Hospital Association (AHA), Chicago, Illinois.
+     * No portion of the THE UB-04 Data File, may be reproduced, stored in a retrieval system, or transmitted,
+     * in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior
+     * express, written consent of AHA.
+     *
      * @param {CandidApi.encountersUniversal.UniversalEncounterCreate} request
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -385,6 +390,7 @@ export class V4 {
                 case "HttpRequestValidationsError":
                 case "CashPayPayerError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
                 case "InvalidTagNamesError":
                 case "HttpRequestValidationError":
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
@@ -533,6 +539,7 @@ export class V4 {
                 case "HttpRequestValidationsError":
                 case "CashPayPayerError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
                 case "InvalidTagNamesError":
                 case "HttpRequestValidationError":
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
@@ -583,6 +590,11 @@ export class V4 {
      *
      * Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
      * encounter has not already been submitted or adjudicated.
+     *
+     * Notice: The UB-04 Data File, 2025, is copyrighted by American Hospital Association (AHA), Chicago, Illinois.
+     * No portion of the THE UB-04 Data File, may be reproduced, stored in a retrieval system, or transmitted,
+     * in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior
+     * express, written consent of AHA.
      *
      * @param {CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounter} request
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.
@@ -689,6 +701,7 @@ export class V4 {
                 case "UnauthorizedError":
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
                 case "HttpRequestValidationError":
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                     return {
@@ -848,6 +861,7 @@ export class V4 {
                 case "UnauthorizedError":
                 case "HttpRequestValidationsError":
                 case "SchemaInstanceValidationHttpFailure":
+                case "UnprocessableEntityError":
                 case "HttpRequestValidationError":
                 case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                     return {
@@ -881,6 +895,11 @@ export class V4 {
     }
 
     /**
+     * Notice: The UB-04 Data File, 2025, is copyrighted by American Hospital Association (AHA), Chicago, Illinois.
+     * No portion of the THE UB-04 Data File, may be reproduced, stored in a retrieval system, or transmitted,
+     * in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior
+     * express, written consent of AHA.
+     *
      * @param {CandidApi.EncounterId} encounterId
      * @param {CandidApi.encountersUniversal.UniversalEncounterUpdate} request
      * @param {V4.RequestOptions} requestOptions - Request-specific configuration.

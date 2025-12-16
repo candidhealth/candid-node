@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { BillingProviderCommercialLicenseType } from "../../../../commons/types/BillingProviderCommercialLicenseType";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { EncounterProviderBase } from "./EncounterProviderBase";
+import { ProviderSecondaryIdentification } from "./ProviderSecondaryIdentification";
 
 export const BillingProvider: core.serialization.ObjectSchema<
     serializers.encounterProviders.v2.BillingProvider.Raw,
@@ -20,6 +21,10 @@ export const BillingProvider: core.serialization.ObjectSchema<
             "provider_commercial_license_type",
             BillingProviderCommercialLicenseType.optional(),
         ),
+        secondaryIdentification: core.serialization.property(
+            "secondary_identification",
+            ProviderSecondaryIdentification.optional(),
+        ),
     })
     .extend(EncounterProviderBase);
 
@@ -30,5 +35,6 @@ export declare namespace BillingProvider {
         npi: string;
         taxonomy_code?: string | null;
         provider_commercial_license_type?: BillingProviderCommercialLicenseType.Raw | null;
+        secondary_identification?: ProviderSecondaryIdentification.Raw | null;
     }
 }

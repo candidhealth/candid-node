@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
+import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
 import { EncounterExternalIdUniquenessErrorType } from "../types/EncounterExternalIdUniquenessErrorType";
 import { EncounterPatientControlNumberUniquenessErrorType } from "../types/EncounterPatientControlNumberUniquenessErrorType";
 import { PayerPlanGroupPayerDoesNotMatchInsuranceCardError } from "../types/PayerPlanGroupPayerDoesNotMatchInsuranceCardError";
@@ -33,6 +34,9 @@ export const Error: core.serialization.Schema<
         }),
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
+        }),
+        UnprocessableEntityError: core.serialization.object({
+            content: UnprocessableEntityErrorMessage,
         }),
         HttpRequestValidationError: core.serialization.object({
             content: RequestValidationError,
@@ -66,6 +70,10 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.schemaInstanceValidationHttpFailure(
                         value.content,
                     );
+                case "UnprocessableEntityError":
+                    return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.unprocessableEntityError(
+                        value.content,
+                    );
                 case "HttpRequestValidationError":
                     return CandidApi.encounters.v4.createFromPreEncounterPatient.Error.httpRequestValidationError(
                         value.content,
@@ -87,6 +95,7 @@ export declare namespace Error {
         | Error.UnauthorizedError
         | Error.HttpRequestValidationsError
         | Error.SchemaInstanceValidationHttpFailure
+        | Error.UnprocessableEntityError
         | Error.HttpRequestValidationError
         | Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError;
 
@@ -118,6 +127,11 @@ export declare namespace Error {
     export interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
+    }
+
+    export interface UnprocessableEntityError {
+        errorName: "UnprocessableEntityError";
+        content: UnprocessableEntityErrorMessage.Raw;
     }
 
     export interface HttpRequestValidationError {

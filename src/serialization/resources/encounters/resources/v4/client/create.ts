@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
+import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
 import { CashPayPayerErrorMessage } from "../types/CashPayPayerErrorMessage";
 import { EncounterExternalIdUniquenessErrorType } from "../types/EncounterExternalIdUniquenessErrorType";
 import { EncounterGuarantorMissingContactInfoErrorType } from "../types/EncounterGuarantorMissingContactInfoErrorType";
@@ -44,6 +45,9 @@ export const Error: core.serialization.Schema<
         SchemaInstanceValidationHttpFailure: core.serialization.object({
             content: SchemaInstanceValidationFailure,
         }),
+        UnprocessableEntityError: core.serialization.object({
+            content: UnprocessableEntityErrorMessage,
+        }),
         InvalidTagNamesError: core.serialization.object({
             content: InvalidTagNamesErrorType,
         }),
@@ -80,6 +84,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.encounters.v4.create.Error.cashPayPayerError(value.content);
                 case "SchemaInstanceValidationHttpFailure":
                     return CandidApi.encounters.v4.create.Error.schemaInstanceValidationHttpFailure(value.content);
+                case "UnprocessableEntityError":
+                    return CandidApi.encounters.v4.create.Error.unprocessableEntityError(value.content);
                 case "InvalidTagNamesError":
                     return CandidApi.encounters.v4.create.Error.invalidTagNamesError(value.content);
                 case "HttpRequestValidationError":
@@ -107,6 +113,7 @@ export declare namespace Error {
         | Error.HttpRequestValidationsError
         | Error.CashPayPayerError
         | Error.SchemaInstanceValidationHttpFailure
+        | Error.UnprocessableEntityError
         | Error.InvalidTagNamesError
         | Error.HttpRequestValidationError
         | Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError
@@ -150,6 +157,11 @@ export declare namespace Error {
     export interface SchemaInstanceValidationHttpFailure {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: SchemaInstanceValidationFailure.Raw;
+    }
+
+    export interface UnprocessableEntityError {
+        errorName: "UnprocessableEntityError";
+        content: UnprocessableEntityErrorMessage.Raw;
     }
 
     export interface InvalidTagNamesError {

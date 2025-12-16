@@ -34,4 +34,10 @@ export interface EncounterProvider extends CandidApi.encounterProviders.v2.Encou
      * Provider Commercial Number
      */
     providerCommercialLicenseType?: CandidApi.BillingProviderCommercialLicenseType;
+    /**
+     * Only one of provider_commercial_license_type or secondary_identification may be provided
+     * 837i Loop2010BB G2
+     * Secondary Identification
+     */
+    secondaryIdentification?: CandidApi.encounterProviders.v2.ProviderSecondaryIdentification;
 }

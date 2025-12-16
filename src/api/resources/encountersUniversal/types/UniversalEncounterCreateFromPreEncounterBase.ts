@@ -37,4 +37,6 @@ export interface UniversalEncounterCreateFromPreEncounterBase extends CandidApi.
      * instances cannot be created for the same schema on an encounter.
      */
     schemaInstances?: CandidApi.customSchemas.v1.SchemaInstance[];
+    /** Corresponds to box 10a on the CMS-1500 (Loop 2300 on 837) */
+    relatedCausesInformation?: CandidApi.relatedCausesInformation.v1.RelatedCausesInformationCreate;
 }

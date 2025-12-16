@@ -8,6 +8,7 @@ import { QualifierCode } from "../../../../commons/types/QualifierCode";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { EncounterProviderBase } from "./EncounterProviderBase";
 import { ProviderId } from "./ProviderId";
+import { ProviderSecondaryIdentification } from "./ProviderSecondaryIdentification";
 
 export const EncounterProvider: core.serialization.ObjectSchema<
     serializers.encounterProviders.v2.EncounterProvider.Raw,
@@ -24,6 +25,10 @@ export const EncounterProvider: core.serialization.ObjectSchema<
             "provider_commercial_license_type",
             BillingProviderCommercialLicenseType.optional(),
         ),
+        secondaryIdentification: core.serialization.property(
+            "secondary_identification",
+            ProviderSecondaryIdentification.optional(),
+        ),
     })
     .extend(EncounterProviderBase);
 
@@ -36,5 +41,6 @@ export declare namespace EncounterProvider {
         taxonomy_code?: string | null;
         qualifier?: QualifierCode.Raw | null;
         provider_commercial_license_type?: BillingProviderCommercialLicenseType.Raw | null;
+        secondary_identification?: ProviderSecondaryIdentification.Raw | null;
     }
 }

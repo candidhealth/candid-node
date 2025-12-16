@@ -19,6 +19,7 @@ import { ResponsiblePartyType } from "../../encounters/resources/v4/types/Respon
 import { GuarantorCreate } from "../../guarantor/resources/v1/types/GuarantorCreate";
 import { PatientCreate } from "../../individual/types/PatientCreate";
 import { SubscriberCreate } from "../../individual/types/SubscriberCreate";
+import { RelatedCausesInformationCreate } from "../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityBase } from "../../serviceFacility/types/EncounterServiceFacilityBase";
 import { TagId } from "../../tags/types/TagId";
 
@@ -72,6 +73,10 @@ export const UniversalEncounterCreateBase: core.serialization.ObjectSchema<
             "secondary_payer_carrier_code",
             core.serialization.string().optional(),
         ),
+        relatedCausesInformation: core.serialization.property(
+            "related_causes_information",
+            RelatedCausesInformationCreate.optional(),
+        ),
     })
     .extend(EncounterBase);
 
@@ -98,5 +103,6 @@ export declare namespace UniversalEncounterCreateBase {
         epsdt_referral?: EpsdtReferral.Raw | null;
         claim_supplemental_information?: ClaimSupplementalInformation.Raw[] | null;
         secondary_payer_carrier_code?: string | null;
+        related_causes_information?: RelatedCausesInformationCreate.Raw | null;
     }
 }

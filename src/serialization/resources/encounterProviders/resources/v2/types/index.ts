@@ -10,6 +10,7 @@ export * from "./OrderingProvider";
 export * from "./OrderingProviderOptional";
 export * from "./OrderingProviderUpdate";
 export * from "./ProviderId";
+export * from "./ProviderSecondaryIdentification";
 export * from "./ReferringProvider";
 export * from "./ReferringProviderUpdate";
 export * from "./ReferringProviderUpdateWithOptionalAddress";

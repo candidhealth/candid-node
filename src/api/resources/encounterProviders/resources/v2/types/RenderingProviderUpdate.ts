@@ -10,4 +10,10 @@ export interface RenderingProviderUpdate extends CandidApi.encounterProviders.v2
     npi?: string;
     taxonomyCode?: string;
     address?: CandidApi.StreetAddressLongZip;
+    /**
+     * Only one of provider_commercial_license_type or secondary_identification may be provided
+     * 837i Loop2310BB G2
+     * Secondary Identification
+     */
+    secondaryIdentification?: CandidApi.encounterProviders.v2.ProviderSecondaryIdentification;
 }

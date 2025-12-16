@@ -23,7 +23,6 @@ import { Guarantor } from "./api/resources/guarantor/client/Client";
 import { HealthCareCodeInformation } from "./api/resources/healthCareCodeInformation/client/Client";
 import { ImportInvoice } from "./api/resources/importInvoice/client/Client";
 import { InsuranceAdjudications } from "./api/resources/insuranceAdjudications/client/Client";
-import { InsurancePayments } from "./api/resources/insurancePayments/client/Client";
 import { InsuranceRefunds } from "./api/resources/insuranceRefunds/client/Client";
 import { MedicationDispense } from "./api/resources/medicationDispense/client/Client";
 import { NonInsurancePayerPayments } from "./api/resources/nonInsurancePayerPayments/client/Client";
@@ -78,7 +77,6 @@ export class CandidApiClient {
     protected _healthCareCodeInformation: HealthCareCodeInformation | undefined;
     protected _importInvoice: ImportInvoice | undefined;
     protected _insuranceAdjudications: InsuranceAdjudications | undefined;
-    protected _insurancePayments: InsurancePayments | undefined;
     protected _insuranceRefunds: InsuranceRefunds | undefined;
     protected _medicationDispense: MedicationDispense | undefined;
     protected _nonInsurancePayerPayments: NonInsurancePayerPayments | undefined;
@@ -105,8 +103,8 @@ export class CandidApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "candidhealth",
-                    "X-Fern-SDK-Version": "1.17.0",
-                    "User-Agent": "candidhealth/1.17.0",
+                    "X-Fern-SDK-Version": "1.17.1",
+                    "User-Agent": "candidhealth/1.17.1",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -267,13 +265,6 @@ export class CandidApiClient {
 
     public get insuranceAdjudications(): InsuranceAdjudications {
         return (this._insuranceAdjudications ??= new InsuranceAdjudications({
-            ...this._options,
-            token: async () => await this._oauthTokenProvider.getToken(),
-        }));
-    }
-
-    public get insurancePayments(): InsurancePayments {
-        return (this._insurancePayments ??= new InsurancePayments({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

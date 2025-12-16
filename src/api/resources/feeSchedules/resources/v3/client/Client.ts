@@ -712,7 +712,15 @@ export class V3 {
     }
 
     /**
-     * Uploads a new fee schedule.\n Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.\n If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will be returned.\n Use the dry run flag to discover already existing rates and to run validations.  If validations for any rate fail, no rates will be saved to the system.
+     * Uploads a new fee schedule.
+     *
+     * Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.
+     *
+     * If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will
+     * be returned.
+     *
+     * Use the dry run flag to discover already existing rates and to run validations.  If validations for any rate fail, no rates will
+     * be saved to the system.
      *
      * @param {CandidApi.feeSchedules.v3.FeeScheduleUploadRequest} request
      * @param {V3.RequestOptions} requestOptions - Request-specific configuration.

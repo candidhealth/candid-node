@@ -66,4 +66,6 @@ export interface UniversalEncounterCreateBase extends CandidApi.encounters.v4.En
     claimSupplementalInformation?: CandidApi.encounters.v4.ClaimSupplementalInformation[];
     /** When Medicaid is billed as the secondary payer the Carrier Code is used to identify the primary payer. This is required for certain states. */
     secondaryPayerCarrierCode?: string;
+    /** Corresponds to box 10a on the CMS-1500 (Loop 2300 on 837) */
+    relatedCausesInformation?: CandidApi.relatedCausesInformation.v1.RelatedCausesInformationCreate;
 }

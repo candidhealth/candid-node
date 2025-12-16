@@ -14,6 +14,7 @@ import { SupervisingProvider } from "../../encounterProviders/resources/v2/types
 import { ClinicalNoteCategoryCreate } from "../../encounters/resources/v4/types/ClinicalNoteCategoryCreate";
 import { EncounterBase } from "../../encounters/resources/v4/types/EncounterBase";
 import { PatientHistoryCategory } from "../../encounters/resources/v4/types/PatientHistoryCategory";
+import { RelatedCausesInformationCreate } from "../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityBase } from "../../serviceFacility/types/EncounterServiceFacilityBase";
 import { TagId } from "../../tags/types/TagId";
 
@@ -52,6 +53,10 @@ export const UniversalEncounterCreateFromPreEncounterBase: core.serialization.Ob
             "schema_instances",
             core.serialization.list(SchemaInstance).optional(),
         ),
+        relatedCausesInformation: core.serialization.property(
+            "related_causes_information",
+            RelatedCausesInformationCreate.optional(),
+        ),
     })
     .extend(EncounterBase);
 
@@ -69,5 +74,6 @@ export declare namespace UniversalEncounterCreateFromPreEncounterBase {
         external_claim_submission?: ExternalClaimSubmissionCreate.Raw | null;
         tag_ids?: TagId.Raw[] | null;
         schema_instances?: SchemaInstance.Raw[] | null;
+        related_causes_information?: RelatedCausesInformationCreate.Raw | null;
     }
 }

@@ -3708,6 +3708,23 @@ await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7f
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Notice: The UB-04 Data File, 2025, is copyrighted by American Hospital Association (AHA), Chicago, Illinois.
+No portion of the THE UB-04 Data File, may be reproduced, stored in a retrieval system, or transmitted,
+in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior
+express, written consent of AHA.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -3904,6 +3921,11 @@ where applicable. In particular, the following fields are populated from the pat
 
 Utilizing this endpoint opts you into automatic updating of the encounter when the patient or appointment is updated, assuming the
 encounter has not already been submitted or adjudicated.
+
+Notice: The UB-04 Data File, 2025, is copyrighted by American Hospital Association (AHA), Chicago, Illinois.
+No portion of the THE UB-04 Data File, may be reproduced, stored in a retrieval system, or transmitted,
+in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior
+express, written consent of AHA.
 </dd>
 </dl>
 </dd>
@@ -4085,6 +4107,23 @@ await client.encounters.v4.createFromPreEncounterPatient({
 <details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">updateUniversal</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.updateUniversal.Error></code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Notice: The UB-04 Data File, 2025, is copyrighted by American Hospital Association (AHA), Chicago, Illinois.
+No portion of the THE UB-04 Data File, may be reproduced, stored in a retrieval system, or transmitted,
+in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without prior
+express, written consent of AHA.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5038,7 +5077,15 @@ await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4
 <dl>
 <dd>
 
-Uploads a new fee schedule.\n Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.\n If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will be returned.\n Use the dry run flag to discover already existing rates and to run validations.  If validations for any rate fail, no rates will be saved to the system.
+Uploads a new fee schedule.
+
+Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.
+
+If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will
+be returned.
+
+Use the dry run flag to discover already existing rates and to run validations.  If validations for any rate fail, no rates will
+be saved to the system.
 </dd>
 </dl>
 </dd>
@@ -6186,134 +6233,6 @@ await client.insuranceAdjudications.v1.get(CandidApi.InsuranceAdjudicationId("d5
 <dd>
 
 **insuranceAdjudicationId:** `CandidApi.InsuranceAdjudicationId` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## InsurancePayments V1
-<details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.InsurancePaymentsPage, CandidApi.insurancePayments.v1.getMulti.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns all non-ERA originated insurance payments satisfying the search criteria
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.insurancePayments.v1.getMulti();
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `CandidApi.insurancePayments.v1.GetMultiInsurancePaymentRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V1.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.insurancePayments.v1.<a href="/src/api/resources/insurancePayments/resources/v1/client/Client.ts">get</a>(insurancePaymentId) -> core.APIResponse<CandidApi.InsurancePayment, CandidApi.insurancePayments.v1.get.Error></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieves a previously created insurance payment by its `insurance_payment_id`.
-If the payment does not exist, a `403` will be thrown.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.insurancePayments.v1.get(CandidApi.InsurancePaymentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**insurancePaymentId:** `CandidApi.InsurancePaymentId` 
     
 </dd>
 </dl>

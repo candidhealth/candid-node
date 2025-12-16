@@ -19,6 +19,7 @@ import { Guarantor } from "../../../../guarantor/resources/v1/types/Guarantor";
 import { Patient } from "../../../../individual/types/Patient";
 import { Subscriber } from "../../../../individual/types/Subscriber";
 import { PatientPayment } from "../../../../patientPayments/resources/v3/types/PatientPayment";
+import { RelatedCausesInformation } from "../../../../relatedCausesInformation/resources/v1/types/RelatedCausesInformation";
 import { EncounterServiceFacility } from "../../../../serviceFacility/types/EncounterServiceFacility";
 import { Tag } from "../../../../tags/types/Tag";
 import { PatientDischargeStatusCode } from "../../../../x12/resources/v1/types/PatientDischargeStatusCode";
@@ -65,6 +66,10 @@ export const Encounter: core.serialization.ObjectSchema<
         dischargeStatus: core.serialization.property("discharge_status", PatientDischargeStatusCode.optional()),
         operatingProvider: core.serialization.property("operating_provider", EncounterProvider.optional()),
         otherOperatingProvider: core.serialization.property("other_operating_provider", EncounterProvider.optional()),
+        relatedCausesInformation: core.serialization.property(
+            "related_causes_information",
+            RelatedCausesInformation.optional(),
+        ),
         submissionExpectation: core.serialization.property(
             "submission_expectation",
             EncounterSubmissionExpectation.optional(),
@@ -144,6 +149,7 @@ export declare namespace Encounter {
         discharge_status?: PatientDischargeStatusCode.Raw | null;
         operating_provider?: EncounterProvider.Raw | null;
         other_operating_provider?: EncounterProvider.Raw | null;
+        related_causes_information?: RelatedCausesInformation.Raw | null;
         submission_expectation?: EncounterSubmissionExpectation.Raw | null;
         type_of_bill?: TypeOfBillComposite.Raw | null;
         referring_provider?: EncounterProvider.Raw | null;

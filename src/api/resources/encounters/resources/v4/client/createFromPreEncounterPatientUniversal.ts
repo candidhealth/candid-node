@@ -10,6 +10,7 @@ export type Error =
     | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.UnauthorizedError
     | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.HttpRequestValidationsError
     | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.SchemaInstanceValidationHttpFailure
+    | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.UnprocessableEntityError
     | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.HttpRequestValidationError
     | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError
     | CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error._Unknown;
@@ -43,6 +44,11 @@ export namespace Error {
     export interface SchemaInstanceValidationHttpFailure extends _Utils {
         errorName: "SchemaInstanceValidationHttpFailure";
         content: CandidApi.encounters.v4.SchemaInstanceValidationFailure;
+    }
+
+    export interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
     export interface HttpRequestValidationError extends _Utils {
@@ -79,6 +85,7 @@ export namespace Error {
         schemaInstanceValidationHttpFailure: (
             value: CandidApi.encounters.v4.SchemaInstanceValidationFailure,
         ) => _Result;
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError: (
             value: CandidApi.encounters.v4.PayerPlanGroupPayerDoesNotMatchInsuranceCardError,
@@ -178,6 +185,21 @@ export const Error = {
         };
     },
 
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage,
+    ): CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.UnprocessableEntityError,
+                visitor: CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error._visit(this, visitor);
+            },
+        };
+    },
+
     httpRequestValidationError: (
         value: CandidApi.RequestValidationError,
     ): CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error.HttpRequestValidationError => {
@@ -240,6 +262,8 @@ export const Error = {
                 return visitor.httpRequestValidationsError(value.content);
             case "SchemaInstanceValidationHttpFailure":
                 return visitor.schemaInstanceValidationHttpFailure(value.content);
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
             case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":

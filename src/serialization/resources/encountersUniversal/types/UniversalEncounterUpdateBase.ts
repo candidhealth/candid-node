@@ -19,6 +19,7 @@ import { Medication } from "../../encounters/resources/v4/types/Medication";
 import { GuarantorUpdate } from "../../guarantor/resources/v1/types/GuarantorUpdate";
 import { PatientUpdate } from "../../individual/types/PatientUpdate";
 import { SubscriberCreate } from "../../individual/types/SubscriberCreate";
+import { RelatedCausesInformationUpdate } from "../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationUpdate";
 import { EncounterServiceFacilityUpdate } from "../../serviceFacility/types/EncounterServiceFacilityUpdate";
 
 export const UniversalEncounterUpdateBase: core.serialization.ObjectSchema<
@@ -62,6 +63,10 @@ export const UniversalEncounterUpdateBase: core.serialization.ObjectSchema<
             "place_of_service_code_as_submitted",
             FacilityTypeCode.optional(),
         ),
+        relatedCausesInformation: core.serialization.property(
+            "related_causes_information",
+            RelatedCausesInformationUpdate.optional(),
+        ),
     })
     .extend(EncounterOptional);
 
@@ -85,5 +90,6 @@ export declare namespace UniversalEncounterUpdateBase {
         supervising_provider?: SupervisingProviderUpdate.Raw | null;
         billing_provider?: BillingProviderUpdate.Raw | null;
         place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
+        related_causes_information?: RelatedCausesInformationUpdate.Raw | null;
     }
 }
