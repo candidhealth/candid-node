@@ -4,7 +4,7 @@ import type * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import type * as serializers from "../../../index";
 import { ClaimId } from "../../commons/types/ClaimId";
-import { Era } from "../../era/types/Era";
+import { Era } from "../../eras/types/Era";
 import { ServiceLine } from "../../serviceLines/resources/v2/types/ServiceLine";
 import { ClaimStatus } from "./ClaimStatus";
 

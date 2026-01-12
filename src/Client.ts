@@ -15,7 +15,6 @@ import { EncounterProviders } from "./api/resources/encounterProviders/client/Cl
 import { EncounterSupplementalInformation } from "./api/resources/encounterSupplementalInformation/client/Client";
 import { Encounters } from "./api/resources/encounters/client/Client";
 import { Events } from "./api/resources/events/client/Client";
-import { ExpectedNetworkStatus } from "./api/resources/expectedNetworkStatus/client/Client";
 import { Exports } from "./api/resources/exports/client/Client";
 import { ExternalPaymentAccountConfig } from "./api/resources/externalPaymentAccountConfig/client/Client";
 import { FeeSchedules } from "./api/resources/feeSchedules/client/Client";
@@ -69,7 +68,6 @@ export class CandidApiClient {
     protected _encounterSupplementalInformation: EncounterSupplementalInformation | undefined;
     protected _encounters: Encounters | undefined;
     protected _events: Events | undefined;
-    protected _expectedNetworkStatus: ExpectedNetworkStatus | undefined;
     protected _exports: Exports | undefined;
     protected _externalPaymentAccountConfig: ExternalPaymentAccountConfig | undefined;
     protected _feeSchedules: FeeSchedules | undefined;
@@ -103,8 +101,8 @@ export class CandidApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "candidhealth",
-                    "X-Fern-SDK-Version": "1.17.1",
-                    "User-Agent": "candidhealth/1.17.1",
+                    "X-Fern-SDK-Version": "1.17.2",
+                    "User-Agent": "candidhealth/1.17.2",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -209,13 +207,6 @@ export class CandidApiClient {
 
     public get events(): Events {
         return (this._events ??= new Events({
-            ...this._options,
-            token: async () => await this._oauthTokenProvider.getToken(),
-        }));
-    }
-
-    public get expectedNetworkStatus(): ExpectedNetworkStatus {
-        return (this._expectedNetworkStatus ??= new ExpectedNetworkStatus({
             ...this._options,
             token: async () => await this._oauthTokenProvider.getToken(),
         }));

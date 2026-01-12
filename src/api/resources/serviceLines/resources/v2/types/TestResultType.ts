@@ -4,5 +4,6 @@ export const TestResultType = {
     Hematocrit: "HEMATOCRIT",
     Hemoglobin: "HEMOGLOBIN",
     Ldl: "LDL",
+    VitaminD: "VITAMIN_D",
 } as const;
 export type TestResultType = (typeof TestResultType)[keyof typeof TestResultType];

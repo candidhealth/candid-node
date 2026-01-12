@@ -16,6 +16,7 @@ import { SupervisingProviderUpdateWithOptionalAddress } from "../../../../encoun
 import { GuarantorOptional } from "../../../../guarantor/resources/v1/types/GuarantorOptional";
 import { PatientUpdateWithOptionalAddress } from "../../../../individual/types/PatientUpdateWithOptionalAddress";
 import { SubscriberCreateOptional } from "../../../../individual/types/SubscriberCreateOptional";
+import { RelatedCausesInformationCreate } from "../../../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityUpdateWithOptionalAddress } from "../../../../serviceFacility/types/EncounterServiceFacilityUpdateWithOptionalAddress";
 import { ServiceLineCreateOptional } from "../../../../serviceLines/resources/v2/types/ServiceLineCreateOptional";
 import { ClaimSupplementalInformationOptional } from "./ClaimSupplementalInformationOptional";
@@ -98,6 +99,10 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
             BillingProviderUpdateWithOptionalAddress.optional(),
         ),
         payToAddress: core.serialization.property("pay_to_address", StreetAddressShortZipOptional.optional()),
+        relatedCausesInformation: core.serialization.property(
+            "related_causes_information",
+            RelatedCausesInformationCreate.optional(),
+        ),
     })
     .extend(EncounterOptional);
 
@@ -127,5 +132,6 @@ export declare namespace EncounterDeepOptional {
         supervising_provider?: SupervisingProviderUpdateWithOptionalAddress.Raw | null;
         billing_provider?: BillingProviderUpdateWithOptionalAddress.Raw | null;
         pay_to_address?: StreetAddressShortZipOptional.Raw | null;
+        related_causes_information?: RelatedCausesInformationCreate.Raw | null;
     }
 }

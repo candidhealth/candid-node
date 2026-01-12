@@ -21,6 +21,7 @@ export const UniversalServiceLineCreateStandalone: core.serialization.ObjectSche
             "prior_authorization_number",
             core.serialization.string().optional(),
         ),
+        externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     })
     .extend(ServiceLineCreateStandaloneBaseBase);
 
@@ -33,5 +34,6 @@ export declare namespace UniversalServiceLineCreateStandalone {
         revenue_code?: string | null;
         procedure_code?: string | null;
         prior_authorization_number?: string | null;
+        external_id?: string | null;
     }
 }

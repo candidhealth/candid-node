@@ -36,6 +36,7 @@ export const ServiceLineCreateBaseBase: core.serialization.ObjectSchema<
         "prior_authorization_number",
         core.serialization.string().optional(),
     ),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
 });
 
 export declare namespace ServiceLineCreateBaseBase {
@@ -55,5 +56,6 @@ export declare namespace ServiceLineCreateBaseBase {
         test_results?: TestResult.Raw[] | null;
         note?: string | null;
         prior_authorization_number?: string | null;
+        external_id?: string | null;
     }
 }

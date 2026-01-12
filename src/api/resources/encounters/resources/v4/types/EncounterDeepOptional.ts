@@ -82,4 +82,6 @@ export interface EncounterDeepOptional extends CandidApi.encounters.v4.Encounter
     billingProvider?: CandidApi.encounterProviders.v2.BillingProviderUpdateWithOptionalAddress;
     /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressShortZipOptional;
+    /** Corresponds to box 10a on the CMS-1500 (Loop 2300 on 837) */
+    relatedCausesInformation?: CandidApi.relatedCausesInformation.v1.RelatedCausesInformationCreate;
 }

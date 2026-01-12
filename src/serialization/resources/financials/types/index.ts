@@ -1,6 +1,7 @@
 export * from "./AccountType";
 export * from "./Allocation";
 export * from "./AllocationCreate";
+export * from "./AllocationEarmarkType";
 export * from "./AllocationTarget";
 export * from "./AllocationTargetCreate";
 export * from "./AppointmentAllocationTarget";

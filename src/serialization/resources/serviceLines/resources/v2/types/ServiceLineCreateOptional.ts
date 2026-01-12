@@ -42,6 +42,7 @@ export const ServiceLineCreateOptional: core.serialization.ObjectSchema<
         "prior_authorization_number",
         core.serialization.string().optional(),
     ),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
 });
 
 export declare namespace ServiceLineCreateOptional {
@@ -64,5 +65,6 @@ export declare namespace ServiceLineCreateOptional {
         note?: string | null;
         revenue_code?: string | null;
         prior_authorization_number?: string | null;
+        external_id?: string | null;
     }
 }

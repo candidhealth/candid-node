@@ -96,6 +96,7 @@ export class V2 {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.serviceLines.v2.create.Error.Raw)?.errorName) {
+                case "EntityConflictError":
                 case "HttpRequestValidationError":
                     return {
                         data: {
@@ -199,6 +200,7 @@ export class V2 {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.serviceLines.v2.createUniversal.Error.Raw)?.errorName) {
+                case "EntityConflictError":
                 case "HttpRequestValidationError":
                     return {
                         data: {

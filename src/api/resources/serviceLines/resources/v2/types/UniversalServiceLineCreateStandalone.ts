@@ -13,4 +13,9 @@ export interface UniversalServiceLineCreateStandalone
     procedureCode?: string;
     /** Prior authorization number for this service line. Maps to the appropriate REF segment on Loop 2400 of the EDI 837p. This is not used for institutional claims (EDI 837i). */
     priorAuthorizationNumber?: string;
+    /**
+     * An external identifier for this service line. This is not used in the EDI 837, but can be used to identify the service line in external systems.
+     * This field should not contain PHI. Must be unique on a given claim.
+     */
+    externalId?: string;
 }

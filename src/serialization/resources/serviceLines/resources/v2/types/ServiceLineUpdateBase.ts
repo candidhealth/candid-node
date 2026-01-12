@@ -38,6 +38,7 @@ export const ServiceLineUpdateBase: core.serialization.ObjectSchema<
         "prior_authorization_number",
         core.serialization.string().optional(),
     ),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
 });
 
 export declare namespace ServiceLineUpdateBase {
@@ -59,5 +60,6 @@ export declare namespace ServiceLineUpdateBase {
         has_family_planning_indicator?: boolean | null;
         note?: string | null;
         prior_authorization_number?: string | null;
+        external_id?: string | null;
     }
 }

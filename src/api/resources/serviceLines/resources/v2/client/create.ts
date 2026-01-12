@@ -4,10 +4,16 @@ import type * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 
 export type Error =
+    | CandidApi.serviceLines.v2.create.Error.EntityConflictError
     | CandidApi.serviceLines.v2.create.Error.HttpRequestValidationError
     | CandidApi.serviceLines.v2.create.Error._Unknown;
 
 export namespace Error {
+    export interface EntityConflictError extends _Utils {
+        errorName: "EntityConflictError";
+        content: CandidApi.EntityConflictErrorMessage;
+    }
+
     export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
@@ -23,12 +29,28 @@ export namespace Error {
     }
 
     export interface _Visitor<_Result> {
+        entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    entityConflictError: (
+        value: CandidApi.EntityConflictErrorMessage,
+    ): CandidApi.serviceLines.v2.create.Error.EntityConflictError => {
+        return {
+            content: value,
+            errorName: "EntityConflictError",
+            _visit: function <_Result>(
+                this: CandidApi.serviceLines.v2.create.Error.EntityConflictError,
+                visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.serviceLines.v2.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     httpRequestValidationError: (
         value: CandidApi.RequestValidationError,
     ): CandidApi.serviceLines.v2.create.Error.HttpRequestValidationError => {
@@ -62,6 +84,8 @@ export const Error = {
         visitor: CandidApi.serviceLines.v2.create.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
+            case "EntityConflictError":
+                return visitor.entityConflictError(value.content);
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
             default:
