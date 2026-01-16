@@ -3,16 +3,22 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { ProviderSecondaryIdentificationQualifier } from "./ProviderSecondaryIdentificationQualifier";
 
 export const ProviderSecondaryIdentification: core.serialization.ObjectSchema<
     serializers.encounterProviders.v2.ProviderSecondaryIdentification.Raw,
     CandidApi.encounterProviders.v2.ProviderSecondaryIdentification
 > = core.serialization.object({
     referenceIdentification: core.serialization.property("reference_identification", core.serialization.string()),
+    referenceIdentificationQualifier: core.serialization.property(
+        "reference_identification_qualifier",
+        ProviderSecondaryIdentificationQualifier.optional(),
+    ),
 });
 
 export declare namespace ProviderSecondaryIdentification {
     export interface Raw {
         reference_identification: string;
+        reference_identification_qualifier?: ProviderSecondaryIdentificationQualifier.Raw | null;
     }
 }

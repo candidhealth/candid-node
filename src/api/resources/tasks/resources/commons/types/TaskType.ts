@@ -13,5 +13,6 @@ export const TaskType = {
     PayerConfigurationError: "PAYER_CONFIGURATION_ERROR",
     DenialResolution: "DENIAL_RESOLUTION",
     MissingEnrollment: "MISSING_ENROLLMENT",
+    ChargeCaptureUpdate: "CHARGE_CAPTURE_UPDATE",
 } as const;
 export type TaskType = (typeof TaskType)[keyof typeof TaskType];

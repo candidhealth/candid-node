@@ -18,6 +18,7 @@ export const TaskType: core.serialization.Schema<serializers.tasks.TaskType.Raw,
         "PAYER_CONFIGURATION_ERROR",
         "DENIAL_RESOLUTION",
         "MISSING_ENROLLMENT",
+        "CHARGE_CAPTURE_UPDATE",
     ]);
 
 export declare namespace TaskType {
@@ -33,5 +34,6 @@ export declare namespace TaskType {
         | "REJECTION_RESOLUTION"
         | "PAYER_CONFIGURATION_ERROR"
         | "DENIAL_RESOLUTION"
-        | "MISSING_ENROLLMENT";
+        | "MISSING_ENROLLMENT"
+        | "CHARGE_CAPTURE_UPDATE";
 }

@@ -1,6 +1,6 @@
 # Reference
 ## Auth Default
-<details><summary><code>client.auth.default.<a href="/src/api/resources/auth/resources/default/client/Client.ts">getToken</a>({ ...params }) -> core.APIResponse<CandidApi.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error></code></summary>
+<details><summary><code>client.auth.default.<a href="/src/api/resources/auth/resources/default/client/Client.ts">getToken</a>({ ...params }) -> core.APIResponse&lt;CandidApi.AuthGetTokenResponse, CandidApi.auth.default_.getToken.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -97,7 +97,7 @@ await client.auth.default.getToken({
 </details>
 
 ## BillingNotes V2
-<details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.BillingNote, CandidApi.billingNotes.v2.create.Error></code></summary>
+<details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.BillingNote, CandidApi.billingNotes.v2.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -149,7 +149,7 @@ await client.billingNotes.v2.create({
 </dl>
 </details>
 
-<details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">delete</a>(billingNoteId) -> core.APIResponse<void, CandidApi.billingNotes.v2.delete.Error></code></summary>
+<details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">delete</a>(billingNoteId) -> core.APIResponse&lt;void, CandidApi.billingNotes.v2.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -198,7 +198,7 @@ await client.billingNotes.v2.delete(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 </dl>
 </details>
 
-<details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">update</a>(billingNoteId, { ...params }) -> core.APIResponse<CandidApi.BillingNote, CandidApi.billingNotes.v2.update.Error></code></summary>
+<details><summary><code>client.billingNotes.v2.<a href="/src/api/resources/billingNotes/resources/v2/client/Client.ts">update</a>(billingNoteId, { ...params }) -> core.APIResponse&lt;CandidApi.BillingNote, CandidApi.billingNotes.v2.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -258,7 +258,7 @@ await client.billingNotes.v2.update(CandidApi.BillingNoteId("d5e9c84f-c2b2-4bf4-
 </details>
 
 ## ChargeCaptureBundles V1
-<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">get</a>(chargeCaptureClaimCreationId) -> core.APIResponse<CandidApi.ChargeCaptureClaimCreation, CandidApi.chargeCaptureBundles.v1.get.Error></code></summary>
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">get</a>(chargeCaptureClaimCreationId) -> core.APIResponse&lt;CandidApi.ChargeCaptureClaimCreation, CandidApi.chargeCaptureBundles.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -307,7 +307,7 @@ await client.chargeCaptureBundles.v1.get(CandidApi.ChargeCaptureClaimCreationId(
 </dl>
 </details>
 
-<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">getSummary</a>() -> core.APIResponse<CandidApi.ChargeCaptureClaimCreationSummary, CandidApi.chargeCaptureBundles.v1.getSummary.Error></code></summary>
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">getSummary</a>() -> core.APIResponse&lt;CandidApi.ChargeCaptureClaimCreationSummary, CandidApi.chargeCaptureBundles.v1.getSummary.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -348,7 +348,7 @@ await client.chargeCaptureBundles.v1.getSummary();
 </dl>
 </details>
 
-<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">resolveChargeCreationError</a>(chargeCaptureBundleErrorId, { ...params }) -> core.APIResponse<void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error></code></summary>
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">resolveChargeCreationError</a>(chargeCaptureBundleErrorId, { ...params }) -> core.APIResponse&lt;void, CandidApi.chargeCaptureBundles.v1.resolveChargeCreationError.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -405,7 +405,7 @@ await client.chargeCaptureBundles.v1.resolveChargeCreationError("d5e9c84f-c2b2-4
 </dl>
 </details>
 
-<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCaptureClaimCreationPage, CandidApi.chargeCaptureBundles.v1.getAll.Error></code></summary>
+<details><summary><code>client.chargeCaptureBundles.v1.<a href="/src/api/resources/chargeCaptureBundles/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ChargeCaptureClaimCreationPage, CandidApi.chargeCaptureBundles.v1.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -455,7 +455,7 @@ await client.chargeCaptureBundles.v1.getAll();
 </details>
 
 ## ChargeCapture V1
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.create.Error></code></summary>
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -509,7 +509,7 @@ await client.chargeCapture.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">createFromPreEncounterPatient</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error></code></summary>
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">createFromPreEncounterPatient</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.createFromPreEncounterPatient.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -595,7 +595,7 @@ await client.chargeCapture.v1.createFromPreEncounterPatient({
 </dl>
 </details>
 
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">update</a>(chargeCaptureId, { ...params }) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.update.Error></code></summary>
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">update</a>(chargeCaptureId, { ...params }) -> core.APIResponse&lt;CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -652,7 +652,7 @@ await client.chargeCapture.v1.update(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4b
 </dl>
 </details>
 
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">get</a>(chargeCaptureId) -> core.APIResponse<CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.get.Error></code></summary>
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">get</a>(chargeCaptureId) -> core.APIResponse&lt;CandidApi.ChargeCapture, CandidApi.chargeCapture.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -701,7 +701,7 @@ await client.chargeCapture.v1.get(CandidApi.ChargeCaptureId("d5e9c84f-c2b2-4bf4-
 </dl>
 </details>
 
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error></code></summary>
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ChargeCapturePage, CandidApi.chargeCapture.v1.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -750,7 +750,7 @@ await client.chargeCapture.v1.getAll();
 </dl>
 </details>
 
-<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">updatePostBilledChanges</a>({ ...params }) -> core.APIResponse<CandidApi.ChargeCapturePostBilledChange[], CandidApi.chargeCapture.v1.updatePostBilledChanges.Error></code></summary>
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">updatePostBilledChanges</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ChargeCapturePostBilledChange[], CandidApi.chargeCapture.v1.updatePostBilledChanges.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -803,7 +803,7 @@ await client.chargeCapture.v1.updatePostBilledChanges({
 </details>
 
 ## Contracts V2
-<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">get</a>(contractId) -> core.APIResponse<CandidApi.ContractWithProviders, CandidApi.contracts.v2.get.Error></code></summary>
+<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">get</a>(contractId) -> core.APIResponse&lt;CandidApi.ContractWithProviders, CandidApi.contracts.v2.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -866,7 +866,7 @@ await client.contracts.v2.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ContractsPage, CandidApi.contracts.v2.getMulti.Error></code></summary>
+<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ContractsPage, CandidApi.contracts.v2.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -929,7 +929,7 @@ await client.contracts.v2.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ContractWithProviders, CandidApi.contracts.v2.create.Error></code></summary>
+<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProviders, CandidApi.contracts.v2.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1010,7 +1010,7 @@ await client.contracts.v2.create({
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">delete</a>(contractId) -> core.APIResponse<void, CandidApi.contracts.v2.delete.Error></code></summary>
+<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">delete</a>(contractId) -> core.APIResponse&lt;void, CandidApi.contracts.v2.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1059,7 +1059,7 @@ await client.contracts.v2.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">update</a>(contractId, { ...params }) -> core.APIResponse<CandidApi.ContractWithProviders, CandidApi.contracts.v2.update.Error></code></summary>
+<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">update</a>(contractId, { ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProviders, CandidApi.contracts.v2.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1117,7 +1117,7 @@ await client.contracts.v2.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 </details>
 
 ## Contracts V3
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">get</a>(contractId) -> core.APIResponse<CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.get.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">get</a>(contractId) -> core.APIResponse&lt;CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1166,7 +1166,7 @@ await client.contracts.v3.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ContractsPage, CandidApi.contracts.v3.getMulti.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ContractsPage, CandidApi.contracts.v3.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1215,7 +1215,7 @@ await client.contracts.v3.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.create.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1298,7 +1298,7 @@ await client.contracts.v3.create({
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">delete</a>(contractId) -> core.APIResponse<void, CandidApi.contracts.v3.delete.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">delete</a>(contractId) -> core.APIResponse&lt;void, CandidApi.contracts.v3.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1347,7 +1347,7 @@ await client.contracts.v3.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">update</a>(contractId, { ...params }) -> core.APIResponse<CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.update.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">update</a>(contractId, { ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v3.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1406,7 +1406,7 @@ await client.contracts.v3.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">createContractServiceFacility</a>(contractId, { ...params }) -> core.APIResponse<CandidApi.ContractServiceFacility, CandidApi.contracts.v3.createContractServiceFacility.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">createContractServiceFacility</a>(contractId, { ...params }) -> core.APIResponse&lt;CandidApi.ContractServiceFacility, CandidApi.contracts.v3.createContractServiceFacility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1466,7 +1466,7 @@ await client.contracts.v3.createContractServiceFacility(CandidApi.ContractId("d5
 </dl>
 </details>
 
-<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">updateContractServiceFacility</a>(contractId, contractServiceFacilityId, { ...params }) -> core.APIResponse<CandidApi.ContractServiceFacility, CandidApi.contracts.v3.updateContractServiceFacility.Error></code></summary>
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">updateContractServiceFacility</a>(contractId, contractServiceFacilityId, { ...params }) -> core.APIResponse&lt;CandidApi.ContractServiceFacility, CandidApi.contracts.v3.updateContractServiceFacility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1532,7 +1532,7 @@ await client.contracts.v3.updateContractServiceFacility(CandidApi.ContractId("d5
 </details>
 
 ## Credentialing V2
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">createFacility</a>({ ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.createFacility.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">createFacility</a>({ ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.createFacility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1585,7 +1585,7 @@ await client.credentialing.v2.createFacility({
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getFacility</a>(facilityCredentialingId) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.getFacility.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getFacility</a>(facilityCredentialingId) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.getFacility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1634,7 +1634,7 @@ await client.credentialing.v2.getFacility(CandidApi.FacilityCredentialingSpanId(
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getAllFacilities</a>({ ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpanPage, CandidApi.credentialing.v2.getAllFacilities.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getAllFacilities</a>({ ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpanPage, CandidApi.credentialing.v2.getAllFacilities.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1683,7 +1683,7 @@ await client.credentialing.v2.getAllFacilities();
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">deleteFacility</a>(facilityCredentialingId) -> core.APIResponse<void, CandidApi.credentialing.v2.deleteFacility.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">deleteFacility</a>(facilityCredentialingId) -> core.APIResponse&lt;void, CandidApi.credentialing.v2.deleteFacility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1746,7 +1746,7 @@ await client.credentialing.v2.deleteFacility(CandidApi.FacilityCredentialingSpan
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">updateFacility</a>(facilityCredentialingId, { ...params }) -> core.APIResponse<CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.updateFacility.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">updateFacility</a>(facilityCredentialingId, { ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.updateFacility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1805,7 +1805,7 @@ await client.credentialing.v2.updateFacility(CandidApi.FacilityCredentialingSpan
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.create.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1862,7 +1862,7 @@ await client.credentialing.v2.create({
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">get</a>(providerCredentialingId) -> core.APIResponse<CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.get.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">get</a>(providerCredentialingId) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1911,7 +1911,7 @@ await client.credentialing.v2.get(CandidApi.ProviderCredentialingSpanId("d5e9c84
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.ProviderCredentialingSpanPage, CandidApi.credentialing.v2.getAll.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpanPage, CandidApi.credentialing.v2.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1960,7 +1960,7 @@ await client.credentialing.v2.getAll();
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">delete</a>(providerCredentialingId) -> core.APIResponse<void, CandidApi.credentialing.v2.delete.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">delete</a>(providerCredentialingId) -> core.APIResponse&lt;void, CandidApi.credentialing.v2.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2023,7 +2023,7 @@ await client.credentialing.v2.delete(CandidApi.ProviderCredentialingSpanId("d5e9
 </dl>
 </details>
 
-<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">update</a>(providerCredentialingId, { ...params }) -> core.APIResponse<CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.update.Error></code></summary>
+<details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">update</a>(providerCredentialingId, { ...params }) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v2.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2081,7 +2081,7 @@ await client.credentialing.v2.update(CandidApi.ProviderCredentialingSpanId("d5e9
 </details>
 
 ## CustomSchemas V1
-<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">getMulti</a>() -> core.APIResponse<CandidApi.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error></code></summary>
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">getMulti</a>() -> core.APIResponse&lt;CandidApi.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2136,7 +2136,7 @@ await client.customSchemas.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">get</a>(schemaId) -> core.APIResponse<CandidApi.Schema, CandidApi.customSchemas.v1.get.Error></code></summary>
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">get</a>(schemaId) -> core.APIResponse&lt;CandidApi.Schema, CandidApi.customSchemas.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2199,7 +2199,7 @@ await client.customSchemas.v1.get(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb-54
 </dl>
 </details>
 
-<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Schema, CandidApi.customSchemas.v1.create.Error></code></summary>
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Schema, CandidApi.customSchemas.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2279,7 +2279,7 @@ await client.customSchemas.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">update</a>(schemaId, { ...params }) -> core.APIResponse<CandidApi.Schema, CandidApi.customSchemas.v1.update.Error></code></summary>
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">update</a>(schemaId, { ...params }) -> core.APIResponse&lt;CandidApi.Schema, CandidApi.customSchemas.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2358,7 +2358,7 @@ await client.customSchemas.v1.update(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb
 </details>
 
 ## Eligibility V2
-<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheckAvaility</a>() -> core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error></code></summary>
+<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheckAvaility</a>() -> core.APIResponse&lt;unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2431,7 +2431,7 @@ await client.eligibility.v2.submitEligibilityCheckAvaility();
 </dl>
 </details>
 
-<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheckAvailityPost</a>({ ...params }) -> core.APIResponse<unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error></code></summary>
+<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheckAvailityPost</a>({ ...params }) -> core.APIResponse&lt;unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvailityPost.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2511,7 +2511,7 @@ await client.eligibility.v2.submitEligibilityCheckAvailityPost({
 </details>
 
 ## EncounterAttachments V1
-<details><summary><code>client.encounterAttachments.v1.<a href="/src/api/resources/encounterAttachments/resources/v1/client/Client.ts">get</a>(encounterId) -> core.APIResponse<CandidApi.EncounterAttachment[], CandidApi.encounterAttachments.v1.get.Error></code></summary>
+<details><summary><code>client.encounterAttachments.v1.<a href="/src/api/resources/encounterAttachments/resources/v1/client/Client.ts">get</a>(encounterId) -> core.APIResponse&lt;CandidApi.EncounterAttachment[], CandidApi.encounterAttachments.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2560,7 +2560,7 @@ await client.encounterAttachments.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4b
 </dl>
 </details>
 
-<details><summary><code>client.encounterAttachments.v1.<a href="/src/api/resources/encounterAttachments/resources/v1/client/Client.ts">delete</a>(encounterId, { ...params }) -> core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error></code></summary>
+<details><summary><code>client.encounterAttachments.v1.<a href="/src/api/resources/encounterAttachments/resources/v1/client/Client.ts">delete</a>(encounterId, { ...params }) -> core.APIResponse&lt;void, CandidApi.encounterAttachments.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2620,7 +2620,7 @@ await client.encounterAttachments.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2
 </details>
 
 ## EncounterProviders V2
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateReferringProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateReferringProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2677,7 +2677,7 @@ await client.encounterProviders.v2.updateReferringProvider(CandidApi.EncounterId
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateInitialReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateInitialReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateInitialReferringProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2734,7 +2734,7 @@ await client.encounterProviders.v2.updateInitialReferringProvider(CandidApi.Enco
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateSupervisingProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateSupervisingProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateSupervisingProvider</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateSupervisingProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2791,7 +2791,7 @@ await client.encounterProviders.v2.updateSupervisingProvider(CandidApi.Encounter
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateOrderingProvider</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateOrderingProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">updateOrderingProvider</a>(serviceLineId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.updateOrderingProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2848,7 +2848,7 @@ await client.encounterProviders.v2.updateOrderingProvider(CandidApi.ServiceLineI
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createReferringProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createReferringProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2907,7 +2907,7 @@ await client.encounterProviders.v2.createReferringProvider(CandidApi.EncounterId
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createInitialReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createInitialReferringProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createInitialReferringProvider</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createInitialReferringProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2966,7 +2966,7 @@ await client.encounterProviders.v2.createInitialReferringProvider(CandidApi.Enco
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createSupervisingProvider</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createSupervisingProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createSupervisingProvider</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createSupervisingProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3025,7 +3025,7 @@ await client.encounterProviders.v2.createSupervisingProvider(CandidApi.Encounter
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createOrderingProvider</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createOrderingProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">createOrderingProvider</a>(serviceLineId, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterProvider, CandidApi.encounterProviders.v2.createOrderingProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3084,7 +3084,7 @@ await client.encounterProviders.v2.createOrderingProvider(CandidApi.ServiceLineI
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteReferringProvider</a>(encounterId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteReferringProvider</a>(encounterId) -> core.APIResponse&lt;void, CandidApi.encounterProviders.v2.deleteReferringProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3133,7 +3133,7 @@ await client.encounterProviders.v2.deleteReferringProvider(CandidApi.EncounterId
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteInitialReferringProvider</a>(encounterId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteInitialReferringProvider</a>(encounterId) -> core.APIResponse&lt;void, CandidApi.encounterProviders.v2.deleteInitialReferringProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3182,7 +3182,7 @@ await client.encounterProviders.v2.deleteInitialReferringProvider(CandidApi.Enco
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteSupervisingProvider</a>(encounterId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteSupervisingProvider</a>(encounterId) -> core.APIResponse&lt;void, CandidApi.encounterProviders.v2.deleteSupervisingProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3231,7 +3231,7 @@ await client.encounterProviders.v2.deleteSupervisingProvider(CandidApi.Encounter
 </dl>
 </details>
 
-<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteOrderingProvider</a>(serviceLineId) -> core.APIResponse<void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error></code></summary>
+<details><summary><code>client.encounterProviders.v2.<a href="/src/api/resources/encounterProviders/resources/v2/client/Client.ts">deleteOrderingProvider</a>(serviceLineId) -> core.APIResponse&lt;void, CandidApi.encounterProviders.v2.deleteOrderingProvider.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3281,7 +3281,7 @@ await client.encounterProviders.v2.deleteOrderingProvider(CandidApi.ServiceLineI
 </details>
 
 ## EncounterSupplementalInformation V1
-<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">get</a>(encounterId) -> core.APIResponse<CandidApi.SupplementalInformation[], CandidApi.encounterSupplementalInformation.v1.get.Error></code></summary>
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">get</a>(encounterId) -> core.APIResponse&lt;CandidApi.SupplementalInformation[], CandidApi.encounterSupplementalInformation.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3330,7 +3330,7 @@ await client.encounterSupplementalInformation.v1.get(CandidApi.EncounterId("d5e9
 </dl>
 </details>
 
-<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.SupplementalInformation, CandidApi.encounterSupplementalInformation.v1.create.Error></code></summary>
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.SupplementalInformation, CandidApi.encounterSupplementalInformation.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3391,7 +3391,7 @@ await client.encounterSupplementalInformation.v1.create(CandidApi.EncounterId("d
 </dl>
 </details>
 
-<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">update</a>(encounterId, supplementalInformationId, { ...params }) -> core.APIResponse<CandidApi.SupplementalInformation, CandidApi.encounterSupplementalInformation.v1.update.Error></code></summary>
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">update</a>(encounterId, supplementalInformationId, { ...params }) -> core.APIResponse&lt;CandidApi.SupplementalInformation, CandidApi.encounterSupplementalInformation.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3456,7 +3456,7 @@ await client.encounterSupplementalInformation.v1.update(CandidApi.EncounterId("d
 </dl>
 </details>
 
-<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">delete</a>(encounterId, supplementalInformationId) -> core.APIResponse<void, CandidApi.encounterSupplementalInformation.v1.delete.Error></code></summary>
+<details><summary><code>client.encounterSupplementalInformation.v1.<a href="/src/api/resources/encounterSupplementalInformation/resources/v1/client/Client.ts">delete</a>(encounterId, supplementalInformationId) -> core.APIResponse&lt;void, CandidApi.encounterSupplementalInformation.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3514,7 +3514,7 @@ await client.encounterSupplementalInformation.v1.delete(CandidApi.EncounterId("d
 </details>
 
 ## Encounters V4
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.EncounterPage, CandidApi.encounters.v4.getAll.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EncounterPage, CandidApi.encounters.v4.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3574,7 +3574,7 @@ await client.encounters.v4.getAll({
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">get</a>(encounterId) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.get.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">get</a>(encounterId) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3623,7 +3623,7 @@ await client.encounters.v4.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7f
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createUniversal</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.createUniversal.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createUniversal</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.createUniversal.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3721,7 +3721,7 @@ await client.encounters.v4.createUniversal({
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.create.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3812,7 +3812,7 @@ await client.encounters.v4.create({
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createFromPreEncounterPatientUniversal</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createFromPreEncounterPatientUniversal</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatientUniversal.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3915,7 +3915,7 @@ await client.encounters.v4.createFromPreEncounterPatientUniversal({
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createFromPreEncounterPatient</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatient.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">createFromPreEncounterPatient</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.createFromPreEncounterPatient.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4023,7 +4023,7 @@ await client.encounters.v4.createFromPreEncounterPatient({
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">updateUniversal</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.updateUniversal.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">updateUniversal</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.updateUniversal.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4097,7 +4097,7 @@ await client.encounters.v4.updateUniversal(CandidApi.EncounterId("d5e9c84f-c2b2-
 </dl>
 </details>
 
-<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">update</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.encounters.v4.update.Error></code></summary>
+<details><summary><code>client.encounters.v4.<a href="/src/api/resources/encounters/resources/v4/client/Client.ts">update</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.encounters.v4.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4155,7 +4155,7 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
 </details>
 
 ## Events V1
-<details><summary><code>client.events.v1.<a href="/src/api/resources/events/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.EventScanPage, CandidApi.events.v1.scan.Error></code></summary>
+<details><summary><code>client.events.v1.<a href="/src/api/resources/events/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EventScanPage, CandidApi.events.v1.scan.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4218,7 +4218,7 @@ await client.events.v1.scan();
 </dl>
 </details>
 
-<details><summary><code>client.events.v1.<a href="/src/api/resources/events/resources/v1/client/Client.ts">get</a>(eventId) -> core.APIResponse<CandidApi.Event, CandidApi.events.v1.get.Error></code></summary>
+<details><summary><code>client.events.v1.<a href="/src/api/resources/events/resources/v1/client/Client.ts">get</a>(eventId) -> core.APIResponse&lt;CandidApi.Event, CandidApi.events.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4268,7 +4268,7 @@ await client.events.v1.get(CandidApi.EventId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc
 </details>
 
 ## Exports V3
-<details><summary><code>client.exports.v3.<a href="/src/api/resources/exports/resources/v3/client/Client.ts">getExports</a>({ ...params }) -> core.APIResponse<CandidApi.GetExportsResponse, CandidApi.exports.v3.getExports.Error></code></summary>
+<details><summary><code>client.exports.v3.<a href="/src/api/resources/exports/resources/v3/client/Client.ts">getExports</a>({ ...params }) -> core.APIResponse&lt;CandidApi.GetExportsResponse, CandidApi.exports.v3.getExports.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4352,7 +4352,7 @@ await client.exports.v3.getExports({
 </details>
 
 ## ExternalPaymentAccountConfig V1
-<details><summary><code>client.externalPaymentAccountConfig.v1.<a href="/src/api/resources/externalPaymentAccountConfig/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ExternalPaymentAccountConfigPage, CandidApi.externalPaymentAccountConfig.v1.getMulti.Error></code></summary>
+<details><summary><code>client.externalPaymentAccountConfig.v1.<a href="/src/api/resources/externalPaymentAccountConfig/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ExternalPaymentAccountConfigPage, CandidApi.externalPaymentAccountConfig.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4402,7 +4402,7 @@ await client.externalPaymentAccountConfig.v1.getMulti();
 </details>
 
 ## FeeSchedules V3
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getMatch</a>(serviceLineId) -> core.APIResponse<CandidApi.MatchResult | undefined, CandidApi.feeSchedules.v3.getMatch.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getMatch</a>(serviceLineId) -> core.APIResponse&lt;CandidApi.MatchResult | undefined, CandidApi.feeSchedules.v3.getMatch.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4465,7 +4465,7 @@ await client.feeSchedules.v3.getMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">testMatch</a>(serviceLineId, rateId) -> core.APIResponse<CandidApi.MatchTestResult, CandidApi.feeSchedules.v3.testMatch.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">testMatch</a>(serviceLineId, rateId) -> core.APIResponse&lt;CandidApi.MatchTestResult, CandidApi.feeSchedules.v3.testMatch.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4536,7 +4536,7 @@ await client.feeSchedules.v3.testMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4b
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.RatesPage, CandidApi.feeSchedules.v3.getMulti.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.RatesPage, CandidApi.feeSchedules.v3.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4599,7 +4599,7 @@ await client.feeSchedules.v3.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getUniqueValuesForDimension</a>({ ...params }) -> core.APIResponse<CandidApi.DimensionsPage, CandidApi.feeSchedules.v3.getUniqueValuesForDimension.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getUniqueValuesForDimension</a>({ ...params }) -> core.APIResponse&lt;CandidApi.DimensionsPage, CandidApi.feeSchedules.v3.getUniqueValuesForDimension.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4664,7 +4664,7 @@ await client.feeSchedules.v3.getUniqueValuesForDimension({
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getRateHistory</a>(rateId) -> core.APIResponse<CandidApi.Rate[], CandidApi.feeSchedules.v3.getRateHistory.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getRateHistory</a>(rateId) -> core.APIResponse&lt;CandidApi.Rate[], CandidApi.feeSchedules.v3.getRateHistory.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4727,7 +4727,7 @@ await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">uploadFeeSchedule</a>({ ...params }) -> core.APIResponse<CandidApi.Rate[], CandidApi.feeSchedules.v3.uploadFeeSchedule.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">uploadFeeSchedule</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Rate[], CandidApi.feeSchedules.v3.uploadFeeSchedule.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4847,7 +4847,7 @@ await client.feeSchedules.v3.uploadFeeSchedule({
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">deleteRate</a>(rateId, version) -> core.APIResponse<void, CandidApi.feeSchedules.v3.deleteRate.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">deleteRate</a>(rateId, version) -> core.APIResponse&lt;void, CandidApi.feeSchedules.v3.deleteRate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4918,7 +4918,7 @@ await client.feeSchedules.v3.deleteRate(CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getPayerThresholdsDefault</a>() -> core.APIResponse<CandidApi.PayerThreshold, CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getPayerThresholdsDefault</a>() -> core.APIResponse&lt;CandidApi.PayerThreshold, CandidApi.feeSchedules.v3.getPayerThresholdsDefault.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4973,7 +4973,7 @@ await client.feeSchedules.v3.getPayerThresholdsDefault();
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getPayerThresholds</a>({ ...params }) -> core.APIResponse<CandidApi.PayerThresholdsPage, CandidApi.feeSchedules.v3.getPayerThresholds.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">getPayerThresholds</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerThresholdsPage, CandidApi.feeSchedules.v3.getPayerThresholds.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5038,7 +5038,7 @@ await client.feeSchedules.v3.getPayerThresholds({
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">setPayerThreshold</a>(payerUuid, { ...params }) -> core.APIResponse<CandidApi.PayerThreshold, CandidApi.feeSchedules.v3.setPayerThreshold.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">setPayerThreshold</a>(payerUuid, { ...params }) -> core.APIResponse&lt;CandidApi.PayerThreshold, CandidApi.feeSchedules.v3.setPayerThreshold.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5111,7 +5111,7 @@ await client.feeSchedules.v3.setPayerThreshold(CandidApi.PayerUuid("d5e9c84f-c2b
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">hardDeleteRates</a>({ ...params }) -> core.APIResponse<number, CandidApi.feeSchedules.v3.hardDeleteRates.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">hardDeleteRates</a>({ ...params }) -> core.APIResponse&lt;number, CandidApi.feeSchedules.v3.hardDeleteRates.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5182,7 +5182,7 @@ await client.feeSchedules.v3.hardDeleteRates({
 </dl>
 </details>
 
-<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">hardDeleteRatesByIds</a>({ ...params }) -> core.APIResponse<number, CandidApi.feeSchedules.v3.hardDeleteRatesByIds.Error></code></summary>
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">hardDeleteRatesByIds</a>({ ...params }) -> core.APIResponse&lt;number, CandidApi.feeSchedules.v3.hardDeleteRatesByIds.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5248,7 +5248,7 @@ await client.feeSchedules.v3.hardDeleteRatesByIds({
 </details>
 
 ## Guarantor V1
-<details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.Guarantor, CandidApi.guarantor.v1.create.Error></code></summary>
+<details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">create</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.Guarantor, CandidApi.guarantor.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5329,7 +5329,7 @@ await client.guarantor.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-
 </dl>
 </details>
 
-<details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">get</a>(guarantorId) -> core.APIResponse<CandidApi.Guarantor, CandidApi.guarantor.v1.get.Error></code></summary>
+<details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">get</a>(guarantorId) -> core.APIResponse&lt;CandidApi.Guarantor, CandidApi.guarantor.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5392,7 +5392,7 @@ await client.guarantor.v1.get(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 </dl>
 </details>
 
-<details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">update</a>(guarantorId, { ...params }) -> core.APIResponse<CandidApi.Guarantor, CandidApi.guarantor.v1.update.Error></code></summary>
+<details><summary><code>client.guarantor.v1.<a href="/src/api/resources/guarantor/resources/v1/client/Client.ts">update</a>(guarantorId, { ...params }) -> core.APIResponse&lt;CandidApi.Guarantor, CandidApi.guarantor.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5464,7 +5464,7 @@ await client.guarantor.v1.update(CandidApi.GuarantorId("d5e9c84f-c2b2-4bf4-b4b0-
 </details>
 
 ## HealthCareCodeInformation V1
-<details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">update</a>(encounterId, { ...params }) -> core.APIResponse<CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.update.Error></code></summary>
+<details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">update</a>(encounterId, { ...params }) -> core.APIResponse&lt;CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5521,7 +5521,7 @@ await client.healthCareCodeInformation.v1.update(CandidApi.EncounterId("d5e9c84f
 </dl>
 </details>
 
-<details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">getAllForEncounter</a>(encounterId) -> core.APIResponse<CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.getAllForEncounter.Error></code></summary>
+<details><summary><code>client.healthCareCodeInformation.v1.<a href="/src/api/resources/healthCareCodeInformation/resources/v1/client/Client.ts">getAllForEncounter</a>(encounterId) -> core.APIResponse&lt;CandidApi.HealthCareCodeInformationGetAllResponse, CandidApi.healthCareCodeInformation.v1.getAllForEncounter.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5571,7 +5571,7 @@ await client.healthCareCodeInformation.v1.getAllForEncounter(CandidApi.Encounter
 </details>
 
 ## ImportInvoice V1
-<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">importInvoice</a>({ ...params }) -> core.APIResponse<CandidApi.ImportInvoice, CandidApi.importInvoice.v1.importInvoice.Error></code></summary>
+<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">importInvoice</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ImportInvoice, CandidApi.importInvoice.v1.importInvoice.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5653,7 +5653,7 @@ await client.importInvoice.v1.importInvoice({
 </dl>
 </details>
 
-<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.ImportInvoicesPage, CandidApi.importInvoice.v1.getMulti.Error></code></summary>
+<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ImportInvoicesPage, CandidApi.importInvoice.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5716,7 +5716,7 @@ await client.importInvoice.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">get</a>(invoiceId) -> core.APIResponse<CandidApi.ImportInvoice, CandidApi.importInvoice.v1.get.Error></code></summary>
+<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">get</a>(invoiceId) -> core.APIResponse&lt;CandidApi.ImportInvoice, CandidApi.importInvoice.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5779,7 +5779,7 @@ await client.importInvoice.v1.get(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
-<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">update</a>(invoiceId, { ...params }) -> core.APIResponse<CandidApi.ImportInvoice, CandidApi.importInvoice.v1.update.Error></code></summary>
+<details><summary><code>client.importInvoice.v1.<a href="/src/api/resources/importInvoice/resources/v1/client/Client.ts">update</a>(invoiceId, { ...params }) -> core.APIResponse&lt;CandidApi.ImportInvoice, CandidApi.importInvoice.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5851,7 +5851,7 @@ await client.importInvoice.v1.update(CandidApi.InvoiceId("d5e9c84f-c2b2-4bf4-b4b
 </details>
 
 ## InsuranceAdjudications V1
-<details><summary><code>client.insuranceAdjudications.v1.<a href="/src/api/resources/insuranceAdjudications/resources/v1/client/Client.ts">get</a>(insuranceAdjudicationId) -> core.APIResponse<CandidApi.InsuranceAdjudication, CandidApi.insuranceAdjudications.v1.get.Error></code></summary>
+<details><summary><code>client.insuranceAdjudications.v1.<a href="/src/api/resources/insuranceAdjudications/resources/v1/client/Client.ts">get</a>(insuranceAdjudicationId) -> core.APIResponse&lt;CandidApi.InsuranceAdjudication, CandidApi.insuranceAdjudications.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5915,7 +5915,7 @@ await client.insuranceAdjudications.v1.get(CandidApi.InsuranceAdjudicationId("d5
 </details>
 
 ## InsuranceRefunds V1
-<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.InsuranceRefundsPage, CandidApi.insuranceRefunds.v1.getMulti.Error></code></summary>
+<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.InsuranceRefundsPage, CandidApi.insuranceRefunds.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5979,7 +5979,7 @@ await client.insuranceRefunds.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">get</a>(insuranceRefundId) -> core.APIResponse<CandidApi.InsuranceRefund, CandidApi.insuranceRefunds.v1.get.Error></code></summary>
+<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">get</a>(insuranceRefundId) -> core.APIResponse&lt;CandidApi.InsuranceRefund, CandidApi.insuranceRefunds.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6043,7 +6043,7 @@ await client.insuranceRefunds.v1.get(CandidApi.InsuranceRefundId("d5e9c84f-c2b2-
 </dl>
 </details>
 
-<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.InsuranceRefund, CandidApi.insuranceRefunds.v1.create.Error></code></summary>
+<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.InsuranceRefund, CandidApi.insuranceRefunds.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6128,7 +6128,7 @@ await client.insuranceRefunds.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">update</a>(insuranceRefundId, { ...params }) -> core.APIResponse<CandidApi.InsuranceRefund, CandidApi.insuranceRefunds.v1.update.Error></code></summary>
+<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">update</a>(insuranceRefundId, { ...params }) -> core.APIResponse&lt;CandidApi.InsuranceRefund, CandidApi.insuranceRefunds.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6200,7 +6200,7 @@ await client.insuranceRefunds.v1.update(CandidApi.InsuranceRefundId("d5e9c84f-c2
 </dl>
 </details>
 
-<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">delete</a>(insuranceRefundId) -> core.APIResponse<void, CandidApi.insuranceRefunds.v1.delete.Error></code></summary>
+<details><summary><code>client.insuranceRefunds.v1.<a href="/src/api/resources/insuranceRefunds/resources/v1/client/Client.ts">delete</a>(insuranceRefundId) -> core.APIResponse&lt;void, CandidApi.insuranceRefunds.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6266,7 +6266,7 @@ await client.insuranceRefunds.v1.delete(CandidApi.InsuranceRefundId("d5e9c84f-c2
 </details>
 
 ## MedicationDispense V1
-<details><summary><code>client.medicationDispense.v1.<a href="/src/api/resources/medicationDispense/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Encounter, CandidApi.medicationDispense.v1.create.Error></code></summary>
+<details><summary><code>client.medicationDispense.v1.<a href="/src/api/resources/medicationDispense/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Encounter, CandidApi.medicationDispense.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6323,7 +6323,7 @@ await client.medicationDispense.v1.create({
 </details>
 
 ## NonInsurancePayerPayments V1
-<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPaymentsPage, CandidApi.nonInsurancePayerPayments.v1.getMulti.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerPaymentsPage, CandidApi.nonInsurancePayerPayments.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6386,7 +6386,7 @@ await client.nonInsurancePayerPayments.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">get</a>(nonInsurancePayerPaymentId) -> core.APIResponse<CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.get.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">get</a>(nonInsurancePayerPaymentId) -> core.APIResponse&lt;CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6449,7 +6449,7 @@ await client.nonInsurancePayerPayments.v1.get(CandidApi.NonInsurancePayerPayment
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.create.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6514,7 +6514,7 @@ await client.nonInsurancePayerPayments.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">update</a>(nonInsurancePayerPaymentId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.update.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">update</a>(nonInsurancePayerPaymentId, { ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerPayment, CandidApi.nonInsurancePayerPayments.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6571,7 +6571,7 @@ await client.nonInsurancePayerPayments.v1.update(CandidApi.NonInsurancePayerPaym
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerPaymentId) -> core.APIResponse<void, CandidApi.nonInsurancePayerPayments.v1.delete.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerPayments.v1.<a href="/src/api/resources/nonInsurancePayerPayments/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerPaymentId) -> core.APIResponse&lt;void, CandidApi.nonInsurancePayerPayments.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6635,7 +6635,7 @@ await client.nonInsurancePayerPayments.v1.delete(CandidApi.NonInsurancePayerPaym
 </details>
 
 ## NonInsurancePayerRefunds V1
-<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefundsPage, CandidApi.nonInsurancePayerRefunds.v1.getMulti.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerRefundsPage, CandidApi.nonInsurancePayerRefunds.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6698,7 +6698,7 @@ await client.nonInsurancePayerRefunds.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">get</a>(nonInsurancePayerRefundId) -> core.APIResponse<CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.get.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">get</a>(nonInsurancePayerRefundId) -> core.APIResponse&lt;CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6761,7 +6761,7 @@ await client.nonInsurancePayerRefunds.v1.get(CandidApi.NonInsurancePayerRefundId
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.create.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6842,7 +6842,7 @@ await client.nonInsurancePayerRefunds.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">update</a>(nonInsurancePayerRefundId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.update.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">update</a>(nonInsurancePayerRefundId, { ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerRefund, CandidApi.nonInsurancePayerRefunds.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6914,7 +6914,7 @@ await client.nonInsurancePayerRefunds.v1.update(CandidApi.NonInsurancePayerRefun
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerRefundId) -> core.APIResponse<void, CandidApi.nonInsurancePayerRefunds.v1.delete.Error></code></summary>
+<details><summary><code>client.nonInsurancePayerRefunds.v1.<a href="/src/api/resources/nonInsurancePayerRefunds/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerRefundId) -> core.APIResponse&lt;void, CandidApi.nonInsurancePayerRefunds.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6978,7 +6978,7 @@ await client.nonInsurancePayerRefunds.v1.delete(CandidApi.NonInsurancePayerRefun
 </details>
 
 ## NonInsurancePayers V1
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.create.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7029,7 +7029,7 @@ await client.nonInsurancePayers.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">toggleEnablement</a>(nonInsurancePayerId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.toggleEnablement.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">toggleEnablement</a>(nonInsurancePayerId, { ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.toggleEnablement.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7088,7 +7088,7 @@ await client.nonInsurancePayers.v1.toggleEnablement(CandidApi.NonInsurancePayerI
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerPage, CandidApi.nonInsurancePayers.v1.getMulti.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerPage, CandidApi.nonInsurancePayers.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7137,7 +7137,7 @@ await client.nonInsurancePayers.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">getCategories</a>({ ...params }) -> core.APIResponse<CandidApi.NonInsurancePayerCategoriesPage, CandidApi.nonInsurancePayers.v1.getCategories.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">getCategories</a>({ ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayerCategoriesPage, CandidApi.nonInsurancePayers.v1.getCategories.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7205,7 +7205,7 @@ await client.nonInsurancePayers.v1.getCategories();
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">get</a>(nonInsurancePayerId) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.get.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">get</a>(nonInsurancePayerId) -> core.APIResponse&lt;CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7254,7 +7254,7 @@ await client.nonInsurancePayers.v1.get(CandidApi.NonInsurancePayerId("d5e9c84f-c
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">update</a>(nonInsurancePayerId, { ...params }) -> core.APIResponse<CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.update.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">update</a>(nonInsurancePayerId, { ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7311,7 +7311,7 @@ await client.nonInsurancePayers.v1.update(CandidApi.NonInsurancePayerId("d5e9c84
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerId) -> core.APIResponse<void, CandidApi.nonInsurancePayers.v1.delete.Error></code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">delete</a>(nonInsurancePayerId) -> core.APIResponse&lt;void, CandidApi.nonInsurancePayers.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7361,7 +7361,7 @@ await client.nonInsurancePayers.v1.delete(CandidApi.NonInsurancePayerId("d5e9c84
 </details>
 
 ## OrganizationProviders V3
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">get</a>(organizationProviderId) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.get.Error></code></summary>
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">get</a>(organizationProviderId) -> core.APIResponse&lt;CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7410,7 +7410,7 @@ await client.organizationProviders.v3.get(CandidApi.OrganizationProviderId("965A
 </dl>
 </details>
 
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationProviderPageV2, CandidApi.organizationProviders.v3.getMulti.Error></code></summary>
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationProviderPageV2, CandidApi.organizationProviders.v3.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7467,7 +7467,7 @@ await client.organizationProviders.v3.getMulti({
 </dl>
 </details>
 
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.create.Error></code></summary>
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7537,7 +7537,7 @@ await client.organizationProviders.v3.create({
 </dl>
 </details>
 
-<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">update</a>(organizationProviderId, { ...params }) -> core.APIResponse<CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.update.Error></code></summary>
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">update</a>(organizationProviderId, { ...params }) -> core.APIResponse&lt;CandidApi.OrganizationProviderV2, CandidApi.organizationProviders.v3.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7595,7 +7595,7 @@ await client.organizationProviders.v3.update(CandidApi.OrganizationProviderId("d
 </details>
 
 ## OrganizationServiceFacilities V2
-<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">get</a>(organizationServiceFacilityId) -> core.APIResponse<CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.get.Error></code></summary>
+<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">get</a>(organizationServiceFacilityId) -> core.APIResponse&lt;CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7644,7 +7644,7 @@ await client.organizationServiceFacilities.v2.get(CandidApi.OrganizationServiceF
 </dl>
 </details>
 
-<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationServiceFacilityPage, CandidApi.organizationServiceFacilities.v2.getMulti.Error></code></summary>
+<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationServiceFacilityPage, CandidApi.organizationServiceFacilities.v2.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7697,7 +7697,7 @@ await client.organizationServiceFacilities.v2.getMulti({
 </dl>
 </details>
 
-<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">getByExternalId</a>(externalId) -> core.APIResponse<CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.getByExternalId.Error></code></summary>
+<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">getByExternalId</a>(externalId) -> core.APIResponse&lt;CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.getByExternalId.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7762,7 +7762,7 @@ await client.organizationServiceFacilities.v2.getByExternalId("external_id");
 </dl>
 </details>
 
-<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.create.Error></code></summary>
+<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7829,7 +7829,7 @@ await client.organizationServiceFacilities.v2.create({
 </dl>
 </details>
 
-<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">update</a>(organizationServiceFacilityId, { ...params }) -> core.APIResponse<CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.update.Error></code></summary>
+<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">update</a>(organizationServiceFacilityId, { ...params }) -> core.APIResponse&lt;CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7904,7 +7904,7 @@ await client.organizationServiceFacilities.v2.update(CandidApi.OrganizationServi
 </dl>
 </details>
 
-<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">delete</a>(organizationServiceFacilityId) -> core.APIResponse<void, CandidApi.organizationServiceFacilities.v2.delete.Error></code></summary>
+<details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">delete</a>(organizationServiceFacilityId) -> core.APIResponse&lt;void, CandidApi.organizationServiceFacilities.v2.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7954,7 +7954,7 @@ await client.organizationServiceFacilities.v2.delete(CandidApi.OrganizationServi
 </details>
 
 ## PatientAr V1
-<details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">listInventory</a>({ ...params }) -> core.APIResponse<CandidApi.ListInventoryPagedResponse, CandidApi.patientAr.v1.listInventory.Error></code></summary>
+<details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">listInventory</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ListInventoryPagedResponse, CandidApi.patientAr.v1.listInventory.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8018,7 +8018,7 @@ await client.patientAr.v1.listInventory();
 </dl>
 </details>
 
-<details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">itemize</a>(claimId) -> core.APIResponse<CandidApi.InvoiceItemizationResponse, CandidApi.patientAr.v1.itemize.Error></code></summary>
+<details><summary><code>client.patientAr.v1.<a href="/src/api/resources/patientAr/resources/v1/client/Client.ts">itemize</a>(claimId) -> core.APIResponse&lt;CandidApi.InvoiceItemizationResponse, CandidApi.patientAr.v1.itemize.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8082,7 +8082,7 @@ await client.patientAr.v1.itemize(CandidApi.ClaimId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 </details>
 
 ## PatientPayments V4
-<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error></code></summary>
+<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientPaymentsPage, CandidApi.patientPayments.v4.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8146,7 +8146,7 @@ await client.patientPayments.v4.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">get</a>(patientPaymentId) -> core.APIResponse<CandidApi.PatientPayment, CandidApi.patientPayments.v4.get.Error></code></summary>
+<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">get</a>(patientPaymentId) -> core.APIResponse&lt;CandidApi.PatientPayment, CandidApi.patientPayments.v4.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8209,7 +8209,7 @@ await client.patientPayments.v4.get(CandidApi.PatientPaymentId("d5e9c84f-c2b2-4b
 </dl>
 </details>
 
-<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPayment, CandidApi.patientPayments.v4.create.Error></code></summary>
+<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientPayment, CandidApi.patientPayments.v4.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8290,7 +8290,7 @@ await client.patientPayments.v4.create({
 </dl>
 </details>
 
-<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">update</a>(patientPaymentId, { ...params }) -> core.APIResponse<CandidApi.PatientPayment, CandidApi.patientPayments.v4.update.Error></code></summary>
+<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">update</a>(patientPaymentId, { ...params }) -> core.APIResponse&lt;CandidApi.PatientPayment, CandidApi.patientPayments.v4.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8361,7 +8361,7 @@ await client.patientPayments.v4.update(CandidApi.PatientPaymentId("d5e9c84f-c2b2
 </dl>
 </details>
 
-<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">delete</a>(patientPaymentId) -> core.APIResponse<void, CandidApi.patientPayments.v4.delete.Error></code></summary>
+<details><summary><code>client.patientPayments.v4.<a href="/src/api/resources/patientPayments/resources/v4/client/Client.ts">delete</a>(patientPaymentId) -> core.APIResponse&lt;void, CandidApi.patientPayments.v4.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8425,7 +8425,7 @@ await client.patientPayments.v4.delete(CandidApi.PatientPaymentId("d5e9c84f-c2b2
 </details>
 
 ## PatientRefunds V1
-<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientRefundsPage, CandidApi.patientRefunds.v1.getMulti.Error></code></summary>
+<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientRefundsPage, CandidApi.patientRefunds.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8489,7 +8489,7 @@ await client.patientRefunds.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">get</a>(patientRefundId) -> core.APIResponse<CandidApi.PatientRefund, CandidApi.patientRefunds.v1.get.Error></code></summary>
+<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">get</a>(patientRefundId) -> core.APIResponse&lt;CandidApi.PatientRefund, CandidApi.patientRefunds.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8552,7 +8552,7 @@ await client.patientRefunds.v1.get(CandidApi.PatientRefundId("d5e9c84f-c2b2-4bf4
 </dl>
 </details>
 
-<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.PatientRefund, CandidApi.patientRefunds.v1.create.Error></code></summary>
+<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientRefund, CandidApi.patientRefunds.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8633,7 +8633,7 @@ await client.patientRefunds.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">update</a>(patientRefundId, { ...params }) -> core.APIResponse<CandidApi.PatientRefund, CandidApi.patientRefunds.v1.update.Error></code></summary>
+<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">update</a>(patientRefundId, { ...params }) -> core.APIResponse&lt;CandidApi.PatientRefund, CandidApi.patientRefunds.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8704,7 +8704,7 @@ await client.patientRefunds.v1.update(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 </dl>
 </details>
 
-<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">delete</a>(patientRefundId) -> core.APIResponse<void, CandidApi.patientRefunds.v1.delete.Error></code></summary>
+<details><summary><code>client.patientRefunds.v1.<a href="/src/api/resources/patientRefunds/resources/v1/client/Client.ts">delete</a>(patientRefundId) -> core.APIResponse&lt;void, CandidApi.patientRefunds.v1.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8768,7 +8768,7 @@ await client.patientRefunds.v1.delete(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 </details>
 
 ## PayerPlanGroups V1
-<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PayerPlanGroupPage, CandidApi.payerPlanGroups.v1.getMulti.Error></code></summary>
+<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerPlanGroupPage, CandidApi.payerPlanGroups.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8831,7 +8831,7 @@ await client.payerPlanGroups.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">get</a>(payerPlanGroupId) -> core.APIResponse<CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.get.Error></code></summary>
+<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">get</a>(payerPlanGroupId) -> core.APIResponse&lt;CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8894,7 +8894,7 @@ await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4b
 </dl>
 </details>
 
-<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.create.Error></code></summary>
+<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8961,7 +8961,7 @@ await client.payerPlanGroups.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">update</a>(payerPlanGroupId, { ...params }) -> core.APIResponse<CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.update.Error></code></summary>
+<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">update</a>(payerPlanGroupId, { ...params }) -> core.APIResponse&lt;CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9036,7 +9036,7 @@ await client.payerPlanGroups.v1.update(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2
 </dl>
 </details>
 
-<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">deactivate</a>(payerPlanGroupId) -> core.APIResponse<CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.deactivate.Error></code></summary>
+<details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">deactivate</a>(payerPlanGroupId) -> core.APIResponse&lt;CandidApi.PayerPlanGroup, CandidApi.payerPlanGroups.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9100,7 +9100,7 @@ await client.payerPlanGroups.v1.deactivate(CandidApi.PayerPlanGroupId("d5e9c84f-
 </details>
 
 ## Payers V3
-<details><summary><code>client.payers.v3.<a href="/src/api/resources/payers/resources/v3/client/Client.ts">get</a>(payerUuid) -> core.APIResponse<CandidApi.Payer, CandidApi.payers.v3.get.Error></code></summary>
+<details><summary><code>client.payers.v3.<a href="/src/api/resources/payers/resources/v3/client/Client.ts">get</a>(payerUuid) -> core.APIResponse&lt;CandidApi.Payer, CandidApi.payers.v3.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9149,7 +9149,7 @@ await client.payers.v3.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9f
 </dl>
 </details>
 
-<details><summary><code>client.payers.v3.<a href="/src/api/resources/payers/resources/v3/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.PayerPage, CandidApi.payers.v3.getAll.Error></code></summary>
+<details><summary><code>client.payers.v3.<a href="/src/api/resources/payers/resources/v3/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerPage, CandidApi.payers.v3.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9203,7 +9203,7 @@ await client.payers.v3.getAll({
 </details>
 
 ## Payers V4
-<details><summary><code>client.payers.v4.<a href="/src/api/resources/payers/resources/v4/client/Client.ts">get</a>(payerUuid) -> core.APIResponse<CandidApi.Payer, CandidApi.payers.v4.get.Error></code></summary>
+<details><summary><code>client.payers.v4.<a href="/src/api/resources/payers/resources/v4/client/Client.ts">get</a>(payerUuid) -> core.APIResponse&lt;CandidApi.Payer, CandidApi.payers.v4.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9252,7 +9252,7 @@ await client.payers.v4.get(CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9f
 </dl>
 </details>
 
-<details><summary><code>client.payers.v4.<a href="/src/api/resources/payers/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.PayerPage, CandidApi.payers.v4.getAll.Error></code></summary>
+<details><summary><code>client.payers.v4.<a href="/src/api/resources/payers/resources/v4/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerPage, CandidApi.payers.v4.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9302,7 +9302,7 @@ await client.payers.v4.getAll();
 </details>
 
 ## ServiceLines V2
-<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.create.Error></code></summary>
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ServiceLine, CandidApi.serviceLines.v2.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9356,7 +9356,7 @@ await client.serviceLines.v2.create({
 </dl>
 </details>
 
-<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">createUniversal</a>({ ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.createUniversal.Error></code></summary>
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">createUniversal</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ServiceLine, CandidApi.serviceLines.v2.createUniversal.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9409,7 +9409,7 @@ await client.serviceLines.v2.createUniversal({
 </dl>
 </details>
 
-<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">updateUniversal</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.updateUniversal.Error></code></summary>
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">updateUniversal</a>(serviceLineId, { ...params }) -> core.APIResponse&lt;CandidApi.ServiceLine, CandidApi.serviceLines.v2.updateUniversal.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9466,7 +9466,7 @@ await client.serviceLines.v2.updateUniversal(CandidApi.ServiceLineId("d5e9c84f-c
 </dl>
 </details>
 
-<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">update</a>(serviceLineId, { ...params }) -> core.APIResponse<CandidApi.ServiceLine, CandidApi.serviceLines.v2.update.Error></code></summary>
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">update</a>(serviceLineId, { ...params }) -> core.APIResponse&lt;CandidApi.ServiceLine, CandidApi.serviceLines.v2.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9523,7 +9523,7 @@ await client.serviceLines.v2.update(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 </dl>
 </details>
 
-<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">delete</a>(serviceLineId) -> core.APIResponse<void, CandidApi.serviceLines.v2.delete.Error></code></summary>
+<details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">delete</a>(serviceLineId) -> core.APIResponse&lt;void, CandidApi.serviceLines.v2.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9573,7 +9573,7 @@ await client.serviceLines.v2.delete(CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-
 </details>
 
 ## Superbills V1
-<details><summary><code>client.superbills.v1.<a href="/src/api/resources/superbills/resources/v1/client/Client.ts">createSuperbill</a>({ ...params }) -> core.APIResponse<CandidApi.SuperbillResponse, CandidApi.superbills.v1.createSuperbill.Error></code></summary>
+<details><summary><code>client.superbills.v1.<a href="/src/api/resources/superbills/resources/v1/client/Client.ts">createSuperbill</a>({ ...params }) -> core.APIResponse&lt;CandidApi.SuperbillResponse, CandidApi.superbills.v1.createSuperbill.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9627,7 +9627,7 @@ await client.superbills.v1.createSuperbill({
 </details>
 
 ## Tasks V3
-<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getActions</a>(taskId) -> core.APIResponse<CandidApi.TaskActions, CandidApi.tasks.v3.getActions.Error></code></summary>
+<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getActions</a>(taskId) -> core.APIResponse&lt;CandidApi.TaskActions, CandidApi.tasks.v3.getActions.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9676,7 +9676,7 @@ await client.tasks.v3.getActions(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7
 </dl>
 </details>
 
-<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.TaskPage, CandidApi.tasks.v3.getMulti.Error></code></summary>
+<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.TaskPage, CandidApi.tasks.v3.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9725,7 +9725,7 @@ await client.tasks.v3.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">get</a>(taskId) -> core.APIResponse<CandidApi.Task, CandidApi.tasks.v3.get.Error></code></summary>
+<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">get</a>(taskId) -> core.APIResponse&lt;CandidApi.Task, CandidApi.tasks.v3.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9774,7 +9774,7 @@ await client.tasks.v3.get(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32
 </dl>
 </details>
 
-<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Task, CandidApi.tasks.v3.create.Error></code></summary>
+<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Task, CandidApi.tasks.v3.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9828,7 +9828,7 @@ await client.tasks.v3.create({
 </dl>
 </details>
 
-<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">update</a>(taskId, { ...params }) -> core.APIResponse<CandidApi.Task, CandidApi.tasks.v3.update.Error></code></summary>
+<details><summary><code>client.tasks.v3.<a href="/src/api/resources/tasks/resources/v3/client/Client.ts">update</a>(taskId, { ...params }) -> core.APIResponse&lt;CandidApi.Task, CandidApi.tasks.v3.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9886,7 +9886,7 @@ await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ff
 </details>
 
 ## WriteOffs V1
-<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error></code></summary>
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9949,7 +9949,7 @@ await client.writeOffs.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">get</a>(writeOffId) -> core.APIResponse<CandidApi.WriteOff, CandidApi.writeOffs.v1.get.Error></code></summary>
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">get</a>(writeOffId) -> core.APIResponse&lt;CandidApi.WriteOff, CandidApi.writeOffs.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10012,7 +10012,7 @@ await client.writeOffs.v1.get(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 </dl>
 </details>
 
-<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.CreateWriteOffsResponse, CandidApi.writeOffs.v1.create.Error></code></summary>
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.CreateWriteOffsResponse, CandidApi.writeOffs.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10090,7 +10090,7 @@ await client.writeOffs.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revert</a>(writeOffId) -> core.APIResponse<CandidApi.WriteOff, CandidApi.writeOffs.v1.revert.Error></code></summary>
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revert</a>(writeOffId) -> core.APIResponse&lt;CandidApi.WriteOff, CandidApi.writeOffs.v1.revert.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10153,7 +10153,7 @@ await client.writeOffs.v1.revert(CandidApi.WriteOffId("d5e9c84f-c2b2-4bf4-b4b0-7
 </dl>
 </details>
 
-<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revertInsuranceBalanceAdjustment</a>(adjustmentId) -> core.APIResponse<CandidApi.WriteOff, CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error></code></summary>
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revertInsuranceBalanceAdjustment</a>(adjustmentId) -> core.APIResponse&lt;CandidApi.WriteOff, CandidApi.writeOffs.v1.revertInsuranceBalanceAdjustment.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10216,7 +10216,7 @@ await client.writeOffs.v1.revertInsuranceBalanceAdjustment(CandidApi.AdjustmentI
 </dl>
 </details>
 
-<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revertEraOriginatedInsuranceBalanceAdjustment</a>(adjustmentId) -> core.APIResponse<CandidApi.AdjustmentId, CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error></code></summary>
+<details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">revertEraOriginatedInsuranceBalanceAdjustment</a>(adjustmentId) -> core.APIResponse&lt;CandidApi.AdjustmentId, CandidApi.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10280,7 +10280,7 @@ await client.writeOffs.v1.revertEraOriginatedInsuranceBalanceAdjustment(CandidAp
 </details>
 
 ## PreEncounter Appointments V1
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.create.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10348,7 +10348,7 @@ await client.preEncounter.appointments.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getVisits</a>({ ...params }) -> core.APIResponse<CandidApi.VisitsPage, CandidApi.preEncounter.appointments.v1.getVisits.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getVisits</a>({ ...params }) -> core.APIResponse&lt;CandidApi.VisitsPage, CandidApi.preEncounter.appointments.v1.getVisits.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10411,7 +10411,7 @@ await client.preEncounter.appointments.v1.getVisits();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.get.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10474,7 +10474,7 @@ await client.preEncounter.appointments.v1.get(CandidApi.AppointmentId("id"));
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse<CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.getHistory.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse&lt;CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.getHistory.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10537,7 +10537,7 @@ await client.preEncounter.appointments.v1.getHistory(CandidApi.AppointmentId("id
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.update.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10621,7 +10621,7 @@ await client.preEncounter.appointments.v1.update(CandidApi.AppointmentId("id"), 
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.scan.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Appointment[], CandidApi.preEncounter.appointments.v1.scan.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10686,7 +10686,7 @@ await client.preEncounter.appointments.v1.scan({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.appointments.v1.deactivate.Error></code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.appointments.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10758,7 +10758,7 @@ await client.preEncounter.appointments.v1.deactivate(CandidApi.AppointmentId("id
 </details>
 
 ## PreEncounter Coverages V1
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.create.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10839,7 +10839,7 @@ await client.preEncounter.coverages.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.update.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10936,7 +10936,7 @@ await client.preEncounter.coverages.v1.update(CandidApi.CoverageId("d5e9c84f-c2b
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getMultiPaginated</a>({ ...params }) -> core.APIResponse<CandidApi.CoveragesPage, CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getMultiPaginated</a>({ ...params }) -> core.APIResponse&lt;CandidApi.CoveragesPage, CandidApi.preEncounter.coverages.v1.getMultiPaginated.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10999,7 +10999,7 @@ await client.preEncounter.coverages.v1.getMultiPaginated();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.get.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Coverage, CandidApi.preEncounter.coverages.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11062,7 +11062,7 @@ await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse<CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getHistory.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse&lt;CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getHistory.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11125,7 +11125,7 @@ await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getMulti.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11188,7 +11188,7 @@ await client.preEncounter.coverages.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.scan.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.scan.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11266,7 +11266,7 @@ await client.preEncounter.coverages.v1.scan({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">batchUpdatePpg</a>(ppgId, { ...params }) -> core.APIResponse<void, CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">batchUpdatePpg</a>(ppgId, { ...params }) -> core.APIResponse&lt;void, CandidApi.preEncounter.coverages.v1.batchUpdatePpg.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11342,7 +11342,7 @@ await client.preEncounter.coverages.v1.batchUpdatePpg(CandidApi.PayerPlanGroupId
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">checkEligibility</a>(id, { ...params }) -> core.APIResponse<CandidApi.EligibilityCheckMetadata, CandidApi.preEncounter.coverages.v1.checkEligibility.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">checkEligibility</a>(id, { ...params }) -> core.APIResponse&lt;CandidApi.EligibilityCheckMetadata, CandidApi.preEncounter.coverages.v1.checkEligibility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11417,7 +11417,7 @@ await client.preEncounter.coverages.v1.checkEligibility(CandidApi.CoverageId("d5
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getEligibility</a>(id, checkId) -> core.APIResponse<CandidApi.CoverageEligibilityCheckResponse, CandidApi.preEncounter.coverages.v1.getEligibility.Error></code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getEligibility</a>(id, checkId) -> core.APIResponse&lt;CandidApi.CoverageEligibilityCheckResponse, CandidApi.preEncounter.coverages.v1.getEligibility.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11489,7 +11489,7 @@ await client.preEncounter.coverages.v1.getEligibility(CandidApi.CoverageId("d5e9
 </details>
 
 ## PreEncounter EligibilityChecks V1
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">post</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.post.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">post</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.post.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11561,7 +11561,7 @@ await client.preEncounter.eligibilityChecks.v1.post({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">batch</a>({ ...params }) -> core.APIResponse<CandidApi.BatchEligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.batch.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">batch</a>({ ...params }) -> core.APIResponse&lt;CandidApi.BatchEligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.batch.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11642,7 +11642,7 @@ await client.preEncounter.eligibilityChecks.v1.batch([{
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">pollBatch</a>(batchId, { ...params }) -> core.APIResponse<CandidApi.EligibilityCheckPage, CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">pollBatch</a>(batchId, { ...params }) -> core.APIResponse&lt;CandidApi.EligibilityCheckPage, CandidApi.preEncounter.eligibilityChecks.v1.pollBatch.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11713,7 +11713,7 @@ await client.preEncounter.eligibilityChecks.v1.pollBatch("batch_id");
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">payerSearch</a>({ ...params }) -> core.APIResponse<CandidApi.PayerSearchResponse, CandidApi.preEncounter.eligibilityChecks.v1.payerSearch.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">payerSearch</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerSearchResponse, CandidApi.preEncounter.eligibilityChecks.v1.payerSearch.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11776,7 +11776,7 @@ await client.preEncounter.eligibilityChecks.v1.payerSearch();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">recommendation</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityRecommendation[], CandidApi.preEncounter.eligibilityChecks.v1.recommendation.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">recommendation</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EligibilityRecommendation[], CandidApi.preEncounter.eligibilityChecks.v1.recommendation.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11839,7 +11839,7 @@ await client.preEncounter.eligibilityChecks.v1.recommendation();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">createRecommendation</a>({ ...params }) -> core.APIResponse<CandidApi.EligibilityRecommendation, CandidApi.preEncounter.eligibilityChecks.v1.createRecommendation.Error></code></summary>
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">createRecommendation</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EligibilityRecommendation, CandidApi.preEncounter.eligibilityChecks.v1.createRecommendation.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11910,7 +11910,7 @@ await client.preEncounter.eligibilityChecks.v1.createRecommendation({
 </details>
 
 ## PreEncounter Images V1
-<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.create.Error></code></summary>
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Image, CandidApi.preEncounter.images.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11978,7 +11978,7 @@ await client.preEncounter.images.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.get.Error></code></summary>
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Image, CandidApi.preEncounter.images.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12041,7 +12041,7 @@ await client.preEncounter.images.v1.get(CandidApi.ImageId("id"));
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Image, CandidApi.preEncounter.images.v1.update.Error></code></summary>
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.Image, CandidApi.preEncounter.images.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12125,7 +12125,7 @@ await client.preEncounter.images.v1.update(CandidApi.ImageId("id"), "version", {
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.images.v1.deactivate.Error></code></summary>
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.images.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12196,7 +12196,7 @@ await client.preEncounter.images.v1.deactivate(CandidApi.ImageId("id"), "version
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.Image[], CandidApi.preEncounter.images.v1.getMulti.Error></code></summary>
+<details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Image[], CandidApi.preEncounter.images.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12260,7 +12260,7 @@ await client.preEncounter.images.v1.getMulti();
 </details>
 
 ## PreEncounter Lists V1
-<details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getPatientList</a>({ ...params }) -> core.APIResponse<CandidApi.PatientListPage, CandidApi.preEncounter.lists.v1.getPatientList.Error></code></summary>
+<details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getPatientList</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientListPage, CandidApi.preEncounter.lists.v1.getPatientList.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12323,7 +12323,7 @@ await client.preEncounter.lists.v1.getPatientList();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getAppointmentList</a>({ ...params }) -> core.APIResponse<CandidApi.AppointmentListPage, CandidApi.preEncounter.lists.v1.getAppointmentList.Error></code></summary>
+<details><summary><code>client.preEncounter.lists.v1.<a href="/src/api/resources/preEncounter/resources/lists/resources/v1/client/Client.ts">getAppointmentList</a>({ ...params }) -> core.APIResponse&lt;CandidApi.AppointmentListPage, CandidApi.preEncounter.lists.v1.getAppointmentList.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12387,7 +12387,7 @@ await client.preEncounter.lists.v1.getAppointmentList();
 </details>
 
 ## PreEncounter Notes V1
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.get.Error></code></summary>
+<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Note, CandidApi.preEncounter.notes.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12450,7 +12450,7 @@ await client.preEncounter.notes.v1.get(CandidApi.NoteId("id"));
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.create.Error></code></summary>
+<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Note, CandidApi.preEncounter.notes.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12515,7 +12515,7 @@ await client.preEncounter.notes.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Note, CandidApi.preEncounter.notes.v1.update.Error></code></summary>
+<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.Note, CandidApi.preEncounter.notes.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12596,7 +12596,7 @@ await client.preEncounter.notes.v1.update(CandidApi.NoteId("id"), "version", {
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.notes.v1.deactivate.Error></code></summary>
+<details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.notes.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12668,7 +12668,7 @@ await client.preEncounter.notes.v1.deactivate(CandidApi.NoteId("id"), "version")
 </details>
 
 ## PreEncounter Patients V1
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.create.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Patient, CandidApi.preEncounter.patients.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12869,7 +12869,7 @@ await client.preEncounter.patients.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">createWithMrn</a>({ ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.createWithMrn.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">createWithMrn</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Patient, CandidApi.preEncounter.patients.v1.createWithMrn.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13071,7 +13071,7 @@ await client.preEncounter.patients.v1.createWithMrn({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse<CandidApi.PatientPage, CandidApi.preEncounter.patients.v1.getMulti.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientPage, CandidApi.preEncounter.patients.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13134,7 +13134,7 @@ await client.preEncounter.patients.v1.getMulti();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">searchProviders</a>({ ...params }) -> core.APIResponse<CandidApi.ExternalProvider[], CandidApi.preEncounter.patients.v1.searchProviders.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">searchProviders</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ExternalProvider[], CandidApi.preEncounter.patients.v1.searchProviders.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13199,7 +13199,7 @@ await client.preEncounter.patients.v1.searchProviders({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.get.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Patient, CandidApi.preEncounter.patients.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13262,7 +13262,7 @@ await client.preEncounter.patients.v1.get(CandidApi.PatientId("id"));
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getByMrn</a>(mrn) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.getByMrn.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getByMrn</a>(mrn) -> core.APIResponse&lt;CandidApi.Patient, CandidApi.preEncounter.patients.v1.getByMrn.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13325,7 +13325,7 @@ await client.preEncounter.patients.v1.getByMrn("mrn");
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse<CandidApi.Patient[], CandidApi.preEncounter.patients.v1.getHistory.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse&lt;CandidApi.Patient[], CandidApi.preEncounter.patients.v1.getHistory.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13388,7 +13388,7 @@ await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("id"));
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Patient, CandidApi.preEncounter.patients.v1.update.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.Patient, CandidApi.preEncounter.patients.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13603,7 +13603,7 @@ await client.preEncounter.patients.v1.update(CandidApi.PatientId("id"), "version
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.patients.v1.deactivate.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.patients.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13674,7 +13674,7 @@ await client.preEncounter.patients.v1.deactivate(CandidApi.PatientId("id"), "ver
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">reactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.patients.v1.reactivate.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">reactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.patients.v1.reactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13745,7 +13745,7 @@ await client.preEncounter.patients.v1.reactivate(CandidApi.PatientId("id"), "ver
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">search</a>({ ...params }) -> core.APIResponse<CandidApi.Patient[], CandidApi.preEncounter.patients.v1.search.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">search</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Patient[], CandidApi.preEncounter.patients.v1.search.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13808,7 +13808,7 @@ await client.preEncounter.patients.v1.search();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse<CandidApi.Patient[], CandidApi.preEncounter.patients.v1.scan.Error></code></summary>
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Patient[], CandidApi.preEncounter.patients.v1.scan.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13887,7 +13887,7 @@ await client.preEncounter.patients.v1.scan({
 </details>
 
 ## PreEncounter Tags V1
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.get.Error></code></summary>
+<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Tag, CandidApi.preEncounter.tags.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13950,7 +13950,7 @@ await client.preEncounter.tags.v1.get(CandidApi.TagId("id"));
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse<CandidApi.TagPage, CandidApi.preEncounter.tags.v1.getAll.Error></code></summary>
+<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.TagPage, CandidApi.preEncounter.tags.v1.getAll.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14013,7 +14013,7 @@ await client.preEncounter.tags.v1.getAll();
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.create.Error></code></summary>
+<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Tag, CandidApi.preEncounter.tags.v1.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14078,7 +14078,7 @@ await client.preEncounter.tags.v1.create({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse<CandidApi.Tag, CandidApi.preEncounter.tags.v1.update.Error></code></summary>
+<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.Tag, CandidApi.preEncounter.tags.v1.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14159,7 +14159,7 @@ await client.preEncounter.tags.v1.update(CandidApi.TagId("id"), "version", {
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse<void, CandidApi.preEncounter.tags.v1.deactivate.Error></code></summary>
+<details><summary><code>client.preEncounter.tags.v1.<a href="/src/api/resources/preEncounter/resources/tags/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.tags.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14231,7 +14231,7 @@ await client.preEncounter.tags.v1.deactivate(CandidApi.TagId("id"), "version");
 </details>
 
 ## Diagnoses
-<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">create</a>({ ...params }) -> core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.create.Error></code></summary>
+<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Diagnosis, CandidApi.diagnoses.create.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14298,7 +14298,7 @@ await client.diagnoses.create({
 </dl>
 </details>
 
-<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">update</a>(diagnosisId, { ...params }) -> core.APIResponse<CandidApi.Diagnosis, CandidApi.diagnoses.update.Error></code></summary>
+<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">update</a>(diagnosisId, { ...params }) -> core.APIResponse&lt;CandidApi.Diagnosis, CandidApi.diagnoses.update.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14369,7 +14369,7 @@ await client.diagnoses.update(CandidApi.DiagnosisId("d5e9c84f-c2b2-4bf4-b4b0-7ff
 </dl>
 </details>
 
-<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">delete</a>(diagnosisId) -> core.APIResponse<void, CandidApi.diagnoses.delete.Error></code></summary>
+<details><summary><code>client.diagnoses.<a href="/src/api/resources/diagnoses/client/Client.ts">delete</a>(diagnosisId) -> core.APIResponse&lt;void, CandidApi.diagnoses.delete.Error&gt;</code></summary>
 <dl>
 <dd>
 

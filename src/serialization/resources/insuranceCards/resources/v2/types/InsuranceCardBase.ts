@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { InsuranceTypeCode } from "../../../../commons/types/InsuranceTypeCode";
 import { PayerPlanGroupId } from "../../../../commons/types/PayerPlanGroupId";
 import { SourceOfPaymentCode } from "../../../../commons/types/SourceOfPaymentCode";
+import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 
 export const InsuranceCardBase: core.serialization.ObjectSchema<
     serializers.insuranceCards.v2.InsuranceCardBase.Raw,
@@ -16,6 +17,7 @@ export const InsuranceCardBase: core.serialization.ObjectSchema<
     planType: core.serialization.property("plan_type", SourceOfPaymentCode.optional()),
     insuranceType: core.serialization.property("insurance_type", InsuranceTypeCode.optional()),
     payerPlanGroupId: core.serialization.property("payer_plan_group_id", PayerPlanGroupId.optional()),
+    payerAddress: core.serialization.property("payer_address", StreetAddressLongZip.optional()),
 });
 
 export declare namespace InsuranceCardBase {
@@ -25,5 +27,6 @@ export declare namespace InsuranceCardBase {
         plan_type?: SourceOfPaymentCode.Raw | null;
         insurance_type?: InsuranceTypeCode.Raw | null;
         payer_plan_group_id?: PayerPlanGroupId.Raw | null;
+        payer_address?: StreetAddressLongZip.Raw | null;
     }
 }
