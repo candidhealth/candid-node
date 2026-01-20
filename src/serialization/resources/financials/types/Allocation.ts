@@ -4,16 +4,19 @@ import type * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import type * as serializers from "../../../index";
 import { AllocationTarget } from "./AllocationTarget";
+import { BalanceEarmark } from "./BalanceEarmark";
 
 export const Allocation: core.serialization.ObjectSchema<serializers.Allocation.Raw, CandidApi.Allocation> =
     core.serialization.object({
         amountCents: core.serialization.property("amount_cents", core.serialization.number()),
         target: AllocationTarget,
+        earmark: BalanceEarmark.optional(),
     });
 
 export declare namespace Allocation {
     export interface Raw {
         amount_cents: number;
         target: AllocationTarget.Raw;
+        earmark?: BalanceEarmark.Raw | null;
     }
 }

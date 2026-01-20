@@ -10,7 +10,7 @@ export interface AllocationCreate {
     amountCents: number;
     target: CandidApi.AllocationTargetCreate;
     /**
-     * CURRENTLY UNIMPLEMENTED - Optional earmarking configuration for patient prepayments.
+     * If enabled for your organization, optional earmarking configuration for patient prepayments.
      * When provided on unattributed allocations, holds the payment for future auto-allocation to matching encounters.
      */
     earmark?: CandidApi.AllocationEarmarkType;

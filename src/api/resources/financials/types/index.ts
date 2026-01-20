@@ -6,6 +6,7 @@ export * from "./AllocationTarget";
 export * from "./AllocationTargetCreate";
 export * from "./AppointmentAllocationTarget";
 export * from "./AppointmentByIdAndPatientExternalId";
+export * from "./BalanceEarmark";
 export * from "./BillingProviderAllocationTarget";
 export * from "./ClaimAllocationTarget";
 export * from "./InvoiceUpdate";

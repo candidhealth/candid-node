@@ -3,9 +3,16 @@
 import type * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 
-export type Error = CandidApi.insuranceAdjudications.v1.get.Error._Unknown;
+export type Error =
+    | CandidApi.insuranceAdjudications.v1.get.Error.UnauthorizedError
+    | CandidApi.insuranceAdjudications.v1.get.Error._Unknown;
 
 export namespace Error {
+    export interface UnauthorizedError extends _Utils {
+        errorName: "UnauthorizedError";
+        content: CandidApi.UnauthorizedErrorMessage;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -16,11 +23,27 @@ export namespace Error {
     }
 
     export interface _Visitor<_Result> {
+        unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    unauthorizedError: (
+        value: CandidApi.UnauthorizedErrorMessage,
+    ): CandidApi.insuranceAdjudications.v1.get.Error.UnauthorizedError => {
+        return {
+            content: value,
+            errorName: "UnauthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.insuranceAdjudications.v1.get.Error.UnauthorizedError,
+                visitor: CandidApi.insuranceAdjudications.v1.get.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.insuranceAdjudications.v1.get.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.insuranceAdjudications.v1.get.Error._Unknown => {
         return {
             errorName: undefined,
@@ -39,6 +62,8 @@ export const Error = {
         visitor: CandidApi.insuranceAdjudications.v1.get.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
+            case "UnauthorizedError":
+                return visitor.unauthorizedError(value.content);
             default:
                 return visitor._other(value as any);
         }

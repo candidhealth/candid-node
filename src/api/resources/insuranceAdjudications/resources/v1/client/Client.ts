@@ -92,6 +92,28 @@ export class V1 {
             };
         }
 
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.insuranceAdjudications.v1.get.Error.Raw)?.errorName) {
+                case "UnauthorizedError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.insuranceAdjudications.v1.get.Error.parseOrThrow(
+                                _response.error.body as serializers.insuranceAdjudications.v1.get.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
         return {
             data: {
                 ok: false,
