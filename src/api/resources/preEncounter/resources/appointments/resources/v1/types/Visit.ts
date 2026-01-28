@@ -11,4 +11,5 @@ export interface Visit {
     startTime: Date;
     status: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
     primaryCoverageStatus?: CandidApi.preEncounter.coverages.v1.CoverageStatus;
+    secondaryCoverageStatus?: CandidApi.preEncounter.coverages.v1.CoverageStatus;
 }

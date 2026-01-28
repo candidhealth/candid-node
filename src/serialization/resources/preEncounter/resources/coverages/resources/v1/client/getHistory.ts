@@ -20,6 +20,9 @@ export const Error: core.serialization.Schema<
     CandidApi.preEncounter.coverages.v1.getHistory.Error
 > = core.serialization
     .union("errorName", {
+        BadRequestError: core.serialization.object({
+            content: ErrorBase4Xx,
+        }),
         NotFoundError: core.serialization.object({
             content: ErrorBase4Xx,
         }),
@@ -27,6 +30,8 @@ export const Error: core.serialization.Schema<
     .transform<CandidApi.preEncounter.coverages.v1.getHistory.Error>({
         transform: (value) => {
             switch (value.errorName) {
+                case "BadRequestError":
+                    return CandidApi.preEncounter.coverages.v1.getHistory.Error.badRequestError(value.content);
                 case "NotFoundError":
                     return CandidApi.preEncounter.coverages.v1.getHistory.Error.notFoundError(value.content);
             }
@@ -35,7 +40,12 @@ export const Error: core.serialization.Schema<
     });
 
 export declare namespace Error {
-    export type Raw = Error.NotFoundError;
+    export type Raw = Error.BadRequestError | Error.NotFoundError;
+
+    export interface BadRequestError {
+        errorName: "BadRequestError";
+        content: ErrorBase4Xx.Raw;
+    }
 
     export interface NotFoundError {
         errorName: "NotFoundError";

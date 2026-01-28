@@ -13,5 +13,9 @@ export interface VisitsRequest {
     sortField?: CandidApi.preEncounter.lists.v1.SortFieldString;
     /** Defaults to ascending. */
     sortDirection?: CandidApi.preEncounter.SortDirection;
+    /**
+     * **Required:** Must include a date filter on appointment.startTimestamp (using gt, lt, or eq operators).
+     * Example: appointment.startTimestamp|gt|2024-01-01
+     */
     filters?: CandidApi.preEncounter.FilterQueryString;
 }

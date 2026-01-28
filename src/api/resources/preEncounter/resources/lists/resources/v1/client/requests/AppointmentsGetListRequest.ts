@@ -15,4 +15,6 @@ export interface AppointmentsGetListRequest {
     limit?: number;
     pageToken?: CandidApi.preEncounter.PageToken;
     filters?: CandidApi.preEncounter.FilterQueryString;
+    /** If true, includes deactivated appointments in the results. Defaults to false. */
+    includeDeactivated?: boolean;
 }

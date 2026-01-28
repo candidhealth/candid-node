@@ -20,6 +20,8 @@ export interface MutableCoverage {
     latestEligibilityCheck?: CandidApi.preEncounter.coverages.v1.LatestEligibilityCheck;
     /** The eligibility of the patient for the coverage, manually verified by users. */
     benefits?: CandidApi.preEncounter.coverages.v1.CoverageBenefits;
-    /** ORCON (Originator Controlled) - When set to true, the Candid system will hide this coverage from downstream integrations. Defaults to false. */
+    /** ORCON (Originator Controlled) - When set to true, the Candid system will hide this coverage from downstream integrations. Updates made in the Candid UI will unset this flag. Defaults to false. */
     orcon?: boolean;
+    /** Default to true. When set to true, the Candid system will automatically update this coverage with the latest eligibility check benefits information. Auto update behavior is also set at the eligibilityConfig org level configuration. */
+    autoUpdateEnabled?: boolean;
 }

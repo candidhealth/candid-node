@@ -74,6 +74,7 @@ export class V4 {
             responsibleParty,
             ownerOfNextAction,
             patientExternalId,
+            includeMergedPatientData,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -158,6 +159,10 @@ export class V4 {
             _queryParams.patient_external_id = patientExternalId;
         }
 
+        if (includeMergedPatientData != null) {
+            _queryParams.include_merged_patient_data = includeMergedPatientData.toString();
+        }
+
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
@@ -194,6 +199,30 @@ export class V4 {
                 },
                 rawResponse: _response.rawResponse,
             };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.encounters.v4.getAll.Error.Raw)?.errorName) {
+                case "UnprocessableEntityError":
+                case "HttpRequestValidationsError":
+                case "InternalError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.encounters.v4.getAll.Error.parseOrThrow(
+                                _response.error.body as serializers.encounters.v4.getAll.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
         }
 
         return {

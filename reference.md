@@ -10361,6 +10361,17 @@ await client.preEncounter.appointments.v1.create({
 <dd>
 
 Gets all Visits within a given time range. The return list is ordered by start_time ascending.
+
+**IMPORTANT:** This endpoint requires a date filter on `appointment.startTimestamp` to ensure acceptable query performance.
+Without date filtering, the query can take 50+ seconds on large datasets due to grouping and aggregation operations.
+
+Example filters:
+- `appointment.startTimestamp|gt|2024-01-01` - appointments after January 1, 2024
+- `appointment.startTimestamp|eq|2024-12-08` - appointments on December 8, 2024
+- `appointment.startTimestamp|lt|2024-12-31` - appointments before December 31, 2024
+
+You can combine the date filter with other filters using commas:
+- `appointment.startTimestamp|gt|2024-01-01,appointment.status|eq|PENDING`
 </dd>
 </dl>
 </dd>
@@ -11062,7 +11073,7 @@ await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getHistory</a>(id) -> core.APIResponse&lt;CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getHistory.Error&gt;</code></summary>
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getHistory</a>(id, { ...params }) -> core.APIResponse&lt;CandidApi.Coverage[], CandidApi.preEncounter.coverages.v1.getHistory.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11074,7 +11085,8 @@ await client.preEncounter.coverages.v1.get(CandidApi.CoverageId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-Gets a coverage along with it's full history.  The return list is ordered by version ascending.
+Gets a coverage's history. Full history is returned if no filters are 
+defined. The return list is ordered by version, defaulting to ascending.
 </dd>
 </dl>
 </dd>
@@ -11106,6 +11118,14 @@ await client.preEncounter.coverages.v1.getHistory(CandidApi.CoverageId("d5e9c84f
 <dd>
 
 **id:** `CandidApi.CoverageId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.coverages.v1.CoveragesGetHistoryRequest` 
     
 </dd>
 </dl>
@@ -13369,6 +13389,77 @@ await client.preEncounter.patients.v1.getHistory(CandidApi.PatientId("id"));
 <dd>
 
 **id:** `CandidApi.PatientId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getCoverageSnapshot</a>(id, { ...params }) -> core.APIResponse&lt;CandidApi.PatientCoverageSnapshot, CandidApi.preEncounter.patients.v1.getCoverageSnapshot.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets a patient along with their coverages at a specific point in time. Note that the date passed in is only used to determine what the filing order was for that patient during that time. The actual data returned will always be the latest version of the patient and coverages.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.getCoverageSnapshot(CandidApi.PatientId("id"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.PatientId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.patients.v1.GetCoverageSnapshotRequest` 
     
 </dd>
 </dl>

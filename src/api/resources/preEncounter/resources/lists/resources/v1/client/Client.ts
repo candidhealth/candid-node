@@ -54,7 +54,7 @@ export class V1 {
             >
         >
     > {
-        const { pageToken, limit, sortField, sortDirection, filters } = request;
+        const { pageToken, limit, sortField, sortDirection, filters, includeDeactivated } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (pageToken != null) {
             _queryParams.page_token = pageToken;
@@ -76,6 +76,10 @@ export class V1 {
 
         if (filters != null) {
             _queryParams.filters = filters;
+        }
+
+        if (includeDeactivated != null) {
+            _queryParams.include_deactivated = includeDeactivated.toString();
         }
 
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -180,7 +184,7 @@ export class V1 {
             >
         >
     > {
-        const { sortField, sortDirection, limit, pageToken, filters } = request;
+        const { sortField, sortDirection, limit, pageToken, filters, includeDeactivated } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (sortField != null) {
             _queryParams.sort_field = sortField;
@@ -202,6 +206,10 @@ export class V1 {
 
         if (filters != null) {
             _queryParams.filters = filters;
+        }
+
+        if (includeDeactivated != null) {
+            _queryParams.include_deactivated = includeDeactivated.toString();
         }
 
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

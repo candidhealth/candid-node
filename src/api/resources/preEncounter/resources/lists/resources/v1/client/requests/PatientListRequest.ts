@@ -14,4 +14,6 @@ export interface PatientListRequest {
     /** Defaults to ascending. */
     sortDirection?: CandidApi.preEncounter.SortDirection;
     filters?: CandidApi.preEncounter.FilterQueryString;
+    /** If true, includes deactivated patients in the results. Defaults to false. */
+    includeDeactivated?: boolean;
 }

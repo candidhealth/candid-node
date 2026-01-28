@@ -52,4 +52,6 @@ export interface GetAllEncountersRequest {
     ownerOfNextAction?: CandidApi.encounters.v4.EncounterOwnerOfNextActionType;
     /** The patient ID from the external EMR platform for the patient */
     patientExternalId?: string;
+    /** If true and patient_external_id is set, then also include the encounters of all alternative patients. */
+    includeMergedPatientData?: boolean;
 }

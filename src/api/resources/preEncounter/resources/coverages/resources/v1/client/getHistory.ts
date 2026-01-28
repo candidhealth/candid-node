@@ -4,10 +4,16 @@ import type * as core from "../../../../../../../../core";
 import * as CandidApi from "../../../../../../../index";
 
 export type Error =
+    | CandidApi.preEncounter.coverages.v1.getHistory.Error.BadRequestError
     | CandidApi.preEncounter.coverages.v1.getHistory.Error.NotFoundError
     | CandidApi.preEncounter.coverages.v1.getHistory.Error._Unknown;
 
 export namespace Error {
+    export interface BadRequestError extends _Utils {
+        errorName: "BadRequestError";
+        content: CandidApi.preEncounter.ErrorBase4Xx;
+    }
+
     export interface NotFoundError extends _Utils {
         errorName: "NotFoundError";
         content: CandidApi.preEncounter.ErrorBase4Xx;
@@ -23,12 +29,28 @@ export namespace Error {
     }
 
     export interface _Visitor<_Result> {
+        badRequestError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         notFoundError: (value: CandidApi.preEncounter.ErrorBase4Xx) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    badRequestError: (
+        value: CandidApi.preEncounter.ErrorBase4Xx,
+    ): CandidApi.preEncounter.coverages.v1.getHistory.Error.BadRequestError => {
+        return {
+            content: value,
+            errorName: "BadRequestError",
+            _visit: function <_Result>(
+                this: CandidApi.preEncounter.coverages.v1.getHistory.Error.BadRequestError,
+                visitor: CandidApi.preEncounter.coverages.v1.getHistory.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.preEncounter.coverages.v1.getHistory.Error._visit(this, visitor);
+            },
+        };
+    },
+
     notFoundError: (
         value: CandidApi.preEncounter.ErrorBase4Xx,
     ): CandidApi.preEncounter.coverages.v1.getHistory.Error.NotFoundError => {
@@ -62,6 +84,8 @@ export const Error = {
         visitor: CandidApi.preEncounter.coverages.v1.getHistory.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
+            case "BadRequestError":
+                return visitor.badRequestError(value.content);
             case "NotFoundError":
                 return visitor.notFoundError(value.content);
             default:

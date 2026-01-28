@@ -3,6 +3,7 @@ export * as createWithMrn from "./createWithMrn";
 export * as deactivate from "./deactivate";
 export * as get from "./get";
 export * as getByMrn from "./getByMrn";
+export * as getCoverageSnapshot from "./getCoverageSnapshot";
 export * as getHistory from "./getHistory";
 export * as reactivate from "./reactivate";
 export * as scan from "./scan";

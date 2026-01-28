@@ -15,6 +15,7 @@ export const AppointmentListItem: core.serialization.ObjectSchema<
     appointment: Appointment,
     patient: MutablePatientWithMrn,
     primaryCoverage: core.serialization.property("primary_coverage", MutableCoverage.optional()),
+    secondaryCoverage: core.serialization.property("secondary_coverage", MutableCoverage.optional()),
     primaryServiceType: core.serialization.property("primary_service_type", UniversalServiceIdentifier.optional()),
 });
 
@@ -23,6 +24,7 @@ export declare namespace AppointmentListItem {
         appointment: Appointment.Raw;
         patient: MutablePatientWithMrn.Raw;
         primary_coverage?: MutableCoverage.Raw | null;
+        secondary_coverage?: MutableCoverage.Raw | null;
         primary_service_type?: UniversalServiceIdentifier.Raw | null;
     }
 }

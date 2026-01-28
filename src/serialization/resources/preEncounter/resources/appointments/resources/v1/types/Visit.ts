@@ -17,6 +17,7 @@ export const Visit: core.serialization.ObjectSchema<
     startTime: core.serialization.property("start_time", core.serialization.date()),
     status: AppointmentStatus,
     primaryCoverageStatus: core.serialization.property("primary_coverage_status", CoverageStatus.optional()),
+    secondaryCoverageStatus: core.serialization.property("secondary_coverage_status", CoverageStatus.optional()),
 });
 
 export declare namespace Visit {
@@ -26,5 +27,6 @@ export declare namespace Visit {
         start_time: string;
         status: AppointmentStatus.Raw;
         primary_coverage_status?: CoverageStatus.Raw | null;
+        secondary_coverage_status?: CoverageStatus.Raw | null;
     }
 }

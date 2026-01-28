@@ -8,4 +8,6 @@ export interface PatientListItem {
     secondaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
     tertiaryCoverage?: CandidApi.preEncounter.coverages.v1.MutableCoverage;
     nextAppointment?: CandidApi.preEncounter.appointments.v1.MutableAppointment;
+    primaryMrn?: string;
+    alternativeMrns: string[];
 }

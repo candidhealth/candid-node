@@ -11,6 +11,7 @@ export * from "./MutablePatient";
 export * from "./MutablePatientWithMrn";
 export * from "./OriginationDetail";
 export * from "./Patient";
+export * from "./PatientCoverageSnapshot";
 export * from "./PatientPage";
 export * from "./PatientSortField";
 export * from "./Referral";

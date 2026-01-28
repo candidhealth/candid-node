@@ -138,6 +138,17 @@ export class V1 {
     /**
      * Gets all Visits within a given time range. The return list is ordered by start_time ascending.
      *
+     * **IMPORTANT:** This endpoint requires a date filter on `appointment.startTimestamp` to ensure acceptable query performance.
+     * Without date filtering, the query can take 50+ seconds on large datasets due to grouping and aggregation operations.
+     *
+     * Example filters:
+     * - `appointment.startTimestamp|gt|2024-01-01` - appointments after January 1, 2024
+     * - `appointment.startTimestamp|eq|2024-12-08` - appointments on December 8, 2024
+     * - `appointment.startTimestamp|lt|2024-12-31` - appointments before December 31, 2024
+     *
+     * You can combine the date filter with other filters using commas:
+     * - `appointment.startTimestamp|gt|2024-01-01,appointment.status|eq|PENDING`
+     *
      * @param {CandidApi.preEncounter.appointments.v1.VisitsRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *

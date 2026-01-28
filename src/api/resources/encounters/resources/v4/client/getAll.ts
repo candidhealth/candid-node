@@ -3,9 +3,28 @@
 import type * as core from "../../../../../../core";
 import * as CandidApi from "../../../../../index";
 
-export type Error = CandidApi.encounters.v4.getAll.Error._Unknown;
+export type Error =
+    | CandidApi.encounters.v4.getAll.Error.UnprocessableEntityError
+    | CandidApi.encounters.v4.getAll.Error.HttpRequestValidationsError
+    | CandidApi.encounters.v4.getAll.Error.InternalError
+    | CandidApi.encounters.v4.getAll.Error._Unknown;
 
 export namespace Error {
+    export interface UnprocessableEntityError extends _Utils {
+        errorName: "UnprocessableEntityError";
+        content: CandidApi.UnprocessableEntityErrorMessage;
+    }
+
+    export interface HttpRequestValidationsError extends _Utils {
+        errorName: "HttpRequestValidationsError";
+        content: CandidApi.RequestValidationError[];
+    }
+
+    export interface InternalError extends _Utils {
+        errorName: "InternalError";
+        content: CandidApi.InternalErrorMessage;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -16,11 +35,57 @@ export namespace Error {
     }
 
     export interface _Visitor<_Result> {
+        unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
+        internalError: (value: CandidApi.InternalErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
 
 export const Error = {
+    unprocessableEntityError: (
+        value: CandidApi.UnprocessableEntityErrorMessage,
+    ): CandidApi.encounters.v4.getAll.Error.UnprocessableEntityError => {
+        return {
+            content: value,
+            errorName: "UnprocessableEntityError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.getAll.Error.UnprocessableEntityError,
+                visitor: CandidApi.encounters.v4.getAll.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.getAll.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    httpRequestValidationsError: (
+        value: CandidApi.RequestValidationError[],
+    ): CandidApi.encounters.v4.getAll.Error.HttpRequestValidationsError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationsError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.getAll.Error.HttpRequestValidationsError,
+                visitor: CandidApi.encounters.v4.getAll.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.getAll.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    internalError: (value: CandidApi.InternalErrorMessage): CandidApi.encounters.v4.getAll.Error.InternalError => {
+        return {
+            content: value,
+            errorName: "InternalError",
+            _visit: function <_Result>(
+                this: CandidApi.encounters.v4.getAll.Error.InternalError,
+                visitor: CandidApi.encounters.v4.getAll.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.encounters.v4.getAll.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.encounters.v4.getAll.Error._Unknown => {
         return {
             errorName: undefined,
@@ -39,6 +104,12 @@ export const Error = {
         visitor: CandidApi.encounters.v4.getAll.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
+            case "UnprocessableEntityError":
+                return visitor.unprocessableEntityError(value.content);
+            case "HttpRequestValidationsError":
+                return visitor.httpRequestValidationsError(value.content);
+            case "InternalError":
+                return visitor.internalError(value.content);
             default:
                 return visitor._other(value as any);
         }

@@ -16,6 +16,11 @@ export const PatientListItem: core.serialization.ObjectSchema<
     secondaryCoverage: core.serialization.property("secondary_coverage", MutableCoverage.optional()),
     tertiaryCoverage: core.serialization.property("tertiary_coverage", MutableCoverage.optional()),
     nextAppointment: core.serialization.property("next_appointment", MutableAppointment.optional()),
+    primaryMrn: core.serialization.property("primary_mrn", core.serialization.string().optional()),
+    alternativeMrns: core.serialization.property(
+        "alternative_mrns",
+        core.serialization.list(core.serialization.string()),
+    ),
 });
 
 export declare namespace PatientListItem {
@@ -25,5 +30,7 @@ export declare namespace PatientListItem {
         secondary_coverage?: MutableCoverage.Raw | null;
         tertiary_coverage?: MutableCoverage.Raw | null;
         next_appointment?: MutableAppointment.Raw | null;
+        primary_mrn?: string | null;
+        alternative_mrns: string[];
     }
 }

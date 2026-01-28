@@ -1010,6 +1010,120 @@ export class V1 {
     }
 
     /**
+     * Gets a patient along with their coverages at a specific point in time. Note that the date passed in is only used to determine what the filing order was for that patient during that time. The actual data returned will always be the latest version of the patient and coverages.
+     *
+     * @param {CandidApi.preEncounter.PatientId} id
+     * @param {CandidApi.preEncounter.patients.v1.GetCoverageSnapshotRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.patients.v1.getCoverageSnapshot(CandidApi.preEncounter.PatientId("id"))
+     */
+    public getCoverageSnapshot(
+        id: CandidApi.preEncounter.PatientId,
+        request: CandidApi.preEncounter.patients.v1.GetCoverageSnapshotRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.patients.v1.PatientCoverageSnapshot,
+            CandidApi.preEncounter.patients.v1.getCoverageSnapshot.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getCoverageSnapshot(id, request, requestOptions));
+    }
+
+    private async __getCoverageSnapshot(
+        id: CandidApi.preEncounter.PatientId,
+        request: CandidApi.preEncounter.patients.v1.GetCoverageSnapshotRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.patients.v1.PatientCoverageSnapshot,
+                CandidApi.preEncounter.patients.v1.getCoverageSnapshot.Error
+            >
+        >
+    > {
+        const { date } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (date != null) {
+            _queryParams.date = date.toISOString();
+        }
+
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/patients/v1/${core.url.encodePathParam(serializers.preEncounter.PatientId.jsonOrThrow(id))}/snapshot`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.patients.v1.PatientCoverageSnapshot.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.preEncounter.patients.v1.getCoverageSnapshot.Error.Raw)?.errorName
+            ) {
+                case "NotFoundError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.patients.v1.getCoverageSnapshot.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.preEncounter.patients.v1.getCoverageSnapshot.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.patients.v1.getCoverageSnapshot.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * Updates a patient. The path must contain the next version number to prevent race conditions. For example, if the current version of the patient is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the patient. Updating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.PatientId} id

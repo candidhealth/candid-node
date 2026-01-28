@@ -452,9 +452,11 @@ export class V1 {
     }
 
     /**
-     * Gets a coverage along with it's full history.  The return list is ordered by version ascending.
+     * Gets a coverage's history. Full history is returned if no filters are
+     * defined. The return list is ordered by version, defaulting to ascending.
      *
      * @param {CandidApi.preEncounter.CoverageId} id
+     * @param {CandidApi.preEncounter.coverages.v1.CoveragesGetHistoryRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -462,6 +464,7 @@ export class V1 {
      */
     public getHistory(
         id: CandidApi.preEncounter.CoverageId,
+        request: CandidApi.preEncounter.coverages.v1.CoveragesGetHistoryRequest = {},
         requestOptions?: V1.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<
@@ -469,11 +472,12 @@ export class V1 {
             CandidApi.preEncounter.coverages.v1.getHistory.Error
         >
     > {
-        return core.HttpResponsePromise.fromPromise(this.__getHistory(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getHistory(id, request, requestOptions));
     }
 
     private async __getHistory(
         id: CandidApi.preEncounter.CoverageId,
+        request: CandidApi.preEncounter.coverages.v1.CoveragesGetHistoryRequest = {},
         requestOptions?: V1.RequestOptions,
     ): Promise<
         core.WithRawResponse<
@@ -483,6 +487,30 @@ export class V1 {
             >
         >
     > {
+        const { start, end, nonAutoUpdatedCoveragesOnly, sortDirection, limit } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (start != null) {
+            _queryParams.start = start;
+        }
+
+        if (end != null) {
+            _queryParams.end = end;
+        }
+
+        if (nonAutoUpdatedCoveragesOnly != null) {
+            _queryParams.non_auto_updated_coverages_only = nonAutoUpdatedCoveragesOnly.toString();
+        }
+
+        if (sortDirection != null) {
+            _queryParams.sort_direction = serializers.preEncounter.SortDirection.jsonOrThrow(sortDirection, {
+                unrecognizedObjectKeys: "strip",
+            });
+        }
+
+        if (limit != null) {
+            _queryParams.limit = limit.toString();
+        }
+
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
@@ -499,7 +527,7 @@ export class V1 {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -523,6 +551,7 @@ export class V1 {
 
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.preEncounter.coverages.v1.getHistory.Error.Raw)?.errorName) {
+                case "BadRequestError":
                 case "NotFoundError":
                     return {
                         data: {

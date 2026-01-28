@@ -3,6 +3,12 @@
 import type * as CandidApi from "../../../../../index";
 
 export interface ServiceLineEraData {
+    /**
+     * Deprecated. This field aggregates all CARCs across a service line's history
+     * without granular context
+     * (e.g., which CARCs relate to denials vs. payments vs. reversals), making it
+     * unsuitable for denial analysis or operational workflows.
+     */
     serviceLineAdjustments: CandidApi.serviceLines.v2.ServiceLineAdjustment[];
     remittanceAdviceRemarkCodes: string[];
 }

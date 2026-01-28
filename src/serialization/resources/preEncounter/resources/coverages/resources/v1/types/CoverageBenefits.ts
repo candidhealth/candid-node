@@ -21,6 +21,7 @@ export const CoverageBenefits: core.serialization.ObjectSchema<
         core.serialization.list(BenefitsRelatedEntity).optional(),
     ),
     notes: core.serialization.string().optional(),
+    autoUpdatedEligibilityCheckId: core.serialization.string().optional(),
 });
 
 export declare namespace CoverageBenefits {
@@ -29,5 +30,6 @@ export declare namespace CoverageBenefits {
         service_specific_coverage?: ServiceCoverage.Raw[] | null;
         benefits_related_entities?: BenefitsRelatedEntity.Raw[] | null;
         notes?: string | null;
+        autoUpdatedEligibilityCheckId?: string | null;
     }
 }
