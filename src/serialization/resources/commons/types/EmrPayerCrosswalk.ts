@@ -7,8 +7,8 @@ import type * as serializers from "../../../index";
 export const EmrPayerCrosswalk: core.serialization.Schema<
     serializers.EmrPayerCrosswalk.Raw,
     CandidApi.EmrPayerCrosswalk
-> = core.serialization.enum_(["HEALTHIE", "CANVAS", "HL7_WEBPT_E34_EPIC"]);
+> = core.serialization.enum_(["HEALTHIE", "CANVAS", "WAYSTAR"]);
 
 export declare namespace EmrPayerCrosswalk {
-    export type Raw = "HEALTHIE" | "CANVAS" | "HL7_WEBPT_E34_EPIC";
+    export type Raw = "HEALTHIE" | "CANVAS" | "WAYSTAR";
 }

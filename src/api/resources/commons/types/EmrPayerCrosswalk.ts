@@ -3,6 +3,6 @@
 export const EmrPayerCrosswalk = {
     Healthie: "HEALTHIE",
     Canvas: "CANVAS",
-    Hl7WebptE34Epic: "HL7_WEBPT_E34_EPIC",
+    Waystar: "WAYSTAR",
 } as const;
 export type EmrPayerCrosswalk = (typeof EmrPayerCrosswalk)[keyof typeof EmrPayerCrosswalk];
