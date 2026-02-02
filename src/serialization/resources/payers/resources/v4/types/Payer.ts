@@ -23,6 +23,10 @@ export const Payer: core.serialization.ObjectSchema<serializers.payers.v4.Payer.
             core.serialization.record(Clearinghouse, ClearinghousePayerInfo.optional()),
         ),
         streetAddress: core.serialization.property("street_address", StreetAddressLongZip.optional()),
+        alternatePayerAddresses: core.serialization.property(
+            "alternate_payer_addresses",
+            core.serialization.list(StreetAddressLongZip),
+        ),
     });
 
 export declare namespace Payer {
@@ -33,5 +37,6 @@ export declare namespace Payer {
         alternate_payer_names: string[];
         clearinghouse_payer_info: Record<Clearinghouse.Raw, ClearinghousePayerInfo.Raw | null | undefined>;
         street_address?: StreetAddressLongZip.Raw | null;
+        alternate_payer_addresses: StreetAddressLongZip.Raw[];
     }
 }

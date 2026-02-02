@@ -184,7 +184,8 @@ export class V1 {
             >
         >
     > {
-        const { sortField, sortDirection, limit, pageToken, filters, includeDeactivated } = request;
+        const { sortField, sortDirection, limit, pageToken, filters, includeDeactivated, includeMergedPatientData } =
+            request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (sortField != null) {
             _queryParams.sort_field = sortField;
@@ -210,6 +211,10 @@ export class V1 {
 
         if (includeDeactivated != null) {
             _queryParams.include_deactivated = includeDeactivated.toString();
+        }
+
+        if (includeMergedPatientData != null) {
+            _queryParams.include_merged_patient_data = includeMergedPatientData.toString();
         }
 
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

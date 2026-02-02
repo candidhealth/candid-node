@@ -11,4 +11,8 @@ export interface BalanceEarmark {
     id: string;
     /** The target for this earmark (date of service or external encounter ID) */
     target: CandidApi.AllocationEarmarkType;
+    /** The amount earmarked in cents for future allocation */
+    amountEarmarkedCents?: number;
+    /** The ID of the allocation that created this earmark */
+    createdByAllocationId?: string;
 }

@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../../../index";
 import { BaseModel } from "../../../../common/types/BaseModel";
 import { EligibilityRecommendationPatientInfo } from "./EligibilityRecommendationPatientInfo";
 import { EligibilityRecommendationPayload } from "./EligibilityRecommendationPayload";
+import { Vote } from "./Vote";
 
 export const EligibilityRecommendation: core.serialization.ObjectSchema<
     serializers.preEncounter.eligibilityChecks.v1.EligibilityRecommendation.Raw,
@@ -13,15 +14,19 @@ export const EligibilityRecommendation: core.serialization.ObjectSchema<
 > = core.serialization
     .object({
         id: core.serialization.string(),
+        eligibilityCheckId: core.serialization.property("eligibility_check_id", core.serialization.string()),
         recommendation: EligibilityRecommendationPayload,
         patient: EligibilityRecommendationPatientInfo,
+        vote: Vote.optional(),
     })
     .extend(BaseModel);
 
 export declare namespace EligibilityRecommendation {
     export interface Raw extends BaseModel.Raw {
         id: string;
+        eligibility_check_id: string;
         recommendation: EligibilityRecommendationPayload.Raw;
         patient: EligibilityRecommendationPatientInfo.Raw;
+        vote?: Vote.Raw | null;
     }
 }

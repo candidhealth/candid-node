@@ -16,4 +16,6 @@ export interface Authorization {
     quantity?: number;
     period?: CandidApi.preEncounter.Period;
     notes?: string;
+    /** The NPI of the billing provider for which this authorization applies. */
+    billingProviderNpi?: string;
 }

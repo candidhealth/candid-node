@@ -1,5 +1,7 @@
 export * from "./BatchEligibilityResponse";
 export * from "./CoordinationOfBenefitsRecommendation";
+export * from "./CopayEstimationRecommendation";
+export * from "./CopayEstimationRecommendationPayload";
 export * from "./EligibilityCheck";
 export * from "./EligibilityCheckError";
 export * from "./EligibilityCheckErrorDetails";
@@ -25,3 +27,8 @@ export * from "./Provider";
 export * from "./RequestCorrection";
 export * from "./StediPayer";
 export * from "./StediPayerItem";
+export * from "./UserConfiguredPromptsRecommendation";
+export * from "./UserConfiguredPromptsRecommendationPayload";
+export * from "./UserConfiguredPromptsResult";
+export * from "./Vote";
+export * from "./VoteValue";

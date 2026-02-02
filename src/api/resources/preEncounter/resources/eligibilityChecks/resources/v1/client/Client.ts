@@ -599,6 +599,132 @@ export class V1 {
         };
     }
 
+    /**
+     * Submit user feedback on an eligibility recommendation. The path must contain the next version number to prevent race conditions. For example, if the current version of the recommendation is n, you will need to send a request to this endpoint with `/{recommendation_id}/{n+1}/vote` to update the vote.
+     *
+     * @param {string} recommendationId
+     * @param {string} version
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.Vote} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.voteRecommendation("recommendation_id", "version", {
+     *         userId: CandidApi.preEncounter.UserId("user_id"),
+     *         value: "GOOD"
+     *     })
+     */
+    public voteRecommendation(
+        recommendationId: string,
+        version: string,
+        request: CandidApi.preEncounter.eligibilityChecks.v1.Vote,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendation,
+            CandidApi.preEncounter.eligibilityChecks.v1.voteRecommendation.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__voteRecommendation(recommendationId, version, request, requestOptions),
+        );
+    }
+
+    private async __voteRecommendation(
+        recommendationId: string,
+        version: string,
+        request: CandidApi.preEncounter.eligibilityChecks.v1.Vote,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendation,
+                CandidApi.preEncounter.eligibilityChecks.v1.voteRecommendation.Error
+            >
+        >
+    > {
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/eligibility-checks/v1/recommendation/${core.url.encodePathParam(recommendationId)}/${core.url.encodePathParam(version)}/vote`,
+            ),
+            method: "PUT",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.Vote.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.EligibilityRecommendation.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.preEncounter.eligibilityChecks.v1.voteRecommendation.Error.Raw)
+                    ?.errorName
+            ) {
+                case "NotFoundError":
+                case "VersionConflictError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.eligibilityChecks.v1.voteRecommendation.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.preEncounter.eligibilityChecks.v1.voteRecommendation.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.eligibilityChecks.v1.voteRecommendation.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
     protected async _getAuthorizationHeader(): Promise<string | undefined> {
         const bearer = await core.Supplier.get(this._options.token);
         if (bearer != null) {

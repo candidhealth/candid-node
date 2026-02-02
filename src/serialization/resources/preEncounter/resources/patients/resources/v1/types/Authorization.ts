@@ -32,6 +32,7 @@ export const Authorization: core.serialization.ObjectSchema<
     quantity: core.serialization.number().optional(),
     period: Period.optional(),
     notes: core.serialization.string().optional(),
+    billingProviderNpi: core.serialization.property("billing_provider_npi", core.serialization.string().optional()),
 });
 
 export declare namespace Authorization {
@@ -47,5 +48,6 @@ export declare namespace Authorization {
         quantity?: number | null;
         period?: Period.Raw | null;
         notes?: string | null;
+        billing_provider_npi?: string | null;
     }
 }

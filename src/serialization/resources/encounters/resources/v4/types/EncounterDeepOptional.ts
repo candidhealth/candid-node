@@ -103,6 +103,11 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
             "related_causes_information",
             RelatedCausesInformationCreate.optional(),
         ),
+        propertyCasualtyClaimNumber: core.serialization.property(
+            "property_casualty_claim_number",
+            core.serialization.string().optional(),
+        ),
+        accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
     })
     .extend(EncounterOptional);
 
@@ -133,5 +138,7 @@ export declare namespace EncounterDeepOptional {
         billing_provider?: BillingProviderUpdateWithOptionalAddress.Raw | null;
         pay_to_address?: StreetAddressShortZipOptional.Raw | null;
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;
+        property_casualty_claim_number?: string | null;
+        accident_date?: string | null;
     }
 }

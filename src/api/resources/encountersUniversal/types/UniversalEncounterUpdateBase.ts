@@ -60,4 +60,8 @@ export interface UniversalEncounterUpdateBase extends CandidApi.encounters.v4.En
     placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     /** Corresponds to box 10a on the CMS-1500 (Loop 2300 on 837) */
     relatedCausesInformation?: CandidApi.relatedCausesInformation.v1.RelatedCausesInformationUpdate;
+    /** 837p Loop2010 REF02, CMS1500 Box 11b */
+    propertyCasualtyClaimNumber?: string;
+    /** 837p Loop2300 DTP*439, CMS1500 Box 15 */
+    accidentDate?: string;
 }

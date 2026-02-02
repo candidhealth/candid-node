@@ -67,6 +67,11 @@ export const UniversalEncounterUpdateBase: core.serialization.ObjectSchema<
             "related_causes_information",
             RelatedCausesInformationUpdate.optional(),
         ),
+        propertyCasualtyClaimNumber: core.serialization.property(
+            "property_casualty_claim_number",
+            core.serialization.string().optional(),
+        ),
+        accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
     })
     .extend(EncounterOptional);
 
@@ -91,5 +96,7 @@ export declare namespace UniversalEncounterUpdateBase {
         billing_provider?: BillingProviderUpdate.Raw | null;
         place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
         related_causes_information?: RelatedCausesInformationUpdate.Raw | null;
+        property_casualty_claim_number?: string | null;
+        accident_date?: string | null;
     }
 }

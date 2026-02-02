@@ -7,4 +7,5 @@ export interface PatientCoverageSnapshot {
     primaryCoverage?: CandidApi.preEncounter.coverages.v1.Coverage;
     secondaryCoverage?: CandidApi.preEncounter.coverages.v1.Coverage;
     tertiaryCoverage?: CandidApi.preEncounter.coverages.v1.Coverage;
+    coveragesForRelatedCauses: CandidApi.preEncounter.coverages.v1.Coverage[];
 }

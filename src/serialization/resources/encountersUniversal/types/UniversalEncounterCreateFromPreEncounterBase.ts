@@ -57,6 +57,11 @@ export const UniversalEncounterCreateFromPreEncounterBase: core.serialization.Ob
             "related_causes_information",
             RelatedCausesInformationCreate.optional(),
         ),
+        propertyCasualtyClaimNumber: core.serialization.property(
+            "property_casualty_claim_number",
+            core.serialization.string().optional(),
+        ),
+        accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
     })
     .extend(EncounterBase);
 
@@ -75,5 +80,7 @@ export declare namespace UniversalEncounterCreateFromPreEncounterBase {
         tag_ids?: TagId.Raw[] | null;
         schema_instances?: SchemaInstance.Raw[] | null;
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;
+        property_casualty_claim_number?: string | null;
+        accident_date?: string | null;
     }
 }

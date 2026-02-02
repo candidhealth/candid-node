@@ -46,6 +46,7 @@ export interface MutablePatient {
     contacts: CandidApi.preEncounter.patients.v1.Contact[];
     generalPractitioners: CandidApi.preEncounter.ExternalProvider[];
     filingOrder: CandidApi.preEncounter.patients.v1.FilingOrder;
+    coveragesForRelatedCauses?: CandidApi.preEncounter.patients.v1.CoveragesForRelatedCauses;
     nonInsurancePayers?: CandidApi.preEncounter.CanonicalNonInsurancePayerId[];
     nonInsurancePayerAssociations?: CandidApi.preEncounter.CanonicalNonInsurancePayerAssociation[];
     guarantor?: CandidApi.preEncounter.patients.v1.Guarantor;

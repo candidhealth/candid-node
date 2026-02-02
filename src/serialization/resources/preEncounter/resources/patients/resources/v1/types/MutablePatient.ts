@@ -21,6 +21,7 @@ import { SexualOrientation } from "../../../../common/types/SexualOrientation";
 import { TagId } from "../../../../common/types/TagId";
 import { Authorization } from "./Authorization";
 import { Contact } from "./Contact";
+import { CoveragesForRelatedCauses } from "./CoveragesForRelatedCauses";
 import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 import { ExternalProvenance } from "./ExternalProvenance";
 import { FilingOrder } from "./FilingOrder";
@@ -70,6 +71,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
         core.serialization.list(ExternalProvider),
     ),
     filingOrder: core.serialization.property("filing_order", FilingOrder),
+    coveragesForRelatedCauses: core.serialization.property(
+        "coverages_for_related_causes",
+        CoveragesForRelatedCauses.optional(),
+    ),
     nonInsurancePayers: core.serialization.property(
         "non_insurance_payers",
         core.serialization.list(CanonicalNonInsurancePayerId).optional(),
@@ -130,6 +135,7 @@ export declare namespace MutablePatient {
         contacts: Contact.Raw[];
         general_practitioners: ExternalProvider.Raw[];
         filing_order: FilingOrder.Raw;
+        coverages_for_related_causes?: CoveragesForRelatedCauses.Raw | null;
         non_insurance_payers?: CanonicalNonInsurancePayerId.Raw[] | null;
         non_insurance_payer_associations?: CanonicalNonInsurancePayerAssociation.Raw[] | null;
         guarantor?: Guarantor.Raw | null;

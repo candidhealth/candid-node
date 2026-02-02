@@ -1,6 +1,7 @@
 export * from "./Authorization";
 export * from "./AuthorizationUnit";
 export * from "./Contact";
+export * from "./CoveragesForRelatedCauses";
 export * from "./DoNotInvoiceReason";
 export * from "./ExternalProvenance";
 export * from "./FilingOrder";

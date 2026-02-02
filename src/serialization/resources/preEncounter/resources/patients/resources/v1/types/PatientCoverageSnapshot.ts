@@ -14,6 +14,10 @@ export const PatientCoverageSnapshot: core.serialization.ObjectSchema<
     primaryCoverage: core.serialization.property("primary_coverage", Coverage.optional()),
     secondaryCoverage: core.serialization.property("secondary_coverage", Coverage.optional()),
     tertiaryCoverage: core.serialization.property("tertiary_coverage", Coverage.optional()),
+    coveragesForRelatedCauses: core.serialization.property(
+        "coverages_for_related_causes",
+        core.serialization.list(Coverage),
+    ),
 });
 
 export declare namespace PatientCoverageSnapshot {
@@ -22,5 +26,6 @@ export declare namespace PatientCoverageSnapshot {
         primary_coverage?: Coverage.Raw | null;
         secondary_coverage?: Coverage.Raw | null;
         tertiary_coverage?: Coverage.Raw | null;
+        coverages_for_related_causes: Coverage.Raw[];
     }
 }

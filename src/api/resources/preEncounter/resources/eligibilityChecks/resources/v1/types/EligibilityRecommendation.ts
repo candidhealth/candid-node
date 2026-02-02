@@ -8,6 +8,9 @@ import type * as CandidApi from "../../../../../../../index";
 export interface EligibilityRecommendation extends CandidApi.preEncounter.BaseModel {
     /** The unique UUID identifier for an EligibilityRecommendation. */
     id: string;
+    eligibilityCheckId: string;
     recommendation: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload;
     patient: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPatientInfo;
+    /** User feedback on this recommendation */
+    vote?: CandidApi.preEncounter.eligibilityChecks.v1.Vote;
 }

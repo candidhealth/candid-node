@@ -5,18 +5,12 @@ import * as CandidApi from "../../../../../index";
 
 export type Error =
     | CandidApi.insuranceAdjudications.v1.get.Error.UnauthorizedError
-    | CandidApi.insuranceAdjudications.v1.get.Error.DuplicateClaimPaymentsError
     | CandidApi.insuranceAdjudications.v1.get.Error._Unknown;
 
 export namespace Error {
     export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
-    }
-
-    export interface DuplicateClaimPaymentsError extends _Utils {
-        errorName: "DuplicateClaimPaymentsError";
-        content: CandidApi.insuranceAdjudications.v1.DuplicateClaimPaymentsErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -30,9 +24,6 @@ export namespace Error {
 
     export interface _Visitor<_Result> {
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
-        duplicateClaimPaymentsError: (
-            value: CandidApi.insuranceAdjudications.v1.DuplicateClaimPaymentsErrorMessage,
-        ) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -46,21 +37,6 @@ export const Error = {
             errorName: "UnauthorizedError",
             _visit: function <_Result>(
                 this: CandidApi.insuranceAdjudications.v1.get.Error.UnauthorizedError,
-                visitor: CandidApi.insuranceAdjudications.v1.get.Error._Visitor<_Result>,
-            ) {
-                return CandidApi.insuranceAdjudications.v1.get.Error._visit(this, visitor);
-            },
-        };
-    },
-
-    duplicateClaimPaymentsError: (
-        value: CandidApi.insuranceAdjudications.v1.DuplicateClaimPaymentsErrorMessage,
-    ): CandidApi.insuranceAdjudications.v1.get.Error.DuplicateClaimPaymentsError => {
-        return {
-            content: value,
-            errorName: "DuplicateClaimPaymentsError",
-            _visit: function <_Result>(
-                this: CandidApi.insuranceAdjudications.v1.get.Error.DuplicateClaimPaymentsError,
                 visitor: CandidApi.insuranceAdjudications.v1.get.Error._Visitor<_Result>,
             ) {
                 return CandidApi.insuranceAdjudications.v1.get.Error._visit(this, visitor);
@@ -88,8 +64,6 @@ export const Error = {
         switch (value.errorName) {
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
-            case "DuplicateClaimPaymentsError":
-                return visitor.duplicateClaimPaymentsError(value.content);
             default:
                 return visitor._other(value as any);
         }

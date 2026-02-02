@@ -4,7 +4,6 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
-import { DuplicateClaimPaymentsErrorMessage } from "../types/DuplicateClaimPaymentsErrorMessage";
 
 export const Error: core.serialization.Schema<
     serializers.insuranceAdjudications.v1.get.Error.Raw,
@@ -14,32 +13,22 @@ export const Error: core.serialization.Schema<
         UnauthorizedError: core.serialization.object({
             content: UnauthorizedErrorMessage,
         }),
-        DuplicateClaimPaymentsError: core.serialization.object({
-            content: DuplicateClaimPaymentsErrorMessage,
-        }),
     })
     .transform<CandidApi.insuranceAdjudications.v1.get.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "UnauthorizedError":
                     return CandidApi.insuranceAdjudications.v1.get.Error.unauthorizedError(value.content);
-                case "DuplicateClaimPaymentsError":
-                    return CandidApi.insuranceAdjudications.v1.get.Error.duplicateClaimPaymentsError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.UnauthorizedError | Error.DuplicateClaimPaymentsError;
+    export type Raw = Error.UnauthorizedError;
 
     export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
-    }
-
-    export interface DuplicateClaimPaymentsError {
-        errorName: "DuplicateClaimPaymentsError";
-        content: DuplicateClaimPaymentsErrorMessage.Raw;
     }
 }

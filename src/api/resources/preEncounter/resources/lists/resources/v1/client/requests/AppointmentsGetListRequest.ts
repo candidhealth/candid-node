@@ -17,4 +17,6 @@ export interface AppointmentsGetListRequest {
     filters?: CandidApi.preEncounter.FilterQueryString;
     /** If true, includes deactivated appointments in the results. Defaults to false. */
     includeDeactivated?: boolean;
+    /** If true and a patient id is specified, then also include appointments from any alternative patients that are merged into this patient. Defaults to false. */
+    includeMergedPatientData?: boolean;
 }

@@ -11929,6 +11929,88 @@ await client.preEncounter.eligibilityChecks.v1.createRecommendation({
 </dl>
 </details>
 
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">voteRecommendation</a>(recommendationId, version, { ...params }) -> core.APIResponse&lt;CandidApi.EligibilityRecommendation, CandidApi.preEncounter.eligibilityChecks.v1.voteRecommendation.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Submit user feedback on an eligibility recommendation. The path must contain the next version number to prevent race conditions. For example, if the current version of the recommendation is n, you will need to send a request to this endpoint with `/{recommendation_id}/{n+1}/vote` to update the vote.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.voteRecommendation("recommendation_id", "version", {
+    userId: CandidApi.UserId("user_id"),
+    value: "GOOD"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**recommendationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.Vote` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## PreEncounter Images V1
 <details><summary><code>client.preEncounter.images.v1.<a href="/src/api/resources/preEncounter/resources/images/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Image, CandidApi.preEncounter.images.v1.create.Error&gt;</code></summary>
 <dl>

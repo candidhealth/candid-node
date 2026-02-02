@@ -70,6 +70,11 @@ export const Encounter: core.serialization.ObjectSchema<
             "related_causes_information",
             RelatedCausesInformation.optional(),
         ),
+        propertyCasualtyClaimNumber: core.serialization.property(
+            "property_casualty_claim_number",
+            core.serialization.string().optional(),
+        ),
+        accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
         submissionExpectation: core.serialization.property(
             "submission_expectation",
             EncounterSubmissionExpectation.optional(),
@@ -150,6 +155,8 @@ export declare namespace Encounter {
         operating_provider?: EncounterProvider.Raw | null;
         other_operating_provider?: EncounterProvider.Raw | null;
         related_causes_information?: RelatedCausesInformation.Raw | null;
+        property_casualty_claim_number?: string | null;
+        accident_date?: string | null;
         submission_expectation?: EncounterSubmissionExpectation.Raw | null;
         type_of_bill?: TypeOfBillComposite.Raw | null;
         referring_provider?: EncounterProvider.Raw | null;

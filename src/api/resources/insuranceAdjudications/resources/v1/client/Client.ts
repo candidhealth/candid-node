@@ -95,7 +95,6 @@ export class V1 {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.insuranceAdjudications.v1.get.Error.Raw)?.errorName) {
                 case "UnauthorizedError":
-                case "DuplicateClaimPaymentsError":
                     return {
                         data: {
                             ok: false,

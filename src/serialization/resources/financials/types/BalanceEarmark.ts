@@ -9,11 +9,21 @@ export const BalanceEarmark: core.serialization.ObjectSchema<serializers.Balance
     core.serialization.object({
         id: core.serialization.string(),
         target: AllocationEarmarkType,
+        amountEarmarkedCents: core.serialization.property(
+            "amount_earmarked_cents",
+            core.serialization.number().optional(),
+        ),
+        createdByAllocationId: core.serialization.property(
+            "created_by_allocation_id",
+            core.serialization.string().optional(),
+        ),
     });
 
 export declare namespace BalanceEarmark {
     export interface Raw {
         id: string;
         target: AllocationEarmarkType.Raw;
+        amount_earmarked_cents?: number | null;
+        created_by_allocation_id?: string | null;
     }
 }

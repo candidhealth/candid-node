@@ -13,4 +13,5 @@ export interface Payer {
     alternatePayerNames: string[];
     clearinghousePayerInfo: Record<CandidApi.Clearinghouse, CandidApi.payers.v4.ClearinghousePayerInfo | undefined>;
     streetAddress?: CandidApi.StreetAddressLongZip;
+    alternatePayerAddresses: CandidApi.StreetAddressLongZip[];
 }

@@ -4,7 +4,9 @@ import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { CoordinationOfBenefitsRecommendation } from "./CoordinationOfBenefitsRecommendation";
+import { CopayEstimationRecommendation } from "./CopayEstimationRecommendation";
 import { MedicareAdvantageRecommendation } from "./MedicareAdvantageRecommendation";
+import { UserConfiguredPromptsRecommendation } from "./UserConfiguredPromptsRecommendation";
 
 export const EligibilityRecommendationPayload: core.serialization.Schema<
     serializers.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload.Raw,
@@ -13,6 +15,8 @@ export const EligibilityRecommendationPayload: core.serialization.Schema<
     .union("type", {
         MEDICARE_ADVANTAGE: MedicareAdvantageRecommendation,
         COORDINATION_OF_BENEFITS: CoordinationOfBenefitsRecommendation,
+        COPAY_ESTIMATION: CopayEstimationRecommendation,
+        USER_CONFIGURED_PROMPTS: UserConfiguredPromptsRecommendation,
     })
     .transform<CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload>({
         transform: (value) => value,
@@ -22,7 +26,9 @@ export const EligibilityRecommendationPayload: core.serialization.Schema<
 export declare namespace EligibilityRecommendationPayload {
     export type Raw =
         | EligibilityRecommendationPayload.MedicareAdvantage
-        | EligibilityRecommendationPayload.CoordinationOfBenefits;
+        | EligibilityRecommendationPayload.CoordinationOfBenefits
+        | EligibilityRecommendationPayload.CopayEstimation
+        | EligibilityRecommendationPayload.UserConfiguredPrompts;
 
     export interface MedicareAdvantage extends MedicareAdvantageRecommendation.Raw {
         type: "MEDICARE_ADVANTAGE";
@@ -30,5 +36,13 @@ export declare namespace EligibilityRecommendationPayload {
 
     export interface CoordinationOfBenefits extends CoordinationOfBenefitsRecommendation.Raw {
         type: "COORDINATION_OF_BENEFITS";
+    }
+
+    export interface CopayEstimation extends CopayEstimationRecommendation.Raw {
+        type: "COPAY_ESTIMATION";
+    }
+
+    export interface UserConfiguredPrompts extends UserConfiguredPromptsRecommendation.Raw {
+        type: "USER_CONFIGURED_PROMPTS";
     }
 }
