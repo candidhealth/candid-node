@@ -101,8 +101,8 @@ export class CandidApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "candidhealth",
-                    "X-Fern-SDK-Version": "1.18.1",
-                    "User-Agent": "candidhealth/1.18.1",
+                    "X-Fern-SDK-Version": "1.19.0",
+                    "User-Agent": "candidhealth/1.19.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
