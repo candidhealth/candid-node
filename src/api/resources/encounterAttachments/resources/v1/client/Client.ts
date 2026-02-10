@@ -306,6 +306,112 @@ export class V1 {
     }
 
     /**
+     * Uploads a file using an external identifier. For Charge Capture, the file will be associated with the Encounter at Encounter creation time.
+     *
+     * Note: Attachments created via this endpoint are not searchable via the get endpoint until they are associated with an encounter.
+     *
+     * @param {File | fs.ReadStream | Blob} attachmentFile
+     * @param {CandidApi.encounterAttachments.v1.CreateExternalAttachmentRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     */
+    public createWithChargeCaptureExternalId(
+        attachmentFile: File | fs.ReadStream | Blob,
+        request: CandidApi.encounterAttachments.v1.CreateExternalAttachmentRequest,
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.encounterAttachments.v1.AttachmentId,
+            CandidApi.encounterAttachments.v1.createWithChargeCaptureExternalId.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__createWithChargeCaptureExternalId(attachmentFile, request, requestOptions),
+        );
+    }
+
+    private async __createWithChargeCaptureExternalId(
+        attachmentFile: File | fs.ReadStream | Blob,
+        request: CandidApi.encounterAttachments.v1.CreateExternalAttachmentRequest,
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterAttachments.v1.AttachmentId,
+                CandidApi.encounterAttachments.v1.createWithChargeCaptureExternalId.Error
+            >
+        >
+    > {
+        const _request = await core.newFormData();
+        _request.append("charge_capture_external_id", request.chargeCaptureExternalId);
+        await _request.appendFile("attachment_file", attachmentFile);
+        _request.append(
+            "attachment_type",
+            serializers.encounterAttachments.v1.EncounterAttachmentType.jsonOrThrow(request.attachmentType, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        );
+        if (request.description != null) {
+            _request.append("description", request.description);
+        }
+
+        const _maybeEncodedRequest = await _request.getRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                Authorization: await this._getAuthorizationHeader(),
+                ..._maybeEncodedRequest.headers,
+            }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/encounter-attachments/v1/create-from-charge-capture-external-id",
+            ),
+            method: "POST",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            requestType: "file",
+            duplex: _maybeEncodedRequest.duplex,
+            body: _maybeEncodedRequest.body,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.encounterAttachments.v1.AttachmentId.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.createWithChargeCaptureExternalId.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * @param {CandidApi.EncounterId} encounterId
      * @param {CandidApi.encounterAttachments.v1.DeleteAttachmentRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.

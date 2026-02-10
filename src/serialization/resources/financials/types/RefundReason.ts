@@ -5,8 +5,8 @@ import * as core from "../../../../core";
 import type * as serializers from "../../../index";
 
 export const RefundReason: core.serialization.Schema<serializers.RefundReason.Raw, CandidApi.RefundReason> =
-    core.serialization.enum_(["OVERCHARGED"]);
+    core.serialization.enum_(["OVERCHARGED", "ENTERED_IN_ERROR"]);
 
 export declare namespace RefundReason {
-    export type Raw = "OVERCHARGED";
+    export type Raw = "OVERCHARGED" | "ENTERED_IN_ERROR";
 }

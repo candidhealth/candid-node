@@ -22,6 +22,9 @@ export const Error: core.serialization.Schema<
         HttpRequestValidationError: core.serialization.object({
             content: RequestValidationError,
         }),
+        HttpRequestValidationsError: core.serialization.object({
+            content: core.serialization.list(RequestValidationError),
+        }),
         UnauthorizedError: core.serialization.object({
             content: UnauthorizedErrorMessage,
         }),
@@ -35,6 +38,8 @@ export const Error: core.serialization.Schema<
                     return CandidApi.billingNotes.v2.update.Error.organizationNotAuthorizedError(value.content);
                 case "HttpRequestValidationError":
                     return CandidApi.billingNotes.v2.update.Error.httpRequestValidationError(value.content);
+                case "HttpRequestValidationsError":
+                    return CandidApi.billingNotes.v2.update.Error.httpRequestValidationsError(value.content);
                 case "UnauthorizedError":
                     return CandidApi.billingNotes.v2.update.Error.unauthorizedError(value.content);
             }
@@ -47,6 +52,7 @@ export declare namespace Error {
         | Error.EntityNotFoundError
         | Error.OrganizationNotAuthorizedError
         | Error.HttpRequestValidationError
+        | Error.HttpRequestValidationsError
         | Error.UnauthorizedError;
 
     export interface EntityNotFoundError {
@@ -62,6 +68,11 @@ export declare namespace Error {
     export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
+    }
+
+    export interface HttpRequestValidationsError {
+        errorName: "HttpRequestValidationsError";
+        content: RequestValidationError.Raw[];
     }
 
     export interface UnauthorizedError {

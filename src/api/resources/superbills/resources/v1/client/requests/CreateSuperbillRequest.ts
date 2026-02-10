@@ -19,4 +19,6 @@ export interface CreateSuperbillRequest {
     dateRangeMax: string;
     /** Address that will be displayed on the superbill as the 'Pay to' Address. If not provided this value will be set from available encounter data. */
     payToAddress?: CandidApi.StreetAddressShortZip;
+    /** Output format for the superbill. Defaults to DOCX if not specified. */
+    outputFormat?: CandidApi.superbills.v1.SuperbillOutputFormat;
 }

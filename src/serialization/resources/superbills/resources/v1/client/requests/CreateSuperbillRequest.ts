@@ -5,6 +5,7 @@ import * as core from "../../../../../../../core";
 import type * as serializers from "../../../../../../index";
 import { PatientExternalId } from "../../../../../commons/types/PatientExternalId";
 import { StreetAddressShortZip } from "../../../../../commons/types/StreetAddressShortZip";
+import { SuperbillOutputFormat } from "../../types/SuperbillOutputFormat";
 
 export const CreateSuperbillRequest: core.serialization.Schema<
     serializers.superbills.v1.CreateSuperbillRequest.Raw,
@@ -14,6 +15,7 @@ export const CreateSuperbillRequest: core.serialization.Schema<
     dateRangeMin: core.serialization.property("date_range_min", core.serialization.string()),
     dateRangeMax: core.serialization.property("date_range_max", core.serialization.string()),
     payToAddress: core.serialization.property("pay_to_address", StreetAddressShortZip.optional()),
+    outputFormat: core.serialization.property("output_format", SuperbillOutputFormat.optional()),
 });
 
 export declare namespace CreateSuperbillRequest {
@@ -22,5 +24,6 @@ export declare namespace CreateSuperbillRequest {
         date_range_min: string;
         date_range_max: string;
         pay_to_address?: StreetAddressShortZip.Raw | null;
+        output_format?: SuperbillOutputFormat.Raw | null;
     }
 }

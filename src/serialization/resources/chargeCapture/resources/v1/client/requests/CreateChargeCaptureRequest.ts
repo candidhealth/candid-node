@@ -20,6 +20,10 @@ export const CreateChargeCaptureRequest: core.serialization.Schema<
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
     patientExternalId: core.serialization.property("patient_external_id", core.serialization.string()),
     status: ChargeCaptureStatus,
+    attachmentExternalDocumentIds: core.serialization.property(
+        "attachment_external_document_ids",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
 });
 
 export declare namespace CreateChargeCaptureRequest {
@@ -31,5 +35,6 @@ export declare namespace CreateChargeCaptureRequest {
         ehr_source_url?: string | null;
         patient_external_id: string;
         status: ChargeCaptureStatus.Raw;
+        attachment_external_document_ids?: string[] | null;
     }
 }

@@ -7,6 +7,7 @@ export type Error =
     | CandidApi.billingNotes.v2.update.Error.EntityNotFoundError
     | CandidApi.billingNotes.v2.update.Error.OrganizationNotAuthorizedError
     | CandidApi.billingNotes.v2.update.Error.HttpRequestValidationError
+    | CandidApi.billingNotes.v2.update.Error.HttpRequestValidationsError
     | CandidApi.billingNotes.v2.update.Error.UnauthorizedError
     | CandidApi.billingNotes.v2.update.Error._Unknown;
 
@@ -24,6 +25,11 @@ export namespace Error {
     export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
+    }
+
+    export interface HttpRequestValidationsError extends _Utils {
+        errorName: "HttpRequestValidationsError";
+        content: CandidApi.RequestValidationError[];
     }
 
     export interface UnauthorizedError extends _Utils {
@@ -44,6 +50,7 @@ export namespace Error {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         organizationNotAuthorizedError: (value: CandidApi.OrganizationNotAuthorizedErrorMessage) => _Result;
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
+        httpRequestValidationsError: (value: CandidApi.RequestValidationError[]) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
@@ -95,6 +102,21 @@ export const Error = {
         };
     },
 
+    httpRequestValidationsError: (
+        value: CandidApi.RequestValidationError[],
+    ): CandidApi.billingNotes.v2.update.Error.HttpRequestValidationsError => {
+        return {
+            content: value,
+            errorName: "HttpRequestValidationsError",
+            _visit: function <_Result>(
+                this: CandidApi.billingNotes.v2.update.Error.HttpRequestValidationsError,
+                visitor: CandidApi.billingNotes.v2.update.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.billingNotes.v2.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     unauthorizedError: (
         value: CandidApi.UnauthorizedErrorMessage,
     ): CandidApi.billingNotes.v2.update.Error.UnauthorizedError => {
@@ -134,6 +156,8 @@ export const Error = {
                 return visitor.organizationNotAuthorizedError(value.content);
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
+            case "HttpRequestValidationsError":
+                return visitor.httpRequestValidationsError(value.content);
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
             default:

@@ -264,6 +264,7 @@ export class V2 {
                 case "EntityNotFoundError":
                 case "OrganizationNotAuthorizedError":
                 case "HttpRequestValidationError":
+                case "HttpRequestValidationsError":
                 case "UnauthorizedError":
                     return {
                         data: {

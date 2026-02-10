@@ -27,4 +27,6 @@ export interface ChargeCaptureUpdate {
     patientExternalId?: string;
     /** the status of the charge capture */
     status?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
+    /** Provide external attachment IDs which have been uploaded to Candid. They will be associated with the Encounter at Encounter creation time. */
+    attachmentExternalDocumentIds?: string[];
 }

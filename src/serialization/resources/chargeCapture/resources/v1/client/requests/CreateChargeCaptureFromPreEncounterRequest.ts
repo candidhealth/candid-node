@@ -26,6 +26,10 @@ export const CreateChargeCaptureFromPreEncounterRequest: core.serialization.Sche
     ),
     ehrSourceUrl: core.serialization.property("ehr_source_url", core.serialization.string().optional()),
     status: ChargeCaptureStatus,
+    attachmentExternalDocumentIds: core.serialization.property(
+        "attachment_external_document_ids",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
 });
 
 export declare namespace CreateChargeCaptureFromPreEncounterRequest {
@@ -38,5 +42,6 @@ export declare namespace CreateChargeCaptureFromPreEncounterRequest {
         claim_creation_category?: string | null;
         ehr_source_url?: string | null;
         status: ChargeCaptureStatus.Raw;
+        attachment_external_document_ids?: string[] | null;
     }
 }

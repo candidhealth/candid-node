@@ -20,6 +20,10 @@ export const ChargeCaptureUpdate: core.serialization.Schema<
     ),
     patientExternalId: core.serialization.property("patient_external_id", core.serialization.string().optional()),
     status: ChargeCaptureStatus.optional(),
+    attachmentExternalDocumentIds: core.serialization.property(
+        "attachment_external_document_ids",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
 });
 
 export declare namespace ChargeCaptureUpdate {
@@ -31,5 +35,6 @@ export declare namespace ChargeCaptureUpdate {
         claim_creation_category?: string | null;
         patient_external_id?: string | null;
         status?: ChargeCaptureStatus.Raw | null;
+        attachment_external_document_ids?: string[] | null;
     }
 }

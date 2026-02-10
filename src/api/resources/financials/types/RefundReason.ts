@@ -2,5 +2,6 @@
 
 export const RefundReason = {
     Overcharged: "OVERCHARGED",
+    EnteredInError: "ENTERED_IN_ERROR",
 } as const;
 export type RefundReason = (typeof RefundReason)[keyof typeof RefundReason];
