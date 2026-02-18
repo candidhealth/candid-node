@@ -19,7 +19,8 @@ import { Guarantor } from "../../../../guarantor/resources/v1/types/Guarantor";
 import { Patient } from "../../../../individual/types/Patient";
 import { Subscriber } from "../../../../individual/types/Subscriber";
 import { PatientPayment } from "../../../../patientPayments/resources/v3/types/PatientPayment";
-import { RelatedCausesInformation } from "../../../../relatedCausesInformation/resources/v1/types/RelatedCausesInformation";
+import { PropertyCasualtyPatientIdentifier } from "../../../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifier";
+import { RelatedCausesInformation } from "../../../../relatedCauses/resources/v1/types/RelatedCausesInformation";
 import { EncounterServiceFacility } from "../../../../serviceFacility/types/EncounterServiceFacility";
 import { Tag } from "../../../../tags/types/Tag";
 import { PatientDischargeStatusCode } from "../../../../x12/resources/v1/types/PatientDischargeStatusCode";
@@ -75,6 +76,10 @@ export const Encounter: core.serialization.ObjectSchema<
             core.serialization.string().optional(),
         ),
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
+        propertyCasualtyPatientIdentifier: core.serialization.property(
+            "property_casualty_patient_identifier",
+            PropertyCasualtyPatientIdentifier.optional(),
+        ),
         submissionExpectation: core.serialization.property(
             "submission_expectation",
             EncounterSubmissionExpectation.optional(),
@@ -157,6 +162,7 @@ export declare namespace Encounter {
         related_causes_information?: RelatedCausesInformation.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
+        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifier.Raw | null;
         submission_expectation?: EncounterSubmissionExpectation.Raw | null;
         type_of_bill?: TypeOfBillComposite.Raw | null;
         referring_provider?: EncounterProvider.Raw | null;

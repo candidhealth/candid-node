@@ -59,9 +59,14 @@ export interface UniversalEncounterUpdateBase extends CandidApi.encounters.v4.En
     /** Box 24B on the CMS-1500 claim form. 837p Loop2300, CLM-05-1. This box is not used on a UB-04 or 837i claim form. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */
     placeOfServiceCodeAsSubmitted?: CandidApi.FacilityTypeCode;
     /** Corresponds to box 10a on the CMS-1500 (Loop 2300 on 837) */
-    relatedCausesInformation?: CandidApi.relatedCausesInformation.v1.RelatedCausesInformationUpdate;
+    relatedCausesInformation?: CandidApi.relatedCauses.v1.RelatedCausesInformationUpdate;
     /** 837p Loop2010 REF02, CMS1500 Box 11b */
     propertyCasualtyClaimNumber?: string;
     /** 837p Loop2300 DTP*439, CMS1500 Box 15 */
     accidentDate?: string;
+    /**
+     * Patient identifier for Property and Casualty claims
+     * 837p Loop 2010CA
+     */
+    propertyCasualtyPatientIdentifier?: CandidApi.propertyAndCasualty.v1.PropertyCasualtyPatientIdentifierUpdate;
 }

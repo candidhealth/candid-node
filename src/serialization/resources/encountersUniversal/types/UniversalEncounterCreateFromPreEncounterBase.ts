@@ -14,7 +14,8 @@ import { SupervisingProvider } from "../../encounterProviders/resources/v2/types
 import { ClinicalNoteCategoryCreate } from "../../encounters/resources/v4/types/ClinicalNoteCategoryCreate";
 import { EncounterBase } from "../../encounters/resources/v4/types/EncounterBase";
 import { PatientHistoryCategory } from "../../encounters/resources/v4/types/PatientHistoryCategory";
-import { RelatedCausesInformationCreate } from "../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationCreate";
+import { PropertyCasualtyPatientIdentifierCreate } from "../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreate";
+import { RelatedCausesInformationCreate } from "../../relatedCauses/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityBase } from "../../serviceFacility/types/EncounterServiceFacilityBase";
 import { TagId } from "../../tags/types/TagId";
 
@@ -62,6 +63,10 @@ export const UniversalEncounterCreateFromPreEncounterBase: core.serialization.Ob
             core.serialization.string().optional(),
         ),
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
+        propertyCasualtyPatientIdentifier: core.serialization.property(
+            "property_casualty_patient_identifier",
+            PropertyCasualtyPatientIdentifierCreate.optional(),
+        ),
     })
     .extend(EncounterBase);
 
@@ -82,5 +87,6 @@ export declare namespace UniversalEncounterCreateFromPreEncounterBase {
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
+        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierCreate.Raw | null;
     }
 }

@@ -16,6 +16,10 @@ export const CreateSuperbillRequest: core.serialization.Schema<
     dateRangeMax: core.serialization.property("date_range_max", core.serialization.string()),
     payToAddress: core.serialization.property("pay_to_address", StreetAddressShortZip.optional()),
     outputFormat: core.serialization.property("output_format", SuperbillOutputFormat.optional()),
+    includeMergedPatientData: core.serialization.property(
+        "include_merged_patient_data",
+        core.serialization.boolean().optional(),
+    ),
 });
 
 export declare namespace CreateSuperbillRequest {
@@ -25,5 +29,6 @@ export declare namespace CreateSuperbillRequest {
         date_range_max: string;
         pay_to_address?: StreetAddressShortZip.Raw | null;
         output_format?: SuperbillOutputFormat.Raw | null;
+        include_merged_patient_data?: boolean | null;
     }
 }

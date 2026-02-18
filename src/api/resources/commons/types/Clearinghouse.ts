@@ -5,6 +5,7 @@ export const Clearinghouse = {
     Olive: "OLIVE",
     UcsfCirius: "UCSF_CIRIUS",
     Availity: "AVAILITY",
+    Jopari: "JOPARI",
     PayerPortal: "PAYER_PORTAL",
     Stedi: "STEDI",
     Waystar: "WAYSTAR",

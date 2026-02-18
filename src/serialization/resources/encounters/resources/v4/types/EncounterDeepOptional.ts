@@ -16,7 +16,8 @@ import { SupervisingProviderUpdateWithOptionalAddress } from "../../../../encoun
 import { GuarantorOptional } from "../../../../guarantor/resources/v1/types/GuarantorOptional";
 import { PatientUpdateWithOptionalAddress } from "../../../../individual/types/PatientUpdateWithOptionalAddress";
 import { SubscriberCreateOptional } from "../../../../individual/types/SubscriberCreateOptional";
-import { RelatedCausesInformationCreate } from "../../../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationCreate";
+import { PropertyCasualtyPatientIdentifierCreate } from "../../../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreate";
+import { RelatedCausesInformationCreate } from "../../../../relatedCauses/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityUpdateWithOptionalAddress } from "../../../../serviceFacility/types/EncounterServiceFacilityUpdateWithOptionalAddress";
 import { ServiceLineCreateOptional } from "../../../../serviceLines/resources/v2/types/ServiceLineCreateOptional";
 import { ClaimSupplementalInformationOptional } from "./ClaimSupplementalInformationOptional";
@@ -108,6 +109,10 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
             core.serialization.string().optional(),
         ),
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
+        propertyCasualtyPatientIdentifier: core.serialization.property(
+            "property_casualty_patient_identifier",
+            PropertyCasualtyPatientIdentifierCreate.optional(),
+        ),
     })
     .extend(EncounterOptional);
 
@@ -140,5 +145,6 @@ export declare namespace EncounterDeepOptional {
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
+        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierCreate.Raw | null;
     }
 }

@@ -10,6 +10,7 @@ export const Clearinghouse: core.serialization.Schema<serializers.Clearinghouse.
         "OLIVE",
         "UCSF_CIRIUS",
         "AVAILITY",
+        "JOPARI",
         "PAYER_PORTAL",
         "STEDI",
         "WAYSTAR",
@@ -22,6 +23,7 @@ export declare namespace Clearinghouse {
         | "OLIVE"
         | "UCSF_CIRIUS"
         | "AVAILITY"
+        | "JOPARI"
         | "PAYER_PORTAL"
         | "STEDI"
         | "WAYSTAR"

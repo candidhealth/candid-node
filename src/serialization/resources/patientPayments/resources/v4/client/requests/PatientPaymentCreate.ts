@@ -17,6 +17,7 @@ export const PatientPaymentCreate: core.serialization.Schema<
     patientExternalId: core.serialization.property("patient_external_id", PatientExternalId),
     allocations: core.serialization.list(AllocationCreate),
     invoice: InvoiceId.optional(),
+    sourceInternalId: core.serialization.property("source_internal_id", core.serialization.string().optional()),
 });
 
 export declare namespace PatientPaymentCreate {
@@ -27,5 +28,6 @@ export declare namespace PatientPaymentCreate {
         patient_external_id: PatientExternalId.Raw;
         allocations: AllocationCreate.Raw[];
         invoice?: InvoiceId.Raw | null;
+        source_internal_id?: string | null;
     }
 }

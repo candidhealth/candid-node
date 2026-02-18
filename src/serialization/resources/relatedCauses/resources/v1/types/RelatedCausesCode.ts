@@ -5,8 +5,8 @@ import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 
 export const RelatedCausesCode: core.serialization.Schema<
-    serializers.relatedCausesInformation.v1.RelatedCausesCode.Raw,
-    CandidApi.relatedCausesInformation.v1.RelatedCausesCode
+    serializers.relatedCauses.v1.RelatedCausesCode.Raw,
+    CandidApi.relatedCauses.v1.RelatedCausesCode
 > = core.serialization.enum_(["AA", "AB", "AP", "EM", "OA", "ZZ"]);
 
 export declare namespace RelatedCausesCode {

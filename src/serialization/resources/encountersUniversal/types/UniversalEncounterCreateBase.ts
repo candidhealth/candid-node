@@ -19,7 +19,8 @@ import { ResponsiblePartyType } from "../../encounters/resources/v4/types/Respon
 import { GuarantorCreate } from "../../guarantor/resources/v1/types/GuarantorCreate";
 import { PatientCreate } from "../../individual/types/PatientCreate";
 import { SubscriberCreate } from "../../individual/types/SubscriberCreate";
-import { RelatedCausesInformationCreate } from "../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationCreate";
+import { PropertyCasualtyPatientIdentifierCreate } from "../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreate";
+import { RelatedCausesInformationCreate } from "../../relatedCauses/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityBase } from "../../serviceFacility/types/EncounterServiceFacilityBase";
 import { TagId } from "../../tags/types/TagId";
 
@@ -82,6 +83,10 @@ export const UniversalEncounterCreateBase: core.serialization.ObjectSchema<
             core.serialization.string().optional(),
         ),
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
+        propertyCasualtyPatientIdentifier: core.serialization.property(
+            "property_casualty_patient_identifier",
+            PropertyCasualtyPatientIdentifierCreate.optional(),
+        ),
     })
     .extend(EncounterBase);
 
@@ -111,5 +116,6 @@ export declare namespace UniversalEncounterCreateBase {
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
+        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierCreate.Raw | null;
     }
 }

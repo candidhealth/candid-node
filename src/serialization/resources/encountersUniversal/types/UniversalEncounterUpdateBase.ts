@@ -19,7 +19,8 @@ import { Medication } from "../../encounters/resources/v4/types/Medication";
 import { GuarantorUpdate } from "../../guarantor/resources/v1/types/GuarantorUpdate";
 import { PatientUpdate } from "../../individual/types/PatientUpdate";
 import { SubscriberCreate } from "../../individual/types/SubscriberCreate";
-import { RelatedCausesInformationUpdate } from "../../relatedCausesInformation/resources/v1/types/RelatedCausesInformationUpdate";
+import { PropertyCasualtyPatientIdentifierUpdate } from "../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierUpdate";
+import { RelatedCausesInformationUpdate } from "../../relatedCauses/resources/v1/types/RelatedCausesInformationUpdate";
 import { EncounterServiceFacilityUpdate } from "../../serviceFacility/types/EncounterServiceFacilityUpdate";
 
 export const UniversalEncounterUpdateBase: core.serialization.ObjectSchema<
@@ -72,6 +73,10 @@ export const UniversalEncounterUpdateBase: core.serialization.ObjectSchema<
             core.serialization.string().optional(),
         ),
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
+        propertyCasualtyPatientIdentifier: core.serialization.property(
+            "property_casualty_patient_identifier",
+            PropertyCasualtyPatientIdentifierUpdate.optional(),
+        ),
     })
     .extend(EncounterOptional);
 
@@ -98,5 +103,6 @@ export declare namespace UniversalEncounterUpdateBase {
         related_causes_information?: RelatedCausesInformationUpdate.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
+        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierUpdate.Raw | null;
     }
 }

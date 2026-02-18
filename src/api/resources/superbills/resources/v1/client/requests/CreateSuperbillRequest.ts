@@ -21,4 +21,6 @@ export interface CreateSuperbillRequest {
     payToAddress?: CandidApi.StreetAddressShortZip;
     /** Output format for the superbill. Defaults to DOCX if not specified. */
     outputFormat?: CandidApi.superbills.v1.SuperbillOutputFormat;
+    /** If true will include claims from any alternative patients the given patient_external_id has. */
+    includeMergedPatientData?: boolean;
 }

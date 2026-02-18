@@ -3,7 +3,7 @@
 import type * as CandidApi from "../../../../../index";
 
 export interface RelatedCausesInformation {
-    relatedCausesCode1: CandidApi.relatedCausesInformation.v1.RelatedCausesCode;
-    relatedCausesCode2?: CandidApi.relatedCausesInformation.v1.RelatedCausesCode;
+    relatedCausesCode1: CandidApi.relatedCauses.v1.RelatedCausesCode;
+    relatedCausesCode2?: CandidApi.relatedCauses.v1.RelatedCausesCode;
     stateOrProvinceCode?: string;
 }

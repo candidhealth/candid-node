@@ -6,8 +6,8 @@ import type * as serializers from "../../../../../index";
 import { RelatedCausesInformation } from "./RelatedCausesInformation";
 
 export const RelatedCausesInformationUpdate: core.serialization.ObjectSchema<
-    serializers.relatedCausesInformation.v1.RelatedCausesInformationUpdate.Raw,
-    CandidApi.relatedCausesInformation.v1.RelatedCausesInformationUpdate
+    serializers.relatedCauses.v1.RelatedCausesInformationUpdate.Raw,
+    CandidApi.relatedCauses.v1.RelatedCausesInformationUpdate
 > = core.serialization.object({}).extend(RelatedCausesInformation);
 
 export declare namespace RelatedCausesInformationUpdate {

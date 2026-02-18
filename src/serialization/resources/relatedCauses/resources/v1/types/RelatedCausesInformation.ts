@@ -6,8 +6,8 @@ import type * as serializers from "../../../../../index";
 import { RelatedCausesCode } from "./RelatedCausesCode";
 
 export const RelatedCausesInformation: core.serialization.ObjectSchema<
-    serializers.relatedCausesInformation.v1.RelatedCausesInformation.Raw,
-    CandidApi.relatedCausesInformation.v1.RelatedCausesInformation
+    serializers.relatedCauses.v1.RelatedCausesInformation.Raw,
+    CandidApi.relatedCauses.v1.RelatedCausesInformation
 > = core.serialization.object({
     relatedCausesCode1: core.serialization.property("related_causes_code_1", RelatedCausesCode),
     relatedCausesCode2: core.serialization.property("related_causes_code_2", RelatedCausesCode.optional()),

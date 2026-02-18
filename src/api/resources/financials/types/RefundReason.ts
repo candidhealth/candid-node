@@ -3,5 +3,6 @@
 export const RefundReason = {
     Overcharged: "OVERCHARGED",
     EnteredInError: "ENTERED_IN_ERROR",
+    Transfer: "TRANSFER",
 } as const;
 export type RefundReason = (typeof RefundReason)[keyof typeof RefundReason];

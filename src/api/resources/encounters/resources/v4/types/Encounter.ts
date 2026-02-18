@@ -472,11 +472,16 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     operatingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has secondary responsibility for surgical procedures in institutional claims processing.  Only used when operating_provider is also set. */
     otherOperatingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
-    relatedCausesInformation?: CandidApi.relatedCausesInformation.v1.RelatedCausesInformation;
+    relatedCausesInformation?: CandidApi.relatedCauses.v1.RelatedCausesInformation;
     /** 837p Loop2010 REF02, CMS1500 Box 11b */
     propertyCasualtyClaimNumber?: string;
     /** 837p Loop2300 DTP*439, CMS1500 Box 15 */
     accidentDate?: string;
+    /**
+     * Patient identifier for Property and Casualty claims.
+     * 837p Loop2010CA
+     */
+    propertyCasualtyPatientIdentifier?: CandidApi.propertyAndCasualty.v1.PropertyCasualtyPatientIdentifier;
     /** Describes the currently expected target form for this encounter.  This effects what validations and queues the form is processed under.  When this value is not set, it should be assumed to be TARGET_PROFESSIONAL. */
     submissionExpectation?: CandidApi.encounters.v4.EncounterSubmissionExpectation;
     /** Four digit code used in institutional forms to indicate the type of bill (e.g., hospital inpatient, hospital outpatient). First digit is a leading 0, followed by the type_of_facility, type_of_care, then frequency_code. Professional forms are not required to submit this attribute. You may send the 4 digit code via raw_code, or each individual digit separately via composite_codes. */

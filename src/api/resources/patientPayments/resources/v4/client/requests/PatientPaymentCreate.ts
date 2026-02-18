@@ -29,4 +29,5 @@ export interface PatientPaymentCreate {
     patientExternalId: CandidApi.PatientExternalId;
     allocations: CandidApi.AllocationCreate[];
     invoice?: CandidApi.InvoiceId;
+    sourceInternalId?: string;
 }
