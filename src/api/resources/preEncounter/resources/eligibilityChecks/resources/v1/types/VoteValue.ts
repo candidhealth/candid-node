@@ -2,8 +2,7 @@
 
 /** Possible vote values for recommendation quality */
 export const VoteValue = {
-    Good: "GOOD",
-    Bad: "BAD",
-    Ok: "OK",
+    Upvote: "UPVOTE",
+    Downvote: "DOWNVOTE",
 } as const;
 export type VoteValue = (typeof VoteValue)[keyof typeof VoteValue];

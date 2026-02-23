@@ -1,6 +1,7 @@
 export * from "./CardPaymentMethod";
 export * from "./CashPaymentMethod";
 export * from "./CheckPaymentMethod";
+export * from "./MoneyOrderPaymentMethod";
 export * from "./PatientPayment";
 export * from "./PatientPaymentId";
 export * from "./PatientPaymentSortField";

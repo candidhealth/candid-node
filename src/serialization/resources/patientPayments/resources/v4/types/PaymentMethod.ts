@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { CardPaymentMethod } from "./CardPaymentMethod";
 import { CashPaymentMethod } from "./CashPaymentMethod";
 import { CheckPaymentMethod } from "./CheckPaymentMethod";
+import { MoneyOrderPaymentMethod } from "./MoneyOrderPaymentMethod";
 
 export const PaymentMethod: core.serialization.Schema<
     serializers.patientPayments.v4.PaymentMethod.Raw,
@@ -15,6 +16,7 @@ export const PaymentMethod: core.serialization.Schema<
         cash: CashPaymentMethod,
         check: CheckPaymentMethod,
         card: CardPaymentMethod,
+        money_order: MoneyOrderPaymentMethod,
     })
     .transform<CandidApi.patientPayments.v4.PaymentMethod>({
         transform: (value) => value,
@@ -22,7 +24,7 @@ export const PaymentMethod: core.serialization.Schema<
     });
 
 export declare namespace PaymentMethod {
-    export type Raw = PaymentMethod.Cash | PaymentMethod.Check | PaymentMethod.Card;
+    export type Raw = PaymentMethod.Cash | PaymentMethod.Check | PaymentMethod.Card | PaymentMethod.MoneyOrder;
 
     export interface Cash extends CashPaymentMethod.Raw {
         type: "cash";
@@ -34,5 +36,9 @@ export declare namespace PaymentMethod {
 
     export interface Card extends CardPaymentMethod.Raw {
         type: "card";
+    }
+
+    export interface MoneyOrder extends MoneyOrderPaymentMethod.Raw {
+        type: "money_order";
     }
 }

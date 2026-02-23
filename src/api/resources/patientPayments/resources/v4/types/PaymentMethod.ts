@@ -5,7 +5,8 @@ import type * as CandidApi from "../../../../../index";
 export type PaymentMethod =
     | CandidApi.patientPayments.v4.PaymentMethod.Cash
     | CandidApi.patientPayments.v4.PaymentMethod.Check
-    | CandidApi.patientPayments.v4.PaymentMethod.Card;
+    | CandidApi.patientPayments.v4.PaymentMethod.Card
+    | CandidApi.patientPayments.v4.PaymentMethod.MoneyOrder;
 
 export namespace PaymentMethod {
     export interface Cash extends CandidApi.patientPayments.v4.CashPaymentMethod {
@@ -18,5 +19,9 @@ export namespace PaymentMethod {
 
     export interface Card extends CandidApi.patientPayments.v4.CardPaymentMethod {
         type: "card";
+    }
+
+    export interface MoneyOrder extends CandidApi.patientPayments.v4.MoneyOrderPaymentMethod {
+        type: "money_order";
     }
 }

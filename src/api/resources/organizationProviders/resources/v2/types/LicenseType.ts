@@ -101,6 +101,7 @@ export const LicenseType = {
     PaC: "PA-C",
     Amft: "AMFT",
     Cdn: "CDN",
+    Cgc: "CGC",
     Cns: "CNS",
     Mdphd: "MDPHD",
     Aud: "AuD",

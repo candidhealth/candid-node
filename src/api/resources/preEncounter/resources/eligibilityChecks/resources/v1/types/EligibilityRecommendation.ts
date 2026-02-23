@@ -10,7 +10,8 @@ export interface EligibilityRecommendation extends CandidApi.preEncounter.BaseMo
     id: string;
     eligibilityCheckId: string;
     recommendation: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload;
+    coverageId?: CandidApi.preEncounter.CoverageId;
     patient: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPatientInfo;
-    /** User feedback on this recommendation */
-    vote?: CandidApi.preEncounter.eligibilityChecks.v1.Vote;
+    /** Array of votes for this recommendation */
+    votes?: CandidApi.preEncounter.eligibilityChecks.v1.Vote[];
 }

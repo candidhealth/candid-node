@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { BaseModel } from "../../../../common/types/BaseModel";
+import { CoverageId } from "../../../../common/types/CoverageId";
 import { EligibilityRecommendationPatientInfo } from "./EligibilityRecommendationPatientInfo";
 import { EligibilityRecommendationPayload } from "./EligibilityRecommendationPayload";
 import { Vote } from "./Vote";
@@ -16,8 +17,9 @@ export const EligibilityRecommendation: core.serialization.ObjectSchema<
         id: core.serialization.string(),
         eligibilityCheckId: core.serialization.property("eligibility_check_id", core.serialization.string()),
         recommendation: EligibilityRecommendationPayload,
+        coverageId: core.serialization.property("coverage_id", CoverageId.optional()),
         patient: EligibilityRecommendationPatientInfo,
-        vote: Vote.optional(),
+        votes: core.serialization.list(Vote).optional(),
     })
     .extend(BaseModel);
 
@@ -26,7 +28,8 @@ export declare namespace EligibilityRecommendation {
         id: string;
         eligibility_check_id: string;
         recommendation: EligibilityRecommendationPayload.Raw;
+        coverage_id?: CoverageId.Raw | null;
         patient: EligibilityRecommendationPatientInfo.Raw;
-        vote?: Vote.Raw | null;
+        votes?: Vote.Raw[] | null;
     }
 }

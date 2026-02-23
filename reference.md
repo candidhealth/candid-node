@@ -11808,7 +11808,8 @@ await client.preEncounter.eligibilityChecks.v1.payerSearch();
 <dl>
 <dd>
 
-Gets recommendation for eligibility checks based on the request.
+Gets recommendation for eligibility checks based on filters. This endpoint will retrieve all the latest eligibility recommendations for each 
+eligibility recommendation type for the given filters. If you want to get a specific recommendation type, you can use the `type` query parameter.
 </dd>
 </dl>
 </dd>
@@ -11958,7 +11959,7 @@ Submit user feedback on an eligibility recommendation. The path must contain the
 ```typescript
 await client.preEncounter.eligibilityChecks.v1.voteRecommendation("recommendation_id", "version", {
     userId: CandidApi.UserId("user_id"),
-    value: "GOOD"
+    value: "UPVOTE"
 });
 
 ```
@@ -11992,6 +11993,55 @@ await client.preEncounter.eligibilityChecks.v1.voteRecommendation("recommendatio
 <dd>
 
 **request:** `CandidApi.Vote` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EligibilityCheckPage, CandidApi.preEncounter.eligibilityChecks.v1.getMulti.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.getMulti();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.EligibilityChecksGetMultiRequest` 
     
 </dd>
 </dl>

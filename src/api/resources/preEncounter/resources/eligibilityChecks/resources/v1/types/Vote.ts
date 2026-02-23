@@ -10,6 +10,4 @@ export interface Vote {
     userId: CandidApi.preEncounter.UserId;
     /** The vote value */
     value: CandidApi.preEncounter.eligibilityChecks.v1.VoteValue;
-    /** Optional comment explaining the vote */
-    comment?: string;
 }

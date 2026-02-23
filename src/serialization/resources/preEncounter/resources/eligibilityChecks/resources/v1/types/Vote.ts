@@ -12,13 +12,11 @@ export const Vote: core.serialization.ObjectSchema<
 > = core.serialization.object({
     userId: core.serialization.property("user_id", UserId),
     value: VoteValue,
-    comment: core.serialization.string().optional(),
 });
 
 export declare namespace Vote {
     export interface Raw {
         user_id: UserId.Raw;
         value: VoteValue.Raw;
-        comment?: string | null;
     }
 }

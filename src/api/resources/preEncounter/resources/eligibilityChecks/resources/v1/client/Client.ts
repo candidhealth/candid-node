@@ -415,7 +415,8 @@ export class V1 {
     }
 
     /**
-     * Gets recommendation for eligibility checks based on the request.
+     * Gets recommendation for eligibility checks based on filters. This endpoint will retrieve all the latest eligibility recommendations for each
+     * eligibility recommendation type for the given filters. If you want to get a specific recommendation type, you can use the `type` query parameter.
      *
      * @param {CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationRequest} request
      * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
@@ -610,7 +611,7 @@ export class V1 {
      * @example
      *     await client.preEncounter.eligibilityChecks.v1.voteRecommendation("recommendation_id", "version", {
      *         userId: CandidApi.preEncounter.UserId("user_id"),
-     *         value: "GOOD"
+     *         value: "UPVOTE"
      *     })
      */
     public voteRecommendation(
@@ -719,6 +720,130 @@ export class V1 {
             data: {
                 ok: false,
                 error: CandidApi.preEncounter.eligibilityChecks.v1.voteRecommendation.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.EligibilityChecksGetMultiRequest} request
+     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.getMulti()
+     */
+    public getMulti(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityChecksGetMultiRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckPage,
+            CandidApi.preEncounter.eligibilityChecks.v1.getMulti.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
+    }
+
+    private async __getMulti(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityChecksGetMultiRequest = {},
+        requestOptions?: V1.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckPage,
+                CandidApi.preEncounter.eligibilityChecks.v1.getMulti.Error
+            >
+        >
+    > {
+        const {
+            pageToken,
+            limit,
+            subscriberMemberId,
+            payerId,
+            providerNpi,
+            dateOfService,
+            initiatedAtMin,
+            initiatedAtMax,
+        } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (pageToken != null) {
+            _queryParams.page_token = pageToken;
+        }
+
+        if (limit != null) {
+            _queryParams.limit = limit.toString();
+        }
+
+        if (subscriberMemberId != null) {
+            _queryParams.subscriber_member_id = subscriberMemberId;
+        }
+
+        if (payerId != null) {
+            _queryParams.payer_id = payerId;
+        }
+
+        if (providerNpi != null) {
+            _queryParams.provider_npi = providerNpi;
+        }
+
+        if (dateOfService != null) {
+            _queryParams.date_of_service = dateOfService;
+        }
+
+        if (initiatedAtMin != null) {
+            _queryParams.initiated_at_min = initiatedAtMin.toISOString();
+        }
+
+        if (initiatedAtMax != null) {
+            _queryParams.initiated_at_max = initiatedAtMax.toISOString();
+        }
+
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/get-multi/",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.EligibilityCheckPage.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.eligibilityChecks.v1.getMulti.Error._unknown(_response.error),
                 rawResponse: _response.rawResponse,
             },
             rawResponse: _response.rawResponse,

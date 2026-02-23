@@ -7,8 +7,8 @@ import type * as serializers from "../../../../../../../index";
 export const VoteValue: core.serialization.Schema<
     serializers.preEncounter.eligibilityChecks.v1.VoteValue.Raw,
     CandidApi.preEncounter.eligibilityChecks.v1.VoteValue
-> = core.serialization.enum_(["GOOD", "BAD", "OK"]);
+> = core.serialization.enum_(["UPVOTE", "DOWNVOTE"]);
 
 export declare namespace VoteValue {
-    export type Raw = "GOOD" | "BAD" | "OK";
+    export type Raw = "UPVOTE" | "DOWNVOTE";
 }

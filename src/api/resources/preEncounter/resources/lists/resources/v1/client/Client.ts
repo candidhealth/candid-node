@@ -54,7 +54,7 @@ export class V1 {
             >
         >
     > {
-        const { pageToken, limit, sortField, sortDirection, filters, includeDeactivated } = request;
+        const { pageToken, limit, sortField, sortDirection, filters, includeDeactivated, redirectToPrimary } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (pageToken != null) {
             _queryParams.page_token = pageToken;
@@ -80,6 +80,10 @@ export class V1 {
 
         if (includeDeactivated != null) {
             _queryParams.include_deactivated = includeDeactivated.toString();
+        }
+
+        if (redirectToPrimary != null) {
+            _queryParams.redirect_to_primary = redirectToPrimary.toString();
         }
 
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

@@ -16,4 +16,6 @@ export interface PatientListRequest {
     filters?: CandidApi.preEncounter.FilterQueryString;
     /** If true, includes deactivated patients in the results. Defaults to false. */
     includeDeactivated?: boolean;
+    /** If true, and filtering by mrn equals, then only return the primary version of the patient requested */
+    redirectToPrimary?: boolean;
 }
