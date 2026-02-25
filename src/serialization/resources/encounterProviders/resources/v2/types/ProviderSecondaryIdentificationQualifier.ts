@@ -7,8 +7,8 @@ import type * as serializers from "../../../../../index";
 export const ProviderSecondaryIdentificationQualifier: core.serialization.Schema<
     serializers.encounterProviders.v2.ProviderSecondaryIdentificationQualifier.Raw,
     CandidApi.encounterProviders.v2.ProviderSecondaryIdentificationQualifier
-> = core.serialization.enum_(["G2", "LU"]);
+> = core.serialization.enum_(["0B", "1G", "G2", "LU"]);
 
 export declare namespace ProviderSecondaryIdentificationQualifier {
-    export type Raw = "G2" | "LU";
+    export type Raw = "0B" | "1G" | "G2" | "LU";
 }

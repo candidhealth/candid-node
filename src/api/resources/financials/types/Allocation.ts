@@ -7,4 +7,5 @@ export interface Allocation {
     target: CandidApi.AllocationTarget;
     /** The active earmark created by this allocation, if any. Only present when this allocation created an earmark for future auto-allocation and the earmark has not been deleted. */
     earmark?: CandidApi.BalanceEarmark;
+    allocatedOn?: Date;
 }

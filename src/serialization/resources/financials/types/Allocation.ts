@@ -11,6 +11,7 @@ export const Allocation: core.serialization.ObjectSchema<serializers.Allocation.
         amountCents: core.serialization.property("amount_cents", core.serialization.number()),
         target: AllocationTarget,
         earmark: BalanceEarmark.optional(),
+        allocatedOn: core.serialization.property("allocated_on", core.serialization.date().optional()),
     });
 
 export declare namespace Allocation {
@@ -18,5 +19,6 @@ export declare namespace Allocation {
         amount_cents: number;
         target: AllocationTarget.Raw;
         earmark?: BalanceEarmark.Raw | null;
+        allocated_on?: string | null;
     }
 }

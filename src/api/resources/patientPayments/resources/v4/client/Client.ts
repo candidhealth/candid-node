@@ -61,6 +61,7 @@ export class V4 {
             unattributed,
             invoiceId,
             sources,
+            sourceInternalId,
             sort,
             sortDirection,
             pageToken,
@@ -104,6 +105,10 @@ export class V4 {
                     unrecognizedObjectKeys: "strip",
                 });
             }
+        }
+
+        if (sourceInternalId != null) {
+            _queryParams.source_internal_id = sourceInternalId;
         }
 
         if (sort != null) {

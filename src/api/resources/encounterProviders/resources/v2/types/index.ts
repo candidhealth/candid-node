@@ -1,4 +1,6 @@
 export * from "./BillingProvider";
+export * from "./BillingProviderSecondaryIdentification";
+export * from "./BillingProviderSecondaryIdentificationQualifier";
 export * from "./BillingProviderUpdate";
 export * from "./BillingProviderUpdateWithOptionalAddress";
 export * from "./EncounterProvider";

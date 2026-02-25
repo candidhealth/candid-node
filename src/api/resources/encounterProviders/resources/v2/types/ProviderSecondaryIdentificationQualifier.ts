@@ -2,6 +2,12 @@
 
 export const ProviderSecondaryIdentificationQualifier = {
     /**
+     * State License Number */
+    ZeroB: "0B",
+    /**
+     * Provider UPIN Number */
+    OneG: "1G",
+    /**
      * Provider Commercial Number */
     G2: "G2",
     /**

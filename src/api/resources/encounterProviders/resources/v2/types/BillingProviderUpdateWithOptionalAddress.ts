@@ -30,5 +30,5 @@ export interface BillingProviderUpdateWithOptionalAddress
      * 837i Loop2010BB G2
      * Secondary Identification
      */
-    secondaryIdentification?: CandidApi.encounterProviders.v2.ProviderSecondaryIdentification;
+    secondaryIdentification?: CandidApi.encounterProviders.v2.BillingProviderSecondaryIdentification;
 }

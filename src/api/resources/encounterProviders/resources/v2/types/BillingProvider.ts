@@ -28,5 +28,5 @@ export interface BillingProvider extends CandidApi.encounterProviders.v2.Encount
      * 837i Loop2010BB G2
      * Secondary Identification
      */
-    secondaryIdentification?: CandidApi.encounterProviders.v2.ProviderSecondaryIdentification;
+    secondaryIdentification?: CandidApi.encounterProviders.v2.BillingProviderSecondaryIdentification;
 }

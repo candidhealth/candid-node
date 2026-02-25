@@ -17,6 +17,7 @@ export interface GetMultiPatientPaymentsRequest {
     unattributed?: boolean;
     invoiceId?: CandidApi.InvoiceId;
     sources?: CandidApi.PatientTransactionSource | CandidApi.PatientTransactionSource[];
+    sourceInternalId?: string;
     /** Defaults to payment_timestamp */
     sort?: CandidApi.patientPayments.v4.PatientPaymentSortField;
     /** Sort direction. Defaults to descending order if not provided. */
