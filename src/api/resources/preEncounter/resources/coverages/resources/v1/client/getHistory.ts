@@ -89,7 +89,7 @@ export const Error = {
             case "NotFoundError":
                 return visitor.notFoundError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

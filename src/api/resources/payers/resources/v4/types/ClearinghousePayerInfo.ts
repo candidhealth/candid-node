@@ -17,4 +17,6 @@ export interface ClearinghousePayerInfo {
     eligibilitySupport: CandidApi.payers.v4.SupportState;
     /** The support state for remittance */
     remittanceSupport: CandidApi.payers.v4.SupportState;
+    /** The support state for claim attachment submission */
+    claimAttachmentSupport: CandidApi.payers.v4.SupportState;
 }

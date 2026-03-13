@@ -3,6 +3,7 @@
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { EntityConflictErrorMessage } from "../../../../commons/types/EntityConflictErrorMessage";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 
@@ -17,6 +18,9 @@ export const Error: core.serialization.Schema<
         EntityNotFoundError: core.serialization.object({
             content: EntityNotFoundErrorMessage,
         }),
+        EntityConflictError: core.serialization.object({
+            content: EntityConflictErrorMessage,
+        }),
     })
     .transform<CandidApi.organizationServiceFacilities.v2.update.Error>({
         transform: (value) => {
@@ -27,13 +31,15 @@ export const Error: core.serialization.Schema<
                     );
                 case "EntityNotFoundError":
                     return CandidApi.organizationServiceFacilities.v2.update.Error.entityNotFoundError(value.content);
+                case "EntityConflictError":
+                    return CandidApi.organizationServiceFacilities.v2.update.Error.entityConflictError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.HttpRequestValidationError | Error.EntityNotFoundError;
+    export type Raw = Error.HttpRequestValidationError | Error.EntityNotFoundError | Error.EntityConflictError;
 
     export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
@@ -43,5 +49,10 @@ export declare namespace Error {
     export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
         content: EntityNotFoundErrorMessage.Raw;
+    }
+
+    export interface EntityConflictError {
+        errorName: "EntityConflictError";
+        content: EntityConflictErrorMessage.Raw;
     }
 }

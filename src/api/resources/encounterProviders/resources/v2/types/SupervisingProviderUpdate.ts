@@ -10,4 +10,5 @@ export interface SupervisingProviderUpdate extends CandidApi.encounterProviders.
     npi?: string;
     taxonomyCode?: string;
     address?: CandidApi.StreetAddressLongZip;
+    secondaryIdentification?: CandidApi.encounterProviders.v2.SupervisingProviderSecondaryIdentification;
 }

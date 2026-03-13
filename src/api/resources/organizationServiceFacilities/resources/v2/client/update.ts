@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../../index";
 export type Error =
     | CandidApi.organizationServiceFacilities.v2.update.Error.HttpRequestValidationError
     | CandidApi.organizationServiceFacilities.v2.update.Error.EntityNotFoundError
+    | CandidApi.organizationServiceFacilities.v2.update.Error.EntityConflictError
     | CandidApi.organizationServiceFacilities.v2.update.Error._Unknown;
 
 export namespace Error {
@@ -17,6 +18,11 @@ export namespace Error {
     export interface EntityNotFoundError extends _Utils {
         errorName: "EntityNotFoundError";
         content: CandidApi.EntityNotFoundErrorMessage;
+    }
+
+    export interface EntityConflictError extends _Utils {
+        errorName: "EntityConflictError";
+        content: CandidApi.EntityConflictErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -33,6 +39,7 @@ export namespace Error {
     export interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
+        entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -68,6 +75,21 @@ export const Error = {
         };
     },
 
+    entityConflictError: (
+        value: CandidApi.EntityConflictErrorMessage,
+    ): CandidApi.organizationServiceFacilities.v2.update.Error.EntityConflictError => {
+        return {
+            content: value,
+            errorName: "EntityConflictError",
+            _visit: function <_Result>(
+                this: CandidApi.organizationServiceFacilities.v2.update.Error.EntityConflictError,
+                visitor: CandidApi.organizationServiceFacilities.v2.update.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.organizationServiceFacilities.v2.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.organizationServiceFacilities.v2.update.Error._Unknown => {
         return {
             errorName: undefined,
@@ -90,8 +112,10 @@ export const Error = {
                 return visitor.httpRequestValidationError(value.content);
             case "EntityNotFoundError":
                 return visitor.entityNotFoundError(value.content);
+            case "EntityConflictError":
+                return visitor.entityConflictError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

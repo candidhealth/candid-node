@@ -5,12 +5,18 @@ import * as CandidApi from "../../../../../index";
 
 export type Error =
     | CandidApi.organizationServiceFacilities.v2.create.Error.HttpRequestValidationError
+    | CandidApi.organizationServiceFacilities.v2.create.Error.EntityConflictError
     | CandidApi.organizationServiceFacilities.v2.create.Error._Unknown;
 
 export namespace Error {
     export interface HttpRequestValidationError extends _Utils {
         errorName: "HttpRequestValidationError";
         content: CandidApi.RequestValidationError;
+    }
+
+    export interface EntityConflictError extends _Utils {
+        errorName: "EntityConflictError";
+        content: CandidApi.EntityConflictErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -26,6 +32,7 @@ export namespace Error {
 
     export interface _Visitor<_Result> {
         httpRequestValidationError: (value: CandidApi.RequestValidationError) => _Result;
+        entityConflictError: (value: CandidApi.EntityConflictErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -39,6 +46,21 @@ export const Error = {
             errorName: "HttpRequestValidationError",
             _visit: function <_Result>(
                 this: CandidApi.organizationServiceFacilities.v2.create.Error.HttpRequestValidationError,
+                visitor: CandidApi.organizationServiceFacilities.v2.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.organizationServiceFacilities.v2.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    entityConflictError: (
+        value: CandidApi.EntityConflictErrorMessage,
+    ): CandidApi.organizationServiceFacilities.v2.create.Error.EntityConflictError => {
+        return {
+            content: value,
+            errorName: "EntityConflictError",
+            _visit: function <_Result>(
+                this: CandidApi.organizationServiceFacilities.v2.create.Error.EntityConflictError,
                 visitor: CandidApi.organizationServiceFacilities.v2.create.Error._Visitor<_Result>,
             ) {
                 return CandidApi.organizationServiceFacilities.v2.create.Error._visit(this, visitor);
@@ -66,8 +88,10 @@ export const Error = {
         switch (value.errorName) {
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
+            case "EntityConflictError":
+                return visitor.entityConflictError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

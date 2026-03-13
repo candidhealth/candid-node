@@ -189,7 +189,7 @@ export const Error = {
             case "ChargeExternalIdConflictError":
                 return visitor.chargeExternalIdConflictError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

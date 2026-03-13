@@ -3,49 +3,48 @@
 import type { Blob } from "buffer";
 import type * as fs from "fs";
 import type { BaseClientOptions, BaseRequestOptions } from "../../../../../../BaseClient";
+import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../../../BaseClient";
 import * as core from "../../../../../../core";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as environments from "../../../../../../environments";
 import * as serializers from "../../../../../../serialization/index";
 import * as CandidApi from "../../../../../index";
 
-export declare namespace V1 {
-    export interface Options extends BaseClientOptions {
-        token?: core.Supplier<core.BearerToken | undefined>;
-    }
+export declare namespace V1Client {
+    export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-export class V1 {
-    protected readonly _options: V1.Options;
+export class V1Client {
+    protected readonly _options: NormalizedClientOptionsWithAuth<V1Client.Options>;
 
-    constructor(_options: V1.Options = {}) {
-        this._options = _options;
+    constructor(options: V1Client.Options) {
+        this._options = normalizeClientOptionsWithAuth(options);
     }
 
     /**
-     * @param {CandidApi.EncounterId} encounterId
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {CandidApi.EncounterId} encounter_id
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.encounterAttachments.v1.get(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
      */
     public get(
-        encounterId: CandidApi.EncounterId,
-        requestOptions?: V1.RequestOptions,
+        encounter_id: CandidApi.EncounterId,
+        requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterAttachments.v1.EncounterAttachment[],
             CandidApi.encounterAttachments.v1.get.Error
         >
     > {
-        return core.HttpResponsePromise.fromPromise(this.__get(encounterId, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(encounter_id, requestOptions));
     }
 
     private async __get(
-        encounterId: CandidApi.EncounterId,
-        requestOptions?: V1.RequestOptions,
+        encounter_id: CandidApi.EncounterId,
+        requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<
@@ -54,9 +53,10 @@ export class V1 {
             >
         >
     > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -66,7 +66,7 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounterId))}`,
+                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounter_id))}`,
             ),
             method: "GET",
             headers: _headers,
@@ -74,6 +74,8 @@ export class V1 {
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
         });
         if (_response.ok) {
             return {
@@ -103,32 +105,34 @@ export class V1 {
     }
 
     /**
+     * @deprecated
+     *
      * Uploads a file to the encounter. The file will be stored in the
      * encounter's attachments. Deprecated: Use create-v2 instead.
      *
      * @param {File | fs.ReadStream | Blob} attachmentFile
-     * @param {CandidApi.EncounterId} encounterId
+     * @param {CandidApi.EncounterId} encounter_id
      * @param {CandidApi.encounterAttachments.v1.CreateAttachmentRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      */
     public create(
         attachmentFile: File | fs.ReadStream | Blob,
-        encounterId: CandidApi.EncounterId,
+        encounter_id: CandidApi.EncounterId,
         request: CandidApi.encounterAttachments.v1.CreateAttachmentRequest,
-        requestOptions?: V1.RequestOptions,
+        requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<CandidApi.encounterAttachments.v1.AttachmentId, CandidApi.encounterAttachments.v1.create.Error>
     > {
         return core.HttpResponsePromise.fromPromise(
-            this.__create(attachmentFile, encounterId, request, requestOptions),
+            this.__create(attachmentFile, encounter_id, request, requestOptions),
         );
     }
 
     private async __create(
         attachmentFile: File | fs.ReadStream | Blob,
-        encounterId: CandidApi.EncounterId,
+        encounter_id: CandidApi.EncounterId,
         request: CandidApi.encounterAttachments.v1.CreateAttachmentRequest,
-        requestOptions?: V1.RequestOptions,
+        requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<
@@ -137,21 +141,20 @@ export class V1 {
             >
         >
     > {
-        const _request = await core.newFormData();
-        await _request.appendFile("attachment_file", attachmentFile);
-        _request.append(
+        const _body = await core.newFormData();
+        await _body.appendFile("attachment_file", attachmentFile);
+        _body.append(
             "attachment_type",
             serializers.encounterAttachments.v1.EncounterAttachmentType.jsonOrThrow(request.attachmentType, {
                 unrecognizedObjectKeys: "strip",
             }),
         );
-        const _maybeEncodedRequest = await _request.getRequest();
+        const _maybeEncodedRequest = await _body.getRequest();
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                Authorization: await this._getAuthorizationHeader(),
-                ..._maybeEncodedRequest.headers,
-            }),
+            mergeOnlyDefinedHeaders({ ..._maybeEncodedRequest.headers }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -161,7 +164,7 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounterId))}`,
+                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounter_id))}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -172,6 +175,8 @@ export class V1 {
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
         });
         if (_response.ok) {
             return {
@@ -205,15 +210,15 @@ export class V1 {
      * encounter's attachments.
      *
      * @param {File | fs.ReadStream | Blob} attachmentFile
-     * @param {CandidApi.EncounterId} encounterId
+     * @param {CandidApi.EncounterId} encounter_id
      * @param {CandidApi.encounterAttachments.v1.CreateAttachmentV2Request} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      */
     public createWithDescription(
         attachmentFile: File | fs.ReadStream | Blob,
-        encounterId: CandidApi.EncounterId,
+        encounter_id: CandidApi.EncounterId,
         request: CandidApi.encounterAttachments.v1.CreateAttachmentV2Request,
-        requestOptions?: V1.RequestOptions,
+        requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterAttachments.v1.AttachmentId,
@@ -221,15 +226,15 @@ export class V1 {
         >
     > {
         return core.HttpResponsePromise.fromPromise(
-            this.__createWithDescription(attachmentFile, encounterId, request, requestOptions),
+            this.__createWithDescription(attachmentFile, encounter_id, request, requestOptions),
         );
     }
 
     private async __createWithDescription(
         attachmentFile: File | fs.ReadStream | Blob,
-        encounterId: CandidApi.EncounterId,
+        encounter_id: CandidApi.EncounterId,
         request: CandidApi.encounterAttachments.v1.CreateAttachmentV2Request,
-        requestOptions?: V1.RequestOptions,
+        requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<
@@ -238,25 +243,24 @@ export class V1 {
             >
         >
     > {
-        const _request = await core.newFormData();
-        await _request.appendFile("attachment_file", attachmentFile);
-        _request.append(
+        const _body = await core.newFormData();
+        await _body.appendFile("attachment_file", attachmentFile);
+        _body.append(
             "attachment_type",
             serializers.encounterAttachments.v1.EncounterAttachmentType.jsonOrThrow(request.attachmentType, {
                 unrecognizedObjectKeys: "strip",
             }),
         );
         if (request.description != null) {
-            _request.append("description", request.description);
+            _body.append("description", request.description);
         }
 
-        const _maybeEncodedRequest = await _request.getRequest();
+        const _maybeEncodedRequest = await _body.getRequest();
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                Authorization: await this._getAuthorizationHeader(),
-                ..._maybeEncodedRequest.headers,
-            }),
+            mergeOnlyDefinedHeaders({ ..._maybeEncodedRequest.headers }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -266,7 +270,7 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounterId))}/v2`,
+                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounter_id))}/v2`,
             ),
             method: "PUT",
             headers: _headers,
@@ -277,6 +281,8 @@ export class V1 {
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
         });
         if (_response.ok) {
             return {
@@ -306,18 +312,20 @@ export class V1 {
     }
 
     /**
+     * @beta This endpoint is in development and may change.
+     *
      * Uploads a file using an external identifier. For Charge Capture, the file will be associated with the Encounter at Encounter creation time.
      *
      * Note: Attachments created via this endpoint are not searchable via the get endpoint until they are associated with an encounter.
      *
      * @param {File | fs.ReadStream | Blob} attachmentFile
      * @param {CandidApi.encounterAttachments.v1.CreateExternalAttachmentRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      */
     public createWithChargeCaptureExternalId(
         attachmentFile: File | fs.ReadStream | Blob,
         request: CandidApi.encounterAttachments.v1.CreateExternalAttachmentRequest,
-        requestOptions?: V1.RequestOptions,
+        requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<
             CandidApi.encounterAttachments.v1.AttachmentId,
@@ -332,7 +340,7 @@ export class V1 {
     private async __createWithChargeCaptureExternalId(
         attachmentFile: File | fs.ReadStream | Blob,
         request: CandidApi.encounterAttachments.v1.CreateExternalAttachmentRequest,
-        requestOptions?: V1.RequestOptions,
+        requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<
@@ -341,26 +349,25 @@ export class V1 {
             >
         >
     > {
-        const _request = await core.newFormData();
-        _request.append("charge_capture_external_id", request.chargeCaptureExternalId);
-        await _request.appendFile("attachment_file", attachmentFile);
-        _request.append(
+        const _body = await core.newFormData();
+        _body.append("charge_capture_external_id", request.chargeCaptureExternalId);
+        await _body.appendFile("attachment_file", attachmentFile);
+        _body.append(
             "attachment_type",
             serializers.encounterAttachments.v1.EncounterAttachmentType.jsonOrThrow(request.attachmentType, {
                 unrecognizedObjectKeys: "strip",
             }),
         );
         if (request.description != null) {
-            _request.append("description", request.description);
+            _body.append("description", request.description);
         }
 
-        const _maybeEncodedRequest = await _request.getRequest();
+        const _maybeEncodedRequest = await _body.getRequest();
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                Authorization: await this._getAuthorizationHeader(),
-                ..._maybeEncodedRequest.headers,
-            }),
+            mergeOnlyDefinedHeaders({ ..._maybeEncodedRequest.headers }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -381,6 +388,8 @@ export class V1 {
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
         });
         if (_response.ok) {
             return {
@@ -412,31 +421,45 @@ export class V1 {
     }
 
     /**
-     * @param {CandidApi.EncounterId} encounterId
-     * @param {CandidApi.encounterAttachments.v1.DeleteAttachmentRequest} request
-     * @param {V1.RequestOptions} requestOptions - Request-specific configuration.
+     * @beta This endpoint is in development and may change.
+     *
+     * Returns all attachments associated with the given charge capture external ID.
+     *
+     * @param {string} charge_capture_external_id
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.encounterAttachments.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
-     *         attachmentId: CandidApi.encounterAttachments.v1.AttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
-     *     })
+     *     await client.encounterAttachments.v1.getByChargeCaptureExternalId("charge_capture_external_id")
      */
-    public delete(
-        encounterId: CandidApi.EncounterId,
-        request: CandidApi.encounterAttachments.v1.DeleteAttachmentRequest,
-        requestOptions?: V1.RequestOptions,
-    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(encounterId, request, requestOptions));
+    public getByChargeCaptureExternalId(
+        charge_capture_external_id: string,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.encounterAttachments.v1.ChargeCaptureAttachment[],
+            CandidApi.encounterAttachments.v1.getByChargeCaptureExternalId.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__getByChargeCaptureExternalId(charge_capture_external_id, requestOptions),
+        );
     }
 
-    private async __delete(
-        encounterId: CandidApi.EncounterId,
-        request: CandidApi.encounterAttachments.v1.DeleteAttachmentRequest,
-        requestOptions?: V1.RequestOptions,
-    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>>> {
+    private async __getByChargeCaptureExternalId(
+        charge_capture_external_id: string,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.encounterAttachments.v1.ChargeCaptureAttachment[],
+                CandidApi.encounterAttachments.v1.getByChargeCaptureExternalId.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ Authorization: await this._getAuthorizationHeader() }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -446,7 +469,172 @@ export class V1 {
                         (await core.Supplier.get(this._options.environment)) ??
                         environments.CandidApiEnvironment.Production
                     ).candidApi,
-                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounterId))}`,
+                `/api/encounter-attachments/v1/by-charge-capture-external-id/${core.url.encodePathParam(charge_capture_external_id)}`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.encounterAttachments.v1.getByChargeCaptureExternalId.Response.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.getByChargeCaptureExternalId.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @beta This endpoint is in development and may change.
+     *
+     * Deletes an attachment associated with the given charge capture external ID.
+     *
+     * @param {string} charge_capture_external_id
+     * @param {CandidApi.encounterAttachments.v1.DeleteExternalAttachmentRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.encounterAttachments.v1.deleteByChargeCaptureExternalId("charge_capture_external_id", {
+     *         attachmentId: CandidApi.encounterAttachments.v1.AttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *     })
+     */
+    public deleteByChargeCaptureExternalId(
+        charge_capture_external_id: string,
+        request: CandidApi.encounterAttachments.v1.DeleteExternalAttachmentRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<void, CandidApi.encounterAttachments.v1.deleteByChargeCaptureExternalId.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__deleteByChargeCaptureExternalId(charge_capture_external_id, request, requestOptions),
+        );
+    }
+
+    private async __deleteByChargeCaptureExternalId(
+        charge_capture_external_id: string,
+        request: CandidApi.encounterAttachments.v1.DeleteExternalAttachmentRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<void, CandidApi.encounterAttachments.v1.deleteByChargeCaptureExternalId.Error>
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-attachments/v1/by-charge-capture-external-id/${core.url.encodePathParam(charge_capture_external_id)}`,
+            ),
+            method: "DELETE",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.encounterAttachments.v1.DeleteExternalAttachmentRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: undefined,
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.encounterAttachments.v1.deleteByChargeCaptureExternalId.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @param {CandidApi.EncounterId} encounter_id
+     * @param {CandidApi.encounterAttachments.v1.DeleteAttachmentRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.encounterAttachments.v1.delete(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         attachmentId: CandidApi.encounterAttachments.v1.AttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+     *     })
+     */
+    public delete(
+        encounter_id: CandidApi.EncounterId,
+        request: CandidApi.encounterAttachments.v1.DeleteAttachmentRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(encounter_id, request, requestOptions));
+    }
+
+    private async __delete(
+        encounter_id: CandidApi.EncounterId,
+        request: CandidApi.encounterAttachments.v1.DeleteAttachmentRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.encounterAttachments.v1.delete.Error>>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/encounter-attachments/v1/${core.url.encodePathParam(serializers.EncounterId.jsonOrThrow(encounter_id))}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -459,6 +647,8 @@ export class V1 {
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
         });
         if (_response.ok) {
             return {
@@ -480,14 +670,5 @@ export class V1 {
             },
             rawResponse: _response.rawResponse,
         };
-    }
-
-    protected async _getAuthorizationHeader(): Promise<string | undefined> {
-        const bearer = await core.Supplier.get(this._options.token);
-        if (bearer != null) {
-            return `Bearer ${bearer}`;
-        }
-
-        return undefined;
     }
 }

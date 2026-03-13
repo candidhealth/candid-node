@@ -17,6 +17,7 @@ export const ClearinghousePayerInfo: core.serialization.ObjectSchema<
     institutionalClaimsSupport: core.serialization.property("institutional_claims_support", SupportState),
     eligibilitySupport: core.serialization.property("eligibility_support", SupportState),
     remittanceSupport: core.serialization.property("remittance_support", SupportState),
+    claimAttachmentSupport: core.serialization.property("claim_attachment_support", SupportState),
 });
 
 export declare namespace ClearinghousePayerInfo {
@@ -28,5 +29,6 @@ export declare namespace ClearinghousePayerInfo {
         institutional_claims_support: SupportState.Raw;
         eligibility_support: SupportState.Raw;
         remittance_support: SupportState.Raw;
+        claim_attachment_support: SupportState.Raw;
     }
 }

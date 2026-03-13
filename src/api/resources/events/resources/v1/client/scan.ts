@@ -85,7 +85,7 @@ export const Error = {
             case "InternalError":
                 return visitor.internalError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { QualifierCode } from "../../../../commons/types/QualifierCode";
 import { StreetAddressShortZipOptional } from "../../../../commons/types/StreetAddressShortZipOptional";
 import { EncounterProviderBase } from "./EncounterProviderBase";
+import { ReferringProviderSecondaryIdentification } from "./ReferringProviderSecondaryIdentification";
 
 export const InitialReferringProviderUpdateWithOptionalAddress: core.serialization.ObjectSchema<
     serializers.encounterProviders.v2.InitialReferringProviderUpdateWithOptionalAddress.Raw,
@@ -16,6 +17,10 @@ export const InitialReferringProviderUpdateWithOptionalAddress: core.serializati
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
         address: StreetAddressShortZipOptional.optional(),
         qualifier: QualifierCode.optional(),
+        secondaryIdentification: core.serialization.property(
+            "secondary_identification",
+            ReferringProviderSecondaryIdentification.optional(),
+        ),
     })
     .extend(EncounterProviderBase);
 
@@ -25,5 +30,6 @@ export declare namespace InitialReferringProviderUpdateWithOptionalAddress {
         taxonomy_code?: string | null;
         address?: StreetAddressShortZipOptional.Raw | null;
         qualifier?: QualifierCode.Raw | null;
+        secondary_identification?: ReferringProviderSecondaryIdentification.Raw | null;
     }
 }

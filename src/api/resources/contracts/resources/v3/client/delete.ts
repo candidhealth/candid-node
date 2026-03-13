@@ -67,7 +67,7 @@ export const Error = {
             case "ContractIsLinkedToFeeScheduleHttpError":
                 return visitor.contractIsLinkedToFeeScheduleHttpError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

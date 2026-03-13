@@ -3,6 +3,7 @@
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { EntityConflictErrorMessage } from "../../../../commons/types/EntityConflictErrorMessage";
 import { RequestValidationError } from "../../../../commons/types/RequestValidationError";
 
 export const Error: core.serialization.Schema<
@@ -13,6 +14,9 @@ export const Error: core.serialization.Schema<
         HttpRequestValidationError: core.serialization.object({
             content: RequestValidationError,
         }),
+        EntityConflictError: core.serialization.object({
+            content: EntityConflictErrorMessage,
+        }),
     })
     .transform<CandidApi.organizationServiceFacilities.v2.create.Error>({
         transform: (value) => {
@@ -21,16 +25,23 @@ export const Error: core.serialization.Schema<
                     return CandidApi.organizationServiceFacilities.v2.create.Error.httpRequestValidationError(
                         value.content,
                     );
+                case "EntityConflictError":
+                    return CandidApi.organizationServiceFacilities.v2.create.Error.entityConflictError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.HttpRequestValidationError;
+    export type Raw = Error.HttpRequestValidationError | Error.EntityConflictError;
 
     export interface HttpRequestValidationError {
         errorName: "HttpRequestValidationError";
         content: RequestValidationError.Raw;
+    }
+
+    export interface EntityConflictError {
+        errorName: "EntityConflictError";
+        content: EntityConflictErrorMessage.Raw;
     }
 }

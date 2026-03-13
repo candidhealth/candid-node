@@ -65,7 +65,7 @@ export const Error = {
             case "BadRequestError":
                 return visitor.badRequestError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

@@ -11,4 +11,5 @@ export interface SupervisingProviderUpdateWithOptionalAddress
     npi?: string;
     taxonomyCode?: string;
     address?: CandidApi.StreetAddressShortZipOptional;
+    secondaryIdentification?: CandidApi.encounterProviders.v2.SupervisingProviderSecondaryIdentification;
 }

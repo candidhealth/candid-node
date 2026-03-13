@@ -113,7 +113,7 @@ export const Error = {
             case "SchemaValidationHttpFailure":
                 return visitor.schemaValidationHttpFailure(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

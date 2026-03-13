@@ -18,9 +18,14 @@ export const CandidApiEnvironment = {
         candidApi: "https://staging-api.joincandidhealth.com",
         preEncounter: "https://staging-pre-api.joincandidhealth.com",
     },
+    Local: {
+        candidApi: "http://localhost:5050",
+        preEncounter: "http://localhost:4000",
+    },
 } as const;
 
 export type CandidApiEnvironment =
     | typeof CandidApiEnvironment.Production
     | typeof CandidApiEnvironment.Staging
-    | typeof CandidApiEnvironment.CandidStaging;
+    | typeof CandidApiEnvironment.CandidStaging
+    | typeof CandidApiEnvironment.Local;

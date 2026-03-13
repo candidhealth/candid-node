@@ -10,4 +10,5 @@ export interface ReferringProviderUpdate extends CandidApi.encounterProviders.v2
     npi?: string;
     taxonomyCode?: string;
     address?: CandidApi.StreetAddressLongZip;
+    secondaryIdentification?: CandidApi.encounterProviders.v2.ReferringProviderSecondaryIdentification;
 }

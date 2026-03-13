@@ -6,5 +6,6 @@ export const InvoiceDestination = {
     Healthie: "HEALTHIE",
     Collectly: "COLLECTLY",
     ThirdPartyPayers: "THIRD_PARTY_PAYERS",
+    Instamed: "INSTAMED",
 } as const;
 export type InvoiceDestination = (typeof InvoiceDestination)[keyof typeof InvoiceDestination];

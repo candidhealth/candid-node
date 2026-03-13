@@ -163,7 +163,7 @@ export const Error = {
             case "UnprocessableEntityError":
                 return visitor.unprocessableEntityError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

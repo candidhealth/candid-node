@@ -113,7 +113,7 @@ export const Error = {
             case "EntityConflictError":
                 return visitor.entityConflictError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

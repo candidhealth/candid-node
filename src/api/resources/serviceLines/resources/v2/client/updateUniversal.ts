@@ -113,7 +113,7 @@ export const Error = {
             case "HttpRequestValidationError":
                 return visitor.httpRequestValidationError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

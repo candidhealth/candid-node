@@ -91,7 +91,7 @@ export const Error = {
             case "ContractInvalidExpirationDateHttpError":
                 return visitor.contractInvalidExpirationDateHttpError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

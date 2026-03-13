@@ -11,7 +11,7 @@ export interface Payer {
     payerName: string;
     /** The alternate display names of the payer. */
     alternatePayerNames: string[];
-    clearinghousePayerInfo: Record<CandidApi.Clearinghouse, CandidApi.payers.v4.ClearinghousePayerInfo | undefined>;
+    clearinghousePayerInfo: Partial<Record<CandidApi.Clearinghouse, CandidApi.payers.v4.ClearinghousePayerInfo>>;
     streetAddress?: CandidApi.StreetAddressLongZip;
     alternatePayerAddresses: CandidApi.StreetAddressLongZip[];
 }

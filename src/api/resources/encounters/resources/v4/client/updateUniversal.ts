@@ -239,7 +239,7 @@ export const Error = {
             case "PayerPlanGroupPayerDoesNotMatchInsuranceCardHttpError":
                 return visitor.payerPlanGroupPayerDoesNotMatchInsuranceCardHttpError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

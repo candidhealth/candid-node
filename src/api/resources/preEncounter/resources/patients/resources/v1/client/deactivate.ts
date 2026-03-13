@@ -89,7 +89,7 @@ export const Error = {
             case "VersionConflictError":
                 return visitor.versionConflictError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

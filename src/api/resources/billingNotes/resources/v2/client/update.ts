@@ -161,7 +161,7 @@ export const Error = {
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
             default:
-                return visitor._other(value as any);
+                return visitor._other(value.content);
         }
     },
 } as const;

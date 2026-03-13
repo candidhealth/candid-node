@@ -20,7 +20,7 @@ export const Payer: core.serialization.ObjectSchema<serializers.payers.v4.Payer.
         ),
         clearinghousePayerInfo: core.serialization.property(
             "clearinghouse_payer_info",
-            core.serialization.record(Clearinghouse, ClearinghousePayerInfo.optional()),
+            core.serialization.partialRecord(Clearinghouse, ClearinghousePayerInfo.optional()),
         ),
         streetAddress: core.serialization.property("street_address", StreetAddressLongZip.optional()),
         alternatePayerAddresses: core.serialization.property(
