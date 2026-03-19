@@ -25,8 +25,14 @@ export const EligibilityRequest: core.serialization.ObjectSchema<
         core.serialization.date().optional(),
     ),
     source: core.serialization.string().optional(),
-    portalUsername: core.serialization.string().optional(),
-    portalPassword: core.serialization.string().optional(),
+    portalUsername: core.serialization.property(
+        "portal_username",
+        core.serialization.string().optional(),
+    ),
+    portalPassword: core.serialization.property(
+        "portal_password",
+        core.serialization.string().optional(),
+    ),
 });
 
 export declare namespace EligibilityRequest {
@@ -39,7 +45,7 @@ export declare namespace EligibilityRequest {
         encounter?: Encounter.Raw | null;
         get_existing_check_initiated_after?: string | null;
         source?: string | null;
-        portalUsername?: string | null;
-        portalPassword?: string | null;
+        portal_username?: string | null;
+        portal_password?: string | null;
     }
 }
