@@ -559,7 +559,7 @@ export class V1Client {
             >
         >
     > {
-        const { limit, mrn, pageToken, sortField, sortDirection } = request;
+        const { limit, mrn, pageToken, sortField, sortDirection, redirectToPrimary } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
             mrn,
@@ -571,6 +571,7 @@ export class V1Client {
                           unrecognizedObjectKeys: "strip",
                       })
                     : undefined,
+            redirect_to_primary: redirectToPrimary,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
