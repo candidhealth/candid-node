@@ -40,6 +40,6 @@ export declare namespace EligibilityRequest {
         get_existing_check_initiated_after?: string | null;
         source?: string | null;
         portalUsername?: string;
-        portalPasswrd?: string;
+        portalPassword?: string;
     }
 }
