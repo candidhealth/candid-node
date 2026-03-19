@@ -39,7 +39,7 @@ export declare namespace EligibilityRequest {
         encounter?: Encounter.Raw | null;
         get_existing_check_initiated_after?: string | null;
         source?: string | null;
-        portalUsername?: string;
-        portalPassword?: string;
+        portalUsername?: string | null;
+        portalPassword?: string | null;
     }
 }
