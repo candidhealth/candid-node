@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { Clearinghouse } from "../../../../commons/types/Clearinghouse";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { ClearinghousePayerInfo } from "./ClearinghousePayerInfo";
+import { PayerCategory } from "./PayerCategory";
 import { PayerUuid } from "./PayerUuid";
 import { PrimaryPayerIds } from "./PrimaryPayerIds";
 
@@ -14,6 +15,7 @@ export const Payer: core.serialization.ObjectSchema<serializers.payers.v4.Payer.
         payerUuid: core.serialization.property("payer_uuid", PayerUuid),
         payerIds: core.serialization.property("payer_ids", PrimaryPayerIds),
         payerName: core.serialization.property("payer_name", core.serialization.string()),
+        payerCategory: core.serialization.property("payer_category", PayerCategory.optional()),
         alternatePayerNames: core.serialization.property(
             "alternate_payer_names",
             core.serialization.list(core.serialization.string()),
@@ -34,6 +36,7 @@ export declare namespace Payer {
         payer_uuid: PayerUuid.Raw;
         payer_ids: PrimaryPayerIds.Raw;
         payer_name: string;
+        payer_category?: PayerCategory.Raw | null;
         alternate_payer_names: string[];
         clearinghouse_payer_info: Record<Clearinghouse.Raw, ClearinghousePayerInfo.Raw | null | undefined>;
         street_address?: StreetAddressLongZip.Raw | null;

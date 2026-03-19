@@ -56,7 +56,16 @@ export class V1Client {
             >
         >
     > {
-        const { pageToken, limit, sortField, sortDirection, filters, includeDeactivated, redirectToPrimary } = request;
+        const {
+            pageToken,
+            limit,
+            sortField,
+            sortDirection,
+            filters,
+            includeDeactivated,
+            redirectToPrimary,
+            hideAlternatives,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             page_token: pageToken,
             limit,
@@ -70,6 +79,7 @@ export class V1Client {
             filters,
             include_deactivated: includeDeactivated,
             redirect_to_primary: redirectToPrimary,
+            hide_alternatives: hideAlternatives,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

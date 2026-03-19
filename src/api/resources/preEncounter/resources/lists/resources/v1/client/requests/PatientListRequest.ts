@@ -18,4 +18,6 @@ export interface PatientListRequest {
     includeDeactivated?: boolean;
     /** If true, and filtering by mrn equals, then only return the primary version of the patient requested */
     redirectToPrimary?: boolean;
+    /** If true, then do not show alternative patients */
+    hideAlternatives?: boolean;
 }

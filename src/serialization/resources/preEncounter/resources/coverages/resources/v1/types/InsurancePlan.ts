@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { AdditionalPayerInformation } from "../../../../common/types/AdditionalPayerInformation";
+import { Address } from "../../../../common/types/Address";
 import { PayerId } from "../../../../common/types/PayerId";
 import { PayerPlanGroupId } from "../../../../common/types/PayerPlanGroupId";
 import { Period } from "../../../../common/types/Period";
@@ -30,6 +31,7 @@ export const InsurancePlan: core.serialization.ObjectSchema<
         "insurance_card_image_locator",
         core.serialization.string().optional(),
     ),
+    address: Address.optional(),
     payerPlanGroupId: core.serialization.property("payer_plan_group_id", PayerPlanGroupId.optional()),
 });
 
@@ -45,6 +47,7 @@ export declare namespace InsurancePlan {
         type?: InsuranceTypeCode.Raw | null;
         period?: Period.Raw | null;
         insurance_card_image_locator?: string | null;
+        address?: Address.Raw | null;
         payer_plan_group_id?: PayerPlanGroupId.Raw | null;
     }
 }

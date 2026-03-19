@@ -9,6 +9,8 @@ export interface Payer {
     payerIds: CandidApi.payers.v4.PrimaryPayerIds;
     /** The primary display name of the payer. */
     payerName: string;
+    /** The category of the payer. */
+    payerCategory?: CandidApi.payers.v4.PayerCategory;
     /** The alternate display names of the payer. */
     alternatePayerNames: string[];
     clearinghousePayerInfo: Partial<Record<CandidApi.Clearinghouse, CandidApi.payers.v4.ClearinghousePayerInfo>>;

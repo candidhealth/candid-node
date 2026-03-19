@@ -13,6 +13,7 @@ export interface InsurancePlan {
     type?: CandidApi.preEncounter.coverages.v1.InsuranceTypeCode;
     period?: CandidApi.preEncounter.Period;
     insuranceCardImageLocator?: string;
+    address?: CandidApi.preEncounter.Address;
     /** The ID of the Candid configured payer plan group associated with this coverage */
     payerPlanGroupId?: CandidApi.preEncounter.PayerPlanGroupId;
 }

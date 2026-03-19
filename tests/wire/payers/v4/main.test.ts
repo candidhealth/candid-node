@@ -25,6 +25,7 @@ describe("V4Client", () => {
                 remittance_payer_id: "remittance_payer_id",
             },
             payer_name: "payer_name",
+            payer_category: "BCBS",
             alternate_payer_names: ["alternate_payer_names", "alternate_payer_names"],
             clearinghouse_payer_info: {
                 CHANGE_HEALTHCARE: {
@@ -93,6 +94,7 @@ describe("V4Client", () => {
                     remittancePayerId: "remittance_payer_id",
                 },
                 payerName: "payer_name",
+                payerCategory: "BCBS",
                 alternatePayerNames: ["alternate_payer_names", "alternate_payer_names"],
                 clearinghousePayerInfo: {
                     CHANGE_HEALTHCARE: {
@@ -168,6 +170,7 @@ describe("V4Client", () => {
                         remittance_payer_id: "remittance_payer_id",
                     },
                     payer_name: "payer_name",
+                    payer_category: "BCBS",
                     alternate_payer_names: ["alternate_payer_names", "alternate_payer_names"],
                     clearinghouse_payer_info: {
                         CHANGE_HEALTHCARE: {
@@ -224,6 +227,7 @@ describe("V4Client", () => {
                         remittance_payer_id: "remittance_payer_id",
                     },
                     payer_name: "payer_name",
+                    payer_category: "BCBS",
                     alternate_payer_names: ["alternate_payer_names", "alternate_payer_names"],
                     clearinghouse_payer_info: {
                         CHANGE_HEALTHCARE: {
@@ -290,6 +294,7 @@ describe("V4Client", () => {
                             remittancePayerId: "remittance_payer_id",
                         },
                         payerName: "payer_name",
+                        payerCategory: "BCBS",
                         alternatePayerNames: ["alternate_payer_names", "alternate_payer_names"],
                         clearinghousePayerInfo: {
                             CHANGE_HEALTHCARE: {
@@ -346,6 +351,7 @@ describe("V4Client", () => {
                             remittancePayerId: "remittance_payer_id",
                         },
                         payerName: "payer_name",
+                        payerCategory: "BCBS",
                         alternatePayerNames: ["alternate_payer_names", "alternate_payer_names"],
                         clearinghousePayerInfo: {
                             CHANGE_HEALTHCARE: {
