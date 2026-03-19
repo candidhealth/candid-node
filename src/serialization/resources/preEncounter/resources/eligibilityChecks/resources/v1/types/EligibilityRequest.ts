@@ -25,6 +25,8 @@ export const EligibilityRequest: core.serialization.ObjectSchema<
         core.serialization.date().optional(),
     ),
     source: core.serialization.string().optional(),
+    portalUsername: core.serialization.string().optional(),
+    portalPassword: core.serialization.string().optional(),
 });
 
 export declare namespace EligibilityRequest {
