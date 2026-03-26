@@ -802,8 +802,73 @@ await client.chargeCapture.v1.getAll();
 </dl>
 </details>
 
+<details><summary><code>client.chargeCapture.v1.<a href="/src/api/resources/chargeCapture/resources/v1/client/Client.ts">findByMetadata</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ChargeCapturePage, CandidApi.chargeCapture.v1.findByMetadata.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.chargeCapture.v1.findByMetadata({
+    metadata: [{
+            schemaId: CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+            content: {
+                "content": {
+                    "key": "value"
+                }
+            }
+        }, {
+            schemaId: CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+            content: {
+                "content": {
+                    "key": "value"
+                }
+            }
+        }]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.chargeCapture.v1.FindByMetadataRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Contracts V2
-<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">get</a>(contract_id) -> core.APIResponse&lt;CandidApi.ContractWithProviders, CandidApi.contracts.v2.get.Error&gt;</code></summary>
+<details><summary><code>client.contracts.v2.<a href="/src/api/resources/contracts/resources/v2/client/Client.ts">get</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProviders, CandidApi.contracts.v2.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -847,6 +912,14 @@ await client.contracts.v2.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd
 <dd>
 
 **contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v2.GetContractRequest` 
     
 </dd>
 </dl>
@@ -1387,6 +1460,209 @@ await client.contracts.v3.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7
 <dd>
 
 **request:** `CandidApi.ContractUpdateUnion` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">getContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractProvidersPage, CandidApi.contracts.v3.getContractProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.getContractProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.GetContractProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">addContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.AddContractProvidersResponse, CandidApi.contracts.v3.addContractProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Appends a list of rendering provider IDs to the contract. Provider IDs already on the contract are silently ignored.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.addContractProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    renderingProviderIds: new Set([CandidApi.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.AddContractProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">removeContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractProviderCount, CandidApi.contracts.v3.removeContractProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes the specified rendering provider IDs from the contract. Returns a 404 if any of the provided IDs are not currently in the contract.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.removeContractProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    renderingProviderIds: new Set([CandidApi.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.RemoveContractProvidersRequest` 
     
 </dd>
 </dl>
@@ -2081,7 +2357,7 @@ await client.credentialing.v2.update(CandidApi.ProviderCredentialingSpanId("d5e9
 </details>
 
 ## CustomSchemas V1
-<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">getMulti</a>() -> core.APIResponse&lt;CandidApi.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error&gt;</code></summary>
+<details><summary><code>client.customSchemas.v1.<a href="/src/api/resources/customSchemas/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2120,6 +2396,14 @@ await client.customSchemas.v1.getMulti();
 
 <dl>
 <dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.customSchemas.v1.GetMultiCustomSchemasRequest` 
+    
+</dd>
+</dl>
 
 <dl>
 <dd>
@@ -7341,7 +7625,7 @@ await client.nonInsurancePayers.v1.getCategories();
 </dl>
 </details>
 
-<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">get</a>(non_insurance_payer_id) -> core.APIResponse&lt;CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.get.Error&gt;</code></summary>
+<details><summary><code>client.nonInsurancePayers.v1.<a href="/src/api/resources/nonInsurancePayers/resources/v1/client/Client.ts">get</a>(non_insurance_payer_id, { ...params }) -> core.APIResponse&lt;CandidApi.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7371,6 +7655,14 @@ await client.nonInsurancePayers.v1.get(CandidApi.NonInsurancePayerId("d5e9c84f-c
 <dd>
 
 **non_insurance_payer_id:** `CandidApi.NonInsurancePayerId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.nonInsurancePayers.v1.GetNonInsurancePayerRequest` 
     
 </dd>
 </dl>

@@ -42,6 +42,7 @@ describe("V2Client", () => {
                 zip_code: "zip_code",
             },
         };
+
         server
             .mockEndpoint()
             .get("/api/organization-service-facilities/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -124,6 +125,7 @@ describe("V2Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/organization-service-facilities/v2")
@@ -207,6 +209,7 @@ describe("V2Client", () => {
                 zip_code: "zip_code",
             },
         };
+
         server
             .mockEndpoint()
             .get("/api/organization-service-facilities/v2/external-id/external_id")
@@ -299,6 +302,7 @@ describe("V2Client", () => {
                 zip_plus_four_code: "1234",
             },
         };
+
         server
             .mockEndpoint()
             .post("/api/organization-service-facilities/v2")
@@ -405,6 +409,7 @@ describe("V2Client", () => {
                 zip_plus_four_code: "1234",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/api/organization-service-facilities/v2/30F55EE6-8C0E-43FC-A7FC-DAC00D5BF569")

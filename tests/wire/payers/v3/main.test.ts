@@ -34,6 +34,7 @@ describe("V3Client", () => {
                 zip_code: "zip_code",
             },
         };
+
         server
             .mockEndpoint()
             .get("/api/payers/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -93,6 +94,7 @@ describe("V3Client", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/api/payers/v3").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.payers.v3.getAll({

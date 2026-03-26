@@ -173,6 +173,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/non-insurance-payer-payments/v1")
@@ -459,6 +460,7 @@ describe("V1Client", () => {
             ],
             invoice_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .get("/api/non-insurance-payer-payments/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -665,6 +667,7 @@ describe("V1Client", () => {
             ],
             invoice_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .post("/api/non-insurance-payer-payments/v1")
@@ -878,6 +881,7 @@ describe("V1Client", () => {
             ],
             invoice_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .patch("/api/non-insurance-payer-payments/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

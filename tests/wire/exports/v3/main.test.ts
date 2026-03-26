@@ -22,6 +22,7 @@ describe("V3Client", () => {
             authenticated_download_url: "https://example.com",
             authenticated_download_url_expiration: "2021-10-07T00:02:00Z",
         };
+
         server.mockEndpoint().get("/api/exports/v3").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.exports.v3.getExports({

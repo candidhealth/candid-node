@@ -37,6 +37,7 @@ describe("V1Client", () => {
                 encounter_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             },
         ];
+
         server
             .mockEndpoint()
             .get("/api/encounter-supplemental-information/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -107,6 +108,7 @@ describe("V1Client", () => {
             attachment_inclusion: "not_included",
             encounter_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .put("/api/encounter-supplemental-information/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -162,6 +164,7 @@ describe("V1Client", () => {
             attachment_inclusion: "not_included",
             encounter_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .patch(

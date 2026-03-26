@@ -776,4 +776,105 @@ export class V1Client {
             rawResponse: _response.rawResponse,
         };
     }
+
+    /**
+     * @beta This endpoint is in development and may change.
+     *
+     * @param {CandidApi.chargeCapture.v1.FindByMetadataRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.chargeCapture.v1.findByMetadata({
+     *         metadata: [{
+     *                 schemaId: CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *                 content: {
+     *                     "content": {
+     *                         "key": "value"
+     *                     }
+     *                 }
+     *             }, {
+     *                 schemaId: CandidApi.SchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *                 content: {
+     *                     "content": {
+     *                         "key": "value"
+     *                     }
+     *                 }
+     *             }]
+     *     })
+     */
+    public findByMetadata(
+        request: CandidApi.chargeCapture.v1.FindByMetadataRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.chargeCapture.v1.ChargeCapturePage, CandidApi.chargeCapture.v1.findByMetadata.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__findByMetadata(request, requestOptions));
+    }
+
+    private async __findByMetadata(
+        request: CandidApi.chargeCapture.v1.FindByMetadataRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.chargeCapture.v1.ChargeCapturePage,
+                CandidApi.chargeCapture.v1.findByMetadata.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/charge_captures/v1/find-by-metadata",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.chargeCapture.v1.FindByMetadataRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.chargeCapture.v1.ChargeCapturePage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.chargeCapture.v1.findByMetadata.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
 }

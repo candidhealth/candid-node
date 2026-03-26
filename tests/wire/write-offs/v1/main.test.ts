@@ -49,6 +49,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server.mockEndpoint().get("/api/write-offs/v1").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.writeOffs.v1.getMulti();
@@ -115,6 +116,7 @@ describe("V1Client", () => {
             reverted_by_write_off_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             amount_cents: 1,
         };
+
         server
             .mockEndpoint()
             .get("/api/write-offs/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -204,6 +206,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/api/write-offs/v1")
@@ -292,6 +295,7 @@ describe("V1Client", () => {
             reverted_by_write_off_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             amount_cents: 1,
         };
+
         server
             .mockEndpoint()
             .post("/api/write-offs/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/revert")
@@ -347,6 +351,7 @@ describe("V1Client", () => {
             reverted_by_write_off_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             amount_cents: 1,
         };
+
         server
             .mockEndpoint()
             .post("/api/write-offs/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/revert")
@@ -390,6 +395,7 @@ describe("V1Client", () => {
         });
 
         const rawResponseBody = "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32";
+
         server
             .mockEndpoint()
             .post("/api/write-offs/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/revert-era-originated")

@@ -25,6 +25,7 @@ export const InsuranceWriteOffReason: core.serialization.Schema<
     "UNKNOWN",
     "CONTRACTUAL_ADJUSTMENT",
     "PRIMARY_PAID_MAX_BENEFITS",
+    "INTEREST",
 ]);
 
 export declare namespace InsuranceWriteOffReason {
@@ -45,5 +46,6 @@ export declare namespace InsuranceWriteOffReason {
         | "OTHER"
         | "UNKNOWN"
         | "CONTRACTUAL_ADJUSTMENT"
-        | "PRIMARY_PAID_MAX_BENEFITS";
+        | "PRIMARY_PAID_MAX_BENEFITS"
+        | "INTEREST";
 }

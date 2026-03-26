@@ -347,6 +347,7 @@ describe("V1Client", () => {
             orcon: true,
             auto_update_enabled: true,
         };
+
         server
             .mockEndpoint()
             .post("/coverages/v1")
@@ -1091,6 +1092,7 @@ describe("V1Client", () => {
             orcon: true,
             auto_update_enabled: true,
         };
+
         server
             .mockEndpoint()
             .put("/coverages/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/version")
@@ -1856,6 +1858,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/coverages/v1/get-multi-paginated")
@@ -2578,6 +2581,7 @@ describe("V1Client", () => {
             orcon: true,
             auto_update_enabled: true,
         };
+
         server
             .mockEndpoint()
             .get("/coverages/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -3477,6 +3481,7 @@ describe("V1Client", () => {
                 auto_update_enabled: true,
             },
         ];
+
         server
             .mockEndpoint()
             .get("/coverages/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/history")
@@ -4538,6 +4543,7 @@ describe("V1Client", () => {
                 auto_update_enabled: true,
             },
         ];
+
         server.mockEndpoint().get("/coverages/v1").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.coverages.v1.getMulti();
@@ -5591,6 +5597,7 @@ describe("V1Client", () => {
                 auto_update_enabled: true,
             },
         ];
+
         server
             .mockEndpoint()
             .get("/coverages/v1/updates/scan")
@@ -6199,6 +6206,7 @@ describe("V1Client", () => {
             initiated_by: "initiated_by",
             initiated_at: "2024-01-15T09:30:00Z",
         };
+
         server
             .mockEndpoint()
             .post("/coverages/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/eligibility")
@@ -6297,6 +6305,8 @@ describe("V1Client", () => {
                     },
                     get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
                     source: "source",
+                    portal_password: "portal_password",
+                    portal_username: "portal_username",
                 },
                 response: { key: "value" },
                 parsed_response: {
@@ -6354,6 +6364,7 @@ describe("V1Client", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .get("/coverages/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/eligibility/check_id")
@@ -6427,6 +6438,8 @@ describe("V1Client", () => {
                         },
                         getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
                         source: "source",
+                        portalPassword: "portal_password",
+                        portalUsername: "portal_username",
                     },
                     response: {
                         key: "value",

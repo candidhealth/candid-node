@@ -646,6 +646,7 @@ describe("V1Client", () => {
             },
             orcon: true,
         };
+
         server
             .mockEndpoint()
             .post("/patients/v1")
@@ -2306,6 +2307,7 @@ describe("V1Client", () => {
             },
             orcon: true,
         };
+
         server
             .mockEndpoint()
             .post("/patients/v1/with_mrn")
@@ -4344,6 +4346,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/patients/v1/get_multi")
@@ -6030,6 +6033,7 @@ describe("V1Client", () => {
                 ],
             },
         ];
+
         server
             .mockEndpoint()
             .get("/patients/v1/search_providers")
@@ -6723,6 +6727,7 @@ describe("V1Client", () => {
             },
             orcon: true,
         };
+
         server.mockEndpoint().get("/patients/v1/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.patients.v1.get(CandidApi.preEncounter.PatientId("id"));
@@ -8090,6 +8095,7 @@ describe("V1Client", () => {
             },
             orcon: true,
         };
+
         server
             .mockEndpoint()
             .get("/patients/v1/mrn/mrn")
@@ -9951,6 +9957,7 @@ describe("V1Client", () => {
                 orcon: true,
             },
         ];
+
         server
             .mockEndpoint()
             .get("/patients/v1/id/history")
@@ -12876,6 +12883,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/patients/v1/id/snapshot")
@@ -15258,6 +15266,7 @@ describe("V1Client", () => {
             },
             orcon: true,
         };
+
         server
             .mockEndpoint()
             .put("/patients/v1/id/version")
@@ -17346,6 +17355,7 @@ describe("V1Client", () => {
                 orcon: true,
             },
         ];
+
         server.mockEndpoint().get("/patients/v1").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.patients.v1.search();
@@ -19975,6 +19985,7 @@ describe("V1Client", () => {
                 orcon: true,
             },
         ];
+
         server
             .mockEndpoint()
             .get("/patients/v1/updates/scan")

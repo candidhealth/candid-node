@@ -463,6 +463,7 @@ describe("V4Client", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/api/encounters/v4").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.encounters.v4.getAll({
@@ -2689,6 +2690,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .get("/api/encounters/v4/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -6427,6 +6429,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounters/v4/universal")
@@ -10203,6 +10206,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounters/v4")
@@ -13983,6 +13987,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounters/v4/create-from-pre-encounter/universal")
@@ -17746,6 +17751,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounters/v4/create-from-pre-encounter")
@@ -21494,6 +21500,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .patch("/api/encounters/v4/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/universal")
@@ -25209,6 +25216,7 @@ describe("V4Client", () => {
             last_menstrual_period_date: "2023-01-15",
             delay_reason_code: "1",
         };
+
         server
             .mockEndpoint()
             .patch("/api/encounters/v4/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

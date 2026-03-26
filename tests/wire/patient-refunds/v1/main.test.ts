@@ -115,6 +115,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/patient-refunds/v1")
@@ -302,6 +303,7 @@ describe("V1Client", () => {
             invoice: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             refund_reason: "OVERCHARGED",
         };
+
         server
             .mockEndpoint()
             .get("/api/patient-refunds/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -442,6 +444,7 @@ describe("V1Client", () => {
             invoice: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             refund_reason: "OVERCHARGED",
         };
+
         server
             .mockEndpoint()
             .post("/api/patient-refunds/v1")
@@ -587,6 +590,7 @@ describe("V1Client", () => {
             invoice: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             refund_reason: "OVERCHARGED",
         };
+
         server
             .mockEndpoint()
             .patch("/api/patient-refunds/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

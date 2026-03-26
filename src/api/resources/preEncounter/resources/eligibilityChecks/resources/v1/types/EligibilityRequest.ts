@@ -22,4 +22,8 @@ export interface EligibilityRequest {
     /** If not provided, this endpoint will run a fresh eligibility check. If provided, it will return an existing successful eligibility check if one exists that was initiated after provided date with the same parameters (Date of Service, Payer ID, Provider, Subscriber, Dependent, and Encounter). */
     getExistingCheckInitiatedAfter?: Date;
     source?: string;
+    /** The password that the provider uses to log in to the payer's portal. This is not commonly used. */
+    portalPassword?: string;
+    /** The username that the provider uses to log in to the payer's portal. This is not commonly used. */
+    portalUsername?: string;
 }

@@ -37,6 +37,7 @@ describe("V1Client", () => {
             coverage: { id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", side: "FRONT" },
             patient: { id: "id", notes: "notes" },
         };
+
         server
             .mockEndpoint()
             .post("/images/v1")
@@ -106,6 +107,7 @@ describe("V1Client", () => {
             coverage: { id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", side: "FRONT" },
             patient: { id: "id", notes: "notes" },
         };
+
         server.mockEndpoint().get("/images/v1/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.images.v1.get(CandidApi.preEncounter.images.v1.ImageId("id"));
@@ -168,6 +170,7 @@ describe("V1Client", () => {
             coverage: { id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", side: "FRONT" },
             patient: { id: "id", notes: "notes" },
         };
+
         server
             .mockEndpoint()
             .put("/images/v1/id/version")
@@ -283,6 +286,7 @@ describe("V1Client", () => {
                 patient: { id: "id", notes: "notes" },
             },
         ];
+
         server.mockEndpoint().get("/images/v1").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.images.v1.getMulti();

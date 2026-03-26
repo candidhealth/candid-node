@@ -470,6 +470,7 @@ export class V1Client {
 
     /**
      * @param {CandidApi.nonInsurancePayers.v1.NonInsurancePayerId} non_insurance_payer_id
+     * @param {CandidApi.nonInsurancePayers.v1.GetNonInsurancePayerRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -477,15 +478,17 @@ export class V1Client {
      */
     public get(
         non_insurance_payer_id: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId,
+        request: CandidApi.nonInsurancePayers.v1.GetNonInsurancePayerRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<CandidApi.nonInsurancePayers.v1.NonInsurancePayer, CandidApi.nonInsurancePayers.v1.get.Error>
     > {
-        return core.HttpResponsePromise.fromPromise(this.__get(non_insurance_payer_id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(non_insurance_payer_id, request, requestOptions));
     }
 
     private async __get(
         non_insurance_payer_id: CandidApi.nonInsurancePayers.v1.NonInsurancePayerId,
+        request: CandidApi.nonInsurancePayers.v1.GetNonInsurancePayerRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
@@ -495,6 +498,10 @@ export class V1Client {
             >
         >
     > {
+        const { organizationId } = request;
+        const _queryParams: Record<string, unknown> = {
+            organization_id: organizationId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -512,7 +519,7 @@ export class V1Client {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

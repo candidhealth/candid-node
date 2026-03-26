@@ -50,6 +50,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/api/non-insurance-payers/v1")
@@ -152,6 +153,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .patch("/api/non-insurance-payers/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/toggle_enablement")
@@ -296,6 +298,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/non-insurance-payers/v1")
@@ -412,6 +415,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/non-insurance-payers/v1/categories")
@@ -477,6 +481,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/non-insurance-payers/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -578,6 +583,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .patch("/api/non-insurance-payers/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

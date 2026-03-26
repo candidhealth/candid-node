@@ -135,6 +135,7 @@ describe("V4Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/patient-payments/v4")
@@ -356,6 +357,7 @@ describe("V4Client", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/api/patient-payments/v4/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -518,6 +520,7 @@ describe("V4Client", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/api/patient-payments/v4")
@@ -685,6 +688,7 @@ describe("V4Client", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .patch("/api/patient-payments/v4/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

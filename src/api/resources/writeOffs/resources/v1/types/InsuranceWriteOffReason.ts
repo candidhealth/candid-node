@@ -18,5 +18,6 @@ export const InsuranceWriteOffReason = {
     Unknown: "UNKNOWN",
     ContractualAdjustment: "CONTRACTUAL_ADJUSTMENT",
     PrimaryPaidMaxBenefits: "PRIMARY_PAID_MAX_BENEFITS",
+    Interest: "INTEREST",
 } as const;
 export type InsuranceWriteOffReason = (typeof InsuranceWriteOffReason)[keyof typeof InsuranceWriteOffReason];

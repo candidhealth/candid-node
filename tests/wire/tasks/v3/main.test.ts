@@ -23,6 +23,7 @@ describe("V3Client", () => {
                 { display_name: "display_name", execution_method: { type: "close_task" }, type: "close_task" },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/tasks/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/actions")
@@ -164,6 +165,7 @@ describe("V3Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server.mockEndpoint().get("/api/tasks/v3").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tasks.v3.getMulti();
@@ -326,6 +328,7 @@ describe("V3Client", () => {
             category: "other",
             configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .get("/api/tasks/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -448,6 +451,7 @@ describe("V3Client", () => {
             category: "other",
             configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .post("/api/tasks/v3")
@@ -571,6 +575,7 @@ describe("V3Client", () => {
             category: "other",
             configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .patch("/api/tasks/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

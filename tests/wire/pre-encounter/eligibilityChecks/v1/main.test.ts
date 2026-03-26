@@ -69,6 +69,8 @@ describe("V1Client", () => {
                 },
                 get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
                 source: "source",
+                portal_password: "portal_password",
+                portal_username: "portal_username",
             },
             response: { key: "value" },
             parsed_response: {
@@ -197,6 +199,7 @@ describe("V1Client", () => {
                 { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/eligibility-checks/v1")
@@ -269,6 +272,8 @@ describe("V1Client", () => {
                     },
                     getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
                     source: "source",
+                    portalPassword: "portal_password",
+                    portalUsername: "portal_username",
                 },
                 response: {
                     key: "value",
@@ -464,6 +469,7 @@ describe("V1Client", () => {
             },
         ];
         const rawResponseBody = { batch_id: "batch_id", submitted_at: "2024-01-15T09:30:00Z" };
+
         server
             .mockEndpoint()
             .post("/eligibility-checks/v1/batch")
@@ -567,6 +573,8 @@ describe("V1Client", () => {
                         },
                         get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
                         source: "source",
+                        portal_password: "portal_password",
+                        portal_username: "portal_username",
                     },
                     response: { key: "value" },
                     parsed_response: {
@@ -671,6 +679,8 @@ describe("V1Client", () => {
                         },
                         get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
                         source: "source",
+                        portal_password: "portal_password",
+                        portal_username: "portal_username",
                     },
                     response: { key: "value" },
                     parsed_response: {
@@ -732,6 +742,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/eligibility-checks/v1/batch/batch_id")
@@ -796,6 +807,8 @@ describe("V1Client", () => {
                             },
                             getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
                             source: "source",
+                            portalPassword: "portal_password",
+                            portalUsername: "portal_username",
                         },
                         response: {
                             key: "value",
@@ -927,6 +940,8 @@ describe("V1Client", () => {
                             },
                             getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
                             source: "source",
+                            portalPassword: "portal_password",
+                            portalUsername: "portal_username",
                         },
                         response: {
                             key: "value",
@@ -1072,6 +1087,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/eligibility-checks/v1/payer/search")
@@ -1219,6 +1235,7 @@ describe("V1Client", () => {
                 updating_user_id: "updating_user_id",
             },
         ];
+
         server
             .mockEndpoint()
             .get("/eligibility-checks/v1/recommendation")
@@ -1364,6 +1381,7 @@ describe("V1Client", () => {
             updated_at: "2024-01-15T09:30:00Z",
             updating_user_id: "updating_user_id",
         };
+
         server
             .mockEndpoint()
             .post("/eligibility-checks/v1/recommendation")
@@ -1471,6 +1489,7 @@ describe("V1Client", () => {
             updated_at: "2024-01-15T09:30:00Z",
             updating_user_id: "updating_user_id",
         };
+
         server
             .mockEndpoint()
             .put("/eligibility-checks/v1/recommendation/recommendation_id/version/vote")
@@ -1596,6 +1615,8 @@ describe("V1Client", () => {
                         },
                         get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
                         source: "source",
+                        portal_password: "portal_password",
+                        portal_username: "portal_username",
                     },
                     response: { key: "value" },
                     parsed_response: {
@@ -1700,6 +1721,8 @@ describe("V1Client", () => {
                         },
                         get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
                         source: "source",
+                        portal_password: "portal_password",
+                        portal_username: "portal_username",
                     },
                     response: { key: "value" },
                     parsed_response: {
@@ -1761,6 +1784,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/eligibility-checks/v1/get-multi/")
@@ -1825,6 +1849,8 @@ describe("V1Client", () => {
                             },
                             getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
                             source: "source",
+                            portalPassword: "portal_password",
+                            portalUsername: "portal_username",
                         },
                         response: {
                             key: "value",
@@ -1956,6 +1982,8 @@ describe("V1Client", () => {
                             },
                             getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
                             source: "source",
+                            portalPassword: "portal_password",
+                            portalUsername: "portal_username",
                         },
                         response: {
                             key: "value",

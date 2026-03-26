@@ -2,3 +2,4 @@ export { ChargeCapturePostBilledChangeUpdate } from "./ChargeCapturePostBilledCh
 export { ChargeCaptureUpdate } from "./ChargeCaptureUpdate";
 export { CreateChargeCaptureFromPreEncounterRequest } from "./CreateChargeCaptureFromPreEncounterRequest";
 export { CreateChargeCaptureRequest } from "./CreateChargeCaptureRequest";
+export { FindByMetadataRequest } from "./FindByMetadataRequest";

@@ -25,6 +25,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/external-payment-account-config/v1")

@@ -29,4 +29,9 @@ export interface ChargeCaptureUpdate {
     status?: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
     /** Provide external attachment IDs which have been uploaded to Candid. They will be associated with the Encounter at Encounter creation time. */
     attachmentExternalDocumentIds?: string[];
+    /**
+     * Key-value pairs that adhere to metadata schemas.
+     * Multiple metadata instances can be associated with a charge capture.
+     */
+    metadata?: CandidApi.customSchemas.v1.SchemaInstance[];
 }

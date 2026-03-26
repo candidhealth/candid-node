@@ -32,6 +32,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/custom-schemas/v1")
@@ -97,6 +98,7 @@ describe("V1Client", () => {
                 { key: "age", type: "INTEGER" },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/custom-schemas/v1/ec096b13-f80a-471d-aaeb-54b021c9d582")
@@ -167,6 +169,7 @@ describe("V1Client", () => {
                 { key: "age", type: "INTEGER" },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/api/custom-schemas/v1")
@@ -255,6 +258,7 @@ describe("V1Client", () => {
                 { key: "visit_type", type: "STRING" },
             ],
         };
+
         server
             .mockEndpoint()
             .patch("/api/custom-schemas/v1/ec096b13-f80a-471d-aaeb-54b021c9d582")

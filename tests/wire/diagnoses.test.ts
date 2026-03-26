@@ -27,6 +27,7 @@ describe("DiagnosesClient", () => {
             code: "code",
             present_on_admission_indicator: "YES",
         };
+
         server
             .mockEndpoint()
             .post("/api/diagnoses/v2")
@@ -79,6 +80,7 @@ describe("DiagnosesClient", () => {
             code: "code",
             present_on_admission_indicator: "YES",
         };
+
         server
             .mockEndpoint()
             .patch("/api/diagnoses/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

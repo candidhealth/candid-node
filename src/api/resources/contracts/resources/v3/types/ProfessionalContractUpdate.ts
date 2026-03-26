@@ -3,5 +3,10 @@
 import type * as CandidApi from "../../../../../index";
 
 export interface ProfessionalContractUpdate extends CandidApi.contracts.v3.ContractUpdate {
+    /**
+     * Deprecated. Use the dedicated providers endpoints to manage rendering providers
+     * (GET/POST/DELETE /api/contracts/v3/{contract_id}/providers).
+     * Attempting to set this property will raise an error if the contract already has more than 4,000 rendering providers.
+     */
     renderingProviderIds?: Set<CandidApi.contracts.v3.RenderingProviderid>;
 }

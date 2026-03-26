@@ -60,6 +60,7 @@ describe("V1Client", () => {
             due_date: "2023-01-15",
             amount_cents: 1,
         };
+
         server
             .mockEndpoint()
             .post("/api/import-invoice/v1")
@@ -213,6 +214,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/import-invoice/v1")
@@ -351,6 +353,7 @@ describe("V1Client", () => {
             due_date: "2023-01-15",
             amount_cents: 1,
         };
+
         server
             .mockEndpoint()
             .get("/api/import-invoice/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -442,6 +445,7 @@ describe("V1Client", () => {
             due_date: "2023-01-15",
             amount_cents: 1,
         };
+
         server
             .mockEndpoint()
             .patch("/api/import-invoice/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

@@ -162,7 +162,17 @@ export class V3Client {
             >
         >
     > {
-        const { limit, searchTerm, npi, isRendering, isBilling, organizationProviderIds, pageToken, sort } = request;
+        const {
+            limit,
+            searchTerm,
+            npi,
+            isRendering,
+            isBilling,
+            organizationProviderIds,
+            pageToken,
+            sort,
+            organizationId,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
             search_term: searchTerm,
@@ -177,6 +187,7 @@ export class V3Client {
                           unrecognizedObjectKeys: "strip",
                       })
                     : undefined,
+            organization_id: organizationId,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

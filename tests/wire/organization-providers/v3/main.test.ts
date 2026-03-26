@@ -43,6 +43,7 @@ describe("V3Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/organization-providers/v3/965A563A-0285-4910-9569-E3739C0F6EAB")
@@ -130,6 +131,7 @@ describe("V3Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/organization-providers/v3")
@@ -282,6 +284,7 @@ describe("V3Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/api/organization-providers/v3")
@@ -464,6 +467,7 @@ describe("V3Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .patch("/api/organization-providers/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

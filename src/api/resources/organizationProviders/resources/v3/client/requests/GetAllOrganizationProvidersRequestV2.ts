@@ -33,4 +33,6 @@ export interface GetAllOrganizationProvidersRequestV2 {
     pageToken?: CandidApi.PageToken;
     /** Defaults to PROVIDER_NAME_ASC. */
     sort?: CandidApi.organizationProviders.v2.OrganizationProviderSortOptions;
+    /** Filter to a specific organization's providers. If not provided, defaults to the requesting user's organization. */
+    organizationId?: CandidApi.OrganizationId;
 }

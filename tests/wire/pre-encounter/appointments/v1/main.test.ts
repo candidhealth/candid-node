@@ -90,6 +90,7 @@ describe("V1Client", () => {
             automated_eligibility_check_complete: true,
             work_queue: "EMERGENT_ISSUE",
         };
+
         server
             .mockEndpoint()
             .post("/appointments/v1")
@@ -1104,6 +1105,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/appointments/v1/visits")
@@ -2500,6 +2502,7 @@ describe("V1Client", () => {
             automated_eligibility_check_complete: true,
             work_queue: "EMERGENT_ISSUE",
         };
+
         server
             .mockEndpoint()
             .get("/appointments/v1/id")
@@ -2769,6 +2772,7 @@ describe("V1Client", () => {
                 work_queue: "EMERGENT_ISSUE",
             },
         ];
+
         server
             .mockEndpoint()
             .get("/appointments/v1/id/history")
@@ -3085,6 +3089,7 @@ describe("V1Client", () => {
             automated_eligibility_check_complete: true,
             work_queue: "EMERGENT_ISSUE",
         };
+
         server
             .mockEndpoint()
             .put("/appointments/v1/id/version")
@@ -3364,6 +3369,7 @@ describe("V1Client", () => {
                 work_queue: "EMERGENT_ISSUE",
             },
         ];
+
         server
             .mockEndpoint()
             .get("/appointments/v1/updates/scan")

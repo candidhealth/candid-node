@@ -41,6 +41,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/api/superbill/v1")

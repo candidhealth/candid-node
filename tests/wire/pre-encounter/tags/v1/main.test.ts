@@ -28,6 +28,7 @@ describe("V1Client", () => {
             description: "description",
             alert: true,
         };
+
         server.mockEndpoint().get("/tags/v1/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.tags.v1.get(CandidApi.preEncounter.TagId("id"));
@@ -89,6 +90,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server.mockEndpoint().get("/tags/v1").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.tags.v1.getAll();
@@ -150,6 +152,7 @@ describe("V1Client", () => {
             description: "description",
             alert: true,
         };
+
         server
             .mockEndpoint()
             .post("/tags/v1")
@@ -202,6 +205,7 @@ describe("V1Client", () => {
             description: "description",
             alert: true,
         };
+
         server
             .mockEndpoint()
             .put("/tags/v1/id/version")

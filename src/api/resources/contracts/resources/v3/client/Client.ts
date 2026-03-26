@@ -533,6 +533,352 @@ export class V3Client {
 
     /**
      * @param {CandidApi.contracts.v3.ContractId} contract_id
+     * @param {CandidApi.contracts.v3.GetContractProvidersRequest} request
+     * @param {V3Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.contracts.v3.getContractProviders(CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public getContractProviders(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.GetContractProvidersRequest = {},
+        requestOptions?: V3Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.contracts.v3.ContractProvidersPage,
+            CandidApi.contracts.v3.getContractProviders.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getContractProviders(contract_id, request, requestOptions));
+    }
+
+    private async __getContractProviders(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.GetContractProvidersRequest = {},
+        requestOptions?: V3Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.contracts.v3.ContractProvidersPage,
+                CandidApi.contracts.v3.getContractProviders.Error
+            >
+        >
+    > {
+        const { pageToken, limit } = request;
+        const _queryParams: Record<string, unknown> = {
+            page_token: pageToken,
+            limit,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v3/${core.url.encodePathParam(serializers.contracts.v3.ContractId.jsonOrThrow(contract_id))}/providers`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v3.ContractProvidersPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.contracts.v3.getContractProviders.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnprocessableEntityError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v3.getContractProviders.Error.parseOrThrow(
+                                _response.error.body as serializers.contracts.v3.getContractProviders.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v3.getContractProviders.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Appends a list of rendering provider IDs to the contract. Provider IDs already on the contract are silently ignored.
+     *
+     * @param {CandidApi.contracts.v3.ContractId} contract_id
+     * @param {CandidApi.contracts.v3.AddContractProvidersRequest} request
+     * @param {V3Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.contracts.v3.addContractProviders(CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         renderingProviderIds: new Set([CandidApi.contracts.v3.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")])
+     *     })
+     */
+    public addContractProviders(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.AddContractProvidersRequest,
+        requestOptions?: V3Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.contracts.v3.AddContractProvidersResponse,
+            CandidApi.contracts.v3.addContractProviders.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__addContractProviders(contract_id, request, requestOptions));
+    }
+
+    private async __addContractProviders(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.AddContractProvidersRequest,
+        requestOptions?: V3Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.contracts.v3.AddContractProvidersResponse,
+                CandidApi.contracts.v3.addContractProviders.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v3/${core.url.encodePathParam(serializers.contracts.v3.ContractId.jsonOrThrow(contract_id))}/providers`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.contracts.v3.AddContractProvidersRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v3.AddContractProvidersResponse.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.contracts.v3.addContractProviders.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnprocessableEntityError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v3.addContractProviders.Error.parseOrThrow(
+                                _response.error.body as serializers.contracts.v3.addContractProviders.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v3.addContractProviders.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Removes the specified rendering provider IDs from the contract. Returns a 404 if any of the provided IDs are not currently in the contract.
+     *
+     * @param {CandidApi.contracts.v3.ContractId} contract_id
+     * @param {CandidApi.contracts.v3.RemoveContractProvidersRequest} request
+     * @param {V3Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.contracts.v3.removeContractProviders(CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+     *         renderingProviderIds: new Set([CandidApi.contracts.v3.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")])
+     *     })
+     */
+    public removeContractProviders(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.RemoveContractProvidersRequest,
+        requestOptions?: V3Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.contracts.v3.ContractProviderCount,
+            CandidApi.contracts.v3.removeContractProviders.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__removeContractProviders(contract_id, request, requestOptions),
+        );
+    }
+
+    private async __removeContractProviders(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.RemoveContractProvidersRequest,
+        requestOptions?: V3Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.contracts.v3.ContractProviderCount,
+                CandidApi.contracts.v3.removeContractProviders.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v3/${core.url.encodePathParam(serializers.contracts.v3.ContractId.jsonOrThrow(contract_id))}/providers`,
+            ),
+            method: "DELETE",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.contracts.v3.RemoveContractProvidersRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v3.ContractProviderCount.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.contracts.v3.removeContractProviders.Error.Raw)?.errorName) {
+                case "EntityNotFoundError":
+                case "UnprocessableEntityError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v3.removeContractProviders.Error.parseOrThrow(
+                                _response.error.body as serializers.contracts.v3.removeContractProviders.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v3.removeContractProviders.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @param {CandidApi.contracts.v3.ContractId} contract_id
      * @param {CandidApi.contracts.v3.ContractServiceFacilityCreate} request
      * @param {V3Client.RequestOptions} requestOptions - Request-specific configuration.
      *

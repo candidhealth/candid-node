@@ -161,7 +161,15 @@ export class V2Client {
             >
         >
     > {
-        const { limit, name, organizationServiceFacilityIds, externalIds, placeOfServiceCode, pageToken } = request;
+        const {
+            limit,
+            name,
+            organizationServiceFacilityIds,
+            externalIds,
+            placeOfServiceCode,
+            pageToken,
+            organizationId,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
             name,
@@ -172,6 +180,7 @@ export class V2Client {
                     ? serializers.FacilityTypeCode.jsonOrThrow(placeOfServiceCode, { unrecognizedObjectKeys: "strip" })
                     : undefined,
             page_token: pageToken,
+            organization_id: organizationId,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

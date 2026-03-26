@@ -29,6 +29,7 @@ describe("V1Client", () => {
             author_email: "author_email",
             author_name: "author_name",
         };
+
         server.mockEndpoint().get("/notes/v1/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.notes.v1.get(CandidApi.preEncounter.NoteId("id"));
@@ -74,6 +75,7 @@ describe("V1Client", () => {
             author_email: "author_email",
             author_name: "author_name",
         };
+
         server
             .mockEndpoint()
             .post("/notes/v1")
@@ -128,6 +130,7 @@ describe("V1Client", () => {
             author_email: "author_email",
             author_name: "author_name",
         };
+
         server
             .mockEndpoint()
             .put("/notes/v1/id/version")

@@ -45,6 +45,7 @@ describe("V1Client", () => {
                 zip_code: "zip_code",
             },
         };
+
         server
             .mockEndpoint()
             .post("/api/guarantors/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -138,6 +139,7 @@ describe("V1Client", () => {
                 zip_code: "zip_code",
             },
         };
+
         server
             .mockEndpoint()
             .get("/api/guarantors/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -219,6 +221,7 @@ describe("V1Client", () => {
                 zip_code: "zip_code",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/api/guarantors/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

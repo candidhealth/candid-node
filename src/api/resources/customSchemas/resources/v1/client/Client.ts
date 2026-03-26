@@ -24,20 +24,23 @@ export class V1Client {
     /**
      * Returns all custom schemas.
      *
+     * @param {CandidApi.customSchemas.v1.GetMultiCustomSchemasRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.customSchemas.v1.getMulti()
      */
     public getMulti(
+        request: CandidApi.customSchemas.v1.GetMultiCustomSchemasRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<CandidApi.customSchemas.v1.SchemaGetMultiResponse, CandidApi.customSchemas.v1.getMulti.Error>
     > {
-        return core.HttpResponsePromise.fromPromise(this.__getMulti(requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getMulti(request, requestOptions));
     }
 
     private async __getMulti(
+        request: CandidApi.customSchemas.v1.GetMultiCustomSchemasRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
@@ -47,6 +50,10 @@ export class V1Client {
             >
         >
     > {
+        const { organizationId } = request;
+        const _queryParams: Record<string, unknown> = {
+            organization_id: organizationId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -64,7 +71,7 @@ export class V1Client {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

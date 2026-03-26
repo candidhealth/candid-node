@@ -38,6 +38,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/api/events/v1/").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.events.v1.scan();
@@ -92,6 +93,7 @@ describe("V1Client", () => {
             schema_version: "schema_version",
             payload: { key: "value" },
         };
+
         server
             .mockEndpoint()
             .get("/api/events/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

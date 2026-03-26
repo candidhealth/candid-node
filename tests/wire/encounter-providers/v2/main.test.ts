@@ -40,6 +40,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .patch("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -117,6 +118,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .patch("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/initial-referring-provider")
@@ -194,6 +196,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .patch("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/supervising-provider")
@@ -271,6 +274,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .patch("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/ordering-provider")
@@ -348,6 +352,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/create-referring-provider")
@@ -427,6 +432,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/create-initial-referring-provider")
@@ -506,6 +512,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/create-supervising-provider")
@@ -585,6 +592,7 @@ describe("V2Client", () => {
             last_name: "last_name",
             organization_name: "organization_name",
         };
+
         server
             .mockEndpoint()
             .post("/api/encounter-providers/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/create-ordering-provider")

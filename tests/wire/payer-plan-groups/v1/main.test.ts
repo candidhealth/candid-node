@@ -71,6 +71,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/payer-plan-groups/v1")
@@ -176,6 +177,7 @@ describe("V1Client", () => {
             payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             plan_type: "09",
         };
+
         server
             .mockEndpoint()
             .get("/api/payer-plan-groups/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -257,6 +259,7 @@ describe("V1Client", () => {
             payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             plan_type: "09",
         };
+
         server
             .mockEndpoint()
             .post("/api/payer-plan-groups/v1")
@@ -341,6 +344,7 @@ describe("V1Client", () => {
             payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             plan_type: "09",
         };
+
         server
             .mockEndpoint()
             .put("/api/payer-plan-groups/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -424,6 +428,7 @@ describe("V1Client", () => {
             payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             plan_type: "09",
         };
+
         server
             .mockEndpoint()
             .patch("/api/payer-plan-groups/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

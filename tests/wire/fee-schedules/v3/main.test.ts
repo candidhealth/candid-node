@@ -26,6 +26,7 @@ describe("V3Client", () => {
             },
             rate_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
+
         server
             .mockEndpoint()
             .get("/api/fee-schedules/v3/service-line/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/match")
@@ -96,6 +97,7 @@ describe("V3Client", () => {
                 explanation: "explanation",
             },
         };
+
         server
             .mockEndpoint()
             .get(
@@ -245,6 +247,7 @@ describe("V3Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/fee-schedules/v3")
@@ -380,6 +383,7 @@ describe("V3Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/fee-schedules/v3/unique-dimension-values")
@@ -493,6 +497,7 @@ describe("V3Client", () => {
                 ],
             },
         ];
+
         server
             .mockEndpoint()
             .get("/api/fee-schedules/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/history")
@@ -684,6 +689,7 @@ describe("V3Client", () => {
                 ],
             },
         ];
+
         server
             .mockEndpoint()
             .post("/api/fee-schedules/v3")
@@ -883,6 +889,7 @@ describe("V3Client", () => {
         });
 
         const rawResponseBody = { upper_threshold_cents: 1, lower_threshold_cents: 1, disable_paid_incorrectly: true };
+
         server
             .mockEndpoint()
             .get("/api/fee-schedules/v3/payer-threshold/default")
@@ -926,6 +933,7 @@ describe("V3Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/fee-schedules/v3/payer-threshold")
@@ -967,6 +975,7 @@ describe("V3Client", () => {
         });
         const rawRequestBody = { disable_paid_incorrectly: true };
         const rawResponseBody = { upper_threshold_cents: 1, lower_threshold_cents: 1, disable_paid_incorrectly: true };
+
         server
             .mockEndpoint()
             .put("/api/fee-schedules/v3/payer-threshold/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -1014,6 +1023,7 @@ describe("V3Client", () => {
             modifiers: ["AV"],
         };
         const rawResponseBody = 1;
+
         server
             .mockEndpoint()
             .post("/api/fee-schedules/v3/hard-delete")
@@ -1054,6 +1064,7 @@ describe("V3Client", () => {
             rate_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
         };
         const rawResponseBody = 1;
+
         server
             .mockEndpoint()
             .post("/api/fee-schedules/v3/hard-delete-by-ids")

@@ -25,4 +25,6 @@ export interface GetAllOrganizationServiceFacilitiesRequest {
     placeOfServiceCode?: CandidApi.FacilityTypeCode;
     /** The page token to continue paging through a previous request. */
     pageToken?: CandidApi.PageToken;
+    /** Filter to a specific organization's service facilities. If not provided, defaults to the requesting user's organization. */
+    organizationId?: CandidApi.OrganizationId;
 }

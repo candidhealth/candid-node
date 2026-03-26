@@ -25,6 +25,7 @@ describe("V2Client", () => {
             author_name: "author_name",
             text: "text",
         };
+
         server
             .mockEndpoint()
             .post("/api/billing_notes/v2")
@@ -101,6 +102,7 @@ describe("V2Client", () => {
             author_name: "author_name",
             text: "text",
         };
+
         server
             .mockEndpoint()
             .patch("/api/billing_notes/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

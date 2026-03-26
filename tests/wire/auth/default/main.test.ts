@@ -17,6 +17,7 @@ describe("DefaultClient", () => {
         });
         const rawRequestBody = { client_id: "YOUR_CLIENT_ID", client_secret: "YOUR_CLIENT_SECRET" };
         const rawResponseBody = { access_token: "eyJz93a...k4laUWw", expires_in: 86400, token_type: "Bearer" };
+
         server
             .mockEndpoint()
             .post("/api/auth/v2/token")

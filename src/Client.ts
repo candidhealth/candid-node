@@ -40,6 +40,8 @@ import { TasksClient } from "./api/resources/tasks/client/Client";
 import { WriteOffsClient } from "./api/resources/writeOffs/client/Client";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient";
+import * as core from "./core";
+import * as environments from "./environments";
 
 export declare namespace CandidApiClient {
     export type Options = BaseClientOptions;
@@ -242,5 +244,44 @@ export class CandidApiClient {
 
     public get diagnoses(): DiagnosesClient {
         return (this._diagnoses ??= new DiagnosesClient(this._options));
+    }
+
+    /**
+     * Make a passthrough request using the SDK's configured auth, retry, logging, etc.
+     * This is useful for making requests to endpoints not yet supported in the SDK.
+     * The input can be a URL string, URL object, or Request object. Relative paths are resolved against the configured base URL.
+     *
+     * @param {Request | string | URL} input - The URL, path, or Request object.
+     * @param {RequestInit} init - Standard fetch RequestInit options.
+     * @param {core.PassthroughRequest.RequestOptions} requestOptions - Per-request overrides (timeout, retries, headers, abort signal).
+     * @returns {Promise<Response>} A standard Response object.
+     */
+    public async fetch(
+        input: Request | string | URL,
+        init?: RequestInit,
+        requestOptions?: core.PassthroughRequest.RequestOptions,
+    ): Promise<Response> {
+        return core.makePassthroughRequest(
+            input,
+            init,
+            {
+                baseUrl:
+                    this._options.baseUrl ??
+                    (async () => {
+                        const env = await core.Supplier.get(this._options.environment);
+                        return typeof env === "string"
+                            ? env
+                            : ((env as Record<string, string>)?.candidApi ??
+                                  environments.CandidApiEnvironment.Production.candidApi);
+                    }),
+                headers: this._options.headers,
+                timeoutInSeconds: this._options.timeoutInSeconds,
+                maxRetries: this._options.maxRetries,
+                fetch: this._options.fetch,
+                logging: this._options.logging,
+                getAuthHeaders: async () => (await this._options.authProvider.getAuthRequest()).headers,
+            },
+            requestOptions,
+        );
     }
 }

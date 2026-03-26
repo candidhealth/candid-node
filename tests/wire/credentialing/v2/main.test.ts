@@ -133,6 +133,7 @@ describe("V2Client", () => {
             payer_loaded_date: "2023-01-15",
             is_enabled: true,
         };
+
         server
             .mockEndpoint()
             .post("/api/provider-credentialing-span/v2/facility")
@@ -402,6 +403,7 @@ describe("V2Client", () => {
             payer_loaded_date: "2023-01-15",
             is_enabled: true,
         };
+
         server
             .mockEndpoint()
             .get("/api/provider-credentialing-span/v2/facility/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -786,6 +788,7 @@ describe("V2Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/provider-credentialing-span/v2/facility")
@@ -1210,6 +1213,7 @@ describe("V2Client", () => {
             payer_loaded_date: "2023-01-15",
             is_enabled: true,
         };
+
         server
             .mockEndpoint()
             .patch("/api/provider-credentialing-span/v2/facility/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -1524,6 +1528,7 @@ describe("V2Client", () => {
             payer_loaded_date: "2023-01-15",
             is_enabled: true,
         };
+
         server
             .mockEndpoint()
             .post("/api/provider-credentialing-span/v2")
@@ -1883,6 +1888,7 @@ describe("V2Client", () => {
             payer_loaded_date: "2023-01-15",
             is_enabled: true,
         };
+
         server
             .mockEndpoint()
             .get("/api/provider-credentialing-span/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -2392,6 +2398,7 @@ describe("V2Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/provider-credentialing-span/v2")
@@ -2949,6 +2956,7 @@ describe("V2Client", () => {
             payer_loaded_date: "2023-01-15",
             is_enabled: true,
         };
+
         server
             .mockEndpoint()
             .patch("/api/provider-credentialing-span/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

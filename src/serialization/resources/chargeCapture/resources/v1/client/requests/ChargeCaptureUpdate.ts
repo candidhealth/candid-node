@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
 import type * as serializers from "../../../../../../index";
+import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { ChargeCaptureData } from "../../types/ChargeCaptureData";
 import { ChargeCaptureStatus } from "../../types/ChargeCaptureStatus";
 
@@ -24,6 +25,7 @@ export const ChargeCaptureUpdate: core.serialization.Schema<
         "attachment_external_document_ids",
         core.serialization.list(core.serialization.string()).optional(),
     ),
+    metadata: core.serialization.list(SchemaInstance).optional(),
 });
 
 export declare namespace ChargeCaptureUpdate {
@@ -36,5 +38,6 @@ export declare namespace ChargeCaptureUpdate {
         patient_external_id?: string | null;
         status?: ChargeCaptureStatus.Raw | null;
         attachment_external_document_ids?: string[] | null;
+        metadata?: SchemaInstance.Raw[] | null;
     }
 }

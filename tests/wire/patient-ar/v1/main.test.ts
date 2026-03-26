@@ -36,6 +36,7 @@ describe("V1Client", () => {
             ],
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/patient-ar/v1/inventory")
@@ -139,6 +140,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/patient-ar/v1/invoice-itemization/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

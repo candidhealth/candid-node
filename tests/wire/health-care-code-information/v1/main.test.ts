@@ -183,6 +183,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .put("/api/health-care-code-informations/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -559,6 +560,7 @@ describe("V1Client", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/api/health-care-code-informations/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

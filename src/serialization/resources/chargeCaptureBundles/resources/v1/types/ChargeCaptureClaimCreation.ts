@@ -26,7 +26,7 @@ export declare namespace ChargeCaptureClaimCreation {
         id: ChargeCaptureClaimCreationId.Raw;
         created_encounter_id?: EncounterId.Raw | null;
         status: ChargeCaptureClaimCreationStatus.Raw;
-        characteristics: Record<string, unknown | null | undefined>;
+        characteristics: Record<string, unknown | null>;
         errors: ChargeCaptureError.Raw[];
         encounter_creation_input?: ChargeCaptureData.Raw | null;
     }

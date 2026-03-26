@@ -25,6 +25,7 @@ export class V2Client {
      * This API provides access to Professional Contracts. For Professional and Institutional Contracts use Contracts V3.
      *
      * @param {CandidApi.contracts.v2.ContractId} contract_id
+     * @param {CandidApi.contracts.v2.GetContractRequest} request
      * @param {V2Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -32,21 +33,27 @@ export class V2Client {
      */
     public get(
         contract_id: CandidApi.contracts.v2.ContractId,
+        request: CandidApi.contracts.v2.GetContractRequest = {},
         requestOptions?: V2Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>
     > {
-        return core.HttpResponsePromise.fromPromise(this.__get(contract_id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(contract_id, request, requestOptions));
     }
 
     private async __get(
         contract_id: CandidApi.contracts.v2.ContractId,
+        request: CandidApi.contracts.v2.GetContractRequest = {},
         requestOptions?: V2Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<CandidApi.contracts.v2.ContractWithProviders, CandidApi.contracts.v2.get.Error>
         >
     > {
+        const { organizationId } = request;
+        const _queryParams: Record<string, unknown> = {
+            organization_id: organizationId,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -64,7 +71,7 @@ export class V2Client {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

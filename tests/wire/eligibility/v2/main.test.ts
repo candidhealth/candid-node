@@ -17,6 +17,7 @@ describe("V2Client", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/api/eligibility/v2/availity")
@@ -48,6 +49,7 @@ describe("V2Client", () => {
         });
         const rawRequestBody = { key: "value" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/api/eligibility/v2/availity")

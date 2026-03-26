@@ -139,6 +139,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server
             .mockEndpoint()
             .get("/api/insurance-refunds/v1")
@@ -362,6 +363,7 @@ describe("V1Client", () => {
             ],
             refund_reason: "OVERCHARGED",
         };
+
         server
             .mockEndpoint()
             .get("/api/insurance-refunds/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -528,6 +530,7 @@ describe("V1Client", () => {
             ],
             refund_reason: "OVERCHARGED",
         };
+
         server
             .mockEndpoint()
             .post("/api/insurance-refunds/v1")
@@ -703,6 +706,7 @@ describe("V1Client", () => {
             ],
             refund_reason: "OVERCHARGED",
         };
+
         server
             .mockEndpoint()
             .patch("/api/insurance-refunds/v1/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

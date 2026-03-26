@@ -97,6 +97,7 @@ describe("V3Client", () => {
             medicare_insurance_types: { type: "allApply" },
             medicaid_insurance_types: { type: "allApply" },
         };
+
         server
             .mockEndpoint()
             .get("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -381,6 +382,7 @@ describe("V3Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server.mockEndpoint().get("/api/contracts/v3").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contracts.v3.getMulti();
@@ -679,6 +681,7 @@ describe("V3Client", () => {
             medicare_insurance_types: { type: "allApply" },
             medicaid_insurance_types: { type: "allApply" },
         };
+
         server
             .mockEndpoint()
             .post("/api/contracts/v3")
@@ -929,6 +932,7 @@ describe("V3Client", () => {
             medicare_insurance_types: { type: "allApply" },
             medicaid_insurance_types: { type: "allApply" },
         };
+
         server
             .mockEndpoint()
             .patch("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -1042,6 +1046,302 @@ describe("V3Client", () => {
         });
     });
 
+    test("get_contract_providers", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = {
+            items: [
+                {
+                    organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    employment_status: "ACTIVE",
+                    employment_start_date: "employment_start_date",
+                    employment_termination_date: "employment_termination_date",
+                    npi: "npi",
+                    is_rendering: true,
+                    is_billing: true,
+                    first_name: "first_name",
+                    last_name: "last_name",
+                    organization_name: "organization_name",
+                    provider_type: "INDIVIDUAL",
+                    tax_id: "tax_id",
+                    taxonomy_code: "taxonomy_code",
+                    license_type: "MD",
+                    ptan: "ptan",
+                    medicaid_provider_id: "medicaid_provider_id",
+                    addresses: [
+                        {
+                            address: {
+                                zip_plus_four_code: "zip_plus_four_code",
+                                address1: "address1",
+                                address2: "address2",
+                                city: "city",
+                                state: "AA",
+                                zip_code: "zip_code",
+                            },
+                            address_type: "DEFAULT",
+                        },
+                        {
+                            address: {
+                                zip_plus_four_code: "zip_plus_four_code",
+                                address1: "address1",
+                                address2: "address2",
+                                city: "city",
+                                state: "AA",
+                                zip_code: "zip_code",
+                            },
+                            address_type: "DEFAULT",
+                        },
+                    ],
+                },
+                {
+                    organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    employment_status: "ACTIVE",
+                    employment_start_date: "employment_start_date",
+                    employment_termination_date: "employment_termination_date",
+                    npi: "npi",
+                    is_rendering: true,
+                    is_billing: true,
+                    first_name: "first_name",
+                    last_name: "last_name",
+                    organization_name: "organization_name",
+                    provider_type: "INDIVIDUAL",
+                    tax_id: "tax_id",
+                    taxonomy_code: "taxonomy_code",
+                    license_type: "MD",
+                    ptan: "ptan",
+                    medicaid_provider_id: "medicaid_provider_id",
+                    addresses: [
+                        {
+                            address: {
+                                zip_plus_four_code: "zip_plus_four_code",
+                                address1: "address1",
+                                address2: "address2",
+                                city: "city",
+                                state: "AA",
+                                zip_code: "zip_code",
+                            },
+                            address_type: "DEFAULT",
+                        },
+                        {
+                            address: {
+                                zip_plus_four_code: "zip_plus_four_code",
+                                address1: "address1",
+                                address2: "address2",
+                                city: "city",
+                                state: "AA",
+                                zip_code: "zip_code",
+                            },
+                            address_type: "DEFAULT",
+                        },
+                    ],
+                },
+            ],
+            prev_page_token: "prev_page_token",
+            next_page_token: "next_page_token",
+        };
+
+        server
+            .mockEndpoint()
+            .get("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/providers")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.contracts.v3.getContractProviders(
+            CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        );
+        expect(response).toEqual({
+            body: {
+                items: [
+                    {
+                        organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        employmentStatus: "ACTIVE",
+                        employmentStartDate: CandidApi.Date_("employment_start_date"),
+                        employmentTerminationDate: CandidApi.Date_("employment_termination_date"),
+                        npi: "npi",
+                        isRendering: true,
+                        isBilling: true,
+                        firstName: "first_name",
+                        lastName: "last_name",
+                        organizationName: "organization_name",
+                        providerType: "INDIVIDUAL",
+                        taxId: "tax_id",
+                        taxonomyCode: "taxonomy_code",
+                        licenseType: "MD",
+                        ptan: "ptan",
+                        medicaidProviderId: "medicaid_provider_id",
+                        addresses: [
+                            {
+                                address: {
+                                    zipPlusFourCode: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zipCode: "zip_code",
+                                },
+                                addressType: "DEFAULT",
+                            },
+                            {
+                                address: {
+                                    zipPlusFourCode: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zipCode: "zip_code",
+                                },
+                                addressType: "DEFAULT",
+                            },
+                        ],
+                    },
+                    {
+                        organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        employmentStatus: "ACTIVE",
+                        employmentStartDate: CandidApi.Date_("employment_start_date"),
+                        employmentTerminationDate: CandidApi.Date_("employment_termination_date"),
+                        npi: "npi",
+                        isRendering: true,
+                        isBilling: true,
+                        firstName: "first_name",
+                        lastName: "last_name",
+                        organizationName: "organization_name",
+                        providerType: "INDIVIDUAL",
+                        taxId: "tax_id",
+                        taxonomyCode: "taxonomy_code",
+                        licenseType: "MD",
+                        ptan: "ptan",
+                        medicaidProviderId: "medicaid_provider_id",
+                        addresses: [
+                            {
+                                address: {
+                                    zipPlusFourCode: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zipCode: "zip_code",
+                                },
+                                addressType: "DEFAULT",
+                            },
+                            {
+                                address: {
+                                    zipPlusFourCode: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zipCode: "zip_code",
+                                },
+                                addressType: "DEFAULT",
+                            },
+                        ],
+                    },
+                ],
+                prevPageToken: CandidApi.PageToken("prev_page_token"),
+                nextPageToken: CandidApi.PageToken("next_page_token"),
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("add_contract_providers", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = { rendering_provider_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"] };
+        const rawResponseBody = { provider_count: 1, added_count: 1, ignored_count: 1 };
+
+        server
+            .mockEndpoint()
+            .post("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/providers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.contracts.v3.addContractProviders(
+            CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+            {
+                renderingProviderIds: new Set([
+                    CandidApi.contracts.v3.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                ]),
+            },
+        );
+        expect(response).toEqual({
+            body: {
+                providerCount: 1,
+                addedCount: 1,
+                ignoredCount: 1,
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("remove_contract_providers", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = { rendering_provider_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"] };
+        const rawResponseBody = { provider_count: 1 };
+
+        server
+            .mockEndpoint()
+            .delete("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/providers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.contracts.v3.removeContractProviders(
+            CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+            {
+                renderingProviderIds: new Set([
+                    CandidApi.contracts.v3.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                ]),
+            },
+        );
+        expect(response).toEqual({
+            body: {
+                providerCount: 1,
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
     test("create_contract_service_facility", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);
@@ -1062,6 +1362,7 @@ describe("V3Client", () => {
             service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             provider_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
         };
+
         server
             .mockEndpoint()
             .post("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/service-facilities")
@@ -1110,6 +1411,7 @@ describe("V3Client", () => {
             service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             provider_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
         };
+
         server
             .mockEndpoint()
             .patch(

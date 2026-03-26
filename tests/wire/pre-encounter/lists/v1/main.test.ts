@@ -1548,6 +1548,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server.mockEndpoint().get("/lists/v1/patient").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.preEncounter.lists.v1.getPatientList();
@@ -5017,6 +5018,7 @@ describe("V1Client", () => {
             prev_page_token: "prev_page_token",
             total: 1,
         };
+
         server
             .mockEndpoint()
             .get("/lists/v1/appointment")

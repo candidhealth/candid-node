@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCaptureClaimCreationId";
 import { ChargeCaptureId } from "../../../../commons/types/ChargeCaptureId";
 import { PatientExternalId } from "../../../../commons/types/PatientExternalId";
+import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { ChargeCaptureData } from "./ChargeCaptureData";
 import { ChargeCaptureError } from "./ChargeCaptureError";
 import { ChargeCapturePostBilledChange } from "./ChargeCapturePostBilledChange";
@@ -27,6 +28,7 @@ export const ChargeCapture: core.serialization.ObjectSchema<
         "claim_creation_category",
         core.serialization.string().optional(),
     ),
+    metadata: core.serialization.list(SchemaInstance).optional(),
     error: ChargeCaptureError.optional(),
     updates: core.serialization.list(ChargeCapturePostBilledChange),
     claimCreationId: core.serialization.property("claim_creation_id", ChargeCaptureClaimCreationId.optional()),
@@ -43,6 +45,7 @@ export declare namespace ChargeCapture {
         ehr_source_url?: string | null;
         originating_system?: string | null;
         claim_creation_category?: string | null;
+        metadata?: SchemaInstance.Raw[] | null;
         error?: ChargeCaptureError.Raw | null;
         updates: ChargeCapturePostBilledChange.Raw[];
         claim_creation_id?: ChargeCaptureClaimCreationId.Raw | null;

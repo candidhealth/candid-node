@@ -12,6 +12,11 @@ export interface ChargeCapture {
     ehrSourceUrl?: string;
     originatingSystem?: string;
     claimCreationCategory?: string;
+    /**
+     * Key-value pairs that adhere to metadata schemas.
+     * Multiple metadata instances can be associated with a charge capture.
+     */
+    metadata?: CandidApi.customSchemas.v1.SchemaInstance[];
     error?: CandidApi.chargeCapture.v1.ChargeCaptureError;
     /** This list of updates will always return at most 1 update that is not resolved. The singular update will contain the difference between the updated charge and the created encounter. */
     updates: CandidApi.chargeCapture.v1.ChargeCapturePostBilledChange[];

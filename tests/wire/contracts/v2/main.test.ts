@@ -96,6 +96,7 @@ describe("V2Client", () => {
             medicare_insurance_types: { type: "allApply" },
             medicaid_insurance_types: { type: "allApply" },
         };
+
         server
             .mockEndpoint()
             .get("/api/contracts/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
@@ -377,6 +378,7 @@ describe("V2Client", () => {
             prev_page_token: "prev_page_token",
             next_page_token: "next_page_token",
         };
+
         server.mockEndpoint().get("/api/contracts/v2").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contracts.v2.getMulti();
@@ -670,6 +672,7 @@ describe("V2Client", () => {
             medicare_insurance_types: { type: "allApply" },
             medicaid_insurance_types: { type: "allApply" },
         };
+
         server
             .mockEndpoint()
             .post("/api/contracts/v2")
@@ -916,6 +919,7 @@ describe("V2Client", () => {
             medicare_insurance_types: { type: "allApply" },
             medicaid_insurance_types: { type: "allApply" },
         };
+
         server
             .mockEndpoint()
             .patch("/api/contracts/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")

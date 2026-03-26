@@ -250,6 +250,7 @@ describe("V2Client", () => {
             prior_authorization_number: "prior_authorization_number",
             external_id: "external_id",
         };
+
         server
             .mockEndpoint()
             .post("/api/service-lines/v2")
@@ -780,6 +781,7 @@ describe("V2Client", () => {
             prior_authorization_number: "prior_authorization_number",
             external_id: "external_id",
         };
+
         server
             .mockEndpoint()
             .post("/api/service-lines/v2/universal")
@@ -1309,6 +1311,7 @@ describe("V2Client", () => {
             prior_authorization_number: "prior_authorization_number",
             external_id: "external_id",
         };
+
         server
             .mockEndpoint()
             .patch("/api/service-lines/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/universal")
@@ -1837,6 +1840,7 @@ describe("V2Client", () => {
             prior_authorization_number: "prior_authorization_number",
             external_id: "external_id",
         };
+
         server
             .mockEndpoint()
             .patch("/api/service-lines/v2/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
