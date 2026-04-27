@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
+import { OrganizationId } from "../../../../common/types/OrganizationId";
 import { PatientId } from "../../../../common/types/PatientId";
 import { CoverageStatus } from "../../../../coverages/resources/v1/types/CoverageStatus";
 import { MutablePatientWithMrn } from "../../../../patients/resources/v1/types/MutablePatientWithMrn";
@@ -13,6 +14,7 @@ export const Visit: core.serialization.ObjectSchema<
     CandidApi.preEncounter.appointments.v1.Visit
 > = core.serialization.object({
     patientId: core.serialization.property("patient_id", PatientId),
+    organizationId: core.serialization.property("organization_id", OrganizationId),
     patient: MutablePatientWithMrn,
     startTime: core.serialization.property("start_time", core.serialization.date()),
     status: AppointmentStatus,
@@ -23,6 +25,7 @@ export const Visit: core.serialization.ObjectSchema<
 export declare namespace Visit {
     export interface Raw {
         patient_id: PatientId.Raw;
+        organization_id: OrganizationId.Raw;
         patient: MutablePatientWithMrn.Raw;
         start_time: string;
         status: AppointmentStatus.Raw;

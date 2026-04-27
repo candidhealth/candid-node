@@ -62,6 +62,7 @@ export class V1Client {
             sort,
             sortDirection,
             pageToken,
+            organizationId,
         } = request;
         const _queryParams: Record<string, unknown> = {
             plan_group_name: planGroupName,
@@ -89,6 +90,7 @@ export class V1Client {
                     ? serializers.SortDirection.jsonOrThrow(sortDirection, { unrecognizedObjectKeys: "strip" })
                     : undefined,
             page_token: pageToken,
+            organization_id: organizationId,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -134,6 +136,7 @@ export class V1Client {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.payerPlanGroups.v1.getMulti.Error.Raw)?.errorName) {
                 case "UnprocessableEntityError":
+                case "UnauthorizedError":
                     return {
                         data: {
                             ok: false,

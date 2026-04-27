@@ -420,7 +420,8 @@ import type * as CandidApi from "../../../../../index";
  *                 }
  *             }],
  *         createdAt: new Date("2023-01-01T00:00:00.000Z"),
- *         nextResponsibleParty: CandidApi.NextResponsibleParty.Primary
+ *         nextResponsibleParty: CandidApi.NextResponsibleParty.Primary,
+ *         organizationId: CandidApi.OrganizationId("6df0c51d-2b4c-4af8-acc1-5c0b589e9b26")
  *     }
  */
 export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
@@ -472,6 +473,8 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     operatingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
     /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has secondary responsibility for surgical procedures in institutional claims processing.  Only used when operating_provider is also set. */
     otherOperatingProvider?: CandidApi.encounterProviders.v2.EncounterProvider;
+    /** The treating provider is the provider who treats the patient. This is only supported for professional encounters. */
+    treatingProvider?: CandidApi.encounterProviders.v2.EncounterAdditionalProvider;
     relatedCausesInformation?: CandidApi.relatedCauses.v1.RelatedCausesInformation;
     /** 837p Loop2010 REF02, CMS1500 Box 11b */
     propertyCasualtyClaimNumber?: string;
@@ -555,4 +558,5 @@ export interface Encounter extends CandidApi.encounters.v4.EncounterBase {
     createdAt: Date;
     /** The party (payer, patient, etc.) responsible for the remainder of the balance on the claim. */
     nextResponsibleParty?: CandidApi.NextResponsibleParty;
+    organizationId?: CandidApi.OrganizationId;
 }

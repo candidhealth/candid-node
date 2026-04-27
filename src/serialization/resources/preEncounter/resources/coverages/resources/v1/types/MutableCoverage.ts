@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
+import { UniversalServiceIdentifier } from "../../../../appointments/resources/v1/types/UniversalServiceIdentifier";
 import { PatientId } from "../../../../common/types/PatientId";
 import { Relationship } from "../../../../common/types/Relationship";
 import { EligibilityCheckMetadata } from "../../../../eligibilityChecks/resources/v1/types/EligibilityCheckMetadata";
@@ -30,6 +31,10 @@ export const MutableCoverage: core.serialization.ObjectSchema<
     benefits: CoverageBenefits.optional(),
     orcon: core.serialization.boolean().optional(),
     autoUpdateEnabled: core.serialization.property("auto_update_enabled", core.serialization.boolean().optional()),
+    previousAppointmentCopays: core.serialization.property(
+        "previous_appointment_copays",
+        core.serialization.partialRecord(UniversalServiceIdentifier, core.serialization.number().optional()).optional(),
+    ),
 });
 
 export declare namespace MutableCoverage {
@@ -45,5 +50,6 @@ export declare namespace MutableCoverage {
         benefits?: CoverageBenefits.Raw | null;
         orcon?: boolean | null;
         auto_update_enabled?: boolean | null;
+        previous_appointment_copays?: Record<UniversalServiceIdentifier.Raw, number | null | undefined> | null;
     }
 }

@@ -1,3 +1,4 @@
+export * from "./AdditionalDetail";
 export * from "./Address";
 export * from "./BenefitsRelatedEntity";
 export * from "./BenefitType";

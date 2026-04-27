@@ -10,10 +10,12 @@ import { EncounterId } from "../../../../commons/types/EncounterId";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { LinkUrl } from "../../../../commons/types/LinkUrl";
 import { NextResponsibleParty } from "../../../../commons/types/NextResponsibleParty";
+import { OrganizationId } from "../../../../commons/types/OrganizationId";
 import { State } from "../../../../commons/types/State";
 import { WorkQueueId } from "../../../../commons/types/WorkQueueId";
 import { SchemaInstance } from "../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { Diagnosis } from "../../../../diagnoses/types/Diagnosis";
+import { EncounterAdditionalProvider } from "../../../../encounterProviders/resources/v2/types/EncounterAdditionalProvider";
 import { EncounterProvider } from "../../../../encounterProviders/resources/v2/types/EncounterProvider";
 import { Guarantor } from "../../../../guarantor/resources/v1/types/Guarantor";
 import { Patient } from "../../../../individual/types/Patient";
@@ -67,6 +69,7 @@ export const Encounter: core.serialization.ObjectSchema<
         dischargeStatus: core.serialization.property("discharge_status", PatientDischargeStatusCode.optional()),
         operatingProvider: core.serialization.property("operating_provider", EncounterProvider.optional()),
         otherOperatingProvider: core.serialization.property("other_operating_provider", EncounterProvider.optional()),
+        treatingProvider: core.serialization.property("treating_provider", EncounterAdditionalProvider.optional()),
         relatedCausesInformation: core.serialization.property(
             "related_causes_information",
             RelatedCausesInformation.optional(),
@@ -137,6 +140,7 @@ export const Encounter: core.serialization.ObjectSchema<
         lastSubmittedAt: core.serialization.property("last_submitted_at", core.serialization.date().optional()),
         createdAt: core.serialization.property("created_at", core.serialization.date()),
         nextResponsibleParty: core.serialization.property("next_responsible_party", NextResponsibleParty.optional()),
+        organizationId: core.serialization.property("organization_id", OrganizationId.optional()),
     })
     .extend(EncounterBase);
 
@@ -159,6 +163,7 @@ export declare namespace Encounter {
         discharge_status?: PatientDischargeStatusCode.Raw | null;
         operating_provider?: EncounterProvider.Raw | null;
         other_operating_provider?: EncounterProvider.Raw | null;
+        treating_provider?: EncounterAdditionalProvider.Raw | null;
         related_causes_information?: RelatedCausesInformation.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
@@ -196,5 +201,6 @@ export declare namespace Encounter {
         last_submitted_at?: string | null;
         created_at: string;
         next_responsible_party?: NextResponsibleParty.Raw | null;
+        organization_id?: OrganizationId.Raw | null;
     }
 }

@@ -421,7 +421,8 @@ import type * as CandidApi from "../../../../../index";
  *                         }
  *                     }],
  *                 createdAt: new Date("2023-01-01T00:00:00.000Z"),
- *                 nextResponsibleParty: CandidApi.NextResponsibleParty.Primary
+ *                 nextResponsibleParty: CandidApi.NextResponsibleParty.Primary,
+ *                 organizationId: CandidApi.OrganizationId("6df0c51d-2b4c-4af8-acc1-5c0b589e9b26")
  *             }]
  *     }
  */

@@ -37,7 +37,10 @@ export interface MutablePatient {
     /** Other phone numbers for the patient. */
     otherTelecoms: CandidApi.preEncounter.ContactPoint[];
     email?: string;
+    /** Use electronic_communication_consent for granular channel-level consent. This field is kept in sync automatically but should not be used for new integrations. */
     electronicCommunicationOptIn?: boolean;
+    /** Granular consent for electronic communication channels. */
+    electronicCommunicationConsent?: CandidApi.preEncounter.patients.v1.ElectronicCommunicationConsent;
     photo?: string;
     language?: string;
     /** Information about the upstream system that owns this patient data.  Leave unset if Candid owns patient data. */

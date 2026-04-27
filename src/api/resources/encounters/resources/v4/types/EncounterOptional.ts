@@ -79,8 +79,8 @@ export interface EncounterOptional {
      */
     lastMenstrualPeriodDate?: string;
     /**
-     * 837i Loop2300, CLM-1300 Box 20
-     * Code indicating the reason why a request was delayed
+     * Code indicating the reason why a claim submission was delayed.
+     * Corresponds to CLM-20 in the 837 specification (both professional and institutional).
      */
     delayReasonCode?: CandidApi.DelayReasonCode;
     /**

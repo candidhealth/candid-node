@@ -277,8 +277,18 @@ export class V1Client {
             >
         >
     > {
-        const { name, category, categoriesExact, clinicalTrialIds, enabled, sort, sortDirection, limit, pageToken } =
-            request;
+        const {
+            name,
+            category,
+            categoriesExact,
+            clinicalTrialIds,
+            enabled,
+            sort,
+            sortDirection,
+            limit,
+            pageToken,
+            organizationId,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             name,
             category,
@@ -297,6 +307,7 @@ export class V1Client {
                     : undefined,
             limit,
             page_token: pageToken,
+            organization_id: organizationId,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -342,6 +353,7 @@ export class V1Client {
         if (_response.error.reason === "status-code") {
             switch ((_response.error.body as serializers.nonInsurancePayers.v1.getMulti.Error.Raw)?.errorName) {
                 case "UnprocessableEntityError":
+                case "UnauthorizedError":
                     return {
                         data: {
                             ok: false,

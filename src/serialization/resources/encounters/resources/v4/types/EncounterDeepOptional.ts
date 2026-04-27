@@ -13,6 +13,7 @@ import { InitialReferringProviderUpdateWithOptionalAddress } from "../../../../e
 import { ReferringProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/ReferringProviderUpdateWithOptionalAddress";
 import { RenderingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/RenderingProviderUpdateWithOptionalAddress";
 import { SupervisingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdateWithOptionalAddress";
+import { TreatingProvider } from "../../../../encounterProviders/resources/v2/types/TreatingProvider";
 import { GuarantorOptional } from "../../../../guarantor/resources/v1/types/GuarantorOptional";
 import { PatientUpdateWithOptionalAddress } from "../../../../individual/types/PatientUpdateWithOptionalAddress";
 import { SubscriberCreateOptional } from "../../../../individual/types/SubscriberCreateOptional";
@@ -95,6 +96,7 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
             "supervising_provider",
             SupervisingProviderUpdateWithOptionalAddress.optional(),
         ),
+        treatingProvider: core.serialization.property("treating_provider", TreatingProvider.optional()),
         billingProvider: core.serialization.property(
             "billing_provider",
             BillingProviderUpdateWithOptionalAddress.optional(),
@@ -140,6 +142,7 @@ export declare namespace EncounterDeepOptional {
         initial_referring_provider?: InitialReferringProviderUpdateWithOptionalAddress.Raw | null;
         referring_provider?: ReferringProviderUpdateWithOptionalAddress.Raw | null;
         supervising_provider?: SupervisingProviderUpdateWithOptionalAddress.Raw | null;
+        treating_provider?: TreatingProvider.Raw | null;
         billing_provider?: BillingProviderUpdateWithOptionalAddress.Raw | null;
         pay_to_address?: StreetAddressShortZipOptional.Raw | null;
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;

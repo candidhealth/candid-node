@@ -23,6 +23,7 @@ import { Authorization } from "./Authorization";
 import { Contact } from "./Contact";
 import { CoveragesForRelatedCauses } from "./CoveragesForRelatedCauses";
 import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
+import { ElectronicCommunicationConsent } from "./ElectronicCommunicationConsent";
 import { ExternalProvenance } from "./ExternalProvenance";
 import { FilingOrder } from "./FilingOrder";
 import { Guarantor } from "./Guarantor";
@@ -61,6 +62,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
     electronicCommunicationOptIn: core.serialization.property(
         "electronic_communication_opt_in",
         core.serialization.boolean().optional(),
+    ),
+    electronicCommunicationConsent: core.serialization.property(
+        "electronic_communication_consent",
+        ElectronicCommunicationConsent.optional(),
     ),
     photo: core.serialization.string().optional(),
     language: core.serialization.string().optional(),
@@ -129,6 +134,7 @@ export declare namespace MutablePatient {
         other_telecoms: ContactPoint.Raw[];
         email?: string | null;
         electronic_communication_opt_in?: boolean | null;
+        electronic_communication_consent?: ElectronicCommunicationConsent.Raw | null;
         photo?: string | null;
         language?: string | null;
         external_provenance?: ExternalProvenance.Raw | null;

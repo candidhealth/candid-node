@@ -1536,6 +1536,77 @@ await client.contracts.v3.getContractProviders(CandidApi.ContractId("d5e9c84f-c2
 </dl>
 </details>
 
+<details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">getContractProviderCredentialingSpans</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractProviderCredentialingPage, CandidApi.contracts.v3.getContractProviderCredentialingSpans.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns rendering providers linked to a contract with their credentialing spans, scoped to the contract's contracting provider and payer. Providers with no matching spans are included with an empty list.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v3.getContractProviderCredentialingSpans(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v3.GetContractProviderCredentialingSpansRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.contracts.v3.<a href="/src/api/resources/contracts/resources/v3/client/Client.ts">addContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.AddContractProvidersResponse, CandidApi.contracts.v3.addContractProviders.Error&gt;</code></summary>
 <dl>
 <dd>
@@ -13228,6 +13299,438 @@ await client.preEncounter.notes.v1.deactivate(CandidApi.NoteId("id"), "version")
 <dd>
 
 **version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## PreEncounter OrganizationExternalProviders V1
+<details><summary><code>client.preEncounter.organizationExternalProviders.v1.<a href="/src/api/resources/preEncounter/resources/organizationExternalProviders/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.OrganizationExternalProvider, CandidApi.preEncounter.organizationExternalProviders.v1.get.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets an organization external provider by ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.organizationExternalProviders.v1.get(CandidApi.OrganizationExternalProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.OrganizationExternalProviderId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.organizationExternalProviders.v1.<a href="/src/api/resources/preEncounter/resources/organizationExternalProviders/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationExternalProviderPage, CandidApi.preEncounter.organizationExternalProviders.v1.getMulti.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for organization external providers that match the query parameters.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.organizationExternalProviders.v1.getMulti();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.organizationExternalProviders.v1.OrganizationExternalProviderGetMultiRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.organizationExternalProviders.v1.<a href="/src/api/resources/preEncounter/resources/organizationExternalProviders/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationExternalProvider, CandidApi.preEncounter.organizationExternalProviders.v1.create.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new organization external provider. BadRequestError is returned when the NPI is already in use.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.organizationExternalProviders.v1.create({
+    name: {
+        family: "family",
+        given: ["given", "given"],
+        use: "USUAL"
+    },
+    types: ["REFERRING", "REFERRING"]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableOrganizationExternalProvider` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.organizationExternalProviders.v1.<a href="/src/api/resources/preEncounter/resources/organizationExternalProviders/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.OrganizationExternalProvider, CandidApi.preEncounter.organizationExternalProviders.v1.update.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an organization external provider. The path must contain the next version number to prevent race conditions. For example, if the current version of the provider is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the provider. Updating historic versions is not supported. BadRequestError is returned when the NPI is already in use by another provider.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.organizationExternalProviders.v1.update(CandidApi.OrganizationExternalProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "version", {
+    name: {
+        family: "family",
+        given: ["given", "given"],
+        use: "USUAL"
+    },
+    types: ["REFERRING", "REFERRING"]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.OrganizationExternalProviderId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableOrganizationExternalProvider` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.organizationExternalProviders.v1.<a href="/src/api/resources/preEncounter/resources/organizationExternalProviders/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.organizationExternalProviders.v1.deactivate.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sets an organization external provider as deactivated. The path must contain the most recent version plus 1 to prevent race conditions. Deactivating historic versions is not supported.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.organizationExternalProviders.v1.deactivate(CandidApi.OrganizationExternalProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "version");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.OrganizationExternalProviderId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.organizationExternalProviders.v1.<a href="/src/api/resources/preEncounter/resources/organizationExternalProviders/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse&lt;CandidApi.OrganizationExternalProvider[], CandidApi.preEncounter.organizationExternalProviders.v1.scan.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Scans up to 1000 organization external provider updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+
+**Polling Pattern:**
+To continuously poll for updates without gaps:
+1. Make your initial request with a `since` timestamp (e.g., `since=2020-01-01T13:00:00.000Z`)
+2. The API returns 100 by default and up to 1000 records, sorted by `updated_at` ascending
+3. Find the `updated_at` value from the last record in the response
+4. Use that `updated_at` value as the `since` parameter in your next request
+5. Repeat steps 2-4 to ingest updates until you receive an empty list
+
+**Important Notes:**
+- The `since` parameter is inclusive, so you may receive the last record from the previous batch again (you can deduplicate by ID and version)
+- All records include `updated_at`, `id`, `version`, `deactivated`, and `updating_user` fields for tracking changes
+- Timestamps have millisecond resolution for precise ordering
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.organizationExternalProviders.v1.scan({
+    since: new Date("2024-01-15T09:30:00.000Z")
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.organizationExternalProviders.v1.OrganizationExternalProviderScanRequest` 
     
 </dd>
 </dl>

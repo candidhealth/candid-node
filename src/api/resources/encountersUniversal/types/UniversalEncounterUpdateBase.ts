@@ -54,6 +54,8 @@ export interface UniversalEncounterUpdateBase extends CandidApi.encounters.v4.En
     serviceFacility?: CandidApi.EncounterServiceFacilityUpdate;
     /** Required when the rendering provider is supervised by a physician. If not required by this implementation guide, do not send. */
     supervisingProvider?: CandidApi.encounterProviders.v2.SupervisingProviderUpdate;
+    /** The treating provider is the provider who treats the patient. This is supported for professional and institutional encounters. */
+    treatingProvider?: CandidApi.encounterProviders.v2.TreatingProviderUpdate;
     /** The billing provider is the provider or business entity submitting the claim. Billing provider may be, but is not necessarily, the same person/NPI as the rendering provider. From a payer's perspective, this represents the person or entity being reimbursed. When a contract exists with the target payer, the billing provider should be the entity contracted with the payer. In some circumstances, this will be an individual provider. In that case, submit that provider's NPI and the tax ID (TIN) that the provider gave to the payer during contracting. In other cases, the billing entity will be a medical group. If so, submit the group NPI and the group's tax ID. Box 33 on the CMS-1500 claim or Form Locator 1 on a UB-04 claim form. */
     billingProvider?: CandidApi.encounterProviders.v2.BillingProviderUpdate;
     /** Box 24B on the CMS-1500 claim form. 837p Loop2300, CLM-05-1. This box is not used on a UB-04 or 837i claim form. 02 for telemedicine, 11 for in-person. Full list [here](https://www.cms.gov/Medicare/Coding/place-of-service-codes/Place_of_Service_Code_Set). */

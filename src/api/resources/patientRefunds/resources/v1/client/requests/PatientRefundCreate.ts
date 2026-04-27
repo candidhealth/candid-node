@@ -30,4 +30,6 @@ export interface PatientRefundCreate {
     allocations: CandidApi.AllocationCreate[];
     invoice?: CandidApi.InvoiceId;
     refundReason?: CandidApi.RefundReason;
+    /** If true, the refund will be rejected if it would cause any account to be overdrafted. Defaults to false. */
+    raiseOnOverdraft?: boolean;
 }

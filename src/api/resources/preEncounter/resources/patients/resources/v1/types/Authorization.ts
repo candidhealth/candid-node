@@ -18,4 +18,6 @@ export interface Authorization {
     notes?: string;
     /** The NPI of the billing provider for which this authorization applies. */
     billingProviderNpi?: string;
+    /** When set, specifies the service facility for which this authorization applies. */
+    serviceFacility?: CandidApi.preEncounter.PatientServiceFacility;
 }

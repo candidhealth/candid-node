@@ -218,6 +218,7 @@ describe("V1Client", () => {
                             additional_notes: "additional_notes",
                         },
                     ],
+                    additional_details: [{ description: "description" }, { description: "description" }],
                 },
                 service_specific_coverage: [
                     {
@@ -268,6 +269,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     {
                         service_code: "1",
@@ -317,6 +319,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                 ],
                 benefits_related_entities: [
@@ -346,6 +349,7 @@ describe("V1Client", () => {
             },
             orcon: true,
             auto_update_enabled: true,
+            previous_appointment_copays: { MD_Visit: 1 },
         };
 
         server
@@ -604,6 +608,14 @@ describe("V1Client", () => {
                                 additionalNotes: "additional_notes",
                             },
                         ],
+                        additionalDetails: [
+                            {
+                                description: "description",
+                            },
+                            {
+                                description: "description",
+                            },
+                        ],
                     },
                     serviceSpecificCoverage: [
                         {
@@ -654,6 +666,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         {
                             serviceCode: "1",
@@ -703,6 +723,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                     ],
                     benefitsRelatedEntities: [
@@ -744,6 +772,9 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 autoUpdateEnabled: true,
+                previousAppointmentCopays: {
+                    MD_Visit: 1,
+                },
             },
             ok: true,
             headers: expect.any(Object),
@@ -963,6 +994,7 @@ describe("V1Client", () => {
                             additional_notes: "additional_notes",
                         },
                     ],
+                    additional_details: [{ description: "description" }, { description: "description" }],
                 },
                 service_specific_coverage: [
                     {
@@ -1013,6 +1045,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     {
                         service_code: "1",
@@ -1062,6 +1095,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                 ],
                 benefits_related_entities: [
@@ -1091,6 +1125,7 @@ describe("V1Client", () => {
             },
             orcon: true,
             auto_update_enabled: true,
+            previous_appointment_copays: { MD_Visit: 1 },
         };
 
         server
@@ -1353,6 +1388,14 @@ describe("V1Client", () => {
                                 additionalNotes: "additional_notes",
                             },
                         ],
+                        additionalDetails: [
+                            {
+                                description: "description",
+                            },
+                            {
+                                description: "description",
+                            },
+                        ],
                     },
                     serviceSpecificCoverage: [
                         {
@@ -1403,6 +1446,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         {
                             serviceCode: "1",
@@ -1452,6 +1503,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                     ],
                     benefitsRelatedEntities: [
@@ -1493,6 +1552,9 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 autoUpdateEnabled: true,
+                previousAppointmentCopays: {
+                    MD_Visit: 1,
+                },
             },
             ok: true,
             headers: expect.any(Object),
@@ -1644,6 +1706,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         service_specific_coverage: [
                             {
@@ -1652,6 +1715,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [{}, {}],
                             },
                             {
                                 service_code: "1",
@@ -1659,6 +1723,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [{}, {}],
                             },
                         ],
                         benefits_related_entities: [
@@ -1682,6 +1747,7 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     auto_update_enabled: true,
+                    previous_appointment_copays: { MD_Visit: 1 },
                 },
                 {
                     id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -1814,6 +1880,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         service_specific_coverage: [
                             {
@@ -1822,6 +1889,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [{}, {}],
                             },
                             {
                                 service_code: "1",
@@ -1829,6 +1897,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [{}, {}],
                             },
                         ],
                         benefits_related_entities: [
@@ -1852,6 +1921,7 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     auto_update_enabled: true,
+                    previous_appointment_copays: { MD_Visit: 1 },
                 },
             ],
             next_page_token: "next_page_token",
@@ -2016,6 +2086,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             serviceSpecificCoverage: [
                                 {
@@ -2024,6 +2095,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [{}, {}],
                                 },
                                 {
                                     serviceCode: "1",
@@ -2031,6 +2103,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [{}, {}],
                                 },
                             ],
                             benefitsRelatedEntities: [
@@ -2054,6 +2127,9 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         autoUpdateEnabled: true,
+                        previousAppointmentCopays: {
+                            MD_Visit: 1,
+                        },
                     },
                     {
                         id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -2200,6 +2276,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             serviceSpecificCoverage: [
                                 {
@@ -2208,6 +2285,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [{}, {}],
                                 },
                                 {
                                     serviceCode: "1",
@@ -2215,6 +2293,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [{}, {}],
                                 },
                             ],
                             benefitsRelatedEntities: [
@@ -2238,6 +2317,9 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         autoUpdateEnabled: true,
+                        previousAppointmentCopays: {
+                            MD_Visit: 1,
+                        },
                     },
                 ],
                 nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
@@ -2452,6 +2534,7 @@ describe("V1Client", () => {
                             additional_notes: "additional_notes",
                         },
                     ],
+                    additional_details: [{ description: "description" }, { description: "description" }],
                 },
                 service_specific_coverage: [
                     {
@@ -2502,6 +2585,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     {
                         service_code: "1",
@@ -2551,6 +2635,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                 ],
                 benefits_related_entities: [
@@ -2580,6 +2665,7 @@ describe("V1Client", () => {
             },
             orcon: true,
             auto_update_enabled: true,
+            previous_appointment_copays: { MD_Visit: 1 },
         };
 
         server
@@ -2821,6 +2907,14 @@ describe("V1Client", () => {
                                 additionalNotes: "additional_notes",
                             },
                         ],
+                        additionalDetails: [
+                            {
+                                description: "description",
+                            },
+                            {
+                                description: "description",
+                            },
+                        ],
                     },
                     serviceSpecificCoverage: [
                         {
@@ -2871,6 +2965,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         {
                             serviceCode: "1",
@@ -2920,6 +3022,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                     ],
                     benefitsRelatedEntities: [
@@ -2961,6 +3071,9 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 autoUpdateEnabled: true,
+                previousAppointmentCopays: {
+                    MD_Visit: 1,
+                },
             },
             ok: true,
             headers: expect.any(Object),
@@ -3115,6 +3228,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -3161,6 +3275,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -3206,6 +3321,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -3229,6 +3345,7 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 auto_update_enabled: true,
+                previous_appointment_copays: { MD_Visit: 1 },
             },
             {
                 id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -3365,6 +3482,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -3411,6 +3529,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -3456,6 +3575,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -3479,6 +3599,7 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 auto_update_enabled: true,
+                previous_appointment_copays: { MD_Visit: 1 },
             },
         ];
 
@@ -3644,6 +3765,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -3690,6 +3819,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -3735,6 +3865,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -3758,6 +3889,9 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     autoUpdateEnabled: true,
+                    previousAppointmentCopays: {
+                        MD_Visit: 1,
+                    },
                 },
                 {
                     id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -3908,6 +4042,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -3954,6 +4096,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -3999,6 +4142,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -4022,6 +4166,9 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     autoUpdateEnabled: true,
+                    previousAppointmentCopays: {
+                        MD_Visit: 1,
+                    },
                 },
             ],
             ok: true,
@@ -4177,6 +4324,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -4223,6 +4371,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -4268,6 +4417,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -4291,6 +4441,7 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 auto_update_enabled: true,
+                previous_appointment_copays: { MD_Visit: 1 },
             },
             {
                 id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -4427,6 +4578,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -4473,6 +4625,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -4518,6 +4671,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -4541,6 +4695,7 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 auto_update_enabled: true,
+                previous_appointment_copays: { MD_Visit: 1 },
             },
         ];
 
@@ -4698,6 +4853,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -4744,6 +4907,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -4789,6 +4953,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -4812,6 +4977,9 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     autoUpdateEnabled: true,
+                    previousAppointmentCopays: {
+                        MD_Visit: 1,
+                    },
                 },
                 {
                     id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -4962,6 +5130,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -5008,6 +5184,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -5053,6 +5230,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -5076,6 +5254,9 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     autoUpdateEnabled: true,
+                    previousAppointmentCopays: {
+                        MD_Visit: 1,
+                    },
                 },
             ],
             ok: true,
@@ -5231,6 +5412,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -5277,6 +5459,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -5322,6 +5505,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -5345,6 +5529,7 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 auto_update_enabled: true,
+                previous_appointment_copays: { MD_Visit: 1 },
             },
             {
                 id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -5481,6 +5666,7 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
+                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -5527,6 +5713,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -5572,6 +5759,7 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
+                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -5595,6 +5783,7 @@ describe("V1Client", () => {
                 },
                 orcon: true,
                 auto_update_enabled: true,
+                previous_appointment_copays: { MD_Visit: 1 },
             },
         ];
 
@@ -5760,6 +5949,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -5806,6 +6003,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -5851,6 +6049,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -5874,6 +6073,9 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     autoUpdateEnabled: true,
+                    previousAppointmentCopays: {
+                        MD_Visit: 1,
+                    },
                 },
                 {
                     id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -6024,6 +6226,14 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
+                            additionalDetails: [
+                                {
+                                    description: "description",
+                                },
+                                {
+                                    description: "description",
+                                },
+                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -6070,6 +6280,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -6115,6 +6326,7 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
+                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -6138,6 +6350,9 @@ describe("V1Client", () => {
                     },
                     orcon: true,
                     autoUpdateEnabled: true,
+                    previousAppointmentCopays: {
+                        MD_Visit: 1,
+                    },
                 },
             ],
             ok: true,
@@ -6351,6 +6566,7 @@ describe("V1Client", () => {
                             in_network_flat: [],
                             out_of_network: {},
                             out_of_network_flat: [],
+                            additional_details: [],
                         },
                         service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                         benefits_related_entities: [{}, {}],
@@ -6492,6 +6708,7 @@ describe("V1Client", () => {
                                 inNetworkFlat: [],
                                 outOfNetwork: {},
                                 outOfNetworkFlat: [],
+                                additionalDetails: [],
                             },
                             serviceSpecificCoverage: [
                                 {

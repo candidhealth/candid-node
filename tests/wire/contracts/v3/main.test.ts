@@ -1260,6 +1260,1512 @@ describe("V3Client", () => {
         });
     });
 
+    test("get_contract_provider_credentialing_spans", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = {
+            items: [
+                {
+                    provider: {
+                        organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        employment_status: "ACTIVE",
+                        employment_start_date: "employment_start_date",
+                        employment_termination_date: "employment_termination_date",
+                        npi: "npi",
+                        is_rendering: true,
+                        is_billing: true,
+                        first_name: "first_name",
+                        last_name: "last_name",
+                        organization_name: "organization_name",
+                        provider_type: "INDIVIDUAL",
+                        tax_id: "tax_id",
+                        taxonomy_code: "taxonomy_code",
+                        license_type: "MD",
+                        ptan: "ptan",
+                        medicaid_provider_id: "medicaid_provider_id",
+                        addresses: [
+                            {
+                                address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                                address_type: "DEFAULT",
+                            },
+                            {
+                                address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                                address_type: "DEFAULT",
+                            },
+                        ],
+                    },
+                    credentialing_spans: [
+                        {
+                            provider_credentialing_span_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            rendering_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            regions: { type: "states", states: ["AA", "AA"] },
+                            medallion_payer_enrollment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            source: "source",
+                            contracting_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            payer: {
+                                payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                availity_payer_name: "availity_payer_name",
+                                availity_claims_payer_id: "availity_claims_payer_id",
+                                availity_eligibility_id: "availity_eligibility_id",
+                                availity_remittance_payer_id: "availity_remittance_payer_id",
+                                street_address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                            },
+                            start_date: "2023-01-15",
+                            end_date: "2023-01-15",
+                            submitted_date: "2023-01-15",
+                            credentialing_status: "work_in_progress",
+                            payer_loaded_date: "2023-01-15",
+                            is_enabled: true,
+                        },
+                        {
+                            provider_credentialing_span_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            rendering_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            regions: { type: "states", states: ["AA", "AA"] },
+                            medallion_payer_enrollment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            source: "source",
+                            contracting_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            payer: {
+                                payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                availity_payer_name: "availity_payer_name",
+                                availity_claims_payer_id: "availity_claims_payer_id",
+                                availity_eligibility_id: "availity_eligibility_id",
+                                availity_remittance_payer_id: "availity_remittance_payer_id",
+                                street_address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                            },
+                            start_date: "2023-01-15",
+                            end_date: "2023-01-15",
+                            submitted_date: "2023-01-15",
+                            credentialing_status: "work_in_progress",
+                            payer_loaded_date: "2023-01-15",
+                            is_enabled: true,
+                        },
+                    ],
+                },
+                {
+                    provider: {
+                        organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        employment_status: "ACTIVE",
+                        employment_start_date: "employment_start_date",
+                        employment_termination_date: "employment_termination_date",
+                        npi: "npi",
+                        is_rendering: true,
+                        is_billing: true,
+                        first_name: "first_name",
+                        last_name: "last_name",
+                        organization_name: "organization_name",
+                        provider_type: "INDIVIDUAL",
+                        tax_id: "tax_id",
+                        taxonomy_code: "taxonomy_code",
+                        license_type: "MD",
+                        ptan: "ptan",
+                        medicaid_provider_id: "medicaid_provider_id",
+                        addresses: [
+                            {
+                                address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                                address_type: "DEFAULT",
+                            },
+                            {
+                                address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                                address_type: "DEFAULT",
+                            },
+                        ],
+                    },
+                    credentialing_spans: [
+                        {
+                            provider_credentialing_span_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            rendering_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            regions: { type: "states", states: ["AA", "AA"] },
+                            medallion_payer_enrollment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            source: "source",
+                            contracting_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            payer: {
+                                payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                availity_payer_name: "availity_payer_name",
+                                availity_claims_payer_id: "availity_claims_payer_id",
+                                availity_eligibility_id: "availity_eligibility_id",
+                                availity_remittance_payer_id: "availity_remittance_payer_id",
+                                street_address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                            },
+                            start_date: "2023-01-15",
+                            end_date: "2023-01-15",
+                            submitted_date: "2023-01-15",
+                            credentialing_status: "work_in_progress",
+                            payer_loaded_date: "2023-01-15",
+                            is_enabled: true,
+                        },
+                        {
+                            provider_credentialing_span_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            rendering_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            regions: { type: "states", states: ["AA", "AA"] },
+                            medallion_payer_enrollment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            source: "source",
+                            contracting_provider: {
+                                npi: "npi",
+                                is_rendering: true,
+                                is_billing: true,
+                                first_name: "first_name",
+                                last_name: "last_name",
+                                organization_name: "organization_name",
+                                provider_type: "INDIVIDUAL",
+                                tax_id: "tax_id",
+                                taxonomy_code: "taxonomy_code",
+                                license_type: "MD",
+                                addresses: [
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                    {
+                                        address: {
+                                            zip_plus_four_code: "zip_plus_four_code",
+                                            address1: "address1",
+                                            city: "city",
+                                            state: "AA",
+                                            zip_code: "zip_code",
+                                        },
+                                        address_type: "DEFAULT",
+                                    },
+                                ],
+                                employment_start_date: "2023-01-15",
+                                employment_termination_date: "2023-01-15",
+                                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                qualifications: [
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                    {
+                                        identifier_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                        period: { start_date: "start_date" },
+                                        identifier_code: "MCR",
+                                        identifier_value: {
+                                            type: "medicare_provider_identifier",
+                                            state: "AA",
+                                            provider_number: "provider_number",
+                                        },
+                                    },
+                                ],
+                            },
+                            payer: {
+                                payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                availity_payer_name: "availity_payer_name",
+                                availity_claims_payer_id: "availity_claims_payer_id",
+                                availity_eligibility_id: "availity_eligibility_id",
+                                availity_remittance_payer_id: "availity_remittance_payer_id",
+                                street_address: {
+                                    zip_plus_four_code: "zip_plus_four_code",
+                                    address1: "address1",
+                                    address2: "address2",
+                                    city: "city",
+                                    state: "AA",
+                                    zip_code: "zip_code",
+                                },
+                            },
+                            start_date: "2023-01-15",
+                            end_date: "2023-01-15",
+                            submitted_date: "2023-01-15",
+                            credentialing_status: "work_in_progress",
+                            payer_loaded_date: "2023-01-15",
+                            is_enabled: true,
+                        },
+                    ],
+                },
+            ],
+            prev_page_token: "prev_page_token",
+            next_page_token: "next_page_token",
+        };
+
+        server
+            .mockEndpoint()
+            .get("/api/contracts/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/providers/credentialing")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.contracts.v3.getContractProviderCredentialingSpans(
+            CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        );
+        expect(response).toEqual({
+            body: {
+                items: [
+                    {
+                        provider: {
+                            organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            employmentStatus: "ACTIVE",
+                            employmentStartDate: CandidApi.Date_("employment_start_date"),
+                            employmentTerminationDate: CandidApi.Date_("employment_termination_date"),
+                            npi: "npi",
+                            isRendering: true,
+                            isBilling: true,
+                            firstName: "first_name",
+                            lastName: "last_name",
+                            organizationName: "organization_name",
+                            providerType: "INDIVIDUAL",
+                            taxId: "tax_id",
+                            taxonomyCode: "taxonomy_code",
+                            licenseType: "MD",
+                            ptan: "ptan",
+                            medicaidProviderId: "medicaid_provider_id",
+                            addresses: [
+                                {
+                                    address: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                    addressType: "DEFAULT",
+                                },
+                                {
+                                    address: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                    addressType: "DEFAULT",
+                                },
+                            ],
+                        },
+                        credentialingSpans: [
+                            {
+                                providerCredentialingSpanId: CandidApi.credentialing.v2.ProviderCredentialingSpanId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                renderingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                regions: {
+                                    type: "states",
+                                    states: ["AA", "AA"],
+                                },
+                                medallionPayerEnrollmentId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                source: "source",
+                                contractingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                payer: {
+                                    payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                                    payerId: "payer_id",
+                                    payerName: "payer_name",
+                                    availityPayerName: "availity_payer_name",
+                                    availityClaimsPayerId: "availity_claims_payer_id",
+                                    availityEligibilityId: "availity_eligibility_id",
+                                    availityRemittancePayerId: "availity_remittance_payer_id",
+                                    streetAddress: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                },
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                submittedDate: "2023-01-15",
+                                credentialingStatus: "work_in_progress",
+                                payerLoadedDate: "2023-01-15",
+                                isEnabled: true,
+                            },
+                            {
+                                providerCredentialingSpanId: CandidApi.credentialing.v2.ProviderCredentialingSpanId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                renderingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                regions: {
+                                    type: "states",
+                                    states: ["AA", "AA"],
+                                },
+                                medallionPayerEnrollmentId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                source: "source",
+                                contractingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                payer: {
+                                    payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                                    payerId: "payer_id",
+                                    payerName: "payer_name",
+                                    availityPayerName: "availity_payer_name",
+                                    availityClaimsPayerId: "availity_claims_payer_id",
+                                    availityEligibilityId: "availity_eligibility_id",
+                                    availityRemittancePayerId: "availity_remittance_payer_id",
+                                    streetAddress: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                },
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                submittedDate: "2023-01-15",
+                                credentialingStatus: "work_in_progress",
+                                payerLoadedDate: "2023-01-15",
+                                isEnabled: true,
+                            },
+                        ],
+                    },
+                    {
+                        provider: {
+                            organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            employmentStatus: "ACTIVE",
+                            employmentStartDate: CandidApi.Date_("employment_start_date"),
+                            employmentTerminationDate: CandidApi.Date_("employment_termination_date"),
+                            npi: "npi",
+                            isRendering: true,
+                            isBilling: true,
+                            firstName: "first_name",
+                            lastName: "last_name",
+                            organizationName: "organization_name",
+                            providerType: "INDIVIDUAL",
+                            taxId: "tax_id",
+                            taxonomyCode: "taxonomy_code",
+                            licenseType: "MD",
+                            ptan: "ptan",
+                            medicaidProviderId: "medicaid_provider_id",
+                            addresses: [
+                                {
+                                    address: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                    addressType: "DEFAULT",
+                                },
+                                {
+                                    address: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                    addressType: "DEFAULT",
+                                },
+                            ],
+                        },
+                        credentialingSpans: [
+                            {
+                                providerCredentialingSpanId: CandidApi.credentialing.v2.ProviderCredentialingSpanId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                renderingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                regions: {
+                                    type: "states",
+                                    states: ["AA", "AA"],
+                                },
+                                medallionPayerEnrollmentId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                source: "source",
+                                contractingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                payer: {
+                                    payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                                    payerId: "payer_id",
+                                    payerName: "payer_name",
+                                    availityPayerName: "availity_payer_name",
+                                    availityClaimsPayerId: "availity_claims_payer_id",
+                                    availityEligibilityId: "availity_eligibility_id",
+                                    availityRemittancePayerId: "availity_remittance_payer_id",
+                                    streetAddress: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                },
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                submittedDate: "2023-01-15",
+                                credentialingStatus: "work_in_progress",
+                                payerLoadedDate: "2023-01-15",
+                                isEnabled: true,
+                            },
+                            {
+                                providerCredentialingSpanId: CandidApi.credentialing.v2.ProviderCredentialingSpanId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                renderingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                regions: {
+                                    type: "states",
+                                    states: ["AA", "AA"],
+                                },
+                                medallionPayerEnrollmentId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                source: "source",
+                                contractingProvider: {
+                                    npi: "npi",
+                                    isRendering: true,
+                                    isBilling: true,
+                                    firstName: "first_name",
+                                    lastName: "last_name",
+                                    organizationName: "organization_name",
+                                    providerType: "INDIVIDUAL",
+                                    taxId: "tax_id",
+                                    taxonomyCode: "taxonomy_code",
+                                    licenseType: "MD",
+                                    addresses: [
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                        {
+                                            address: {
+                                                zipPlusFourCode: "zip_plus_four_code",
+                                                address1: "address1",
+                                                city: "city",
+                                                state: "AA",
+                                                zipCode: "zip_code",
+                                            },
+                                            addressType: "DEFAULT",
+                                        },
+                                    ],
+                                    employmentStartDate: "2023-01-15",
+                                    employmentTerminationDate: "2023-01-15",
+                                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    qualifications: [
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                        {
+                                            identifierId: CandidApi.IdentifierId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
+                                            period: {
+                                                startDate: CandidApi.Date_("start_date"),
+                                            },
+                                            identifierCode: "MCR",
+                                            identifierValue: {
+                                                type: "medicare_provider_identifier",
+                                                state: "AA",
+                                                providerNumber: "provider_number",
+                                            },
+                                        },
+                                    ],
+                                },
+                                payer: {
+                                    payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                                    payerId: "payer_id",
+                                    payerName: "payer_name",
+                                    availityPayerName: "availity_payer_name",
+                                    availityClaimsPayerId: "availity_claims_payer_id",
+                                    availityEligibilityId: "availity_eligibility_id",
+                                    availityRemittancePayerId: "availity_remittance_payer_id",
+                                    streetAddress: {
+                                        zipPlusFourCode: "zip_plus_four_code",
+                                        address1: "address1",
+                                        address2: "address2",
+                                        city: "city",
+                                        state: "AA",
+                                        zipCode: "zip_code",
+                                    },
+                                },
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                submittedDate: "2023-01-15",
+                                credentialingStatus: "work_in_progress",
+                                payerLoadedDate: "2023-01-15",
+                                isEnabled: true,
+                            },
+                        ],
+                    },
+                ],
+                prevPageToken: CandidApi.PageToken("prev_page_token"),
+                nextPageToken: CandidApi.PageToken("next_page_token"),
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
     test("add_contract_providers", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);

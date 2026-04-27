@@ -11,4 +11,5 @@ export interface InsuranceCardCreateOptional extends CandidApi.insuranceCards.v2
     imageUrlFront?: string;
     imageUrlBack?: string;
     emrPayerCrosswalk?: CandidApi.EmrPayerCrosswalk;
+    payerPlanGroupName?: string;
 }

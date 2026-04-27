@@ -11,6 +11,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "AV",
     "AU",
     "AW",
+    "AY",
     "07",
     "08",
     "09",
@@ -427,6 +428,7 @@ export declare namespace ProcedureModifier {
         | "AV"
         | "AU"
         | "AW"
+        | "AY"
         | "07"
         | "08"
         | "09"

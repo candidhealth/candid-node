@@ -9,6 +9,7 @@ import { SchemaInstance } from "../../customSchemas/resources/v1/types/SchemaIns
 import { InitialReferringProvider } from "../../encounterProviders/resources/v2/types/InitialReferringProvider";
 import { ReferringProvider } from "../../encounterProviders/resources/v2/types/ReferringProvider";
 import { SupervisingProvider } from "../../encounterProviders/resources/v2/types/SupervisingProvider";
+import { TreatingProvider } from "../../encounterProviders/resources/v2/types/TreatingProvider";
 import { ClaimSupplementalInformation } from "../../encounters/resources/v4/types/ClaimSupplementalInformation";
 import { ClinicalNoteCategoryCreate } from "../../encounters/resources/v4/types/ClinicalNoteCategoryCreate";
 import { EncounterBase } from "../../encounters/resources/v4/types/EncounterBase";
@@ -36,6 +37,7 @@ export const UniversalEncounterCreateBase: core.serialization.ObjectSchema<
             InitialReferringProvider.optional(),
         ),
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
+        treatingProvider: core.serialization.property("treating_provider", TreatingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
         subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
@@ -96,6 +98,7 @@ export declare namespace UniversalEncounterCreateBase {
         referring_provider?: ReferringProvider.Raw | null;
         initial_referring_provider?: InitialReferringProvider.Raw | null;
         supervising_provider?: SupervisingProvider.Raw | null;
+        treating_provider?: TreatingProvider.Raw | null;
         service_facility?: EncounterServiceFacilityBase.Raw | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;

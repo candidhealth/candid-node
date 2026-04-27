@@ -3,6 +3,7 @@ export * from "./AuthorizationUnit";
 export * from "./Contact";
 export * from "./CoveragesForRelatedCauses";
 export * from "./DoNotInvoiceReason";
+export * from "./ElectronicCommunicationConsent";
 export * from "./ExternalProvenance";
 export * from "./FilingOrder";
 export * from "./Guarantor";

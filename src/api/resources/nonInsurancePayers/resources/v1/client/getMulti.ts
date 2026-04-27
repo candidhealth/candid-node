@@ -5,12 +5,18 @@ import * as CandidApi from "../../../../../index";
 
 export type Error =
     | CandidApi.nonInsurancePayers.v1.getMulti.Error.UnprocessableEntityError
+    | CandidApi.nonInsurancePayers.v1.getMulti.Error.UnauthorizedError
     | CandidApi.nonInsurancePayers.v1.getMulti.Error._Unknown;
 
 export namespace Error {
     export interface UnprocessableEntityError extends _Utils {
         errorName: "UnprocessableEntityError";
         content: CandidApi.UnprocessableEntityErrorMessage;
+    }
+
+    export interface UnauthorizedError extends _Utils {
+        errorName: "UnauthorizedError";
+        content: CandidApi.UnauthorizedErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -24,6 +30,7 @@ export namespace Error {
 
     export interface _Visitor<_Result> {
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -37,6 +44,21 @@ export const Error = {
             errorName: "UnprocessableEntityError",
             _visit: function <_Result>(
                 this: CandidApi.nonInsurancePayers.v1.getMulti.Error.UnprocessableEntityError,
+                visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.nonInsurancePayers.v1.getMulti.Error._visit(this, visitor);
+            },
+        };
+    },
+
+    unauthorizedError: (
+        value: CandidApi.UnauthorizedErrorMessage,
+    ): CandidApi.nonInsurancePayers.v1.getMulti.Error.UnauthorizedError => {
+        return {
+            content: value,
+            errorName: "UnauthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.nonInsurancePayers.v1.getMulti.Error.UnauthorizedError,
                 visitor: CandidApi.nonInsurancePayers.v1.getMulti.Error._Visitor<_Result>,
             ) {
                 return CandidApi.nonInsurancePayers.v1.getMulti.Error._visit(this, visitor);
@@ -64,6 +86,8 @@ export const Error = {
         switch (value.errorName) {
             case "UnprocessableEntityError":
                 return visitor.unprocessableEntityError(value.content);
+            case "UnauthorizedError":
+                return visitor.unauthorizedError(value.content);
             default:
                 return visitor._other(value.content);
         }

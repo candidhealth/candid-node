@@ -6,6 +6,8 @@ export * from "./ContractCreateUnion";
 export * from "./ContractId";
 export * from "./ContractingProviderId";
 export * from "./ContractProviderCount";
+export * from "./ContractProviderCredentialing";
+export * from "./ContractProviderCredentialingPage";
 export * from "./ContractProvidersPage";
 export * from "./ContractServiceFacility";
 export * from "./ContractServiceFacilityBase";

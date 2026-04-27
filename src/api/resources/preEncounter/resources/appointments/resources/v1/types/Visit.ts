@@ -7,6 +7,7 @@ import type * as CandidApi from "../../../../../../../index";
  */
 export interface Visit {
     patientId: CandidApi.preEncounter.PatientId;
+    organizationId: CandidApi.preEncounter.OrganizationId;
     patient: CandidApi.preEncounter.patients.v1.MutablePatientWithMrn;
     startTime: Date;
     status: CandidApi.preEncounter.appointments.v1.AppointmentStatus;

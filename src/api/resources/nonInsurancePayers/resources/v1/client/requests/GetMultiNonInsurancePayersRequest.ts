@@ -28,4 +28,6 @@ export interface GetMultiNonInsurancePayersRequest {
     /** Defaults to 100 */
     limit?: number;
     pageToken?: CandidApi.PageToken;
+    /** Filter to a specific organization's non-insurance payers. If not provided, defaults to the requesting user's organization. */
+    organizationId?: CandidApi.OrganizationId;
 }

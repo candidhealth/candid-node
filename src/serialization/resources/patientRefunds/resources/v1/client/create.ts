@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
+import { ReallocationWouldOverdraftErrorContent } from "../../../../financials/types/ReallocationWouldOverdraftErrorContent";
 
 export const Error: core.serialization.Schema<
     serializers.patientRefunds.v1.create.Error.Raw,
@@ -21,6 +22,9 @@ export const Error: core.serialization.Schema<
         UnprocessableEntityError: core.serialization.object({
             content: UnprocessableEntityErrorMessage,
         }),
+        ReallocationWouldOverdraftError: core.serialization.object({
+            content: ReallocationWouldOverdraftErrorContent,
+        }),
     })
     .transform<CandidApi.patientRefunds.v1.create.Error>({
         transform: (value) => {
@@ -31,13 +35,19 @@ export const Error: core.serialization.Schema<
                     return CandidApi.patientRefunds.v1.create.Error.unauthorizedError(value.content);
                 case "UnprocessableEntityError":
                     return CandidApi.patientRefunds.v1.create.Error.unprocessableEntityError(value.content);
+                case "ReallocationWouldOverdraftError":
+                    return CandidApi.patientRefunds.v1.create.Error.reallocationWouldOverdraftError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.UnprocessableEntityError;
+    export type Raw =
+        | Error.EntityNotFoundError
+        | Error.UnauthorizedError
+        | Error.UnprocessableEntityError
+        | Error.ReallocationWouldOverdraftError;
 
     export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -52,5 +62,10 @@ export declare namespace Error {
     export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
+    }
+
+    export interface ReallocationWouldOverdraftError {
+        errorName: "ReallocationWouldOverdraftError";
+        content: ReallocationWouldOverdraftErrorContent.Raw;
     }
 }

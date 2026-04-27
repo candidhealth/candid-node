@@ -644,6 +644,126 @@ export class V3Client {
     }
 
     /**
+     * Returns rendering providers linked to a contract with their credentialing spans, scoped to the contract's contracting provider and payer. Providers with no matching spans are included with an empty list.
+     *
+     * @param {CandidApi.contracts.v3.ContractId} contract_id
+     * @param {CandidApi.contracts.v3.GetContractProviderCredentialingSpansRequest} request
+     * @param {V3Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.contracts.v3.getContractProviderCredentialingSpans(CandidApi.contracts.v3.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public getContractProviderCredentialingSpans(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.GetContractProviderCredentialingSpansRequest = {},
+        requestOptions?: V3Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.contracts.v3.ContractProviderCredentialingPage,
+            CandidApi.contracts.v3.getContractProviderCredentialingSpans.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(
+            this.__getContractProviderCredentialingSpans(contract_id, request, requestOptions),
+        );
+    }
+
+    private async __getContractProviderCredentialingSpans(
+        contract_id: CandidApi.contracts.v3.ContractId,
+        request: CandidApi.contracts.v3.GetContractProviderCredentialingSpansRequest = {},
+        requestOptions?: V3Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.contracts.v3.ContractProviderCredentialingPage,
+                CandidApi.contracts.v3.getContractProviderCredentialingSpans.Error
+            >
+        >
+    > {
+        const { pageToken, limit } = request;
+        const _queryParams: Record<string, unknown> = {
+            page_token: pageToken,
+            limit,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/contracts/v3/${core.url.encodePathParam(serializers.contracts.v3.ContractId.jsonOrThrow(contract_id))}/providers/credentialing`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.contracts.v3.ContractProviderCredentialingPage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (
+                (_response.error.body as serializers.contracts.v3.getContractProviderCredentialingSpans.Error.Raw)
+                    ?.errorName
+            ) {
+                case "EntityNotFoundError":
+                case "UnprocessableEntityError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.contracts.v3.getContractProviderCredentialingSpans.Error.parseOrThrow(
+                                _response.error
+                                    .body as serializers.contracts.v3.getContractProviderCredentialingSpans.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.contracts.v3.getContractProviderCredentialingSpans.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * Appends a list of rendering provider IDs to the contract. Provider IDs already on the contract are silently ignored.
      *
      * @param {CandidApi.contracts.v3.ContractId} contract_id

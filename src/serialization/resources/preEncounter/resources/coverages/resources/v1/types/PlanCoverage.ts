@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
+import { AdditionalDetail } from "./AdditionalDetail";
 import { CoverageDetails } from "./CoverageDetails";
 import { PlanCoverageDetails } from "./PlanCoverageDetails";
 
@@ -17,6 +18,10 @@ export const PlanCoverage: core.serialization.ObjectSchema<
         "out_of_network_flat",
         core.serialization.list(CoverageDetails).optional(),
     ),
+    additionalDetails: core.serialization.property(
+        "additional_details",
+        core.serialization.list(AdditionalDetail).optional(),
+    ),
 });
 
 export declare namespace PlanCoverage {
@@ -25,5 +30,6 @@ export declare namespace PlanCoverage {
         in_network_flat?: CoverageDetails.Raw[] | null;
         out_of_network?: PlanCoverageDetails.Raw | null;
         out_of_network_flat?: CoverageDetails.Raw[] | null;
+        additional_details?: AdditionalDetail.Raw[] | null;
     }
 }

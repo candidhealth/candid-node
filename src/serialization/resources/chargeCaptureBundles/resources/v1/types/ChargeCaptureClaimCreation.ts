@@ -16,7 +16,7 @@ export const ChargeCaptureClaimCreation: core.serialization.ObjectSchema<
     id: ChargeCaptureClaimCreationId,
     createdEncounterId: core.serialization.property("created_encounter_id", EncounterId.optional()),
     status: ChargeCaptureClaimCreationStatus,
-    characteristics: core.serialization.record(core.serialization.string(), core.serialization.unknown().optional()),
+    characteristics: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     errors: core.serialization.list(ChargeCaptureError),
     encounterCreationInput: core.serialization.property("encounter_creation_input", ChargeCaptureData.optional()),
 });

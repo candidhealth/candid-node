@@ -3,6 +3,7 @@
 import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { UnprocessableEntityErrorMessage } from "../../../../commons/types/UnprocessableEntityErrorMessage";
 
 export const Error: core.serialization.Schema<
@@ -13,22 +14,32 @@ export const Error: core.serialization.Schema<
         UnprocessableEntityError: core.serialization.object({
             content: UnprocessableEntityErrorMessage,
         }),
+        UnauthorizedError: core.serialization.object({
+            content: UnauthorizedErrorMessage,
+        }),
     })
     .transform<CandidApi.payerPlanGroups.v1.getMulti.Error>({
         transform: (value) => {
             switch (value.errorName) {
                 case "UnprocessableEntityError":
                     return CandidApi.payerPlanGroups.v1.getMulti.Error.unprocessableEntityError(value.content);
+                case "UnauthorizedError":
+                    return CandidApi.payerPlanGroups.v1.getMulti.Error.unauthorizedError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.UnprocessableEntityError;
+    export type Raw = Error.UnprocessableEntityError | Error.UnauthorizedError;
 
     export interface UnprocessableEntityError {
         errorName: "UnprocessableEntityError";
         content: UnprocessableEntityErrorMessage.Raw;
+    }
+
+    export interface UnauthorizedError {
+        errorName: "UnauthorizedError";
+        content: UnauthorizedErrorMessage.Raw;
     }
 }

@@ -10,6 +10,7 @@ The Candid TypeScript library provides convenient access to the Candid APIs from
 - [Installation](#installation)
 - [Reference](#reference)
 - [Usage](#usage)
+- [Environments](#environments)
 - [Authentication](#authentication)
 - [Request and Response Types](#request-and-response-types)
 - [Exception Handling](#exception-handling)
@@ -53,6 +54,18 @@ await client.preEncounter.eligibilityChecks.v1.post({
         firstName: "first_name",
         lastName: "last_name"
     }
+});
+```
+
+## Environments
+
+This SDK allows you to configure different environments for API requests.
+
+```typescript
+import { CandidApiClient, CandidApiEnvironment } from "candidhealth";
+
+const client = new CandidApiClient({
+    environment: CandidApiEnvironment.Production,
 });
 ```
 

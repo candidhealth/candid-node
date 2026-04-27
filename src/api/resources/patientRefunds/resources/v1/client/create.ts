@@ -7,6 +7,9 @@ export type Error =
     | CandidApi.patientRefunds.v1.create.Error.EntityNotFoundError
     | CandidApi.patientRefunds.v1.create.Error.UnauthorizedError
     | CandidApi.patientRefunds.v1.create.Error.UnprocessableEntityError
+    /**
+     * thrown if `raise_on_overdraft` is true and the refund would cause any account to be overdrafted. */
+    | CandidApi.patientRefunds.v1.create.Error.ReallocationWouldOverdraftError
     | CandidApi.patientRefunds.v1.create.Error._Unknown;
 
 export namespace Error {
@@ -25,6 +28,11 @@ export namespace Error {
         content: CandidApi.UnprocessableEntityErrorMessage;
     }
 
+    export interface ReallocationWouldOverdraftError extends _Utils {
+        errorName: "ReallocationWouldOverdraftError";
+        content: CandidApi.ReallocationWouldOverdraftErrorContent;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -38,6 +46,7 @@ export namespace Error {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
         unprocessableEntityError: (value: CandidApi.UnprocessableEntityErrorMessage) => _Result;
+        reallocationWouldOverdraftError: (value: CandidApi.ReallocationWouldOverdraftErrorContent) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -88,6 +97,21 @@ export const Error = {
         };
     },
 
+    reallocationWouldOverdraftError: (
+        value: CandidApi.ReallocationWouldOverdraftErrorContent,
+    ): CandidApi.patientRefunds.v1.create.Error.ReallocationWouldOverdraftError => {
+        return {
+            content: value,
+            errorName: "ReallocationWouldOverdraftError",
+            _visit: function <_Result>(
+                this: CandidApi.patientRefunds.v1.create.Error.ReallocationWouldOverdraftError,
+                visitor: CandidApi.patientRefunds.v1.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.patientRefunds.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.patientRefunds.v1.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -112,6 +136,8 @@ export const Error = {
                 return visitor.unauthorizedError(value.content);
             case "UnprocessableEntityError":
                 return visitor.unprocessableEntityError(value.content);
+            case "ReallocationWouldOverdraftError":
+                return visitor.reallocationWouldOverdraftError(value.content);
             default:
                 return visitor._other(value.content);
         }

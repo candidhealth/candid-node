@@ -107,6 +107,10 @@ describe("V1Client", () => {
                         ],
                         email: "email",
                         electronic_communication_opt_in: true,
+                        electronic_communication_consent: {
+                            text_communication_consent: true,
+                            email_communication_consent: true,
+                        },
                         photo: "photo",
                         language: "language",
                         external_provenance: { external_id: "external_id", system_name: "system_name" },
@@ -332,6 +336,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                             {
                                 payer_id: "payer_id",
@@ -351,6 +356,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                         ],
                         referrals: [
@@ -533,6 +539,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -541,6 +548,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     secondary_coverage: {
                         status: "ACTIVE",
@@ -621,6 +629,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -629,6 +638,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     tertiary_coverage: {
                         status: "ACTIVE",
@@ -709,6 +719,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -717,6 +728,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     next_appointment: {
                         patient_id: "patient_id",
@@ -869,6 +881,10 @@ describe("V1Client", () => {
                         ],
                         email: "email",
                         electronic_communication_opt_in: true,
+                        electronic_communication_consent: {
+                            text_communication_consent: true,
+                            email_communication_consent: true,
+                        },
                         photo: "photo",
                         language: "language",
                         external_provenance: { external_id: "external_id", system_name: "system_name" },
@@ -1094,6 +1110,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                             {
                                 payer_id: "payer_id",
@@ -1113,6 +1130,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                         ],
                         referrals: [
@@ -1295,6 +1313,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -1303,6 +1322,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     secondary_coverage: {
                         status: "ACTIVE",
@@ -1383,6 +1403,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -1391,6 +1412,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     tertiary_coverage: {
                         status: "ACTIVE",
@@ -1471,6 +1493,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -1479,6 +1502,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     next_appointment: {
                         patient_id: "patient_id",
@@ -1692,6 +1716,10 @@ describe("V1Client", () => {
                             ],
                             email: "email",
                             electronicCommunicationOptIn: true,
+                            electronicCommunicationConsent: {
+                                textCommunicationConsent: true,
+                                emailCommunicationConsent: true,
+                            },
                             photo: "photo",
                             language: "language",
                             externalProvenance: {
@@ -2038,6 +2066,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -2060,6 +2092,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                             ],
                             referrals: [
@@ -2289,6 +2325,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -2304,6 +2341,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         secondaryCoverage: {
                             status: "ACTIVE",
@@ -2392,6 +2432,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -2407,6 +2448,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         tertiaryCoverage: {
                             status: "ACTIVE",
@@ -2495,6 +2539,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -2510,6 +2555,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         nextAppointment: {
                             patientId: CandidApi.preEncounter.PatientId("patient_id"),
@@ -2734,6 +2782,10 @@ describe("V1Client", () => {
                             ],
                             email: "email",
                             electronicCommunicationOptIn: true,
+                            electronicCommunicationConsent: {
+                                textCommunicationConsent: true,
+                                emailCommunicationConsent: true,
+                            },
                             photo: "photo",
                             language: "language",
                             externalProvenance: {
@@ -3080,6 +3132,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -3102,6 +3158,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                             ],
                             referrals: [
@@ -3331,6 +3391,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -3346,6 +3407,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         secondaryCoverage: {
                             status: "ACTIVE",
@@ -3434,6 +3498,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -3449,6 +3514,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         tertiaryCoverage: {
                             status: "ACTIVE",
@@ -3537,6 +3605,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -3552,6 +3621,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         nextAppointment: {
                             patientId: CandidApi.preEncounter.PatientId("patient_id"),
@@ -3813,6 +3885,10 @@ describe("V1Client", () => {
                         ],
                         email: "email",
                         electronic_communication_opt_in: true,
+                        electronic_communication_consent: {
+                            text_communication_consent: true,
+                            email_communication_consent: true,
+                        },
                         photo: "photo",
                         language: "language",
                         external_provenance: { external_id: "external_id", system_name: "system_name" },
@@ -4038,6 +4114,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                             {
                                 payer_id: "payer_id",
@@ -4057,6 +4134,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                         ],
                         referrals: [
@@ -4239,6 +4317,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -4247,6 +4326,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     secondary_coverage: {
                         status: "ACTIVE",
@@ -4327,6 +4407,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -4335,6 +4416,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     primary_service_type: "MD_Visit",
                 },
@@ -4488,6 +4570,10 @@ describe("V1Client", () => {
                         ],
                         email: "email",
                         electronic_communication_opt_in: true,
+                        electronic_communication_consent: {
+                            text_communication_consent: true,
+                            email_communication_consent: true,
+                        },
                         photo: "photo",
                         language: "language",
                         external_provenance: { external_id: "external_id", system_name: "system_name" },
@@ -4713,6 +4799,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                             {
                                 payer_id: "payer_id",
@@ -4732,6 +4819,7 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
+                                service_facility: { service_facility_id: "service_facility_id" },
                             },
                         ],
                         referrals: [
@@ -4914,6 +5002,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -4922,6 +5011,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     secondary_coverage: {
                         status: "ACTIVE",
@@ -5002,6 +5092,7 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
+                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
@@ -5010,6 +5101,7 @@ describe("V1Client", () => {
                         },
                         orcon: true,
                         auto_update_enabled: true,
+                        previous_appointment_copays: { MD_Visit: 1 },
                     },
                     primary_service_type: "MD_Visit",
                 },
@@ -5256,6 +5348,10 @@ describe("V1Client", () => {
                             ],
                             email: "email",
                             electronicCommunicationOptIn: true,
+                            electronicCommunicationConsent: {
+                                textCommunicationConsent: true,
+                                emailCommunicationConsent: true,
+                            },
                             photo: "photo",
                             language: "language",
                             externalProvenance: {
@@ -5602,6 +5698,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -5624,6 +5724,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                             ],
                             referrals: [
@@ -5853,6 +5957,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -5868,6 +5973,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         secondaryCoverage: {
                             status: "ACTIVE",
@@ -5956,6 +6064,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -5971,6 +6080,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         primaryServiceType: "MD_Visit",
                     },
@@ -6199,6 +6311,10 @@ describe("V1Client", () => {
                             ],
                             email: "email",
                             electronicCommunicationOptIn: true,
+                            electronicCommunicationConsent: {
+                                textCommunicationConsent: true,
+                                emailCommunicationConsent: true,
+                            },
                             photo: "photo",
                             language: "language",
                             externalProvenance: {
@@ -6545,6 +6661,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -6567,6 +6687,10 @@ describe("V1Client", () => {
                                     },
                                     notes: "notes",
                                     billingProviderNpi: "billing_provider_npi",
+                                    serviceFacility: {
+                                        serviceFacilityId:
+                                            CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
+                                    },
                                 },
                             ],
                             referrals: [
@@ -6796,6 +6920,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -6811,6 +6936,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         secondaryCoverage: {
                             status: "ACTIVE",
@@ -6899,6 +7027,7 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
+                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -6914,6 +7043,9 @@ describe("V1Client", () => {
                             },
                             orcon: true,
                             autoUpdateEnabled: true,
+                            previousAppointmentCopays: {
+                                MD_Visit: 1,
+                            },
                         },
                         primaryServiceType: "MD_Visit",
                     },

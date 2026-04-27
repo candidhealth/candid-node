@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { AdditionalPayerInformation } from "../../../../common/types/AdditionalPayerInformation";
+import { PatientServiceFacility } from "../../../../common/types/PatientServiceFacility";
 import { PayerId } from "../../../../common/types/PayerId";
 import { Period } from "../../../../common/types/Period";
 import { AuthorizationUnit } from "./AuthorizationUnit";
@@ -33,6 +34,7 @@ export const Authorization: core.serialization.ObjectSchema<
     period: Period.optional(),
     notes: core.serialization.string().optional(),
     billingProviderNpi: core.serialization.property("billing_provider_npi", core.serialization.string().optional()),
+    serviceFacility: core.serialization.property("service_facility", PatientServiceFacility.optional()),
 });
 
 export declare namespace Authorization {
@@ -49,5 +51,6 @@ export declare namespace Authorization {
         period?: Period.Raw | null;
         notes?: string | null;
         billing_provider_npi?: string | null;
+        service_facility?: PatientServiceFacility.Raw | null;
     }
 }

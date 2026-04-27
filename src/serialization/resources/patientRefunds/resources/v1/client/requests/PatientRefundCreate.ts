@@ -19,6 +19,7 @@ export const PatientRefundCreate: core.serialization.Schema<
     allocations: core.serialization.list(AllocationCreate),
     invoice: InvoiceId.optional(),
     refundReason: core.serialization.property("refund_reason", RefundReason.optional()),
+    raiseOnOverdraft: core.serialization.property("raise_on_overdraft", core.serialization.boolean().optional()),
 });
 
 export declare namespace PatientRefundCreate {
@@ -30,5 +31,6 @@ export declare namespace PatientRefundCreate {
         allocations: AllocationCreate.Raw[];
         invoice?: InvoiceId.Raw | null;
         refund_reason?: RefundReason.Raw | null;
+        raise_on_overdraft?: boolean | null;
     }
 }

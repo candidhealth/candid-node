@@ -19,6 +19,10 @@ export const InsuranceCardCreateOptional: core.serialization.ObjectSchema<
         imageUrlFront: core.serialization.property("image_url_front", core.serialization.string().optional()),
         imageUrlBack: core.serialization.property("image_url_back", core.serialization.string().optional()),
         emrPayerCrosswalk: core.serialization.property("emr_payer_crosswalk", EmrPayerCrosswalk.optional()),
+        payerPlanGroupName: core.serialization.property(
+            "payer_plan_group_name",
+            core.serialization.string().optional(),
+        ),
     })
     .extend(InsuranceCardBase);
 
@@ -32,5 +36,6 @@ export declare namespace InsuranceCardCreateOptional {
         image_url_front?: string | null;
         image_url_back?: string | null;
         emr_payer_crosswalk?: EmrPayerCrosswalk.Raw | null;
+        payer_plan_group_name?: string | null;
     }
 }

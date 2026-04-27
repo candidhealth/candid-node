@@ -26,4 +26,6 @@ export interface PayerPlanGroupGetMultiRequest {
     /** Sort direction. Defaults to ascending order if not provided. */
     sortDirection?: CandidApi.SortDirection;
     pageToken?: CandidApi.PageToken;
+    /** Filter to a specific organization's payer plan groups. If not provided, defaults to the requesting user's organization. */
+    organizationId?: CandidApi.OrganizationId;
 }

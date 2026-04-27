@@ -11,6 +11,7 @@ import { InitialReferringProviderUpdate } from "../../encounterProviders/resourc
 import { ReferringProviderUpdate } from "../../encounterProviders/resources/v2/types/ReferringProviderUpdate";
 import { RenderingProviderUpdate } from "../../encounterProviders/resources/v2/types/RenderingProviderUpdate";
 import { SupervisingProviderUpdate } from "../../encounterProviders/resources/v2/types/SupervisingProviderUpdate";
+import { TreatingProviderUpdate } from "../../encounterProviders/resources/v2/types/TreatingProviderUpdate";
 import { ClaimSupplementalInformation } from "../../encounters/resources/v4/types/ClaimSupplementalInformation";
 import { ClinicalNoteCategoryCreate } from "../../encounters/resources/v4/types/ClinicalNoteCategoryCreate";
 import { EncounterOptional } from "../../encounters/resources/v4/types/EncounterOptional";
@@ -59,6 +60,7 @@ export const UniversalEncounterUpdateBase: core.serialization.ObjectSchema<
         renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityUpdate.optional()),
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProviderUpdate.optional()),
+        treatingProvider: core.serialization.property("treating_provider", TreatingProviderUpdate.optional()),
         billingProvider: core.serialization.property("billing_provider", BillingProviderUpdate.optional()),
         placeOfServiceCodeAsSubmitted: core.serialization.property(
             "place_of_service_code_as_submitted",
@@ -98,6 +100,7 @@ export declare namespace UniversalEncounterUpdateBase {
         rendering_provider?: RenderingProviderUpdate.Raw | null;
         service_facility?: EncounterServiceFacilityUpdate.Raw | null;
         supervising_provider?: SupervisingProviderUpdate.Raw | null;
+        treating_provider?: TreatingProviderUpdate.Raw | null;
         billing_provider?: BillingProviderUpdate.Raw | null;
         place_of_service_code_as_submitted?: FacilityTypeCode.Raw | null;
         related_causes_information?: RelatedCausesInformationUpdate.Raw | null;

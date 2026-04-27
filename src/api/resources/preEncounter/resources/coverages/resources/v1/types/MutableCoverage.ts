@@ -24,4 +24,8 @@ export interface MutableCoverage {
     orcon?: boolean;
     /** Default to true. When set to true, the Candid system will automatically update this coverage with the latest eligibility check benefits information. Auto update behavior is also set at the eligibilityConfig org level configuration. */
     autoUpdateEnabled?: boolean;
+    /** A map of UniversalServiceIdentifier (MD_Visit, Treatment, Tests, Activity) to copay values in cents. This is used to track copay values for each service type to handle OOP max resets correctly. */
+    previousAppointmentCopays?: Partial<
+        Record<CandidApi.preEncounter.appointments.v1.UniversalServiceIdentifier, number>
+    >;
 }

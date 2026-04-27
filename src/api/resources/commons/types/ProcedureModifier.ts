@@ -10,6 +10,9 @@ export const ProcedureModifier = {
     /**
      * Item furnished in conjunction with dialysis services */
     Aw: "AW",
+    /**
+     * Item or service furnished to an ESRD patient that is not for the treatment of ESRD */
+    Ay: "AY",
     Seven: "07",
     Eight: "08",
     Nine: "09",

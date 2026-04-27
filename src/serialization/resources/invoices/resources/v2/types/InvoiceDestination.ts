@@ -7,8 +7,16 @@ import type * as serializers from "../../../../../index";
 export const InvoiceDestination: core.serialization.Schema<
     serializers.invoices.v2.InvoiceDestination.Raw,
     CandidApi.invoices.v2.InvoiceDestination
-> = core.serialization.enum_(["STRIPE", "CEDAR", "HEALTHIE", "COLLECTLY", "THIRD_PARTY_PAYERS", "INSTAMED"]);
+> = core.serialization.enum_([
+    "STRIPE",
+    "CEDAR",
+    "HEALTHIE",
+    "COLLECTLY",
+    "THIRD_PARTY_PAYERS",
+    "INSTAMED",
+    "REVSPRING",
+]);
 
 export declare namespace InvoiceDestination {
-    export type Raw = "STRIPE" | "CEDAR" | "HEALTHIE" | "COLLECTLY" | "THIRD_PARTY_PAYERS" | "INSTAMED";
+    export type Raw = "STRIPE" | "CEDAR" | "HEALTHIE" | "COLLECTLY" | "THIRD_PARTY_PAYERS" | "INSTAMED" | "REVSPRING";
 }

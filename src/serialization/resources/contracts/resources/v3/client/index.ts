@@ -2,6 +2,7 @@ export * as addContractProviders from "./addContractProviders";
 export * as createContractServiceFacility from "./createContractServiceFacility";
 export * as delete from "./delete";
 export * as get from "./get";
+export * as getContractProviderCredentialingSpans from "./getContractProviderCredentialingSpans";
 export * as getContractProviders from "./getContractProviders";
 export * as removeContractProviders from "./removeContractProviders";
 export * from "./requests";

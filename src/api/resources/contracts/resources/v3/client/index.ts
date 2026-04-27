@@ -3,6 +3,7 @@ export * as create from "./create";
 export * as createContractServiceFacility from "./createContractServiceFacility";
 export * as delete from "./delete";
 export * as get from "./get";
+export * as getContractProviderCredentialingSpans from "./getContractProviderCredentialingSpans";
 export * as getContractProviders from "./getContractProviders";
 export * as getMulti from "./getMulti";
 export * as removeContractProviders from "./removeContractProviders";

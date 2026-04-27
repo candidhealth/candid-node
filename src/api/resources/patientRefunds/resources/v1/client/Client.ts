@@ -357,6 +357,7 @@ export class V1Client {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                 case "UnprocessableEntityError":
+                case "ReallocationWouldOverdraftError":
                     return {
                         data: {
                             ok: false,
