@@ -7,4 +7,5 @@ export interface Subscriber {
     dateOfBirth?: string;
     biologicalSex: CandidApi.preEncounter.Sex;
     address?: CandidApi.preEncounter.Address;
+    employerName?: string;
 }

@@ -69,4 +69,6 @@ export interface MutablePatient {
     inferredPatientMetadata?: CandidApi.preEncounter.patients.v1.InferredPatientMetadata;
     /** ORCON (Originator Controlled) - When set to true, the Candid system will hide this patient from downstream integrations. Updates made in the Candid UI will unset this flag. Defaults to false. */
     orcon?: boolean;
+    advancedDirectives?: CandidApi.preEncounter.patients.v1.AdvancedDirective[];
+    hipaaCode?: string;
 }

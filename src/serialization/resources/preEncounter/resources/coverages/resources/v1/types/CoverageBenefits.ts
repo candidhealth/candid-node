@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { BenefitsRelatedEntity } from "./BenefitsRelatedEntity";
+import { NonCoveredDetail } from "./NonCoveredDetail";
 import { PlanCoverage } from "./PlanCoverage";
 import { ServiceCoverage } from "./ServiceCoverage";
 
@@ -20,6 +21,10 @@ export const CoverageBenefits: core.serialization.ObjectSchema<
         "benefits_related_entities",
         core.serialization.list(BenefitsRelatedEntity).optional(),
     ),
+    nonCoveredDetails: core.serialization.property(
+        "non_covered_details",
+        core.serialization.list(NonCoveredDetail).optional(),
+    ),
     notes: core.serialization.string().optional(),
     autoUpdatedEligibilityCheckId: core.serialization.string().optional(),
 });
@@ -29,6 +34,7 @@ export declare namespace CoverageBenefits {
         plan_coverage?: PlanCoverage.Raw | null;
         service_specific_coverage?: ServiceCoverage.Raw[] | null;
         benefits_related_entities?: BenefitsRelatedEntity.Raw[] | null;
+        non_covered_details?: NonCoveredDetail.Raw[] | null;
         notes?: string | null;
         autoUpdatedEligibilityCheckId?: string | null;
     }

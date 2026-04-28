@@ -1,4 +1,3 @@
-export * from "./AdditionalDetail";
 export * from "./Address";
 export * from "./BenefitsRelatedEntity";
 export * from "./BenefitType";
@@ -18,6 +17,7 @@ export * from "./LatestEligibilityCheck";
 export * from "./MemberInfo";
 export * from "./MutableCoverage";
 export * from "./NetworkType";
+export * from "./NonCoveredDetail";
 export * from "./PayerPlanGroupFields";
 export * from "./PlanCoverage";
 export * from "./PlanCoverageDetails";

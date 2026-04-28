@@ -6,6 +6,7 @@ export interface CoverageBenefits {
     planCoverage?: CandidApi.preEncounter.coverages.v1.PlanCoverage;
     serviceSpecificCoverage?: CandidApi.preEncounter.coverages.v1.ServiceCoverage[];
     benefitsRelatedEntities?: CandidApi.preEncounter.coverages.v1.BenefitsRelatedEntity[];
+    nonCoveredDetails?: CandidApi.preEncounter.coverages.v1.NonCoveredDetail[];
     notes?: string;
     autoUpdatedEligibilityCheckId?: string;
 }

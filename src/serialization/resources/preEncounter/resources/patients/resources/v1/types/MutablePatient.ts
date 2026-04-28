@@ -19,6 +19,7 @@ import { Race } from "../../../../common/types/Race";
 import { Sex } from "../../../../common/types/Sex";
 import { SexualOrientation } from "../../../../common/types/SexualOrientation";
 import { TagId } from "../../../../common/types/TagId";
+import { AdvancedDirective } from "./AdvancedDirective";
 import { Authorization } from "./Authorization";
 import { Contact } from "./Contact";
 import { CoveragesForRelatedCauses } from "./CoveragesForRelatedCauses";
@@ -109,6 +110,11 @@ export const MutablePatient: core.serialization.ObjectSchema<
         InferredPatientMetadata.optional(),
     ),
     orcon: core.serialization.boolean().optional(),
+    advancedDirectives: core.serialization.property(
+        "advanced_directives",
+        core.serialization.list(AdvancedDirective).optional(),
+    ),
+    hipaaCode: core.serialization.property("hipaa_code", core.serialization.string().optional()),
 });
 
 export declare namespace MutablePatient {
@@ -156,5 +162,7 @@ export declare namespace MutablePatient {
         origination_detail?: OriginationDetail.Raw | null;
         inferred_patient_metadata?: InferredPatientMetadata.Raw | null;
         orcon?: boolean | null;
+        advanced_directives?: AdvancedDirective.Raw[] | null;
+        hipaa_code?: string | null;
     }
 }

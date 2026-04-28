@@ -11,5 +11,7 @@ export const BenefitType = {
     OopMaxYearToDate: "OOP_MAX_YEAR_TO_DATE",
     Copay: "COPAY",
     Coinsurance: "COINSURANCE",
+    NonCovered: "NON_COVERED",
+    Limitation: "LIMITATION",
 } as const;
 export type BenefitType = (typeof BenefitType)[keyof typeof BenefitType];

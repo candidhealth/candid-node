@@ -7,5 +7,4 @@ export interface PlanCoverage {
     inNetworkFlat?: CandidApi.preEncounter.coverages.v1.CoverageDetails[];
     outOfNetwork?: CandidApi.preEncounter.coverages.v1.PlanCoverageDetails;
     outOfNetworkFlat?: CandidApi.preEncounter.coverages.v1.CoverageDetails[];
-    additionalDetails?: CandidApi.preEncounter.coverages.v1.AdditionalDetail[];
 }

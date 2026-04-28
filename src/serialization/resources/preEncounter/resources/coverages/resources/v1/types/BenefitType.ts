@@ -18,6 +18,8 @@ export const BenefitType: core.serialization.Schema<
     "OOP_MAX_YEAR_TO_DATE",
     "COPAY",
     "COINSURANCE",
+    "NON_COVERED",
+    "LIMITATION",
 ]);
 
 export declare namespace BenefitType {
@@ -31,5 +33,7 @@ export declare namespace BenefitType {
         | "OOP_MAX_REMAINING"
         | "OOP_MAX_YEAR_TO_DATE"
         | "COPAY"
-        | "COINSURANCE";
+        | "COINSURANCE"
+        | "NON_COVERED"
+        | "LIMITATION";
 }

@@ -8,5 +8,4 @@ export interface ServiceCoverage {
     inNetworkFlat?: CandidApi.preEncounter.coverages.v1.CoverageDetails[];
     outOfNetwork?: CandidApi.preEncounter.coverages.v1.ServiceCoverageDetails;
     outOfNetworkFlat?: CandidApi.preEncounter.coverages.v1.CoverageDetails[];
-    additionalDetails?: CandidApi.preEncounter.coverages.v1.AdditionalDetail[];
 }

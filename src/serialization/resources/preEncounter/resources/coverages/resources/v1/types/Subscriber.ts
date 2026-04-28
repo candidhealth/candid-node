@@ -15,6 +15,7 @@ export const Subscriber: core.serialization.ObjectSchema<
     dateOfBirth: core.serialization.property("date_of_birth", core.serialization.string().optional()),
     biologicalSex: core.serialization.property("biological_sex", Sex),
     address: Address.optional(),
+    employerName: core.serialization.property("employer_name", core.serialization.string().optional()),
 });
 
 export declare namespace Subscriber {
@@ -23,5 +24,6 @@ export declare namespace Subscriber {
         date_of_birth?: string | null;
         biological_sex: Sex.Raw;
         address?: Address.Raw | null;
+        employer_name?: string | null;
     }
 }

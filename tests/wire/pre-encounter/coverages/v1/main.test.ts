@@ -54,6 +54,7 @@ describe("V1Client", () => {
                     country: "country",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                employer_name: "employer_name",
             },
             relationship: "SELF",
             patient: "patient",
@@ -218,7 +219,6 @@ describe("V1Client", () => {
                             additional_notes: "additional_notes",
                         },
                     ],
-                    additional_details: [{ description: "description" }, { description: "description" }],
                 },
                 service_specific_coverage: [
                     {
@@ -269,7 +269,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     {
                         service_code: "1",
@@ -319,7 +318,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                 ],
                 benefits_related_entities: [
@@ -342,6 +340,24 @@ describe("V1Client", () => {
                             { mode: "mode", value: "value" },
                         ],
                         serviceTypeCodes: ["1", "1"],
+                    },
+                ],
+                non_covered_details: [
+                    {
+                        type: "DEDUCTIBLE",
+                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                        unit: "PERCENT",
+                        value: 1.1,
+                        additional_notes: "additional_notes",
+                        service_type_codes: ["1", "1"],
+                    },
+                    {
+                        type: "DEDUCTIBLE",
+                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                        unit: "PERCENT",
+                        value: 1.1,
+                        additional_notes: "additional_notes",
+                        service_type_codes: ["1", "1"],
                     },
                 ],
                 notes: "notes",
@@ -414,6 +430,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    employerName: "employer_name",
                 },
                 relationship: "SELF",
                 patient: CandidApi.preEncounter.PatientId("patient"),
@@ -608,14 +625,6 @@ describe("V1Client", () => {
                                 additionalNotes: "additional_notes",
                             },
                         ],
-                        additionalDetails: [
-                            {
-                                description: "description",
-                            },
-                            {
-                                description: "description",
-                            },
-                        ],
                     },
                     serviceSpecificCoverage: [
                         {
@@ -666,14 +675,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         {
                             serviceCode: "1",
@@ -723,14 +724,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                     ],
                     benefitsRelatedEntities: [
@@ -764,6 +757,24 @@ describe("V1Client", () => {
                                     value: "value",
                                 },
                             ],
+                            serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    nonCoveredDetails: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additionalNotes: "additional_notes",
+                            serviceTypeCodes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additionalNotes: "additional_notes",
                             serviceTypeCodes: ["1", "1"],
                         },
                     ],
@@ -830,6 +841,7 @@ describe("V1Client", () => {
                     country: "country",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                employer_name: "employer_name",
             },
             relationship: "SELF",
             patient: "patient",
@@ -994,7 +1006,6 @@ describe("V1Client", () => {
                             additional_notes: "additional_notes",
                         },
                     ],
-                    additional_details: [{ description: "description" }, { description: "description" }],
                 },
                 service_specific_coverage: [
                     {
@@ -1045,7 +1056,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     {
                         service_code: "1",
@@ -1095,7 +1105,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                 ],
                 benefits_related_entities: [
@@ -1118,6 +1127,24 @@ describe("V1Client", () => {
                             { mode: "mode", value: "value" },
                         ],
                         serviceTypeCodes: ["1", "1"],
+                    },
+                ],
+                non_covered_details: [
+                    {
+                        type: "DEDUCTIBLE",
+                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                        unit: "PERCENT",
+                        value: 1.1,
+                        additional_notes: "additional_notes",
+                        service_type_codes: ["1", "1"],
+                    },
+                    {
+                        type: "DEDUCTIBLE",
+                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                        unit: "PERCENT",
+                        value: 1.1,
+                        additional_notes: "additional_notes",
+                        service_type_codes: ["1", "1"],
                     },
                 ],
                 notes: "notes",
@@ -1194,6 +1221,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    employerName: "employer_name",
                 },
                 relationship: "SELF",
                 patient: CandidApi.preEncounter.PatientId("patient"),
@@ -1388,14 +1416,6 @@ describe("V1Client", () => {
                                 additionalNotes: "additional_notes",
                             },
                         ],
-                        additionalDetails: [
-                            {
-                                description: "description",
-                            },
-                            {
-                                description: "description",
-                            },
-                        ],
                     },
                     serviceSpecificCoverage: [
                         {
@@ -1446,14 +1466,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         {
                             serviceCode: "1",
@@ -1503,14 +1515,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                     ],
                     benefitsRelatedEntities: [
@@ -1544,6 +1548,24 @@ describe("V1Client", () => {
                                     value: "value",
                                 },
                             ],
+                            serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    nonCoveredDetails: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additionalNotes: "additional_notes",
+                            serviceTypeCodes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additionalNotes: "additional_notes",
                             serviceTypeCodes: ["1", "1"],
                         },
                     ],
@@ -1602,6 +1624,7 @@ describe("V1Client", () => {
                             country: "country",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
+                        employer_name: "employer_name",
                     },
                     relationship: "SELF",
                     patient: "patient",
@@ -1706,7 +1729,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         service_specific_coverage: [
                             {
@@ -1715,7 +1737,6 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [{}, {}],
                             },
                             {
                                 service_code: "1",
@@ -1723,7 +1744,6 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [{}, {}],
                             },
                         ],
                         benefits_related_entities: [
@@ -1740,6 +1760,24 @@ describe("V1Client", () => {
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
                                 serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        non_covered_details: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: ["1", "1"],
                             },
                         ],
                         notes: "notes",
@@ -1776,6 +1814,7 @@ describe("V1Client", () => {
                             country: "country",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
+                        employer_name: "employer_name",
                     },
                     relationship: "SELF",
                     patient: "patient",
@@ -1880,7 +1919,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         service_specific_coverage: [
                             {
@@ -1889,7 +1927,6 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [{}, {}],
                             },
                             {
                                 service_code: "1",
@@ -1897,7 +1934,6 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [{}, {}],
                             },
                         ],
                         benefits_related_entities: [
@@ -1914,6 +1950,24 @@ describe("V1Client", () => {
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
                                 serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        non_covered_details: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: ["1", "1"],
                             },
                         ],
                         notes: "notes",
@@ -1974,6 +2028,7 @@ describe("V1Client", () => {
                                     end: "2023-01-15",
                                 },
                             },
+                            employerName: "employer_name",
                         },
                         relationship: "SELF",
                         patient: CandidApi.preEncounter.PatientId("patient"),
@@ -2086,7 +2141,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             serviceSpecificCoverage: [
                                 {
@@ -2095,7 +2149,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [{}, {}],
                                 },
                                 {
                                     serviceCode: "1",
@@ -2103,7 +2156,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [{}, {}],
                                 },
                             ],
                             benefitsRelatedEntities: [
@@ -2119,6 +2171,24 @@ describe("V1Client", () => {
                                     entityType: "entityType",
                                     entityName: "entityName",
                                     contactInformation: [{}, {}],
+                                    serviceTypeCodes: ["1", "1"],
+                                },
+                            ],
+                            nonCoveredDetails: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
+                                    serviceTypeCodes: ["1", "1"],
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
                                     serviceTypeCodes: ["1", "1"],
                                 },
                             ],
@@ -2164,6 +2234,7 @@ describe("V1Client", () => {
                                     end: "2023-01-15",
                                 },
                             },
+                            employerName: "employer_name",
                         },
                         relationship: "SELF",
                         patient: CandidApi.preEncounter.PatientId("patient"),
@@ -2276,7 +2347,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             serviceSpecificCoverage: [
                                 {
@@ -2285,7 +2355,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [{}, {}],
                                 },
                                 {
                                     serviceCode: "1",
@@ -2293,7 +2362,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [{}, {}],
                                 },
                             ],
                             benefitsRelatedEntities: [
@@ -2309,6 +2377,24 @@ describe("V1Client", () => {
                                     entityType: "entityType",
                                     entityName: "entityName",
                                     contactInformation: [{}, {}],
+                                    serviceTypeCodes: ["1", "1"],
+                                },
+                            ],
+                            nonCoveredDetails: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
+                                    serviceTypeCodes: ["1", "1"],
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
                                     serviceTypeCodes: ["1", "1"],
                                 },
                             ],
@@ -2370,6 +2456,7 @@ describe("V1Client", () => {
                     country: "country",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                employer_name: "employer_name",
             },
             relationship: "SELF",
             patient: "patient",
@@ -2534,7 +2621,6 @@ describe("V1Client", () => {
                             additional_notes: "additional_notes",
                         },
                     ],
-                    additional_details: [{ description: "description" }, { description: "description" }],
                 },
                 service_specific_coverage: [
                     {
@@ -2585,7 +2671,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     {
                         service_code: "1",
@@ -2635,7 +2720,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                 ],
                 benefits_related_entities: [
@@ -2658,6 +2742,24 @@ describe("V1Client", () => {
                             { mode: "mode", value: "value" },
                         ],
                         serviceTypeCodes: ["1", "1"],
+                    },
+                ],
+                non_covered_details: [
+                    {
+                        type: "DEDUCTIBLE",
+                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                        unit: "PERCENT",
+                        value: 1.1,
+                        additional_notes: "additional_notes",
+                        service_type_codes: ["1", "1"],
+                    },
+                    {
+                        type: "DEDUCTIBLE",
+                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                        unit: "PERCENT",
+                        value: 1.1,
+                        additional_notes: "additional_notes",
+                        service_type_codes: ["1", "1"],
                     },
                 ],
                 notes: "notes",
@@ -2713,6 +2815,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    employerName: "employer_name",
                 },
                 relationship: "SELF",
                 patient: CandidApi.preEncounter.PatientId("patient"),
@@ -2907,14 +3010,6 @@ describe("V1Client", () => {
                                 additionalNotes: "additional_notes",
                             },
                         ],
-                        additionalDetails: [
-                            {
-                                description: "description",
-                            },
-                            {
-                                description: "description",
-                            },
-                        ],
                     },
                     serviceSpecificCoverage: [
                         {
@@ -2965,14 +3060,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         {
                             serviceCode: "1",
@@ -3022,14 +3109,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                     ],
                     benefitsRelatedEntities: [
@@ -3063,6 +3142,24 @@ describe("V1Client", () => {
                                     value: "value",
                                 },
                             ],
+                            serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    nonCoveredDetails: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additionalNotes: "additional_notes",
+                            serviceTypeCodes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additionalNotes: "additional_notes",
                             serviceTypeCodes: ["1", "1"],
                         },
                     ],
@@ -3120,6 +3217,7 @@ describe("V1Client", () => {
                         country: "country",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    employer_name: "employer_name",
                 },
                 relationship: "SELF",
                 patient: "patient",
@@ -3228,7 +3326,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -3275,7 +3372,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -3321,7 +3417,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -3338,6 +3433,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -3374,6 +3487,7 @@ describe("V1Client", () => {
                         country: "country",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    employer_name: "employer_name",
                 },
                 relationship: "SELF",
                 patient: "patient",
@@ -3482,7 +3596,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -3529,7 +3642,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -3575,7 +3687,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -3592,6 +3703,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -3649,6 +3778,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        employerName: "employer_name",
                     },
                     relationship: "SELF",
                     patient: CandidApi.preEncounter.PatientId("patient"),
@@ -3765,14 +3895,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -3819,7 +3941,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -3865,7 +3986,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -3881,6 +4001,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -3926,6 +4064,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        employerName: "employer_name",
                     },
                     relationship: "SELF",
                     patient: CandidApi.preEncounter.PatientId("patient"),
@@ -4042,14 +4181,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -4096,7 +4227,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -4142,7 +4272,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -4158,6 +4287,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -4216,6 +4363,7 @@ describe("V1Client", () => {
                         country: "country",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    employer_name: "employer_name",
                 },
                 relationship: "SELF",
                 patient: "patient",
@@ -4324,7 +4472,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -4371,7 +4518,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -4417,7 +4563,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -4434,6 +4579,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -4470,6 +4633,7 @@ describe("V1Client", () => {
                         country: "country",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    employer_name: "employer_name",
                 },
                 relationship: "SELF",
                 patient: "patient",
@@ -4578,7 +4742,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -4625,7 +4788,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -4671,7 +4833,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -4688,6 +4849,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -4737,6 +4916,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        employerName: "employer_name",
                     },
                     relationship: "SELF",
                     patient: CandidApi.preEncounter.PatientId("patient"),
@@ -4853,14 +5033,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -4907,7 +5079,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -4953,7 +5124,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -4969,6 +5139,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -5014,6 +5202,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        employerName: "employer_name",
                     },
                     relationship: "SELF",
                     patient: CandidApi.preEncounter.PatientId("patient"),
@@ -5130,14 +5319,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -5184,7 +5365,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -5230,7 +5410,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -5246,6 +5425,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -5304,6 +5501,7 @@ describe("V1Client", () => {
                         country: "country",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    employer_name: "employer_name",
                 },
                 relationship: "SELF",
                 patient: "patient",
@@ -5412,7 +5610,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -5459,7 +5656,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -5505,7 +5701,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -5522,6 +5717,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -5558,6 +5771,7 @@ describe("V1Client", () => {
                         country: "country",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    employer_name: "employer_name",
                 },
                 relationship: "SELF",
                 patient: "patient",
@@ -5666,7 +5880,6 @@ describe("V1Client", () => {
                                 additional_notes: "additional_notes",
                             },
                         ],
-                        additional_details: [{ description: "description" }, { description: "description" }],
                     },
                     service_specific_coverage: [
                         {
@@ -5713,7 +5926,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -5759,7 +5971,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -5776,6 +5987,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -5833,6 +6062,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        employerName: "employer_name",
                     },
                     relationship: "SELF",
                     patient: CandidApi.preEncounter.PatientId("patient"),
@@ -5949,14 +6179,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -6003,7 +6225,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -6049,7 +6270,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -6065,6 +6285,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -6110,6 +6348,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        employerName: "employer_name",
                     },
                     relationship: "SELF",
                     patient: CandidApi.preEncounter.PatientId("patient"),
@@ -6226,14 +6465,6 @@ describe("V1Client", () => {
                                     additionalNotes: "additional_notes",
                                 },
                             ],
-                            additionalDetails: [
-                                {
-                                    description: "description",
-                                },
-                                {
-                                    description: "description",
-                                },
-                            ],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -6280,7 +6511,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -6326,7 +6556,6 @@ describe("V1Client", () => {
                                         value: 1.1,
                                     },
                                 ],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -6342,6 +6571,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -6566,10 +6813,13 @@ describe("V1Client", () => {
                             in_network_flat: [],
                             out_of_network: {},
                             out_of_network_flat: [],
-                            additional_details: [],
                         },
                         service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                         benefits_related_entities: [{}, {}],
+                        non_covered_details: [
+                            { type: "DEDUCTIBLE", coverageLevel: "EMPLOYEE_AND_CHILDREN", unit: "PERCENT", value: 1.1 },
+                            { type: "DEDUCTIBLE", coverageLevel: "EMPLOYEE_AND_CHILDREN", unit: "PERCENT", value: 1.1 },
+                        ],
                         notes: "notes",
                         autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                     },
@@ -6708,7 +6958,6 @@ describe("V1Client", () => {
                                 inNetworkFlat: [],
                                 outOfNetwork: {},
                                 outOfNetworkFlat: [],
-                                additionalDetails: [],
                             },
                             serviceSpecificCoverage: [
                                 {
@@ -6719,6 +6968,20 @@ describe("V1Client", () => {
                                 },
                             ],
                             benefitsRelatedEntities: [{}, {}],
+                            nonCoveredDetails: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                            ],
                             notes: "notes",
                             autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                         },

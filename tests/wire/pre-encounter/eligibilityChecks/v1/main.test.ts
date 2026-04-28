@@ -157,7 +157,6 @@ describe("V1Client", () => {
                             { type: "DEDUCTIBLE", coverageLevel: "EMPLOYEE_AND_CHILDREN", unit: "PERCENT", value: 1.1 },
                             { type: "DEDUCTIBLE", coverageLevel: "EMPLOYEE_AND_CHILDREN", unit: "PERCENT", value: 1.1 },
                         ],
-                        additional_details: [{}, {}],
                     },
                     service_specific_coverage: [
                         {
@@ -166,7 +165,6 @@ describe("V1Client", () => {
                             in_network_flat: [],
                             out_of_network: {},
                             out_of_network_flat: [],
-                            additional_details: [{}, {}],
                         },
                         {
                             service_code: "1",
@@ -174,7 +172,6 @@ describe("V1Client", () => {
                             in_network_flat: [],
                             out_of_network: {},
                             out_of_network_flat: [],
-                            additional_details: [{}, {}],
                         },
                     ],
                     benefits_related_entities: [
@@ -191,6 +188,24 @@ describe("V1Client", () => {
                             entityName: "entityName",
                             contactInformation: [{}, {}],
                             serviceTypeCodes: ["1", "1"],
+                        },
+                    ],
+                    non_covered_details: [
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
+                        },
+                        {
+                            type: "DEDUCTIBLE",
+                            coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                            unit: "PERCENT",
+                            value: 1.1,
+                            additional_notes: "additional_notes",
+                            service_type_codes: ["1", "1"],
                         },
                     ],
                     notes: "notes",
@@ -393,7 +408,6 @@ describe("V1Client", () => {
                                     value: 1.1,
                                 },
                             ],
-                            additionalDetails: [{}, {}],
                         },
                         serviceSpecificCoverage: [
                             {
@@ -402,7 +416,6 @@ describe("V1Client", () => {
                                 inNetworkFlat: [],
                                 outOfNetwork: {},
                                 outOfNetworkFlat: [],
-                                additionalDetails: [{}, {}],
                             },
                             {
                                 serviceCode: "1",
@@ -410,7 +423,6 @@ describe("V1Client", () => {
                                 inNetworkFlat: [],
                                 outOfNetwork: {},
                                 outOfNetworkFlat: [],
-                                additionalDetails: [{}, {}],
                             },
                         ],
                         benefitsRelatedEntities: [
@@ -426,6 +438,24 @@ describe("V1Client", () => {
                                 entityType: "entityType",
                                 entityName: "entityName",
                                 contactInformation: [{}, {}],
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                        ],
+                        nonCoveredDetails: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
+                                serviceTypeCodes: ["1", "1"],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additionalNotes: "additional_notes",
                                 serviceTypeCodes: ["1", "1"],
                             },
                         ],
@@ -625,10 +655,23 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
+                            non_covered_details: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                            ],
                             notes: "notes",
                             autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                         },
@@ -732,10 +775,23 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
+                            non_covered_details: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                            ],
                             notes: "notes",
                             autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                         },
@@ -869,7 +925,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -880,6 +935,20 @@ describe("V1Client", () => {
                                     },
                                 ],
                                 benefitsRelatedEntities: [{}, {}],
+                                nonCoveredDetails: [
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                ],
                                 notes: "notes",
                                 autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                             },
@@ -1003,7 +1072,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -1014,6 +1082,20 @@ describe("V1Client", () => {
                                     },
                                 ],
                                 benefitsRelatedEntities: [{}, {}],
+                                nonCoveredDetails: [
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                ],
                                 notes: "notes",
                                 autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                             },
@@ -1671,10 +1753,23 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
+                            non_covered_details: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                            ],
                             notes: "notes",
                             autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                         },
@@ -1778,10 +1873,23 @@ describe("V1Client", () => {
                                 in_network_flat: [],
                                 out_of_network: {},
                                 out_of_network_flat: [],
-                                additional_details: [],
                             },
                             service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
                             benefits_related_entities: [{}, {}],
+                            non_covered_details: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                },
+                            ],
                             notes: "notes",
                             autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                         },
@@ -1915,7 +2023,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -1926,6 +2033,20 @@ describe("V1Client", () => {
                                     },
                                 ],
                                 benefitsRelatedEntities: [{}, {}],
+                                nonCoveredDetails: [
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                ],
                                 notes: "notes",
                                 autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                             },
@@ -2049,7 +2170,6 @@ describe("V1Client", () => {
                                     inNetworkFlat: [],
                                     outOfNetwork: {},
                                     outOfNetworkFlat: [],
-                                    additionalDetails: [],
                                 },
                                 serviceSpecificCoverage: [
                                     {
@@ -2060,6 +2180,20 @@ describe("V1Client", () => {
                                     },
                                 ],
                                 benefitsRelatedEntities: [{}, {}],
+                                nonCoveredDetails: [
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                    {
+                                        type: "DEDUCTIBLE",
+                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                        unit: "PERCENT",
+                                        value: 1.1,
+                                    },
+                                ],
                                 notes: "notes",
                                 autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
                             },

@@ -1,3 +1,4 @@
+export * from "./AdvancedDirective";
 export * from "./Authorization";
 export * from "./AuthorizationUnit";
 export * from "./Contact";

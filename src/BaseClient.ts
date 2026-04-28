@@ -51,8 +51,8 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "candidhealth",
-            "X-Fern-SDK-Version": "1.22.2",
-            "User-Agent": "candidhealth/1.22.2",
+            "X-Fern-SDK-Version": "1.22.3",
+            "User-Agent": "candidhealth/1.22.3",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },
