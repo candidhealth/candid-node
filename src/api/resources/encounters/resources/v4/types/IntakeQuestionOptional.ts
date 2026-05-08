@@ -20,5 +20,5 @@ import type * as CandidApi from "../../../../../index";
 export interface IntakeQuestionOptional {
     id?: CandidApi.encounters.v4.IntakeQuestionId;
     text?: string;
-    responses?: CandidApi.encounters.v4.IntakeResponseAndFollowUps[];
+    responses?: CandidApi.encounters.v4.IntakeResponseAndFollowUpsOptional[];
 }

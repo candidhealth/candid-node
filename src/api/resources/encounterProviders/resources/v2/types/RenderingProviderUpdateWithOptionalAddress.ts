@@ -16,5 +16,5 @@ export interface RenderingProviderUpdateWithOptionalAddress
      * 837i Loop2310BB G2
      * Secondary Identification
      */
-    secondaryIdentification?: CandidApi.encounterProviders.v2.ProviderSecondaryIdentification;
+    secondaryIdentification?: CandidApi.encounterProviders.v2.ProviderSecondaryIdentificationOptional;
 }

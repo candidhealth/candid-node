@@ -13,7 +13,7 @@ export const ExternalClaimSubmissionCreateOptional: core.serialization.ObjectSch
     patientControlNumber: core.serialization.property("patient_control_number", core.serialization.string().optional()),
     submissionRecords: core.serialization.property(
         "submission_records",
-        core.serialization.list(ClaimSubmissionRecordCreateOptional),
+        core.serialization.list(ClaimSubmissionRecordCreateOptional).optional(),
     ),
 });
 
@@ -21,6 +21,6 @@ export declare namespace ExternalClaimSubmissionCreateOptional {
     export interface Raw {
         claim_created_at?: string | null;
         patient_control_number?: string | null;
-        submission_records: ClaimSubmissionRecordCreateOptional.Raw[];
+        submission_records?: ClaimSubmissionRecordCreateOptional.Raw[] | null;
     }
 }

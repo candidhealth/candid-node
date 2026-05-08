@@ -84,6 +84,28 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                carve_outs: [
+                    {
+                        carve_out: "BEHAVIORAL",
+                        member_id: "member_id",
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
+                        group_number: "group_number",
+                        plan_type: "09",
+                        type: "01",
+                        payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    },
+                    {
+                        carve_out: "BEHAVIORAL",
+                        member_id: "member_id",
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
+                        group_number: "group_number",
+                        plan_type: "09",
+                        type: "01",
+                        payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    },
+                ],
             },
             verified: true,
             eligibility_checks: [
@@ -466,6 +488,32 @@ describe("V1Client", () => {
                         },
                     },
                     payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                    carveOuts: [
+                        {
+                            carveOut: "BEHAVIORAL",
+                            memberId: "member_id",
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
+                            groupNumber: "group_number",
+                            planType: "09",
+                            type: "01",
+                            payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                        },
+                        {
+                            carveOut: "BEHAVIORAL",
+                            memberId: "member_id",
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
+                            groupNumber: "group_number",
+                            planType: "09",
+                            type: "01",
+                            payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                        },
+                    ],
                 },
                 verified: true,
                 eligibilityChecks: [
@@ -871,6 +919,28 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                carve_outs: [
+                    {
+                        carve_out: "BEHAVIORAL",
+                        member_id: "member_id",
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
+                        group_number: "group_number",
+                        plan_type: "09",
+                        type: "01",
+                        payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    },
+                    {
+                        carve_out: "BEHAVIORAL",
+                        member_id: "member_id",
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
+                        group_number: "group_number",
+                        plan_type: "09",
+                        type: "01",
+                        payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    },
+                ],
             },
             verified: true,
             eligibility_checks: [
@@ -1257,6 +1327,32 @@ describe("V1Client", () => {
                         },
                     },
                     payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                    carveOuts: [
+                        {
+                            carveOut: "BEHAVIORAL",
+                            memberId: "member_id",
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
+                            groupNumber: "group_number",
+                            planType: "09",
+                            type: "01",
+                            payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                        },
+                        {
+                            carveOut: "BEHAVIORAL",
+                            memberId: "member_id",
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
+                            groupNumber: "group_number",
+                            planType: "09",
+                            type: "01",
+                            payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                        },
+                    ],
                 },
                 verified: true,
                 eligibilityChecks: [
@@ -1654,6 +1750,28 @@ describe("V1Client", () => {
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        carve_outs: [
+                            {
+                                carve_out: "BEHAVIORAL",
+                                member_id: "member_id",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                group_number: "group_number",
+                                plan_type: "09",
+                                type: "01",
+                                payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            },
+                            {
+                                carve_out: "BEHAVIORAL",
+                                member_id: "member_id",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                group_number: "group_number",
+                                plan_type: "09",
+                                type: "01",
+                                payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            },
+                        ],
                     },
                     verified: true,
                     eligibility_checks: [
@@ -1844,6 +1962,28 @@ describe("V1Client", () => {
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        carve_outs: [
+                            {
+                                carve_out: "BEHAVIORAL",
+                                member_id: "member_id",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                group_number: "group_number",
+                                plan_type: "09",
+                                type: "01",
+                                payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            },
+                            {
+                                carve_out: "BEHAVIORAL",
+                                member_id: "member_id",
+                                payer_id: "payer_id",
+                                payer_name: "payer_name",
+                                group_number: "group_number",
+                                plan_type: "09",
+                                type: "01",
+                                payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            },
+                        ],
                     },
                     verified: true,
                     eligibility_checks: [
@@ -2066,6 +2206,32 @@ describe("V1Client", () => {
                             payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                                 "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                             ),
+                            carveOuts: [
+                                {
+                                    carveOut: "BEHAVIORAL",
+                                    memberId: "member_id",
+                                    payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                    payerName: "payer_name",
+                                    groupNumber: "group_number",
+                                    planType: "09",
+                                    type: "01",
+                                    payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                },
+                                {
+                                    carveOut: "BEHAVIORAL",
+                                    memberId: "member_id",
+                                    payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                    payerName: "payer_name",
+                                    groupNumber: "group_number",
+                                    planType: "09",
+                                    type: "01",
+                                    payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                },
+                            ],
                         },
                         verified: true,
                         eligibilityChecks: [
@@ -2272,6 +2438,32 @@ describe("V1Client", () => {
                             payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                                 "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                             ),
+                            carveOuts: [
+                                {
+                                    carveOut: "BEHAVIORAL",
+                                    memberId: "member_id",
+                                    payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                    payerName: "payer_name",
+                                    groupNumber: "group_number",
+                                    planType: "09",
+                                    type: "01",
+                                    payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                },
+                                {
+                                    carveOut: "BEHAVIORAL",
+                                    memberId: "member_id",
+                                    payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                    payerName: "payer_name",
+                                    groupNumber: "group_number",
+                                    planType: "09",
+                                    type: "01",
+                                    payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                },
+                            ],
                         },
                         verified: true,
                         eligibilityChecks: [
@@ -2486,6 +2678,28 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                carve_outs: [
+                    {
+                        carve_out: "BEHAVIORAL",
+                        member_id: "member_id",
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
+                        group_number: "group_number",
+                        plan_type: "09",
+                        type: "01",
+                        payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    },
+                    {
+                        carve_out: "BEHAVIORAL",
+                        member_id: "member_id",
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
+                        group_number: "group_number",
+                        plan_type: "09",
+                        type: "01",
+                        payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    },
+                ],
             },
             verified: true,
             eligibility_checks: [
@@ -2851,6 +3065,32 @@ describe("V1Client", () => {
                         },
                     },
                     payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                    carveOuts: [
+                        {
+                            carveOut: "BEHAVIORAL",
+                            memberId: "member_id",
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
+                            groupNumber: "group_number",
+                            planType: "09",
+                            type: "01",
+                            payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                        },
+                        {
+                            carveOut: "BEHAVIORAL",
+                            memberId: "member_id",
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
+                            groupNumber: "group_number",
+                            planType: "09",
+                            type: "01",
+                            payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                        },
+                    ],
                 },
                 verified: true,
                 eligibilityChecks: [
@@ -3247,6 +3487,28 @@ describe("V1Client", () => {
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    carve_outs: [
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                    ],
                 },
                 verified: true,
                 eligibility_checks: [
@@ -3517,6 +3779,28 @@ describe("V1Client", () => {
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    carve_outs: [
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                    ],
                 },
                 verified: true,
                 eligibility_checks: [
@@ -3816,6 +4100,32 @@ describe("V1Client", () => {
                         payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
+                        carveOuts: [
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                        ],
                     },
                     verified: true,
                     eligibilityChecks: [
@@ -4102,6 +4412,32 @@ describe("V1Client", () => {
                         payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
+                        carveOuts: [
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                        ],
                     },
                     verified: true,
                     eligibilityChecks: [
@@ -4393,6 +4729,28 @@ describe("V1Client", () => {
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    carve_outs: [
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                    ],
                 },
                 verified: true,
                 eligibility_checks: [
@@ -4663,6 +5021,28 @@ describe("V1Client", () => {
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    carve_outs: [
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                    ],
                 },
                 verified: true,
                 eligibility_checks: [
@@ -4954,6 +5334,32 @@ describe("V1Client", () => {
                         payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
+                        carveOuts: [
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                        ],
                     },
                     verified: true,
                     eligibilityChecks: [
@@ -5240,6 +5646,32 @@ describe("V1Client", () => {
                         payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
+                        carveOuts: [
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                        ],
                     },
                     verified: true,
                     eligibilityChecks: [
@@ -5531,6 +5963,28 @@ describe("V1Client", () => {
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    carve_outs: [
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                    ],
                 },
                 verified: true,
                 eligibility_checks: [
@@ -5801,6 +6255,28 @@ describe("V1Client", () => {
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    carve_outs: [
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                        {
+                            carve_out: "BEHAVIORAL",
+                            member_id: "member_id",
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
+                            group_number: "group_number",
+                            plan_type: "09",
+                            type: "01",
+                            payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        },
+                    ],
                 },
                 verified: true,
                 eligibility_checks: [
@@ -6100,6 +6576,32 @@ describe("V1Client", () => {
                         payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
+                        carveOuts: [
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                        ],
                     },
                     verified: true,
                     eligibilityChecks: [
@@ -6386,6 +6888,32 @@ describe("V1Client", () => {
                         payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
+                        carveOuts: [
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                            {
+                                carveOut: "BEHAVIORAL",
+                                memberId: "member_id",
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
+                                groupNumber: "group_number",
+                                planType: "09",
+                                type: "01",
+                                payerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                            },
+                        ],
                     },
                     verified: true,
                     eligibilityChecks: [

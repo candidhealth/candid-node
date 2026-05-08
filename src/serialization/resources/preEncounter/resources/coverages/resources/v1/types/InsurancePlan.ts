@@ -8,6 +8,7 @@ import { Address } from "../../../../common/types/Address";
 import { PayerId } from "../../../../common/types/PayerId";
 import { PayerPlanGroupId } from "../../../../common/types/PayerPlanGroupId";
 import { Period } from "../../../../common/types/Period";
+import { CoverageCarveOut } from "./CoverageCarveOut";
 import { InsuranceTypeCode } from "./InsuranceTypeCode";
 import { NetworkType } from "./NetworkType";
 
@@ -33,6 +34,7 @@ export const InsurancePlan: core.serialization.ObjectSchema<
     ),
     address: Address.optional(),
     payerPlanGroupId: core.serialization.property("payer_plan_group_id", PayerPlanGroupId.optional()),
+    carveOuts: core.serialization.property("carve_outs", core.serialization.list(CoverageCarveOut).optional()),
 });
 
 export declare namespace InsurancePlan {
@@ -49,5 +51,6 @@ export declare namespace InsurancePlan {
         insurance_card_image_locator?: string | null;
         address?: Address.Raw | null;
         payer_plan_group_id?: PayerPlanGroupId.Raw | null;
+        carve_outs?: CoverageCarveOut.Raw[] | null;
     }
 }

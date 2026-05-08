@@ -2,7 +2,15 @@
 
 import type * as CandidApi from "../../../../../index";
 
-export interface InsuranceCardCreateOptional extends CandidApi.insuranceCards.v2.InsuranceCardBase {
+export interface InsuranceCardCreateOptional {
+    /** Box 11 on the CMS-1500 claim form. */
+    groupNumber?: string;
+    /** Box 11c on the CMS-1500 claim form. */
+    planName?: string;
+    planType?: CandidApi.SourceOfPaymentCode;
+    insuranceType?: CandidApi.InsuranceTypeCode;
+    payerPlanGroupId?: CandidApi.PayerPlanGroupId;
+    payerAddress?: CandidApi.StreetAddressLongZipOptional;
     memberId?: string;
     payerName?: string;
     payerId?: string;

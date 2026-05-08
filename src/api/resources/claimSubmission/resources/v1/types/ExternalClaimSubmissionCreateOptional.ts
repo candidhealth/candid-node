@@ -39,5 +39,5 @@ export interface ExternalClaimSubmissionCreateOptional {
      * A successful claim submission record will be created for each value provided.
      * An empty list may be provided for cases where the claim originated in an external system but was never submitted to a payer.
      */
-    submissionRecords: CandidApi.claimSubmission.v1.ClaimSubmissionRecordCreateOptional[];
+    submissionRecords?: CandidApi.claimSubmission.v1.ClaimSubmissionRecordCreateOptional[];
 }

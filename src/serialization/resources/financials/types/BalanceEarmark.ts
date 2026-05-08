@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import type * as serializers from "../../../index";
+import { AllocationId } from "../../commons/types/AllocationId";
 import { AllocationEarmarkType } from "./AllocationEarmarkType";
 
 export const BalanceEarmark: core.serialization.ObjectSchema<serializers.BalanceEarmark.Raw, CandidApi.BalanceEarmark> =
@@ -13,10 +14,7 @@ export const BalanceEarmark: core.serialization.ObjectSchema<serializers.Balance
             "amount_earmarked_cents",
             core.serialization.number().optional(),
         ),
-        createdByAllocationId: core.serialization.property(
-            "created_by_allocation_id",
-            core.serialization.string().optional(),
-        ),
+        createdByAllocationId: core.serialization.property("created_by_allocation_id", AllocationId.optional()),
     });
 
 export declare namespace BalanceEarmark {
@@ -24,6 +22,6 @@ export declare namespace BalanceEarmark {
         id: string;
         target: AllocationEarmarkType.Raw;
         amount_earmarked_cents?: number | null;
-        created_by_allocation_id?: string | null;
+        created_by_allocation_id?: AllocationId.Raw | null;
     }
 }

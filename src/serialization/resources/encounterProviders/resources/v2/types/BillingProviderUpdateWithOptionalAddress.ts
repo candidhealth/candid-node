@@ -5,7 +5,7 @@ import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { BillingProviderCommercialLicenseType } from "../../../../commons/types/BillingProviderCommercialLicenseType";
 import { StreetAddressShortZipOptional } from "../../../../commons/types/StreetAddressShortZipOptional";
-import { BillingProviderSecondaryIdentification } from "./BillingProviderSecondaryIdentification";
+import { BillingProviderSecondaryIdentificationOptional } from "./BillingProviderSecondaryIdentificationOptional";
 import { EncounterProviderBase } from "./EncounterProviderBase";
 
 export const BillingProviderUpdateWithOptionalAddress: core.serialization.ObjectSchema<
@@ -23,7 +23,7 @@ export const BillingProviderUpdateWithOptionalAddress: core.serialization.Object
         ),
         secondaryIdentification: core.serialization.property(
             "secondary_identification",
-            BillingProviderSecondaryIdentification.optional(),
+            BillingProviderSecondaryIdentificationOptional.optional(),
         ),
     })
     .extend(EncounterProviderBase);
@@ -35,6 +35,6 @@ export declare namespace BillingProviderUpdateWithOptionalAddress {
         npi?: string | null;
         taxonomy_code?: string | null;
         provider_commercial_license_type?: BillingProviderCommercialLicenseType.Raw | null;
-        secondary_identification?: BillingProviderSecondaryIdentification.Raw | null;
+        secondary_identification?: BillingProviderSecondaryIdentificationOptional.Raw | null;
     }
 }

@@ -13,12 +13,12 @@ import { InitialReferringProviderUpdateWithOptionalAddress } from "../../../../e
 import { ReferringProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/ReferringProviderUpdateWithOptionalAddress";
 import { RenderingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/RenderingProviderUpdateWithOptionalAddress";
 import { SupervisingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/SupervisingProviderUpdateWithOptionalAddress";
-import { TreatingProvider } from "../../../../encounterProviders/resources/v2/types/TreatingProvider";
+import { TreatingProviderUpdateWithOptionalAddress } from "../../../../encounterProviders/resources/v2/types/TreatingProviderUpdateWithOptionalAddress";
 import { GuarantorOptional } from "../../../../guarantor/resources/v1/types/GuarantorOptional";
 import { PatientUpdateWithOptionalAddress } from "../../../../individual/types/PatientUpdateWithOptionalAddress";
 import { SubscriberCreateOptional } from "../../../../individual/types/SubscriberCreateOptional";
-import { PropertyCasualtyPatientIdentifierCreate } from "../../../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreate";
-import { RelatedCausesInformationCreate } from "../../../../relatedCauses/resources/v1/types/RelatedCausesInformationCreate";
+import { PropertyCasualtyPatientIdentifierCreateOptional } from "../../../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreateOptional";
+import { RelatedCausesInformationCreateOptional } from "../../../../relatedCauses/resources/v1/types/RelatedCausesInformationCreateOptional";
 import { EncounterServiceFacilityUpdateWithOptionalAddress } from "../../../../serviceFacility/types/EncounterServiceFacilityUpdateWithOptionalAddress";
 import { ServiceLineCreateOptional } from "../../../../serviceLines/resources/v2/types/ServiceLineCreateOptional";
 import { ClaimSupplementalInformationOptional } from "./ClaimSupplementalInformationOptional";
@@ -96,7 +96,10 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
             "supervising_provider",
             SupervisingProviderUpdateWithOptionalAddress.optional(),
         ),
-        treatingProvider: core.serialization.property("treating_provider", TreatingProvider.optional()),
+        treatingProvider: core.serialization.property(
+            "treating_provider",
+            TreatingProviderUpdateWithOptionalAddress.optional(),
+        ),
         billingProvider: core.serialization.property(
             "billing_provider",
             BillingProviderUpdateWithOptionalAddress.optional(),
@@ -104,7 +107,7 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
         payToAddress: core.serialization.property("pay_to_address", StreetAddressShortZipOptional.optional()),
         relatedCausesInformation: core.serialization.property(
             "related_causes_information",
-            RelatedCausesInformationCreate.optional(),
+            RelatedCausesInformationCreateOptional.optional(),
         ),
         propertyCasualtyClaimNumber: core.serialization.property(
             "property_casualty_claim_number",
@@ -113,7 +116,7 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
         propertyCasualtyPatientIdentifier: core.serialization.property(
             "property_casualty_patient_identifier",
-            PropertyCasualtyPatientIdentifierCreate.optional(),
+            PropertyCasualtyPatientIdentifierCreateOptional.optional(),
         ),
     })
     .extend(EncounterOptional);
@@ -142,12 +145,12 @@ export declare namespace EncounterDeepOptional {
         initial_referring_provider?: InitialReferringProviderUpdateWithOptionalAddress.Raw | null;
         referring_provider?: ReferringProviderUpdateWithOptionalAddress.Raw | null;
         supervising_provider?: SupervisingProviderUpdateWithOptionalAddress.Raw | null;
-        treating_provider?: TreatingProvider.Raw | null;
+        treating_provider?: TreatingProviderUpdateWithOptionalAddress.Raw | null;
         billing_provider?: BillingProviderUpdateWithOptionalAddress.Raw | null;
         pay_to_address?: StreetAddressShortZipOptional.Raw | null;
-        related_causes_information?: RelatedCausesInformationCreate.Raw | null;
+        related_causes_information?: RelatedCausesInformationCreateOptional.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
-        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierCreate.Raw | null;
+        property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierCreateOptional.Raw | null;
     }
 }

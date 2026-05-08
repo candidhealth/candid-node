@@ -1,4 +1,5 @@
 export * from "./AdjustmentId";
+export * from "./AllocationId";
 export * from "./AppointmentId";
 export * from "./BadRequestErrorMessage";
 export * from "./BillingProviderCommercialLicenseType";

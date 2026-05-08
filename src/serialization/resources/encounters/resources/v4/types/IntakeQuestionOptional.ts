@@ -4,7 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { IntakeQuestionId } from "./IntakeQuestionId";
-import { IntakeResponseAndFollowUps } from "./IntakeResponseAndFollowUps";
+import { IntakeResponseAndFollowUpsOptional } from "./IntakeResponseAndFollowUpsOptional";
 
 export const IntakeQuestionOptional: core.serialization.ObjectSchema<
     serializers.encounters.v4.IntakeQuestionOptional.Raw,
@@ -12,13 +12,13 @@ export const IntakeQuestionOptional: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: IntakeQuestionId.optional(),
     text: core.serialization.string().optional(),
-    responses: core.serialization.list(IntakeResponseAndFollowUps).optional(),
+    responses: core.serialization.list(IntakeResponseAndFollowUpsOptional).optional(),
 });
 
 export declare namespace IntakeQuestionOptional {
     export interface Raw {
         id?: IntakeQuestionId.Raw | null;
         text?: string | null;
-        responses?: IntakeResponseAndFollowUps.Raw[] | null;
+        responses?: IntakeResponseAndFollowUpsOptional.Raw[] | null;
     }
 }

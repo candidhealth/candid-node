@@ -16,4 +16,5 @@ export interface InsurancePlan {
     address?: CandidApi.preEncounter.Address;
     /** The ID of the Candid configured payer plan group associated with this coverage */
     payerPlanGroupId?: CandidApi.preEncounter.PayerPlanGroupId;
+    carveOuts?: CandidApi.preEncounter.coverages.v1.CoverageCarveOut[];
 }

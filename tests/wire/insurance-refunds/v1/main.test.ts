@@ -43,6 +43,7 @@ describe("V1Client", () => {
                     refund_note: "refund_note",
                     allocations: [
                         {
+                            allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                             amount_cents: 1,
                             target: {
                                 type: "service_line",
@@ -59,6 +60,7 @@ describe("V1Client", () => {
                             allocated_on: "2024-01-15T09:30:00Z",
                         },
                         {
+                            allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                             amount_cents: 1,
                             target: {
                                 type: "service_line",
@@ -101,6 +103,7 @@ describe("V1Client", () => {
                     refund_note: "refund_note",
                     allocations: [
                         {
+                            allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                             amount_cents: 1,
                             target: {
                                 type: "service_line",
@@ -117,6 +120,7 @@ describe("V1Client", () => {
                             allocated_on: "2024-01-15T09:30:00Z",
                         },
                         {
+                            allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                             amount_cents: 1,
                             target: {
                                 type: "service_line",
@@ -178,6 +182,7 @@ describe("V1Client", () => {
                         refundNote: "refund_note",
                         allocations: [
                             {
+                                allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                                 amountCents: 1,
                                 target: {
                                     type: "service_line",
@@ -192,11 +197,14 @@ describe("V1Client", () => {
                                         value: CandidApi.Date_("target"),
                                     },
                                     amountEarmarkedCents: 1,
-                                    createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    createdByAllocationId: CandidApi.AllocationId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                                 },
                                 allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                             },
                             {
+                                allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                                 amountCents: 1,
                                 target: {
                                     type: "service_line",
@@ -211,7 +219,9 @@ describe("V1Client", () => {
                                         value: CandidApi.Date_("target"),
                                     },
                                     amountEarmarkedCents: 1,
-                                    createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    createdByAllocationId: CandidApi.AllocationId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                                 },
                                 allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                             },
@@ -244,6 +254,7 @@ describe("V1Client", () => {
                         refundNote: "refund_note",
                         allocations: [
                             {
+                                allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                                 amountCents: 1,
                                 target: {
                                     type: "service_line",
@@ -258,11 +269,14 @@ describe("V1Client", () => {
                                         value: CandidApi.Date_("target"),
                                     },
                                     amountEarmarkedCents: 1,
-                                    createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    createdByAllocationId: CandidApi.AllocationId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                                 },
                                 allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                             },
                             {
+                                allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                                 amountCents: 1,
                                 target: {
                                     type: "service_line",
@@ -277,7 +291,9 @@ describe("V1Client", () => {
                                         value: CandidApi.Date_("target"),
                                     },
                                     amountEarmarkedCents: 1,
-                                    createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    createdByAllocationId: CandidApi.AllocationId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                                 },
                                 allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                             },
@@ -329,6 +345,7 @@ describe("V1Client", () => {
             refund_note: "refund_note",
             allocations: [
                 {
+                    allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     amount_cents: 1,
                     target: {
                         type: "service_line",
@@ -345,6 +362,7 @@ describe("V1Client", () => {
                     allocated_on: "2024-01-15T09:30:00Z",
                 },
                 {
+                    allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     amount_cents: 1,
                     target: {
                         type: "service_line",
@@ -402,6 +420,7 @@ describe("V1Client", () => {
                 refundNote: "refund_note",
                 allocations: [
                     {
+                        allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         amountCents: 1,
                         target: {
                             type: "service_line",
@@ -416,11 +435,12 @@ describe("V1Client", () => {
                                 value: CandidApi.Date_("target"),
                             },
                             amountEarmarkedCents: 1,
-                            createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            createdByAllocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         },
                         allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                     },
                     {
+                        allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         amountCents: 1,
                         target: {
                             type: "service_line",
@@ -435,7 +455,7 @@ describe("V1Client", () => {
                                 value: CandidApi.Date_("target"),
                             },
                             amountEarmarkedCents: 1,
-                            createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            createdByAllocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         },
                         allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                     },
@@ -496,6 +516,7 @@ describe("V1Client", () => {
             refund_note: "refund_note",
             allocations: [
                 {
+                    allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     amount_cents: 1,
                     target: {
                         type: "service_line",
@@ -512,6 +533,7 @@ describe("V1Client", () => {
                     allocated_on: "2024-01-15T09:30:00Z",
                 },
                 {
+                    allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     amount_cents: 1,
                     target: {
                         type: "service_line",
@@ -591,6 +613,7 @@ describe("V1Client", () => {
                 refundNote: "refund_note",
                 allocations: [
                     {
+                        allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         amountCents: 1,
                         target: {
                             type: "service_line",
@@ -605,11 +628,12 @@ describe("V1Client", () => {
                                 value: CandidApi.Date_("target"),
                             },
                             amountEarmarkedCents: 1,
-                            createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            createdByAllocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         },
                         allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                     },
                     {
+                        allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         amountCents: 1,
                         target: {
                             type: "service_line",
@@ -624,7 +648,7 @@ describe("V1Client", () => {
                                 value: CandidApi.Date_("target"),
                             },
                             amountEarmarkedCents: 1,
-                            createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            createdByAllocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         },
                         allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                     },
@@ -672,6 +696,7 @@ describe("V1Client", () => {
             refund_note: "refund_note",
             allocations: [
                 {
+                    allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     amount_cents: 1,
                     target: {
                         type: "service_line",
@@ -688,6 +713,7 @@ describe("V1Client", () => {
                     allocated_on: "2024-01-15T09:30:00Z",
                 },
                 {
+                    allocation_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     amount_cents: 1,
                     target: {
                         type: "service_line",
@@ -746,6 +772,7 @@ describe("V1Client", () => {
                 refundNote: "refund_note",
                 allocations: [
                     {
+                        allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         amountCents: 1,
                         target: {
                             type: "service_line",
@@ -760,11 +787,12 @@ describe("V1Client", () => {
                                 value: CandidApi.Date_("target"),
                             },
                             amountEarmarkedCents: 1,
-                            createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            createdByAllocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         },
                         allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                     },
                     {
+                        allocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         amountCents: 1,
                         target: {
                             type: "service_line",
@@ -779,7 +807,7 @@ describe("V1Client", () => {
                                 value: CandidApi.Date_("target"),
                             },
                             amountEarmarkedCents: 1,
-                            createdByAllocationId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            createdByAllocationId: CandidApi.AllocationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         },
                         allocatedOn: new Date("2024-01-15T09:30:00.000Z"),
                     },

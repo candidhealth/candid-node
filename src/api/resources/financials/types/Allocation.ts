@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../index";
 
 export interface Allocation {
+    allocationId?: CandidApi.AllocationId;
     amountCents: number;
     target: CandidApi.AllocationTarget;
     /** The active earmark created by this allocation, if any. Only present when this allocation created an earmark for future auto-allocation and the earmark has not been deleted. */

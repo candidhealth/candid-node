@@ -4,30 +4,40 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { EmrPayerCrosswalk } from "../../../../commons/types/EmrPayerCrosswalk";
-import { InsuranceCardBase } from "./InsuranceCardBase";
+import { InsuranceTypeCode } from "../../../../commons/types/InsuranceTypeCode";
+import { PayerPlanGroupId } from "../../../../commons/types/PayerPlanGroupId";
+import { SourceOfPaymentCode } from "../../../../commons/types/SourceOfPaymentCode";
+import { StreetAddressLongZipOptional } from "../../../../commons/types/StreetAddressLongZipOptional";
 
 export const InsuranceCardCreateOptional: core.serialization.ObjectSchema<
     serializers.insuranceCards.v2.InsuranceCardCreateOptional.Raw,
     CandidApi.insuranceCards.v2.InsuranceCardCreateOptional
-> = core.serialization
-    .object({
-        memberId: core.serialization.property("member_id", core.serialization.string().optional()),
-        payerName: core.serialization.property("payer_name", core.serialization.string().optional()),
-        payerId: core.serialization.property("payer_id", core.serialization.string().optional()),
-        rxBin: core.serialization.property("rx_bin", core.serialization.string().optional()),
-        rxPcn: core.serialization.property("rx_pcn", core.serialization.string().optional()),
-        imageUrlFront: core.serialization.property("image_url_front", core.serialization.string().optional()),
-        imageUrlBack: core.serialization.property("image_url_back", core.serialization.string().optional()),
-        emrPayerCrosswalk: core.serialization.property("emr_payer_crosswalk", EmrPayerCrosswalk.optional()),
-        payerPlanGroupName: core.serialization.property(
-            "payer_plan_group_name",
-            core.serialization.string().optional(),
-        ),
-    })
-    .extend(InsuranceCardBase);
+> = core.serialization.object({
+    groupNumber: core.serialization.property("group_number", core.serialization.string().optional()),
+    planName: core.serialization.property("plan_name", core.serialization.string().optional()),
+    planType: core.serialization.property("plan_type", SourceOfPaymentCode.optional()),
+    insuranceType: core.serialization.property("insurance_type", InsuranceTypeCode.optional()),
+    payerPlanGroupId: core.serialization.property("payer_plan_group_id", PayerPlanGroupId.optional()),
+    payerAddress: core.serialization.property("payer_address", StreetAddressLongZipOptional.optional()),
+    memberId: core.serialization.property("member_id", core.serialization.string().optional()),
+    payerName: core.serialization.property("payer_name", core.serialization.string().optional()),
+    payerId: core.serialization.property("payer_id", core.serialization.string().optional()),
+    rxBin: core.serialization.property("rx_bin", core.serialization.string().optional()),
+    rxPcn: core.serialization.property("rx_pcn", core.serialization.string().optional()),
+    imageUrlFront: core.serialization.property("image_url_front", core.serialization.string().optional()),
+    imageUrlBack: core.serialization.property("image_url_back", core.serialization.string().optional()),
+    emrPayerCrosswalk: core.serialization.property("emr_payer_crosswalk", EmrPayerCrosswalk.optional()),
+    payerPlanGroupName: core.serialization.property("payer_plan_group_name", core.serialization.string().optional()),
+});
 
 export declare namespace InsuranceCardCreateOptional {
-    export interface Raw extends InsuranceCardBase.Raw {
+    export interface Raw {
+        group_number?: string | null;
+        plan_name?: string | null;
+        plan_type?: SourceOfPaymentCode.Raw | null;
+        insurance_type?: InsuranceTypeCode.Raw | null;
+        payer_plan_group_id?: PayerPlanGroupId.Raw | null;
+        payer_address?: StreetAddressLongZipOptional.Raw | null;
         member_id?: string | null;
         payer_name?: string | null;
         payer_id?: string | null;

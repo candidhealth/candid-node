@@ -6,6 +6,7 @@ export * from "./Patient";
 export * from "./PatientBase";
 export * from "./PatientClinicalTrialInfo";
 export * from "./PatientClinicalTrialInfoCreate";
+export * from "./PatientClinicalTrialInfoCreateOptional";
 export * from "./PatientCreate";
 export * from "./PatientNonInsurancePayerInfo";
 export * from "./PatientNonInsurancePayerInfoCreate";
