@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { StreetAddressShortZip } from "../../../../commons/types/StreetAddressShortZip";
+import { OrganizationServiceFacilityId } from "../../../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 import { PaymentMethodCreate } from "./PaymentMethodCreate";
 
 export const PaymentMethodDetailCreate: core.serialization.ObjectSchema<
@@ -12,11 +13,16 @@ export const PaymentMethodDetailCreate: core.serialization.ObjectSchema<
 > = core.serialization.object({
     paymentMethod: core.serialization.property("payment_method", PaymentMethodCreate),
     collectedAtAddress: core.serialization.property("collected_at_address", StreetAddressShortZip.optional()),
+    organizationServiceFacilityId: core.serialization.property(
+        "organization_service_facility_id",
+        OrganizationServiceFacilityId.optional(),
+    ),
 });
 
 export declare namespace PaymentMethodDetailCreate {
     export interface Raw {
         payment_method: PaymentMethodCreate.Raw;
         collected_at_address?: StreetAddressShortZip.Raw | null;
+        organization_service_facility_id?: OrganizationServiceFacilityId.Raw | null;
     }
 }

@@ -6,6 +6,8 @@ import type * as serializers from "../../../../../index";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { BillingNoteBase } from "./BillingNoteBase";
 import { BillingNoteId } from "./BillingNoteId";
+import { BillingNoteMetadata } from "./BillingNoteMetadata";
+import { BillingNoteType } from "./BillingNoteType";
 
 export const BillingNote: core.serialization.ObjectSchema<
     serializers.billingNotes.v2.BillingNote.Raw,
@@ -17,6 +19,8 @@ export const BillingNote: core.serialization.ObjectSchema<
         createdAt: core.serialization.property("created_at", core.serialization.date()),
         authorAuth0Id: core.serialization.property("author_auth0_id", core.serialization.string().optional()),
         authorName: core.serialization.property("author_name", core.serialization.string().optional()),
+        billingNoteType: core.serialization.property("billing_note_type", BillingNoteType.optional()),
+        billingNoteMetadata: core.serialization.property("billing_note_metadata", BillingNoteMetadata.optional()),
     })
     .extend(BillingNoteBase);
 
@@ -27,5 +31,7 @@ export declare namespace BillingNote {
         created_at: string;
         author_auth0_id?: string | null;
         author_name?: string | null;
+        billing_note_type?: BillingNoteType.Raw | null;
+        billing_note_metadata?: BillingNoteMetadata.Raw | null;
     }
 }

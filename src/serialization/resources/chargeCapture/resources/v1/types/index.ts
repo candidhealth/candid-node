@@ -6,3 +6,4 @@ export * from "./ChargeCapturePostBilledChange";
 export * from "./ChargeCaptureSortField";
 export * from "./ChargeCaptureStatus";
 export * from "./ChargeExternalIdConflictErrorMessage";
+export * from "./Hl7MessageType";

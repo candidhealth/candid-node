@@ -12,6 +12,7 @@ export * from "./BillingProviderAllocationTarget";
 export * from "./ClaimAllocationTarget";
 export * from "./InvoiceUpdate";
 export * from "./NoteUpdate";
+export * from "./PatientPaymentCreateSource";
 export * from "./PatientTransactionSource";
 export * from "./ReallocationWouldOverdraftErrorContent";
 export * from "./RefundReason";

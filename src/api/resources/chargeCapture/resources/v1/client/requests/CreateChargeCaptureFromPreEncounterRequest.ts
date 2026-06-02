@@ -29,4 +29,6 @@ export interface CreateChargeCaptureFromPreEncounterRequest {
     status: CandidApi.chargeCapture.v1.ChargeCaptureStatus;
     /** Provide external attachment IDs which have been uploaded to Candid. They will be associated with the Encounter at Encounter creation time. */
     attachmentExternalDocumentIds?: string[];
+    /** The HL7 message type that produced this write. Used to differentiate post-submission update behavior. Sent by HL7 producers (conduit); null for manual / script writes. */
+    hl7MessageType?: CandidApi.chargeCapture.v1.Hl7MessageType;
 }

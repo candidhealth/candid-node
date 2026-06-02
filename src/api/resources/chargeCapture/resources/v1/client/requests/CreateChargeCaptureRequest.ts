@@ -33,4 +33,6 @@ export interface CreateChargeCaptureRequest {
      * Multiple metadata instances can be associated with a charge capture.
      */
     metadata?: CandidApi.customSchemas.v1.SchemaInstance[];
+    /** The HL7 message type that produced this write. Used to differentiate post-submission update behavior. Sent by HL7 producers (conduit); null for manual / script writes. */
+    hl7MessageType?: CandidApi.chargeCapture.v1.Hl7MessageType;
 }

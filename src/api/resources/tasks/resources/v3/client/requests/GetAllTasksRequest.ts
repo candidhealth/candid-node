@@ -11,7 +11,11 @@ export interface GetAllTasksRequest {
     limit?: number;
     pageToken?: CandidApi.PageToken;
     status?: CandidApi.tasks.TaskStatus;
+    /** Only return tasks with a status that matches one in this comma-separated list. */
+    statuses?: string;
     taskType?: CandidApi.tasks.TaskType;
+    /** Only return tasks with a task_type that matches one in this comma-separated list. */
+    taskTypes?: string;
     /** Only return tasks with categories that match one in this comma-separated list. */
     categories?: string;
     /** Only return tasks updated on or after this date-time */

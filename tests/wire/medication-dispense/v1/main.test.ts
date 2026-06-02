@@ -1521,6 +1521,8 @@ describe("V1Client", () => {
                     created_at: "2024-01-15T09:30:00Z",
                     author_auth0_id: "author_auth0_id",
                     author_name: "author_name",
+                    billing_note_type: "manual",
+                    billing_note_metadata: { type: "queue_added", queue_id: "queue_id", queue_name: "queue_name" },
                     text: "text",
                 },
                 {
@@ -1529,6 +1531,8 @@ describe("V1Client", () => {
                     created_at: "2024-01-15T09:30:00Z",
                     author_auth0_id: "author_auth0_id",
                     author_name: "author_name",
+                    billing_note_type: "manual",
+                    billing_note_metadata: { type: "queue_added", queue_id: "queue_id", queue_name: "queue_name" },
                     text: "text",
                 },
             ],
@@ -3488,6 +3492,12 @@ describe("V1Client", () => {
                         createdAt: new Date("2024-01-15T09:30:00.000Z"),
                         authorAuth0Id: "author_auth0_id",
                         authorName: "author_name",
+                        billingNoteType: "manual",
+                        billingNoteMetadata: {
+                            type: "queue_added",
+                            queueId: "queue_id",
+                            queueName: "queue_name",
+                        },
                         text: "text",
                     },
                     {
@@ -3496,6 +3506,12 @@ describe("V1Client", () => {
                         createdAt: new Date("2024-01-15T09:30:00.000Z"),
                         authorAuth0Id: "author_auth0_id",
                         authorName: "author_name",
+                        billingNoteType: "manual",
+                        billingNoteMetadata: {
+                            type: "queue_added",
+                            queueId: "queue_id",
+                            queueName: "queue_name",
+                        },
                         text: "text",
                     },
                 ],

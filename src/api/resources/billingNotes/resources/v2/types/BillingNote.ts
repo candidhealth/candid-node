@@ -23,4 +23,6 @@ export interface BillingNote extends CandidApi.billingNotes.v2.BillingNoteBase {
     createdAt: Date;
     authorAuth0Id?: string;
     authorName?: string;
+    billingNoteType?: CandidApi.billingNotes.v2.BillingNoteType;
+    billingNoteMetadata?: CandidApi.billingNotes.v2.BillingNoteMetadata;
 }

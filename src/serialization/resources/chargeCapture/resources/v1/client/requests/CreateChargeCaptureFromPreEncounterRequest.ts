@@ -7,6 +7,7 @@ import { PreEncounterAppointmentId } from "../../../../../commons/types/PreEncou
 import { PreEncounterPatientId } from "../../../../../commons/types/PreEncounterPatientId";
 import { ChargeCaptureData } from "../../types/ChargeCaptureData";
 import { ChargeCaptureStatus } from "../../types/ChargeCaptureStatus";
+import { Hl7MessageType } from "../../types/Hl7MessageType";
 
 export const CreateChargeCaptureFromPreEncounterRequest: core.serialization.Schema<
     serializers.chargeCapture.v1.CreateChargeCaptureFromPreEncounterRequest.Raw,
@@ -30,6 +31,7 @@ export const CreateChargeCaptureFromPreEncounterRequest: core.serialization.Sche
         "attachment_external_document_ids",
         core.serialization.list(core.serialization.string()).optional(),
     ),
+    hl7MessageType: core.serialization.property("hl7_message_type", Hl7MessageType.optional()),
 });
 
 export declare namespace CreateChargeCaptureFromPreEncounterRequest {
@@ -43,5 +45,6 @@ export declare namespace CreateChargeCaptureFromPreEncounterRequest {
         ehr_source_url?: string | null;
         status: ChargeCaptureStatus.Raw;
         attachment_external_document_ids?: string[] | null;
+        hl7_message_type?: Hl7MessageType.Raw | null;
     }
 }

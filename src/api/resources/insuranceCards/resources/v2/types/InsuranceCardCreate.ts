@@ -10,6 +10,8 @@ export interface InsuranceCardCreate extends CandidApi.insuranceCards.v2.Insuran
     rxPcn?: string;
     imageUrlFront?: string;
     imageUrlBack?: string;
+    /** Set to PAYER_PLAN_GROUP to use Payer Plan Groups for automatic payer resolution. See Payer Information documentation for details. */
     emrPayerCrosswalk?: CandidApi.EmrPayerCrosswalk;
+    /** When using emr_payer_crosswalk set to PAYER_PLAN_GROUP, specify the payer plan group name here. See Payer Information documentation for details. */
     payerPlanGroupName?: string;
 }

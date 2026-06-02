@@ -114,7 +114,9 @@ export class V3Client {
             limit,
             pageToken,
             status,
+            statuses,
             taskType,
+            taskTypes,
             categories,
             updatedSince,
             encounterId,
@@ -132,10 +134,12 @@ export class V3Client {
                 status != null
                     ? serializers.tasks.TaskStatus.jsonOrThrow(status, { unrecognizedObjectKeys: "strip" })
                     : undefined,
+            statuses,
             task_type:
                 taskType != null
                     ? serializers.tasks.TaskType.jsonOrThrow(taskType, { unrecognizedObjectKeys: "strip" })
                     : undefined,
+            task_types: taskTypes,
             categories,
             updated_since: updatedSince != null ? updatedSince?.toISOString() : undefined,
             encounter_id: encounterId,

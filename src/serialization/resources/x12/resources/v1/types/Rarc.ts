@@ -1193,6 +1193,7 @@ export const Rarc: core.serialization.Schema<serializers.x12.v1.Rarc.Raw, Candid
         "N909",
         "N910",
         "N911",
+        "UNKNOWN",
     ]);
 
 export declare namespace Rarc {
@@ -2383,5 +2384,6 @@ export declare namespace Rarc {
         | "N908"
         | "N909"
         | "N910"
-        | "N911";
+        | "N911"
+        | "UNKNOWN";
 }

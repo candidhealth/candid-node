@@ -1188,5 +1188,6 @@ export const Rarc = {
     N909: "N909",
     N910: "N910",
     N911: "N911",
+    Unknown: "UNKNOWN",
 } as const;
 export type Rarc = (typeof Rarc)[keyof typeof Rarc];

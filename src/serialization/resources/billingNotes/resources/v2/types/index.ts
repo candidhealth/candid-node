@@ -2,3 +2,8 @@ export * from "./BillingNote";
 export * from "./BillingNoteBase";
 export * from "./BillingNoteBaseOptional";
 export * from "./BillingNoteId";
+export * from "./BillingNoteMetadata";
+export * from "./BillingNoteType";
+export * from "./QueueAddedMetadata";
+export * from "./QueueMovedMetadata";
+export * from "./TaskCreatedMetadata";

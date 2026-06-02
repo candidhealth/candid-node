@@ -11,5 +11,6 @@ export const PatientTransactionSource = {
     Reallocation: "REALLOCATION",
     Phreesia: "PHREESIA",
     Instamed: "INSTAMED",
+    SherpaHealth: "SHERPA_HEALTH",
 } as const;
 export type PatientTransactionSource = (typeof PatientTransactionSource)[keyof typeof PatientTransactionSource];

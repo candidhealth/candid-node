@@ -18,6 +18,7 @@ export const PatientTransactionSource: core.serialization.Schema<
     "REALLOCATION",
     "PHREESIA",
     "INSTAMED",
+    "SHERPA_HEALTH",
 ]);
 
 export declare namespace PatientTransactionSource {
@@ -31,5 +32,6 @@ export declare namespace PatientTransactionSource {
         | "HEALTHIE"
         | "REALLOCATION"
         | "PHREESIA"
-        | "INSTAMED";
+        | "INSTAMED"
+        | "SHERPA_HEALTH";
 }

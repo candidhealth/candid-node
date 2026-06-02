@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../../index";
 import { InvoiceId } from "../../../../../commons/types/InvoiceId";
 import { PatientExternalId } from "../../../../../commons/types/PatientExternalId";
 import { AllocationCreate } from "../../../../../financials/types/AllocationCreate";
+import { PatientPaymentCreateSource } from "../../../../../financials/types/PatientPaymentCreateSource";
 import { PaymentMethodDetailCreate } from "../../types/PaymentMethodDetailCreate";
 
 export const PatientPaymentCreate: core.serialization.Schema<
@@ -19,6 +20,7 @@ export const PatientPaymentCreate: core.serialization.Schema<
     allocations: core.serialization.list(AllocationCreate),
     invoice: InvoiceId.optional(),
     paymentMethodDetail: core.serialization.property("payment_method_detail", PaymentMethodDetailCreate.optional()),
+    paymentSource: core.serialization.property("payment_source", PatientPaymentCreateSource.optional()),
     sourceInternalId: core.serialization.property("source_internal_id", core.serialization.string().optional()),
 });
 
@@ -31,6 +33,7 @@ export declare namespace PatientPaymentCreate {
         allocations: AllocationCreate.Raw[];
         invoice?: InvoiceId.Raw | null;
         payment_method_detail?: PaymentMethodDetailCreate.Raw | null;
+        payment_source?: PatientPaymentCreateSource.Raw | null;
         source_internal_id?: string | null;
     }
 }

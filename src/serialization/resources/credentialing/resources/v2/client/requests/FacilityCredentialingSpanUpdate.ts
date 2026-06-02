@@ -3,7 +3,6 @@
 import type * as CandidApi from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
 import type * as serializers from "../../../../../../index";
-import { Regions } from "../../../../../commons/types/Regions";
 
 export const FacilityCredentialingSpanUpdate: core.serialization.Schema<
     serializers.credentialing.v2.FacilityCredentialingSpanUpdate.Raw,
@@ -13,7 +12,6 @@ export const FacilityCredentialingSpanUpdate: core.serialization.Schema<
     payerUuid: core.serialization.property("payer_uuid", core.serialization.string().optional()),
     startDate: core.serialization.property("start_date", core.serialization.string().optional()),
     endDate: core.serialization.property("end_date", core.serialization.string().optional()),
-    regions: Regions.optional(),
     submittedDate: core.serialization.property("submitted_date", core.serialization.string().optional()),
     payerLoadedDate: core.serialization.property("payer_loaded_date", core.serialization.string().optional()),
 });
@@ -24,7 +22,6 @@ export declare namespace FacilityCredentialingSpanUpdate {
         payer_uuid?: string | null;
         start_date?: string | null;
         end_date?: string | null;
-        regions?: Regions.Raw | null;
         submitted_date?: string | null;
         payer_loaded_date?: string | null;
     }

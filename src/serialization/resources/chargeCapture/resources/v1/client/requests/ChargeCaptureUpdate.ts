@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../../index";
 import { SchemaInstance } from "../../../../../customSchemas/resources/v1/types/SchemaInstance";
 import { ChargeCaptureData } from "../../types/ChargeCaptureData";
 import { ChargeCaptureStatus } from "../../types/ChargeCaptureStatus";
+import { Hl7MessageType } from "../../types/Hl7MessageType";
 
 export const ChargeCaptureUpdate: core.serialization.Schema<
     serializers.chargeCapture.v1.ChargeCaptureUpdate.Raw,
@@ -26,6 +27,7 @@ export const ChargeCaptureUpdate: core.serialization.Schema<
         core.serialization.list(core.serialization.string()).optional(),
     ),
     metadata: core.serialization.list(SchemaInstance).optional(),
+    hl7MessageType: core.serialization.property("hl7_message_type", Hl7MessageType.optional()),
 });
 
 export declare namespace ChargeCaptureUpdate {
@@ -39,5 +41,6 @@ export declare namespace ChargeCaptureUpdate {
         status?: ChargeCaptureStatus.Raw | null;
         attachment_external_document_ids?: string[] | null;
         metadata?: SchemaInstance.Raw[] | null;
+        hl7_message_type?: Hl7MessageType.Raw | null;
     }
 }
