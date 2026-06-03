@@ -46,6 +46,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -55,6 +56,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -108,6 +110,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -120,6 +123,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -175,6 +179,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -184,6 +189,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -217,6 +223,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -226,6 +233,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -282,6 +290,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -294,6 +303,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -335,6 +345,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -347,6 +358,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -408,6 +420,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -417,6 +430,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -474,6 +488,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -486,6 +501,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -542,6 +558,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -551,6 +568,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -614,6 +632,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -626,6 +645,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -712,6 +732,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -721,6 +742,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -754,6 +776,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -763,6 +786,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -816,6 +840,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -828,6 +853,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -869,6 +895,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -881,6 +908,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",

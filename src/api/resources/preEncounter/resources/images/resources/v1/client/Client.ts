@@ -466,10 +466,24 @@ export class V1Client {
             core.APIResponse<CandidApi.preEncounter.images.v1.Image[], CandidApi.preEncounter.images.v1.getMulti.Error>
         >
     > {
-        const { patientId, coverageId } = request;
+        const { patientId, coverageId, fileType, patientNotes, sortField, sortDirection } = request;
         const _queryParams: Record<string, unknown> = {
             patient_id: patientId,
             coverage_id: coverageId,
+            file_type: fileType,
+            patient_notes: patientNotes,
+            sort_field:
+                sortField != null
+                    ? serializers.preEncounter.images.v1.ImageSortField.jsonOrThrow(sortField, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
+            sort_direction:
+                sortDirection != null
+                    ? serializers.preEncounter.SortDirection.jsonOrThrow(sortDirection, {
+                          unrecognizedObjectKeys: "strip",
+                      })
+                    : undefined,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

@@ -14,6 +14,7 @@ import { SupervisingProvider } from "../../encounterProviders/resources/v2/types
 import { ClinicalNoteCategoryCreate } from "../../encounters/resources/v4/types/ClinicalNoteCategoryCreate";
 import { EncounterBase } from "../../encounters/resources/v4/types/EncounterBase";
 import { PatientHistoryCategory } from "../../encounters/resources/v4/types/PatientHistoryCategory";
+import { OrganizationServiceFacilityId } from "../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 import { PropertyCasualtyPatientIdentifierCreate } from "../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreate";
 import { RelatedCausesInformationCreate } from "../../relatedCauses/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityBase } from "../../serviceFacility/types/EncounterServiceFacilityBase";
@@ -36,6 +37,7 @@ export const UniversalEncounterCreateFromPreEncounterBase: core.serialization.Ob
         ),
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
+        serviceFacilityId: core.serialization.property("service_facility_id", OrganizationServiceFacilityId.optional()),
         clinicalNotes: core.serialization.property(
             "clinical_notes",
             core.serialization.list(ClinicalNoteCategoryCreate).optional(),
@@ -78,6 +80,7 @@ export declare namespace UniversalEncounterCreateFromPreEncounterBase {
         initial_referring_provider?: InitialReferringProvider.Raw | null;
         supervising_provider?: SupervisingProvider.Raw | null;
         service_facility?: EncounterServiceFacilityBase.Raw | null;
+        service_facility_id?: OrganizationServiceFacilityId.Raw | null;
         clinical_notes?: ClinicalNoteCategoryCreate.Raw[] | null;
         billing_notes?: BillingNoteBase.Raw[] | null;
         patient_histories?: PatientHistoryCategory.Raw[] | null;

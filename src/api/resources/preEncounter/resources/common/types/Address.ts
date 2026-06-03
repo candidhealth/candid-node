@@ -9,5 +9,6 @@ export interface Address {
     state: string;
     postalCode: string;
     country: string;
+    county?: string;
     period?: CandidApi.preEncounter.Period;
 }

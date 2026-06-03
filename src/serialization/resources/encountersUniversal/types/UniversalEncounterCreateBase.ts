@@ -20,6 +20,7 @@ import { ResponsiblePartyType } from "../../encounters/resources/v4/types/Respon
 import { GuarantorCreate } from "../../guarantor/resources/v1/types/GuarantorCreate";
 import { PatientCreate } from "../../individual/types/PatientCreate";
 import { SubscriberCreate } from "../../individual/types/SubscriberCreate";
+import { OrganizationServiceFacilityId } from "../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 import { PropertyCasualtyPatientIdentifierCreate } from "../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreate";
 import { RelatedCausesInformationCreate } from "../../relatedCauses/resources/v1/types/RelatedCausesInformationCreate";
 import { EncounterServiceFacilityBase } from "../../serviceFacility/types/EncounterServiceFacilityBase";
@@ -39,6 +40,7 @@ export const UniversalEncounterCreateBase: core.serialization.ObjectSchema<
         supervisingProvider: core.serialization.property("supervising_provider", SupervisingProvider.optional()),
         treatingProvider: core.serialization.property("treating_provider", TreatingProvider.optional()),
         serviceFacility: core.serialization.property("service_facility", EncounterServiceFacilityBase.optional()),
+        serviceFacilityId: core.serialization.property("service_facility_id", OrganizationServiceFacilityId.optional()),
         subscriberPrimary: core.serialization.property("subscriber_primary", SubscriberCreate.optional()),
         subscriberSecondary: core.serialization.property("subscriber_secondary", SubscriberCreate.optional()),
         subscriberTertiary: core.serialization.property("subscriber_tertiary", SubscriberCreate.optional()),
@@ -100,6 +102,7 @@ export declare namespace UniversalEncounterCreateBase {
         supervising_provider?: SupervisingProvider.Raw | null;
         treating_provider?: TreatingProvider.Raw | null;
         service_facility?: EncounterServiceFacilityBase.Raw | null;
+        service_facility_id?: OrganizationServiceFacilityId.Raw | null;
         subscriber_primary?: SubscriberCreate.Raw | null;
         subscriber_secondary?: SubscriberCreate.Raw | null;
         subscriber_tertiary?: SubscriberCreate.Raw | null;

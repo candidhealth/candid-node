@@ -469,6 +469,7 @@ describe("V1Client", () => {
                     secondary_identification: "secondary_identification",
                     mammography_certification_number: "mammography_certification_number",
                 },
+                service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 rendering_provider: {
                     npi: "npi",
                     taxonomy_code: "taxonomy_code",
@@ -1209,6 +1210,9 @@ describe("V1Client", () => {
                         secondaryIdentification: "secondary_identification",
                         mammographyCertificationNumber: "mammography_certification_number",
                     },
+                    serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
                     renderingProvider: {
                         npi: "npi",
                         taxonomyCode: "taxonomy_code",
@@ -1886,6 +1890,7 @@ describe("V1Client", () => {
                     secondary_identification: "secondary_identification",
                     mammography_certification_number: "mammography_certification_number",
                 },
+                service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 rendering_provider: {
                     npi: "npi",
                     taxonomy_code: "taxonomy_code",
@@ -2630,6 +2635,9 @@ describe("V1Client", () => {
                         secondaryIdentification: "secondary_identification",
                         mammographyCertificationNumber: "mammography_certification_number",
                     },
+                    serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
                     renderingProvider: {
                         npi: "npi",
                         taxonomyCode: "taxonomy_code",
@@ -3352,6 +3360,7 @@ describe("V1Client", () => {
                     secondary_identification: "secondary_identification",
                     mammography_certification_number: "mammography_certification_number",
                 },
+                service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 rendering_provider: {
                     npi: "npi",
                     taxonomy_code: "taxonomy_code",
@@ -4089,6 +4098,9 @@ describe("V1Client", () => {
                         secondaryIdentification: "secondary_identification",
                         mammographyCertificationNumber: "mammography_certification_number",
                     },
+                    serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
                     renderingProvider: {
                         npi: "npi",
                         taxonomyCode: "taxonomy_code",
@@ -4757,6 +4769,7 @@ describe("V1Client", () => {
                     secondary_identification: "secondary_identification",
                     mammography_certification_number: "mammography_certification_number",
                 },
+                service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 rendering_provider: {
                     npi: "npi",
                     taxonomy_code: "taxonomy_code",
@@ -5493,6 +5506,9 @@ describe("V1Client", () => {
                         secondaryIdentification: "secondary_identification",
                         mammographyCertificationNumber: "mammography_certification_number",
                     },
+                    serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
                     renderingProvider: {
                         npi: "npi",
                         taxonomyCode: "taxonomy_code",
@@ -6082,6 +6098,7 @@ describe("V1Client", () => {
                             secondary_identification: "secondary_identification",
                             mammography_certification_number: "mammography_certification_number",
                         },
+                        service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         rendering_provider: {
                             npi: "npi",
                             taxonomy_code: "taxonomy_code",
@@ -6629,6 +6646,7 @@ describe("V1Client", () => {
                             secondary_identification: "secondary_identification",
                             mammography_certification_number: "mammography_certification_number",
                         },
+                        service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         rendering_provider: {
                             npi: "npi",
                             taxonomy_code: "taxonomy_code",
@@ -7257,6 +7275,9 @@ describe("V1Client", () => {
                                 secondaryIdentification: "secondary_identification",
                                 mammographyCertificationNumber: "mammography_certification_number",
                             },
+                            serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
                             renderingProvider: {
                                 npi: "npi",
                                 taxonomyCode: "taxonomy_code",
@@ -7892,6 +7913,9 @@ describe("V1Client", () => {
                                 secondaryIdentification: "secondary_identification",
                                 mammographyCertificationNumber: "mammography_certification_number",
                             },
+                            serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
                             renderingProvider: {
                                 npi: "npi",
                                 taxonomyCode: "taxonomy_code",
@@ -8493,6 +8517,7 @@ describe("V1Client", () => {
                             secondary_identification: "secondary_identification",
                             mammography_certification_number: "mammography_certification_number",
                         },
+                        service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         rendering_provider: {
                             npi: "npi",
                             taxonomy_code: "taxonomy_code",
@@ -9040,6 +9065,7 @@ describe("V1Client", () => {
                             secondary_identification: "secondary_identification",
                             mammography_certification_number: "mammography_certification_number",
                         },
+                        service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         rendering_provider: {
                             npi: "npi",
                             taxonomy_code: "taxonomy_code",
@@ -9688,6 +9714,9 @@ describe("V1Client", () => {
                                 secondaryIdentification: "secondary_identification",
                                 mammographyCertificationNumber: "mammography_certification_number",
                             },
+                            serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
                             renderingProvider: {
                                 npi: "npi",
                                 taxonomyCode: "taxonomy_code",
@@ -10323,6 +10352,9 @@ describe("V1Client", () => {
                                 secondaryIdentification: "secondary_identification",
                                 mammographyCertificationNumber: "mammography_certification_number",
                             },
+                            serviceFacilityId: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
                             renderingProvider: {
                                 npi: "npi",
                                 taxonomyCode: "taxonomy_code",

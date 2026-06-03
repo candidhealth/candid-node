@@ -18,7 +18,7 @@ export const StediPayer: core.serialization.ObjectSchema<
         "employer_identification_numbers",
         core.serialization.list(core.serialization.string()).optional(),
     ),
-    payerEnrollment: core.serialization.property("payer_enrollment", core.serialization.unknown()),
+    payerEnrollment: core.serialization.property("payer_enrollment", core.serialization.unknown().optional()),
     parentPayerGroup: core.serialization.property("parent_payer_group", core.serialization.string().optional()),
     coverageTypes: core.serialization.property(
         "coverage_types",
@@ -35,7 +35,7 @@ export declare namespace StediPayer {
         names: string[];
         transaction_support?: unknown;
         employer_identification_numbers?: string[] | null;
-        payer_enrollment?: unknown;
+        payer_enrollment?: unknown | null;
         parent_payer_group?: string | null;
         coverage_types?: string[] | null;
     }

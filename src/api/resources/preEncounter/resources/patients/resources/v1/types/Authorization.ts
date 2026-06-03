@@ -20,4 +20,6 @@ export interface Authorization {
     billingProviderNpi?: string;
     /** When set, specifies the service facility for which this authorization applies. */
     serviceFacility?: CandidApi.preEncounter.PatientServiceFacility;
+    /** When set, the authorization will only apply when at least one of these diagnosis codes is found on the claim/service lines (in addition to other criteria). */
+    dxCodes?: Set<string>;
 }

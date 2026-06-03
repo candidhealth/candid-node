@@ -9,4 +9,5 @@ export interface LatestEligibilityCheck {
     checkId: string;
     status: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityStatus;
     initiatedAt: Date;
+    errors?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckErrorDetails[];
 }

@@ -17,6 +17,7 @@ import { TreatingProviderUpdateWithOptionalAddress } from "../../../../encounter
 import { GuarantorOptional } from "../../../../guarantor/resources/v1/types/GuarantorOptional";
 import { PatientUpdateWithOptionalAddress } from "../../../../individual/types/PatientUpdateWithOptionalAddress";
 import { SubscriberCreateOptional } from "../../../../individual/types/SubscriberCreateOptional";
+import { OrganizationServiceFacilityId } from "../../../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 import { PropertyCasualtyPatientIdentifierCreateOptional } from "../../../../propertyAndCasualty/resources/v1/types/PropertyCasualtyPatientIdentifierCreateOptional";
 import { RelatedCausesInformationCreateOptional } from "../../../../relatedCauses/resources/v1/types/RelatedCausesInformationCreateOptional";
 import { EncounterServiceFacilityUpdateWithOptionalAddress } from "../../../../serviceFacility/types/EncounterServiceFacilityUpdateWithOptionalAddress";
@@ -80,6 +81,7 @@ export const EncounterDeepOptional: core.serialization.ObjectSchema<
             "service_facility",
             EncounterServiceFacilityUpdateWithOptionalAddress.optional(),
         ),
+        serviceFacilityId: core.serialization.property("service_facility_id", OrganizationServiceFacilityId.optional()),
         renderingProvider: core.serialization.property(
             "rendering_provider",
             RenderingProviderUpdateWithOptionalAddress.optional(),
@@ -141,6 +143,7 @@ export declare namespace EncounterDeepOptional {
         billing_notes?: BillingNoteBaseOptional.Raw[] | null;
         patient?: PatientUpdateWithOptionalAddress.Raw | null;
         service_facility?: EncounterServiceFacilityUpdateWithOptionalAddress.Raw | null;
+        service_facility_id?: OrganizationServiceFacilityId.Raw | null;
         rendering_provider?: RenderingProviderUpdateWithOptionalAddress.Raw | null;
         initial_referring_provider?: InitialReferringProviderUpdateWithOptionalAddress.Raw | null;
         referring_provider?: ReferringProviderUpdateWithOptionalAddress.Raw | null;

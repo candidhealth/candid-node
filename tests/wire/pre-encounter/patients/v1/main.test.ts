@@ -182,6 +182,7 @@ describe("V1Client", () => {
                 state: "state",
                 postal_code: "postal_code",
                 country: "country",
+                county: "county",
                 period: { start: "2023-01-15", end: "2023-01-15" },
             },
             other_addresses: [
@@ -192,6 +193,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -201,6 +203,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -237,6 +240,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -246,6 +250,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -273,6 +278,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -282,6 +288,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -312,6 +319,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -321,6 +329,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -354,6 +363,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -363,6 +373,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -436,6 +447,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             },
@@ -460,6 +472,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -480,6 +493,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
             ],
             referrals: [
@@ -506,6 +520,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -515,6 +530,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -558,6 +574,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -567,6 +584,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -620,6 +638,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                         {
@@ -629,6 +648,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                     ],
@@ -914,6 +934,7 @@ describe("V1Client", () => {
                     state: "state",
                     postalCode: "postal_code",
                     country: "country",
+                    county: "county",
                     period: {
                         start: "2023-01-15",
                         end: "2023-01-15",
@@ -927,6 +948,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -939,6 +961,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -1022,6 +1045,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1034,6 +1058,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1084,6 +1109,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1096,6 +1122,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1149,6 +1176,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1161,6 +1189,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1223,6 +1252,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1235,6 +1265,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -1357,6 +1388,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -1389,6 +1421,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -1414,6 +1447,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                 ],
                 referrals: [
@@ -1457,6 +1491,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -1466,6 +1501,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -1540,6 +1576,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -1549,6 +1586,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -1637,6 +1675,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -1646,6 +1685,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -1860,6 +1900,7 @@ describe("V1Client", () => {
                 state: "state",
                 postal_code: "postal_code",
                 country: "country",
+                county: "county",
                 period: { start: "2023-01-15", end: "2023-01-15" },
             },
             other_addresses: [
@@ -1870,6 +1911,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -1879,6 +1921,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -1915,6 +1958,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -1924,6 +1968,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -1951,6 +1996,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -1960,6 +2006,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -1990,6 +2037,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -1999,6 +2047,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -2032,6 +2081,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -2041,6 +2091,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -2114,6 +2165,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             },
@@ -2138,6 +2190,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -2158,6 +2211,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
             ],
             referrals: [
@@ -2184,6 +2238,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -2193,6 +2248,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -2236,6 +2292,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -2245,6 +2302,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -2298,6 +2356,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                         {
@@ -2307,6 +2366,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                     ],
@@ -2593,6 +2653,7 @@ describe("V1Client", () => {
                     state: "state",
                     postalCode: "postal_code",
                     country: "country",
+                    county: "county",
                     period: {
                         start: "2023-01-15",
                         end: "2023-01-15",
@@ -2606,6 +2667,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -2618,6 +2680,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -2701,6 +2764,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2713,6 +2777,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2763,6 +2828,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2775,6 +2841,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2828,6 +2895,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2840,6 +2908,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2902,6 +2971,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -2914,6 +2984,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -3036,6 +3107,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -3068,6 +3140,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -3093,6 +3166,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                 ],
                 referrals: [
@@ -3136,6 +3210,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -3145,6 +3220,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -3219,6 +3295,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -3228,6 +3305,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -3316,6 +3394,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -3325,6 +3404,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -3429,6 +3509,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     other_addresses: [
@@ -3439,6 +3520,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -3448,6 +3530,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -3491,6 +3574,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                                 {
@@ -3500,6 +3584,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                             ],
@@ -3527,6 +3612,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                                 {
@@ -3536,6 +3622,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                             ],
@@ -3566,6 +3653,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -3575,6 +3663,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -3608,6 +3697,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -3617,6 +3707,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -3674,6 +3765,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     },
@@ -3698,6 +3790,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
+                            dx_codes: ["dx_codes"],
                         },
                         {
                             payer_id: "payer_id",
@@ -3718,6 +3811,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
+                            dx_codes: ["dx_codes"],
                         },
                     ],
                     referrals: [
@@ -3937,6 +4031,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     other_addresses: [
@@ -3947,6 +4042,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -3956,6 +4052,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -3999,6 +4096,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                                 {
@@ -4008,6 +4106,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                             ],
@@ -4035,6 +4134,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                                 {
@@ -4044,6 +4144,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: { start: "2023-01-15", end: "2023-01-15" },
                                 },
                             ],
@@ -4074,6 +4175,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -4083,6 +4185,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -4116,6 +4219,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -4125,6 +4229,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -4182,6 +4287,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     },
@@ -4206,6 +4312,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
+                            dx_codes: ["dx_codes"],
                         },
                         {
                             payer_id: "payer_id",
@@ -4226,6 +4333,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
+                            dx_codes: ["dx_codes"],
                         },
                     ],
                     referrals: [
@@ -4486,6 +4594,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -4499,6 +4608,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -4511,6 +4621,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -4594,6 +4705,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -4606,6 +4718,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -4656,6 +4769,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -4668,6 +4782,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -4721,6 +4836,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -4730,6 +4846,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -4789,6 +4906,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -4798,6 +4916,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -4905,6 +5024,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -4938,6 +5058,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
+                                dxCodes: new Set(["dx_codes"]),
                             },
                             {
                                 payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -4964,6 +5085,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
+                                dxCodes: new Set(["dx_codes"]),
                             },
                         ],
                         referrals: [
@@ -5283,6 +5405,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -5296,6 +5419,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -5308,6 +5432,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -5391,6 +5516,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -5403,6 +5529,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -5453,6 +5580,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -5465,6 +5593,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {
                                             start: "2023-01-15",
                                             end: "2023-01-15",
@@ -5518,6 +5647,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -5527,6 +5657,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -5586,6 +5717,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -5595,6 +5727,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -5702,6 +5835,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -5735,6 +5869,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
+                                dxCodes: new Set(["dx_codes"]),
                             },
                             {
                                 payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -5761,6 +5896,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
+                                dxCodes: new Set(["dx_codes"]),
                             },
                         ],
                         referrals: [
@@ -6048,6 +6184,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -6057,6 +6194,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -6090,6 +6228,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -6099,6 +6238,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -6164,6 +6304,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -6176,6 +6317,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -6236,6 +6378,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -6248,6 +6391,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -6341,6 +6485,7 @@ describe("V1Client", () => {
                 state: "state",
                 postal_code: "postal_code",
                 country: "country",
+                county: "county",
                 period: { start: "2023-01-15", end: "2023-01-15" },
             },
             other_addresses: [
@@ -6351,6 +6496,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -6360,6 +6506,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -6396,6 +6543,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -6405,6 +6553,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -6432,6 +6581,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -6441,6 +6591,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -6471,6 +6622,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -6480,6 +6632,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -6513,6 +6666,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -6522,6 +6676,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -6595,6 +6750,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             },
@@ -6619,6 +6775,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -6639,6 +6796,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
             ],
             referrals: [
@@ -6665,6 +6823,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -6674,6 +6833,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -6717,6 +6877,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -6726,6 +6887,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -6779,6 +6941,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                         {
@@ -6788,6 +6951,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                     ],
@@ -6892,6 +7056,7 @@ describe("V1Client", () => {
                     state: "state",
                     postalCode: "postal_code",
                     country: "country",
+                    county: "county",
                     period: {
                         start: "2023-01-15",
                         end: "2023-01-15",
@@ -6905,6 +7070,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -6917,6 +7083,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -7000,6 +7167,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7012,6 +7180,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7062,6 +7231,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7074,6 +7244,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7127,6 +7298,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7139,6 +7311,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7201,6 +7374,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7213,6 +7387,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -7335,6 +7510,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -7367,6 +7543,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -7392,6 +7569,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                 ],
                 referrals: [
@@ -7435,6 +7613,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -7444,6 +7623,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -7518,6 +7698,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -7527,6 +7708,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -7615,6 +7797,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -7624,6 +7807,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -7726,6 +7910,7 @@ describe("V1Client", () => {
                 state: "state",
                 postal_code: "postal_code",
                 country: "country",
+                county: "county",
                 period: { start: "2023-01-15", end: "2023-01-15" },
             },
             other_addresses: [
@@ -7736,6 +7921,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -7745,6 +7931,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -7781,6 +7968,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -7790,6 +7978,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -7817,6 +8006,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -7826,6 +8016,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -7856,6 +8047,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -7865,6 +8057,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -7898,6 +8091,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -7907,6 +8101,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -7980,6 +8175,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             },
@@ -8004,6 +8200,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -8024,6 +8221,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
             ],
             referrals: [
@@ -8050,6 +8248,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -8059,6 +8258,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -8102,6 +8302,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -8111,6 +8312,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -8164,6 +8366,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                         {
@@ -8173,6 +8376,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                     ],
@@ -8283,6 +8487,7 @@ describe("V1Client", () => {
                     state: "state",
                     postalCode: "postal_code",
                     country: "country",
+                    county: "county",
                     period: {
                         start: "2023-01-15",
                         end: "2023-01-15",
@@ -8296,6 +8501,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -8308,6 +8514,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -8391,6 +8598,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8403,6 +8611,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8453,6 +8662,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8465,6 +8675,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8518,6 +8729,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8530,6 +8742,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8592,6 +8805,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8604,6 +8818,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -8726,6 +8941,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -8758,6 +8974,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -8783,6 +9000,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                 ],
                 referrals: [
@@ -8826,6 +9044,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -8835,6 +9054,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -8909,6 +9129,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -8918,6 +9139,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -9006,6 +9228,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -9015,6 +9238,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -9118,6 +9342,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -9128,6 +9353,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -9137,6 +9363,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -9176,6 +9403,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9185,6 +9413,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9212,6 +9441,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9221,6 +9451,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9251,6 +9482,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9260,6 +9492,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9293,6 +9526,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9302,6 +9536,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9359,6 +9594,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -9383,6 +9619,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -9403,6 +9640,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -9429,6 +9667,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -9438,6 +9677,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -9481,6 +9721,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -9490,6 +9731,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -9543,6 +9785,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -9552,6 +9795,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -9628,6 +9872,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -9638,6 +9883,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -9647,6 +9893,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -9686,6 +9933,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9695,6 +9943,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9722,6 +9971,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9731,6 +9981,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9761,6 +10012,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9770,6 +10022,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9803,6 +10056,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -9812,6 +10066,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -9869,6 +10124,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -9893,6 +10149,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -9913,6 +10170,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -9939,6 +10197,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -9948,6 +10207,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -9991,6 +10251,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -10000,6 +10261,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -10053,6 +10315,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -10062,6 +10325,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -10174,6 +10438,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -10187,6 +10452,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -10199,6 +10465,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -10282,6 +10549,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10294,6 +10562,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10344,6 +10613,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10356,6 +10626,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10409,6 +10680,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10421,6 +10693,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10483,6 +10756,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10495,6 +10769,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -10605,6 +10880,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -10638,6 +10914,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -10664,6 +10941,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -10701,6 +10979,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -10710,6 +10989,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -10779,6 +11059,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -10788,6 +11069,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -10871,6 +11153,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -10880,6 +11163,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -10988,6 +11272,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -11001,6 +11286,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -11013,6 +11299,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -11096,6 +11383,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11108,6 +11396,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11158,6 +11447,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11170,6 +11460,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11223,6 +11514,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11235,6 +11527,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11297,6 +11590,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11309,6 +11603,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -11419,6 +11714,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -11452,6 +11748,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -11478,6 +11775,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -11515,6 +11813,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -11524,6 +11823,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -11593,6 +11893,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -11602,6 +11903,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -11685,6 +11987,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -11694,6 +11997,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -11798,6 +12102,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -11808,6 +12113,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -11817,6 +12123,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -11856,6 +12163,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -11865,6 +12173,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -11892,6 +12201,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -11901,6 +12211,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -11931,6 +12242,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -11940,6 +12252,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -11973,6 +12286,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -11982,6 +12296,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -12039,6 +12354,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -12063,6 +12379,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -12083,6 +12400,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -12109,6 +12427,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -12118,6 +12437,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -12161,6 +12481,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -12170,6 +12491,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -12223,6 +12545,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -12232,6 +12555,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -12279,6 +12603,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     employer_name: "employer_name",
@@ -12308,6 +12633,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -12355,6 +12681,24 @@ describe("V1Client", () => {
                     check_id: "check_id",
                     status: "ACTIVE",
                     initiated_at: "2024-01-15T09:30:00Z",
+                    errors: [
+                        {
+                            "field?": "field?",
+                            "description?": "description?",
+                            "location?": "location?",
+                            "possibleResolutions?": "possibleResolutions?",
+                            "code?": "code?",
+                            "followupAction?": "followupAction?",
+                        },
+                        {
+                            "field?": "field?",
+                            "description?": "description?",
+                            "location?": "location?",
+                            "possibleResolutions?": "possibleResolutions?",
+                            "code?": "code?",
+                            "followupAction?": "followupAction?",
+                        },
+                    ],
                 },
                 benefits: {
                     plan_coverage: {
@@ -12471,6 +12815,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     employer_name: "employer_name",
@@ -12500,6 +12845,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -12547,6 +12893,24 @@ describe("V1Client", () => {
                     check_id: "check_id",
                     status: "ACTIVE",
                     initiated_at: "2024-01-15T09:30:00Z",
+                    errors: [
+                        {
+                            "field?": "field?",
+                            "description?": "description?",
+                            "location?": "location?",
+                            "possibleResolutions?": "possibleResolutions?",
+                            "code?": "code?",
+                            "followupAction?": "followupAction?",
+                        },
+                        {
+                            "field?": "field?",
+                            "description?": "description?",
+                            "location?": "location?",
+                            "possibleResolutions?": "possibleResolutions?",
+                            "code?": "code?",
+                            "followupAction?": "followupAction?",
+                        },
+                    ],
                 },
                 benefits: {
                     plan_coverage: {
@@ -12663,6 +13027,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     employer_name: "employer_name",
@@ -12692,6 +13057,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -12739,6 +13105,24 @@ describe("V1Client", () => {
                     check_id: "check_id",
                     status: "ACTIVE",
                     initiated_at: "2024-01-15T09:30:00Z",
+                    errors: [
+                        {
+                            "field?": "field?",
+                            "description?": "description?",
+                            "location?": "location?",
+                            "possibleResolutions?": "possibleResolutions?",
+                            "code?": "code?",
+                            "followupAction?": "followupAction?",
+                        },
+                        {
+                            "field?": "field?",
+                            "description?": "description?",
+                            "location?": "location?",
+                            "possibleResolutions?": "possibleResolutions?",
+                            "code?": "code?",
+                            "followupAction?": "followupAction?",
+                        },
+                    ],
                 },
                 benefits: {
                     plan_coverage: {
@@ -12856,6 +13240,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         employer_name: "employer_name",
@@ -12885,6 +13270,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -12932,6 +13318,24 @@ describe("V1Client", () => {
                         check_id: "check_id",
                         status: "ACTIVE",
                         initiated_at: "2024-01-15T09:30:00Z",
+                        errors: [
+                            {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                            {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                        ],
                     },
                     benefits: {
                         plan_coverage: {
@@ -13068,6 +13472,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         employer_name: "employer_name",
@@ -13097,6 +13502,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -13144,6 +13550,24 @@ describe("V1Client", () => {
                         check_id: "check_id",
                         status: "ACTIVE",
                         initiated_at: "2024-01-15T09:30:00Z",
+                        errors: [
+                            {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                            {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                        ],
                     },
                     benefits: {
                         plan_coverage: {
@@ -13348,6 +13772,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -13361,6 +13786,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -13373,6 +13799,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -13456,6 +13883,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13468,6 +13896,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13518,6 +13947,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13530,6 +13960,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13583,6 +14014,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13595,6 +14027,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13657,6 +14090,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13669,6 +14103,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -13779,6 +14214,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -13812,6 +14248,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -13838,6 +14275,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -13875,6 +14313,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -13884,6 +14323,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -13953,6 +14393,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -13962,6 +14403,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -14045,6 +14487,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -14054,6 +14497,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -14113,6 +14557,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -14148,6 +14593,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -14204,6 +14650,24 @@ describe("V1Client", () => {
                         checkId: "check_id",
                         status: "ACTIVE",
                         initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                        errors: [
+                            {
+                                field: "field?",
+                                description: "description?",
+                                location: "location?",
+                                possibleResolutions: "possibleResolutions?",
+                                code: "code?",
+                                followupAction: "followupAction?",
+                            },
+                            {
+                                field: "field?",
+                                description: "description?",
+                                location: "location?",
+                                possibleResolutions: "possibleResolutions?",
+                                code: "code?",
+                                followupAction: "followupAction?",
+                            },
+                        ],
                     },
                     benefits: {
                         planCoverage: {
@@ -14345,6 +14809,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -14380,6 +14845,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -14436,6 +14902,24 @@ describe("V1Client", () => {
                         checkId: "check_id",
                         status: "ACTIVE",
                         initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                        errors: [
+                            {
+                                field: "field?",
+                                description: "description?",
+                                location: "location?",
+                                possibleResolutions: "possibleResolutions?",
+                                code: "code?",
+                                followupAction: "followupAction?",
+                            },
+                            {
+                                field: "field?",
+                                description: "description?",
+                                location: "location?",
+                                possibleResolutions: "possibleResolutions?",
+                                code: "code?",
+                                followupAction: "followupAction?",
+                            },
+                        ],
                     },
                     benefits: {
                         planCoverage: {
@@ -14577,6 +15061,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -14612,6 +15097,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -14668,6 +15154,24 @@ describe("V1Client", () => {
                         checkId: "check_id",
                         status: "ACTIVE",
                         initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                        errors: [
+                            {
+                                field: "field?",
+                                description: "description?",
+                                location: "location?",
+                                possibleResolutions: "possibleResolutions?",
+                                code: "code?",
+                                followupAction: "followupAction?",
+                            },
+                            {
+                                field: "field?",
+                                description: "description?",
+                                location: "location?",
+                                possibleResolutions: "possibleResolutions?",
+                                code: "code?",
+                                followupAction: "followupAction?",
+                            },
+                        ],
                     },
                     benefits: {
                         planCoverage: {
@@ -14810,6 +15314,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -14845,6 +15350,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -14901,6 +15407,24 @@ describe("V1Client", () => {
                             checkId: "check_id",
                             status: "ACTIVE",
                             initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                            errors: [
+                                {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                                {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                            ],
                         },
                         benefits: {
                             planCoverage: {
@@ -15042,6 +15566,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -15077,6 +15602,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -15133,6 +15659,24 @@ describe("V1Client", () => {
                             checkId: "check_id",
                             status: "ACTIVE",
                             initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                            errors: [
+                                {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                                {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                            ],
                         },
                         benefits: {
                             planCoverage: {
@@ -15430,6 +15974,7 @@ describe("V1Client", () => {
                 state: "state",
                 postal_code: "postal_code",
                 country: "country",
+                county: "county",
                 period: { start: "2023-01-15", end: "2023-01-15" },
             },
             other_addresses: [
@@ -15440,6 +15985,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 {
@@ -15449,6 +15995,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             ],
@@ -15485,6 +16032,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -15494,6 +16042,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -15521,6 +16070,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -15530,6 +16080,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -15560,6 +16111,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -15569,6 +16121,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -15602,6 +16155,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                         {
@@ -15611,6 +16165,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
                     ],
@@ -15684,6 +16239,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
             },
@@ -15708,6 +16264,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -15728,6 +16285,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
+                    dx_codes: ["dx_codes"],
                 },
             ],
             referrals: [
@@ -15754,6 +16312,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -15763,6 +16322,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -15806,6 +16366,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -15815,6 +16376,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -15868,6 +16430,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                         {
@@ -15877,6 +16440,7 @@ describe("V1Client", () => {
                             state: "state",
                             postal_code: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {},
                         },
                     ],
@@ -16164,6 +16728,7 @@ describe("V1Client", () => {
                     state: "state",
                     postalCode: "postal_code",
                     country: "country",
+                    county: "county",
                     period: {
                         start: "2023-01-15",
                         end: "2023-01-15",
@@ -16177,6 +16742,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -16189,6 +16755,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -16272,6 +16839,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16284,6 +16852,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16334,6 +16903,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16346,6 +16916,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16399,6 +16970,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16411,6 +16983,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16473,6 +17046,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16485,6 +17059,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {
                                     start: "2023-01-15",
                                     end: "2023-01-15",
@@ -16607,6 +17182,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -16639,6 +17215,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -16664,6 +17241,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
+                        dxCodes: new Set(["dx_codes"]),
                     },
                 ],
                 referrals: [
@@ -16707,6 +17285,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -16716,6 +17295,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -16790,6 +17370,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -16799,6 +17380,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -16887,6 +17469,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -16896,6 +17479,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postalCode: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -17049,6 +17633,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -17059,6 +17644,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -17068,6 +17654,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -17107,6 +17694,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17116,6 +17704,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17143,6 +17732,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17152,6 +17742,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17182,6 +17773,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17191,6 +17783,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17224,6 +17817,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17233,6 +17827,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17290,6 +17885,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -17314,6 +17910,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -17334,6 +17931,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -17360,6 +17958,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -17369,6 +17968,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -17412,6 +18012,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -17421,6 +18022,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -17474,6 +18076,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -17483,6 +18086,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -17559,6 +18163,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -17569,6 +18174,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -17578,6 +18184,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -17617,6 +18224,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17626,6 +18234,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17653,6 +18262,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17662,6 +18272,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17692,6 +18303,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17701,6 +18313,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17734,6 +18347,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -17743,6 +18357,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -17800,6 +18415,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -17824,6 +18440,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -17844,6 +18461,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -17870,6 +18488,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -17879,6 +18498,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -17922,6 +18542,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -17931,6 +18552,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -17984,6 +18606,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -17993,6 +18616,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -18099,6 +18723,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -18112,6 +18737,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -18124,6 +18750,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -18207,6 +18834,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18219,6 +18847,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18269,6 +18898,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18281,6 +18911,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18334,6 +18965,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18346,6 +18978,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18408,6 +19041,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18420,6 +19054,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -18530,6 +19165,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -18563,6 +19199,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -18589,6 +19226,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -18626,6 +19264,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -18635,6 +19274,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -18704,6 +19344,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -18713,6 +19354,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -18796,6 +19438,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -18805,6 +19448,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -18913,6 +19557,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -18926,6 +19571,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -18938,6 +19584,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -19021,6 +19668,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19033,6 +19681,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19083,6 +19732,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19095,6 +19745,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19148,6 +19799,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19160,6 +19812,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19222,6 +19875,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19234,6 +19888,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -19344,6 +19999,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -19377,6 +20033,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -19403,6 +20060,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -19440,6 +20098,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -19449,6 +20108,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -19518,6 +20178,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -19527,6 +20188,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -19610,6 +20272,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -19619,6 +20282,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -19723,6 +20387,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -19733,6 +20398,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -19742,6 +20408,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -19781,6 +20448,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -19790,6 +20458,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -19817,6 +20486,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -19826,6 +20496,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -19856,6 +20527,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -19865,6 +20537,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -19898,6 +20571,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -19907,6 +20581,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -19964,6 +20639,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -19988,6 +20664,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -20008,6 +20685,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -20034,6 +20712,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -20043,6 +20722,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -20086,6 +20766,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -20095,6 +20776,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -20148,6 +20830,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -20157,6 +20840,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -20233,6 +20917,7 @@ describe("V1Client", () => {
                     state: "state",
                     postal_code: "postal_code",
                     country: "country",
+                    county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
                 other_addresses: [
@@ -20243,6 +20928,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                     {
@@ -20252,6 +20938,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 ],
@@ -20291,6 +20978,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -20300,6 +20988,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -20327,6 +21016,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -20336,6 +21026,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -20366,6 +21057,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -20375,6 +21067,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -20408,6 +21101,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                             {
@@ -20417,6 +21111,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                             },
                         ],
@@ -20474,6 +21169,7 @@ describe("V1Client", () => {
                         state: "state",
                         postal_code: "postal_code",
                         country: "country",
+                        county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
                 },
@@ -20498,6 +21194,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -20518,6 +21215,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
+                        dx_codes: ["dx_codes"],
                     },
                 ],
                 referrals: [
@@ -20544,6 +21242,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -20553,6 +21252,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -20596,6 +21296,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -20605,6 +21306,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postal_code: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -20658,6 +21360,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                             {
@@ -20667,6 +21370,7 @@ describe("V1Client", () => {
                                 state: "state",
                                 postal_code: "postal_code",
                                 country: "country",
+                                county: "county",
                                 period: {},
                             },
                         ],
@@ -20781,6 +21485,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -20794,6 +21499,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -20806,6 +21512,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -20889,6 +21596,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -20901,6 +21609,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -20951,6 +21660,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -20963,6 +21673,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21016,6 +21727,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21028,6 +21740,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21090,6 +21803,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21102,6 +21816,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21212,6 +21927,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -21245,6 +21961,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -21271,6 +21988,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -21308,6 +22026,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -21317,6 +22036,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -21386,6 +22106,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -21395,6 +22116,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -21478,6 +22200,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -21487,6 +22210,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],
@@ -21595,6 +22319,7 @@ describe("V1Client", () => {
                         state: "state",
                         postalCode: "postal_code",
                         country: "country",
+                        county: "county",
                         period: {
                             start: "2023-01-15",
                             end: "2023-01-15",
@@ -21608,6 +22333,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -21620,6 +22346,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -21703,6 +22430,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21715,6 +22443,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21765,6 +22494,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21777,6 +22507,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21830,6 +22561,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21842,6 +22574,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21904,6 +22637,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -21916,6 +22650,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {
                                         start: "2023-01-15",
                                         end: "2023-01-15",
@@ -22026,6 +22761,7 @@ describe("V1Client", () => {
                             state: "state",
                             postalCode: "postal_code",
                             country: "country",
+                            county: "county",
                             period: {
                                 start: "2023-01-15",
                                 end: "2023-01-15",
@@ -22059,6 +22795,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -22085,6 +22822,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
+                            dxCodes: new Set(["dx_codes"]),
                         },
                     ],
                     referrals: [
@@ -22122,6 +22860,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -22131,6 +22870,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -22200,6 +22940,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                     {
@@ -22209,6 +22950,7 @@ describe("V1Client", () => {
                                         state: "state",
                                         postalCode: "postal_code",
                                         country: "country",
+                                        county: "county",
                                         period: {},
                                     },
                                 ],
@@ -22292,6 +23034,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                                 {
@@ -22301,6 +23044,7 @@ describe("V1Client", () => {
                                     state: "state",
                                     postalCode: "postal_code",
                                     country: "country",
+                                    county: "county",
                                     period: {},
                                 },
                             ],

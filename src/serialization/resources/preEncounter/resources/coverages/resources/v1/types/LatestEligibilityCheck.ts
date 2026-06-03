@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
+import { EligibilityCheckErrorDetails } from "../../../../eligibilityChecks/resources/v1/types/EligibilityCheckErrorDetails";
 import { EligibilityStatus } from "../../../../eligibilityChecks/resources/v1/types/EligibilityStatus";
 
 export const LatestEligibilityCheck: core.serialization.ObjectSchema<
@@ -12,6 +13,7 @@ export const LatestEligibilityCheck: core.serialization.ObjectSchema<
     checkId: core.serialization.property("check_id", core.serialization.string()),
     status: EligibilityStatus,
     initiatedAt: core.serialization.property("initiated_at", core.serialization.date()),
+    errors: core.serialization.list(EligibilityCheckErrorDetails).optional(),
 });
 
 export declare namespace LatestEligibilityCheck {
@@ -19,5 +21,6 @@ export declare namespace LatestEligibilityCheck {
         check_id: string;
         status: EligibilityStatus.Raw;
         initiated_at: string;
+        errors?: EligibilityCheckErrorDetails.Raw[] | null;
     }
 }
