@@ -12,7 +12,7 @@ export const ServiceFacilityStatus = {
      * The location is no longer used. */
     Inactive: "inactive",
     /**
-     * TThe location is temporarily closed. */
+     * The location is temporarily closed. */
     Suspended: "suspended",
 } as const;
 export type ServiceFacilityStatus = (typeof ServiceFacilityStatus)[keyof typeof ServiceFacilityStatus];

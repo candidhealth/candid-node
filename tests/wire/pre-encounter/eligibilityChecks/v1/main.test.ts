@@ -2221,4 +2221,421 @@ describe("V1Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("insurance-discovery", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = {
+            provider: { npi: "npi" },
+            subscriber: { first_name: "first_name", last_name: "last_name" },
+        };
+        const rawResponseBody = {
+            discovery_id: "discovery_id",
+            status: "PENDING",
+            items: [{ key: "value" }, { key: "value" }],
+            coverages_found: 1,
+            errors: [
+                {
+                    "field?": "field?",
+                    "description?": "description?",
+                    "location?": "location?",
+                    "possibleResolutions?": "possibleResolutions?",
+                    "code?": "code?",
+                    "followupAction?": "followupAction?",
+                },
+                {
+                    "field?": "field?",
+                    "description?": "description?",
+                    "location?": "location?",
+                    "possibleResolutions?": "possibleResolutions?",
+                    "code?": "code?",
+                    "followupAction?": "followupAction?",
+                },
+            ],
+        };
+
+        server
+            .mockEndpoint()
+            .post("/eligibility-checks/v1/insurance-discovery")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.eligibilityChecks.v1.insuranceDiscovery({
+            provider: {
+                npi: "npi",
+            },
+            subscriber: {
+                firstName: "first_name",
+                lastName: "last_name",
+            },
+        });
+        expect(response).toEqual({
+            body: {
+                discoveryId: "discovery_id",
+                status: "PENDING",
+                items: [
+                    {
+                        key: "value",
+                    },
+                    {
+                        key: "value",
+                    },
+                ],
+                coveragesFound: 1,
+                errors: [
+                    {
+                        field: "field?",
+                        description: "description?",
+                        location: "location?",
+                        possibleResolutions: "possibleResolutions?",
+                        code: "code?",
+                        followupAction: "followupAction?",
+                    },
+                    {
+                        field: "field?",
+                        description: "description?",
+                        location: "location?",
+                        possibleResolutions: "possibleResolutions?",
+                        code: "code?",
+                        followupAction: "followupAction?",
+                    },
+                ],
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("coordination-of-benefits", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = {
+            trading_partner_service_id: "trading_partner_service_id",
+            provider: { npi: "npi" },
+            subscriber: { first_name: "first_name", last_name: "last_name", date_of_birth: "date_of_birth" },
+            encounter: {},
+        };
+        const rawResponseBody = {
+            provider: {
+                provider_name: "provider_name",
+                provider_first_name: "provider_first_name",
+                provider_org_name: "provider_org_name",
+                npi: "npi",
+                aaa_errors: [
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                ],
+            },
+            subscriber: {
+                member_id: "member_id",
+                first_name: "first_name",
+                last_name: "last_name",
+                middle_name: "middle_name",
+                gender: "gender",
+                date_of_birth: "date_of_birth",
+                ssn: "ssn",
+                group_number: "group_number",
+                birth_sequence_number: "birth_sequence_number",
+                address: {
+                    address_1: "address_1",
+                    address_2: "address_2",
+                    city: "city",
+                    state: "state",
+                    postal_code: "postal_code",
+                    country_code: "country_code",
+                    country_sub_division_code: "country_sub_division_code",
+                },
+                aaa_errors: [
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                ],
+            },
+            dependent: {
+                member_id: "member_id",
+                first_name: "first_name",
+                last_name: "last_name",
+                middle_name: "middle_name",
+                gender: "gender",
+                date_of_birth: "date_of_birth",
+                ssn: "ssn",
+                group_number: "group_number",
+                relation_to_subscriber: "relation_to_subscriber",
+                relation_to_subscriber_code: "relation_to_subscriber_code",
+                birth_sequence_number: "birth_sequence_number",
+                address: {
+                    address_1: "address_1",
+                    address_2: "address_2",
+                    city: "city",
+                    state: "state",
+                    postal_code: "postal_code",
+                    country_code: "country_code",
+                    country_sub_division_code: "country_sub_division_code",
+                },
+                aaa_errors: [
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                ],
+            },
+            payer: { name: "name", payer_identification: "payer_identification" },
+            plan_date_information: { plan_begin: "plan_begin", plan_end: "plan_end" },
+            benefits_information: [{ key: "value" }, { key: "value" }],
+            errors: [
+                {
+                    "field?": "field?",
+                    "description?": "description?",
+                    "location?": "location?",
+                    "possibleResolutions?": "possibleResolutions?",
+                    "code?": "code?",
+                    "followupAction?": "followupAction?",
+                },
+                {
+                    "field?": "field?",
+                    "description?": "description?",
+                    "location?": "location?",
+                    "possibleResolutions?": "possibleResolutions?",
+                    "code?": "code?",
+                    "followupAction?": "followupAction?",
+                },
+            ],
+            coordination_of_benefits: {
+                classification: "classification",
+                instance_exists: true,
+                primacy_determined: true,
+                coverage_overlap: true,
+                benefit_overlap: true,
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/eligibility-checks/v1/coordination-of-benefits")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.eligibilityChecks.v1.coordinationOfBenefits({
+            tradingPartnerServiceId: "trading_partner_service_id",
+            provider: {
+                npi: "npi",
+            },
+            subscriber: {
+                firstName: "first_name",
+                lastName: "last_name",
+                dateOfBirth: "date_of_birth",
+            },
+            encounter: {},
+        });
+        expect(response).toEqual({
+            body: {
+                provider: {
+                    providerName: "provider_name",
+                    providerFirstName: "provider_first_name",
+                    providerOrgName: "provider_org_name",
+                    npi: "npi",
+                    aaaErrors: [
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    ],
+                },
+                subscriber: {
+                    memberId: "member_id",
+                    firstName: "first_name",
+                    lastName: "last_name",
+                    middleName: "middle_name",
+                    gender: "gender",
+                    dateOfBirth: "date_of_birth",
+                    ssn: "ssn",
+                    groupNumber: "group_number",
+                    birthSequenceNumber: "birth_sequence_number",
+                    address: {
+                        address1: "address_1",
+                        address2: "address_2",
+                        city: "city",
+                        state: "state",
+                        postalCode: "postal_code",
+                        countryCode: "country_code",
+                        countrySubDivisionCode: "country_sub_division_code",
+                    },
+                    aaaErrors: [
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    ],
+                },
+                dependent: {
+                    memberId: "member_id",
+                    firstName: "first_name",
+                    lastName: "last_name",
+                    middleName: "middle_name",
+                    gender: "gender",
+                    dateOfBirth: "date_of_birth",
+                    ssn: "ssn",
+                    groupNumber: "group_number",
+                    relationToSubscriber: "relation_to_subscriber",
+                    relationToSubscriberCode: "relation_to_subscriber_code",
+                    birthSequenceNumber: "birth_sequence_number",
+                    address: {
+                        address1: "address_1",
+                        address2: "address_2",
+                        city: "city",
+                        state: "state",
+                        postalCode: "postal_code",
+                        countryCode: "country_code",
+                        countrySubDivisionCode: "country_sub_division_code",
+                    },
+                    aaaErrors: [
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    ],
+                },
+                payer: {
+                    name: "name",
+                    payerIdentification: "payer_identification",
+                },
+                planDateInformation: {
+                    planBegin: "plan_begin",
+                    planEnd: "plan_end",
+                },
+                benefitsInformation: [
+                    {
+                        key: "value",
+                    },
+                    {
+                        key: "value",
+                    },
+                ],
+                errors: [
+                    {
+                        field: "field?",
+                        description: "description?",
+                        location: "location?",
+                        possibleResolutions: "possibleResolutions?",
+                        code: "code?",
+                        followupAction: "followupAction?",
+                    },
+                    {
+                        field: "field?",
+                        description: "description?",
+                        location: "location?",
+                        possibleResolutions: "possibleResolutions?",
+                        code: "code?",
+                        followupAction: "followupAction?",
+                    },
+                ],
+                coordinationOfBenefits: {
+                    classification: "classification",
+                    instanceExists: true,
+                    primacyDetermined: true,
+                    coverageOverlap: true,
+                    benefitOverlap: true,
+                },
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

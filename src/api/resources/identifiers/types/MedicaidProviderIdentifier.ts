@@ -5,4 +5,6 @@ import type * as CandidApi from "../../../index";
 export interface MedicaidProviderIdentifier {
     state: CandidApi.State;
     providerNumber: string;
+    /** When set, this identifier applies only to the given service facility. */
+    organizationServiceFacilityId?: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId;
 }

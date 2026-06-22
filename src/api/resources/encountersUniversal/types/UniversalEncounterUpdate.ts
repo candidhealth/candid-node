@@ -34,6 +34,6 @@ export interface UniversalEncounterUpdate extends CandidApi.encountersUniversal.
     typeOfBill?: CandidApi.x12.v1.TypeOfBillCompositeUpdate;
     /** 837i-REF1000 -- an optional state indicating where an accident related to the encounter occurred. */
     accidentStateOrProvinceCode?: CandidApi.State;
-    /** Describes the currently expected target form for this encounter.  This effects what validations and queues the form is processed under.  When this value is not set, it should be assumed to be TARGET_PROFESSIONAL. */
+    /** Describes the currently expected target form for this encounter.  This affects what validations and queues the form is processed under.  When this value is not set, it should be assumed to be TARGET_PROFESSIONAL. */
     submissionExpectation?: CandidApi.encounters.v4.EncounterSubmissionExpectation;
 }

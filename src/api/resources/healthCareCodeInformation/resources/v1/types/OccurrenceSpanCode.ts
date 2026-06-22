@@ -26,10 +26,10 @@ export const OccurrenceSpanCode = {
      * PROVIDER LIABILITY PERIOD */
     C77: "77",
     /**
-     * SNF PROIR STAY DATES */
+     * SNF PRIOR STAY DATES */
     C78: "78",
     /**
-     * PRIOR SAME-SNF STAY DATES FOR PAYMENT BAN PRUPOSES */
+     * PRIOR SAME-SNF STAY DATES FOR PAYMENT BAN PURPOSES */
     C80: "80",
     /**
      * ANTEPARTUM DAYS AT REDUCED LEVEL OF CARE */

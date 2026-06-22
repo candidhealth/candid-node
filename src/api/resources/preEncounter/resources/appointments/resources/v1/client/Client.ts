@@ -270,6 +270,121 @@ export class V1Client {
     }
 
     /**
+     * Gets aggregate counts for the visits matching the given filters.
+     *
+     * The counts respect all provided filters but are independent of pagination, so this can be fetched
+     * once when filters change instead of on every page of `get_visits`.
+     *
+     * **IMPORTANT:** Like `get_visits`, this endpoint requires a date filter on `appointment.startTimestamp`
+     * to ensure acceptable query performance.
+     *
+     * @param {CandidApi.preEncounter.appointments.v1.CountsRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.appointments.v1.getCounts()
+     */
+    public getCounts(
+        request: CandidApi.preEncounter.appointments.v1.CountsRequest = {},
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.appointments.v1.CountsResponse,
+            CandidApi.preEncounter.appointments.v1.getCounts.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getCounts(request, requestOptions));
+    }
+
+    private async __getCounts(
+        request: CandidApi.preEncounter.appointments.v1.CountsRequest = {},
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.appointments.v1.CountsResponse,
+                CandidApi.preEncounter.appointments.v1.getCounts.Error
+            >
+        >
+    > {
+        const { filters } = request;
+        const _queryParams: Record<string, unknown> = {
+            filters,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/appointments/v1/visits/counts",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.appointments.v1.CountsResponse.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch ((_response.error.body as serializers.preEncounter.appointments.v1.getCounts.Error.Raw)?.errorName) {
+                case "BadRequestError":
+                    return {
+                        data: {
+                            ok: false,
+                            error: serializers.preEncounter.appointments.v1.getCounts.Error.parseOrThrow(
+                                _response.error.body as serializers.preEncounter.appointments.v1.getCounts.Error.Raw,
+                                {
+                                    unrecognizedObjectKeys: "passthrough",
+                                    allowUnrecognizedUnionMembers: true,
+                                    allowUnrecognizedEnumValues: true,
+                                    breadcrumbsPrefix: ["response"],
+                                },
+                            ),
+                            rawResponse: _response.rawResponse,
+                        },
+                        rawResponse: _response.rawResponse,
+                    };
+            }
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.appointments.v1.getCounts.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * Gets an appointment.
      *
      * @param {CandidApi.preEncounter.AppointmentId} id

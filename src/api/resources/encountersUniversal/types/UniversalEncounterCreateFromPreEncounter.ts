@@ -4,7 +4,7 @@ import type * as CandidApi from "../../../index";
 
 export interface UniversalEncounterCreateFromPreEncounter
     extends CandidApi.encountersUniversal.UniversalEncounterCreateFromPreEncounterBase {
-    /** Describes the currently expected target form for this encounter.  This effects what validations and queues the form is processed under. */
+    /** Describes the currently expected target form for this encounter.  This affects what validations and queues the form is processed under. */
     submissionExpectation: CandidApi.encounters.v4.EncounterSubmissionExpectation;
     /**
      * The rendering provider is the practitioner -- physician, nurse practitioner, etc. -- performing the service.

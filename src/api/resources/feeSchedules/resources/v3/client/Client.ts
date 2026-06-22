@@ -617,7 +617,7 @@ export class V3Client {
     /**
      * Uploads a new fee schedule.
      *
-     * Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.
+     * Each rate may either be totally new as qualified by its dimensions or a new version for an existing rate.
      *
      * If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will
      * be returned.

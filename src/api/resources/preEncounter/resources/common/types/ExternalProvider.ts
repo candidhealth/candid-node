@@ -12,6 +12,8 @@ export interface ExternalProvider {
     period?: CandidApi.preEncounter.Period;
     canonicalId?: CandidApi.preEncounter.CanonicalProviderId;
     fax?: string;
+    otherFaxNumbers?: string[];
+    emails?: string[];
     /** Associated service facilities for this provider. */
     serviceFacilities?: CandidApi.preEncounter.PatientServiceFacility[];
 }

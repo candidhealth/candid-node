@@ -14,5 +14,9 @@ export const PayerCategory = {
     WorkersComp: "WORKERS_COMP",
     OtherGovernment: "OTHER_GOVERNMENT",
     AutoTpl: "AUTO_TPL",
+    Lien: "LIEN",
+    Humana: "HUMANA",
+    Molina: "MOLINA",
+    OtherFacility: "OTHER_FACILITY",
 } as const;
 export type PayerCategory = (typeof PayerCategory)[keyof typeof PayerCategory];

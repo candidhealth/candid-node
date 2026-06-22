@@ -18,7 +18,16 @@ export const MutableOrganizationExternalProvider: core.serialization.ObjectSchem
     taxId: core.serialization.property("tax_id", core.serialization.string().optional()),
     taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
     phoneNumber: core.serialization.property("phone_number", core.serialization.string().optional()),
+    otherPhoneNumbers: core.serialization.property(
+        "other_phone_numbers",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
     faxNumber: core.serialization.property("fax_number", core.serialization.string().optional()),
+    otherFaxNumbers: core.serialization.property(
+        "other_fax_numbers",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
+    emails: core.serialization.list(core.serialization.string()).optional(),
     licenseType: core.serialization.property("license_type", LicenseType.optional()),
     addresses: core.serialization.list(Address).optional(),
 });
@@ -31,7 +40,10 @@ export declare namespace MutableOrganizationExternalProvider {
         tax_id?: string | null;
         taxonomy_code?: string | null;
         phone_number?: string | null;
+        other_phone_numbers?: string[] | null;
         fax_number?: string | null;
+        other_fax_numbers?: string[] | null;
+        emails?: string[] | null;
         license_type?: LicenseType.Raw | null;
         addresses?: Address.Raw[] | null;
     }

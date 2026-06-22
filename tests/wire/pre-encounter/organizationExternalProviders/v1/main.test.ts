@@ -36,7 +36,10 @@ describe("V1Client", () => {
             tax_id: "tax_id",
             taxonomy_code: "taxonomy_code",
             phone_number: "phone_number",
+            other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
             fax_number: "fax_number",
+            other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+            emails: ["emails", "emails"],
             license_type: "MD",
             addresses: [
                 {
@@ -100,7 +103,10 @@ describe("V1Client", () => {
                 taxId: "tax_id",
                 taxonomyCode: "taxonomy_code",
                 phoneNumber: "phone_number",
+                otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                 faxNumber: "fax_number",
+                otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 licenseType: "MD",
                 addresses: [
                     {
@@ -169,7 +175,10 @@ describe("V1Client", () => {
                     tax_id: "tax_id",
                     taxonomy_code: "taxonomy_code",
                     phone_number: "phone_number",
+                    other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
                     fax_number: "fax_number",
+                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     license_type: "MD",
                     addresses: [
                         {
@@ -213,7 +222,10 @@ describe("V1Client", () => {
                     tax_id: "tax_id",
                     taxonomy_code: "taxonomy_code",
                     phone_number: "phone_number",
+                    other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
                     fax_number: "fax_number",
+                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     license_type: "MD",
                     addresses: [
                         {
@@ -280,7 +292,10 @@ describe("V1Client", () => {
                         taxId: "tax_id",
                         taxonomyCode: "taxonomy_code",
                         phoneNumber: "phone_number",
+                        otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                         faxNumber: "fax_number",
+                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                        emails: ["emails", "emails"],
                         licenseType: "MD",
                         addresses: [
                             {
@@ -335,7 +350,10 @@ describe("V1Client", () => {
                         taxId: "tax_id",
                         taxonomyCode: "taxonomy_code",
                         phoneNumber: "phone_number",
+                        otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                         faxNumber: "fax_number",
+                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                        emails: ["emails", "emails"],
                         licenseType: "MD",
                         addresses: [
                             {
@@ -410,7 +428,10 @@ describe("V1Client", () => {
             tax_id: "tax_id",
             taxonomy_code: "taxonomy_code",
             phone_number: "phone_number",
+            other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
             fax_number: "fax_number",
+            other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+            emails: ["emails", "emails"],
             license_type: "MD",
             addresses: [
                 {
@@ -478,7 +499,10 @@ describe("V1Client", () => {
                 taxId: "tax_id",
                 taxonomyCode: "taxonomy_code",
                 phoneNumber: "phone_number",
+                otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                 faxNumber: "fax_number",
+                otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 licenseType: "MD",
                 addresses: [
                     {
@@ -548,7 +572,10 @@ describe("V1Client", () => {
             tax_id: "tax_id",
             taxonomy_code: "taxonomy_code",
             phone_number: "phone_number",
+            other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
             fax_number: "fax_number",
+            other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+            emails: ["emails", "emails"],
             license_type: "MD",
             addresses: [
                 {
@@ -622,7 +649,10 @@ describe("V1Client", () => {
                 taxId: "tax_id",
                 taxonomyCode: "taxonomy_code",
                 phoneNumber: "phone_number",
+                otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                 faxNumber: "fax_number",
+                otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 licenseType: "MD",
                 addresses: [
                     {
@@ -722,7 +752,10 @@ describe("V1Client", () => {
                 tax_id: "tax_id",
                 taxonomy_code: "taxonomy_code",
                 phone_number: "phone_number",
+                other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
                 fax_number: "fax_number",
+                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 license_type: "MD",
                 addresses: [
                     {
@@ -766,7 +799,10 @@ describe("V1Client", () => {
                 tax_id: "tax_id",
                 taxonomy_code: "taxonomy_code",
                 phone_number: "phone_number",
+                other_phone_numbers: ["other_phone_numbers", "other_phone_numbers"],
                 fax_number: "fax_number",
+                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 license_type: "MD",
                 addresses: [
                     {
@@ -830,7 +866,10 @@ describe("V1Client", () => {
                     taxId: "tax_id",
                     taxonomyCode: "taxonomy_code",
                     phoneNumber: "phone_number",
+                    otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                     faxNumber: "fax_number",
+                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     licenseType: "MD",
                     addresses: [
                         {
@@ -885,7 +924,10 @@ describe("V1Client", () => {
                     taxId: "tax_id",
                     taxonomyCode: "taxonomy_code",
                     phoneNumber: "phone_number",
+                    otherPhoneNumbers: ["other_phone_numbers", "other_phone_numbers"],
                     faxNumber: "fax_number",
+                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     licenseType: "MD",
                     addresses: [
                         {

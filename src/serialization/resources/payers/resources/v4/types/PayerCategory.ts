@@ -21,6 +21,10 @@ export const PayerCategory: core.serialization.Schema<
     "WORKERS_COMP",
     "OTHER_GOVERNMENT",
     "AUTO_TPL",
+    "LIEN",
+    "HUMANA",
+    "MOLINA",
+    "OTHER_FACILITY",
 ]);
 
 export declare namespace PayerCategory {
@@ -37,5 +41,9 @@ export declare namespace PayerCategory {
         | "TRICARE"
         | "WORKERS_COMP"
         | "OTHER_GOVERNMENT"
-        | "AUTO_TPL";
+        | "AUTO_TPL"
+        | "LIEN"
+        | "HUMANA"
+        | "MOLINA"
+        | "OTHER_FACILITY";
 }

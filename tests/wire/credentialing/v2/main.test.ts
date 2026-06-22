@@ -95,6 +95,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -105,6 +106,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -233,6 +235,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -246,6 +252,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -365,6 +375,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -375,6 +386,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -500,6 +512,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -513,6 +529,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -634,6 +654,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                             {
@@ -644,6 +665,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                         ],
@@ -746,6 +768,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                             {
@@ -756,6 +779,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                         ],
@@ -885,6 +909,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                                 {
@@ -898,6 +926,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                             ],
@@ -1010,6 +1042,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                                 {
@@ -1023,6 +1059,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                             ],
@@ -1175,6 +1215,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -1185,6 +1226,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -1314,6 +1356,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -1327,6 +1373,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -1426,6 +1476,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -1436,6 +1487,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -1490,6 +1542,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -1500,6 +1553,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -1604,6 +1658,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -1617,6 +1675,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -1679,6 +1741,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -1692,6 +1758,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -1786,6 +1856,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -1796,6 +1867,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -1850,6 +1922,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -1860,6 +1933,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -1957,6 +2031,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -1970,6 +2048,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -2032,6 +2114,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -2045,6 +2131,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -2141,6 +2231,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                             {
@@ -2151,6 +2242,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                         ],
@@ -2205,6 +2297,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                             {
@@ -2215,6 +2308,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                         ],
@@ -2292,6 +2386,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                             {
@@ -2302,6 +2397,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                         ],
@@ -2356,6 +2452,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                             {
@@ -2366,6 +2463,7 @@ describe("V2Client", () => {
                                     type: "medicare_provider_identifier",
                                     state: "AA",
                                     provider_number: "provider_number",
+                                    organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                                 },
                             },
                         ],
@@ -2467,6 +2565,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                                 {
@@ -2480,6 +2582,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                             ],
@@ -2542,6 +2648,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                                 {
@@ -2555,6 +2665,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                             ],
@@ -2639,6 +2753,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                                 {
@@ -2652,6 +2770,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                             ],
@@ -2714,6 +2836,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                                 {
@@ -2727,6 +2853,10 @@ describe("V2Client", () => {
                                         type: "medicare_provider_identifier",
                                         state: "AA",
                                         providerNumber: "provider_number",
+                                        organizationServiceFacilityId:
+                                            CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                            ),
                                     },
                                 },
                             ],
@@ -2854,6 +2984,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -2864,6 +2995,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -2918,6 +3050,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                     {
@@ -2928,6 +3061,7 @@ describe("V2Client", () => {
                             type: "medicare_provider_identifier",
                             state: "AA",
                             provider_number: "provider_number",
+                            organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         },
                     },
                 ],
@@ -3026,6 +3160,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -3039,6 +3177,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],
@@ -3101,6 +3243,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                         {
@@ -3114,6 +3260,10 @@ describe("V2Client", () => {
                                 type: "medicare_provider_identifier",
                                 state: "AA",
                                 providerNumber: "provider_number",
+                                organizationServiceFacilityId:
+                                    CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
                             },
                         },
                     ],

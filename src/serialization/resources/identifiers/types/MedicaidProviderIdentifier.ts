@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../api/index";
 import * as core from "../../../../core";
 import type * as serializers from "../../../index";
 import { State } from "../../commons/types/State";
+import { OrganizationServiceFacilityId } from "../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 
 export const MedicaidProviderIdentifier: core.serialization.ObjectSchema<
     serializers.MedicaidProviderIdentifier.Raw,
@@ -11,11 +12,16 @@ export const MedicaidProviderIdentifier: core.serialization.ObjectSchema<
 > = core.serialization.object({
     state: State,
     providerNumber: core.serialization.property("provider_number", core.serialization.string()),
+    organizationServiceFacilityId: core.serialization.property(
+        "organization_service_facility_id",
+        OrganizationServiceFacilityId.optional(),
+    ),
 });
 
 export declare namespace MedicaidProviderIdentifier {
     export interface Raw {
         state: State.Raw;
         provider_number: string;
+        organization_service_facility_id?: OrganizationServiceFacilityId.Raw | null;
     }
 }

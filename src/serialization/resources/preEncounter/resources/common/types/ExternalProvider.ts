@@ -23,6 +23,11 @@ export const ExternalProvider: core.serialization.ObjectSchema<
     period: Period.optional(),
     canonicalId: core.serialization.property("canonical_id", CanonicalProviderId.optional()),
     fax: core.serialization.string().optional(),
+    otherFaxNumbers: core.serialization.property(
+        "other_fax_numbers",
+        core.serialization.list(core.serialization.string()).optional(),
+    ),
+    emails: core.serialization.list(core.serialization.string()).optional(),
     serviceFacilities: core.serialization.property(
         "service_facilities",
         core.serialization.list(PatientServiceFacility).optional(),
@@ -39,6 +44,8 @@ export declare namespace ExternalProvider {
         period?: Period.Raw | null;
         canonical_id?: CanonicalProviderId.Raw | null;
         fax?: string | null;
+        other_fax_numbers?: string[] | null;
+        emails?: string[] | null;
         service_facilities?: PatientServiceFacility.Raw[] | null;
     }
 }

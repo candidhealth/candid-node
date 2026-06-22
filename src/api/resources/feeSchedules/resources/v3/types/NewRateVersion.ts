@@ -4,7 +4,7 @@ import type * as CandidApi from "../../../../../index";
 
 export interface NewRateVersion {
     rateId: CandidApi.RateId;
-    /** New versions of rates must indicate the exact version they modify. When the system attempts to save this new version, if the latest version in the system does not equal this previos_version, the request will be rejected with a EntityConflictError. */
+    /** New versions of rates must indicate the exact version they modify. When the system attempts to save this new version, if the latest version in the system does not equal this previous_version, the request will be rejected with a EntityConflictError. */
     previousVersion: number;
     entries: CandidApi.feeSchedules.v3.RateEntry[];
 }

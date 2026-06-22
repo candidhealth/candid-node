@@ -1,6 +1,8 @@
 export * as batch from "./batch";
+export * as coordinationOfBenefits from "./coordinationOfBenefits";
 export * as createRecommendation from "./createRecommendation";
 export * as getMulti from "./getMulti";
+export * as insuranceDiscovery from "./insuranceDiscovery";
 export * as payerSearch from "./payerSearch";
 export * as pollBatch from "./pollBatch";
 export * as post from "./post";

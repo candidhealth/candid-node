@@ -15,7 +15,7 @@ export interface UniversalEncounterCreate extends CandidApi.encountersUniversal.
     serviceLines?: CandidApi.serviceLines.v2.UniversalServiceLineCreate[];
     /** The health care code information associated with this encounter, which includes things such as diagnoses, vitals, procedures, occurrences, reason for visit, and numerous other code related fields. */
     healthCareCodeInformation?: CandidApi.healthCareCodeInformation.v1.HealthCareCodeInformationCreate;
-    /** Describes the currently expected target form for this encounter.  This can change later, but it orients this encounter in the pipeline and effects reporting. */
+    /** Describes the currently expected target form for this encounter.  This can change later, but it orients this encounter in the pipeline and affects reporting. */
     submissionExpectation: CandidApi.encounters.v4.EncounterSubmissionExpectation;
     /** 837i NM1 2500 variant for Loop ID-2310.  Used to indicate the individual whom has overall responsibility for the patient in institutional claims processing. */
     attendingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;

@@ -12,7 +12,10 @@ export interface MutableOrganizationExternalProvider {
     taxId?: string;
     taxonomyCode?: string;
     phoneNumber?: string;
+    otherPhoneNumbers?: string[];
     faxNumber?: string;
+    otherFaxNumbers?: string[];
+    emails?: string[];
     licenseType?: CandidApi.preEncounter.organizationExternalProviders.v1.LicenseType;
     addresses?: CandidApi.preEncounter.Address[];
 }

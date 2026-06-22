@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { PayerUuid } from "../../../../payers/resources/v4/types/PayerUuid";
 import { InsuranceCardBase } from "./InsuranceCardBase";
 import { InsuranceCardId } from "./InsuranceCardId";
 
@@ -19,6 +20,7 @@ export const InsuranceCard: core.serialization.ObjectSchema<
         rxPcn: core.serialization.property("rx_pcn", core.serialization.string().optional()),
         imageUrlFront: core.serialization.property("image_url_front", core.serialization.string().optional()),
         imageUrlBack: core.serialization.property("image_url_back", core.serialization.string().optional()),
+        payerUuid: core.serialization.property("payer_uuid", PayerUuid.optional()),
     })
     .extend(InsuranceCardBase);
 
@@ -32,5 +34,6 @@ export declare namespace InsuranceCard {
         rx_pcn?: string | null;
         image_url_front?: string | null;
         image_url_back?: string | null;
+        payer_uuid?: PayerUuid.Raw | null;
     }
 }

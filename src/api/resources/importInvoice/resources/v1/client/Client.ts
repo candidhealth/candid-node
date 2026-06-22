@@ -146,7 +146,7 @@ export class V1Client {
     }
 
     /**
-     * Returns all Invoices for the authenticated user's organziation with all filters applied.
+     * Returns all Invoices for the authenticated user's organization with all filters applied.
      *
      * @param {CandidApi.importInvoice.v1.SearchImportedInvoicesRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.

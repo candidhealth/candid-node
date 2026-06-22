@@ -840,4 +840,214 @@ export class V1Client {
             rawResponse: _response.rawResponse,
         };
     }
+
+    /**
+     * @beta This endpoint is in development and may change.
+     *
+     * Sends an insurance discovery check to find potential coverage matches for a patient through Stedi.
+     * Given patient demographics, this endpoint discovers what insurance coverages exist for the patient.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.insuranceDiscovery({
+     *         provider: {
+     *             npi: "npi"
+     *         },
+     *         subscriber: {
+     *             firstName: "first_name",
+     *             lastName: "last_name"
+     *         }
+     *     })
+     */
+    public insuranceDiscovery(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryResponse,
+            CandidApi.preEncounter.eligibilityChecks.v1.insuranceDiscovery.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__insuranceDiscovery(request, requestOptions));
+    }
+
+    private async __insuranceDiscovery(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryResponse,
+                CandidApi.preEncounter.eligibilityChecks.v1.insuranceDiscovery.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/insurance-discovery",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryResponse.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.eligibilityChecks.v1.insuranceDiscovery.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @beta This endpoint is in development and may change.
+     *
+     * Sends a coordination of benefits check through Stedi to determine whether a patient has
+     * coverage overlap across multiple payers and, if so, which payer is primary.
+     * Medicare and Medicare Advantage plans are not supported.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.coordinationOfBenefits({
+     *         tradingPartnerServiceId: "trading_partner_service_id",
+     *         provider: {
+     *             npi: "npi"
+     *         },
+     *         subscriber: {
+     *             firstName: "first_name",
+     *             lastName: "last_name",
+     *             dateOfBirth: "date_of_birth"
+     *         },
+     *         encounter: {}
+     *     })
+     */
+    public coordinationOfBenefits(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsResponse,
+            CandidApi.preEncounter.eligibilityChecks.v1.coordinationOfBenefits.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__coordinationOfBenefits(request, requestOptions));
+    }
+
+    private async __coordinationOfBenefits(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsResponse,
+                CandidApi.preEncounter.eligibilityChecks.v1.coordinationOfBenefits.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/coordination-of-benefits",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.CoordinationOfBenefitsResponse.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.eligibilityChecks.v1.coordinationOfBenefits.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
 }

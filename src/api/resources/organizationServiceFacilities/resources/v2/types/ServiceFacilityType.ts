@@ -264,7 +264,7 @@ export const ServiceFacilityType = {
      * Pediatric oncology clinic. */
     PediatricOncologyClinic: "PEDHO",
     /**
-     * Opthalmology clinic. */
+     * Ophthalmology clinic. */
     OpthalmologyClinic: "OPH",
     /**
      * A location that plays the role of delivering services which may include examination, diagnosis, treatment, management, and prevention of diseases and disorders of the eye as well as prescribing and fitting appropriate corrective lenses (glasses or contact lenses) as needed. Optometry clinics may also provide tests for visual field screening, measuring intra-ocular pressure and ophthalmoscopy, as and when required. */

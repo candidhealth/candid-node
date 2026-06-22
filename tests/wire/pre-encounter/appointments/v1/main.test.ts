@@ -78,6 +78,8 @@ describe("V1Client", () => {
                 period: { start: "2023-01-15", end: "2023-01-15" },
                 canonical_id: "canonical_id",
                 fax: "fax",
+                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 service_facilities: [
                     { service_facility_id: "service_facility_id" },
                     { service_facility_id: "service_facility_id" },
@@ -198,6 +200,8 @@ describe("V1Client", () => {
                     },
                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                     fax: "fax",
+                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     serviceFacilities: [
                         {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
@@ -448,6 +452,8 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 canonical_id: "canonical_id",
                                 fax: "fax",
+                                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                emails: ["emails", "emails"],
                                 service_facilities: [
                                     { service_facility_id: "service_facility_id" },
                                     { service_facility_id: "service_facility_id" },
@@ -492,6 +498,8 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 canonical_id: "canonical_id",
                                 fax: "fax",
+                                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                emails: ["emails", "emails"],
                                 service_facilities: [
                                     { service_facility_id: "service_facility_id" },
                                     { service_facility_id: "service_facility_id" },
@@ -606,6 +614,8 @@ describe("V1Client", () => {
                                     period: {},
                                     canonical_id: "canonical_id",
                                     fax: "fax",
+                                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     service_facilities: [],
                                 },
                                 referral_number: "referral_number",
@@ -636,6 +646,8 @@ describe("V1Client", () => {
                                     period: {},
                                     canonical_id: "canonical_id",
                                     fax: "fax",
+                                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     service_facilities: [],
                                 },
                                 referral_number: "referral_number",
@@ -676,6 +688,8 @@ describe("V1Client", () => {
                                 period: {},
                                 canonical_id: "canonical_id",
                                 fax: "fax",
+                                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                emails: ["emails", "emails"],
                                 service_facilities: [],
                             },
                             specialization_categories: ["BEHAVIORAL_HEALTH_THERAPY", "BEHAVIORAL_HEALTH_THERAPY"],
@@ -906,6 +920,8 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 canonical_id: "canonical_id",
                                 fax: "fax",
+                                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                emails: ["emails", "emails"],
                                 service_facilities: [
                                     { service_facility_id: "service_facility_id" },
                                     { service_facility_id: "service_facility_id" },
@@ -950,6 +966,8 @@ describe("V1Client", () => {
                                 period: { start: "2023-01-15", end: "2023-01-15" },
                                 canonical_id: "canonical_id",
                                 fax: "fax",
+                                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                emails: ["emails", "emails"],
                                 service_facilities: [
                                     { service_facility_id: "service_facility_id" },
                                     { service_facility_id: "service_facility_id" },
@@ -1064,6 +1082,8 @@ describe("V1Client", () => {
                                     period: {},
                                     canonical_id: "canonical_id",
                                     fax: "fax",
+                                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     service_facilities: [],
                                 },
                                 referral_number: "referral_number",
@@ -1094,6 +1114,8 @@ describe("V1Client", () => {
                                     period: {},
                                     canonical_id: "canonical_id",
                                     fax: "fax",
+                                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     service_facilities: [],
                                 },
                                 referral_number: "referral_number",
@@ -1134,6 +1156,8 @@ describe("V1Client", () => {
                                 period: {},
                                 canonical_id: "canonical_id",
                                 fax: "fax",
+                                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                                emails: ["emails", "emails"],
                                 service_facilities: [],
                             },
                             specialization_categories: ["BEHAVIORAL_HEALTH_THERAPY", "BEHAVIORAL_HEALTH_THERAPY"],
@@ -1476,6 +1500,8 @@ describe("V1Client", () => {
                                     },
                                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                     fax: "fax",
+                                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     serviceFacilities: [
                                         {
                                             serviceFacilityId:
@@ -1544,6 +1570,8 @@ describe("V1Client", () => {
                                     },
                                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                     fax: "fax",
+                                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     serviceFacilities: [
                                         {
                                             serviceFacilityId:
@@ -1725,6 +1753,8 @@ describe("V1Client", () => {
                                         period: {},
                                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                         fax: "fax",
+                                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                        emails: ["emails", "emails"],
                                         serviceFacilities: [],
                                     },
                                     referralNumber: "referral_number",
@@ -1767,6 +1797,8 @@ describe("V1Client", () => {
                                         period: {},
                                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                         fax: "fax",
+                                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                        emails: ["emails", "emails"],
                                         serviceFacilities: [],
                                     },
                                     referralNumber: "referral_number",
@@ -1828,6 +1860,8 @@ describe("V1Client", () => {
                                     period: {},
                                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                     fax: "fax",
+                                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     serviceFacilities: [],
                                 },
                                 specializationCategories: ["BEHAVIORAL_HEALTH_THERAPY", "BEHAVIORAL_HEALTH_THERAPY"],
@@ -2152,6 +2186,8 @@ describe("V1Client", () => {
                                     },
                                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                     fax: "fax",
+                                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     serviceFacilities: [
                                         {
                                             serviceFacilityId:
@@ -2220,6 +2256,8 @@ describe("V1Client", () => {
                                     },
                                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                     fax: "fax",
+                                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     serviceFacilities: [
                                         {
                                             serviceFacilityId:
@@ -2401,6 +2439,8 @@ describe("V1Client", () => {
                                         period: {},
                                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                         fax: "fax",
+                                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                        emails: ["emails", "emails"],
                                         serviceFacilities: [],
                                     },
                                     referralNumber: "referral_number",
@@ -2443,6 +2483,8 @@ describe("V1Client", () => {
                                         period: {},
                                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                         fax: "fax",
+                                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                        emails: ["emails", "emails"],
                                         serviceFacilities: [],
                                     },
                                     referralNumber: "referral_number",
@@ -2504,6 +2546,8 @@ describe("V1Client", () => {
                                     period: {},
                                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                                     fax: "fax",
+                                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                                    emails: ["emails", "emails"],
                                     serviceFacilities: [],
                                 },
                                 specializationCategories: ["BEHAVIORAL_HEALTH_THERAPY", "BEHAVIORAL_HEALTH_THERAPY"],
@@ -2526,6 +2570,40 @@ describe("V1Client", () => {
                 nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
                 prevPageToken: CandidApi.preEncounter.PageToken("prev_page_token"),
                 total: 1,
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("get_counts", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = { not_ready_reason_counts: { INACTIVE_PRIMARY: 1 } };
+
+        server
+            .mockEndpoint()
+            .get("/appointments/v1/visits/counts")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.appointments.v1.getCounts();
+        expect(response).toEqual({
+            body: {
+                notReadyReasonCounts: {
+                    INACTIVE_PRIMARY: 1,
+                },
             },
             ok: true,
             headers: expect.any(Object),
@@ -2600,6 +2678,8 @@ describe("V1Client", () => {
                 period: { start: "2023-01-15", end: "2023-01-15" },
                 canonical_id: "canonical_id",
                 fax: "fax",
+                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 service_facilities: [
                     { service_facility_id: "service_facility_id" },
                     { service_facility_id: "service_facility_id" },
@@ -2714,6 +2794,8 @@ describe("V1Client", () => {
                     },
                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                     fax: "fax",
+                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     serviceFacilities: [
                         {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
@@ -2807,6 +2889,8 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                     canonical_id: "canonical_id",
                     fax: "fax",
+                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     service_facilities: [
                         { service_facility_id: "service_facility_id" },
                         { service_facility_id: "service_facility_id" },
@@ -2878,6 +2962,8 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                     canonical_id: "canonical_id",
                     fax: "fax",
+                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     service_facilities: [
                         { service_facility_id: "service_facility_id" },
                         { service_facility_id: "service_facility_id" },
@@ -2996,6 +3082,8 @@ describe("V1Client", () => {
                         },
                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                         fax: "fax",
+                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                        emails: ["emails", "emails"],
                         serviceFacilities: [
                             {
                                 serviceFacilityId:
@@ -3105,6 +3193,8 @@ describe("V1Client", () => {
                         },
                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                         fax: "fax",
+                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                        emails: ["emails", "emails"],
                         serviceFacilities: [
                             {
                                 serviceFacilityId:
@@ -3205,6 +3295,8 @@ describe("V1Client", () => {
                 period: { start: "2023-01-15", end: "2023-01-15" },
                 canonical_id: "canonical_id",
                 fax: "fax",
+                other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                emails: ["emails", "emails"],
                 service_facilities: [
                     { service_facility_id: "service_facility_id" },
                     { service_facility_id: "service_facility_id" },
@@ -3329,6 +3421,8 @@ describe("V1Client", () => {
                     },
                     canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                     fax: "fax",
+                    otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     serviceFacilities: [
                         {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
@@ -3422,6 +3516,8 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                     canonical_id: "canonical_id",
                     fax: "fax",
+                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     service_facilities: [
                         { service_facility_id: "service_facility_id" },
                         { service_facility_id: "service_facility_id" },
@@ -3493,6 +3589,8 @@ describe("V1Client", () => {
                     period: { start: "2023-01-15", end: "2023-01-15" },
                     canonical_id: "canonical_id",
                     fax: "fax",
+                    other_fax_numbers: ["other_fax_numbers", "other_fax_numbers"],
+                    emails: ["emails", "emails"],
                     service_facilities: [
                         { service_facility_id: "service_facility_id" },
                         { service_facility_id: "service_facility_id" },
@@ -3611,6 +3709,8 @@ describe("V1Client", () => {
                         },
                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                         fax: "fax",
+                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                        emails: ["emails", "emails"],
                         serviceFacilities: [
                             {
                                 serviceFacilityId:
@@ -3720,6 +3820,8 @@ describe("V1Client", () => {
                         },
                         canonicalId: CandidApi.preEncounter.CanonicalProviderId("canonical_id"),
                         fax: "fax",
+                        otherFaxNumbers: ["other_fax_numbers", "other_fax_numbers"],
+                        emails: ["emails", "emails"],
                         serviceFacilities: [
                             {
                                 serviceFacilityId:

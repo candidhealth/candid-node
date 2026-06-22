@@ -28,4 +28,5 @@ export interface InsuranceCard extends CandidApi.insuranceCards.v2.InsuranceCard
     rxPcn?: string;
     imageUrlFront?: string;
     imageUrlBack?: string;
+    payerUuid?: CandidApi.payers.v4.PayerUuid;
 }

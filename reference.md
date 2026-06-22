@@ -5232,7 +5232,7 @@ await client.feeSchedules.v3.getRateHistory(CandidApi.RateId("d5e9c84f-c2b2-4bf4
 
 Uploads a new fee schedule.
 
-Each rate may either be totally new as qualified by it's dimensions or a new version for an existing rate.
+Each rate may either be totally new as qualified by its dimensions or a new version for an existing rate.
 
 If adding a new version to an existing rate, the rate must be posted with the next version number (previous version + 1) or a EntityConflictError will
 be returned.
@@ -6156,7 +6156,7 @@ await client.importInvoice.v1.importInvoice({
 <dl>
 <dd>
 
-Returns all Invoices for the authenticated user's organziation with all filters applied.
+Returns all Invoices for the authenticated user's organization with all filters applied.
 </dd>
 </dl>
 </dd>
@@ -10921,6 +10921,75 @@ await client.preEncounter.appointments.v1.getVisits();
 </dl>
 </details>
 
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">getCounts</a>({ ...params }) -> core.APIResponse&lt;CandidApi.CountsResponse, CandidApi.preEncounter.appointments.v1.getCounts.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets aggregate counts for the visits matching the given filters.
+
+The counts respect all provided filters but are independent of pagination, so this can be fetched
+once when filters change instead of on every page of `get_visits`.
+
+**IMPORTANT:** Like `get_visits`, this endpoint requires a date filter on `appointment.startTimestamp`
+to ensure acceptable query performance.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.appointments.v1.getCounts();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.appointments.v1.CountsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Appointment, CandidApi.preEncounter.appointments.v1.get.Error&gt;</code></summary>
 <dl>
 <dd>
@@ -12541,6 +12610,154 @@ await client.preEncounter.eligibilityChecks.v1.getMulti();
 <dd>
 
 **request:** `CandidApi.preEncounter.eligibilityChecks.v1.EligibilityChecksGetMultiRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">insuranceDiscovery</a>({ ...params }) -> core.APIResponse&lt;CandidApi.InsuranceDiscoveryResponse, CandidApi.preEncounter.eligibilityChecks.v1.insuranceDiscovery.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sends an insurance discovery check to find potential coverage matches for a patient through Stedi.
+Given patient demographics, this endpoint discovers what insurance coverages exist for the patient.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.insuranceDiscovery({
+    provider: {
+        npi: "npi"
+    },
+    subscriber: {
+        firstName: "first_name",
+        lastName: "last_name"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.InsuranceDiscoveryRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">coordinationOfBenefits</a>({ ...params }) -> core.APIResponse&lt;CandidApi.CoordinationOfBenefitsResponse, CandidApi.preEncounter.eligibilityChecks.v1.coordinationOfBenefits.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sends a coordination of benefits check through Stedi to determine whether a patient has
+coverage overlap across multiple payers and, if so, which payer is primary.
+Medicare and Medicare Advantage plans are not supported.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.coordinationOfBenefits({
+    tradingPartnerServiceId: "trading_partner_service_id",
+    provider: {
+        npi: "npi"
+    },
+    subscriber: {
+        firstName: "first_name",
+        lastName: "last_name",
+        dateOfBirth: "date_of_birth"
+    },
+    encounter: {}
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.CoordinationOfBenefitsRequest` 
     
 </dd>
 </dl>

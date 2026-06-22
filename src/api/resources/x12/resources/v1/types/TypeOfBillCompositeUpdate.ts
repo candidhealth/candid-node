@@ -3,7 +3,7 @@
 import type * as CandidApi from "../../../../../index";
 
 /**
- * A type of bill can either be seen as a compositio of structured parts, or as a literal string.
+ * A type of bill can either be seen as a composition of structured parts, or as a literal string.
  * This union represents the potential to express a type of bill either as one of those two shapes.
  * Passing a string, this update will be seen as a complete 4 digit code, along with a padding code 0, that
  * should match a valid composition.

@@ -15,7 +15,7 @@ export declare namespace V1Client {
 }
 
 /**
- * PaymentAccountConfig reprents a configuration record for integration with third party payment processors.
+ * PaymentAccountConfig represents a configuration record for integration with third party payment processors.
  * This configuration is used to determine how to process invoices.
  */
 export class V1Client {
