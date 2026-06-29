@@ -878,6 +878,7 @@ describe("V1Client", () => {
                         start_timestamp: "2024-01-15T09:30:00Z",
                         status: "PENDING",
                         not_ready_reason: "INACTIVE_PRIMARY",
+                        ready_source: "MANUAL",
                         service_duration: 1,
                         services: [
                             { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -1798,6 +1799,7 @@ describe("V1Client", () => {
                         start_timestamp: "2024-01-15T09:30:00Z",
                         status: "PENDING",
                         not_ready_reason: "INACTIVE_PRIMARY",
+                        ready_source: "MANUAL",
                         service_duration: 1,
                         services: [
                             { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -3011,6 +3013,7 @@ describe("V1Client", () => {
                             startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                             status: "PENDING",
                             notReadyReason: "INACTIVE_PRIMARY",
+                            readySource: "MANUAL",
                             serviceDuration: 1,
                             services: [
                                 {
@@ -4235,6 +4238,7 @@ describe("V1Client", () => {
                             startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                             status: "PENDING",
                             notReadyReason: "INACTIVE_PRIMARY",
+                            readySource: "MANUAL",
                             serviceDuration: 1,
                             services: [
                                 {
@@ -4355,6 +4359,7 @@ describe("V1Client", () => {
                         start_timestamp: "2024-01-15T09:30:00Z",
                         status: "PENDING",
                         not_ready_reason: "INACTIVE_PRIMARY",
+                        ready_source: "MANUAL",
                         service_duration: 1,
                         services: [
                             { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -5149,6 +5154,7 @@ describe("V1Client", () => {
                         start_timestamp: "2024-01-15T09:30:00Z",
                         status: "PENDING",
                         not_ready_reason: "INACTIVE_PRIMARY",
+                        ready_source: "MANUAL",
                         service_duration: 1,
                         services: [
                             { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -5961,6 +5967,7 @@ describe("V1Client", () => {
                             startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                             status: "PENDING",
                             notReadyReason: "INACTIVE_PRIMARY",
+                            readySource: "MANUAL",
                             serviceDuration: 1,
                             services: [
                                 {
@@ -7041,6 +7048,7 @@ describe("V1Client", () => {
                             startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                             status: "PENDING",
                             notReadyReason: "INACTIVE_PRIMARY",
+                            readySource: "MANUAL",
                             serviceDuration: 1,
                             services: [
                                 {

@@ -5,6 +5,7 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { OrganizationId } from "../../../../common/types/OrganizationId";
 import { PatientId } from "../../../../common/types/PatientId";
+import { PayerPlanGroupId } from "../../../../common/types/PayerPlanGroupId";
 import { CoverageStatus } from "../../../../coverages/resources/v1/types/CoverageStatus";
 import { MutablePatientWithMrn } from "../../../../patients/resources/v1/types/MutablePatientWithMrn";
 import { AppointmentStatus } from "./AppointmentStatus";
@@ -20,6 +21,8 @@ export const Visit: core.serialization.ObjectSchema<
     status: AppointmentStatus,
     primaryCoverageStatus: core.serialization.property("primary_coverage_status", CoverageStatus.optional()),
     secondaryCoverageStatus: core.serialization.property("secondary_coverage_status", CoverageStatus.optional()),
+    primaryPayerName: core.serialization.property("primary_payer_name", core.serialization.string().optional()),
+    primaryPayerPlanGroupId: core.serialization.property("primary_payer_plan_group_id", PayerPlanGroupId.optional()),
 });
 
 export declare namespace Visit {
@@ -31,5 +34,7 @@ export declare namespace Visit {
         status: AppointmentStatus.Raw;
         primary_coverage_status?: CoverageStatus.Raw | null;
         secondary_coverage_status?: CoverageStatus.Raw | null;
+        primary_payer_name?: string | null;
+        primary_payer_plan_group_id?: PayerPlanGroupId.Raw | null;
     }
 }

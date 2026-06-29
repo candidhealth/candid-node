@@ -4,6 +4,7 @@ export * from "./AppointmentWorkQueue";
 export * from "./CountsResponse";
 export * from "./MutableAppointment";
 export * from "./NotReadyReason";
+export * from "./ReadySource";
 export * from "./Service";
 export * from "./UniversalServiceIdentifier";
 export * from "./Visit";

@@ -13,4 +13,6 @@ export interface Visit {
     status: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
     primaryCoverageStatus?: CandidApi.preEncounter.coverages.v1.CoverageStatus;
     secondaryCoverageStatus?: CandidApi.preEncounter.coverages.v1.CoverageStatus;
+    primaryPayerName?: string;
+    primaryPayerPlanGroupId?: CandidApi.preEncounter.PayerPlanGroupId;
 }

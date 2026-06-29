@@ -13967,6 +13967,348 @@ await client.preEncounter.organizationExternalProviders.v1.scan({
 </dl>
 </details>
 
+## PreEncounter PatientMerges V1
+<details><summary><code>client.preEncounter.patientMerges.v1.<a href="/src/api/resources/preEncounter/resources/patientMerges/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientMerge, CandidApi.preEncounter.patientMerges.v1.create.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new patient merge record.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patientMerges.v1.create({
+    alternativePatientMrn: "alternative_patient_mrn",
+    primaryPatientMrn: "primary_patient_mrn"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutablePatientMerge` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patientMerges.v1.<a href="/src/api/resources/preEncounter/resources/patientMerges/resources/v1/client/Client.ts">getStatus</a>(mrn_or_id) -> core.APIResponse&lt;CandidApi.PatientMergeStatus, CandidApi.preEncounter.patientMerges.v1.getStatus.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets the merge status for a patient by patient ID or mrn. If the provided value is a valid UUID, it will be treated as a patient ID. Otherwise, it will be treated as an MRN.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patientMerges.v1.getStatus("mrn_or_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**mrn_or_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patientMerges.v1.<a href="/src/api/resources/preEncounter/resources/patientMerges/resources/v1/client/Client.ts">getAllByMrn</a>(mrn) -> core.APIResponse&lt;CandidApi.PatientMerge[], CandidApi.preEncounter.patientMerges.v1.getAllByMrn.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets all patient merge records that have the given mrn.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patientMerges.v1.getAllByMrn("mrn");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**mrn:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patientMerges.v1.<a href="/src/api/resources/preEncounter/resources/patientMerges/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.patientMerges.v1.deactivate.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deactivates a patient merge record. Path must contain next version.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patientMerges.v1.deactivate(CandidApi.PatientMergeId("id"), "version");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.PatientMergeId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patientMerges.v1.<a href="/src/api/resources/preEncounter/resources/patientMerges/resources/v1/client/Client.ts">scan</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientMerge[], CandidApi.preEncounter.patientMerges.v1.scan.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Scans up to 1000 patient merge updates. The since query parameter is inclusive, and the result list is ordered by updatedAt ascending.
+
+**Polling Pattern:**
+To continuously poll for updates without gaps:
+1. Make your initial request with a `since` timestamp (e.g., `since=2020-01-01T13:00:00.000Z`)
+2. The API returns 100 by default and up to 1000 patient merge records, sorted by `updated_at` ascending
+3. Find the `updated_at` value from the last record in the response
+4. Use that `updated_at` value as the `since` parameter in your next request
+5. Repeat steps 2-4 to ingest updates until you receive an empty list
+
+**Important Notes:**
+- The `since` parameter is inclusive, so you may receive the last record from the previous batch again (you can deduplicate by ID and version)
+- All patient merge records include `updated_at`, `id`, `version`, `deactivated`, and `updating_user` fields for tracking changes
+- Timestamps have millisecond resolution for precise ordering
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patientMerges.v1.scan({
+    since: new Date("2024-01-15T09:30:00.000Z")
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.patientMerges.v1.PatientMergeScanRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## PreEncounter Patients V1
 <details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.Patient, CandidApi.preEncounter.patients.v1.create.Error&gt;</code></summary>
 <dl>

@@ -7,8 +7,12 @@ import type * as serializers from "../../../../../index";
 export const CardPaymentMethod: core.serialization.ObjectSchema<
     serializers.patientPayments.v4.CardPaymentMethod.Raw,
     CandidApi.patientPayments.v4.CardPaymentMethod
-> = core.serialization.object({});
+> = core.serialization.object({
+    authorizationNumber: core.serialization.property("authorization_number", core.serialization.string().optional()),
+});
 
 export declare namespace CardPaymentMethod {
-    export type Raw = {};
+    export interface Raw {
+        authorization_number?: string | null;
+    }
 }

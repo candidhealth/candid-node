@@ -8,6 +8,7 @@ import { PatientId } from "../../../../common/types/PatientId";
 import { AppointmentStatus } from "./AppointmentStatus";
 import { AppointmentWorkQueue } from "./AppointmentWorkQueue";
 import { NotReadyReason } from "./NotReadyReason";
+import { ReadySource } from "./ReadySource";
 import { Service } from "./Service";
 
 export const MutableAppointment: core.serialization.ObjectSchema<
@@ -18,6 +19,7 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     startTimestamp: core.serialization.property("start_timestamp", core.serialization.date()),
     status: AppointmentStatus.optional(),
     notReadyReason: core.serialization.property("not_ready_reason", NotReadyReason.optional()),
+    readySource: core.serialization.property("ready_source", ReadySource.optional()),
     serviceDuration: core.serialization.property("service_duration", core.serialization.number()),
     services: core.serialization.list(Service),
     placerAppointmentId: core.serialization.property("placer_appointment_id", core.serialization.string().optional()),
@@ -45,6 +47,7 @@ export declare namespace MutableAppointment {
         start_timestamp: string;
         status?: AppointmentStatus.Raw | null;
         not_ready_reason?: NotReadyReason.Raw | null;
+        ready_source?: ReadySource.Raw | null;
         service_duration: number;
         services: Service.Raw[];
         placer_appointment_id?: string | null;

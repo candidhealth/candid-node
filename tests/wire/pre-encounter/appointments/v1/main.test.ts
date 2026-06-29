@@ -33,6 +33,7 @@ describe("V1Client", () => {
             start_timestamp: "2024-01-15T09:30:00Z",
             status: "PENDING",
             not_ready_reason: "INACTIVE_PRIMARY",
+            ready_source: "MANUAL",
             service_duration: 1,
             services: [
                 { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -123,6 +124,7 @@ describe("V1Client", () => {
                 startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                 status: "PENDING",
                 notReadyReason: "INACTIVE_PRIMARY",
+                readySource: "MANUAL",
                 serviceDuration: 1,
                 services: [
                     {
@@ -707,6 +709,8 @@ describe("V1Client", () => {
                     status: "PENDING",
                     primary_coverage_status: "ACTIVE",
                     secondary_coverage_status: "ACTIVE",
+                    primary_payer_name: "primary_payer_name",
+                    primary_payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 },
                 {
                     patient_id: "patient_id",
@@ -1175,6 +1179,8 @@ describe("V1Client", () => {
                     status: "PENDING",
                     primary_coverage_status: "ACTIVE",
                     secondary_coverage_status: "ACTIVE",
+                    primary_payer_name: "primary_payer_name",
+                    primary_payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 },
             ],
             next_page_token: "next_page_token",
@@ -1879,6 +1885,10 @@ describe("V1Client", () => {
                         status: "PENDING",
                         primaryCoverageStatus: "ACTIVE",
                         secondaryCoverageStatus: "ACTIVE",
+                        primaryPayerName: "primary_payer_name",
+                        primaryPayerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
                     },
                     {
                         patientId: CandidApi.preEncounter.PatientId("patient_id"),
@@ -2565,6 +2575,10 @@ describe("V1Client", () => {
                         status: "PENDING",
                         primaryCoverageStatus: "ACTIVE",
                         secondaryCoverageStatus: "ACTIVE",
+                        primaryPayerName: "primary_payer_name",
+                        primaryPayerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
                     },
                 ],
                 nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
@@ -2633,6 +2647,7 @@ describe("V1Client", () => {
             start_timestamp: "2024-01-15T09:30:00Z",
             status: "PENDING",
             not_ready_reason: "INACTIVE_PRIMARY",
+            ready_source: "MANUAL",
             service_duration: 1,
             services: [
                 { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -2717,6 +2732,7 @@ describe("V1Client", () => {
                 startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                 status: "PENDING",
                 notReadyReason: "INACTIVE_PRIMARY",
+                readySource: "MANUAL",
                 serviceDuration: 1,
                 services: [
                     {
@@ -2844,6 +2860,7 @@ describe("V1Client", () => {
                 start_timestamp: "2024-01-15T09:30:00Z",
                 status: "PENDING",
                 not_ready_reason: "INACTIVE_PRIMARY",
+                ready_source: "MANUAL",
                 service_duration: 1,
                 services: [
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -2917,6 +2934,7 @@ describe("V1Client", () => {
                 start_timestamp: "2024-01-15T09:30:00Z",
                 status: "PENDING",
                 not_ready_reason: "INACTIVE_PRIMARY",
+                ready_source: "MANUAL",
                 service_duration: 1,
                 services: [
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -3005,6 +3023,7 @@ describe("V1Client", () => {
                     startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                     status: "PENDING",
                     notReadyReason: "INACTIVE_PRIMARY",
+                    readySource: "MANUAL",
                     serviceDuration: 1,
                     services: [
                         {
@@ -3116,6 +3135,7 @@ describe("V1Client", () => {
                     startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                     status: "PENDING",
                     notReadyReason: "INACTIVE_PRIMARY",
+                    readySource: "MANUAL",
                     serviceDuration: 1,
                     services: [
                         {
@@ -3250,6 +3270,7 @@ describe("V1Client", () => {
             start_timestamp: "2024-01-15T09:30:00Z",
             status: "PENDING",
             not_ready_reason: "INACTIVE_PRIMARY",
+            ready_source: "MANUAL",
             service_duration: 1,
             services: [
                 { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -3344,6 +3365,7 @@ describe("V1Client", () => {
                 startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                 status: "PENDING",
                 notReadyReason: "INACTIVE_PRIMARY",
+                readySource: "MANUAL",
                 serviceDuration: 1,
                 services: [
                     {
@@ -3471,6 +3493,7 @@ describe("V1Client", () => {
                 start_timestamp: "2024-01-15T09:30:00Z",
                 status: "PENDING",
                 not_ready_reason: "INACTIVE_PRIMARY",
+                ready_source: "MANUAL",
                 service_duration: 1,
                 services: [
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -3544,6 +3567,7 @@ describe("V1Client", () => {
                 start_timestamp: "2024-01-15T09:30:00Z",
                 status: "PENDING",
                 not_ready_reason: "INACTIVE_PRIMARY",
+                ready_source: "MANUAL",
                 service_duration: 1,
                 services: [
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
@@ -3632,6 +3656,7 @@ describe("V1Client", () => {
                     startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                     status: "PENDING",
                     notReadyReason: "INACTIVE_PRIMARY",
+                    readySource: "MANUAL",
                     serviceDuration: 1,
                     services: [
                         {
@@ -3743,6 +3768,7 @@ describe("V1Client", () => {
                     startTimestamp: new Date("2024-01-15T09:30:00.000Z"),
                     status: "PENDING",
                     notReadyReason: "INACTIVE_PRIMARY",
+                    readySource: "MANUAL",
                     serviceDuration: 1,
                     services: [
                         {

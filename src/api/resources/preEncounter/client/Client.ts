@@ -9,6 +9,7 @@ import { ImagesClient } from "../resources/images/client/Client";
 import { ListsClient } from "../resources/lists/client/Client";
 import { NotesClient } from "../resources/notes/client/Client";
 import { OrganizationExternalProvidersClient } from "../resources/organizationExternalProviders/client/Client";
+import { PatientMergesClient } from "../resources/patientMerges/client/Client";
 import { PatientsClient } from "../resources/patients/client/Client";
 import { TagsClient } from "../resources/tags/client/Client";
 
@@ -25,6 +26,7 @@ export class PreEncounterClient {
     protected _lists: ListsClient | undefined;
     protected _notes: NotesClient | undefined;
     protected _organizationExternalProviders: OrganizationExternalProvidersClient | undefined;
+    protected _patientMerges: PatientMergesClient | undefined;
     protected _patients: PatientsClient | undefined;
     protected _tags: TagsClient | undefined;
 
@@ -58,6 +60,10 @@ export class PreEncounterClient {
 
     public get organizationExternalProviders(): OrganizationExternalProvidersClient {
         return (this._organizationExternalProviders ??= new OrganizationExternalProvidersClient(this._options));
+    }
+
+    public get patientMerges(): PatientMergesClient {
+        return (this._patientMerges ??= new PatientMergesClient(this._options));
     }
 
     public get patients(): PatientsClient {

@@ -7,5 +7,6 @@ export * as images from "./images";
 export * as lists from "./lists";
 export * as notes from "./notes";
 export * as organizationExternalProviders from "./organizationExternalProviders";
+export * as patientMerges from "./patientMerges";
 export * as patients from "./patients";
 export * as tags from "./tags";

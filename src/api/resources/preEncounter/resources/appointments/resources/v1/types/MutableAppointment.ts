@@ -11,8 +11,10 @@ export interface MutableAppointment {
     startTimestamp: Date;
     /** Defaults to PENDING. If status is NOT_READY, work_queue must be set. If status is READY or CHECKED_IN, work_queue must be null. If status is CHECKED_IN, checked_in_timestamp must be set. If checked_in_timestamp is set, status must be CHECKED_IN. */
     status?: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
-    /** The reason the appointment is NOT_READY. Must only be set when status is NOT_READY; it is cleared otherwise. MANUAL is the only value that may be set via the API. */
+    /** The reason the appointment is NOT_READY. Must only be set when status is NOT_READY; it is cleared otherwise. It is not recommended to change this value manually via API. */
     notReadyReason?: CandidApi.preEncounter.appointments.v1.NotReadyReason;
+    /** The method that set the appointment status to READY. It is not recommended to change this value manually via API. Must only be set when the status is READY or CHECKED_IN, it is cleared otherwise. */
+    readySource?: CandidApi.preEncounter.appointments.v1.ReadySource;
     /** The requested length of time allotted for the appointment. The units are in minutes. */
     serviceDuration: number;
     services: CandidApi.preEncounter.appointments.v1.Service[];
