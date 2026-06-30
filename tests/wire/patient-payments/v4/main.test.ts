@@ -75,6 +75,7 @@ describe("V4Client", () => {
                             state: "AA",
                             zip_code: "zip_code",
                         },
+                        provider_info: { npi: "npi", first_name: "first_name", last_name: "last_name" },
                     },
                 },
                 {
@@ -133,6 +134,7 @@ describe("V4Client", () => {
                             state: "AA",
                             zip_code: "zip_code",
                         },
+                        provider_info: { npi: "npi", first_name: "first_name", last_name: "last_name" },
                     },
                 },
             ],
@@ -222,6 +224,11 @@ describe("V4Client", () => {
                                 state: "AA",
                                 zipCode: "zip_code",
                             },
+                            providerInfo: {
+                                npi: CandidApi.Npi("npi"),
+                                firstName: "first_name",
+                                lastName: "last_name",
+                            },
                         },
                     },
                     {
@@ -293,6 +300,11 @@ describe("V4Client", () => {
                                 city: "city",
                                 state: "AA",
                                 zipCode: "zip_code",
+                            },
+                            providerInfo: {
+                                npi: CandidApi.Npi("npi"),
+                                firstName: "first_name",
+                                lastName: "last_name",
                             },
                         },
                     },
@@ -373,6 +385,7 @@ describe("V4Client", () => {
                     state: "AA",
                     zip_code: "zip_code",
                 },
+                provider_info: { npi: "npi", first_name: "first_name", last_name: "last_name" },
             },
         };
 
@@ -451,6 +464,11 @@ describe("V4Client", () => {
                         city: "city",
                         state: "AA",
                         zipCode: "zip_code",
+                    },
+                    providerInfo: {
+                        npi: CandidApi.Npi("npi"),
+                        firstName: "first_name",
+                        lastName: "last_name",
                     },
                 },
             },
@@ -540,6 +558,7 @@ describe("V4Client", () => {
                     state: "AA",
                     zip_code: "zip_code",
                 },
+                provider_info: { npi: "npi", first_name: "first_name", last_name: "last_name" },
             },
         };
 
@@ -637,6 +656,11 @@ describe("V4Client", () => {
                         state: "AA",
                         zipCode: "zip_code",
                     },
+                    providerInfo: {
+                        npi: CandidApi.Npi("npi"),
+                        firstName: "first_name",
+                        lastName: "last_name",
+                    },
                 },
             },
             ok: true,
@@ -712,6 +736,7 @@ describe("V4Client", () => {
                     state: "AA",
                     zip_code: "zip_code",
                 },
+                provider_info: { npi: "npi", first_name: "first_name", last_name: "last_name" },
             },
         };
 
@@ -791,6 +816,11 @@ describe("V4Client", () => {
                         city: "city",
                         state: "AA",
                         zipCode: "zip_code",
+                    },
+                    providerInfo: {
+                        npi: CandidApi.Npi("npi"),
+                        firstName: "first_name",
+                        lastName: "last_name",
                     },
                 },
             },

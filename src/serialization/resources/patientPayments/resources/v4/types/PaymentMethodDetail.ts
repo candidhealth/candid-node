@@ -5,6 +5,7 @@ import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { StreetAddressShortZip } from "../../../../commons/types/StreetAddressShortZip";
 import { PaymentMethod } from "./PaymentMethod";
+import { PaymentMethodProviderInfo } from "./PaymentMethodProviderInfo";
 
 export const PaymentMethodDetail: core.serialization.ObjectSchema<
     serializers.patientPayments.v4.PaymentMethodDetail.Raw,
@@ -12,11 +13,13 @@ export const PaymentMethodDetail: core.serialization.ObjectSchema<
 > = core.serialization.object({
     paymentMethod: core.serialization.property("payment_method", PaymentMethod),
     collectedAtAddress: core.serialization.property("collected_at_address", StreetAddressShortZip.optional()),
+    providerInfo: core.serialization.property("provider_info", PaymentMethodProviderInfo.optional()),
 });
 
 export declare namespace PaymentMethodDetail {
     export interface Raw {
         payment_method: PaymentMethod.Raw;
         collected_at_address?: StreetAddressShortZip.Raw | null;
+        provider_info?: PaymentMethodProviderInfo.Raw | null;
     }
 }

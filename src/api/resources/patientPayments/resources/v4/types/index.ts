@@ -14,3 +14,4 @@ export * from "./PaymentMethod";
 export * from "./PaymentMethodCreate";
 export * from "./PaymentMethodDetail";
 export * from "./PaymentMethodDetailCreate";
+export * from "./PaymentMethodProviderInfo";

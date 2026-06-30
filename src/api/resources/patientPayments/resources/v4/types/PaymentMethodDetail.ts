@@ -5,4 +5,5 @@ import type * as CandidApi from "../../../../../index";
 export interface PaymentMethodDetail {
     paymentMethod: CandidApi.patientPayments.v4.PaymentMethod;
     collectedAtAddress?: CandidApi.StreetAddressShortZip;
+    providerInfo?: CandidApi.patientPayments.v4.PaymentMethodProviderInfo;
 }

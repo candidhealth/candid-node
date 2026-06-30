@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { StreetAddressShortZip } from "../../../../commons/types/StreetAddressShortZip";
 import { OrganizationServiceFacilityId } from "../../../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 import { PaymentMethodCreate } from "./PaymentMethodCreate";
+import { PaymentMethodProviderInfo } from "./PaymentMethodProviderInfo";
 
 export const PaymentMethodDetailCreate: core.serialization.ObjectSchema<
     serializers.patientPayments.v4.PaymentMethodDetailCreate.Raw,
@@ -17,6 +18,7 @@ export const PaymentMethodDetailCreate: core.serialization.ObjectSchema<
         "organization_service_facility_id",
         OrganizationServiceFacilityId.optional(),
     ),
+    providerInfo: core.serialization.property("provider_info", PaymentMethodProviderInfo.optional()),
 });
 
 export declare namespace PaymentMethodDetailCreate {
@@ -24,5 +26,6 @@ export declare namespace PaymentMethodDetailCreate {
         payment_method: PaymentMethodCreate.Raw;
         collected_at_address?: StreetAddressShortZip.Raw | null;
         organization_service_facility_id?: OrganizationServiceFacilityId.Raw | null;
+        provider_info?: PaymentMethodProviderInfo.Raw | null;
     }
 }

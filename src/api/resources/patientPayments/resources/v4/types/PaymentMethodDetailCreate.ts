@@ -6,4 +6,5 @@ export interface PaymentMethodDetailCreate {
     paymentMethod: CandidApi.patientPayments.v4.PaymentMethodCreate;
     collectedAtAddress?: CandidApi.StreetAddressShortZip;
     organizationServiceFacilityId?: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId;
+    providerInfo?: CandidApi.patientPayments.v4.PaymentMethodProviderInfo;
 }
