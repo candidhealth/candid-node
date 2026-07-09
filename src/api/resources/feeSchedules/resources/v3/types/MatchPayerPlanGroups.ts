@@ -3,7 +3,7 @@
 import type * as CandidApi from "../../../../../index";
 
 /**
- * Match information for a payer plan group
+ * Match information for a payer plan
  */
 export interface MatchPayerPlanGroups {
     value: Set<CandidApi.PayerPlanGroupId>;

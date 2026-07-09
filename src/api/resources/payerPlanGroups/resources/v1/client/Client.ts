@@ -22,7 +22,7 @@ export class V1Client {
     }
 
     /**
-     * Returns all payer plan groups matching filter criteria.
+     * Returns all payer plans matching filter criteria.
      *
      * @param {CandidApi.payerPlanGroups.v1.PayerPlanGroupGetMultiRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
@@ -167,7 +167,7 @@ export class V1Client {
     }
 
     /**
-     * Return a plan group with a given ID.
+     * Return a payer plan with a given ID.
      *
      * @param {CandidApi.PayerPlanGroupId} payer_plan_group_id
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
@@ -267,7 +267,7 @@ export class V1Client {
     }
 
     /**
-     * Create a payer plan group
+     * Create a payer plan
      *
      * @param {CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
@@ -376,7 +376,7 @@ export class V1Client {
     }
 
     /**
-     * Update any of the fields on a payer plan group
+     * Update any of the fields on a payer plan
      *
      * @param {CandidApi.PayerPlanGroupId} payer_plan_group_id
      * @param {CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup} request
@@ -489,7 +489,7 @@ export class V1Client {
     }
 
     /**
-     * Marks the payer plan group as deactivated
+     * Marks the payer plan as deactivated
      *
      * @param {CandidApi.PayerPlanGroupId} payer_plan_group_id
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.

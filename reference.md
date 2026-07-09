@@ -9279,7 +9279,7 @@ await client.patientRefunds.v1.delete(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 <dl>
 <dd>
 
-Returns all payer plan groups matching filter criteria.
+Returns all payer plans matching filter criteria.
 </dd>
 </dl>
 </dd>
@@ -9342,7 +9342,7 @@ await client.payerPlanGroups.v1.getMulti();
 <dl>
 <dd>
 
-Return a plan group with a given ID.
+Return a payer plan with a given ID.
 </dd>
 </dl>
 </dd>
@@ -9405,7 +9405,7 @@ await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4b
 <dl>
 <dd>
 
-Create a payer plan group
+Create a payer plan
 </dd>
 </dl>
 </dd>
@@ -9472,7 +9472,7 @@ await client.payerPlanGroups.v1.create({
 <dl>
 <dd>
 
-Update any of the fields on a payer plan group
+Update any of the fields on a payer plan
 </dd>
 </dl>
 </dd>
@@ -9547,7 +9547,7 @@ await client.payerPlanGroups.v1.update(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2
 <dl>
 <dd>
 
-Marks the payer plan group as deactivated
+Marks the payer plan as deactivated
 </dd>
 </dl>
 </dd>

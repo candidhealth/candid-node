@@ -91,6 +91,9 @@ export const ProcedureModifier = {
      * Surgical Team */
     SixtySix: "66",
     /**
+     * Discontinued Outpatient Hospital/Ambulatory Surgery Center (ASC) Procedure Prior to Administration of Anesthesia */
+    SeventyThree: "73",
+    /**
      * Discontinued Outpatient Hospital/Ambulatory Surgery Center (ASC) Procedure After Administration of Anesthesia */
     SeventyFour: "74",
     /**

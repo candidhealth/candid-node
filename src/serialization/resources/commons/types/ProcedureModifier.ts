@@ -45,6 +45,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "62",
     "63",
     "66",
+    "73",
     "74",
     "76",
     "77",
@@ -462,6 +463,7 @@ export declare namespace ProcedureModifier {
         | "62"
         | "63"
         | "66"
+        | "73"
         | "74"
         | "76"
         | "77"
