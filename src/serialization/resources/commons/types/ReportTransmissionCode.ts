@@ -7,8 +7,8 @@ import type * as serializers from "../../../index";
 export const ReportTransmissionCode: core.serialization.Schema<
     serializers.ReportTransmissionCode.Raw,
     CandidApi.ReportTransmissionCode
-> = core.serialization.enum_(["BM", "EL", "FX"]);
+> = core.serialization.enum_(["AA", "BM", "EL", "FX"]);
 
 export declare namespace ReportTransmissionCode {
-    export type Raw = "BM" | "EL" | "FX";
+    export type Raw = "AA" | "BM" | "EL" | "FX";
 }

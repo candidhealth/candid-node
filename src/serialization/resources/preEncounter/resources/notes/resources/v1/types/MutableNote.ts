@@ -3,12 +3,14 @@
 import type * as CandidApi from "../../../../../../../../api/index";
 import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
+import { NoteType } from "./NoteType";
 
 export const MutableNote: core.serialization.ObjectSchema<
     serializers.preEncounter.notes.v1.MutableNote.Raw,
     CandidApi.preEncounter.notes.v1.MutableNote
 > = core.serialization.object({
     value: core.serialization.string(),
+    type: NoteType.optional(),
     authorEmail: core.serialization.property("author_email", core.serialization.string().optional()),
     authorName: core.serialization.property("author_name", core.serialization.string().optional()),
 });
@@ -16,6 +18,7 @@ export const MutableNote: core.serialization.ObjectSchema<
 export declare namespace MutableNote {
     export interface Raw {
         value: string;
+        type?: NoteType.Raw | null;
         author_email?: string | null;
         author_name?: string | null;
     }

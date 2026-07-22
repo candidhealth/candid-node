@@ -7,6 +7,8 @@ export interface InvoiceItemizationResponse {
     claimId: CandidApi.ClaimId;
     /** The total patient balance in cents for the claim. Negative values indicate a credit balance. */
     patientBalanceCents: number;
+    /** The organization service facility ID from the claim's encounter. */
+    organizationServiceFacilityId?: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId;
     claimLevelPatientPayments: CandidApi.patientAr.v1.PatientPaymentInfo;
     /** A list of service line itemizations for the claim. */
     serviceLineItemization: CandidApi.patientAr.v1.ServiceLineItemization[];

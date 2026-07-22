@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../../index";
 import { InvoiceId } from "../../../../../commons/types/InvoiceId";
 import { PatientExternalId } from "../../../../../commons/types/PatientExternalId";
 import { AllocationCreate } from "../../../../../financials/types/AllocationCreate";
+import { AllocationRestrictionCreate } from "../../../../../financials/types/AllocationRestrictionCreate";
 import { RefundReason } from "../../../../../financials/types/RefundReason";
 
 export const PatientRefundCreate: core.serialization.Schema<
@@ -19,6 +20,10 @@ export const PatientRefundCreate: core.serialization.Schema<
     allocations: core.serialization.list(AllocationCreate),
     invoice: InvoiceId.optional(),
     refundReason: core.serialization.property("refund_reason", RefundReason.optional()),
+    allocationRestrictions: core.serialization.property(
+        "allocation_restrictions",
+        core.serialization.list(AllocationRestrictionCreate).optional(),
+    ),
     raiseOnOverdraft: core.serialization.property("raise_on_overdraft", core.serialization.boolean().optional()),
 });
 
@@ -31,6 +36,7 @@ export declare namespace PatientRefundCreate {
         allocations: AllocationCreate.Raw[];
         invoice?: InvoiceId.Raw | null;
         refund_reason?: RefundReason.Raw | null;
+        allocation_restrictions?: AllocationRestrictionCreate.Raw[] | null;
         raise_on_overdraft?: boolean | null;
     }
 }

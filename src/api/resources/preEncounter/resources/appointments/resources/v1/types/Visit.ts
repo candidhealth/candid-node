@@ -15,4 +15,6 @@ export interface Visit {
     secondaryCoverageStatus?: CandidApi.preEncounter.coverages.v1.CoverageStatus;
     primaryPayerName?: string;
     primaryPayerPlanGroupId?: CandidApi.preEncounter.PayerPlanGroupId;
+    secondaryPayerName?: string;
+    secondaryPayerPlanGroupId?: CandidApi.preEncounter.PayerPlanGroupId;
 }

@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { ClaimId } from "../../../../commons/types/ClaimId";
+import { OrganizationServiceFacilityId } from "../../../../organizationServiceFacilities/resources/v2/types/OrganizationServiceFacilityId";
 import { PatientPaymentInfo } from "./PatientPaymentInfo";
 import { ServiceLineItemization } from "./ServiceLineItemization";
 
@@ -13,6 +14,10 @@ export const InvoiceItemizationResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     claimId: core.serialization.property("claim_id", ClaimId),
     patientBalanceCents: core.serialization.property("patient_balance_cents", core.serialization.number()),
+    organizationServiceFacilityId: core.serialization.property(
+        "organization_service_facility_id",
+        OrganizationServiceFacilityId.optional(),
+    ),
     claimLevelPatientPayments: core.serialization.property("claim_level_patient_payments", PatientPaymentInfo),
     serviceLineItemization: core.serialization.property(
         "service_line_itemization",
@@ -24,6 +29,7 @@ export declare namespace InvoiceItemizationResponse {
     export interface Raw {
         claim_id: ClaimId.Raw;
         patient_balance_cents: number;
+        organization_service_facility_id?: OrganizationServiceFacilityId.Raw | null;
         claim_level_patient_payments: PatientPaymentInfo.Raw;
         service_line_itemization: ServiceLineItemization.Raw[];
     }

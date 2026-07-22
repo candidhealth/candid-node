@@ -23,6 +23,11 @@ export const Visit: core.serialization.ObjectSchema<
     secondaryCoverageStatus: core.serialization.property("secondary_coverage_status", CoverageStatus.optional()),
     primaryPayerName: core.serialization.property("primary_payer_name", core.serialization.string().optional()),
     primaryPayerPlanGroupId: core.serialization.property("primary_payer_plan_group_id", PayerPlanGroupId.optional()),
+    secondaryPayerName: core.serialization.property("secondary_payer_name", core.serialization.string().optional()),
+    secondaryPayerPlanGroupId: core.serialization.property(
+        "secondary_payer_plan_group_id",
+        PayerPlanGroupId.optional(),
+    ),
 });
 
 export declare namespace Visit {
@@ -36,5 +41,7 @@ export declare namespace Visit {
         secondary_coverage_status?: CoverageStatus.Raw | null;
         primary_payer_name?: string | null;
         primary_payer_plan_group_id?: PayerPlanGroupId.Raw | null;
+        secondary_payer_name?: string | null;
+        secondary_payer_plan_group_id?: PayerPlanGroupId.Raw | null;
     }
 }

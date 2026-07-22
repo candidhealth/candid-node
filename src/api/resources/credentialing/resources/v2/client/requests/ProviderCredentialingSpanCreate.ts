@@ -17,7 +17,7 @@ import type * as CandidApi from "../../../../../../index";
 export interface ProviderCredentialingSpanCreate {
     /** The ID of the rendering provider covered by the credentialing span. */
     renderingProviderId: string;
-    /** The ID of the billing provider for which the service facility is covered by the credentialing span. */
+    /** The ID of the billing provider for which the rendering provider is covered by the credentialing span. */
     contractingProviderId: string;
     /** The ID of the payer covered by the credentialing span. */
     payerUuid: string;

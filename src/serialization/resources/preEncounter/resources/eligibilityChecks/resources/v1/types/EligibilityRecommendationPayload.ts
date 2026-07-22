@@ -14,6 +14,7 @@ export const EligibilityRecommendationPayload: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         MEDICARE_ADVANTAGE: MedicareAdvantageRecommendation,
+        MEDICAID_MANAGED_CARE: MedicareAdvantageRecommendation,
         COORDINATION_OF_BENEFITS: CoordinationOfBenefitsRecommendation,
         COPAY_ESTIMATION: CopayEstimationRecommendation,
         USER_CONFIGURED_PROMPTS: UserConfiguredPromptsRecommendation,
@@ -26,12 +27,17 @@ export const EligibilityRecommendationPayload: core.serialization.Schema<
 export declare namespace EligibilityRecommendationPayload {
     export type Raw =
         | EligibilityRecommendationPayload.MedicareAdvantage
+        | EligibilityRecommendationPayload.MedicaidManagedCare
         | EligibilityRecommendationPayload.CoordinationOfBenefits
         | EligibilityRecommendationPayload.CopayEstimation
         | EligibilityRecommendationPayload.UserConfiguredPrompts;
 
     export interface MedicareAdvantage extends MedicareAdvantageRecommendation.Raw {
         type: "MEDICARE_ADVANTAGE";
+    }
+
+    export interface MedicaidManagedCare extends MedicareAdvantageRecommendation.Raw {
+        type: "MEDICAID_MANAGED_CARE";
     }
 
     export interface CoordinationOfBenefits extends CoordinationOfBenefitsRecommendation.Raw {

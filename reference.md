@@ -3836,7 +3836,7 @@ await client.encounterSupplementalInformation.v1.get(CandidApi.EncounterId("d5e9
 ```typescript
 await client.encounterSupplementalInformation.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
     attachmentReportTypeCode: "03",
-    attachmentTransmissionCode: "BM",
+    attachmentTransmissionCode: "AA",
     attachmentInclusion: "not_included"
 });
 
@@ -15082,6 +15082,77 @@ await client.preEncounter.patients.v1.getCoverageSnapshot(CandidApi.PatientId("i
 <dd>
 
 **request:** `CandidApi.preEncounter.patients.v1.GetCoverageSnapshotRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patients.v1.<a href="/src/api/resources/preEncounter/resources/patients/resources/v1/client/Client.ts">getEligibilityTimeline</a>(id, { ...params }) -> core.APIResponse&lt;CandidApi.EligibilityTimelinePage, CandidApi.preEncounter.patients.v1.getEligibilityTimeline.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets a patient's eligibility audit timeline, newest-first.  Org-scoped and keyset-paginated.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patients.v1.getEligibilityTimeline(CandidApi.PatientId("id"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.PatientId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.patients.v1.GetEligibilityTimelineRequest` 
     
 </dd>
 </dl>

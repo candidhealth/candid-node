@@ -23,6 +23,7 @@ export interface MutableAppointment {
     /** Attending physician information. The attending physician will be stored as the Current MD for the patient. */
     attendingDoctor?: CandidApi.preEncounter.ExternalProvider;
     estimatedCopayCents?: number;
+    /** The estimated amount the patient will be responsible for paying at the time of service. This does not include the copay. */
     estimatedPatientResponsibilityCents?: number;
     patientDepositCents?: number;
     appointmentDetails?: string;

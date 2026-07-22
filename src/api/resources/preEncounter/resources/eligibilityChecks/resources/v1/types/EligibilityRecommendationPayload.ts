@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../../index";
 
 export type EligibilityRecommendationPayload =
     | CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload.MedicareAdvantage
+    | CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload.MedicaidManagedCare
     | CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload.CoordinationOfBenefits
     | CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload.CopayEstimation
     | CandidApi.preEncounter.eligibilityChecks.v1.EligibilityRecommendationPayload.UserConfiguredPrompts;
@@ -12,6 +13,11 @@ export namespace EligibilityRecommendationPayload {
     export interface MedicareAdvantage
         extends CandidApi.preEncounter.eligibilityChecks.v1.MedicareAdvantageRecommendation {
         type: "MEDICARE_ADVANTAGE";
+    }
+
+    export interface MedicaidManagedCare
+        extends CandidApi.preEncounter.eligibilityChecks.v1.MedicareAdvantageRecommendation {
+        type: "MEDICAID_MANAGED_CARE";
     }
 
     export interface CoordinationOfBenefits

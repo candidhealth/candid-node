@@ -43,5 +43,6 @@ export const TaskCategory = {
     PendingManualRemitPosting: "pending_manual_remit_posting",
     IncorrectReferringProviderInfo: "incorrect_referring_provider_info",
     PayerConfigurationError: "payer_configuration_error",
+    DowncodingReview: "downcoding_review",
 } as const;
 export type TaskCategory = (typeof TaskCategory)[keyof typeof TaskCategory];

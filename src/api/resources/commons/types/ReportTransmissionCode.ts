@@ -2,6 +2,9 @@
 
 export const ReportTransmissionCode = {
     /**
+     * Available on Request at Provider Site */
+    Caa: "AA",
+    /**
      * By Mail */
     Cbm: "BM",
     /**

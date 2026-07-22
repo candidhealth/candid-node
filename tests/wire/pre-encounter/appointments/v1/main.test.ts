@@ -572,7 +572,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payer_id: "payer_id",
@@ -593,7 +593,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -711,6 +711,8 @@ describe("V1Client", () => {
                     secondary_coverage_status: "ACTIVE",
                     primary_payer_name: "primary_payer_name",
                     primary_payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    secondary_payer_name: "secondary_payer_name",
+                    secondary_payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 },
                 {
                     patient_id: "patient_id",
@@ -1042,7 +1044,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payer_id: "payer_id",
@@ -1063,7 +1065,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -1181,6 +1183,8 @@ describe("V1Client", () => {
                     secondary_coverage_status: "ACTIVE",
                     primary_payer_name: "primary_payer_name",
                     primary_payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    secondary_payer_name: "secondary_payer_name",
+                    secondary_payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 },
             ],
             next_page_token: "next_page_token",
@@ -1703,7 +1707,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -1730,7 +1734,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                             ],
                             referrals: [
@@ -1887,6 +1891,10 @@ describe("V1Client", () => {
                         secondaryCoverageStatus: "ACTIVE",
                         primaryPayerName: "primary_payer_name",
                         primaryPayerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        secondaryPayerName: "secondary_payer_name",
+                        secondaryPayerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
                     },
@@ -2393,7 +2401,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -2420,7 +2428,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                             ],
                             referrals: [
@@ -2577,6 +2585,10 @@ describe("V1Client", () => {
                         secondaryCoverageStatus: "ACTIVE",
                         primaryPayerName: "primary_payer_name",
                         primaryPayerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        secondaryPayerName: "secondary_payer_name",
+                        secondaryPayerPlanGroupId: CandidApi.preEncounter.PayerPlanGroupId(
                             "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                         ),
                     },

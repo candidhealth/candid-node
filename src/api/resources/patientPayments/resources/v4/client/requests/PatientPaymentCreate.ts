@@ -32,4 +32,10 @@ export interface PatientPaymentCreate {
     paymentMethodDetail?: CandidApi.patientPayments.v4.PaymentMethodDetailCreate;
     paymentSource?: CandidApi.PatientPaymentCreateSource;
     sourceInternalId?: string;
+    /**
+     * Optional restrictions constraining which claims this payment's credit can be
+     * auto-allocated to (e.g. billing provider NPI). Restriction (type, value) pairs must be
+     * unique. When omitted, the payment is unrestricted.
+     */
+    allocationRestrictions?: CandidApi.AllocationRestrictionCreate[];
 }

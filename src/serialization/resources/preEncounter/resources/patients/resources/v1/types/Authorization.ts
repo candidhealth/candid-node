@@ -35,7 +35,7 @@ export const Authorization: core.serialization.ObjectSchema<
     notes: core.serialization.string().optional(),
     billingProviderNpi: core.serialization.property("billing_provider_npi", core.serialization.string().optional()),
     serviceFacility: core.serialization.property("service_facility", PatientServiceFacility.optional()),
-    dxCodes: core.serialization.property("dx_codes", core.serialization.set(core.serialization.string()).optional()),
+    dxCodes: core.serialization.property("dx_codes", core.serialization.list(core.serialization.string()).optional()),
 });
 
 export declare namespace Authorization {

@@ -4,6 +4,7 @@ export * as deactivate from "./deactivate";
 export * as get from "./get";
 export * as getByMrn from "./getByMrn";
 export * as getCoverageSnapshot from "./getCoverageSnapshot";
+export * as getEligibilityTimeline from "./getEligibilityTimeline";
 export * as getHistory from "./getHistory";
 export * as getMulti from "./getMulti";
 export * as reactivate from "./reactivate";

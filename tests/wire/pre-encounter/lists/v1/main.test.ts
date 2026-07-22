@@ -353,7 +353,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payer_id: "payer_id",
@@ -374,7 +374,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -1274,7 +1274,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payer_id: "payer_id",
@@ -1295,7 +1295,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -2380,7 +2380,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -2407,7 +2407,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                             ],
                             referrals: [
@@ -3605,7 +3605,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -3632,7 +3632,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                             ],
                             referrals: [
@@ -4749,7 +4749,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payer_id: "payer_id",
@@ -4770,7 +4770,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -5544,7 +5544,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payer_id: "payer_id",
@@ -5565,7 +5565,7 @@ describe("V1Client", () => {
                                 notes: "notes",
                                 billing_provider_npi: "billing_provider_npi",
                                 service_facility: { service_facility_id: "service_facility_id" },
-                                dx_codes: ["dx_codes"],
+                                dx_codes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -6556,7 +6556,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -6583,7 +6583,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                             ],
                             referrals: [
@@ -7637,7 +7637,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                                 {
                                     payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -7664,7 +7664,7 @@ describe("V1Client", () => {
                                         serviceFacilityId:
                                             CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                     },
-                                    dxCodes: new Set(["dx_codes"]),
+                                    dxCodes: ["dx_codes", "dx_codes"],
                                 },
                             ],
                             referrals: [

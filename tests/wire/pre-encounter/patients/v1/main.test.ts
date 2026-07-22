@@ -476,7 +476,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -497,7 +497,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
             ],
             referrals: [
@@ -1435,7 +1435,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -1461,7 +1461,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -2214,7 +2214,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -2235,7 +2235,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
             ],
             referrals: [
@@ -3174,7 +3174,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -3200,7 +3200,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -3834,7 +3834,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
-                            dx_codes: ["dx_codes"],
+                            dx_codes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payer_id: "payer_id",
@@ -3855,7 +3855,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
-                            dx_codes: ["dx_codes"],
+                            dx_codes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -4366,7 +4366,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
-                            dx_codes: ["dx_codes"],
+                            dx_codes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payer_id: "payer_id",
@@ -4387,7 +4387,7 @@ describe("V1Client", () => {
                             notes: "notes",
                             billing_provider_npi: "billing_provider_npi",
                             service_facility: { service_facility_id: "service_facility_id" },
-                            dx_codes: ["dx_codes"],
+                            dx_codes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -5122,7 +5122,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
-                                dxCodes: new Set(["dx_codes"]),
+                                dxCodes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -5149,7 +5149,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
-                                dxCodes: new Set(["dx_codes"]),
+                                dxCodes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -5943,7 +5943,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
-                                dxCodes: new Set(["dx_codes"]),
+                                dxCodes: ["dx_codes", "dx_codes"],
                             },
                             {
                                 payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -5970,7 +5970,7 @@ describe("V1Client", () => {
                                     serviceFacilityId:
                                         CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                                 },
-                                dxCodes: new Set(["dx_codes"]),
+                                dxCodes: ["dx_codes", "dx_codes"],
                             },
                         ],
                         referrals: [
@@ -6867,7 +6867,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -6888,7 +6888,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
             ],
             referrals: [
@@ -7645,7 +7645,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -7671,7 +7671,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -8312,7 +8312,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -8333,7 +8333,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
             ],
             referrals: [
@@ -9096,7 +9096,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -9122,7 +9122,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -9751,7 +9751,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -9772,7 +9772,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -10291,7 +10291,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -10312,7 +10312,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -11066,7 +11066,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -11093,7 +11093,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -11910,7 +11910,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -11937,7 +11937,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -12551,7 +12551,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -12572,7 +12572,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -14430,7 +14430,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -14457,7 +14457,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -15986,6 +15986,102 @@ describe("V1Client", () => {
         });
     });
 
+    test("get_eligibility_timeline", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = {
+            items: [
+                {
+                    id: "id",
+                    event_type: "APPOINTMENT_STATUS_CHANGED",
+                    patient_id: "patient_id",
+                    coverage_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    appointment_id: "appointment_id",
+                    timestamp: "2024-01-15T09:30:00Z",
+                    user_id: "user_id",
+                    user_name: "user_name",
+                    payload: { payload: { key: "value" } },
+                },
+                {
+                    id: "id",
+                    event_type: "APPOINTMENT_STATUS_CHANGED",
+                    patient_id: "patient_id",
+                    coverage_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    appointment_id: "appointment_id",
+                    timestamp: "2024-01-15T09:30:00Z",
+                    user_id: "user_id",
+                    user_name: "user_name",
+                    payload: { payload: { key: "value" } },
+                },
+            ],
+            next_page_token: "next_page_token",
+            prev_page_token: "prev_page_token",
+            total: 1,
+        };
+
+        server
+            .mockEndpoint()
+            .get("/patients/v1/id/eligibility-timeline")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.patients.v1.getEligibilityTimeline(
+            CandidApi.preEncounter.PatientId("id"),
+        );
+        expect(response).toEqual({
+            body: {
+                items: [
+                    {
+                        id: "id",
+                        eventType: "APPOINTMENT_STATUS_CHANGED",
+                        patientId: CandidApi.preEncounter.PatientId("patient_id"),
+                        coverageId: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        appointmentId: CandidApi.preEncounter.AppointmentId("appointment_id"),
+                        timestamp: new Date("2024-01-15T09:30:00.000Z"),
+                        userId: "user_id",
+                        userName: "user_name",
+                        payload: {
+                            payload: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    {
+                        id: "id",
+                        eventType: "APPOINTMENT_STATUS_CHANGED",
+                        patientId: CandidApi.preEncounter.PatientId("patient_id"),
+                        coverageId: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        appointmentId: CandidApi.preEncounter.AppointmentId("appointment_id"),
+                        timestamp: new Date("2024-01-15T09:30:00.000Z"),
+                        userId: "user_id",
+                        userName: "user_name",
+                        payload: {
+                            payload: {
+                                key: "value",
+                            },
+                        },
+                    },
+                ],
+                nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
+                prevPageToken: CandidApi.preEncounter.PageToken("prev_page_token"),
+                total: 1,
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
     test("update", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);
@@ -16456,7 +16552,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
                 {
                     payer_id: "payer_id",
@@ -16477,7 +16573,7 @@ describe("V1Client", () => {
                     notes: "notes",
                     billing_provider_npi: "billing_provider_npi",
                     service_facility: { service_facility_id: "service_facility_id" },
-                    dx_codes: ["dx_codes"],
+                    dx_codes: ["dx_codes", "dx_codes"],
                 },
             ],
             referrals: [
@@ -17417,7 +17513,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -17443,7 +17539,7 @@ describe("V1Client", () => {
                         serviceFacility: {
                             serviceFacilityId: CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                         },
-                        dxCodes: new Set(["dx_codes"]),
+                        dxCodes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -18122,7 +18218,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -18143,7 +18239,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -18662,7 +18758,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -18683,7 +18779,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -19431,7 +19527,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -19458,7 +19554,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -20275,7 +20371,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -20302,7 +20398,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -20916,7 +21012,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -20937,7 +21033,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -21456,7 +21552,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                     {
                         payer_id: "payer_id",
@@ -21477,7 +21573,7 @@ describe("V1Client", () => {
                         notes: "notes",
                         billing_provider_npi: "billing_provider_npi",
                         service_facility: { service_facility_id: "service_facility_id" },
-                        dx_codes: ["dx_codes"],
+                        dx_codes: ["dx_codes", "dx_codes"],
                     },
                 ],
                 referrals: [
@@ -22233,7 +22329,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -22260,7 +22356,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [
@@ -23077,7 +23173,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                         {
                             payerId: CandidApi.preEncounter.PayerId("payer_id"),
@@ -23104,7 +23200,7 @@ describe("V1Client", () => {
                                 serviceFacilityId:
                                     CandidApi.preEncounter.CanonicalServiceFacilityId("service_facility_id"),
                             },
-                            dxCodes: new Set(["dx_codes"]),
+                            dxCodes: ["dx_codes", "dx_codes"],
                         },
                     ],
                     referrals: [

@@ -26,6 +26,7 @@ describe("V1Client", () => {
             updated_at: "2024-01-15T09:30:00Z",
             updating_user_id: "updating_user_id",
             value: "value",
+            type: "GENERAL",
             author_email: "author_email",
             author_name: "author_name",
         };
@@ -43,6 +44,7 @@ describe("V1Client", () => {
                 updatedAt: new Date("2024-01-15T09:30:00.000Z"),
                 updatingUserId: CandidApi.preEncounter.UserId("updating_user_id"),
                 value: "value",
+                type: "GENERAL",
                 authorEmail: "author_email",
                 authorName: "author_name",
             },
@@ -72,6 +74,7 @@ describe("V1Client", () => {
             updated_at: "2024-01-15T09:30:00Z",
             updating_user_id: "updating_user_id",
             value: "value",
+            type: "GENERAL",
             author_email: "author_email",
             author_name: "author_name",
         };
@@ -98,6 +101,7 @@ describe("V1Client", () => {
                 updatedAt: new Date("2024-01-15T09:30:00.000Z"),
                 updatingUserId: CandidApi.preEncounter.UserId("updating_user_id"),
                 value: "value",
+                type: "GENERAL",
                 authorEmail: "author_email",
                 authorName: "author_name",
             },
@@ -127,6 +131,7 @@ describe("V1Client", () => {
             updated_at: "2024-01-15T09:30:00Z",
             updating_user_id: "updating_user_id",
             value: "value",
+            type: "GENERAL",
             author_email: "author_email",
             author_name: "author_name",
         };
@@ -153,6 +158,7 @@ describe("V1Client", () => {
                 updatedAt: new Date("2024-01-15T09:30:00.000Z"),
                 updatingUserId: CandidApi.preEncounter.UserId("updating_user_id"),
                 value: "value",
+                type: "GENERAL",
                 authorEmail: "author_email",
                 authorName: "author_name",
             },

@@ -110,7 +110,7 @@ export class V1Client {
      * @example
      *     await client.encounterSupplementalInformation.v1.create(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
      *         attachmentReportTypeCode: "03",
-     *         attachmentTransmissionCode: "BM",
+     *         attachmentTransmissionCode: "AA",
      *         attachmentInclusion: "not_included"
      *     })
      */

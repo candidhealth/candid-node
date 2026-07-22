@@ -1135,6 +1135,112 @@ export class V1Client {
     }
 
     /**
+     * @beta This endpoint is in development and may change.
+     *
+     * Gets a patient's eligibility audit timeline, newest-first.  Org-scoped and keyset-paginated.
+     *
+     * @param {CandidApi.preEncounter.PatientId} id
+     * @param {CandidApi.preEncounter.patients.v1.GetEligibilityTimelineRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.patients.v1.getEligibilityTimeline(CandidApi.preEncounter.PatientId("id"))
+     */
+    public getEligibilityTimeline(
+        id: CandidApi.preEncounter.PatientId,
+        request: CandidApi.preEncounter.patients.v1.GetEligibilityTimelineRequest = {},
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.patients.v1.EligibilityTimelinePage,
+            CandidApi.preEncounter.patients.v1.getEligibilityTimeline.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getEligibilityTimeline(id, request, requestOptions));
+    }
+
+    private async __getEligibilityTimeline(
+        id: CandidApi.preEncounter.PatientId,
+        request: CandidApi.preEncounter.patients.v1.GetEligibilityTimelineRequest = {},
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.patients.v1.EligibilityTimelinePage,
+                CandidApi.preEncounter.patients.v1.getEligibilityTimeline.Error
+            >
+        >
+    > {
+        const { eventTypes, coverageId, appointmentId, pageToken, limit } = request;
+        const _queryParams: Record<string, unknown> = {
+            event_types: Array.isArray(eventTypes)
+                ? eventTypes.map((item) =>
+                      serializers.preEncounter.patients.v1.EligibilityAuditEventType.jsonOrThrow(item, {
+                          unrecognizedObjectKeys: "strip",
+                      }),
+                  )
+                : eventTypes != null
+                  ? serializers.preEncounter.patients.v1.EligibilityAuditEventType.jsonOrThrow(eventTypes, {
+                        unrecognizedObjectKeys: "strip",
+                    })
+                  : undefined,
+            coverage_id: coverageId,
+            appointment_id: appointmentId,
+            page_token: pageToken,
+            limit,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                `/patients/v1/${core.url.encodePathParam(serializers.preEncounter.PatientId.jsonOrThrow(id))}/eligibility-timeline`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.patients.v1.EligibilityTimelinePage.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.patients.v1.getEligibilityTimeline.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * Updates a patient. The path must contain the next version number to prevent race conditions. For example, if the current version of the patient is n, you will need to send a request to this endpoint with `/{id}/n+1` to update the patient. Updating historic versions is not supported.
      *
      * @param {CandidApi.preEncounter.PatientId} id

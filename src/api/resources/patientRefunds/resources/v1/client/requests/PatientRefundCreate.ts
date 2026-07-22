@@ -30,6 +30,13 @@ export interface PatientRefundCreate {
     allocations: CandidApi.AllocationCreate[];
     invoice?: CandidApi.InvoiceId;
     refundReason?: CandidApi.RefundReason;
+    /**
+     * Optional restrictions constraining which claims this refund's credit can be
+     * auto-allocated to (e.g. billing provider NPI). Restriction (type, value) pairs must be
+     * unique. When omitted, the refund is unrestricted. Refunds created from an existing
+     * payment inherit that payment's restrictions instead.
+     */
+    allocationRestrictions?: CandidApi.AllocationRestrictionCreate[];
     /** If true, the refund will be rejected if it would cause any account to be overdrafted. Defaults to false. */
     raiseOnOverdraft?: boolean;
 }

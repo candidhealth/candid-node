@@ -3,6 +3,8 @@ export * from "./Allocation";
 export * from "./AllocationCreate";
 export * from "./AllocationEarmarkType";
 export * from "./AllocationOverdraftDetail";
+export * from "./AllocationRestrictionCreate";
+export * from "./AllocationRestrictionType";
 export * from "./AllocationTarget";
 export * from "./AllocationTargetCreate";
 export * from "./AppointmentAllocationTarget";

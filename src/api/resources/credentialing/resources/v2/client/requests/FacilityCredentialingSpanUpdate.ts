@@ -7,7 +7,7 @@
  *     }
  */
 export interface FacilityCredentialingSpanUpdate {
-    /** The ID of the billing provider for which the service facility is covered by the credentialing span. */
+    /** The ID of the billing provider for which the rendering provider is covered by the credentialing span. */
     contractingProviderId: string;
     /** The ID of the payer doing the credentialing. */
     payerUuid?: string;

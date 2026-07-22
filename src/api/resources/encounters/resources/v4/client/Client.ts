@@ -74,6 +74,7 @@ export class V4Client {
             ownerOfNextAction,
             patientExternalId,
             includeMergedPatientData,
+            billingProviderNpis,
         } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
@@ -116,6 +117,7 @@ export class V4Client {
                     : undefined,
             patient_external_id: patientExternalId,
             include_merged_patient_data: includeMergedPatientData,
+            billing_provider_npis: billingProviderNpis,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
