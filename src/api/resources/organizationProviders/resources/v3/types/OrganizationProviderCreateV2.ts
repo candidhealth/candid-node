@@ -9,15 +9,15 @@ export interface OrganizationProviderCreateV2 {
     isRendering: boolean;
     /** Whether the provider can be used to bill services. */
     isBilling: boolean;
-    /** The first name of the provider, if the provider is an individual. */
+    /** The first name of the provider. Required when provider_type is INDIVIDUAL. Must not be set when provider_type is ORGANIZATION. */
     firstName?: string;
-    /** The last name of the provider, if the provider is an individual. */
+    /** The last name of the provider. Required when provider_type is INDIVIDUAL. Must not be set when provider_type is ORGANIZATION. */
     lastName?: string;
-    /** The name of the provider, if the provider is an organization. */
+    /** The name of the provider. Required when provider_type is ORGANIZATION. Must not be set when provider_type is INDIVIDUAL. */
     organizationName?: string;
     /** Whether the provider is an individual (NPPES Type 1) or organization (NPPES Type 2) provider. */
     providerType: CandidApi.organizationProviders.v2.ProviderType;
-    /** If the provider has a contract with insurance, this must be the same tax ID given to the payer on an IRS W-9 form completed during contracting. */
+    /** Required when is_billing is true. If the provider has a contract with insurance, this must be the same tax ID given to the payer on an IRS W-9 form completed during contracting. */
     taxId?: string;
     /** A code designating classification and specialization. */
     taxonomyCode?: string;

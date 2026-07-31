@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { TaskId } from "../../../../commons/types/TaskId";
 import { ConfigurableRuleId } from "../../../../pipelineCommons/types/ConfigurableRuleId";
+import { RuleId } from "../../../../pipelineCommons/types/RuleId";
 import { TaskCategory } from "../../commons/types/TaskCategory";
 import { TaskStatus } from "../../commons/types/TaskStatus";
 import { TaskType } from "../../commons/types/TaskType";
@@ -33,6 +34,7 @@ export const Task: core.serialization.ObjectSchema<serializers.tasks.v3.Task.Raw
         assignments: core.serialization.list(TaskAssignment),
         category: TaskCategory.optional(),
         configurableRuleId: core.serialization.property("configurable_rule_id", ConfigurableRuleId.optional()),
+        persistedRuleId: core.serialization.property("persisted_rule_id", RuleId.optional()),
     });
 
 export declare namespace Task {
@@ -56,5 +58,6 @@ export declare namespace Task {
         assignments: TaskAssignment.Raw[];
         category?: TaskCategory.Raw | null;
         configurable_rule_id?: ConfigurableRuleId.Raw | null;
+        persisted_rule_id?: RuleId.Raw | null;
     }
 }

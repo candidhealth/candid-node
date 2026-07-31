@@ -115,6 +115,7 @@ describe("V3Client", () => {
                     ],
                     category: "other",
                     configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    persisted_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 },
                 {
                     task_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -160,6 +161,7 @@ describe("V3Client", () => {
                     ],
                     category: "other",
                     configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    persisted_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 },
             ],
             prev_page_token: "prev_page_token",
@@ -216,6 +218,7 @@ describe("V3Client", () => {
                         ],
                         category: "other",
                         configurableRuleId: CandidApi.ConfigurableRuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        persistedRuleId: CandidApi.RuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                     },
                     {
                         taskId: CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -261,6 +264,7 @@ describe("V3Client", () => {
                         ],
                         category: "other",
                         configurableRuleId: CandidApi.ConfigurableRuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        persistedRuleId: CandidApi.RuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                     },
                 ],
                 prevPageToken: CandidApi.PageToken("prev_page_token"),
@@ -327,6 +331,7 @@ describe("V3Client", () => {
             ],
             category: "other",
             configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+            persisted_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
 
         server
@@ -383,6 +388,7 @@ describe("V3Client", () => {
                 ],
                 category: "other",
                 configurableRuleId: CandidApi.ConfigurableRuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                persistedRuleId: CandidApi.RuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
             },
             ok: true,
             headers: expect.any(Object),
@@ -450,6 +456,7 @@ describe("V3Client", () => {
             ],
             category: "other",
             configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+            persisted_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
 
         server
@@ -512,6 +519,7 @@ describe("V3Client", () => {
                 ],
                 category: "other",
                 configurableRuleId: CandidApi.ConfigurableRuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                persistedRuleId: CandidApi.RuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
             },
             ok: true,
             headers: expect.any(Object),
@@ -574,6 +582,7 @@ describe("V3Client", () => {
             ],
             category: "other",
             configurable_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+            persisted_rule_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
         };
 
         server
@@ -631,6 +640,7 @@ describe("V3Client", () => {
                 ],
                 category: "other",
                 configurableRuleId: CandidApi.ConfigurableRuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                persistedRuleId: CandidApi.RuleId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
             },
             ok: true,
             headers: expect.any(Object),

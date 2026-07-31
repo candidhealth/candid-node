@@ -8093,6 +8093,155 @@ await client.organizationProviders.v3.update(CandidApi.OrganizationProviderId("d
 </dl>
 </details>
 
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">listAttachments</a>(organization_provider_id) -> core.APIResponse&lt;CandidApi.ProviderAttachment[], CandidApi.organizationProviders.v3.listAttachments.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.listAttachments(CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**organization_provider_id:** `CandidApi.OrganizationProviderId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">downloadAttachment</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ProviderAttachmentResponse, CandidApi.organizationProviders.v3.downloadAttachment.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.downloadAttachment({
+    attachmentId: CandidApi.ProviderAttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.organizationProviders.v3.DownloadProviderAttachmentRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.organizationProviders.v3.<a href="/src/api/resources/organizationProviders/resources/v3/client/Client.ts">deleteAttachment</a>(attachment_id) -> core.APIResponse&lt;void, CandidApi.organizationProviders.v3.deleteAttachment.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.organizationProviders.v3.deleteAttachment(CandidApi.ProviderAttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**attachment_id:** `CandidApi.ProviderAttachmentId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## OrganizationServiceFacilities V2
 <details><summary><code>client.organizationServiceFacilities.v2.<a href="/src/api/resources/organizationServiceFacilities/resources/v2/client/Client.ts">get</a>(organization_service_facility_id) -> core.APIResponse&lt;CandidApi.OrganizationServiceFacility, CandidApi.organizationServiceFacilities.v2.get.Error&gt;</code></summary>
 <dl>

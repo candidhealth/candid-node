@@ -24,4 +24,5 @@ export interface Task {
     assignments: CandidApi.tasks.v3.TaskAssignment[];
     category?: CandidApi.tasks.TaskCategory;
     configurableRuleId?: CandidApi.ConfigurableRuleId;
+    persistedRuleId?: CandidApi.RuleId;
 }

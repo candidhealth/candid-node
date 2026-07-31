@@ -576,4 +576,135 @@ describe("V3Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("list_attachments", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = [
+            {
+                provider_attachment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                file_name: "file_name",
+                file_type: "W9",
+            },
+            {
+                provider_attachment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                organization_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                file_name: "file_name",
+                file_type: "W9",
+            },
+        ];
+
+        server
+            .mockEndpoint()
+            .get("/api/organization-providers/v3/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32/attachments")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.organizationProviders.v3.listAttachments(
+            CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        );
+        expect(response).toEqual({
+            body: [
+                {
+                    providerAttachmentId: CandidApi.organizationProviders.v3.ProviderAttachmentId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
+                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
+                    fileName: "file_name",
+                    fileType: "W9",
+                },
+                {
+                    providerAttachmentId: CandidApi.organizationProviders.v3.ProviderAttachmentId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
+                    organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    ),
+                    fileName: "file_name",
+                    fileType: "W9",
+                },
+            ],
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("download_attachment", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = { signed_download_url: "signed_download_url" };
+
+        server
+            .mockEndpoint()
+            .get("/api/organization-providers/v3/attachments/download")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.organizationProviders.v3.downloadAttachment({
+            attachmentId: CandidApi.organizationProviders.v3.ProviderAttachmentId(
+                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+            ),
+        });
+        expect(response).toEqual({
+            body: {
+                signedDownloadUrl: "signed_download_url",
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("delete_attachment", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        server
+            .mockEndpoint()
+            .delete("/api/organization-providers/v3/attachments/d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+            .respondWith()
+            .statusCode(200)
+            .build();
+
+        const response = await client.organizationProviders.v3.deleteAttachment(
+            CandidApi.organizationProviders.v3.ProviderAttachmentId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        );
+        expect(response).toEqual({
+            body: undefined,
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

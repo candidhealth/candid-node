@@ -6,4 +6,5 @@ export interface PayerPlanGroup extends CandidApi.payerPlanGroups.v1.MutablePaye
     payerPlanGroupId: CandidApi.PayerPlanGroupId;
     payer: CandidApi.payers.v3.Payer;
     isActive: boolean;
+    organizationId: CandidApi.OrganizationId;
 }

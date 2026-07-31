@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { OrganizationId } from "../../../../commons/types/OrganizationId";
 import { PayerPlanGroupId } from "../../../../commons/types/PayerPlanGroupId";
 import { Payer } from "../../../../payers/resources/v3/types/Payer";
 import { MutablePayerPlanGroup } from "./MutablePayerPlanGroup";
@@ -15,6 +16,7 @@ export const PayerPlanGroup: core.serialization.ObjectSchema<
         payerPlanGroupId: core.serialization.property("payer_plan_group_id", PayerPlanGroupId),
         payer: Payer,
         isActive: core.serialization.property("is_active", core.serialization.boolean()),
+        organizationId: core.serialization.property("organization_id", OrganizationId),
     })
     .extend(MutablePayerPlanGroup);
 
@@ -23,5 +25,6 @@ export declare namespace PayerPlanGroup {
         payer_plan_group_id: PayerPlanGroupId.Raw;
         payer: Payer.Raw;
         is_active: boolean;
+        organization_id: OrganizationId.Raw;
     }
 }
