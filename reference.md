@@ -10533,6 +10533,73 @@ await client.tasks.v3.update(CandidApi.TaskId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ff
 </dl>
 </details>
 
+## Users V2
+<details><summary><code>client.users.v2.<a href="/src/api/resources/users/resources/v2/client/Client.ts">createM2MUserV2</a>({ ...params }) -> core.APIResponse&lt;CandidApi.M2MUserResponse, CandidApi.users.v2.createM2MUserV2.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provisions a machine-to-machine (M2M) API user. Requires `organization_id`.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.users.v2.createM2MUserV2({
+    name: "name",
+    organizationId: CandidApi.OrganizationId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.M2MUserCreateV2` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## WriteOffs V1
 <details><summary><code>client.writeOffs.v1.<a href="/src/api/resources/writeOffs/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.WriteOffsPage, CandidApi.writeOffs.v1.getMulti.Error&gt;</code></summary>
 <dl>

@@ -37,6 +37,7 @@ import { PreEncounterClient } from "./api/resources/preEncounter/client/Client";
 import { ServiceLinesClient } from "./api/resources/serviceLines/client/Client";
 import { SuperbillsClient } from "./api/resources/superbills/client/Client";
 import { TasksClient } from "./api/resources/tasks/client/Client";
+import { UsersClient } from "./api/resources/users/client/Client";
 import { WriteOffsClient } from "./api/resources/writeOffs/client/Client";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient";
@@ -86,6 +87,7 @@ export class CandidApiClient {
     protected _serviceLines: ServiceLinesClient | undefined;
     protected _superbills: SuperbillsClient | undefined;
     protected _tasks: TasksClient | undefined;
+    protected _users: UsersClient | undefined;
     protected _writeOffs: WriteOffsClient | undefined;
     protected _preEncounter: PreEncounterClient | undefined;
     protected _diagnoses: DiagnosesClient | undefined;
@@ -232,6 +234,10 @@ export class CandidApiClient {
 
     public get tasks(): TasksClient {
         return (this._tasks ??= new TasksClient(this._options));
+    }
+
+    public get users(): UsersClient {
+        return (this._users ??= new UsersClient(this._options));
     }
 
     public get writeOffs(): WriteOffsClient {
