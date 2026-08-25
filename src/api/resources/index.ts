@@ -2,6 +2,7 @@ export * as auth from "./auth";
 export * as billingNotes from "./billingNotes";
 export * as chargeCapture from "./chargeCapture";
 export * as chargeCaptureBundles from "./chargeCaptureBundles";
+export * as claimPreview from "./claimPreview";
 export * as claimSubmission from "./claimSubmission";
 export * as claims from "./claims";
 export * from "./claims/types";

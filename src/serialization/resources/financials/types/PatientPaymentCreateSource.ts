@@ -7,8 +7,8 @@ import type * as serializers from "../../../index";
 export const PatientPaymentCreateSource: core.serialization.Schema<
     serializers.PatientPaymentCreateSource.Raw,
     CandidApi.PatientPaymentCreateSource
-> = core.serialization.enum_(["MANUAL_ENTRY", "PHREESIA", "SHERPA_HEALTH"]);
+> = core.serialization.enum_(["MANUAL_ENTRY", "PHREESIA", "SHERPA_HEALTH", "LOCKBOX"]);
 
 export declare namespace PatientPaymentCreateSource {
-    export type Raw = "MANUAL_ENTRY" | "PHREESIA" | "SHERPA_HEALTH";
+    export type Raw = "MANUAL_ENTRY" | "PHREESIA" | "SHERPA_HEALTH" | "LOCKBOX";
 }

@@ -19,4 +19,6 @@ export interface ChargeCaptureClaimCreation {
     errors: CandidApi.chargeCapture.v1.ChargeCaptureError[];
     /** If a ChargeCaptureBundle attempts creation, this is the input that was created from the underlying charges and used to attempt encounter creation. */
     encounterCreationInput?: CandidApi.chargeCapture.v1.ChargeCaptureData;
+    /** The ID of the most recently created claim preview associated with this bundle, if any exists. */
+    mostRecentClaimPreviewId?: CandidApi.claimPreview.v1.ClaimPreviewId;
 }

@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { NonInsurancePayerAddressUpdate } from "./NonInsurancePayerAddressUpdate";
 import { NonInsurancePayerCategoryUpdate } from "./NonInsurancePayerCategoryUpdate";
 import { NonInsurancePayerDescriptionUpdate } from "./NonInsurancePayerDescriptionUpdate";
+import { NonInsurancePayerPayerIdUpdate } from "./NonInsurancePayerPayerIdUpdate";
 
 export const NonInsurancePayerUpdateRequest: core.serialization.ObjectSchema<
     serializers.nonInsurancePayers.v1.NonInsurancePayerUpdateRequest.Raw,
@@ -14,6 +15,7 @@ export const NonInsurancePayerUpdateRequest: core.serialization.ObjectSchema<
     name: core.serialization.string().optional(),
     description: NonInsurancePayerDescriptionUpdate.optional(),
     category: NonInsurancePayerCategoryUpdate.optional(),
+    payerId: core.serialization.property("payer_id", NonInsurancePayerPayerIdUpdate.optional()),
     address: NonInsurancePayerAddressUpdate.optional(),
 });
 
@@ -22,6 +24,7 @@ export declare namespace NonInsurancePayerUpdateRequest {
         name?: string | null;
         description?: NonInsurancePayerDescriptionUpdate.Raw | null;
         category?: NonInsurancePayerCategoryUpdate.Raw | null;
+        payer_id?: NonInsurancePayerPayerIdUpdate.Raw | null;
         address?: NonInsurancePayerAddressUpdate.Raw | null;
     }
 }

@@ -7,6 +7,7 @@ import { CoveragesClient } from "../resources/coverages/client/Client";
 import { EligibilityChecksClient } from "../resources/eligibilityChecks/client/Client";
 import { ImagesClient } from "../resources/images/client/Client";
 import { ListsClient } from "../resources/lists/client/Client";
+import { MetadataSchemasClient } from "../resources/metadataSchemas/client/Client";
 import { NotesClient } from "../resources/notes/client/Client";
 import { OrganizationExternalProvidersClient } from "../resources/organizationExternalProviders/client/Client";
 import { PatientMergesClient } from "../resources/patientMerges/client/Client";
@@ -24,6 +25,7 @@ export class PreEncounterClient {
     protected _eligibilityChecks: EligibilityChecksClient | undefined;
     protected _images: ImagesClient | undefined;
     protected _lists: ListsClient | undefined;
+    protected _metadataSchemas: MetadataSchemasClient | undefined;
     protected _notes: NotesClient | undefined;
     protected _organizationExternalProviders: OrganizationExternalProvidersClient | undefined;
     protected _patientMerges: PatientMergesClient | undefined;
@@ -52,6 +54,10 @@ export class PreEncounterClient {
 
     public get lists(): ListsClient {
         return (this._lists ??= new ListsClient(this._options));
+    }
+
+    public get metadataSchemas(): MetadataSchemasClient {
+        return (this._metadataSchemas ??= new MetadataSchemasClient(this._options));
     }
 
     public get notes(): NotesClient {

@@ -13470,6 +13470,435 @@ await client.preEncounter.lists.v1.getAppointmentList();
 </dl>
 </details>
 
+## PreEncounter MetadataSchemas V1
+<details><summary><code>client.preEncounter.metadataSchemas.v1.<a href="/src/api/resources/preEncounter/resources/metadataSchemas/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.MetadataSchema, CandidApi.preEncounter.metadataSchemas.v1.get.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets a custom metadata schema by MetadataSchemaId.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.metadataSchemas.v1.get(CandidApi.MetadataSchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.MetadataSchemaId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.metadataSchemas.v1.<a href="/src/api/resources/preEncounter/resources/metadataSchemas/resources/v1/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.MetadataSchemaPage, CandidApi.preEncounter.metadataSchemas.v1.getAll.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets all custom metadata schemas for the organization, ordered by name. Defaults to page size of 100.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.metadataSchemas.v1.getAll();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.metadataSchemas.v1.GetAllMetadataSchemasRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.metadataSchemas.v1.<a href="/src/api/resources/preEncounter/resources/metadataSchemas/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.MetadataSchema, CandidApi.preEncounter.metadataSchemas.v1.create.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new custom metadata schema. Schema names must be unique within an organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.metadataSchemas.v1.create({
+    name: "name",
+    fields: [{
+            key: "key",
+            type: "STRING"
+        }, {
+            key: "key",
+            type: "STRING"
+        }]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableMetadataSchema` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.metadataSchemas.v1.<a href="/src/api/resources/preEncounter/resources/metadataSchemas/resources/v1/client/Client.ts">update</a>(id, version, { ...params }) -> core.APIResponse&lt;CandidApi.MetadataSchema, CandidApi.preEncounter.metadataSchemas.v1.update.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a custom metadata schema. Updates are additive only: new fields may be added but existing fields may not be removed or have their type changed, and ENUM field value lists may be extended but not shrunk. The path must contain the most recent version to prevent races.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.metadataSchemas.v1.update(CandidApi.MetadataSchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "version", {
+    name: "name",
+    fields: [{
+            key: "key",
+            type: "STRING"
+        }, {
+            key: "key",
+            type: "STRING"
+        }]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.MetadataSchemaId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutableMetadataSchema` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.metadataSchemas.v1.<a href="/src/api/resources/preEncounter/resources/metadataSchemas/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.metadataSchemas.v1.deactivate.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Sets a custom metadata schema as deactivated. The path must contain the most recent version to prevent races.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.metadataSchemas.v1.deactivate(CandidApi.MetadataSchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "version");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.MetadataSchemaId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.metadataSchemas.v1.<a href="/src/api/resources/preEncounter/resources/metadataSchemas/resources/v1/client/Client.ts">reactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.metadataSchemas.v1.reactivate.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes the deactivated flag for a custom metadata schema. The path must contain the most recent version to prevent races.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.metadataSchemas.v1.reactivate(CandidApi.MetadataSchemaId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), "version");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `CandidApi.MetadataSchemaId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## PreEncounter Notes V1
 <details><summary><code>client.preEncounter.notes.v1.<a href="/src/api/resources/preEncounter/resources/notes/resources/v1/client/Client.ts">get</a>(id) -> core.APIResponse&lt;CandidApi.Note, CandidApi.preEncounter.notes.v1.get.Error&gt;</code></summary>
 <dl>
@@ -14506,6 +14935,72 @@ await client.preEncounter.patientMerges.v1.scan({
 <dd>
 
 **request:** `CandidApi.preEncounter.patientMerges.v1.PatientMergeScanRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.patientMerges.v1.<a href="/src/api/resources/preEncounter/resources/patientMerges/resources/v1/client/Client.ts">search</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PatientMergePage, CandidApi.preEncounter.patientMerges.v1.search.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a page of patient merge records for the given MRNs. A merge is included
+when the MRN matches either the alternative or the primary patient MRN.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.patientMerges.v1.search({
+    mrns: ["mrns", "mrns"]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.PatientMergeSearchRequest` 
     
 </dd>
 </dl>

@@ -7,8 +7,8 @@ import type * as serializers from "../../../../../../../index";
 export const CarveOutType: core.serialization.Schema<
     serializers.preEncounter.coverages.v1.CarveOutType.Raw,
     CandidApi.preEncounter.coverages.v1.CarveOutType
-> = core.serialization.enum_(["BEHAVIORAL", "MEDICAL", "THERAPY"]);
+> = core.serialization.enum_(["BEHAVIORAL", "MEDICAL", "THERAPY", "OTHER"]);
 
 export declare namespace CarveOutType {
-    export type Raw = "BEHAVIORAL" | "MEDICAL" | "THERAPY";
+    export type Raw = "BEHAVIORAL" | "MEDICAL" | "THERAPY" | "OTHER";
 }

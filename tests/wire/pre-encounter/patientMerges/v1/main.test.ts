@@ -263,4 +263,89 @@ describe("V1Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("search", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = { mrns: ["mrns", "mrns"] };
+        const rawResponseBody = {
+            items: [
+                {
+                    id: "id",
+                    organization_id: "organization_id",
+                    deactivated: true,
+                    version: 1,
+                    updated_at: "2024-01-15T09:30:00Z",
+                    updating_user_id: "updating_user_id",
+                    alternative_patient_mrn: "alternative_patient_mrn",
+                    primary_patient_mrn: "primary_patient_mrn",
+                },
+                {
+                    id: "id",
+                    organization_id: "organization_id",
+                    deactivated: true,
+                    version: 1,
+                    updated_at: "2024-01-15T09:30:00Z",
+                    updating_user_id: "updating_user_id",
+                    alternative_patient_mrn: "alternative_patient_mrn",
+                    primary_patient_mrn: "primary_patient_mrn",
+                },
+            ],
+            next_page_token: "next_page_token",
+            prev_page_token: "prev_page_token",
+            total: 1,
+        };
+
+        server
+            .mockEndpoint()
+            .post("/patient-merge/v1/search")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.patientMerges.v1.search({
+            mrns: ["mrns", "mrns"],
+        });
+        expect(response).toEqual({
+            body: {
+                items: [
+                    {
+                        id: CandidApi.preEncounter.PatientMergeId("id"),
+                        organizationId: CandidApi.preEncounter.OrganizationId("organization_id"),
+                        deactivated: true,
+                        version: 1,
+                        updatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                        updatingUserId: CandidApi.preEncounter.UserId("updating_user_id"),
+                        alternativePatientMrn: "alternative_patient_mrn",
+                        primaryPatientMrn: "primary_patient_mrn",
+                    },
+                    {
+                        id: CandidApi.preEncounter.PatientMergeId("id"),
+                        organizationId: CandidApi.preEncounter.OrganizationId("organization_id"),
+                        deactivated: true,
+                        version: 1,
+                        updatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                        updatingUserId: CandidApi.preEncounter.UserId("updating_user_id"),
+                        alternativePatientMrn: "alternative_patient_mrn",
+                        primaryPatientMrn: "primary_patient_mrn",
+                    },
+                ],
+                nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
+                prevPageToken: CandidApi.preEncounter.PageToken("prev_page_token"),
+                total: 1,
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

@@ -5,5 +5,6 @@ export const PatientPaymentCreateSource = {
     ManualEntry: "MANUAL_ENTRY",
     Phreesia: "PHREESIA",
     SherpaHealth: "SHERPA_HEALTH",
+    Lockbox: "LOCKBOX",
 } as const;
 export type PatientPaymentCreateSource = (typeof PatientPaymentCreateSource)[keyof typeof PatientPaymentCreateSource];

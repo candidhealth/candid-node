@@ -19,6 +19,8 @@ export const NotReadyReason: core.serialization.Schema<
     "ELIGIBILITY_CHECK_FAILED_PRIMARY",
     "ELIGIBILITY_CHECK_FAILED_SECONDARY",
     "NEW_COMBO",
+    "NEW_INSURANCE",
+    "PRIOR_APPOINTMENT_NOT_READY",
     "NO_COVERAGE",
     "ERROR",
     "MANUAL",
@@ -37,6 +39,8 @@ export declare namespace NotReadyReason {
         | "ELIGIBILITY_CHECK_FAILED_PRIMARY"
         | "ELIGIBILITY_CHECK_FAILED_SECONDARY"
         | "NEW_COMBO"
+        | "NEW_INSURANCE"
+        | "PRIOR_APPOINTMENT_NOT_READY"
         | "NO_COVERAGE"
         | "ERROR"
         | "MANUAL";

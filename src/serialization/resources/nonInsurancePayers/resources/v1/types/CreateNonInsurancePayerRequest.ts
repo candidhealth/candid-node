@@ -13,6 +13,7 @@ export const CreateNonInsurancePayerRequest: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     description: core.serialization.string().optional(),
     category: core.serialization.string().optional(),
+    payerId: core.serialization.property("payer_id", core.serialization.string().optional()),
     address: StreetAddressShortZip.optional(),
     clinicalTrials: core.serialization.property(
         "clinical_trials",
@@ -25,6 +26,7 @@ export declare namespace CreateNonInsurancePayerRequest {
         name: string;
         description?: string | null;
         category?: string | null;
+        payer_id?: string | null;
         address?: StreetAddressShortZip.Raw | null;
         clinical_trials?: MutableClinicalTrial.Raw[] | null;
     }

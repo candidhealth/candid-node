@@ -14,6 +14,9 @@ export declare namespace V1Client {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
+/**
+ * This object has been renamed to "Payer Plans". References to "Payer Plan Groups" still exist for API compatibility.
+ */
 export class V1Client {
     protected readonly _options: NormalizedClientOptionsWithAuth<V1Client.Options>;
 

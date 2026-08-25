@@ -23,6 +23,7 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     serviceDuration: core.serialization.property("service_duration", core.serialization.number()),
     services: core.serialization.list(Service),
     placerAppointmentId: core.serialization.property("placer_appointment_id", core.serialization.string().optional()),
+    placerSystemName: core.serialization.property("placer_system_name", core.serialization.string().optional()),
     attendingDoctor: core.serialization.property("attending_doctor", ExternalProvider.optional()),
     estimatedCopayCents: core.serialization.property("estimated_copay_cents", core.serialization.number().optional()),
     estimatedPatientResponsibilityCents: core.serialization.property(
@@ -51,6 +52,7 @@ export declare namespace MutableAppointment {
         service_duration: number;
         services: Service.Raw[];
         placer_appointment_id?: string | null;
+        placer_system_name?: string | null;
         attending_doctor?: ExternalProvider.Raw | null;
         estimated_copay_cents?: number | null;
         estimated_patient_responsibility_cents?: number | null;

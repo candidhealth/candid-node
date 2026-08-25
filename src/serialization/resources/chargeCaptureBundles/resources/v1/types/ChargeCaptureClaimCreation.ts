@@ -5,6 +5,7 @@ import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { ChargeCaptureData } from "../../../../chargeCapture/resources/v1/types/ChargeCaptureData";
 import { ChargeCaptureError } from "../../../../chargeCapture/resources/v1/types/ChargeCaptureError";
+import { ClaimPreviewId } from "../../../../claimPreview/resources/v1/types/ClaimPreviewId";
 import { ChargeCaptureClaimCreationId } from "../../../../commons/types/ChargeCaptureClaimCreationId";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { ChargeCaptureClaimCreationStatus } from "./ChargeCaptureClaimCreationStatus";
@@ -19,6 +20,7 @@ export const ChargeCaptureClaimCreation: core.serialization.ObjectSchema<
     characteristics: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     errors: core.serialization.list(ChargeCaptureError),
     encounterCreationInput: core.serialization.property("encounter_creation_input", ChargeCaptureData.optional()),
+    mostRecentClaimPreviewId: core.serialization.property("most_recent_claim_preview_id", ClaimPreviewId.optional()),
 });
 
 export declare namespace ChargeCaptureClaimCreation {
@@ -29,5 +31,6 @@ export declare namespace ChargeCaptureClaimCreation {
         characteristics: Record<string, unknown | null>;
         errors: ChargeCaptureError.Raw[];
         encounter_creation_input?: ChargeCaptureData.Raw | null;
+        most_recent_claim_preview_id?: ClaimPreviewId.Raw | null;
     }
 }

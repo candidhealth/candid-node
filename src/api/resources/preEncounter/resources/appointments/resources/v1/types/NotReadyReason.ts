@@ -13,6 +13,8 @@ export const NotReadyReason = {
     EligibilityCheckFailedPrimary: "ELIGIBILITY_CHECK_FAILED_PRIMARY",
     EligibilityCheckFailedSecondary: "ELIGIBILITY_CHECK_FAILED_SECONDARY",
     NewCombo: "NEW_COMBO",
+    NewInsurance: "NEW_INSURANCE",
+    PriorAppointmentNotReady: "PRIOR_APPOINTMENT_NOT_READY",
     NoCoverage: "NO_COVERAGE",
     Error: "ERROR",
     Manual: "MANUAL",

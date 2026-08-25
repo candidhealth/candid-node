@@ -26,6 +26,7 @@ describe("V1Client", () => {
                         name: "name",
                         description: "description",
                         category: "category",
+                        payer_id: "payer_id",
                         enabled: true,
                         address: {
                             zip_plus_four_code: "zip_plus_four_code",
@@ -103,6 +104,7 @@ describe("V1Client", () => {
                         name: "name",
                         description: "description",
                         category: "category",
+                        payer_id: "payer_id",
                         enabled: true,
                         address: {
                             zip_plus_four_code: "zip_plus_four_code",
@@ -201,6 +203,7 @@ describe("V1Client", () => {
                             name: "name",
                             description: "description",
                             category: "category",
+                            payerId: "payer_id",
                             enabled: true,
                             address: {
                                 zipPlusFourCode: "zip_plus_four_code",
@@ -296,6 +299,7 @@ describe("V1Client", () => {
                             name: "name",
                             description: "description",
                             category: "category",
+                            payerId: "payer_id",
                             enabled: true,
                             address: {
                                 zipPlusFourCode: "zip_plus_four_code",
@@ -408,6 +412,7 @@ describe("V1Client", () => {
                 name: "name",
                 description: "description",
                 category: "category",
+                payer_id: "payer_id",
                 enabled: true,
                 address: {
                     zip_plus_four_code: "zip_plus_four_code",
@@ -502,6 +507,7 @@ describe("V1Client", () => {
                     name: "name",
                     description: "description",
                     category: "category",
+                    payerId: "payer_id",
                     enabled: true,
                     address: {
                         zipPlusFourCode: "zip_plus_four_code",
@@ -619,6 +625,7 @@ describe("V1Client", () => {
                 name: "name",
                 description: "description",
                 category: "category",
+                payer_id: "payer_id",
                 enabled: true,
                 address: {
                     zip_plus_four_code: "zip_plus_four_code",
@@ -733,6 +740,7 @@ describe("V1Client", () => {
                     name: "name",
                     description: "description",
                     category: "category",
+                    payerId: "payer_id",
                     enabled: true,
                     address: {
                         zipPlusFourCode: "zip_plus_four_code",
@@ -837,6 +845,7 @@ describe("V1Client", () => {
                 name: "name",
                 description: "description",
                 category: "category",
+                payer_id: "payer_id",
                 enabled: true,
                 address: {
                     zip_plus_four_code: "zip_plus_four_code",
@@ -932,6 +941,7 @@ describe("V1Client", () => {
                     name: "name",
                     description: "description",
                     category: "category",
+                    payerId: "payer_id",
                     enabled: true,
                     address: {
                         zipPlusFourCode: "zip_plus_four_code",

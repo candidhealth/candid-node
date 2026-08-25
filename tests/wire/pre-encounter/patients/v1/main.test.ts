@@ -680,6 +680,16 @@ describe("V1Client", () => {
             orcon: true,
             advanced_directives: ["NONE", "NONE"],
             hipaa_code: "hipaa_code",
+            custom_metadata: [
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+            ],
         };
 
         server
@@ -1736,6 +1746,28 @@ describe("V1Client", () => {
                 orcon: true,
                 advancedDirectives: ["NONE", "NONE"],
                 hipaaCode: "hipaa_code",
+                customMetadata: [
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                ],
             },
             ok: true,
             headers: expect.any(Object),
@@ -2418,6 +2450,16 @@ describe("V1Client", () => {
             orcon: true,
             advanced_directives: ["NONE", "NONE"],
             hipaa_code: "hipaa_code",
+            custom_metadata: [
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+            ],
         };
 
         server
@@ -3475,6 +3517,28 @@ describe("V1Client", () => {
                 orcon: true,
                 advancedDirectives: ["NONE", "NONE"],
                 hipaaCode: "hipaa_code",
+                customMetadata: [
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                ],
             },
             ok: true,
             headers: expect.any(Object),
@@ -4026,6 +4090,16 @@ describe("V1Client", () => {
                     orcon: true,
                     advanced_directives: ["NONE", "NONE"],
                     hipaa_code: "hipaa_code",
+                    custom_metadata: [
+                        {
+                            metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            key_value_pairs: { key_value_pairs: { key: "value" } },
+                        },
+                        {
+                            metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            key_value_pairs: { key_value_pairs: { key: "value" } },
+                        },
+                    ],
                 },
                 {
                     id: "id",
@@ -4558,6 +4632,16 @@ describe("V1Client", () => {
                     orcon: true,
                     advanced_directives: ["NONE", "NONE"],
                     hipaa_code: "hipaa_code",
+                    custom_metadata: [
+                        {
+                            metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            key_value_pairs: { key_value_pairs: { key: "value" } },
+                        },
+                        {
+                            metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            key_value_pairs: { key_value_pairs: { key: "value" } },
+                        },
+                    ],
                 },
             ],
             next_page_token: "next_page_token",
@@ -5397,6 +5481,28 @@ describe("V1Client", () => {
                         orcon: true,
                         advancedDirectives: ["NONE", "NONE"],
                         hipaaCode: "hipaa_code",
+                        customMetadata: [
+                            {
+                                metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                keyValuePairs: {
+                                    key_value_pairs: {
+                                        key: "value",
+                                    },
+                                },
+                            },
+                            {
+                                metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                keyValuePairs: {
+                                    key_value_pairs: {
+                                        key: "value",
+                                    },
+                                },
+                            },
+                        ],
                     },
                     {
                         id: CandidApi.preEncounter.PatientId("id"),
@@ -6218,6 +6324,28 @@ describe("V1Client", () => {
                         orcon: true,
                         advancedDirectives: ["NONE", "NONE"],
                         hipaaCode: "hipaa_code",
+                        customMetadata: [
+                            {
+                                metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                keyValuePairs: {
+                                    key_value_pairs: {
+                                        key: "value",
+                                    },
+                                },
+                            },
+                            {
+                                metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                ),
+                                keyValuePairs: {
+                                    key_value_pairs: {
+                                        key: "value",
+                                    },
+                                },
+                            },
+                        ],
                     },
                 ],
                 nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
@@ -7071,6 +7199,16 @@ describe("V1Client", () => {
             orcon: true,
             advanced_directives: ["NONE", "NONE"],
             hipaa_code: "hipaa_code",
+            custom_metadata: [
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+            ],
         };
 
         server.mockEndpoint().get("/patients/v1/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
@@ -7946,6 +8084,28 @@ describe("V1Client", () => {
                 orcon: true,
                 advancedDirectives: ["NONE", "NONE"],
                 hipaaCode: "hipaa_code",
+                customMetadata: [
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                ],
             },
             ok: true,
             headers: expect.any(Object),
@@ -8516,6 +8676,16 @@ describe("V1Client", () => {
             orcon: true,
             advanced_directives: ["NONE", "NONE"],
             hipaa_code: "hipaa_code",
+            custom_metadata: [
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+            ],
         };
 
         server
@@ -9397,6 +9567,28 @@ describe("V1Client", () => {
                 orcon: true,
                 advancedDirectives: ["NONE", "NONE"],
                 hipaaCode: "hipaa_code",
+                customMetadata: [
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                ],
             },
             ok: true,
             headers: expect.any(Object),
@@ -9955,6 +10147,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
             {
                 id: "id",
@@ -10495,6 +10697,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
         ];
 
@@ -11352,6 +11564,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
                 {
                     id: CandidApi.preEncounter.PatientId("id"),
@@ -12196,6 +12430,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
             ],
             ok: true,
@@ -12755,6 +13011,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
             primary_coverage: {
                 id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -14716,6 +14982,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
                 primaryCoverage: {
                     id: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -16005,6 +16293,7 @@ describe("V1Client", () => {
                     patient_id: "patient_id",
                     coverage_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     appointment_id: "appointment_id",
+                    appointment_date: "2024-01-15T09:30:00Z",
                     timestamp: "2024-01-15T09:30:00Z",
                     user_id: "user_id",
                     user_name: "user_name",
@@ -16016,6 +16305,7 @@ describe("V1Client", () => {
                     patient_id: "patient_id",
                     coverage_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     appointment_id: "appointment_id",
+                    appointment_date: "2024-01-15T09:30:00Z",
                     timestamp: "2024-01-15T09:30:00Z",
                     user_id: "user_id",
                     user_name: "user_name",
@@ -16047,6 +16337,7 @@ describe("V1Client", () => {
                         patientId: CandidApi.preEncounter.PatientId("patient_id"),
                         coverageId: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         appointmentId: CandidApi.preEncounter.AppointmentId("appointment_id"),
+                        appointmentDate: new Date("2024-01-15T09:30:00.000Z"),
                         timestamp: new Date("2024-01-15T09:30:00.000Z"),
                         userId: "user_id",
                         userName: "user_name",
@@ -16062,6 +16353,7 @@ describe("V1Client", () => {
                         patientId: CandidApi.preEncounter.PatientId("patient_id"),
                         coverageId: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                         appointmentId: CandidApi.preEncounter.AppointmentId("appointment_id"),
+                        appointmentDate: new Date("2024-01-15T09:30:00.000Z"),
                         timestamp: new Date("2024-01-15T09:30:00.000Z"),
                         userId: "user_id",
                         userName: "user_name",
@@ -16756,6 +17048,16 @@ describe("V1Client", () => {
             orcon: true,
             advanced_directives: ["NONE", "NONE"],
             hipaa_code: "hipaa_code",
+            custom_metadata: [
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+                {
+                    metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    key_value_pairs: { key_value_pairs: { key: "value" } },
+                },
+            ],
         };
 
         server
@@ -17814,6 +18116,28 @@ describe("V1Client", () => {
                 orcon: true,
                 advancedDirectives: ["NONE", "NONE"],
                 hipaaCode: "hipaa_code",
+                customMetadata: [
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                    {
+                        metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        keyValuePairs: {
+                            key_value_pairs: {
+                                key: "value",
+                            },
+                        },
+                    },
+                ],
             },
             ok: true,
             headers: expect.any(Object),
@@ -18422,6 +18746,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
             {
                 id: "id",
@@ -18962,6 +19296,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
         ];
 
@@ -19813,6 +20157,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
                 {
                     id: CandidApi.preEncounter.PatientId("id"),
@@ -20657,6 +21023,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
             ],
             ok: true,
@@ -21216,6 +21604,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
             {
                 id: "id",
@@ -21756,6 +22154,16 @@ describe("V1Client", () => {
                 orcon: true,
                 advanced_directives: ["NONE", "NONE"],
                 hipaa_code: "hipaa_code",
+                custom_metadata: [
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                    {
+                        metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        key_value_pairs: { key_value_pairs: { key: "value" } },
+                    },
+                ],
             },
         ];
 
@@ -22615,6 +23023,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
                 {
                     id: CandidApi.preEncounter.PatientId("id"),
@@ -23459,6 +23889,28 @@ describe("V1Client", () => {
                     orcon: true,
                     advancedDirectives: ["NONE", "NONE"],
                     hipaaCode: "hipaa_code",
+                    customMetadata: [
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                        {
+                            metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            keyValuePairs: {
+                                key_value_pairs: {
+                                    key: "value",
+                                },
+                            },
+                        },
+                    ],
                 },
             ],
             ok: true,

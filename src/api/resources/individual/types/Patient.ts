@@ -15,6 +15,7 @@ import type * as CandidApi from "../../../index";
  *                 name: "Sunrise Foundation",
  *                 category: "Foundation",
  *                 description: "Sunrise Foundation is a non-profit organization that provides financial assistance to patients in need.",
+ *                 payerId: "SUNRISE01",
  *                 enabled: true,
  *                 address: {
  *                     address1: "123 Main St",
@@ -30,6 +31,7 @@ import type * as CandidApi from "../../../index";
  *                     name: "Sunrise Foundation",
  *                     category: "Foundation",
  *                     description: "Sunrise Foundation is a non-profit organization that provides financial assistance to patients in need.",
+ *                     payerId: "SUNRISE01",
  *                     enabled: true,
  *                     address: {
  *                         address1: "123 Main St",

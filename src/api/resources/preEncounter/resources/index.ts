@@ -5,6 +5,7 @@ export * as coverages from "./coverages";
 export * as eligibilityChecks from "./eligibilityChecks";
 export * as images from "./images";
 export * as lists from "./lists";
+export * as metadataSchemas from "./metadataSchemas";
 export * as notes from "./notes";
 export * as organizationExternalProviders from "./organizationExternalProviders";
 export * as patientMerges from "./patientMerges";

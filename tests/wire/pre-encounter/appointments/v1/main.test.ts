@@ -40,6 +40,7 @@ describe("V1Client", () => {
                 { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
             ],
             placer_appointment_id: "placer_appointment_id",
+            placer_system_name: "placer_system_name",
             attending_doctor: {
                 name: {
                     family: "family",
@@ -137,6 +138,7 @@ describe("V1Client", () => {
                     },
                 ],
                 placerAppointmentId: "placer_appointment_id",
+                placerSystemName: "placer_system_name",
                 attendingDoctor: {
                     name: {
                         family: "family",
@@ -704,6 +706,16 @@ describe("V1Client", () => {
                         orcon: true,
                         advanced_directives: ["NONE", "NONE"],
                         hipaa_code: "hipaa_code",
+                        custom_metadata: [
+                            {
+                                metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                key_value_pairs: { key_value_pairs: { key: "value" } },
+                            },
+                            {
+                                metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                key_value_pairs: { key_value_pairs: { key: "value" } },
+                            },
+                        ],
                     },
                     start_time: "2024-01-15T09:30:00Z",
                     status: "PENDING",
@@ -1176,6 +1188,16 @@ describe("V1Client", () => {
                         orcon: true,
                         advanced_directives: ["NONE", "NONE"],
                         hipaa_code: "hipaa_code",
+                        custom_metadata: [
+                            {
+                                metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                key_value_pairs: { key_value_pairs: { key: "value" } },
+                            },
+                            {
+                                metadata_schema_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                key_value_pairs: { key_value_pairs: { key: "value" } },
+                            },
+                        ],
                     },
                     start_time: "2024-01-15T09:30:00Z",
                     status: "PENDING",
@@ -1884,6 +1906,28 @@ describe("V1Client", () => {
                             orcon: true,
                             advancedDirectives: ["NONE", "NONE"],
                             hipaaCode: "hipaa_code",
+                            customMetadata: [
+                                {
+                                    metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    keyValuePairs: {
+                                        key_value_pairs: {
+                                            key: "value",
+                                        },
+                                    },
+                                },
+                                {
+                                    metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    keyValuePairs: {
+                                        key_value_pairs: {
+                                            key: "value",
+                                        },
+                                    },
+                                },
+                            ],
                         },
                         startTime: new Date("2024-01-15T09:30:00.000Z"),
                         status: "PENDING",
@@ -2578,6 +2622,28 @@ describe("V1Client", () => {
                             orcon: true,
                             advancedDirectives: ["NONE", "NONE"],
                             hipaaCode: "hipaa_code",
+                            customMetadata: [
+                                {
+                                    metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    keyValuePairs: {
+                                        key_value_pairs: {
+                                            key: "value",
+                                        },
+                                    },
+                                },
+                                {
+                                    metadataSchemaId: CandidApi.preEncounter.MetadataSchemaId(
+                                        "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                                    ),
+                                    keyValuePairs: {
+                                        key_value_pairs: {
+                                            key: "value",
+                                        },
+                                    },
+                                },
+                            ],
                         },
                         startTime: new Date("2024-01-15T09:30:00.000Z"),
                         status: "PENDING",
@@ -2666,6 +2732,7 @@ describe("V1Client", () => {
                 { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
             ],
             placer_appointment_id: "placer_appointment_id",
+            placer_system_name: "placer_system_name",
             attending_doctor: {
                 name: {
                     family: "family",
@@ -2757,6 +2824,7 @@ describe("V1Client", () => {
                     },
                 ],
                 placerAppointmentId: "placer_appointment_id",
+                placerSystemName: "placer_system_name",
                 attendingDoctor: {
                     name: {
                         family: "family",
@@ -2879,6 +2947,7 @@ describe("V1Client", () => {
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
                 ],
                 placer_appointment_id: "placer_appointment_id",
+                placer_system_name: "placer_system_name",
                 attending_doctor: {
                     name: {
                         family: "family",
@@ -2953,6 +3022,7 @@ describe("V1Client", () => {
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
                 ],
                 placer_appointment_id: "placer_appointment_id",
+                placer_system_name: "placer_system_name",
                 attending_doctor: {
                     name: {
                         family: "family",
@@ -3048,6 +3118,7 @@ describe("V1Client", () => {
                         },
                     ],
                     placerAppointmentId: "placer_appointment_id",
+                    placerSystemName: "placer_system_name",
                     attendingDoctor: {
                         name: {
                             family: "family",
@@ -3160,6 +3231,7 @@ describe("V1Client", () => {
                         },
                     ],
                     placerAppointmentId: "placer_appointment_id",
+                    placerSystemName: "placer_system_name",
                     attendingDoctor: {
                         name: {
                             family: "family",
@@ -3289,6 +3361,7 @@ describe("V1Client", () => {
                 { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
             ],
             placer_appointment_id: "placer_appointment_id",
+            placer_system_name: "placer_system_name",
             attending_doctor: {
                 name: {
                     family: "family",
@@ -3390,6 +3463,7 @@ describe("V1Client", () => {
                     },
                 ],
                 placerAppointmentId: "placer_appointment_id",
+                placerSystemName: "placer_system_name",
                 attendingDoctor: {
                     name: {
                         family: "family",
@@ -3512,6 +3586,7 @@ describe("V1Client", () => {
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
                 ],
                 placer_appointment_id: "placer_appointment_id",
+                placer_system_name: "placer_system_name",
                 attending_doctor: {
                     name: {
                         family: "family",
@@ -3586,6 +3661,7 @@ describe("V1Client", () => {
                     { universal_service_identifier: "MD_Visit", start_timestamp: "2024-01-15T09:30:00Z" },
                 ],
                 placer_appointment_id: "placer_appointment_id",
+                placer_system_name: "placer_system_name",
                 attending_doctor: {
                     name: {
                         family: "family",
@@ -3681,6 +3757,7 @@ describe("V1Client", () => {
                         },
                     ],
                     placerAppointmentId: "placer_appointment_id",
+                    placerSystemName: "placer_system_name",
                     attendingDoctor: {
                         name: {
                             family: "family",
@@ -3793,6 +3870,7 @@ describe("V1Client", () => {
                         },
                     ],
                     placerAppointmentId: "placer_appointment_id",
+                    placerSystemName: "placer_system_name",
                     attendingDoctor: {
                         name: {
                             family: "family",

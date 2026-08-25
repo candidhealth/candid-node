@@ -7,4 +7,8 @@ export interface ProviderAttachment {
     organizationProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId;
     fileName: string;
     fileType: CandidApi.organizationProviders.v3.ProviderAttachmentFileType;
+    description: string;
+    contentType: string;
+    createdAt: Date;
+    createdBy: CandidApi.users.v2.UserV2;
 }

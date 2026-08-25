@@ -71,4 +71,6 @@ export interface MutablePatient {
     orcon?: boolean;
     advancedDirectives?: CandidApi.preEncounter.patients.v1.AdvancedDirective[];
     hipaaCode?: string;
+    /** Custom key/value metadata attached to this patient, grouped by the MetadataSchema that defines the keys' types. Configure schemas via the metadata-schemas API. Values are validated against the referenced schema on write. */
+    customMetadata?: CandidApi.preEncounter.patients.v1.CustomMetadataEntry[];
 }

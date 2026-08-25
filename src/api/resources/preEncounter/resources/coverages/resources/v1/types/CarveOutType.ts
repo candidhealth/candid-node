@@ -4,5 +4,6 @@ export const CarveOutType = {
     Behavioral: "BEHAVIORAL",
     Medical: "MEDICAL",
     Therapy: "THERAPY",
+    Other: "OTHER",
 } as const;
 export type CarveOutType = (typeof CarveOutType)[keyof typeof CarveOutType];

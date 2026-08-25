@@ -3,6 +3,7 @@ export * from "./Authorization";
 export * from "./AuthorizationUnit";
 export * from "./Contact";
 export * from "./CoveragesForRelatedCauses";
+export * from "./CustomMetadataEntry";
 export * from "./DoNotInvoiceReason";
 export * from "./ElectronicCommunicationConsent";
 export * from "./EligibilityAuditEventType";

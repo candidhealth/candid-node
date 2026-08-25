@@ -23,6 +23,7 @@ import { AdvancedDirective } from "./AdvancedDirective";
 import { Authorization } from "./Authorization";
 import { Contact } from "./Contact";
 import { CoveragesForRelatedCauses } from "./CoveragesForRelatedCauses";
+import { CustomMetadataEntry } from "./CustomMetadataEntry";
 import { DoNotInvoiceReason } from "./DoNotInvoiceReason";
 import { ElectronicCommunicationConsent } from "./ElectronicCommunicationConsent";
 import { ExternalProvenance } from "./ExternalProvenance";
@@ -115,6 +116,10 @@ export const MutablePatient: core.serialization.ObjectSchema<
         core.serialization.list(AdvancedDirective).optional(),
     ),
     hipaaCode: core.serialization.property("hipaa_code", core.serialization.string().optional()),
+    customMetadata: core.serialization.property(
+        "custom_metadata",
+        core.serialization.list(CustomMetadataEntry).optional(),
+    ),
 });
 
 export declare namespace MutablePatient {
@@ -164,5 +169,6 @@ export declare namespace MutablePatient {
         orcon?: boolean | null;
         advanced_directives?: AdvancedDirective.Raw[] | null;
         hipaa_code?: string | null;
+        custom_metadata?: CustomMetadataEntry.Raw[] | null;
     }
 }

@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { DelayReasonCode } from "../../../../commons/types/DelayReasonCode";
 import { EncounterExternalId } from "../../../../commons/types/EncounterExternalId";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
+import { Npi } from "../../../../commons/types/Npi";
 import { TagId } from "../../../../tags/types/TagId";
 import { BillableStatusType } from "./BillableStatusType";
 import { PriorAuthorizationNumber } from "./PriorAuthorizationNumber";
@@ -42,6 +43,12 @@ export const EncounterOptional: core.serialization.ObjectSchema<
         "additional_information",
         core.serialization.string().optional(),
     ),
+    outsideLab: core.serialization.property("outside_lab", core.serialization.boolean().optional()),
+    outsideLabChargesAmountCents: core.serialization.property(
+        "outside_lab_charges_amount_cents",
+        core.serialization.number().optional(),
+    ),
+    purchasedServiceProviderNpi: core.serialization.property("purchased_service_provider_npi", Npi.optional()),
     serviceAuthorizationExceptionCode: core.serialization.property(
         "service_authorization_exception_code",
         ServiceAuthorizationExceptionCode.optional(),
@@ -83,6 +90,9 @@ export declare namespace EncounterOptional {
         appointment_type?: string | null;
         end_date_of_service?: string | null;
         additional_information?: string | null;
+        outside_lab?: boolean | null;
+        outside_lab_charges_amount_cents?: number | null;
+        purchased_service_provider_npi?: Npi.Raw | null;
         service_authorization_exception_code?: ServiceAuthorizationExceptionCode.Raw | null;
         admission_date?: string | null;
         discharge_date?: string | null;

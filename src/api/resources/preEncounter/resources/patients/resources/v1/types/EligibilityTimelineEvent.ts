@@ -11,6 +11,7 @@ export interface EligibilityTimelineEvent {
     patientId: CandidApi.preEncounter.PatientId;
     coverageId?: CandidApi.preEncounter.CoverageId;
     appointmentId?: CandidApi.preEncounter.AppointmentId;
+    appointmentDate?: Date;
     timestamp: Date;
     userId: string;
     /** Actor display name; "Candid Health" for automated writes. */

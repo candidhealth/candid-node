@@ -9,6 +9,8 @@ export interface CreateNonInsurancePayerRequest {
     description?: string;
     /** Max 255 characters allowed */
     category?: string;
+    /** The identifier used to route claims to this payer. Required in order to submit an 837 to this payer. Must be between 2 and 80 characters. */
+    payerId?: string;
     address?: CandidApi.StreetAddressShortZip;
     /** The same name cannot be used across several clinical trials */
     clinicalTrials?: CandidApi.clinicalTrials.v1.MutableClinicalTrial[];

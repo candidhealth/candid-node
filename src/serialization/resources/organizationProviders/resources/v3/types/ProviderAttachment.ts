@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { UserV2 } from "../../../../users/resources/v2/types/UserV2";
 import { OrganizationProviderId } from "../../v2/types/OrganizationProviderId";
 import { ProviderAttachmentFileType } from "./ProviderAttachmentFileType";
 import { ProviderAttachmentId } from "./ProviderAttachmentId";
@@ -15,6 +16,10 @@ export const ProviderAttachment: core.serialization.ObjectSchema<
     organizationProviderId: core.serialization.property("organization_provider_id", OrganizationProviderId),
     fileName: core.serialization.property("file_name", core.serialization.string()),
     fileType: core.serialization.property("file_type", ProviderAttachmentFileType),
+    description: core.serialization.string(),
+    contentType: core.serialization.property("content_type", core.serialization.string()),
+    createdAt: core.serialization.property("created_at", core.serialization.date()),
+    createdBy: core.serialization.property("created_by", UserV2),
 });
 
 export declare namespace ProviderAttachment {
@@ -23,5 +28,9 @@ export declare namespace ProviderAttachment {
         organization_provider_id: OrganizationProviderId.Raw;
         file_name: string;
         file_type: ProviderAttachmentFileType.Raw;
+        description: string;
+        content_type: string;
+        created_at: string;
+        created_by: UserV2.Raw;
     }
 }

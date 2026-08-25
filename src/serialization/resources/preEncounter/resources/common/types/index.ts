@@ -22,6 +22,7 @@ export * from "./ExternalProviderType";
 export * from "./FilterQueryString";
 export * from "./Gender";
 export * from "./HumanName";
+export * from "./MetadataSchemaId";
 export * from "./NameUse";
 export * from "./NoteId";
 export * from "./OrganizationId";

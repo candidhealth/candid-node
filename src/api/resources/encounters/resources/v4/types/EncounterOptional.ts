@@ -49,6 +49,21 @@ export interface EncounterOptional {
      */
     additionalInformation?: string;
     /**
+     * Indicates whether lab services were performed outside the billing entity.
+     * Box 20 (Yes/No) on the CMS-1500 claim form.
+     */
+    outsideLab?: boolean;
+    /**
+     * The charges associated with outside lab services, in cents.
+     * Box 20 (Charges) on the CMS-1500 claim form. Applicable when outside_lab is true.
+     */
+    outsideLabChargesAmountCents?: number;
+    /**
+     * NPI of the provider that performed the outside lab service.
+     * Box 20 on the CMS-1500 claim form. Required to record outside lab charges.
+     */
+    purchasedServiceProviderNpi?: CandidApi.Npi;
+    /**
      * 837p Loop2300 REF*4N
      * Required when mandated by government law or regulation to obtain authorization for specific service(s) but, for the
      * reasons listed in one of the enum values of ServiceAuthorizationExceptionCode, the service was performed without

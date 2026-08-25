@@ -12,5 +12,6 @@ export const PatientTransactionSource = {
     Phreesia: "PHREESIA",
     Instamed: "INSTAMED",
     SherpaHealth: "SHERPA_HEALTH",
+    Lockbox: "LOCKBOX",
 } as const;
 export type PatientTransactionSource = (typeof PatientTransactionSource)[keyof typeof PatientTransactionSource];

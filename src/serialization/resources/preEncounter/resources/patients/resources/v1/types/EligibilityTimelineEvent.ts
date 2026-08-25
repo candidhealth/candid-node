@@ -17,6 +17,7 @@ export const EligibilityTimelineEvent: core.serialization.ObjectSchema<
     patientId: core.serialization.property("patient_id", PatientId),
     coverageId: core.serialization.property("coverage_id", CoverageId.optional()),
     appointmentId: core.serialization.property("appointment_id", AppointmentId.optional()),
+    appointmentDate: core.serialization.property("appointment_date", core.serialization.date().optional()),
     timestamp: core.serialization.date(),
     userId: core.serialization.property("user_id", core.serialization.string()),
     userName: core.serialization.property("user_name", core.serialization.string()),
@@ -30,6 +31,7 @@ export declare namespace EligibilityTimelineEvent {
         patient_id: PatientId.Raw;
         coverage_id?: CoverageId.Raw | null;
         appointment_id?: AppointmentId.Raw | null;
+        appointment_date?: string | null;
         timestamp: string;
         user_id: string;
         user_name: string;

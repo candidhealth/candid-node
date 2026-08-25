@@ -6,6 +6,7 @@ export * from "./NonInsurancePayerCategoryUpdate";
 export * from "./NonInsurancePayerDescriptionUpdate";
 export * from "./NonInsurancePayerId";
 export * from "./NonInsurancePayerPage";
+export * from "./NonInsurancePayerPayerIdUpdate";
 export * from "./NonInsurancePayerSortField";
 export * from "./NonInsurancePayerUpdateRequest";
 export * from "./ToggleNonInsurancePayerEnablementRequest";

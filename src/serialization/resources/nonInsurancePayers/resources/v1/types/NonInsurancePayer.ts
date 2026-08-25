@@ -15,6 +15,7 @@ export const NonInsurancePayer: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     description: core.serialization.string().optional(),
     category: core.serialization.string().optional(),
+    payerId: core.serialization.property("payer_id", core.serialization.string().optional()),
     enabled: core.serialization.boolean(),
     address: StreetAddressShortZip.optional(),
     clinicalTrials: core.serialization.property("clinical_trials", core.serialization.list(ClinicalTrial)),
@@ -26,6 +27,7 @@ export declare namespace NonInsurancePayer {
         name: string;
         description?: string | null;
         category?: string | null;
+        payer_id?: string | null;
         enabled: boolean;
         address?: StreetAddressShortZip.Raw | null;
         clinical_trials: ClinicalTrial.Raw[];

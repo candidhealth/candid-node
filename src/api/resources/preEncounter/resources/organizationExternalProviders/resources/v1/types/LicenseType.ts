@@ -107,5 +107,8 @@ export const LicenseType = {
     Aud: "AuD",
     Atc: "ATC",
     Lat: "LAT",
+    Ota: "OTA",
+    Lssp: "LSSP",
+    Slpa: "SLPA",
 } as const;
 export type LicenseType = (typeof LicenseType)[keyof typeof LicenseType];
