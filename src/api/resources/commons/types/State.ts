@@ -63,5 +63,8 @@ export const State = {
     Wv: "WV",
     Wi: "WI",
     Wy: "WY",
+    /**
+     * Indicates an international (non-US) address. */
+    Fc: "FC",
 } as const;
 export type State = (typeof State)[keyof typeof State];

@@ -13143,6 +13143,10 @@ describe("V1Client", () => {
                             "followupAction?": "followupAction?",
                         },
                     ],
+                    request_corrections: [
+                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
+                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
+                    ],
                 },
                 benefits: {
                     plan_coverage: {
@@ -13354,6 +13358,10 @@ describe("V1Client", () => {
                             "code?": "code?",
                             "followupAction?": "followupAction?",
                         },
+                    ],
+                    request_corrections: [
+                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
+                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
                 },
                 benefits: {
@@ -13567,6 +13575,10 @@ describe("V1Client", () => {
                             "followupAction?": "followupAction?",
                         },
                     ],
+                    request_corrections: [
+                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
+                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
+                    ],
                 },
                 benefits: {
                     plan_coverage: {
@@ -13778,6 +13790,18 @@ describe("V1Client", () => {
                                 "possibleResolutions?": "possibleResolutions?",
                                 "code?": "code?",
                                 "followupAction?": "followupAction?",
+                            },
+                        ],
+                        request_corrections: [
+                            {
+                                property: "property",
+                                request_value: "request_value",
+                                corrected_value: "corrected_value",
+                            },
+                            {
+                                property: "property",
+                                request_value: "request_value",
+                                corrected_value: "corrected_value",
                             },
                         ],
                     },
@@ -14010,6 +14034,18 @@ describe("V1Client", () => {
                                 "possibleResolutions?": "possibleResolutions?",
                                 "code?": "code?",
                                 "followupAction?": "followupAction?",
+                            },
+                        ],
+                        request_corrections: [
+                            {
+                                property: "property",
+                                request_value: "request_value",
+                                corrected_value: "corrected_value",
+                            },
+                            {
+                                property: "property",
+                                request_value: "request_value",
+                                corrected_value: "corrected_value",
                             },
                         ],
                     },
@@ -15144,6 +15180,18 @@ describe("V1Client", () => {
                                 followupAction: "followupAction?",
                             },
                         ],
+                        requestCorrections: [
+                            {
+                                property: "property",
+                                requestValue: "request_value",
+                                correctedValue: "corrected_value",
+                            },
+                            {
+                                property: "property",
+                                requestValue: "request_value",
+                                correctedValue: "corrected_value",
+                            },
+                        ],
                     },
                     benefits: {
                         planCoverage: {
@@ -15396,6 +15444,18 @@ describe("V1Client", () => {
                                 followupAction: "followupAction?",
                             },
                         ],
+                        requestCorrections: [
+                            {
+                                property: "property",
+                                requestValue: "request_value",
+                                correctedValue: "corrected_value",
+                            },
+                            {
+                                property: "property",
+                                requestValue: "request_value",
+                                correctedValue: "corrected_value",
+                            },
+                        ],
                     },
                     benefits: {
                         planCoverage: {
@@ -15646,6 +15706,18 @@ describe("V1Client", () => {
                                 possibleResolutions: "possibleResolutions?",
                                 code: "code?",
                                 followupAction: "followupAction?",
+                            },
+                        ],
+                        requestCorrections: [
+                            {
+                                property: "property",
+                                requestValue: "request_value",
+                                correctedValue: "corrected_value",
+                            },
+                            {
+                                property: "property",
+                                requestValue: "request_value",
+                                correctedValue: "corrected_value",
                             },
                         ],
                     },
@@ -15901,6 +15973,18 @@ describe("V1Client", () => {
                                     followupAction: "followupAction?",
                                 },
                             ],
+                            requestCorrections: [
+                                {
+                                    property: "property",
+                                    requestValue: "request_value",
+                                    correctedValue: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    requestValue: "request_value",
+                                    correctedValue: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             planCoverage: {
@@ -16151,6 +16235,18 @@ describe("V1Client", () => {
                                     possibleResolutions: "possibleResolutions?",
                                     code: "code?",
                                     followupAction: "followupAction?",
+                                },
+                            ],
+                            requestCorrections: [
+                                {
+                                    property: "property",
+                                    requestValue: "request_value",
+                                    correctedValue: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    requestValue: "request_value",
+                                    correctedValue: "corrected_value",
                                 },
                             ],
                         },

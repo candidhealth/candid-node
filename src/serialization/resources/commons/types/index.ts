@@ -24,6 +24,7 @@ export * from "./EntityNotFoundErrorMessage";
 export * from "./EpsdtReferralConditionIndicatorCode";
 export * from "./ErrorMessage";
 export * from "./FacilityTypeCode";
+export * from "./HttpServiceUnavailableErrorMessage";
 export * from "./InsuranceTypeCode";
 export * from "./IntendedSubmissionMedium";
 export * from "./InternalErrorMessage";

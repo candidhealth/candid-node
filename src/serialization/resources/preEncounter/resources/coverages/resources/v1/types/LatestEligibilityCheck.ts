@@ -5,6 +5,7 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { EligibilityCheckErrorDetails } from "../../../../eligibilityChecks/resources/v1/types/EligibilityCheckErrorDetails";
 import { EligibilityStatus } from "../../../../eligibilityChecks/resources/v1/types/EligibilityStatus";
+import { RequestCorrection } from "../../../../eligibilityChecks/resources/v1/types/RequestCorrection";
 
 export const LatestEligibilityCheck: core.serialization.ObjectSchema<
     serializers.preEncounter.coverages.v1.LatestEligibilityCheck.Raw,
@@ -14,6 +15,10 @@ export const LatestEligibilityCheck: core.serialization.ObjectSchema<
     status: EligibilityStatus,
     initiatedAt: core.serialization.property("initiated_at", core.serialization.date()),
     errors: core.serialization.list(EligibilityCheckErrorDetails).optional(),
+    requestCorrections: core.serialization.property(
+        "request_corrections",
+        core.serialization.list(RequestCorrection).optional(),
+    ),
 });
 
 export declare namespace LatestEligibilityCheck {
@@ -22,5 +27,6 @@ export declare namespace LatestEligibilityCheck {
         status: EligibilityStatus.Raw;
         initiated_at: string;
         errors?: EligibilityCheckErrorDetails.Raw[] | null;
+        request_corrections?: RequestCorrection.Raw[] | null;
     }
 }

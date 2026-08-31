@@ -10,4 +10,6 @@ export interface LatestEligibilityCheck {
     status: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityStatus;
     initiatedAt: Date;
     errors?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckErrorDetails[];
+    /** Fields where the payer's 271 response disagreed with what we sent on the request, surfaced from the check so consumers can detect that the eligibility response contradicted the coverage on file. Empty when the payer echoed everything we sent. */
+    requestCorrections?: CandidApi.preEncounter.eligibilityChecks.v1.RequestCorrection[];
 }

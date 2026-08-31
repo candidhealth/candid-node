@@ -14,4 +14,6 @@ export interface PlanMetadata {
     planDates?: CandidApi.preEncounter.coverages.v1.PlanDate[];
     subscriber?: CandidApi.preEncounter.coverages.v1.ExpandedMemberInfo;
     dependent?: CandidApi.preEncounter.coverages.v1.ExpandedMemberInfo;
+    /** The payer's own identifier as returned on the Stedi eligibility response (271) `tradingPartnerServiceId`. Reflects the payer's internal concept of their ID, which may differ from the ID Stedi routes on. */
+    tradingPartner?: string;
 }

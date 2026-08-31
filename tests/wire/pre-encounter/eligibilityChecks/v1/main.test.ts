@@ -124,6 +124,7 @@ describe("V1Client", () => {
                             country_sub_division_code: "country_sub_division_code",
                         },
                     },
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -355,6 +356,7 @@ describe("V1Client", () => {
                                 countrySubDivisionCode: "country_sub_division_code",
                             },
                         },
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {
@@ -648,6 +650,7 @@ describe("V1Client", () => {
                                 gender: "gender",
                                 address: {},
                             },
+                            trading_partner: "trading_partner",
                         },
                         benefits: {
                             plan_coverage: {
@@ -768,6 +771,7 @@ describe("V1Client", () => {
                                 gender: "gender",
                                 address: {},
                             },
+                            trading_partner: "trading_partner",
                         },
                         benefits: {
                             plan_coverage: {
@@ -918,6 +922,7 @@ describe("V1Client", () => {
                                     gender: "gender",
                                     address: {},
                                 },
+                                tradingPartner: "trading_partner",
                             },
                             benefits: {
                                 planCoverage: {
@@ -1065,6 +1070,7 @@ describe("V1Client", () => {
                                     gender: "gender",
                                     address: {},
                                 },
+                                tradingPartner: "trading_partner",
                             },
                             benefits: {
                                 planCoverage: {
@@ -1746,6 +1752,7 @@ describe("V1Client", () => {
                                 gender: "gender",
                                 address: {},
                             },
+                            trading_partner: "trading_partner",
                         },
                         benefits: {
                             plan_coverage: {
@@ -1866,6 +1873,7 @@ describe("V1Client", () => {
                                 gender: "gender",
                                 address: {},
                             },
+                            trading_partner: "trading_partner",
                         },
                         benefits: {
                             plan_coverage: {
@@ -2016,6 +2024,7 @@ describe("V1Client", () => {
                                     gender: "gender",
                                     address: {},
                                 },
+                                tradingPartner: "trading_partner",
                             },
                             benefits: {
                                 planCoverage: {
@@ -2163,6 +2172,7 @@ describe("V1Client", () => {
                                     gender: "gender",
                                     address: {},
                                 },
+                                tradingPartner: "trading_partner",
                             },
                             benefits: {
                                 planCoverage: {

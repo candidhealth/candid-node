@@ -594,6 +594,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -723,6 +735,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -852,6 +876,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -1526,6 +1562,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -1655,6 +1703,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -1784,6 +1844,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -2712,6 +2784,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -2862,6 +2946,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -3012,6 +3108,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -3960,6 +4068,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -4110,6 +4230,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -4260,6 +4392,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -5059,6 +5203,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -5188,6 +5344,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -5865,6 +6033,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -5994,6 +6174,18 @@ describe("V1Client", () => {
                             status: "ACTIVE",
                             initiated_at: "2024-01-15T09:30:00Z",
                             errors: [{}, {}],
+                            request_corrections: [
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                                {
+                                    property: "property",
+                                    request_value: "request_value",
+                                    corrected_value: "corrected_value",
+                                },
+                            ],
                         },
                         benefits: {
                             plan_coverage: {
@@ -6957,6 +7149,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -7107,6 +7311,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -8061,6 +8277,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {
@@ -8211,6 +8439,18 @@ describe("V1Client", () => {
                                 status: "ACTIVE",
                                 initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
                                 errors: [{}, {}],
+                                requestCorrections: [
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                    {
+                                        property: "property",
+                                        requestValue: "request_value",
+                                        correctedValue: "corrected_value",
+                                    },
+                                ],
                             },
                             benefits: {
                                 planCoverage: {

@@ -67,6 +67,7 @@ export const State: core.serialization.Schema<serializers.State.Raw, CandidApi.S
     "WV",
     "WI",
     "WY",
+    "FC",
 ]);
 
 export declare namespace State {
@@ -132,5 +133,6 @@ export declare namespace State {
         | "WA"
         | "WV"
         | "WI"
-        | "WY";
+        | "WY"
+        | "FC";
 }

@@ -2712,6 +2712,82 @@ await client.customSchemas.v1.update(CandidApi.SchemaId("ec096b13-f80a-471d-aaeb
 </dl>
 </details>
 
+## Dashboarding V1
+<details><summary><code>client.dashboarding.v1.<a href="/src/api/resources/dashboarding/resources/v1/client/Client.ts">queryMetrics</a>({ ...params }) -> core.APIResponse&lt;CandidApi.MetricsQueryResponse, CandidApi.dashboarding.v1.queryMetrics.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves values for one or more metrics. Each metric is computed independently, so a
+metric that cannot be resolved returns an `error` on its own result rather than failing
+the request.
+
+Each query reads current state by default. Count metrics also accept a `yesterday`
+snapshot, so day-over-day change is computed by querying both and taking the difference.
+
+See the [Metrics Reference](/docs/dashboarding-metrics) for the full catalog, including
+value types and staleness SLAs.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.dashboarding.v1.queryMetrics([{
+        metric: "patient_total_balance_v1"
+    }, {
+        metric: "patient_total_balance_v1"
+    }]);
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MetricQuery[]` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Eligibility V2
 <details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheckAvaility</a>() -> core.APIResponse&lt;unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error&gt;</code></summary>
 <dl>
@@ -4634,6 +4710,48 @@ await client.encounters.v4.update(CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0
 <dd>
 
 **requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## EnterpriseConfig V1
+<details><summary><code>client.enterpriseConfig.v1.<a href="/src/api/resources/enterpriseConfig/resources/v1/client/Client.ts">get</a>() -> core.APIResponse&lt;CandidApi.EnterprisePermissions, CandidApi.enterpriseConfig.v1.get.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.enterpriseConfig.v1.get();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
     
 </dd>
 </dl>

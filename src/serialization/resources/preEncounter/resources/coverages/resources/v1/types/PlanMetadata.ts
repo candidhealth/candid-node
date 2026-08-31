@@ -21,6 +21,7 @@ export const PlanMetadata: core.serialization.ObjectSchema<
     planDates: core.serialization.property("plan_dates", core.serialization.list(PlanDate).optional()),
     subscriber: ExpandedMemberInfo.optional(),
     dependent: ExpandedMemberInfo.optional(),
+    tradingPartner: core.serialization.property("trading_partner", core.serialization.string().optional()),
 });
 
 export declare namespace PlanMetadata {
@@ -36,5 +37,6 @@ export declare namespace PlanMetadata {
         plan_dates?: PlanDate.Raw[] | null;
         subscriber?: ExpandedMemberInfo.Raw | null;
         dependent?: ExpandedMemberInfo.Raw | null;
+        trading_partner?: string | null;
     }
 }

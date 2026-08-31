@@ -7,12 +7,14 @@ import { ChargeCaptureBundlesClient } from "./api/resources/chargeCaptureBundles
 import { ContractsClient } from "./api/resources/contracts/client/Client";
 import { CredentialingClient } from "./api/resources/credentialing/client/Client";
 import { CustomSchemasClient } from "./api/resources/customSchemas/client/Client";
+import { DashboardingClient } from "./api/resources/dashboarding/client/Client";
 import { DiagnosesClient } from "./api/resources/diagnoses/client/Client";
 import { EligibilityClient } from "./api/resources/eligibility/client/Client";
 import { EncounterAttachmentsClient } from "./api/resources/encounterAttachments/client/Client";
 import { EncounterProvidersClient } from "./api/resources/encounterProviders/client/Client";
 import { EncounterSupplementalInformationClient } from "./api/resources/encounterSupplementalInformation/client/Client";
 import { EncountersClient } from "./api/resources/encounters/client/Client";
+import { EnterpriseConfigClient } from "./api/resources/enterpriseConfig/client/Client";
 import { EventsClient } from "./api/resources/events/client/Client";
 import { ExportsClient } from "./api/resources/exports/client/Client";
 import { ExternalPaymentAccountConfigClient } from "./api/resources/externalPaymentAccountConfig/client/Client";
@@ -59,11 +61,13 @@ export class CandidApiClient {
     protected _contracts: ContractsClient | undefined;
     protected _credentialing: CredentialingClient | undefined;
     protected _customSchemas: CustomSchemasClient | undefined;
+    protected _dashboarding: DashboardingClient | undefined;
     protected _eligibility: EligibilityClient | undefined;
     protected _encounterAttachments: EncounterAttachmentsClient | undefined;
     protected _encounterProviders: EncounterProvidersClient | undefined;
     protected _encounterSupplementalInformation: EncounterSupplementalInformationClient | undefined;
     protected _encounters: EncountersClient | undefined;
+    protected _enterpriseConfig: EnterpriseConfigClient | undefined;
     protected _events: EventsClient | undefined;
     protected _exports: ExportsClient | undefined;
     protected _externalPaymentAccountConfig: ExternalPaymentAccountConfigClient | undefined;
@@ -124,6 +128,10 @@ export class CandidApiClient {
         return (this._customSchemas ??= new CustomSchemasClient(this._options));
     }
 
+    public get dashboarding(): DashboardingClient {
+        return (this._dashboarding ??= new DashboardingClient(this._options));
+    }
+
     public get eligibility(): EligibilityClient {
         return (this._eligibility ??= new EligibilityClient(this._options));
     }
@@ -142,6 +150,10 @@ export class CandidApiClient {
 
     public get encounters(): EncountersClient {
         return (this._encounters ??= new EncountersClient(this._options));
+    }
+
+    public get enterpriseConfig(): EnterpriseConfigClient {
+        return (this._enterpriseConfig ??= new EnterpriseConfigClient(this._options));
     }
 
     public get events(): EventsClient {

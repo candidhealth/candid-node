@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { EncounterId } from "../../../../commons/types/EncounterId";
+import { OrganizationId } from "../../../../commons/types/OrganizationId";
 import { TaskId } from "../../../../commons/types/TaskId";
 import { ConfigurableRuleId } from "../../../../pipelineCommons/types/ConfigurableRuleId";
 import { RuleId } from "../../../../pipelineCommons/types/RuleId";
@@ -35,6 +36,7 @@ export const Task: core.serialization.ObjectSchema<serializers.tasks.v3.Task.Raw
         category: TaskCategory.optional(),
         configurableRuleId: core.serialization.property("configurable_rule_id", ConfigurableRuleId.optional()),
         persistedRuleId: core.serialization.property("persisted_rule_id", RuleId.optional()),
+        organizationId: core.serialization.property("organization_id", OrganizationId.optional()),
     });
 
 export declare namespace Task {
@@ -59,5 +61,6 @@ export declare namespace Task {
         category?: TaskCategory.Raw | null;
         configurable_rule_id?: ConfigurableRuleId.Raw | null;
         persisted_rule_id?: RuleId.Raw | null;
+        organization_id?: OrganizationId.Raw | null;
     }
 }
