@@ -8,4 +8,6 @@ export interface EnterprisePermissions {
     writeQueues: boolean;
     /** Whether the requesting organization may create and manage rules and rule variables. */
     writeRules: boolean;
+    /** Whether the requesting organization may create and manage cross customer rules. */
+    writeCrossCustomerRules: boolean;
 }

@@ -10,11 +10,13 @@ export const EnterprisePermissions: core.serialization.ObjectSchema<
 > = core.serialization.object({
     writeQueues: core.serialization.property("write_queues", core.serialization.boolean()),
     writeRules: core.serialization.property("write_rules", core.serialization.boolean()),
+    writeCrossCustomerRules: core.serialization.property("write_cross_customer_rules", core.serialization.boolean()),
 });
 
 export declare namespace EnterprisePermissions {
     export interface Raw {
         write_queues: boolean;
         write_rules: boolean;
+        write_cross_customer_rules: boolean;
     }
 }

@@ -13,6 +13,10 @@ export const PatientWriteOffCreate: core.serialization.ObjectSchema<
     writeOffTimestamp: core.serialization.property("write_off_timestamp", core.serialization.date()),
     writeOffNote: core.serialization.property("write_off_note", core.serialization.string().optional()),
     writeOffReason: core.serialization.property("write_off_reason", PatientWriteOffReason),
+    customWriteOffReason: core.serialization.property(
+        "custom_write_off_reason",
+        core.serialization.string().optional(),
+    ),
     serviceLineId: core.serialization.property("service_line_id", ServiceLineId),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
 });
@@ -22,6 +26,7 @@ export declare namespace PatientWriteOffCreate {
         write_off_timestamp: string;
         write_off_note?: string | null;
         write_off_reason: PatientWriteOffReason.Raw;
+        custom_write_off_reason?: string | null;
         service_line_id: ServiceLineId.Raw;
         amount_cents: number;
     }

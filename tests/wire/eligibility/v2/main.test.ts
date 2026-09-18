@@ -71,4 +71,83 @@ describe("V2Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("find_availity_eligibility_results", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = {
+            member_id: "member_id",
+            payer_id: "payer_id",
+            date_of_service: "2024-01-15T09:30:00Z",
+            provider_npi: "provider_npi",
+        };
+        const rawResponseBody = {
+            results: [
+                {
+                    id: "id",
+                    dateOfService: "2024-01-15T09:30:00Z",
+                    payerId: "payerId",
+                    providerNPI: "providerNPI",
+                    dependent: "dependent",
+                    status: "ACTIVE",
+                },
+                {
+                    id: "id",
+                    dateOfService: "2024-01-15T09:30:00Z",
+                    payerId: "payerId",
+                    providerNPI: "providerNPI",
+                    dependent: "dependent",
+                    status: "ACTIVE",
+                },
+            ],
+        };
+
+        server
+            .mockEndpoint()
+            .post("/api/eligibility/v2/existing-checks")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.eligibility.v2.findAvailityEligibilityResults({
+            memberId: "member_id",
+            payerId: "payer_id",
+            dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+            providerNpi: "provider_npi",
+        });
+        expect(response).toEqual({
+            body: {
+                results: [
+                    {
+                        id: "id",
+                        dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+                        payerId: "payerId",
+                        providerNpi: "providerNPI",
+                        dependent: "dependent",
+                        status: "ACTIVE",
+                    },
+                    {
+                        id: "id",
+                        dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+                        payerId: "payerId",
+                        providerNpi: "providerNPI",
+                        dependent: "dependent",
+                        status: "ACTIVE",
+                    },
+                ],
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

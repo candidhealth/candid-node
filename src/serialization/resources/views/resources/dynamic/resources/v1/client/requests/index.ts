@@ -1,0 +1,1 @@
+export { ResolveDynamicView } from "./ResolveDynamicView";

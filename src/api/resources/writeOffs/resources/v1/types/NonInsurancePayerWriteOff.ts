@@ -9,6 +9,8 @@ export interface NonInsurancePayerWriteOff {
     writeOffTimestamp: Date;
     writeOffNote?: string;
     writeOffReason: CandidApi.writeOffs.v1.InsuranceWriteOffReason;
+    /** An organization-specific sub-reason */
+    customWriteOffReason?: string;
     revertsWriteOffId?: CandidApi.writeOffs.v1.WriteOffId;
     revertedByWriteOffId?: CandidApi.writeOffs.v1.WriteOffId;
     amountCents: number;

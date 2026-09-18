@@ -2941,6 +2941,60 @@ await client.eligibility.v2.submitEligibilityCheckAvailityPost({
 </dl>
 </details>
 
+<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">findAvailityEligibilityResults</a>({ ...params }) -> core.APIResponse&lt;CandidApi.FindAvailityEligibilityResultsResponse, CandidApi.eligibility.v2.findAvailityEligibilityResults.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.eligibility.v2.findAvailityEligibilityResults({
+    memberId: "member_id",
+    payerId: "payer_id",
+    dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+    providerNpi: "provider_npi"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.FindAvailityEligibilityResultsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## EncounterAttachments V1
 <details><summary><code>client.encounterAttachments.v1.<a href="/src/api/resources/encounterAttachments/resources/v1/client/Client.ts">get</a>(encounter_id) -> core.APIResponse&lt;CandidApi.EncounterAttachment[], CandidApi.encounterAttachments.v1.get.Error&gt;</code></summary>
 <dl>
@@ -10067,6 +10121,226 @@ await client.payers.v4.getAll();
 </dl>
 </details>
 
+## PreServiceRules V1
+<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">createEncounterRun</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PreServiceRunCreateResponse, CandidApi.preServiceRules.v1.createEncounterRun.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Submit a representation of an encounter to the Candid rules engine. Note that this encounter will not be created in Candid.
+Returns a run_id that can be polled via GET /runs/{run_id} to retrieve the results once complete.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preServiceRules.v1.createEncounterRun({
+    entity: {
+        externalId: "external_id",
+        patientAuthorizedRelease: true,
+        benefitsAssignedToProvider: true,
+        providerAcceptsAssignment: true,
+        patient: {
+            externalId: "external_id",
+            dateOfBirth: "2023-01-15",
+            address: {
+                address1: "address1",
+                city: "city",
+                state: "AA",
+                zipCode: "zip_code"
+            },
+            firstName: "first_name",
+            lastName: "last_name",
+            gender: "male"
+        },
+        responsibleParty: "INSURANCE_PAY",
+        billingProvider: {
+            address: {
+                zipPlusFourCode: "zip_plus_four_code",
+                address1: "address1",
+                city: "city",
+                state: "AA",
+                zipCode: "zip_code"
+            },
+            taxId: "tax_id",
+            npi: "npi"
+        },
+        submissionExpectation: "TARGET_PROFESSIONAL"
+    },
+    pipelineId: "pipeline_id",
+    enabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
+    disabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
+    idempotencyKey: "idempotency_key"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preServiceRules.v1.PreServiceEncounterRunCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">getRun</a>(run_id) -> core.APIResponse&lt;CandidApi.PreServiceRun, CandidApi.preServiceRules.v1.getRun.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the result of a pre-service run. This endpoint supports long-polling.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preServiceRules.v1.getRun(CandidApi.PreServiceRunId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**run_id:** `CandidApi.PreServiceRunId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">getPipelines</a>() -> core.APIResponse&lt;CandidApi.PreServicePipelineSummary[], CandidApi.preServiceRules.v1.getPipelines.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List the pre-service pipelines available to the authenticated organization.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preServiceRules.v1.getPipelines();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## ServiceLines V2
 <details><summary><code>client.serviceLines.v2.<a href="/src/api/resources/serviceLines/resources/v2/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ServiceLine, CandidApi.serviceLines.v2.create.Error&gt;</code></summary>
 <dl>
@@ -10707,6 +10981,79 @@ await client.users.v2.createM2MUserV2({
 <dd>
 
 **requestOptions:** `V2Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Views Dynamic V1
+<details><summary><code>client.views.dynamic.v1.<a href="/src/api/resources/views/resources/dynamic/resources/v1/client/Client.ts">resolve</a>(claim_dynamic_view_id, { ...params }) -> core.APIResponse&lt;CandidApi.EncounterSummaryPage, CandidApi.views.dynamic.v1.resolve.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resolves a dynamic view to the EncounterSummaries currently present in this view.
+Body parameters can include sorting controls.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.views.dynamic.v1.resolve(CandidApi.ClaimDynamicViewId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**claim_dynamic_view_id:** `CandidApi.ClaimDynamicViewId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.views.dynamic.v1.ResolveDynamicView` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
     
 </dd>
 </dl>
@@ -13092,6 +13439,136 @@ await client.preEncounter.eligibilityChecks.v1.coordinationOfBenefits({
 <dd>
 
 **request:** `CandidApi.CoordinationOfBenefitsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">encounterEligibility</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EncounterEligibilityResponse, CandidApi.preEncounter.eligibilityChecks.v1.encounterEligibility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns patient eligibility data regardless of clearinghouse. Uses the encounter id to get needed patient, date of service, etc data.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.encounterEligibility({
+    encounterId: "encounter_id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityHistoryRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">createEncounterEligibility</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EncounterEligibility, CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fetch an eligibility check for the patient for the date of service, npi, and payer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.createEncounterEligibility({
+    encounterId: "encounter_id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.EncounterEligibilityRequest` 
     
 </dd>
 </dl>

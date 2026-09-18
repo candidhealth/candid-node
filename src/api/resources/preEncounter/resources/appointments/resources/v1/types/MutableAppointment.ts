@@ -9,11 +9,11 @@ export interface MutableAppointment {
     /** The Candid-defined patient identifier. */
     patientId: CandidApi.preEncounter.PatientId;
     startTimestamp: Date;
-    /** Defaults to PENDING. If status is NOT_READY, work_queue must be set. If status is READY or CHECKED_IN, work_queue must be null. If status is CHECKED_IN, checked_in_timestamp must be set. If checked_in_timestamp is set, status must be CHECKED_IN. */
+    /** Defaults to PENDING. If status is NOT_READY, work_queue must be set. If status is READY, CHECKED_OUT, or NO_SHOW, work_queue must be null. checked_in_timestamp must be set if and only if status is CHECKED_IN or CHECKED_OUT, and checked_out_timestamp must be set if and only if status is CHECKED_OUT. */
     status?: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
     /** The reason the appointment is NOT_READY. Must only be set when status is NOT_READY; it is cleared otherwise. It is not recommended to change this value manually via API. */
     notReadyReason?: CandidApi.preEncounter.appointments.v1.NotReadyReason;
-    /** The method that set the appointment status to READY. It is not recommended to change this value manually via API. Must only be set when the status is READY or CHECKED_IN, it is cleared otherwise. */
+    /** The method that set the appointment status to READY. It is not recommended to change this value manually via API. Must only be set when the status is READY, CHECKED_IN, CHECKED_OUT or NO_SHOW, it is cleared otherwise. */
     readySource?: CandidApi.preEncounter.appointments.v1.ReadySource;
     /** The requested length of time allotted for the appointment. The units are in minutes. */
     serviceDuration: number;
@@ -29,13 +29,21 @@ export interface MutableAppointment {
     estimatedPatientResponsibilityCents?: number;
     patientDepositCents?: number;
     appointmentDetails?: string;
-    /** The timestamp when the patient checked in for their appointment. If status is CHECKED_IN, checked_in_timestamp must be set. If checked_in_timestamp is set, status must be CHECKED_IN. */
+    /** The timestamp when the patient checked in for their appointment. Must be set when status is CHECKED_IN or CHECKED_OUT, and must be unset otherwise. */
     checkedInTimestamp?: Date;
+    /** The timestamp when the patient checked out of their appointment. Must be set when status is CHECKED_OUT, and must be unset otherwise. */
+    checkedOutTimestamp?: Date;
+    /** The clinical context for the appointment. */
+    appointmentReasonDetail?: CandidApi.preEncounter.appointments.v1.AppointmentReasonDetail;
+    /** True if medical necessity for this appointment has been verified. */
+    medicalNecessityVerified?: boolean;
+    /** The prior authorization status for this appointment. */
+    priorAuthorizationStatus?: CandidApi.preEncounter.appointments.v1.PriorAuthorizationStatus;
     notes?: string;
     /** Contains the coded identification of the location being scheduled. Components: <Identifier (ST)>^<Text (ST)> */
     locationResourceId?: string;
     /** True if the automated eligibility check has been completed. It is not recommended to change this value manually via API. This refers explicitly to the automated eligibility check that occurs a specific number of days before the appointment. */
     automatedEligibilityCheckComplete?: boolean;
-    /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY, work_queue must be null. */
+    /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY, CHECKED_OUT or NO_SHOW, work_queue must be null. */
     workQueue?: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue;
 }

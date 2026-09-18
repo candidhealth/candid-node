@@ -6,6 +6,8 @@ export interface PatientWriteOffCreate {
     writeOffTimestamp: Date;
     writeOffNote?: string;
     writeOffReason: CandidApi.writeOffs.v1.PatientWriteOffReason;
+    /** An organization-specific sub-reason */
+    customWriteOffReason?: string;
     serviceLineId: CandidApi.ServiceLineId;
     amountCents: number;
 }

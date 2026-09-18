@@ -16,7 +16,7 @@ describe("V1Client", () => {
             environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
         });
 
-        const rawResponseBody = { write_queues: true, write_rules: true };
+        const rawResponseBody = { write_queues: true, write_rules: true, write_cross_customer_rules: true };
 
         server
             .mockEndpoint()
@@ -31,6 +31,7 @@ describe("V1Client", () => {
             body: {
                 writeQueues: true,
                 writeRules: true,
+                writeCrossCustomerRules: true,
             },
             ok: true,
             headers: expect.any(Object),

@@ -50,6 +50,7 @@ describe("V1Client", () => {
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
+                    administrative_area: "administrative_area",
                     postal_code: "postal_code",
                     country: "country",
                     county: "county",
@@ -80,6 +81,7 @@ describe("V1Client", () => {
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
+                    administrative_area: "administrative_area",
                     postal_code: "postal_code",
                     country: "country",
                     county: "county",
@@ -152,6 +154,7 @@ describe("V1Client", () => {
                     { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                 ],
+                trading_partner: "trading_partner",
             },
             benefits: {
                 plan_coverage: {
@@ -473,6 +476,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrativeArea: "administrative_area",
                         postalCode: "postal_code",
                         country: "country",
                         county: "county",
@@ -509,6 +513,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrativeArea: "administrative_area",
                         postalCode: "postal_code",
                         country: "country",
                         county: "county",
@@ -596,6 +601,7 @@ describe("V1Client", () => {
                             correctedValue: "corrected_value",
                         },
                     ],
+                    tradingPartner: "trading_partner",
                 },
                 benefits: {
                     planCoverage: {
@@ -945,6 +951,7 @@ describe("V1Client", () => {
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
+                    administrative_area: "administrative_area",
                     postal_code: "postal_code",
                     country: "country",
                     county: "county",
@@ -975,6 +982,7 @@ describe("V1Client", () => {
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
+                    administrative_area: "administrative_area",
                     postal_code: "postal_code",
                     country: "country",
                     county: "county",
@@ -1047,6 +1055,7 @@ describe("V1Client", () => {
                     { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                 ],
+                trading_partner: "trading_partner",
             },
             benefits: {
                 plan_coverage: {
@@ -1372,6 +1381,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrativeArea: "administrative_area",
                         postalCode: "postal_code",
                         country: "country",
                         county: "county",
@@ -1408,6 +1418,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrativeArea: "administrative_area",
                         postalCode: "postal_code",
                         country: "country",
                         county: "county",
@@ -1495,6 +1506,7 @@ describe("V1Client", () => {
                             correctedValue: "corrected_value",
                         },
                     ],
+                    tradingPartner: "trading_partner",
                 },
                 benefits: {
                     planCoverage: {
@@ -1836,6 +1848,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrative_area: "administrative_area",
                             postal_code: "postal_code",
                             country: "country",
                             county: "county",
@@ -1866,6 +1879,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrative_area: "administrative_area",
                             postal_code: "postal_code",
                             country: "country",
                             county: "county",
@@ -1946,6 +1960,7 @@ describe("V1Client", () => {
                                 corrected_value: "corrected_value",
                             },
                         ],
+                        trading_partner: "trading_partner",
                     },
                     benefits: {
                         plan_coverage: {
@@ -2080,6 +2095,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrative_area: "administrative_area",
                             postal_code: "postal_code",
                             country: "country",
                             county: "county",
@@ -2110,6 +2126,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrative_area: "administrative_area",
                             postal_code: "postal_code",
                             country: "country",
                             county: "county",
@@ -2190,6 +2207,7 @@ describe("V1Client", () => {
                                 corrected_value: "corrected_value",
                             },
                         ],
+                        trading_partner: "trading_partner",
                     },
                     benefits: {
                         plan_coverage: {
@@ -2345,6 +2363,7 @@ describe("V1Client", () => {
                                 line: ["line", "line"],
                                 city: "city",
                                 state: "state",
+                                administrativeArea: "administrative_area",
                                 postalCode: "postal_code",
                                 country: "country",
                                 county: "county",
@@ -2381,6 +2400,7 @@ describe("V1Client", () => {
                                 line: ["line", "line"],
                                 city: "city",
                                 state: "state",
+                                administrativeArea: "administrative_area",
                                 postalCode: "postal_code",
                                 country: "country",
                                 county: "county",
@@ -2470,6 +2490,7 @@ describe("V1Client", () => {
                                     correctedValue: "corrected_value",
                                 },
                             ],
+                            tradingPartner: "trading_partner",
                         },
                         benefits: {
                             planCoverage: {
@@ -2609,6 +2630,7 @@ describe("V1Client", () => {
                                 line: ["line", "line"],
                                 city: "city",
                                 state: "state",
+                                administrativeArea: "administrative_area",
                                 postalCode: "postal_code",
                                 country: "country",
                                 county: "county",
@@ -2645,6 +2667,7 @@ describe("V1Client", () => {
                                 line: ["line", "line"],
                                 city: "city",
                                 state: "state",
+                                administrativeArea: "administrative_area",
                                 postalCode: "postal_code",
                                 country: "country",
                                 county: "county",
@@ -2734,6 +2757,7 @@ describe("V1Client", () => {
                                     correctedValue: "corrected_value",
                                 },
                             ],
+                            tradingPartner: "trading_partner",
                         },
                         benefits: {
                             planCoverage: {
@@ -2892,6 +2916,7 @@ describe("V1Client", () => {
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
+                    administrative_area: "administrative_area",
                     postal_code: "postal_code",
                     country: "country",
                     county: "county",
@@ -2922,6 +2947,7 @@ describe("V1Client", () => {
                     line: ["line", "line"],
                     city: "city",
                     state: "state",
+                    administrative_area: "administrative_area",
                     postal_code: "postal_code",
                     country: "country",
                     county: "county",
@@ -2994,6 +3020,7 @@ describe("V1Client", () => {
                     { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                 ],
+                trading_partner: "trading_partner",
             },
             benefits: {
                 plan_coverage: {
@@ -3298,6 +3325,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrativeArea: "administrative_area",
                         postalCode: "postal_code",
                         country: "country",
                         county: "county",
@@ -3334,6 +3362,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrativeArea: "administrative_area",
                         postalCode: "postal_code",
                         country: "country",
                         county: "county",
@@ -3421,6 +3450,7 @@ describe("V1Client", () => {
                             correctedValue: "corrected_value",
                         },
                     ],
+                    tradingPartner: "trading_partner",
                 },
                 benefits: {
                     planCoverage: {
@@ -3761,6 +3791,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -3791,6 +3822,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -3863,6 +3895,7 @@ describe("V1Client", () => {
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -4077,6 +4110,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -4107,6 +4141,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -4179,6 +4214,7 @@ describe("V1Client", () => {
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -4411,6 +4447,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -4447,6 +4484,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -4536,6 +4574,7 @@ describe("V1Client", () => {
                                 correctedValue: "corrected_value",
                             },
                         ],
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {
@@ -4755,6 +4794,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -4791,6 +4831,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -4880,6 +4921,7 @@ describe("V1Client", () => {
                                 correctedValue: "corrected_value",
                             },
                         ],
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {
@@ -5115,6 +5157,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -5145,6 +5188,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -5217,6 +5261,7 @@ describe("V1Client", () => {
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -5431,6 +5476,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -5461,6 +5507,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -5533,6 +5580,7 @@ describe("V1Client", () => {
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -5757,6 +5805,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -5793,6 +5842,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -5882,6 +5932,7 @@ describe("V1Client", () => {
                                 correctedValue: "corrected_value",
                             },
                         ],
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {
@@ -6101,6 +6152,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -6137,6 +6189,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -6226,6 +6279,7 @@ describe("V1Client", () => {
                                 correctedValue: "corrected_value",
                             },
                         ],
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {
@@ -6461,6 +6515,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -6491,6 +6546,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -6563,6 +6619,7 @@ describe("V1Client", () => {
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -6777,6 +6834,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -6807,6 +6865,7 @@ describe("V1Client", () => {
                         line: ["line", "line"],
                         city: "city",
                         state: "state",
+                        administrative_area: "administrative_area",
                         postal_code: "postal_code",
                         country: "country",
                         county: "county",
@@ -6879,6 +6938,7 @@ describe("V1Client", () => {
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                         { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
                     ],
+                    trading_partner: "trading_partner",
                 },
                 benefits: {
                     plan_coverage: {
@@ -7111,6 +7171,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -7147,6 +7208,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -7236,6 +7298,7 @@ describe("V1Client", () => {
                                 correctedValue: "corrected_value",
                             },
                         ],
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {
@@ -7455,6 +7518,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -7491,6 +7555,7 @@ describe("V1Client", () => {
                             line: ["line", "line"],
                             city: "city",
                             state: "state",
+                            administrativeArea: "administrative_area",
                             postalCode: "postal_code",
                             country: "country",
                             county: "county",
@@ -7580,6 +7645,7 @@ describe("V1Client", () => {
                                 correctedValue: "corrected_value",
                             },
                         ],
+                        tradingPartner: "trading_partner",
                     },
                     benefits: {
                         planCoverage: {

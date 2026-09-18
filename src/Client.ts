@@ -36,10 +36,12 @@ import { PatientRefundsClient } from "./api/resources/patientRefunds/client/Clie
 import { PayerPlanGroupsClient } from "./api/resources/payerPlanGroups/client/Client";
 import { PayersClient } from "./api/resources/payers/client/Client";
 import { PreEncounterClient } from "./api/resources/preEncounter/client/Client";
+import { PreServiceRulesClient } from "./api/resources/preServiceRules/client/Client";
 import { ServiceLinesClient } from "./api/resources/serviceLines/client/Client";
 import { SuperbillsClient } from "./api/resources/superbills/client/Client";
 import { TasksClient } from "./api/resources/tasks/client/Client";
 import { UsersClient } from "./api/resources/users/client/Client";
+import { ViewsClient } from "./api/resources/views/client/Client";
 import { WriteOffsClient } from "./api/resources/writeOffs/client/Client";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient";
@@ -88,10 +90,12 @@ export class CandidApiClient {
     protected _patientRefunds: PatientRefundsClient | undefined;
     protected _payerPlanGroups: PayerPlanGroupsClient | undefined;
     protected _payers: PayersClient | undefined;
+    protected _preServiceRules: PreServiceRulesClient | undefined;
     protected _serviceLines: ServiceLinesClient | undefined;
     protected _superbills: SuperbillsClient | undefined;
     protected _tasks: TasksClient | undefined;
     protected _users: UsersClient | undefined;
+    protected _views: ViewsClient | undefined;
     protected _writeOffs: WriteOffsClient | undefined;
     protected _preEncounter: PreEncounterClient | undefined;
     protected _diagnoses: DiagnosesClient | undefined;
@@ -236,6 +240,10 @@ export class CandidApiClient {
         return (this._payers ??= new PayersClient(this._options));
     }
 
+    public get preServiceRules(): PreServiceRulesClient {
+        return (this._preServiceRules ??= new PreServiceRulesClient(this._options));
+    }
+
     public get serviceLines(): ServiceLinesClient {
         return (this._serviceLines ??= new ServiceLinesClient(this._options));
     }
@@ -250,6 +258,10 @@ export class CandidApiClient {
 
     public get users(): UsersClient {
         return (this._users ??= new UsersClient(this._options));
+    }
+
+    public get views(): ViewsClient {
+        return (this._views ??= new ViewsClient(this._options));
     }
 
     public get writeOffs(): WriteOffsClient {

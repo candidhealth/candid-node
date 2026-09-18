@@ -2648,4 +2648,277 @@ describe("V1Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("encounter_eligibility", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = {
+            items: [
+                {
+                    id: "id",
+                    source: "STEDI",
+                    dateOfService: "2024-01-15T09:30:00Z",
+                    payerId: "payerId",
+                    providerNPI: "providerNPI",
+                    dependent: { name: "name" },
+                    status: "ACTIVE",
+                    errors: [
+                        {
+                            source: "CANDID",
+                            errorDetails: {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                        },
+                        {
+                            source: "CANDID",
+                            errorDetails: {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                        },
+                    ],
+                },
+                {
+                    id: "id",
+                    source: "STEDI",
+                    dateOfService: "2024-01-15T09:30:00Z",
+                    payerId: "payerId",
+                    providerNPI: "providerNPI",
+                    dependent: { name: "name" },
+                    status: "ACTIVE",
+                    errors: [
+                        {
+                            source: "CANDID",
+                            errorDetails: {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                        },
+                        {
+                            source: "CANDID",
+                            errorDetails: {
+                                "field?": "field?",
+                                "description?": "description?",
+                                "location?": "location?",
+                                "possibleResolutions?": "possibleResolutions?",
+                                "code?": "code?",
+                                "followupAction?": "followupAction?",
+                            },
+                        },
+                    ],
+                },
+            ],
+        };
+
+        server
+            .mockEndpoint()
+            .get("/eligibility-checks/v1/encounter_eligibility")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.eligibilityChecks.v1.encounterEligibility({
+            encounterId: "encounter_id",
+        });
+        expect(response).toEqual({
+            body: {
+                items: [
+                    {
+                        id: "id",
+                        source: "STEDI",
+                        dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+                        payerId: "payerId",
+                        providerNpi: "providerNPI",
+                        dependent: {
+                            name: "name",
+                        },
+                        status: "ACTIVE",
+                        errors: [
+                            {
+                                source: "CANDID",
+                                errorDetails: {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                            },
+                            {
+                                source: "CANDID",
+                                errorDetails: {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        id: "id",
+                        source: "STEDI",
+                        dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+                        payerId: "payerId",
+                        providerNpi: "providerNPI",
+                        dependent: {
+                            name: "name",
+                        },
+                        status: "ACTIVE",
+                        errors: [
+                            {
+                                source: "CANDID",
+                                errorDetails: {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                            },
+                            {
+                                source: "CANDID",
+                                errorDetails: {
+                                    field: "field?",
+                                    description: "description?",
+                                    location: "location?",
+                                    possibleResolutions: "possibleResolutions?",
+                                    code: "code?",
+                                    followupAction: "followupAction?",
+                                },
+                            },
+                        ],
+                    },
+                ],
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("create_encounter_eligibility", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = { encounter_id: "encounter_id" };
+        const rawResponseBody = {
+            id: "id",
+            source: "STEDI",
+            dateOfService: "2024-01-15T09:30:00Z",
+            payerId: "payerId",
+            providerNPI: "providerNPI",
+            dependent: { name: "name" },
+            status: "ACTIVE",
+            errors: [
+                {
+                    source: "CANDID",
+                    errorDetails: {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                },
+                {
+                    source: "CANDID",
+                    errorDetails: {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                },
+            ],
+        };
+
+        server
+            .mockEndpoint()
+            .post("/eligibility-checks/v1/eligibility")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.eligibilityChecks.v1.createEncounterEligibility({
+            encounterId: "encounter_id",
+        });
+        expect(response).toEqual({
+            body: {
+                id: "id",
+                source: "STEDI",
+                dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+                payerId: "payerId",
+                providerNpi: "providerNPI",
+                dependent: {
+                    name: "name",
+                },
+                status: "ACTIVE",
+                errors: [
+                    {
+                        source: "CANDID",
+                        errorDetails: {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    },
+                    {
+                        source: "CANDID",
+                        errorDetails: {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    },
+                ],
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

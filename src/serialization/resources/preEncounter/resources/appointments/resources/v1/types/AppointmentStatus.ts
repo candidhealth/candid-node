@@ -7,8 +7,8 @@ import type * as serializers from "../../../../../../../index";
 export const AppointmentStatus: core.serialization.Schema<
     serializers.preEncounter.appointments.v1.AppointmentStatus.Raw,
     CandidApi.preEncounter.appointments.v1.AppointmentStatus
-> = core.serialization.enum_(["PENDING", "NOT_READY", "READY", "CHECKED_IN"]);
+> = core.serialization.enum_(["PENDING", "NOT_READY", "READY", "CHECKED_IN", "CHECKED_OUT", "NO_SHOW"]);
 
 export declare namespace AppointmentStatus {
-    export type Raw = "PENDING" | "NOT_READY" | "READY" | "CHECKED_IN";
+    export type Raw = "PENDING" | "NOT_READY" | "READY" | "CHECKED_IN" | "CHECKED_OUT" | "NO_SHOW";
 }

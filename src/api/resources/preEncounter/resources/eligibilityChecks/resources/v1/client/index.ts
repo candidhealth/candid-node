@@ -1,6 +1,8 @@
 export * as batch from "./batch";
 export * as coordinationOfBenefits from "./coordinationOfBenefits";
+export * as createEncounterEligibility from "./createEncounterEligibility";
 export * as createRecommendation from "./createRecommendation";
+export * as encounterEligibility from "./encounterEligibility";
 export * as getMulti from "./getMulti";
 export * as insuranceDiscovery from "./insuranceDiscovery";
 export * as payerSearch from "./payerSearch";

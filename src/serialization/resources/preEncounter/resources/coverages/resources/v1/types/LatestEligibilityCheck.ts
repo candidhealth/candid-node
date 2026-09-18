@@ -19,6 +19,7 @@ export const LatestEligibilityCheck: core.serialization.ObjectSchema<
         "request_corrections",
         core.serialization.list(RequestCorrection).optional(),
     ),
+    tradingPartner: core.serialization.property("trading_partner", core.serialization.string().optional()),
 });
 
 export declare namespace LatestEligibilityCheck {
@@ -28,5 +29,6 @@ export declare namespace LatestEligibilityCheck {
         initiated_at: string;
         errors?: EligibilityCheckErrorDetails.Raw[] | null;
         request_corrections?: RequestCorrection.Raw[] | null;
+        trading_partner?: string | null;
     }
 }

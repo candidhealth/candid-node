@@ -7,6 +7,8 @@ export interface Address {
     line: string[];
     city: string;
     state: string;
+    /** The top-level administrative subdivision of the country for addresses outside the US — for example a Canadian province, a UK county, or a Japanese prefecture. Only permitted on international addresses: `country` must be present and non-US, and `state` must be "FC" (the X12 foreign-country sentinel). For US addresses use `state` instead. */
+    administrativeArea?: string;
     postalCode: string;
     country: string;
     county?: string;

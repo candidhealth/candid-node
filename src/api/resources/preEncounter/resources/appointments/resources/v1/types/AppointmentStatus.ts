@@ -5,5 +5,7 @@ export const AppointmentStatus = {
     NotReady: "NOT_READY",
     Ready: "READY",
     CheckedIn: "CHECKED_IN",
+    CheckedOut: "CHECKED_OUT",
+    NoShow: "NO_SHOW",
 } as const;
 export type AppointmentStatus = (typeof AppointmentStatus)[keyof typeof AppointmentStatus];

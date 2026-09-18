@@ -18,6 +18,10 @@ export const NonInsurancePayerWriteOff: core.serialization.ObjectSchema<
     writeOffTimestamp: core.serialization.property("write_off_timestamp", core.serialization.date()),
     writeOffNote: core.serialization.property("write_off_note", core.serialization.string().optional()),
     writeOffReason: core.serialization.property("write_off_reason", InsuranceWriteOffReason),
+    customWriteOffReason: core.serialization.property(
+        "custom_write_off_reason",
+        core.serialization.string().optional(),
+    ),
     revertsWriteOffId: core.serialization.property("reverts_write_off_id", WriteOffId.optional()),
     revertedByWriteOffId: core.serialization.property("reverted_by_write_off_id", WriteOffId.optional()),
     amountCents: core.serialization.property("amount_cents", core.serialization.number()),
@@ -31,6 +35,7 @@ export declare namespace NonInsurancePayerWriteOff {
         write_off_timestamp: string;
         write_off_note?: string | null;
         write_off_reason: InsuranceWriteOffReason.Raw;
+        custom_write_off_reason?: string | null;
         reverts_write_off_id?: WriteOffId.Raw | null;
         reverted_by_write_off_id?: WriteOffId.Raw | null;
         amount_cents: number;

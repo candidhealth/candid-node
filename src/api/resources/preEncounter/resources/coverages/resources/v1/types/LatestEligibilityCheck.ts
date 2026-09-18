@@ -12,4 +12,6 @@ export interface LatestEligibilityCheck {
     errors?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckErrorDetails[];
     /** Fields where the payer's 271 response disagreed with what we sent on the request, surfaced from the check so consumers can detect that the eligibility response contradicted the coverage on file. Empty when the payer echoed everything we sent. */
     requestCorrections?: CandidApi.preEncounter.eligibilityChecks.v1.RequestCorrection[];
+    /** The payer's own identifier as returned on the Stedi eligibility response (271) `tradingPartnerServiceId`, surfaced from the latest check's plan metadata so it is readable off the coverage. Can differ from the ID we submitted. */
+    tradingPartner?: string;
 }

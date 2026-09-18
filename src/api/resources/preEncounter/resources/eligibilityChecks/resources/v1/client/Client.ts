@@ -1050,4 +1050,191 @@ export class V1Client {
             rawResponse: _response.rawResponse,
         };
     }
+
+    /**
+     * Returns patient eligibility data regardless of clearinghouse. Uses the encounter id to get needed patient, date of service, etc data.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityHistoryRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.encounterEligibility({
+     *         encounterId: "encounter_id"
+     *     })
+     */
+    public encounterEligibility(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityHistoryRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityResponse,
+            CandidApi.preEncounter.eligibilityChecks.v1.encounterEligibility.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__encounterEligibility(request, requestOptions));
+    }
+
+    private async __encounterEligibility(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityHistoryRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityResponse,
+                CandidApi.preEncounter.eligibilityChecks.v1.encounterEligibility.Error
+            >
+        >
+    > {
+        const { encounterId } = request;
+        const _queryParams: Record<string, unknown> = {
+            encounter_id: encounterId,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/encounter_eligibility",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.EncounterEligibilityResponse.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.eligibilityChecks.v1.encounterEligibility.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Fetch an eligibility check for the patient for the date of service, npi, and payer
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.eligibilityChecks.v1.createEncounterEligibility({
+     *         encounterId: "encounter_id"
+     *     })
+     */
+    public createEncounterEligibility(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibility,
+            CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__createEncounterEligibility(request, requestOptions));
+    }
+
+    private async __createEncounterEligibility(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibilityRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibility,
+                CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/eligibility-checks/v1/eligibility",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.EncounterEligibilityRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.EncounterEligibility.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
 }

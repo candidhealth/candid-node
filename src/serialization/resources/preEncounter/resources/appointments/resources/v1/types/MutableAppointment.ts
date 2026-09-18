@@ -5,9 +5,11 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { ExternalProvider } from "../../../../common/types/ExternalProvider";
 import { PatientId } from "../../../../common/types/PatientId";
+import { AppointmentReasonDetail } from "./AppointmentReasonDetail";
 import { AppointmentStatus } from "./AppointmentStatus";
 import { AppointmentWorkQueue } from "./AppointmentWorkQueue";
 import { NotReadyReason } from "./NotReadyReason";
+import { PriorAuthorizationStatus } from "./PriorAuthorizationStatus";
 import { ReadySource } from "./ReadySource";
 import { Service } from "./Service";
 
@@ -33,6 +35,19 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     patientDepositCents: core.serialization.property("patient_deposit_cents", core.serialization.number().optional()),
     appointmentDetails: core.serialization.property("appointment_details", core.serialization.string().optional()),
     checkedInTimestamp: core.serialization.property("checked_in_timestamp", core.serialization.date().optional()),
+    checkedOutTimestamp: core.serialization.property("checked_out_timestamp", core.serialization.date().optional()),
+    appointmentReasonDetail: core.serialization.property(
+        "appointment_reason_detail",
+        AppointmentReasonDetail.optional(),
+    ),
+    medicalNecessityVerified: core.serialization.property(
+        "medical_necessity_verified",
+        core.serialization.boolean().optional(),
+    ),
+    priorAuthorizationStatus: core.serialization.property(
+        "prior_authorization_status",
+        PriorAuthorizationStatus.optional(),
+    ),
     notes: core.serialization.string().optional(),
     locationResourceId: core.serialization.property("location_resource_id", core.serialization.string().optional()),
     automatedEligibilityCheckComplete: core.serialization.property(
@@ -59,6 +74,10 @@ export declare namespace MutableAppointment {
         patient_deposit_cents?: number | null;
         appointment_details?: string | null;
         checked_in_timestamp?: string | null;
+        checked_out_timestamp?: string | null;
+        appointment_reason_detail?: AppointmentReasonDetail.Raw | null;
+        medical_necessity_verified?: boolean | null;
+        prior_authorization_status?: PriorAuthorizationStatus.Raw | null;
         notes?: string | null;
         location_resource_id?: string | null;
         automated_eligibility_check_complete?: boolean | null;
