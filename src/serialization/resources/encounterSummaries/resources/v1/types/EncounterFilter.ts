@@ -13,6 +13,7 @@ import { SetFilter } from "./SetFilter";
 import { StringFilter } from "./StringFilter";
 import { StringRangeFilter } from "./StringRangeFilter";
 import { UuidSetFilter } from "./UuidSetFilter";
+import { WorkQueueCategorySetFilter } from "./WorkQueueCategorySetFilter";
 
 export const EncounterFilter: core.serialization.ObjectSchema<
     serializers.encounterSummaries.v1.EncounterFilter.Raw,
@@ -63,6 +64,7 @@ export const EncounterFilter: core.serialization.ObjectSchema<
     ownerOfNextAction: core.serialization.property("owner_of_next_action", SetFilter.optional()),
     submissionExpectation: core.serialization.property("submission_expectation", SetFilter.optional()),
     workQueueId: core.serialization.property("work_queue_id", SetFilter.optional()),
+    workQueueCategory: core.serialization.property("work_queue_category", WorkQueueCategorySetFilter.optional()),
     daysInQueue: core.serialization.property("days_in_queue", IntRangeFilter.optional()),
     tagIds: core.serialization.property("tag_ids", SetFilter.optional()),
     staticViewId: core.serialization.property("static_view_id", core.serialization.string().optional()),
@@ -144,6 +146,7 @@ export declare namespace EncounterFilter {
         owner_of_next_action?: SetFilter.Raw | null;
         submission_expectation?: SetFilter.Raw | null;
         work_queue_id?: SetFilter.Raw | null;
+        work_queue_category?: WorkQueueCategorySetFilter.Raw | null;
         days_in_queue?: IntRangeFilter.Raw | null;
         tag_ids?: SetFilter.Raw | null;
         static_view_id?: string | null;

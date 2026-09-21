@@ -54,6 +54,7 @@ export interface EncounterFilter {
     ownerOfNextAction?: CandidApi.encounterSummaries.v1.SetFilter;
     submissionExpectation?: CandidApi.encounterSummaries.v1.SetFilter;
     workQueueId?: CandidApi.encounterSummaries.v1.SetFilter;
+    workQueueCategory?: CandidApi.encounterSummaries.v1.WorkQueueCategorySetFilter;
     daysInQueue?: CandidApi.encounterSummaries.v1.IntRangeFilter;
     tagIds?: CandidApi.encounterSummaries.v1.SetFilter;
     staticViewId?: string;

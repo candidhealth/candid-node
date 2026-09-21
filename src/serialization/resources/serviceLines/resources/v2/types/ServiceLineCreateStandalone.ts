@@ -20,6 +20,10 @@ export const ServiceLineCreateStandalone: core.serialization.ObjectSchema<
             core.serialization.string().optional(),
         ),
         externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+        customProcedureCode: core.serialization.property(
+            "custom_procedure_code",
+            core.serialization.string().optional(),
+        ),
     })
     .extend(ServiceLineCreateStandaloneBase);
 
@@ -31,5 +35,6 @@ export declare namespace ServiceLineCreateStandalone {
         diagnosis_id_three?: DiagnosisId.Raw | null;
         prior_authorization_number?: string | null;
         external_id?: string | null;
+        custom_procedure_code?: string | null;
     }
 }

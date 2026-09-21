@@ -14,4 +14,6 @@ export interface ServiceLineCreateStandalone extends CandidApi.serviceLines.v2.S
      * This field should not contain PHI. Must be unique on a given claim.
      */
     externalId?: string;
+    /** Represents and preserves the custom CPT code received on this service line. Custom CPT codes are specific to your organization and are primarily used for rules and reporting purposes. */
+    customProcedureCode?: string;
 }

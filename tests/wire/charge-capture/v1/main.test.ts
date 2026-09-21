@@ -520,6 +520,7 @@ describe("V1Client", () => {
                         state: "AA",
                         zip_code: "zip_code",
                     },
+                    qualifier: "DQ",
                     secondary_identification: {
                         reference_identification: "reference_identification",
                         reference_identification_qualifier: "0B",
@@ -1266,6 +1267,7 @@ describe("V1Client", () => {
                             state: "AA",
                             zipCode: "zip_code",
                         },
+                        qualifier: "DQ",
                         secondaryIdentification: {
                             referenceIdentification: "reference_identification",
                             referenceIdentificationQualifier: "0B",
@@ -1947,6 +1949,7 @@ describe("V1Client", () => {
                         state: "AA",
                         zip_code: "zip_code",
                     },
+                    qualifier: "DQ",
                     secondary_identification: {
                         reference_identification: "reference_identification",
                         reference_identification_qualifier: "0B",
@@ -2697,6 +2700,7 @@ describe("V1Client", () => {
                             state: "AA",
                             zipCode: "zip_code",
                         },
+                        qualifier: "DQ",
                         secondaryIdentification: {
                             referenceIdentification: "reference_identification",
                             referenceIdentificationQualifier: "0B",
@@ -3423,6 +3427,7 @@ describe("V1Client", () => {
                         state: "AA",
                         zip_code: "zip_code",
                     },
+                    qualifier: "DQ",
                     secondary_identification: {
                         reference_identification: "reference_identification",
                         reference_identification_qualifier: "0B",
@@ -4166,6 +4171,7 @@ describe("V1Client", () => {
                             state: "AA",
                             zipCode: "zip_code",
                         },
+                        qualifier: "DQ",
                         secondaryIdentification: {
                             referenceIdentification: "reference_identification",
                             referenceIdentificationQualifier: "0B",
@@ -4838,6 +4844,7 @@ describe("V1Client", () => {
                         state: "AA",
                         zip_code: "zip_code",
                     },
+                    qualifier: "DQ",
                     secondary_identification: {
                         reference_identification: "reference_identification",
                         reference_identification_qualifier: "0B",
@@ -5580,6 +5587,7 @@ describe("V1Client", () => {
                             state: "AA",
                             zipCode: "zip_code",
                         },
+                        qualifier: "DQ",
                         secondaryIdentification: {
                             referenceIdentification: "reference_identification",
                             referenceIdentificationQualifier: "0B",
@@ -6173,6 +6181,7 @@ describe("V1Client", () => {
                                 state: "AA",
                                 zip_code: "zip_code",
                             },
+                            qualifier: "DQ",
                             secondary_identification: {
                                 reference_identification: "reference_identification",
                                 reference_identification_qualifier: "0B",
@@ -6724,6 +6733,7 @@ describe("V1Client", () => {
                                 state: "AA",
                                 zip_code: "zip_code",
                             },
+                            qualifier: "DQ",
                             secondary_identification: {
                                 reference_identification: "reference_identification",
                                 reference_identification_qualifier: "0B",
@@ -7358,6 +7368,7 @@ describe("V1Client", () => {
                                     state: "AA",
                                     zipCode: "zip_code",
                                 },
+                                qualifier: "DQ",
                                 secondaryIdentification: {
                                     referenceIdentification: "reference_identification",
                                     referenceIdentificationQualifier: "0B",
@@ -7999,6 +8010,7 @@ describe("V1Client", () => {
                                     state: "AA",
                                     zipCode: "zip_code",
                                 },
+                                qualifier: "DQ",
                                 secondaryIdentification: {
                                     referenceIdentification: "reference_identification",
                                     referenceIdentificationQualifier: "0B",
@@ -8604,6 +8616,7 @@ describe("V1Client", () => {
                                 state: "AA",
                                 zip_code: "zip_code",
                             },
+                            qualifier: "DQ",
                             secondary_identification: {
                                 reference_identification: "reference_identification",
                                 reference_identification_qualifier: "0B",
@@ -9155,6 +9168,7 @@ describe("V1Client", () => {
                                 state: "AA",
                                 zip_code: "zip_code",
                             },
+                            qualifier: "DQ",
                             secondary_identification: {
                                 reference_identification: "reference_identification",
                                 reference_identification_qualifier: "0B",
@@ -9809,6 +9823,7 @@ describe("V1Client", () => {
                                     state: "AA",
                                     zipCode: "zip_code",
                                 },
+                                qualifier: "DQ",
                                 secondaryIdentification: {
                                     referenceIdentification: "reference_identification",
                                     referenceIdentificationQualifier: "0B",
@@ -10450,6 +10465,7 @@ describe("V1Client", () => {
                                     state: "AA",
                                     zipCode: "zip_code",
                                 },
+                                qualifier: "DQ",
                                 secondaryIdentification: {
                                     referenceIdentification: "reference_identification",
                                     referenceIdentificationQualifier: "0B",

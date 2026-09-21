@@ -209,6 +209,7 @@ describe("V2Client", () => {
             place_of_service_code_as_submitted: "01",
             service_line_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             procedure_code: "procedure_code",
+            custom_procedure_code: "custom_procedure_code",
             ordering_provider: {
                 provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 address: {
@@ -486,6 +487,7 @@ describe("V2Client", () => {
                 placeOfServiceCodeAsSubmitted: "01",
                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                 procedureCode: "procedure_code",
+                customProcedureCode: "custom_procedure_code",
                 orderingProvider: {
                     providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                     address: {
@@ -740,6 +742,7 @@ describe("V2Client", () => {
             place_of_service_code_as_submitted: "01",
             service_line_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             procedure_code: "procedure_code",
+            custom_procedure_code: "custom_procedure_code",
             ordering_provider: {
                 provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 address: {
@@ -1016,6 +1019,7 @@ describe("V2Client", () => {
                 placeOfServiceCodeAsSubmitted: "01",
                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                 procedureCode: "procedure_code",
+                customProcedureCode: "custom_procedure_code",
                 orderingProvider: {
                     providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                     address: {
@@ -1270,6 +1274,7 @@ describe("V2Client", () => {
             place_of_service_code_as_submitted: "01",
             service_line_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             procedure_code: "procedure_code",
+            custom_procedure_code: "custom_procedure_code",
             ordering_provider: {
                 provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 address: {
@@ -1545,6 +1550,7 @@ describe("V2Client", () => {
                 placeOfServiceCodeAsSubmitted: "01",
                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                 procedureCode: "procedure_code",
+                customProcedureCode: "custom_procedure_code",
                 orderingProvider: {
                     providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                     address: {
@@ -1799,6 +1805,7 @@ describe("V2Client", () => {
             place_of_service_code_as_submitted: "01",
             service_line_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             procedure_code: "procedure_code",
+            custom_procedure_code: "custom_procedure_code",
             ordering_provider: {
                 provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 address: {
@@ -2074,6 +2081,7 @@ describe("V2Client", () => {
                 placeOfServiceCodeAsSubmitted: "01",
                 serviceLineId: CandidApi.ServiceLineId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                 procedureCode: "procedure_code",
+                customProcedureCode: "custom_procedure_code",
                 orderingProvider: {
                     providerId: CandidApi.encounterProviders.v2.ProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                     address: {

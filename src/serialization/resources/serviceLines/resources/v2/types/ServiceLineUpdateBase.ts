@@ -23,6 +23,7 @@ export const ServiceLineUpdateBase: core.serialization.ObjectSchema<
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
     units: ServiceLineUnits.optional(),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string().optionalNullable()),
+    customProcedureCode: core.serialization.property("custom_procedure_code", core.serialization.string().optional()),
     quantity: Decimal.optional(),
     description: core.serialization.string().optional(),
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
@@ -51,6 +52,7 @@ export declare namespace ServiceLineUpdateBase {
         place_of_service_code?: FacilityTypeCode.Raw | null;
         units?: ServiceLineUnits.Raw | null;
         procedure_code?: (string | null | undefined) | null;
+        custom_procedure_code?: string | null;
         quantity?: Decimal.Raw | null;
         description?: string | null;
         date_of_service?: string | null;

@@ -49,7 +49,7 @@ describe("V1Client", () => {
             disabled_rule_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
             idempotency_key: "idempotency_key",
         };
-        const rawResponseBody = { run_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32" };
+        const rawResponseBody = "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32";
 
         server
             .mockEndpoint()
@@ -99,9 +99,7 @@ describe("V1Client", () => {
             idempotencyKey: "idempotency_key",
         });
         expect(response).toEqual({
-            body: {
-                runId: CandidApi.preServiceRules.v1.PreServiceRunId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-            },
+            body: CandidApi.preServiceRules.v1.PreServiceRunId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
             ok: true,
             headers: expect.any(Object),
             rawResponse: expect.any(Object),

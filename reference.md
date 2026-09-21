@@ -10122,7 +10122,7 @@ await client.payers.v4.getAll();
 </details>
 
 ## PreServiceRules V1
-<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">createEncounterRun</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PreServiceRunCreateResponse, CandidApi.preServiceRules.v1.createEncounterRun.Error&gt;</code></summary>
+<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">createEncounterRun</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PreServiceRunId, CandidApi.preServiceRules.v1.createEncounterRun.Error&gt;</code></summary>
 <dl>
 <dd>
 

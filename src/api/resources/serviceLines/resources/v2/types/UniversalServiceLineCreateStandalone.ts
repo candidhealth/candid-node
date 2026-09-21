@@ -8,6 +8,8 @@ export interface UniversalServiceLineCreateStandalone
     diagnosisIdOne?: CandidApi.DiagnosisId;
     diagnosisIdTwo?: CandidApi.DiagnosisId;
     diagnosisIdThree?: CandidApi.DiagnosisId;
+    /** Represents and preserves the custom CPT code received on this service line. Custom CPT codes are specific to your organization and are primarily used for rules and reporting purposes. */
+    customProcedureCode?: string;
     /** A 4 digit code that specifies facility department or type of service arrangement for institutional service line items (837i). This code is not required for professional claim billing (837p). */
     revenueCode?: string;
     /**

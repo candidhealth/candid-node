@@ -3,10 +3,11 @@
 import type * as CandidApi from "../../../../../index";
 
 /**
- * Filter on a field by matching against a set of allowed values, with optional negation.
+ * Filter on work queue category by matching against a set of allowed categories, with optional
+ * negation.
  */
-export interface SetFilter {
+export interface WorkQueueCategorySetFilter {
     /** Defaults to IN */
     mode?: CandidApi.encounterSummaries.v1.SetMatchMode;
-    values: string[];
+    values: CandidApi.workQueues.v2.WorkQueueCategory[];
 }

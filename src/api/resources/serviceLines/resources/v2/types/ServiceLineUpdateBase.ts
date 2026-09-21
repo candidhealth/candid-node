@@ -18,6 +18,8 @@ export interface ServiceLineUpdateBase {
      * rather than a CPT/HCPCS code.
      */
     procedureCode?: string | null;
+    /** Updates and preserves the custom CPT code received on this service line. Custom CPT codes are specific to your organization and are used for rules and reporting purposes. */
+    customProcedureCode?: string;
     /**
      * String representation of a Decimal that can be parsed by most libraries.
      * For professional claims, a ServiceLine quantity cannot contain more than one digit of precision

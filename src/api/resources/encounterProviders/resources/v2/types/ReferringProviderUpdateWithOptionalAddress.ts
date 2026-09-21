@@ -11,5 +11,6 @@ export interface ReferringProviderUpdateWithOptionalAddress
     npi?: string;
     taxonomyCode?: string;
     address?: CandidApi.StreetAddressShortZipOptional;
+    qualifier?: CandidApi.QualifierCode;
     secondaryIdentification?: CandidApi.encounterProviders.v2.ReferringProviderSecondaryIdentificationOptional;
 }

@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { QualifierCode } from "../../../../commons/types/QualifierCode";
 import { StreetAddressLongZip } from "../../../../commons/types/StreetAddressLongZip";
 import { EncounterProviderBase } from "./EncounterProviderBase";
 import { ReferringProviderSecondaryIdentification } from "./ReferringProviderSecondaryIdentification";
@@ -15,6 +16,7 @@ export const ReferringProviderUpdate: core.serialization.ObjectSchema<
         npi: core.serialization.string().optional(),
         taxonomyCode: core.serialization.property("taxonomy_code", core.serialization.string().optional()),
         address: StreetAddressLongZip.optional(),
+        qualifier: QualifierCode.optional(),
         secondaryIdentification: core.serialization.property(
             "secondary_identification",
             ReferringProviderSecondaryIdentification.optional(),
@@ -27,6 +29,7 @@ export declare namespace ReferringProviderUpdate {
         npi?: string | null;
         taxonomy_code?: string | null;
         address?: StreetAddressLongZip.Raw | null;
+        qualifier?: QualifierCode.Raw | null;
         secondary_identification?: ReferringProviderSecondaryIdentification.Raw | null;
     }
 }

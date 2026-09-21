@@ -6,7 +6,7 @@ import type * as CandidApi from "../../../../../index";
  * Filter on a field by matching against a set of allowed values or prefixes, with optional negation.
  */
 export interface PrefixableSetFilter {
-    /** Defaults to in */
+    /** Defaults to IN */
     mode?: CandidApi.encounterSummaries.v1.PrefixableSetMatchMode;
     values: string[];
 }

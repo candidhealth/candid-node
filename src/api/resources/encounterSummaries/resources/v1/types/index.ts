@@ -24,3 +24,4 @@ export * from "./StringRangeFilter";
 export * from "./StringRangeMatchMode";
 export * from "./UuidSetFilter";
 export * from "./UuidSetMatchMode";
+export * from "./WorkQueueCategorySetFilter";

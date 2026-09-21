@@ -73,7 +73,7 @@ export class V1Client {
         requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<
-            CandidApi.preServiceRules.v1.PreServiceRunCreateResponse,
+            CandidApi.preServiceRules.v1.PreServiceRunId,
             CandidApi.preServiceRules.v1.createEncounterRun.Error
         >
     > {
@@ -86,7 +86,7 @@ export class V1Client {
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<
-                CandidApi.preServiceRules.v1.PreServiceRunCreateResponse,
+                CandidApi.preServiceRules.v1.PreServiceRunId,
                 CandidApi.preServiceRules.v1.createEncounterRun.Error
             >
         >
@@ -124,7 +124,7 @@ export class V1Client {
             return {
                 data: {
                     ok: true,
-                    body: serializers.preServiceRules.v1.PreServiceRunCreateResponse.parseOrThrow(_response.body, {
+                    body: serializers.preServiceRules.v1.PreServiceRunId.parseOrThrow(_response.body, {
                         unrecognizedObjectKeys: "passthrough",
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,

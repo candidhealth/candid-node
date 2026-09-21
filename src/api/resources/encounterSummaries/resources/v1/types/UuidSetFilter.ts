@@ -6,7 +6,7 @@ import type * as CandidApi from "../../../../../index";
  * Filter on a UUID field by matching against a set of allowed values, with optional negation.
  */
 export interface UuidSetFilter {
-    /** Defaults to in */
+    /** Defaults to IN */
     mode?: CandidApi.encounterSummaries.v1.UuidSetMatchMode;
     values: string[];
 }

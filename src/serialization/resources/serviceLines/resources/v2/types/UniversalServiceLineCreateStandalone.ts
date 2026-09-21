@@ -15,6 +15,10 @@ export const UniversalServiceLineCreateStandalone: core.serialization.ObjectSche
         diagnosisIdOne: core.serialization.property("diagnosis_id_one", DiagnosisId.optional()),
         diagnosisIdTwo: core.serialization.property("diagnosis_id_two", DiagnosisId.optional()),
         diagnosisIdThree: core.serialization.property("diagnosis_id_three", DiagnosisId.optional()),
+        customProcedureCode: core.serialization.property(
+            "custom_procedure_code",
+            core.serialization.string().optional(),
+        ),
         revenueCode: core.serialization.property("revenue_code", core.serialization.string().optional()),
         procedureCode: core.serialization.property("procedure_code", core.serialization.string().optionalNullable()),
         priorAuthorizationNumber: core.serialization.property(
@@ -31,6 +35,7 @@ export declare namespace UniversalServiceLineCreateStandalone {
         diagnosis_id_one?: DiagnosisId.Raw | null;
         diagnosis_id_two?: DiagnosisId.Raw | null;
         diagnosis_id_three?: DiagnosisId.Raw | null;
+        custom_procedure_code?: string | null;
         revenue_code?: string | null;
         procedure_code?: (string | null | undefined) | null;
         prior_authorization_number?: string | null;

@@ -73,6 +73,7 @@ export * from "./tags/types";
 export * as tasks from "./tasks";
 export * as users from "./users";
 export * as views from "./views";
+export * as workQueues from "./workQueues";
 export * as writeOffs from "./writeOffs";
 export * as x12 from "./x12";
 export * as yesNoIndicator from "./yesNoIndicator";
