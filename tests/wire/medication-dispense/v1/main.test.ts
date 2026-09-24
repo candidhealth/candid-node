@@ -1252,6 +1252,7 @@ describe("V1Client", () => {
             },
             property_casualty_claim_number: "property_casualty_claim_number",
             accident_date: "2023-01-15",
+            initial_treatment_date: "2023-01-15",
             property_casualty_patient_identifier: {
                 property_casualty_patient_identifier_qualifier: "1W",
                 property_casualty_patient_identifier: "property_casualty_patient_identifier",
@@ -3225,6 +3226,7 @@ describe("V1Client", () => {
                 },
                 propertyCasualtyClaimNumber: "property_casualty_claim_number",
                 accidentDate: "2023-01-15",
+                initialTreatmentDate: "2023-01-15",
                 propertyCasualtyPatientIdentifier: {
                     propertyCasualtyPatientIdentifierQualifier: "1W",
                     propertyCasualtyPatientIdentifier: "property_casualty_patient_identifier",

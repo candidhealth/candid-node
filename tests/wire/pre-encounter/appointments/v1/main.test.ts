@@ -105,6 +105,7 @@ describe("V1Client", () => {
             location_resource_id: "location_resource_id",
             automated_eligibility_check_complete: true,
             work_queue: "EMERGENT_ISSUE",
+            cancellation_reason: "cancellation_reason",
         };
 
         server
@@ -248,6 +249,7 @@ describe("V1Client", () => {
                 locationResourceId: "location_resource_id",
                 automatedEligibilityCheckComplete: true,
                 workQueue: "EMERGENT_ISSUE",
+                cancellationReason: "cancellation_reason",
             },
             ok: true,
             headers: expect.any(Object),
@@ -2869,6 +2871,7 @@ describe("V1Client", () => {
             location_resource_id: "location_resource_id",
             automated_eligibility_check_complete: true,
             work_queue: "EMERGENT_ISSUE",
+            cancellation_reason: "cancellation_reason",
         };
 
         server
@@ -3006,6 +3009,7 @@ describe("V1Client", () => {
                 locationResourceId: "location_resource_id",
                 automatedEligibilityCheckComplete: true,
                 workQueue: "EMERGENT_ISSUE",
+                cancellationReason: "cancellation_reason",
             },
             ok: true,
             headers: expect.any(Object),
@@ -3108,6 +3112,7 @@ describe("V1Client", () => {
                 location_resource_id: "location_resource_id",
                 automated_eligibility_check_complete: true,
                 work_queue: "EMERGENT_ISSUE",
+                cancellation_reason: "cancellation_reason",
             },
             {
                 id: "id",
@@ -3192,6 +3197,7 @@ describe("V1Client", () => {
                 location_resource_id: "location_resource_id",
                 automated_eligibility_check_complete: true,
                 work_queue: "EMERGENT_ISSUE",
+                cancellation_reason: "cancellation_reason",
             },
         ];
 
@@ -3335,6 +3341,7 @@ describe("V1Client", () => {
                     locationResourceId: "location_resource_id",
                     automatedEligibilityCheckComplete: true,
                     workQueue: "EMERGENT_ISSUE",
+                    cancellationReason: "cancellation_reason",
                 },
                 {
                     id: CandidApi.preEncounter.AppointmentId("id"),
@@ -3463,6 +3470,7 @@ describe("V1Client", () => {
                     locationResourceId: "location_resource_id",
                     automatedEligibilityCheckComplete: true,
                     workQueue: "EMERGENT_ISSUE",
+                    cancellationReason: "cancellation_reason",
                 },
             ],
             ok: true,
@@ -3570,6 +3578,7 @@ describe("V1Client", () => {
             location_resource_id: "location_resource_id",
             automated_eligibility_check_complete: true,
             work_queue: "EMERGENT_ISSUE",
+            cancellation_reason: "cancellation_reason",
         };
 
         server
@@ -3717,6 +3726,7 @@ describe("V1Client", () => {
                 locationResourceId: "location_resource_id",
                 automatedEligibilityCheckComplete: true,
                 workQueue: "EMERGENT_ISSUE",
+                cancellationReason: "cancellation_reason",
             },
             ok: true,
             headers: expect.any(Object),
@@ -3819,6 +3829,7 @@ describe("V1Client", () => {
                 location_resource_id: "location_resource_id",
                 automated_eligibility_check_complete: true,
                 work_queue: "EMERGENT_ISSUE",
+                cancellation_reason: "cancellation_reason",
             },
             {
                 id: "id",
@@ -3903,6 +3914,7 @@ describe("V1Client", () => {
                 location_resource_id: "location_resource_id",
                 automated_eligibility_check_complete: true,
                 work_queue: "EMERGENT_ISSUE",
+                cancellation_reason: "cancellation_reason",
             },
         ];
 
@@ -4046,6 +4058,7 @@ describe("V1Client", () => {
                     locationResourceId: "location_resource_id",
                     automatedEligibilityCheckComplete: true,
                     workQueue: "EMERGENT_ISSUE",
+                    cancellationReason: "cancellation_reason",
                 },
                 {
                     id: CandidApi.preEncounter.AppointmentId("id"),
@@ -4174,6 +4187,7 @@ describe("V1Client", () => {
                     locationResourceId: "location_resource_id",
                     automatedEligibilityCheckComplete: true,
                     workQueue: "EMERGENT_ISSUE",
+                    cancellationReason: "cancellation_reason",
                 },
             ],
             ok: true,

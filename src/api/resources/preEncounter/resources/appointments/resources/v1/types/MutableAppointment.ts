@@ -46,4 +46,6 @@ export interface MutableAppointment {
     automatedEligibilityCheckComplete?: boolean;
     /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY, CHECKED_OUT or NO_SHOW, work_queue must be null. */
     workQueue?: CandidApi.preEncounter.appointments.v1.AppointmentWorkQueue;
+    /** The reason the appointment was cancelled. This value cannot be set on create or update; it is only set by the deactivate endpoint, and is cleared if the appointment is reactivated. */
+    cancellationReason?: string;
 }

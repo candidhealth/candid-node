@@ -1011,6 +1011,7 @@ describe("V1Client", () => {
                         location_resource_id: "location_resource_id",
                         automated_eligibility_check_complete: true,
                         work_queue: "EMERGENT_ISSUE",
+                        cancellation_reason: "cancellation_reason",
                     },
                     primary_mrn: "primary_mrn",
                     alternative_mrns: ["alternative_mrns", "alternative_mrns"],
@@ -2007,6 +2008,7 @@ describe("V1Client", () => {
                         location_resource_id: "location_resource_id",
                         automated_eligibility_check_complete: true,
                         work_queue: "EMERGENT_ISSUE",
+                        cancellation_reason: "cancellation_reason",
                     },
                     primary_mrn: "primary_mrn",
                     alternative_mrns: ["alternative_mrns", "alternative_mrns"],
@@ -3337,6 +3339,7 @@ describe("V1Client", () => {
                             locationResourceId: "location_resource_id",
                             automatedEligibilityCheckComplete: true,
                             workQueue: "EMERGENT_ISSUE",
+                            cancellationReason: "cancellation_reason",
                         },
                         primaryMrn: "primary_mrn",
                         alternativeMrns: ["alternative_mrns", "alternative_mrns"],
@@ -4655,6 +4658,7 @@ describe("V1Client", () => {
                             locationResourceId: "location_resource_id",
                             automatedEligibilityCheckComplete: true,
                             workQueue: "EMERGENT_ISSUE",
+                            cancellationReason: "cancellation_reason",
                         },
                         primaryMrn: "primary_mrn",
                         alternativeMrns: ["alternative_mrns", "alternative_mrns"],
@@ -4767,6 +4771,7 @@ describe("V1Client", () => {
                         location_resource_id: "location_resource_id",
                         automated_eligibility_check_complete: true,
                         work_queue: "EMERGENT_ISSUE",
+                        cancellation_reason: "cancellation_reason",
                     },
                     patient: {
                         mrn: "mrn",
@@ -5624,6 +5629,7 @@ describe("V1Client", () => {
                         location_resource_id: "location_resource_id",
                         automated_eligibility_check_complete: true,
                         work_queue: "EMERGENT_ISSUE",
+                        cancellation_reason: "cancellation_reason",
                     },
                     patient: {
                         mrn: "mrn",
@@ -6531,6 +6537,7 @@ describe("V1Client", () => {
                             locationResourceId: "location_resource_id",
                             automatedEligibilityCheckComplete: true,
                             workQueue: "EMERGENT_ISSUE",
+                            cancellationReason: "cancellation_reason",
                         },
                         patient: {
                             mrn: "mrn",
@@ -7692,6 +7699,7 @@ describe("V1Client", () => {
                             locationResourceId: "location_resource_id",
                             automatedEligibilityCheckComplete: true,
                             workQueue: "EMERGENT_ISSUE",
+                            cancellationReason: "cancellation_reason",
                         },
                         patient: {
                             mrn: "mrn",

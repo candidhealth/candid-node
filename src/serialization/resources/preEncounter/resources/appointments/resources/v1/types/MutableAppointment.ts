@@ -55,6 +55,7 @@ export const MutableAppointment: core.serialization.ObjectSchema<
         core.serialization.boolean().optional(),
     ),
     workQueue: core.serialization.property("work_queue", AppointmentWorkQueue.optional()),
+    cancellationReason: core.serialization.property("cancellation_reason", core.serialization.string().optional()),
 });
 
 export declare namespace MutableAppointment {
@@ -82,5 +83,6 @@ export declare namespace MutableAppointment {
         location_resource_id?: string | null;
         automated_eligibility_check_complete?: boolean | null;
         work_queue?: AppointmentWorkQueue.Raw | null;
+        cancellation_reason?: string | null;
     }
 }

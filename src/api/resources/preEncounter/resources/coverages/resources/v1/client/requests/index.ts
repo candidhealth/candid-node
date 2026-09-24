@@ -1,4 +1,5 @@
 export type { CheckEligibilityRequest } from "./CheckEligibilityRequest";
+export type { CheckInsuranceDiscoveryRequest } from "./CheckInsuranceDiscoveryRequest";
 export type { CoverageGetMultiPaginatedRequest } from "./CoverageGetMultiPaginatedRequest";
 export type { CoverageGetMultiRequest } from "./CoverageGetMultiRequest";
 export type { CoverageScanRequest } from "./CoverageScanRequest";

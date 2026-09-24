@@ -1,3 +1,4 @@
+export * from "./AsyncInsuranceDiscoveryCheckResult";
 export * from "./BatchEligibilityResponse";
 export * from "./Cob";
 export * from "./CobAddress";
@@ -36,6 +37,7 @@ export * from "./EncounterEligibilityRequest";
 export * from "./EncounterEligibilityResponse";
 export * from "./IndividualProvider";
 export * from "./InsuranceDiscoveryAddress";
+export * from "./InsuranceDiscoveryCheckMetadata";
 export * from "./InsuranceDiscoveryDependent";
 export * from "./InsuranceDiscoveryEncounter";
 export * from "./InsuranceDiscoveryGender";

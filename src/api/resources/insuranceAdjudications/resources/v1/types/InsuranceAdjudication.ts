@@ -10,4 +10,5 @@ export interface InsuranceAdjudication {
     checkDate: string;
     note?: string;
     claims: Record<CandidApi.ClaimId, CandidApi.insuranceAdjudications.v1.ClaimAdjudication[]>;
+    providerLevelAdjustments: CandidApi.ProviderLevelAdjustment[];
 }

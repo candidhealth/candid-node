@@ -114,6 +114,24 @@ describe("V1Client", () => {
                     },
                 ],
             },
+            provider_level_adjustments: [
+                {
+                    provider_identifier: "provider_identifier",
+                    adjustment_identifier: "adjustment_identifier",
+                    adjustment_code: "50",
+                    adjustment_amount_cents: 1,
+                    payee_npi: "payee_npi",
+                    payee_tin: "payee_tin",
+                },
+                {
+                    provider_identifier: "provider_identifier",
+                    adjustment_identifier: "adjustment_identifier",
+                    adjustment_code: "50",
+                    adjustment_amount_cents: 1,
+                    payee_npi: "payee_npi",
+                    payee_tin: "payee_tin",
+                },
+            ],
         };
 
         server
@@ -315,6 +333,24 @@ describe("V1Client", () => {
                         },
                     ],
                 },
+                providerLevelAdjustments: [
+                    {
+                        providerIdentifier: "provider_identifier",
+                        adjustmentIdentifier: "adjustment_identifier",
+                        adjustmentCode: "50",
+                        adjustmentAmountCents: 1,
+                        payeeNpi: "payee_npi",
+                        payeeTin: "payee_tin",
+                    },
+                    {
+                        providerIdentifier: "provider_identifier",
+                        adjustmentIdentifier: "adjustment_identifier",
+                        adjustmentCode: "50",
+                        adjustmentAmountCents: 1,
+                        payeeNpi: "payee_npi",
+                        payeeTin: "payee_tin",
+                    },
+                ],
             },
             ok: true,
             headers: expect.any(Object),

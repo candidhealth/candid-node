@@ -4,5 +4,7 @@
 export const InsuranceDiscoveryStatus = {
     Pending: "PENDING",
     Complete: "COMPLETE",
+    Error: "ERROR",
+    Unknown: "UNKNOWN",
 } as const;
 export type InsuranceDiscoveryStatus = (typeof InsuranceDiscoveryStatus)[keyof typeof InsuranceDiscoveryStatus];

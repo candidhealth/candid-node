@@ -22,6 +22,100 @@ export class V2Client {
     }
 
     /**
+     * @beta This endpoint is in development and may change.
+     *
+     * @param {CandidApi.eligibility.v2.EligibilityRequest} request
+     * @param {V2Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.eligibility.v2.createAvailityEligibilityCheck({
+     *         memberId: "member_id",
+     *         payerId: "payer_id",
+     *         providerNpi: "provider_npi",
+     *         dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+     *         serviceTypeCodes: ["service_type_codes", "service_type_codes"]
+     *     })
+     */
+    public createAvailityEligibilityCheck(
+        request: CandidApi.eligibility.v2.EligibilityRequest,
+        requestOptions?: V2Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.eligibility.v2.EligibilityCheckId,
+            CandidApi.eligibility.v2.createAvailityEligibilityCheck.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__createAvailityEligibilityCheck(request, requestOptions));
+    }
+
+    private async __createAvailityEligibilityCheck(
+        request: CandidApi.eligibility.v2.EligibilityRequest,
+        requestOptions?: V2Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.eligibility.v2.EligibilityCheckId,
+                CandidApi.eligibility.v2.createAvailityEligibilityCheck.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/eligibility/v2/avality-eligibility-check",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.eligibility.v2.EligibilityRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.eligibility.v2.EligibilityCheckId.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.eligibility.v2.createAvailityEligibilityCheck.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * @deprecated
      *
      * <Tip>Candid is deprecating support for this endpoint. It is instead recommended to use [Candid's Stedi passthrough endpoint](https://docs.joincandidhealth.com/api-reference/pre-encounter/eligibility-checks/v-1/post).
@@ -342,6 +436,83 @@ export class V2Client {
             data: {
                 ok: false,
                 error: CandidApi.eligibility.v2.findAvailityEligibilityResults.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * @beta This endpoint is in development and may change.
+     *
+     * @param {CandidApi.eligibility.v2.EligibilityCheckId} eligibility_check_id
+     * @param {V2Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.eligibility.v2.getById(CandidApi.eligibility.v2.EligibilityCheckId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"))
+     */
+    public getById(
+        eligibility_check_id: CandidApi.eligibility.v2.EligibilityCheckId,
+        requestOptions?: V2Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.eligibility.v2.AvailityEligibilityResult, CandidApi.eligibility.v2.getById.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getById(eligibility_check_id, requestOptions));
+    }
+
+    private async __getById(
+        eligibility_check_id: CandidApi.eligibility.v2.EligibilityCheckId,
+        requestOptions?: V2Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.eligibility.v2.AvailityEligibilityResult, CandidApi.eligibility.v2.getById.Error>
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                `/api/eligibility/v2/${core.url.encodePathParam(serializers.eligibility.v2.EligibilityCheckId.jsonOrThrow(eligibility_check_id))}`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.eligibility.v2.AvailityEligibilityResult.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.eligibility.v2.getById.Error._unknown(_response.error),
                 rawResponse: _response.rawResponse,
             },
             rawResponse: _response.rawResponse,

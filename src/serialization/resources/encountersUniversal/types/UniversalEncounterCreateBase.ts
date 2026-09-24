@@ -87,6 +87,10 @@ export const UniversalEncounterCreateBase: core.serialization.ObjectSchema<
             core.serialization.string().optional(),
         ),
         accidentDate: core.serialization.property("accident_date", core.serialization.string().optional()),
+        initialTreatmentDate: core.serialization.property(
+            "initial_treatment_date",
+            core.serialization.string().optional(),
+        ),
         propertyCasualtyPatientIdentifier: core.serialization.property(
             "property_casualty_patient_identifier",
             PropertyCasualtyPatientIdentifierCreate.optional(),
@@ -122,6 +126,7 @@ export declare namespace UniversalEncounterCreateBase {
         related_causes_information?: RelatedCausesInformationCreate.Raw | null;
         property_casualty_claim_number?: string | null;
         accident_date?: string | null;
+        initial_treatment_date?: string | null;
         property_casualty_patient_identifier?: PropertyCasualtyPatientIdentifierCreate.Raw | null;
     }
 }

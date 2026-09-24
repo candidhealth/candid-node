@@ -14,7 +14,7 @@ export const EncounterEligibility: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     source: EligibilitySource,
-    dateOfService: core.serialization.date(),
+    dateOfService: core.serialization.date().optional(),
     payerId: core.serialization.string(),
     providerNpi: core.serialization.property("providerNPI", core.serialization.string()),
     dependent: Dependent.optional(),
@@ -26,7 +26,7 @@ export declare namespace EncounterEligibility {
     export interface Raw {
         id: string;
         source: EligibilitySource.Raw;
-        dateOfService: string;
+        dateOfService?: string | null;
         payerId: string;
         providerNPI: string;
         dependent?: Dependent.Raw | null;

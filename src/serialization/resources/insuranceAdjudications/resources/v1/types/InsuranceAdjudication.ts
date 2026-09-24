@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { ClaimId } from "../../../../commons/types/ClaimId";
+import { ProviderLevelAdjustment } from "../../../../eras/types/ProviderLevelAdjustment";
 import { PayerUuid } from "../../../../payers/resources/v3/types/PayerUuid";
 import { ClaimAdjudication } from "./ClaimAdjudication";
 import { InsuranceAdjudicationId } from "./InsuranceAdjudicationId";
@@ -19,6 +20,10 @@ export const InsuranceAdjudication: core.serialization.ObjectSchema<
     checkDate: core.serialization.property("check_date", core.serialization.string()),
     note: core.serialization.string().optional(),
     claims: core.serialization.record(ClaimId, core.serialization.list(ClaimAdjudication)),
+    providerLevelAdjustments: core.serialization.property(
+        "provider_level_adjustments",
+        core.serialization.list(ProviderLevelAdjustment),
+    ),
 });
 
 export declare namespace InsuranceAdjudication {
@@ -30,5 +35,6 @@ export declare namespace InsuranceAdjudication {
         check_date: string;
         note?: string | null;
         claims: Record<ClaimId.Raw, ClaimAdjudication.Raw[]>;
+        provider_level_adjustments: ProviderLevelAdjustment.Raw[];
     }
 }

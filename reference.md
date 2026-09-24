@@ -2789,6 +2789,61 @@ await client.dashboarding.v1.queryMetrics([{
 </details>
 
 ## Eligibility V2
+<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">createAvailityEligibilityCheck</a>({ ...params }) -> core.APIResponse&lt;CandidApi.EligibilityCheckId, CandidApi.eligibility.v2.createAvailityEligibilityCheck.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.eligibility.v2.createAvailityEligibilityCheck({
+    memberId: "member_id",
+    payerId: "payer_id",
+    providerNpi: "provider_npi",
+    dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+    serviceTypeCodes: ["service_type_codes", "service_type_codes"]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.EligibilityRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">submitEligibilityCheckAvaility</a>() -> core.APIResponse&lt;unknown, CandidApi.eligibility.v2.submitEligibilityCheckAvaility.Error&gt;</code></summary>
 <dl>
 <dd>
@@ -2976,6 +3031,55 @@ await client.eligibility.v2.findAvailityEligibilityResults({
 <dd>
 
 **request:** `CandidApi.FindAvailityEligibilityResultsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.eligibility.v2.<a href="/src/api/resources/eligibility/resources/v2/client/Client.ts">getById</a>(eligibility_check_id) -> core.APIResponse&lt;CandidApi.AvailityEligibilityResult, CandidApi.eligibility.v2.getById.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.eligibility.v2.getById(CandidApi.EligibilityCheckId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**eligibility_check_id:** `CandidApi.EligibilityCheckId` 
     
 </dd>
 </dl>
@@ -11946,7 +12050,7 @@ await client.preEncounter.appointments.v1.scan({
 </dl>
 </details>
 
-<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">deactivate</a>(id, version) -> core.APIResponse&lt;void, CandidApi.preEncounter.appointments.v1.deactivate.Error&gt;</code></summary>
+<details><summary><code>client.preEncounter.appointments.v1.<a href="/src/api/resources/preEncounter/resources/appointments/resources/v1/client/Client.ts">deactivate</a>(id, version, { ...params }) -> core.APIResponse&lt;void, CandidApi.preEncounter.appointments.v1.deactivate.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11958,7 +12062,7 @@ await client.preEncounter.appointments.v1.scan({
 <dl>
 <dd>
 
-Sets an appointment as deactivated.  The path must contain the most recent version to prevent race conditions.  Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
+Sets an appointment as deactivated.  The path must contain the most recent version to prevent race conditions.  Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment, set the deactivated flag to false, and clear the cancellation reason.
 </dd>
 </dl>
 </dd>
@@ -11998,6 +12102,14 @@ await client.preEncounter.appointments.v1.deactivate(CandidApi.AppointmentId("id
 <dd>
 
 **version:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.appointments.v1.AppointmentDeactivateRequest` 
     
 </dd>
 </dl>
@@ -12733,6 +12845,136 @@ await client.preEncounter.coverages.v1.getEligibility(CandidApi.CoverageId("d5e9
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**check_id:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">checkInsuranceDiscovery</a>({ ...params }) -> core.APIResponse&lt;CandidApi.InsuranceDiscoveryCheckMetadata, CandidApi.preEncounter.coverages.v1.checkInsuranceDiscovery.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.coverages.v1.checkInsuranceDiscovery({
+    patientId: CandidApi.PatientId("patient_id"),
+    dateOfService: "2023-01-15",
+    npi: "npi"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preEncounter.coverages.v1.CheckInsuranceDiscoveryRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.coverages.v1.<a href="/src/api/resources/preEncounter/resources/coverages/resources/v1/client/Client.ts">getInsuranceDiscovery</a>(check_id) -> core.APIResponse&lt;CandidApi.AsyncInsuranceDiscoveryCheckResult, CandidApi.preEncounter.coverages.v1.getInsuranceDiscovery.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets the insurance discovery of a patient if successful.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.coverages.v1.getInsuranceDiscovery("check_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
 
 <dl>
 <dd>
@@ -13569,6 +13811,69 @@ await client.preEncounter.eligibilityChecks.v1.createEncounterEligibility({
 <dd>
 
 **request:** `CandidApi.EncounterEligibilityRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.preEncounter.eligibilityChecks.v1.<a href="/src/api/resources/preEncounter/resources/eligibilityChecks/resources/v1/client/Client.ts">getEligibilityCheckById</a>(eligibility_check_id) -> core.APIResponse&lt;CandidApi.EncounterEligibility, CandidApi.preEncounter.eligibilityChecks.v1.getEligibilityCheckById.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fetch an eligibility check by it's primary key
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.preEncounter.eligibilityChecks.v1.getEligibilityCheckById("eligibility_check_id");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**eligibility_check_id:** `string` 
     
 </dd>
 </dl>

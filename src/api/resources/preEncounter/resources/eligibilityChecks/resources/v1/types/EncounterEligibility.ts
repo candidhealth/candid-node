@@ -5,7 +5,7 @@ import type * as CandidApi from "../../../../../../../index";
 export interface EncounterEligibility {
     id: string;
     source: CandidApi.preEncounter.eligibilityChecks.v1.EligibilitySource;
-    dateOfService: Date;
+    dateOfService?: Date;
     payerId: string;
     providerNpi: string;
     dependent?: CandidApi.preEncounter.eligibilityChecks.v1.Dependent;

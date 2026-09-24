@@ -7,8 +7,8 @@ import type * as serializers from "../../../../../../../index";
 export const InsuranceDiscoveryStatus: core.serialization.Schema<
     serializers.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryStatus.Raw,
     CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryStatus
-> = core.serialization.enum_(["PENDING", "COMPLETE"]);
+> = core.serialization.enum_(["PENDING", "COMPLETE", "ERROR", "UNKNOWN"]);
 
 export declare namespace InsuranceDiscoveryStatus {
-    export type Raw = "PENDING" | "COMPLETE";
+    export type Raw = "PENDING" | "COMPLETE" | "ERROR" | "UNKNOWN";
 }

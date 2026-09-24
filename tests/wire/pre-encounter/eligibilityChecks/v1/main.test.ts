@@ -2921,4 +2921,100 @@ describe("V1Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("get_eligibility_check_by_id", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = {
+            id: "id",
+            source: "STEDI",
+            dateOfService: "2024-01-15T09:30:00Z",
+            payerId: "payerId",
+            providerNPI: "providerNPI",
+            dependent: { name: "name" },
+            status: "ACTIVE",
+            errors: [
+                {
+                    source: "CANDID",
+                    errorDetails: {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                },
+                {
+                    source: "CANDID",
+                    errorDetails: {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                },
+            ],
+        };
+
+        server
+            .mockEndpoint()
+            .get("/eligibility-checks/v1/eligibility_check_id")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.eligibilityChecks.v1.getEligibilityCheckById("eligibility_check_id");
+        expect(response).toEqual({
+            body: {
+                id: "id",
+                source: "STEDI",
+                dateOfService: new Date("2024-01-15T09:30:00.000Z"),
+                payerId: "payerId",
+                providerNpi: "providerNPI",
+                dependent: {
+                    name: "name",
+                },
+                status: "ACTIVE",
+                errors: [
+                    {
+                        source: "CANDID",
+                        errorDetails: {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    },
+                    {
+                        source: "CANDID",
+                        errorDetails: {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    },
+                ],
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

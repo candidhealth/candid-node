@@ -8245,4 +8245,148 @@ describe("V1Client", () => {
             rawResponse: expect.any(Object),
         });
     });
+
+    test("check_insurance_discovery", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = { patient_id: "patient_id", date_of_service: "2023-01-15", npi: "npi" };
+        const rawResponseBody = {
+            check_id: "check_id",
+            status: "PENDING",
+            initiated_by: "initiated_by",
+            initiated_at: "2024-01-15T09:30:00Z",
+        };
+
+        server
+            .mockEndpoint()
+            .post("/coverages/v1/insurance-discovery")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.coverages.v1.checkInsuranceDiscovery({
+            patientId: CandidApi.preEncounter.PatientId("patient_id"),
+            dateOfService: "2023-01-15",
+            npi: "npi",
+        });
+        expect(response).toEqual({
+            body: {
+                checkId: "check_id",
+                status: "PENDING",
+                initiatedBy: CandidApi.preEncounter.UserId("initiated_by"),
+                initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("get_insurance_discovery", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = {
+            metadata: {
+                check_id: "check_id",
+                status: "PENDING",
+                initiated_by: "initiated_by",
+                initiated_at: "2024-01-15T09:30:00Z",
+            },
+            response: {
+                discovery_id: "discovery_id",
+                status: "PENDING",
+                items: [{ key: "value" }, { key: "value" }],
+                coverages_found: 1,
+                errors: [
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                    {
+                        "field?": "field?",
+                        "description?": "description?",
+                        "location?": "location?",
+                        "possibleResolutions?": "possibleResolutions?",
+                        "code?": "code?",
+                        "followupAction?": "followupAction?",
+                    },
+                ],
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/coverages/v1/insurance-discovery/check_id")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.coverages.v1.getInsuranceDiscovery("check_id");
+        expect(response).toEqual({
+            body: {
+                metadata: {
+                    checkId: "check_id",
+                    status: "PENDING",
+                    initiatedBy: CandidApi.preEncounter.UserId("initiated_by"),
+                    initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                },
+                response: {
+                    discoveryId: "discovery_id",
+                    status: "PENDING",
+                    items: [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    coveragesFound: 1,
+                    errors: [
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                        {
+                            field: "field?",
+                            description: "description?",
+                            location: "location?",
+                            possibleResolutions: "possibleResolutions?",
+                            code: "code?",
+                            followupAction: "followupAction?",
+                        },
+                    ],
+                },
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
 });

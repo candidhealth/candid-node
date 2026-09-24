@@ -808,10 +808,11 @@ export class V1Client {
     }
 
     /**
-     * Sets an appointment as deactivated.  The path must contain the most recent version to prevent race conditions.  Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment and set the deactivated flag to false.
+     * Sets an appointment as deactivated.  The path must contain the most recent version to prevent race conditions.  Deactivating historic versions is not supported. Subsequent updates via PUT to the appointment will "reactivate" the appointment, set the deactivated flag to false, and clear the cancellation reason.
      *
      * @param {CandidApi.preEncounter.AppointmentId} id
      * @param {string} version
+     * @param {CandidApi.preEncounter.appointments.v1.AppointmentDeactivateRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -820,16 +821,22 @@ export class V1Client {
     public deactivate(
         id: CandidApi.preEncounter.AppointmentId,
         version: string,
+        request: CandidApi.preEncounter.appointments.v1.AppointmentDeactivateRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<core.APIResponse<void, CandidApi.preEncounter.appointments.v1.deactivate.Error>> {
-        return core.HttpResponsePromise.fromPromise(this.__deactivate(id, version, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__deactivate(id, version, request, requestOptions));
     }
 
     private async __deactivate(
         id: CandidApi.preEncounter.AppointmentId,
         version: string,
+        request: CandidApi.preEncounter.appointments.v1.AppointmentDeactivateRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): Promise<core.WithRawResponse<core.APIResponse<void, CandidApi.preEncounter.appointments.v1.deactivate.Error>>> {
+        const { cancellationReason } = request;
+        const _queryParams: Record<string, unknown> = {
+            cancellation_reason: cancellationReason,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -847,7 +854,7 @@ export class V1Client {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

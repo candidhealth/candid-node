@@ -1219,9 +1219,9 @@ camelcase@^6.2.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001810:
-  version "1.0.30001810"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001810.tgz#4970b477dea3278374de9bc43aa8f5d39fc3cda2"
-  integrity sha512-TITQPUkaz+aVk5GL6NhOdwk1aEaNTSDPsGFWrTuhKGtjTF70jL/Oht2W4c6rXUe5fu7Ie19VIahAXHIIiWWNeg==
+  version "1.0.30001812"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001812.tgz#55b32ed819d120b384149a4f9fd59d179ce008f9"
+  integrity sha512-qN+QNNBr93TCmFrmte0bBCjSDMuRvt78VlHT99qIGPszm4QsqCX8lnyWUFkHi8B7ZBAPq8SH+UqyXNy/odMdng==
 
 chalk@^4.0.0, chalk@^4.1.0:
   version "4.1.2"
@@ -1416,9 +1416,9 @@ dunder-proto@^1.0.1:
     gopd "^1.2.0"
 
 electron-to-chromium@^1.5.427:
-  version "1.5.433"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.433.tgz#5c26b05c48030ff4a5566fcaa10dc452a1d1de3e"
-  integrity sha512-5lCAbyZBjtmUt/RAGHRqrL2q0oEFRThDAsZHHDn9XHa89Qw7gMYOeSicBTy+AHfvo0r6vwsZvqNJTQIQy1BLzA==
+  version "1.5.438"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.438.tgz#7531eb37e3eb46f9688106df3753d06114e5b621"
+  integrity sha512-AN9xMU1hJiT65LkCUPL1DZm5TCbOPb2Qsm5pYwFLEXp6/qj9SdT4yMiqs7Qqstwvkn1zF7l36SRGt+s6XcJ0FA==
 
 emittery@^0.13.1:
   version "0.13.1"
@@ -2535,9 +2535,9 @@ node-int64@^0.4.0:
   integrity sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==
 
 node-releases@^2.0.55:
-  version "2.0.56"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.56.tgz#fff6a4093fe05d994a2a5e415eee5fcef874e6dc"
-  integrity sha512-x0InOIyzgdk+eyaWaRJFH5snEtiImgBgblZ2CyPrLmqqcuMQkEvcDPHbzqbD8eDsSeJbVOjn+crzyzHaM4D+/A==
+  version "2.0.57"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.57.tgz#47827d34b86a98b4b7afacc1222878c286b6ef2d"
+  integrity sha512-kQK9LGGFiHtrWiNhZtA7Qbw17AQz+dmsEKODRIVTXA9+e5MS/2gZEBhYJt13GrAz5/IOZKddH/0Z3TP/Zgo+yw==
 
 normalize-path@^3.0.0:
   version "3.0.0"
@@ -2988,17 +2988,17 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-tldts-core@^7.4.13:
-  version "7.4.13"
-  resolved "https://registry.yarnpkg.com/tldts-core/-/tldts-core-7.4.13.tgz#5dd4ed4730b34bb12cdc1f8a86c80f07c9780670"
-  integrity sha512-mbYsrih5FRtGxs3Usvl/PqwJsNpp+jsmrdFviiK02teHDG0/HebBG/pqCylje3kzgXYzuLoHJF/0mz9W53t8Xg==
+tldts-core@^7.4.15:
+  version "7.4.15"
+  resolved "https://registry.yarnpkg.com/tldts-core/-/tldts-core-7.4.15.tgz#9ba216e1256dfd86b89da8fcb6bdf8b0ffdf360b"
+  integrity sha512-ERuv0p98XgSzmlSLJr8vDNxX+uATGInlN97V3R+JpYWaSqn5IG3ewWgCwczk4bkOpgth/o8Nt5FOi4B4w0n/1A==
 
 tldts@^7.0.5:
-  version "7.4.13"
-  resolved "https://registry.yarnpkg.com/tldts/-/tldts-7.4.13.tgz#50e9a884162e6091844dadf0696df9353eb8b2be"
-  integrity sha512-iHtaIWWIbMDkCeJdTBzZFGgbluE5J+oHlb2g7+oAz1S1gpuVpabRZdQyd471Vl8UUkcz2vXSL8xZH2kyCe8tfA==
+  version "7.4.15"
+  resolved "https://registry.yarnpkg.com/tldts/-/tldts-7.4.15.tgz#99b760e5ee13cbe616f1a6f34bf4a1caf4c7a621"
+  integrity sha512-SJVBeHOxDbNoq14CvpAoA2mLEWdbldGK8nR+yumpjY5nrlZxOflcA7p1Qj1gbTGmbu9DY9qLj/bENSWhBzjxRQ==
   dependencies:
-    tldts-core "^7.4.13"
+    tldts-core "^7.4.15"
 
 tmpl@1.0.5:
   version "1.0.5"
@@ -3042,9 +3042,9 @@ tr46@~0.0.3:
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
 ts-jest@^29.3.4:
-  version "29.4.12"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.4.12.tgz#c34cd91f02d364e9286d2c016843315fd0efff76"
-  integrity sha512-Ov6ClY53Fflh6BGAnY2DlTq1hYDrTycz2PVTXBWFW2CU+9zrEqAp9fWdGXl42EXO5RLSFAcAZ2JFKbP+zBTFfw==
+  version "29.4.13"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.4.13.tgz#5c25941fb571a36781580f544c2f79355336374b"
+  integrity sha512-rUQG+Ar95cNQf//KvsSjvabLpCTbwk+vKGWkAgiKFugqVwmOpGR7n7xa3S68/AB21Wn0KNhIAVxmxrUsz0L1AQ==
   dependencies:
     bs-logger "^0.2.6"
     fast-json-stable-stringify "^2.1.0"

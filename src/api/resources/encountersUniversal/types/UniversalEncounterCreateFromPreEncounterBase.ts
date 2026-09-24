@@ -45,6 +45,8 @@ export interface UniversalEncounterCreateFromPreEncounterBase extends CandidApi.
     propertyCasualtyClaimNumber?: string;
     /** 837p Loop2300 DTP*439, CMS1500 Box 15 */
     accidentDate?: string;
+    /** 837p Loop2300 DTP*454, CMS1500 Box 15 */
+    initialTreatmentDate?: string;
     /**
      * Patient identifier for Property and Casualty claims
      * 837p Loop 2010CA
