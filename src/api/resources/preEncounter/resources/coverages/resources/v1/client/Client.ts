@@ -1030,7 +1030,7 @@ export class V1Client {
     }
 
     /**
-     * Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated.
+     * Initiates an insurance discovery check via patientId. Returns the metadata of the check if successfully initiated. Prefer to use the eligibilityChecks insurance-discovery api as it will allow long running discovery requests to complete.
      *
      * @param {CandidApi.preEncounter.coverages.v1.CheckInsuranceDiscoveryRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
@@ -1125,7 +1125,202 @@ export class V1Client {
     }
 
     /**
-     * Gets the insurance discovery of a patient if successful.
+     * Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated.
+     *
+     * @param {CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough({
+     *         provider: {
+     *             npi: "npi"
+     *         },
+     *         subscriber: {
+     *             firstName: "first_name",
+     *             lastName: "last_name"
+     *         }
+     *     })
+     */
+    public checkInsuranceDiscoveryPassthrough(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryCheckMetadata,
+            CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__checkInsuranceDiscoveryPassthrough(request, requestOptions));
+    }
+
+    private async __checkInsuranceDiscoveryPassthrough(
+        request: CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryCheckMetadata,
+                CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error
+            >
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/coverages/v1/insurance-discovery-passthrough",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryCheckMetadata.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Returns insurance discovery check metadata, filterable by patient.
+     *
+     * @param {CandidApi.preEncounter.coverages.v1.GetInsuranceDiscoveryCheckMetadataRequest} request
+     * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.preEncounter.coverages.v1.getInsuranceDiscoveryCheckMetadata({
+     *         patientId: CandidApi.preEncounter.PatientId("patient_id")
+     *     })
+     */
+    public getInsuranceDiscoveryCheckMetadata(
+        request: CandidApi.preEncounter.coverages.v1.GetInsuranceDiscoveryCheckMetadataRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<
+            CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryCheckMetadata[],
+            CandidApi.preEncounter.coverages.v1.getInsuranceDiscoveryCheckMetadata.Error
+        >
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__getInsuranceDiscoveryCheckMetadata(request, requestOptions));
+    }
+
+    private async __getInsuranceDiscoveryCheckMetadata(
+        request: CandidApi.preEncounter.coverages.v1.GetInsuranceDiscoveryCheckMetadataRequest,
+        requestOptions?: V1Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<
+                CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryCheckMetadata[],
+                CandidApi.preEncounter.coverages.v1.getInsuranceDiscoveryCheckMetadata.Error
+            >
+        >
+    > {
+        const { patientId } = request;
+        const _queryParams: Record<string, unknown> = {
+            patient_id: patientId,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).preEncounter,
+                "/coverages/v1/insurance-discovery/check-metadata",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.preEncounter.coverages.v1.getInsuranceDiscoveryCheckMetadata.Response.parseOrThrow(
+                        _response.body,
+                        {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        },
+                    ),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.preEncounter.coverages.v1.getInsuranceDiscoveryCheckMetadata.Error._unknown(
+                    _response.error,
+                ),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
+     * Gets the insurance discovery of a check id if successful.
      *
      * @param {string} check_id
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.

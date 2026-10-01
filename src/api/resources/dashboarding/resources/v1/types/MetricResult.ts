@@ -7,8 +7,13 @@ import type * as CandidApi from "../../../../../index";
  */
 export interface MetricResult {
     metric: CandidApi.dashboarding.v1.MetricName;
-    /** The metric value type. */
-    value?: unknown;
+    /**
+     * The metric value. Null alongside a null `error` when the metric resolved but has nothing
+     * to report, which is distinct from a zero. Counts and amounts report `0` when the
+     * underlying set is empty; ages and rates report null, because there is no claim to age and
+     * no volume to take a rate over.
+     */
+    value?: number;
     /** The `snapshot` value sent on the request. */
     snapshot?: CandidApi.dashboarding.v1.MetricSnapshot;
     /** Why this metric could not be computed, absent on success. */

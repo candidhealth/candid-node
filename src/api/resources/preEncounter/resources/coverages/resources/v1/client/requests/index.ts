@@ -4,3 +4,4 @@ export type { CoverageGetMultiPaginatedRequest } from "./CoverageGetMultiPaginat
 export type { CoverageGetMultiRequest } from "./CoverageGetMultiRequest";
 export type { CoverageScanRequest } from "./CoverageScanRequest";
 export type { CoveragesGetHistoryRequest } from "./CoveragesGetHistoryRequest";
+export type { GetInsuranceDiscoveryCheckMetadataRequest } from "./GetInsuranceDiscoveryCheckMetadataRequest";

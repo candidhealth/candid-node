@@ -2,6 +2,7 @@
 
 export const InsuranceWriteOffReason = {
     SmallBalance: "SMALL_BALANCE",
+    OonWriteOff: "OON_WRITE_OFF",
     NoAuthorizationReferral: "NO_AUTHORIZATION_REFERRAL",
     TimelyFiling: "TIMELY_FILING",
     StaleDate: "STALE_DATE",

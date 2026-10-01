@@ -16,6 +16,7 @@ export interface InsuranceDiscoveryResponse {
      * payer, plan, and benefits details).
      */
     items?: unknown[];
+    parsedItems?: CandidApi.preEncounter.eligibilityChecks.v1.ParsedDiscoveryItem[];
     /** The number of potential coverage matches found. 0 if no matching coverage was found. */
     coveragesFound?: number;
     errors?: CandidApi.preEncounter.eligibilityChecks.v1.EligibilityCheckErrorDetails[];

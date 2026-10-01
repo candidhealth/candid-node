@@ -1201,6 +1201,12 @@ export const ProcedureModifier = {
      * The treatment was approved under the workers’ compensation plan */
     W3: "W3",
     /**
+     * Work conditioning */
+    Wc: "WC",
+    /**
+     * Work hardening */
+    Wh: "WH",
+    /**
      * Episodic/Focused Services - Reported by a specialty focused clinician who provides care that is time-limited */
     X4: "X4",
     /**

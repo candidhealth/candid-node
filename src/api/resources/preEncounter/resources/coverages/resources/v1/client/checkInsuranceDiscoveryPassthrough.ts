@@ -3,7 +3,7 @@
 import type * as core from "../../../../../../../../core";
 import * as CandidApi from "../../../../../../../index";
 
-export type Error = CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._Unknown;
+export type Error = CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._Unknown;
 
 export namespace Error {
     export interface _Unknown extends _Utils {
@@ -13,7 +13,7 @@ export namespace Error {
 
     export interface _Utils {
         _visit: <_Result>(
-            visitor: CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._Visitor<_Result>,
+            visitor: CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._Visitor<_Result>,
         ) => _Result;
     }
 
@@ -25,15 +25,15 @@ export namespace Error {
 export const Error = {
     _unknown: (
         fetcherError: core.Fetcher.Error,
-    ): CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._Unknown => {
+    ): CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._Unknown => {
         return {
             errorName: undefined,
             content: fetcherError,
             _visit: function <_Result>(
-                this: CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._Unknown,
-                visitor: CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._Visitor<_Result>,
+                this: CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._Unknown,
+                visitor: CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._Visitor<_Result>,
             ) {
-                return CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._visit(
+                return CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._visit(
                     this,
                     visitor,
                 );
@@ -42,8 +42,8 @@ export const Error = {
     },
 
     _visit: <_Result>(
-        value: CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error,
-        visitor: CandidApi.preEncounter.eligibilityChecks.v1.createEncounterEligibility.Error._Visitor<_Result>,
+        value: CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error,
+        visitor: CandidApi.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough.Error._Visitor<_Result>,
     ): _Result => {
         switch (value.errorName) {
             default:

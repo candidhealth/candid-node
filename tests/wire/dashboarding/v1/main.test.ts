@@ -18,8 +18,8 @@ describe("V1Client", () => {
         const rawRequestBody = [{ metric: "patient_total_balance_v1" }, { metric: "patient_total_balance_v1" }];
         const rawResponseBody = {
             results: [
-                { metric: "patient_total_balance_v1", value: { key: "value" }, snapshot: "today", error: "error" },
-                { metric: "patient_total_balance_v1", value: { key: "value" }, snapshot: "today", error: "error" },
+                { metric: "patient_total_balance_v1", value: 1.1, snapshot: "today", error: "error" },
+                { metric: "patient_total_balance_v1", value: 1.1, snapshot: "today", error: "error" },
             ],
         };
 
@@ -45,17 +45,13 @@ describe("V1Client", () => {
                 results: [
                     {
                         metric: "patient_total_balance_v1",
-                        value: {
-                            key: "value",
-                        },
+                        value: 1.1,
                         snapshot: "today",
                         error: "error",
                     },
                     {
                         metric: "patient_total_balance_v1",
-                        value: {
-                            key: "value",
-                        },
+                        value: 1.1,
                         snapshot: "today",
                         error: "error",
                     },

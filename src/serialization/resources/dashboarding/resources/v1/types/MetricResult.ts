@@ -11,7 +11,7 @@ export const MetricResult: core.serialization.ObjectSchema<
     CandidApi.dashboarding.v1.MetricResult
 > = core.serialization.object({
     metric: MetricName,
-    value: core.serialization.unknown().optional(),
+    value: core.serialization.number().optional(),
     snapshot: MetricSnapshot.optional(),
     error: core.serialization.string().optional(),
 });
@@ -19,7 +19,7 @@ export const MetricResult: core.serialization.ObjectSchema<
 export declare namespace MetricResult {
     export interface Raw {
         metric: MetricName.Raw;
-        value?: unknown | null;
+        value?: number | null;
         snapshot?: MetricSnapshot.Raw | null;
         error?: string | null;
     }

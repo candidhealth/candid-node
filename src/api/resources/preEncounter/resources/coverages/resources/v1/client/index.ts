@@ -1,11 +1,13 @@
 export * as batchUpdatePpg from "./batchUpdatePpg";
 export * as checkEligibility from "./checkEligibility";
 export * as checkInsuranceDiscovery from "./checkInsuranceDiscovery";
+export * as checkInsuranceDiscoveryPassthrough from "./checkInsuranceDiscoveryPassthrough";
 export * as create from "./create";
 export * as get from "./get";
 export * as getEligibility from "./getEligibility";
 export * as getHistory from "./getHistory";
 export * as getInsuranceDiscovery from "./getInsuranceDiscovery";
+export * as getInsuranceDiscoveryCheckMetadata from "./getInsuranceDiscoveryCheckMetadata";
 export * as getMulti from "./getMulti";
 export * as getMultiPaginated from "./getMultiPaginated";
 export * from "./requests";

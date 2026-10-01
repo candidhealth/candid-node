@@ -1,4 +1,5 @@
 export * as getHistory from "./getHistory";
+export * as getInsuranceDiscoveryCheckMetadata from "./getInsuranceDiscoveryCheckMetadata";
 export * as getMulti from "./getMulti";
 export * as getMultiPaginated from "./getMultiPaginated";
 export * from "./requests";

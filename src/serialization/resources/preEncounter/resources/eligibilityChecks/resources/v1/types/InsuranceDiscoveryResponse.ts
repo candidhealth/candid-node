@@ -5,6 +5,7 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { EligibilityCheckErrorDetails } from "./EligibilityCheckErrorDetails";
 import { InsuranceDiscoveryStatus } from "./InsuranceDiscoveryStatus";
+import { ParsedDiscoveryItem } from "./ParsedDiscoveryItem";
 
 export const InsuranceDiscoveryResponse: core.serialization.ObjectSchema<
     serializers.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryResponse.Raw,
@@ -13,6 +14,7 @@ export const InsuranceDiscoveryResponse: core.serialization.ObjectSchema<
     discoveryId: core.serialization.property("discovery_id", core.serialization.string().optional()),
     status: InsuranceDiscoveryStatus.optional(),
     items: core.serialization.list(core.serialization.unknown()).optional(),
+    parsedItems: core.serialization.property("parsed_items", core.serialization.list(ParsedDiscoveryItem).optional()),
     coveragesFound: core.serialization.property("coverages_found", core.serialization.number().optional()),
     errors: core.serialization.list(EligibilityCheckErrorDetails).optional(),
 });
@@ -22,6 +24,7 @@ export declare namespace InsuranceDiscoveryResponse {
         discovery_id?: string | null;
         status?: InsuranceDiscoveryStatus.Raw | null;
         items?: unknown[] | null;
+        parsed_items?: ParsedDiscoveryItem.Raw[] | null;
         coverages_found?: number | null;
         errors?: EligibilityCheckErrorDetails.Raw[] | null;
     }

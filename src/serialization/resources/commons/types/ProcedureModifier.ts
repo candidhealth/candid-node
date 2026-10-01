@@ -415,6 +415,8 @@ export const ProcedureModifier: core.serialization.Schema<
     "W1",
     "W2",
     "W3",
+    "WC",
+    "WH",
     "X4",
     "XE",
     "XP",
@@ -833,6 +835,8 @@ export declare namespace ProcedureModifier {
         | "W1"
         | "W2"
         | "W3"
+        | "WC"
+        | "WH"
         | "X4"
         | "XE"
         | "XP"

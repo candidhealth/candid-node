@@ -2,6 +2,7 @@
 
 import type * as CandidApi from "../../../../../../../index";
 
-export interface EncounterEligibilityResponse {
-    items: CandidApi.preEncounter.eligibilityChecks.v1.EncounterEligibility[];
+export interface Confidence {
+    level?: CandidApi.preEncounter.eligibilityChecks.v1.ConfidenceLevel;
+    reason?: string;
 }

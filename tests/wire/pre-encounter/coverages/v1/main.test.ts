@@ -8291,6 +8291,116 @@ describe("V1Client", () => {
         });
     });
 
+    test("check_insurance_discovery_passthrough", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = {
+            provider: { npi: "npi" },
+            subscriber: { first_name: "first_name", last_name: "last_name" },
+        };
+        const rawResponseBody = {
+            check_id: "check_id",
+            status: "PENDING",
+            initiated_by: "initiated_by",
+            initiated_at: "2024-01-15T09:30:00Z",
+        };
+
+        server
+            .mockEndpoint()
+            .post("/coverages/v1/insurance-discovery-passthrough")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.coverages.v1.checkInsuranceDiscoveryPassthrough({
+            provider: {
+                npi: "npi",
+            },
+            subscriber: {
+                firstName: "first_name",
+                lastName: "last_name",
+            },
+        });
+        expect(response).toEqual({
+            body: {
+                checkId: "check_id",
+                status: "PENDING",
+                initiatedBy: CandidApi.preEncounter.UserId("initiated_by"),
+                initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+            },
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
+    test("get_insurance_discovery_check_metadata", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+
+        const rawResponseBody = [
+            {
+                check_id: "check_id",
+                status: "PENDING",
+                initiated_by: "initiated_by",
+                initiated_at: "2024-01-15T09:30:00Z",
+            },
+            {
+                check_id: "check_id",
+                status: "PENDING",
+                initiated_by: "initiated_by",
+                initiated_at: "2024-01-15T09:30:00Z",
+            },
+        ];
+
+        server
+            .mockEndpoint()
+            .get("/coverages/v1/insurance-discovery/check-metadata")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.preEncounter.coverages.v1.getInsuranceDiscoveryCheckMetadata({
+            patientId: CandidApi.preEncounter.PatientId("patient_id"),
+        });
+        expect(response).toEqual({
+            body: [
+                {
+                    checkId: "check_id",
+                    status: "PENDING",
+                    initiatedBy: CandidApi.preEncounter.UserId("initiated_by"),
+                    initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                },
+                {
+                    checkId: "check_id",
+                    status: "PENDING",
+                    initiatedBy: CandidApi.preEncounter.UserId("initiated_by"),
+                    initiatedAt: new Date("2024-01-15T09:30:00.000Z"),
+                },
+            ],
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
     test("get_insurance_discovery", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);
@@ -8313,6 +8423,60 @@ describe("V1Client", () => {
                 discovery_id: "discovery_id",
                 status: "PENDING",
                 items: [{ key: "value" }, { key: "value" }],
+                parsed_items: [
+                    {
+                        confidence: { level: "REVIEW_NEEDED", reason: "reason" },
+                        eligibility_status: "ACTIVE",
+                        plan_metadata: {
+                            payer_name: "payer_name",
+                            insurance_type: "insurance_type",
+                            insurance_type_code: "insurance_type_code",
+                            plan_name: "plan_name",
+                            member_id: "member_id",
+                            group_number: "group_number",
+                            start_date: "2023-01-15",
+                            end_date: "2023-01-15",
+                            plan_dates: [],
+                            subscriber: {},
+                            dependent: {},
+                            trading_partner: "trading_partner",
+                        },
+                        benefits: {
+                            plan_coverage: {},
+                            service_specific_coverage: [],
+                            benefits_related_entities: [{}, {}],
+                            non_covered_details: [],
+                            notes: "notes",
+                            autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                        },
+                    },
+                    {
+                        confidence: { level: "REVIEW_NEEDED", reason: "reason" },
+                        eligibility_status: "ACTIVE",
+                        plan_metadata: {
+                            payer_name: "payer_name",
+                            insurance_type: "insurance_type",
+                            insurance_type_code: "insurance_type_code",
+                            plan_name: "plan_name",
+                            member_id: "member_id",
+                            group_number: "group_number",
+                            start_date: "2023-01-15",
+                            end_date: "2023-01-15",
+                            plan_dates: [],
+                            subscriber: {},
+                            dependent: {},
+                            trading_partner: "trading_partner",
+                        },
+                        benefits: {
+                            plan_coverage: {},
+                            service_specific_coverage: [],
+                            benefits_related_entities: [{}, {}],
+                            non_covered_details: [],
+                            notes: "notes",
+                            autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                        },
+                    },
+                ],
                 coverages_found: 1,
                 errors: [
                     {
@@ -8361,6 +8525,66 @@ describe("V1Client", () => {
                         },
                         {
                             key: "value",
+                        },
+                    ],
+                    parsedItems: [
+                        {
+                            confidence: {
+                                level: "REVIEW_NEEDED",
+                                reason: "reason",
+                            },
+                            eligibilityStatus: "ACTIVE",
+                            planMetadata: {
+                                payerName: "payer_name",
+                                insuranceType: "insurance_type",
+                                insuranceTypeCode: "insurance_type_code",
+                                planName: "plan_name",
+                                memberId: "member_id",
+                                groupNumber: "group_number",
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                planDates: [],
+                                subscriber: {},
+                                dependent: {},
+                                tradingPartner: "trading_partner",
+                            },
+                            benefits: {
+                                planCoverage: {},
+                                serviceSpecificCoverage: [],
+                                benefitsRelatedEntities: [{}, {}],
+                                nonCoveredDetails: [],
+                                notes: "notes",
+                                autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                            },
+                        },
+                        {
+                            confidence: {
+                                level: "REVIEW_NEEDED",
+                                reason: "reason",
+                            },
+                            eligibilityStatus: "ACTIVE",
+                            planMetadata: {
+                                payerName: "payer_name",
+                                insuranceType: "insurance_type",
+                                insuranceTypeCode: "insurance_type_code",
+                                planName: "plan_name",
+                                memberId: "member_id",
+                                groupNumber: "group_number",
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                planDates: [],
+                                subscriber: {},
+                                dependent: {},
+                                tradingPartner: "trading_partner",
+                            },
+                            benefits: {
+                                planCoverage: {},
+                                serviceSpecificCoverage: [],
+                                benefitsRelatedEntities: [{}, {}],
+                                nonCoveredDetails: [],
+                                notes: "notes",
+                                autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                            },
                         },
                     ],
                     coveragesFound: 1,

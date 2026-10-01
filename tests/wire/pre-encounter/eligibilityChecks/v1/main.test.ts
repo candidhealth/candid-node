@@ -1432,118 +1432,6 @@ describe("V1Client", () => {
         });
     });
 
-    test("create-recommendation", async () => {
-        const server = mockServerPool.createServer();
-        mockOAuthScheme(server);
-
-        const client = new CandidApiClient({
-            maxRetries: 0,
-            clientId: "YOUR_CLIENT_ID",
-            clientSecret: "YOUR_CLIENT_SECRET",
-            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
-        });
-        const rawRequestBody = {
-            eligibility_check_id: "eligibility_check_id",
-            patient: {},
-            recommendation: { type: "MEDICARE_ADVANTAGE", payload: {} },
-        };
-        const rawResponseBody = {
-            id: "id",
-            eligibility_check_id: "eligibility_check_id",
-            recommendation: {
-                type: "MEDICARE_ADVANTAGE",
-                payload: {
-                    ma_benefit: { key: "value" },
-                    payer_id: "payer_id",
-                    payer_name: "payer_name",
-                    member_id: "member_id",
-                },
-            },
-            coverage_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-            patient: {
-                id: "id",
-                mrn: "mrn",
-                organization_id: "organization_id",
-                last_name: "last_name",
-                first_name: "first_name",
-                date_of_birth: "2023-01-15",
-                member_id: "member_id",
-            },
-            votes: [
-                { user_id: "user_id", value: "UPVOTE" },
-                { user_id: "user_id", value: "UPVOTE" },
-            ],
-            organization_id: "organization_id",
-            deactivated: true,
-            version: 1,
-            updated_at: "2024-01-15T09:30:00Z",
-            updating_user_id: "updating_user_id",
-        };
-
-        server
-            .mockEndpoint()
-            .post("/eligibility-checks/v1/recommendation")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.preEncounter.eligibilityChecks.v1.createRecommendation({
-            eligibilityCheckId: "eligibility_check_id",
-            patient: {},
-            recommendation: {
-                type: "MEDICARE_ADVANTAGE",
-                payload: {},
-            },
-        });
-        expect(response).toEqual({
-            body: {
-                id: "id",
-                eligibilityCheckId: "eligibility_check_id",
-                recommendation: {
-                    type: "MEDICARE_ADVANTAGE",
-                    payload: {
-                        maBenefit: {
-                            key: "value",
-                        },
-                        payerId: "payer_id",
-                        payerName: "payer_name",
-                        memberId: "member_id",
-                    },
-                },
-                coverageId: CandidApi.preEncounter.CoverageId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-                patient: {
-                    id: CandidApi.preEncounter.PatientId("id"),
-                    mrn: "mrn",
-                    organizationId: CandidApi.preEncounter.OrganizationId("organization_id"),
-                    lastName: "last_name",
-                    firstName: "first_name",
-                    dateOfBirth: "2023-01-15",
-                    memberId: "member_id",
-                },
-                votes: [
-                    {
-                        userId: CandidApi.preEncounter.UserId("user_id"),
-                        value: "UPVOTE",
-                    },
-                    {
-                        userId: CandidApi.preEncounter.UserId("user_id"),
-                        value: "UPVOTE",
-                    },
-                ],
-                organizationId: CandidApi.preEncounter.OrganizationId("organization_id"),
-                deactivated: true,
-                version: 1,
-                updatedAt: new Date("2024-01-15T09:30:00.000Z"),
-                updatingUserId: CandidApi.preEncounter.UserId("updating_user_id"),
-            },
-            ok: true,
-            headers: expect.any(Object),
-            rawResponse: expect.any(Object),
-        });
-    });
-
     test("vote-recommendation", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);
@@ -1652,586 +1540,6 @@ describe("V1Client", () => {
         });
     });
 
-    test("get-multi", async () => {
-        const server = mockServerPool.createServer();
-        mockOAuthScheme(server);
-
-        const client = new CandidApiClient({
-            maxRetries: 0,
-            clientId: "YOUR_CLIENT_ID",
-            clientSecret: "YOUR_CLIENT_SECRET",
-            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
-        });
-
-        const rawResponseBody = {
-            items: [
-                {
-                    batch_id: "batch_id",
-                    errors: [
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                    ],
-                    request: {
-                        submitter_transaction_identifier: "submitter_transaction_identifier",
-                        payer_id: "payer_id",
-                        provider: { first_name: "first_name", last_name: "last_name", npi: "npi" },
-                        subscriber: {
-                            member_id: "member_id",
-                            first_name: "first_name",
-                            last_name: "last_name",
-                            date_of_birth: "2023-01-15",
-                        },
-                        dependent: {
-                            member_id: "member_id",
-                            first_name: "first_name",
-                            last_name: "last_name",
-                            date_of_birth: "2023-01-15",
-                        },
-                        encounter: {
-                            date_of_service: "2023-01-15",
-                            service_type_codes: ["service_type_codes", "service_type_codes"],
-                        },
-                        get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
-                        source: "source",
-                        portal_password: "portal_password",
-                        portal_username: "portal_username",
-                    },
-                    response: { key: "value" },
-                    parsed_response: {
-                        eligibility_status: "ACTIVE",
-                        plan_metadata: {
-                            payer_name: "payer_name",
-                            insurance_type: "insurance_type",
-                            insurance_type_code: "insurance_type_code",
-                            plan_name: "plan_name",
-                            member_id: "member_id",
-                            group_number: "group_number",
-                            start_date: "2023-01-15",
-                            end_date: "2023-01-15",
-                            plan_dates: [
-                                { start_date: "2023-01-15", field_name: "field_name" },
-                                { start_date: "2023-01-15", field_name: "field_name" },
-                            ],
-                            subscriber: {
-                                member_id: "member_id",
-                                group_number: "group_number",
-                                first_name: "first_name",
-                                middle_name: "middle_name",
-                                last_name: "last_name",
-                                date_of_birth: "date_of_birth",
-                                gender: "gender",
-                                address: {},
-                            },
-                            dependent: {
-                                member_id: "member_id",
-                                group_number: "group_number",
-                                first_name: "first_name",
-                                middle_name: "middle_name",
-                                last_name: "last_name",
-                                date_of_birth: "date_of_birth",
-                                gender: "gender",
-                                address: {},
-                            },
-                            trading_partner: "trading_partner",
-                        },
-                        benefits: {
-                            plan_coverage: {
-                                in_network: {},
-                                in_network_flat: [],
-                                out_of_network: {},
-                                out_of_network_flat: [],
-                            },
-                            service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
-                            benefits_related_entities: [{}, {}],
-                            non_covered_details: [
-                                {
-                                    type: "DEDUCTIBLE",
-                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                    unit: "PERCENT",
-                                    value: 1.1,
-                                },
-                                {
-                                    type: "DEDUCTIBLE",
-                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                    unit: "PERCENT",
-                                    value: 1.1,
-                                },
-                            ],
-                            notes: "notes",
-                            autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
-                        },
-                    },
-                    request_corrections: [
-                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
-                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
-                    ],
-                },
-                {
-                    batch_id: "batch_id",
-                    errors: [
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                    ],
-                    request: {
-                        submitter_transaction_identifier: "submitter_transaction_identifier",
-                        payer_id: "payer_id",
-                        provider: { first_name: "first_name", last_name: "last_name", npi: "npi" },
-                        subscriber: {
-                            member_id: "member_id",
-                            first_name: "first_name",
-                            last_name: "last_name",
-                            date_of_birth: "2023-01-15",
-                        },
-                        dependent: {
-                            member_id: "member_id",
-                            first_name: "first_name",
-                            last_name: "last_name",
-                            date_of_birth: "2023-01-15",
-                        },
-                        encounter: {
-                            date_of_service: "2023-01-15",
-                            service_type_codes: ["service_type_codes", "service_type_codes"],
-                        },
-                        get_existing_check_initiated_after: "2024-01-15T09:30:00Z",
-                        source: "source",
-                        portal_password: "portal_password",
-                        portal_username: "portal_username",
-                    },
-                    response: { key: "value" },
-                    parsed_response: {
-                        eligibility_status: "ACTIVE",
-                        plan_metadata: {
-                            payer_name: "payer_name",
-                            insurance_type: "insurance_type",
-                            insurance_type_code: "insurance_type_code",
-                            plan_name: "plan_name",
-                            member_id: "member_id",
-                            group_number: "group_number",
-                            start_date: "2023-01-15",
-                            end_date: "2023-01-15",
-                            plan_dates: [
-                                { start_date: "2023-01-15", field_name: "field_name" },
-                                { start_date: "2023-01-15", field_name: "field_name" },
-                            ],
-                            subscriber: {
-                                member_id: "member_id",
-                                group_number: "group_number",
-                                first_name: "first_name",
-                                middle_name: "middle_name",
-                                last_name: "last_name",
-                                date_of_birth: "date_of_birth",
-                                gender: "gender",
-                                address: {},
-                            },
-                            dependent: {
-                                member_id: "member_id",
-                                group_number: "group_number",
-                                first_name: "first_name",
-                                middle_name: "middle_name",
-                                last_name: "last_name",
-                                date_of_birth: "date_of_birth",
-                                gender: "gender",
-                                address: {},
-                            },
-                            trading_partner: "trading_partner",
-                        },
-                        benefits: {
-                            plan_coverage: {
-                                in_network: {},
-                                in_network_flat: [],
-                                out_of_network: {},
-                                out_of_network_flat: [],
-                            },
-                            service_specific_coverage: [{ service_code: "1" }, { service_code: "1" }],
-                            benefits_related_entities: [{}, {}],
-                            non_covered_details: [
-                                {
-                                    type: "DEDUCTIBLE",
-                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                    unit: "PERCENT",
-                                    value: 1.1,
-                                },
-                                {
-                                    type: "DEDUCTIBLE",
-                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                    unit: "PERCENT",
-                                    value: 1.1,
-                                },
-                            ],
-                            notes: "notes",
-                            autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
-                        },
-                    },
-                    request_corrections: [
-                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
-                        { property: "property", request_value: "request_value", corrected_value: "corrected_value" },
-                    ],
-                },
-            ],
-            next_page_token: "next_page_token",
-            prev_page_token: "prev_page_token",
-            total: 1,
-        };
-
-        server
-            .mockEndpoint()
-            .get("/eligibility-checks/v1/get-multi/")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.preEncounter.eligibilityChecks.v1.getMulti();
-        expect(response).toEqual({
-            body: {
-                items: [
-                    {
-                        batchId: "batch_id",
-                        errors: [
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                        ],
-                        request: {
-                            submitterTransactionIdentifier: "submitter_transaction_identifier",
-                            payerId: "payer_id",
-                            provider: {
-                                firstName: "first_name",
-                                lastName: "last_name",
-                                npi: "npi",
-                            },
-                            subscriber: {
-                                memberId: "member_id",
-                                firstName: "first_name",
-                                lastName: "last_name",
-                                dateOfBirth: "2023-01-15",
-                            },
-                            dependent: {
-                                memberId: "member_id",
-                                firstName: "first_name",
-                                lastName: "last_name",
-                                dateOfBirth: "2023-01-15",
-                            },
-                            encounter: {
-                                dateOfService: "2023-01-15",
-                                serviceTypeCodes: ["service_type_codes", "service_type_codes"],
-                            },
-                            getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
-                            source: "source",
-                            portalPassword: "portal_password",
-                            portalUsername: "portal_username",
-                        },
-                        response: {
-                            key: "value",
-                        },
-                        parsedResponse: {
-                            eligibilityStatus: "ACTIVE",
-                            planMetadata: {
-                                payerName: "payer_name",
-                                insuranceType: "insurance_type",
-                                insuranceTypeCode: "insurance_type_code",
-                                planName: "plan_name",
-                                memberId: "member_id",
-                                groupNumber: "group_number",
-                                startDate: "2023-01-15",
-                                endDate: "2023-01-15",
-                                planDates: [
-                                    {
-                                        startDate: "2023-01-15",
-                                        fieldName: "field_name",
-                                    },
-                                    {
-                                        startDate: "2023-01-15",
-                                        fieldName: "field_name",
-                                    },
-                                ],
-                                subscriber: {
-                                    memberId: "member_id",
-                                    groupNumber: "group_number",
-                                    firstName: "first_name",
-                                    middleName: "middle_name",
-                                    lastName: "last_name",
-                                    dateOfBirth: "date_of_birth",
-                                    gender: "gender",
-                                    address: {},
-                                },
-                                dependent: {
-                                    memberId: "member_id",
-                                    groupNumber: "group_number",
-                                    firstName: "first_name",
-                                    middleName: "middle_name",
-                                    lastName: "last_name",
-                                    dateOfBirth: "date_of_birth",
-                                    gender: "gender",
-                                    address: {},
-                                },
-                                tradingPartner: "trading_partner",
-                            },
-                            benefits: {
-                                planCoverage: {
-                                    inNetwork: {},
-                                    inNetworkFlat: [],
-                                    outOfNetwork: {},
-                                    outOfNetworkFlat: [],
-                                },
-                                serviceSpecificCoverage: [
-                                    {
-                                        serviceCode: "1",
-                                    },
-                                    {
-                                        serviceCode: "1",
-                                    },
-                                ],
-                                benefitsRelatedEntities: [{}, {}],
-                                nonCoveredDetails: [
-                                    {
-                                        type: "DEDUCTIBLE",
-                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                        unit: "PERCENT",
-                                        value: 1.1,
-                                    },
-                                    {
-                                        type: "DEDUCTIBLE",
-                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                        unit: "PERCENT",
-                                        value: 1.1,
-                                    },
-                                ],
-                                notes: "notes",
-                                autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
-                            },
-                        },
-                        requestCorrections: [
-                            {
-                                property: "property",
-                                requestValue: "request_value",
-                                correctedValue: "corrected_value",
-                            },
-                            {
-                                property: "property",
-                                requestValue: "request_value",
-                                correctedValue: "corrected_value",
-                            },
-                        ],
-                    },
-                    {
-                        batchId: "batch_id",
-                        errors: [
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                        ],
-                        request: {
-                            submitterTransactionIdentifier: "submitter_transaction_identifier",
-                            payerId: "payer_id",
-                            provider: {
-                                firstName: "first_name",
-                                lastName: "last_name",
-                                npi: "npi",
-                            },
-                            subscriber: {
-                                memberId: "member_id",
-                                firstName: "first_name",
-                                lastName: "last_name",
-                                dateOfBirth: "2023-01-15",
-                            },
-                            dependent: {
-                                memberId: "member_id",
-                                firstName: "first_name",
-                                lastName: "last_name",
-                                dateOfBirth: "2023-01-15",
-                            },
-                            encounter: {
-                                dateOfService: "2023-01-15",
-                                serviceTypeCodes: ["service_type_codes", "service_type_codes"],
-                            },
-                            getExistingCheckInitiatedAfter: new Date("2024-01-15T09:30:00.000Z"),
-                            source: "source",
-                            portalPassword: "portal_password",
-                            portalUsername: "portal_username",
-                        },
-                        response: {
-                            key: "value",
-                        },
-                        parsedResponse: {
-                            eligibilityStatus: "ACTIVE",
-                            planMetadata: {
-                                payerName: "payer_name",
-                                insuranceType: "insurance_type",
-                                insuranceTypeCode: "insurance_type_code",
-                                planName: "plan_name",
-                                memberId: "member_id",
-                                groupNumber: "group_number",
-                                startDate: "2023-01-15",
-                                endDate: "2023-01-15",
-                                planDates: [
-                                    {
-                                        startDate: "2023-01-15",
-                                        fieldName: "field_name",
-                                    },
-                                    {
-                                        startDate: "2023-01-15",
-                                        fieldName: "field_name",
-                                    },
-                                ],
-                                subscriber: {
-                                    memberId: "member_id",
-                                    groupNumber: "group_number",
-                                    firstName: "first_name",
-                                    middleName: "middle_name",
-                                    lastName: "last_name",
-                                    dateOfBirth: "date_of_birth",
-                                    gender: "gender",
-                                    address: {},
-                                },
-                                dependent: {
-                                    memberId: "member_id",
-                                    groupNumber: "group_number",
-                                    firstName: "first_name",
-                                    middleName: "middle_name",
-                                    lastName: "last_name",
-                                    dateOfBirth: "date_of_birth",
-                                    gender: "gender",
-                                    address: {},
-                                },
-                                tradingPartner: "trading_partner",
-                            },
-                            benefits: {
-                                planCoverage: {
-                                    inNetwork: {},
-                                    inNetworkFlat: [],
-                                    outOfNetwork: {},
-                                    outOfNetworkFlat: [],
-                                },
-                                serviceSpecificCoverage: [
-                                    {
-                                        serviceCode: "1",
-                                    },
-                                    {
-                                        serviceCode: "1",
-                                    },
-                                ],
-                                benefitsRelatedEntities: [{}, {}],
-                                nonCoveredDetails: [
-                                    {
-                                        type: "DEDUCTIBLE",
-                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                        unit: "PERCENT",
-                                        value: 1.1,
-                                    },
-                                    {
-                                        type: "DEDUCTIBLE",
-                                        coverageLevel: "EMPLOYEE_AND_CHILDREN",
-                                        unit: "PERCENT",
-                                        value: 1.1,
-                                    },
-                                ],
-                                notes: "notes",
-                                autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
-                            },
-                        },
-                        requestCorrections: [
-                            {
-                                property: "property",
-                                requestValue: "request_value",
-                                correctedValue: "corrected_value",
-                            },
-                            {
-                                property: "property",
-                                requestValue: "request_value",
-                                correctedValue: "corrected_value",
-                            },
-                        ],
-                    },
-                ],
-                nextPageToken: CandidApi.preEncounter.PageToken("next_page_token"),
-                prevPageToken: CandidApi.preEncounter.PageToken("prev_page_token"),
-                total: 1,
-            },
-            ok: true,
-            headers: expect.any(Object),
-            rawResponse: expect.any(Object),
-        });
-    });
-
     test("insurance-discovery", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);
@@ -2250,6 +1558,206 @@ describe("V1Client", () => {
             discovery_id: "discovery_id",
             status: "PENDING",
             items: [{ key: "value" }, { key: "value" }],
+            parsed_items: [
+                {
+                    confidence: { level: "REVIEW_NEEDED", reason: "reason" },
+                    eligibility_status: "ACTIVE",
+                    plan_metadata: {
+                        payer_name: "payer_name",
+                        insurance_type: "insurance_type",
+                        insurance_type_code: "insurance_type_code",
+                        plan_name: "plan_name",
+                        member_id: "member_id",
+                        group_number: "group_number",
+                        start_date: "2023-01-15",
+                        end_date: "2023-01-15",
+                        plan_dates: [
+                            { start_date: "2023-01-15", end_date: "2023-01-15", field_name: "field_name" },
+                            { start_date: "2023-01-15", end_date: "2023-01-15", field_name: "field_name" },
+                        ],
+                        subscriber: {
+                            member_id: "member_id",
+                            group_number: "group_number",
+                            first_name: "first_name",
+                            middle_name: "middle_name",
+                            last_name: "last_name",
+                            date_of_birth: "date_of_birth",
+                            gender: "gender",
+                            address: {},
+                        },
+                        dependent: {
+                            member_id: "member_id",
+                            group_number: "group_number",
+                            first_name: "first_name",
+                            middle_name: "middle_name",
+                            last_name: "last_name",
+                            date_of_birth: "date_of_birth",
+                            gender: "gender",
+                            address: {},
+                        },
+                        trading_partner: "trading_partner",
+                    },
+                    benefits: {
+                        plan_coverage: {
+                            in_network: {},
+                            in_network_flat: [],
+                            out_of_network: {},
+                            out_of_network_flat: [],
+                        },
+                        service_specific_coverage: [
+                            {
+                                service_code: "1",
+                                in_network: {},
+                                in_network_flat: [],
+                                out_of_network: {},
+                                out_of_network_flat: [],
+                            },
+                            {
+                                service_code: "1",
+                                in_network: {},
+                                in_network_flat: [],
+                                out_of_network: {},
+                                out_of_network_flat: [],
+                            },
+                        ],
+                        benefits_related_entities: [
+                            {
+                                entityIdentifier: "entityIdentifier",
+                                entityType: "entityType",
+                                entityName: "entityName",
+                                contactInformation: [],
+                                serviceTypeCodes: [],
+                            },
+                            {
+                                entityIdentifier: "entityIdentifier",
+                                entityType: "entityType",
+                                entityName: "entityName",
+                                contactInformation: [],
+                                serviceTypeCodes: [],
+                            },
+                        ],
+                        non_covered_details: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: [],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: [],
+                            },
+                        ],
+                        notes: "notes",
+                        autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                    },
+                },
+                {
+                    confidence: { level: "REVIEW_NEEDED", reason: "reason" },
+                    eligibility_status: "ACTIVE",
+                    plan_metadata: {
+                        payer_name: "payer_name",
+                        insurance_type: "insurance_type",
+                        insurance_type_code: "insurance_type_code",
+                        plan_name: "plan_name",
+                        member_id: "member_id",
+                        group_number: "group_number",
+                        start_date: "2023-01-15",
+                        end_date: "2023-01-15",
+                        plan_dates: [
+                            { start_date: "2023-01-15", end_date: "2023-01-15", field_name: "field_name" },
+                            { start_date: "2023-01-15", end_date: "2023-01-15", field_name: "field_name" },
+                        ],
+                        subscriber: {
+                            member_id: "member_id",
+                            group_number: "group_number",
+                            first_name: "first_name",
+                            middle_name: "middle_name",
+                            last_name: "last_name",
+                            date_of_birth: "date_of_birth",
+                            gender: "gender",
+                            address: {},
+                        },
+                        dependent: {
+                            member_id: "member_id",
+                            group_number: "group_number",
+                            first_name: "first_name",
+                            middle_name: "middle_name",
+                            last_name: "last_name",
+                            date_of_birth: "date_of_birth",
+                            gender: "gender",
+                            address: {},
+                        },
+                        trading_partner: "trading_partner",
+                    },
+                    benefits: {
+                        plan_coverage: {
+                            in_network: {},
+                            in_network_flat: [],
+                            out_of_network: {},
+                            out_of_network_flat: [],
+                        },
+                        service_specific_coverage: [
+                            {
+                                service_code: "1",
+                                in_network: {},
+                                in_network_flat: [],
+                                out_of_network: {},
+                                out_of_network_flat: [],
+                            },
+                            {
+                                service_code: "1",
+                                in_network: {},
+                                in_network_flat: [],
+                                out_of_network: {},
+                                out_of_network_flat: [],
+                            },
+                        ],
+                        benefits_related_entities: [
+                            {
+                                entityIdentifier: "entityIdentifier",
+                                entityType: "entityType",
+                                entityName: "entityName",
+                                contactInformation: [],
+                                serviceTypeCodes: [],
+                            },
+                            {
+                                entityIdentifier: "entityIdentifier",
+                                entityType: "entityType",
+                                entityName: "entityName",
+                                contactInformation: [],
+                                serviceTypeCodes: [],
+                            },
+                        ],
+                        non_covered_details: [
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: [],
+                            },
+                            {
+                                type: "DEDUCTIBLE",
+                                coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                unit: "PERCENT",
+                                value: 1.1,
+                                additional_notes: "additional_notes",
+                                service_type_codes: [],
+                            },
+                        ],
+                        notes: "notes",
+                        autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                    },
+                },
+            ],
             coverages_found: 1,
             errors: [
                 {
@@ -2299,6 +1807,228 @@ describe("V1Client", () => {
                     },
                     {
                         key: "value",
+                    },
+                ],
+                parsedItems: [
+                    {
+                        confidence: {
+                            level: "REVIEW_NEEDED",
+                            reason: "reason",
+                        },
+                        eligibilityStatus: "ACTIVE",
+                        planMetadata: {
+                            payerName: "payer_name",
+                            insuranceType: "insurance_type",
+                            insuranceTypeCode: "insurance_type_code",
+                            planName: "plan_name",
+                            memberId: "member_id",
+                            groupNumber: "group_number",
+                            startDate: "2023-01-15",
+                            endDate: "2023-01-15",
+                            planDates: [
+                                {
+                                    startDate: "2023-01-15",
+                                    endDate: "2023-01-15",
+                                    fieldName: "field_name",
+                                },
+                                {
+                                    startDate: "2023-01-15",
+                                    endDate: "2023-01-15",
+                                    fieldName: "field_name",
+                                },
+                            ],
+                            subscriber: {
+                                memberId: "member_id",
+                                groupNumber: "group_number",
+                                firstName: "first_name",
+                                middleName: "middle_name",
+                                lastName: "last_name",
+                                dateOfBirth: "date_of_birth",
+                                gender: "gender",
+                                address: {},
+                            },
+                            dependent: {
+                                memberId: "member_id",
+                                groupNumber: "group_number",
+                                firstName: "first_name",
+                                middleName: "middle_name",
+                                lastName: "last_name",
+                                dateOfBirth: "date_of_birth",
+                                gender: "gender",
+                                address: {},
+                            },
+                            tradingPartner: "trading_partner",
+                        },
+                        benefits: {
+                            planCoverage: {
+                                inNetwork: {},
+                                inNetworkFlat: [],
+                                outOfNetwork: {},
+                                outOfNetworkFlat: [],
+                            },
+                            serviceSpecificCoverage: [
+                                {
+                                    serviceCode: "1",
+                                    inNetwork: {},
+                                    inNetworkFlat: [],
+                                    outOfNetwork: {},
+                                    outOfNetworkFlat: [],
+                                },
+                                {
+                                    serviceCode: "1",
+                                    inNetwork: {},
+                                    inNetworkFlat: [],
+                                    outOfNetwork: {},
+                                    outOfNetworkFlat: [],
+                                },
+                            ],
+                            benefitsRelatedEntities: [
+                                {
+                                    entityIdentifier: "entityIdentifier",
+                                    entityType: "entityType",
+                                    entityName: "entityName",
+                                    contactInformation: [],
+                                    serviceTypeCodes: [],
+                                },
+                                {
+                                    entityIdentifier: "entityIdentifier",
+                                    entityType: "entityType",
+                                    entityName: "entityName",
+                                    contactInformation: [],
+                                    serviceTypeCodes: [],
+                                },
+                            ],
+                            nonCoveredDetails: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
+                                    serviceTypeCodes: [],
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
+                                    serviceTypeCodes: [],
+                                },
+                            ],
+                            notes: "notes",
+                            autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                        },
+                    },
+                    {
+                        confidence: {
+                            level: "REVIEW_NEEDED",
+                            reason: "reason",
+                        },
+                        eligibilityStatus: "ACTIVE",
+                        planMetadata: {
+                            payerName: "payer_name",
+                            insuranceType: "insurance_type",
+                            insuranceTypeCode: "insurance_type_code",
+                            planName: "plan_name",
+                            memberId: "member_id",
+                            groupNumber: "group_number",
+                            startDate: "2023-01-15",
+                            endDate: "2023-01-15",
+                            planDates: [
+                                {
+                                    startDate: "2023-01-15",
+                                    endDate: "2023-01-15",
+                                    fieldName: "field_name",
+                                },
+                                {
+                                    startDate: "2023-01-15",
+                                    endDate: "2023-01-15",
+                                    fieldName: "field_name",
+                                },
+                            ],
+                            subscriber: {
+                                memberId: "member_id",
+                                groupNumber: "group_number",
+                                firstName: "first_name",
+                                middleName: "middle_name",
+                                lastName: "last_name",
+                                dateOfBirth: "date_of_birth",
+                                gender: "gender",
+                                address: {},
+                            },
+                            dependent: {
+                                memberId: "member_id",
+                                groupNumber: "group_number",
+                                firstName: "first_name",
+                                middleName: "middle_name",
+                                lastName: "last_name",
+                                dateOfBirth: "date_of_birth",
+                                gender: "gender",
+                                address: {},
+                            },
+                            tradingPartner: "trading_partner",
+                        },
+                        benefits: {
+                            planCoverage: {
+                                inNetwork: {},
+                                inNetworkFlat: [],
+                                outOfNetwork: {},
+                                outOfNetworkFlat: [],
+                            },
+                            serviceSpecificCoverage: [
+                                {
+                                    serviceCode: "1",
+                                    inNetwork: {},
+                                    inNetworkFlat: [],
+                                    outOfNetwork: {},
+                                    outOfNetworkFlat: [],
+                                },
+                                {
+                                    serviceCode: "1",
+                                    inNetwork: {},
+                                    inNetworkFlat: [],
+                                    outOfNetwork: {},
+                                    outOfNetworkFlat: [],
+                                },
+                            ],
+                            benefitsRelatedEntities: [
+                                {
+                                    entityIdentifier: "entityIdentifier",
+                                    entityType: "entityType",
+                                    entityName: "entityName",
+                                    contactInformation: [],
+                                    serviceTypeCodes: [],
+                                },
+                                {
+                                    entityIdentifier: "entityIdentifier",
+                                    entityType: "entityType",
+                                    entityName: "entityName",
+                                    contactInformation: [],
+                                    serviceTypeCodes: [],
+                                },
+                            ],
+                            nonCoveredDetails: [
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
+                                    serviceTypeCodes: [],
+                                },
+                                {
+                                    type: "DEDUCTIBLE",
+                                    coverageLevel: "EMPLOYEE_AND_CHILDREN",
+                                    unit: "PERCENT",
+                                    value: 1.1,
+                                    additionalNotes: "additional_notes",
+                                    serviceTypeCodes: [],
+                                },
+                            ],
+                            notes: "notes",
+                            autoUpdatedEligibilityCheckId: "autoUpdatedEligibilityCheckId",
+                        },
                     },
                 ],
                 coveragesFound: 1,
@@ -2642,375 +2372,6 @@ describe("V1Client", () => {
                     coverageOverlap: true,
                     benefitOverlap: true,
                 },
-            },
-            ok: true,
-            headers: expect.any(Object),
-            rawResponse: expect.any(Object),
-        });
-    });
-
-    test("encounter_eligibility", async () => {
-        const server = mockServerPool.createServer();
-        mockOAuthScheme(server);
-
-        const client = new CandidApiClient({
-            maxRetries: 0,
-            clientId: "YOUR_CLIENT_ID",
-            clientSecret: "YOUR_CLIENT_SECRET",
-            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
-        });
-
-        const rawResponseBody = {
-            items: [
-                {
-                    id: "id",
-                    source: "STEDI",
-                    dateOfService: "2024-01-15T09:30:00Z",
-                    payerId: "payerId",
-                    providerNPI: "providerNPI",
-                    dependent: { name: "name" },
-                    status: "ACTIVE",
-                    errors: [
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                    ],
-                },
-                {
-                    id: "id",
-                    source: "STEDI",
-                    dateOfService: "2024-01-15T09:30:00Z",
-                    payerId: "payerId",
-                    providerNPI: "providerNPI",
-                    dependent: { name: "name" },
-                    status: "ACTIVE",
-                    errors: [
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                        {
-                            source: "CANDID",
-                            errorDetails: {
-                                "field?": "field?",
-                                "description?": "description?",
-                                "location?": "location?",
-                                "possibleResolutions?": "possibleResolutions?",
-                                "code?": "code?",
-                                "followupAction?": "followupAction?",
-                            },
-                        },
-                    ],
-                },
-            ],
-        };
-
-        server
-            .mockEndpoint()
-            .get("/eligibility-checks/v1/encounter_eligibility")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.preEncounter.eligibilityChecks.v1.encounterEligibility({
-            encounterId: "encounter_id",
-        });
-        expect(response).toEqual({
-            body: {
-                items: [
-                    {
-                        id: "id",
-                        source: "STEDI",
-                        dateOfService: new Date("2024-01-15T09:30:00.000Z"),
-                        payerId: "payerId",
-                        providerNpi: "providerNPI",
-                        dependent: {
-                            name: "name",
-                        },
-                        status: "ACTIVE",
-                        errors: [
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                        ],
-                    },
-                    {
-                        id: "id",
-                        source: "STEDI",
-                        dateOfService: new Date("2024-01-15T09:30:00.000Z"),
-                        payerId: "payerId",
-                        providerNpi: "providerNPI",
-                        dependent: {
-                            name: "name",
-                        },
-                        status: "ACTIVE",
-                        errors: [
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                            {
-                                source: "CANDID",
-                                errorDetails: {
-                                    field: "field?",
-                                    description: "description?",
-                                    location: "location?",
-                                    possibleResolutions: "possibleResolutions?",
-                                    code: "code?",
-                                    followupAction: "followupAction?",
-                                },
-                            },
-                        ],
-                    },
-                ],
-            },
-            ok: true,
-            headers: expect.any(Object),
-            rawResponse: expect.any(Object),
-        });
-    });
-
-    test("create_encounter_eligibility", async () => {
-        const server = mockServerPool.createServer();
-        mockOAuthScheme(server);
-
-        const client = new CandidApiClient({
-            maxRetries: 0,
-            clientId: "YOUR_CLIENT_ID",
-            clientSecret: "YOUR_CLIENT_SECRET",
-            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
-        });
-        const rawRequestBody = { encounter_id: "encounter_id" };
-        const rawResponseBody = {
-            id: "id",
-            source: "STEDI",
-            dateOfService: "2024-01-15T09:30:00Z",
-            payerId: "payerId",
-            providerNPI: "providerNPI",
-            dependent: { name: "name" },
-            status: "ACTIVE",
-            errors: [
-                {
-                    source: "CANDID",
-                    errorDetails: {
-                        "field?": "field?",
-                        "description?": "description?",
-                        "location?": "location?",
-                        "possibleResolutions?": "possibleResolutions?",
-                        "code?": "code?",
-                        "followupAction?": "followupAction?",
-                    },
-                },
-                {
-                    source: "CANDID",
-                    errorDetails: {
-                        "field?": "field?",
-                        "description?": "description?",
-                        "location?": "location?",
-                        "possibleResolutions?": "possibleResolutions?",
-                        "code?": "code?",
-                        "followupAction?": "followupAction?",
-                    },
-                },
-            ],
-        };
-
-        server
-            .mockEndpoint()
-            .post("/eligibility-checks/v1/eligibility")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.preEncounter.eligibilityChecks.v1.createEncounterEligibility({
-            encounterId: "encounter_id",
-        });
-        expect(response).toEqual({
-            body: {
-                id: "id",
-                source: "STEDI",
-                dateOfService: new Date("2024-01-15T09:30:00.000Z"),
-                payerId: "payerId",
-                providerNpi: "providerNPI",
-                dependent: {
-                    name: "name",
-                },
-                status: "ACTIVE",
-                errors: [
-                    {
-                        source: "CANDID",
-                        errorDetails: {
-                            field: "field?",
-                            description: "description?",
-                            location: "location?",
-                            possibleResolutions: "possibleResolutions?",
-                            code: "code?",
-                            followupAction: "followupAction?",
-                        },
-                    },
-                    {
-                        source: "CANDID",
-                        errorDetails: {
-                            field: "field?",
-                            description: "description?",
-                            location: "location?",
-                            possibleResolutions: "possibleResolutions?",
-                            code: "code?",
-                            followupAction: "followupAction?",
-                        },
-                    },
-                ],
-            },
-            ok: true,
-            headers: expect.any(Object),
-            rawResponse: expect.any(Object),
-        });
-    });
-
-    test("get_eligibility_check_by_id", async () => {
-        const server = mockServerPool.createServer();
-        mockOAuthScheme(server);
-
-        const client = new CandidApiClient({
-            maxRetries: 0,
-            clientId: "YOUR_CLIENT_ID",
-            clientSecret: "YOUR_CLIENT_SECRET",
-            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
-        });
-
-        const rawResponseBody = {
-            id: "id",
-            source: "STEDI",
-            dateOfService: "2024-01-15T09:30:00Z",
-            payerId: "payerId",
-            providerNPI: "providerNPI",
-            dependent: { name: "name" },
-            status: "ACTIVE",
-            errors: [
-                {
-                    source: "CANDID",
-                    errorDetails: {
-                        "field?": "field?",
-                        "description?": "description?",
-                        "location?": "location?",
-                        "possibleResolutions?": "possibleResolutions?",
-                        "code?": "code?",
-                        "followupAction?": "followupAction?",
-                    },
-                },
-                {
-                    source: "CANDID",
-                    errorDetails: {
-                        "field?": "field?",
-                        "description?": "description?",
-                        "location?": "location?",
-                        "possibleResolutions?": "possibleResolutions?",
-                        "code?": "code?",
-                        "followupAction?": "followupAction?",
-                    },
-                },
-            ],
-        };
-
-        server
-            .mockEndpoint()
-            .get("/eligibility-checks/v1/eligibility_check_id")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.preEncounter.eligibilityChecks.v1.getEligibilityCheckById("eligibility_check_id");
-        expect(response).toEqual({
-            body: {
-                id: "id",
-                source: "STEDI",
-                dateOfService: new Date("2024-01-15T09:30:00.000Z"),
-                payerId: "payerId",
-                providerNpi: "providerNPI",
-                dependent: {
-                    name: "name",
-                },
-                status: "ACTIVE",
-                errors: [
-                    {
-                        source: "CANDID",
-                        errorDetails: {
-                            field: "field?",
-                            description: "description?",
-                            location: "location?",
-                            possibleResolutions: "possibleResolutions?",
-                            code: "code?",
-                            followupAction: "followupAction?",
-                        },
-                    },
-                    {
-                        source: "CANDID",
-                        errorDetails: {
-                            field: "field?",
-                            description: "description?",
-                            location: "location?",
-                            possibleResolutions: "possibleResolutions?",
-                            code: "code?",
-                            followupAction: "followupAction?",
-                        },
-                    },
-                ],
             },
             ok: true,
             headers: expect.any(Object),

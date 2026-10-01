@@ -79,6 +79,7 @@ export interface PreServiceEncounterCreate {
     /**
      * The practitioner performing the service.
      * For telehealth services, the rendering provider performs the visit or asynchronous communication.
+     * Required on professional claims; not required on institutional claims.
      */
     renderingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
     /** Service lines for this encounter. */

@@ -10,6 +10,7 @@ export interface ReferringProvider extends CandidApi.encounterProviders.v2.Encou
     npi: string;
     taxonomyCode?: string;
     address?: CandidApi.StreetAddressLongZip;
+    /** Deprecated. This field will be removed in a future release. */
     qualifier?: CandidApi.QualifierCode;
     secondaryIdentification?: CandidApi.encounterProviders.v2.ReferringProviderSecondaryIdentification;
 }

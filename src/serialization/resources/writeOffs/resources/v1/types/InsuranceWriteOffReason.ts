@@ -9,6 +9,7 @@ export const InsuranceWriteOffReason: core.serialization.Schema<
     CandidApi.writeOffs.v1.InsuranceWriteOffReason
 > = core.serialization.enum_([
     "SMALL_BALANCE",
+    "OON_WRITE_OFF",
     "NO_AUTHORIZATION_REFERRAL",
     "TIMELY_FILING",
     "STALE_DATE",
@@ -31,6 +32,7 @@ export const InsuranceWriteOffReason: core.serialization.Schema<
 export declare namespace InsuranceWriteOffReason {
     export type Raw =
         | "SMALL_BALANCE"
+        | "OON_WRITE_OFF"
         | "NO_AUTHORIZATION_REFERRAL"
         | "TIMELY_FILING"
         | "STALE_DATE"
