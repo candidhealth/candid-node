@@ -47,6 +47,7 @@ describe("V1Client", () => {
                     secondary_payer_plan_name: "secondary_payer_plan_name",
                     secondary_group_number: "secondary_group_number",
                     primary_member_id: "primary_member_id",
+                    prior_authorization_number: "prior_authorization_number",
                     sum_allowed_amount_cents: 1,
                     sum_charge_amount_cents: 1,
                     sum_paid_amount_cents: 1,
@@ -159,6 +160,7 @@ describe("V1Client", () => {
                     secondary_payer_plan_name: "secondary_payer_plan_name",
                     secondary_group_number: "secondary_group_number",
                     primary_member_id: "primary_member_id",
+                    prior_authorization_number: "prior_authorization_number",
                     sum_allowed_amount_cents: 1,
                     sum_charge_amount_cents: 1,
                     sum_paid_amount_cents: 1,
@@ -291,6 +293,8 @@ describe("V1Client", () => {
                         secondaryPayerPlanName: "secondary_payer_plan_name",
                         secondaryGroupNumber: "secondary_group_number",
                         primaryMemberId: "primary_member_id",
+                        priorAuthorizationNumber:
+                            CandidApi.encounters.v4.PriorAuthorizationNumber("prior_authorization_number"),
                         sumAllowedAmountCents: 1,
                         sumChargeAmountCents: 1,
                         sumPaidAmountCents: 1,
@@ -411,6 +415,8 @@ describe("V1Client", () => {
                         secondaryPayerPlanName: "secondary_payer_plan_name",
                         secondaryGroupNumber: "secondary_group_number",
                         primaryMemberId: "primary_member_id",
+                        priorAuthorizationNumber:
+                            CandidApi.encounters.v4.PriorAuthorizationNumber("prior_authorization_number"),
                         sumAllowedAmountCents: 1,
                         sumChargeAmountCents: 1,
                         sumPaidAmountCents: 1,

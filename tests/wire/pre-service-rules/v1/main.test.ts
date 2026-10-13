@@ -18,38 +18,63 @@ describe("V1Client", () => {
         });
         const rawRequestBody = {
             entity: {
-                external_id: "external_id",
+                external_id: "enc-123",
                 patient_authorized_release: true,
                 benefits_assigned_to_provider: true,
                 provider_accepts_assignment: true,
-                patient: {
-                    external_id: "external_id",
-                    date_of_birth: "2023-01-15",
-                    address: { address1: "address1", city: "city", state: "AA", zip_code: "zip_code" },
-                    first_name: "first_name",
-                    last_name: "last_name",
-                    gender: "male",
-                },
                 responsible_party: "INSURANCE_PAY",
-                billing_provider: {
-                    address: {
-                        zip_plus_four_code: "zip_plus_four_code",
-                        address1: "address1",
-                        city: "city",
-                        state: "AA",
-                        zip_code: "zip_code",
-                    },
-                    tax_id: "tax_id",
-                    npi: "npi",
-                },
                 submission_expectation: "TARGET_PROFESSIONAL",
+                date_of_service: "2026-10-15",
+                patient: {
+                    external_id: "p-456",
+                    first_name: "Jane",
+                    last_name: "Doe",
+                    gender: "female",
+                    date_of_birth: "1960-01-01",
+                    address: { address1: "1 Main St", city: "Fairfax", state: "VA", zip_code: "22031" },
+                },
+                rendering_provider: { first_name: "Ada", last_name: "Lovelace", npi: "1234567893" },
+                billing_provider: {
+                    npi: "1558375857",
+                    tax_id: "202265068",
+                    organization_name: "Example Clinic",
+                    address: {
+                        address1: "1 Main St",
+                        city: "Fairfax",
+                        state: "VA",
+                        zip_code: "22031",
+                        zip_plus_four_code: "4634",
+                    },
+                },
+                subscriber_primary: {
+                    first_name: "Jane",
+                    last_name: "Doe",
+                    gender: "female",
+                    patient_relationship_to_subscriber_code: "18",
+                    insurance_card: { member_id: "123456789", payer_name: "Example Payer", payer_id: "12345" },
+                },
+                health_care_code_information: {
+                    principal_diagnosis: {
+                        primary_diagnosis_code: "Z01.411",
+                        principal_diagnosis_code_qualifier: "ABK",
+                    },
+                },
+                service_lines: [
+                    {
+                        procedure_code: "99213",
+                        quantity: "1",
+                        units: "UN",
+                        charge_amount_cents: 20600,
+                        diagnosis_pointers: [0],
+                    },
+                ],
             },
-            pipeline_id: "pipeline_id",
-            enabled_rule_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-            disabled_rule_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-            idempotency_key: "idempotency_key",
+            pipeline_id: "pre-service-claim-athena",
+            enabled_rule_ids: [],
+            disabled_rule_ids: [],
+            idempotency_key: "enc-123-run-1",
         };
-        const rawResponseBody = "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32";
+        const rawResponseBody = "0192a6f4-7c1e-7b3a-9d2e-5f8a1c3b4d6e";
 
         server
             .mockEndpoint()
@@ -62,44 +87,77 @@ describe("V1Client", () => {
 
         const response = await client.preServiceRules.v1.createEncounterRun({
             entity: {
-                externalId: "external_id",
+                externalId: "enc-123",
                 patientAuthorizedRelease: true,
                 benefitsAssignedToProvider: true,
                 providerAcceptsAssignment: true,
-                patient: {
-                    externalId: "external_id",
-                    dateOfBirth: "2023-01-15",
-                    address: {
-                        address1: "address1",
-                        city: "city",
-                        state: "AA",
-                        zipCode: "zip_code",
-                    },
-                    firstName: "first_name",
-                    lastName: "last_name",
-                    gender: "male",
-                },
                 responsibleParty: "INSURANCE_PAY",
-                billingProvider: {
-                    address: {
-                        zipPlusFourCode: "zip_plus_four_code",
-                        address1: "address1",
-                        city: "city",
-                        state: "AA",
-                        zipCode: "zip_code",
-                    },
-                    taxId: "tax_id",
-                    npi: "npi",
-                },
                 submissionExpectation: "TARGET_PROFESSIONAL",
+                dateOfService: "2026-10-15",
+                patient: {
+                    externalId: "p-456",
+                    firstName: "Jane",
+                    lastName: "Doe",
+                    gender: "female",
+                    dateOfBirth: "1960-01-01",
+                    address: {
+                        address1: "1 Main St",
+                        city: "Fairfax",
+                        state: "VA",
+                        zipCode: "22031",
+                    },
+                },
+                renderingProvider: {
+                    firstName: "Ada",
+                    lastName: "Lovelace",
+                    npi: "1234567893",
+                },
+                billingProvider: {
+                    npi: "1558375857",
+                    taxId: "202265068",
+                    organizationName: "Example Clinic",
+                    address: {
+                        address1: "1 Main St",
+                        city: "Fairfax",
+                        state: "VA",
+                        zipCode: "22031",
+                        zipPlusFourCode: "4634",
+                    },
+                },
+                subscriberPrimary: {
+                    firstName: "Jane",
+                    lastName: "Doe",
+                    gender: "female",
+                    patientRelationshipToSubscriberCode: "18",
+                    insuranceCard: {
+                        memberId: "123456789",
+                        payerName: "Example Payer",
+                        payerId: "12345",
+                    },
+                },
+                healthCareCodeInformation: {
+                    principalDiagnosis: {
+                        primaryDiagnosisCode: CandidApi.healthCareCodeInformation.v1.IcdCode("Z01.411"),
+                        principalDiagnosisCodeQualifier: "ABK",
+                    },
+                },
+                serviceLines: [
+                    {
+                        procedureCode: "99213",
+                        quantity: CandidApi.Decimal("1"),
+                        units: "UN",
+                        chargeAmountCents: 20600,
+                        diagnosisPointers: [0],
+                    },
+                ],
             },
-            pipelineId: "pipeline_id",
-            enabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-            disabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-            idempotencyKey: "idempotency_key",
+            pipelineId: "pre-service-claim-athena",
+            enabledRuleIds: [],
+            disabledRuleIds: [],
+            idempotencyKey: "enc-123-run-1",
         });
         expect(response).toEqual({
-            body: CandidApi.preServiceRules.v1.PreServiceRunId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+            body: CandidApi.preServiceRules.v1.PreServiceRunId("0192a6f4-7c1e-7b3a-9d2e-5f8a1c3b4d6e"),
             ok: true,
             headers: expect.any(Object),
             rawResponse: expect.any(Object),
@@ -121,6 +179,7 @@ describe("V1Client", () => {
             run_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
             created_at: "2024-01-15T09:30:00Z",
             entity_external_id: "entity_external_id",
+            initial_entity_state: { initial_entity_state: { key: "value" } },
             edits: { edits: { key: "value" } },
             actions: [{ key: "value" }, { key: "value" }],
             error: { message: "message" },
@@ -142,6 +201,11 @@ describe("V1Client", () => {
                 runId: CandidApi.preServiceRules.v1.PreServiceRunId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
                 createdAt: new Date("2024-01-15T09:30:00.000Z"),
                 entityExternalId: "entity_external_id",
+                initialEntityState: {
+                    initial_entity_state: {
+                        key: "value",
+                    },
+                },
                 edits: {
                     edits: {
                         key: "value",

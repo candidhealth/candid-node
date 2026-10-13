@@ -1030,7 +1030,7 @@ export class V1Client {
     }
 
     /**
-     * Initiates an insurance discovery check via patientId. Returns the metadata of the check if successfully initiated. Prefer to use the eligibilityChecks insurance-discovery api as it will allow long running discovery requests to complete.
+     * Initiates an insurance discovery check via patientId. Returns the metadata of the check if successfully initiated.
      *
      * @param {CandidApi.preEncounter.coverages.v1.CheckInsuranceDiscoveryRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
@@ -1125,7 +1125,7 @@ export class V1Client {
     }
 
     /**
-     * Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated.
+     * Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated. We recommend using this API over the eligibilityChecks insurance-discovery API, as it allows long-running discovery requests to complete.
      *
      * @param {CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.

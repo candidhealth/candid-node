@@ -10,6 +10,8 @@ export interface PreServiceRun {
     createdAt: Date;
     /** The client's internal ID for the entity that was submitted for pre-service rule processing. */
     entityExternalId: string;
+    /** The submitted entity. Only set if the request asked for it via `include_initial_entity_state`. */
+    initialEntityState?: CandidApi.preServiceRules.v1.InitialEntityState;
     /** Recommended edits to the submitted entity. */
     edits?: CandidApi.preServiceRules.v1.EncounterEdits;
     /** Actions recommended by the rules engine. */

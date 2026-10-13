@@ -19,6 +19,7 @@ describe("V2Client", () => {
         const rawRequestBody = {
             member_id: "member_id",
             payer_id: "payer_id",
+            payer_name: "payer_name",
             provider_npi: "provider_npi",
             date_of_service: "2024-01-15T09:30:00Z",
             service_type_codes: ["service_type_codes", "service_type_codes"],
@@ -37,6 +38,7 @@ describe("V2Client", () => {
         const response = await client.eligibility.v2.createAvailityEligibilityCheck({
             memberId: "member_id",
             payerId: "payer_id",
+            payerName: "payer_name",
             providerNpi: "provider_npi",
             dateOfService: new Date("2024-01-15T09:30:00.000Z"),
             serviceTypeCodes: ["service_type_codes", "service_type_codes"],

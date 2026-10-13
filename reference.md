@@ -2805,6 +2805,7 @@ await client.dashboarding.v1.queryMetrics([{
 await client.eligibility.v2.createAvailityEligibilityCheck({
     memberId: "member_id",
     payerId: "payer_id",
+    payerName: "payer_name",
     providerNpi: "provider_npi",
     dateOfService: new Date("2024-01-15T09:30:00.000Z"),
     serviceTypeCodes: ["service_type_codes", "service_type_codes"]
@@ -10256,41 +10257,72 @@ Returns a run_id that can be polled via GET /runs/{run_id} to retrieve the resul
 ```typescript
 await client.preServiceRules.v1.createEncounterRun({
     entity: {
-        externalId: "external_id",
+        externalId: "enc-123",
         patientAuthorizedRelease: true,
         benefitsAssignedToProvider: true,
         providerAcceptsAssignment: true,
-        patient: {
-            externalId: "external_id",
-            dateOfBirth: "2023-01-15",
-            address: {
-                address1: "address1",
-                city: "city",
-                state: "AA",
-                zipCode: "zip_code"
-            },
-            firstName: "first_name",
-            lastName: "last_name",
-            gender: "male"
-        },
         responsibleParty: "INSURANCE_PAY",
-        billingProvider: {
+        submissionExpectation: "TARGET_PROFESSIONAL",
+        dateOfService: "2026-10-15",
+        patient: {
+            externalId: "p-456",
+            firstName: "Jane",
+            lastName: "Doe",
+            gender: "female",
+            dateOfBirth: "1960-01-01",
             address: {
-                zipPlusFourCode: "zip_plus_four_code",
-                address1: "address1",
-                city: "city",
-                state: "AA",
-                zipCode: "zip_code"
-            },
-            taxId: "tax_id",
-            npi: "npi"
+                address1: "1 Main St",
+                city: "Fairfax",
+                state: "VA",
+                zipCode: "22031"
+            }
         },
-        submissionExpectation: "TARGET_PROFESSIONAL"
+        renderingProvider: {
+            firstName: "Ada",
+            lastName: "Lovelace",
+            npi: "1234567893"
+        },
+        billingProvider: {
+            npi: "1558375857",
+            taxId: "202265068",
+            organizationName: "Example Clinic",
+            address: {
+                address1: "1 Main St",
+                city: "Fairfax",
+                state: "VA",
+                zipCode: "22031",
+                zipPlusFourCode: "4634"
+            }
+        },
+        subscriberPrimary: {
+            firstName: "Jane",
+            lastName: "Doe",
+            gender: "female",
+            patientRelationshipToSubscriberCode: "18",
+            insuranceCard: {
+                memberId: "123456789",
+                payerName: "Example Payer",
+                payerId: "12345"
+            }
+        },
+        healthCareCodeInformation: {
+            principalDiagnosis: {
+                primaryDiagnosisCode: CandidApi.IcdCode("Z01.411"),
+                principalDiagnosisCodeQualifier: "ABK"
+            }
+        },
+        serviceLines: [{
+                procedureCode: "99213",
+                quantity: CandidApi.Decimal("1"),
+                units: "UN",
+                chargeAmountCents: 20600,
+                diagnosisPointers: [0]
+            }]
     },
-    pipelineId: "pipeline_id",
-    enabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-    disabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-    idempotencyKey: "idempotency_key"
+    pipelineId: "pre-service-claim-athena",
+    enabledRuleIds: [],
+    disabledRuleIds: [],
+    idempotencyKey: "enc-123-run-1"
 });
 
 ```
@@ -10327,7 +10359,7 @@ await client.preServiceRules.v1.createEncounterRun({
 </dl>
 </details>
 
-<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">getRun</a>(run_id) -> core.APIResponse&lt;CandidApi.PreServiceRun, CandidApi.preServiceRules.v1.getRun.Error&gt;</code></summary>
+<details><summary><code>client.preServiceRules.v1.<a href="/src/api/resources/preServiceRules/resources/v1/client/Client.ts">getRun</a>(run_id, { ...params }) -> core.APIResponse&lt;CandidApi.PreServiceRun, CandidApi.preServiceRules.v1.getRun.Error&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10371,6 +10403,14 @@ await client.preServiceRules.v1.getRun(CandidApi.PreServiceRunId("d5e9c84f-c2b2-
 <dd>
 
 **run_id:** `CandidApi.PreServiceRunId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.preServiceRules.v1.GetPreServiceRunRequest` 
     
 </dd>
 </dl>
@@ -12881,7 +12921,7 @@ await client.preEncounter.coverages.v1.getEligibility(CandidApi.CoverageId("d5e9
 <dl>
 <dd>
 
-Initiates an insurance discovery check via patientId. Returns the metadata of the check if successfully initiated. Prefer to use the eligibilityChecks insurance-discovery api as it will allow long running discovery requests to complete.
+Initiates an insurance discovery check via patientId. Returns the metadata of the check if successfully initiated.
 </dd>
 </dl>
 </dd>
@@ -12948,7 +12988,7 @@ await client.preEncounter.coverages.v1.checkInsuranceDiscovery({
 <dl>
 <dd>
 
-Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated.
+Initiates an insurance discovery check. Returns the metadata of the check if successfully initiated. We recommend using this API over the eligibilityChecks insurance-discovery API, as it allows long-running discovery requests to complete.
 </dd>
 </dl>
 </dd>
@@ -13583,6 +13623,7 @@ await client.preEncounter.eligibilityChecks.v1.voteRecommendation("recommendatio
 
 Sends an insurance discovery check to find potential coverage matches for a patient through Stedi.
 Given patient demographics, this endpoint discovers what insurance coverages exist for the patient.
+We recommend using the coverages check_insurance_discovery_passthrough API, as it allows long-running discovery requests to complete.
 </dd>
 </dl>
 </dd>

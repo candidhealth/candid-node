@@ -31,6 +31,7 @@ export class V2Client {
      *     await client.eligibility.v2.createAvailityEligibilityCheck({
      *         memberId: "member_id",
      *         payerId: "payer_id",
+     *         payerName: "payer_name",
      *         providerNpi: "provider_npi",
      *         dateOfService: new Date("2024-01-15T09:30:00.000Z"),
      *         serviceTypeCodes: ["service_type_codes", "service_type_codes"]

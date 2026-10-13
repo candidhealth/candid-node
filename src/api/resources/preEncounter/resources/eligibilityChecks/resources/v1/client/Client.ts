@@ -641,6 +641,7 @@ export class V1Client {
     /**
      * Sends an insurance discovery check to find potential coverage matches for a patient through Stedi.
      * Given patient demographics, this endpoint discovers what insurance coverages exist for the patient.
+     * We recommend using the coverages check_insurance_discovery_passthrough API, as it allows long-running discovery requests to complete.
      *
      * @param {CandidApi.preEncounter.eligibilityChecks.v1.InsuranceDiscoveryRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.

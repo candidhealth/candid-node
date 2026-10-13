@@ -31,41 +31,72 @@ export class V1Client {
      * @example
      *     await client.preServiceRules.v1.createEncounterRun({
      *         entity: {
-     *             externalId: "external_id",
+     *             externalId: "enc-123",
      *             patientAuthorizedRelease: true,
      *             benefitsAssignedToProvider: true,
      *             providerAcceptsAssignment: true,
-     *             patient: {
-     *                 externalId: "external_id",
-     *                 dateOfBirth: "2023-01-15",
-     *                 address: {
-     *                     address1: "address1",
-     *                     city: "city",
-     *                     state: "AA",
-     *                     zipCode: "zip_code"
-     *                 },
-     *                 firstName: "first_name",
-     *                 lastName: "last_name",
-     *                 gender: "male"
-     *             },
      *             responsibleParty: "INSURANCE_PAY",
-     *             billingProvider: {
+     *             submissionExpectation: "TARGET_PROFESSIONAL",
+     *             dateOfService: "2026-10-15",
+     *             patient: {
+     *                 externalId: "p-456",
+     *                 firstName: "Jane",
+     *                 lastName: "Doe",
+     *                 gender: "female",
+     *                 dateOfBirth: "1960-01-01",
      *                 address: {
-     *                     zipPlusFourCode: "zip_plus_four_code",
-     *                     address1: "address1",
-     *                     city: "city",
-     *                     state: "AA",
-     *                     zipCode: "zip_code"
-     *                 },
-     *                 taxId: "tax_id",
-     *                 npi: "npi"
+     *                     address1: "1 Main St",
+     *                     city: "Fairfax",
+     *                     state: "VA",
+     *                     zipCode: "22031"
+     *                 }
      *             },
-     *             submissionExpectation: "TARGET_PROFESSIONAL"
+     *             renderingProvider: {
+     *                 firstName: "Ada",
+     *                 lastName: "Lovelace",
+     *                 npi: "1234567893"
+     *             },
+     *             billingProvider: {
+     *                 npi: "1558375857",
+     *                 taxId: "202265068",
+     *                 organizationName: "Example Clinic",
+     *                 address: {
+     *                     address1: "1 Main St",
+     *                     city: "Fairfax",
+     *                     state: "VA",
+     *                     zipCode: "22031",
+     *                     zipPlusFourCode: "4634"
+     *                 }
+     *             },
+     *             subscriberPrimary: {
+     *                 firstName: "Jane",
+     *                 lastName: "Doe",
+     *                 gender: "female",
+     *                 patientRelationshipToSubscriberCode: "18",
+     *                 insuranceCard: {
+     *                     memberId: "123456789",
+     *                     payerName: "Example Payer",
+     *                     payerId: "12345"
+     *                 }
+     *             },
+     *             healthCareCodeInformation: {
+     *                 principalDiagnosis: {
+     *                     primaryDiagnosisCode: CandidApi.healthCareCodeInformation.v1.IcdCode("Z01.411"),
+     *                     principalDiagnosisCodeQualifier: "ABK"
+     *                 }
+     *             },
+     *             serviceLines: [{
+     *                     procedureCode: "99213",
+     *                     quantity: CandidApi.Decimal("1"),
+     *                     units: "UN",
+     *                     chargeAmountCents: 20600,
+     *                     diagnosisPointers: [0]
+     *                 }]
      *         },
-     *         pipelineId: "pipeline_id",
-     *         enabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-     *         disabledRuleIds: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32", "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
-     *         idempotencyKey: "idempotency_key"
+     *         pipelineId: "pre-service-claim-athena",
+     *         enabledRuleIds: [],
+     *         disabledRuleIds: [],
+     *         idempotencyKey: "enc-123-run-1"
      *     })
      */
     public createEncounterRun(
@@ -174,6 +205,7 @@ export class V1Client {
      * Retrieve the result of a pre-service run. This endpoint supports long-polling.
      *
      * @param {CandidApi.preServiceRules.v1.PreServiceRunId} run_id
+     * @param {CandidApi.preServiceRules.v1.GetPreServiceRunRequest} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -181,21 +213,27 @@ export class V1Client {
      */
     public getRun(
         run_id: CandidApi.preServiceRules.v1.PreServiceRunId,
+        request: CandidApi.preServiceRules.v1.GetPreServiceRunRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): core.HttpResponsePromise<
         core.APIResponse<CandidApi.preServiceRules.v1.PreServiceRun, CandidApi.preServiceRules.v1.getRun.Error>
     > {
-        return core.HttpResponsePromise.fromPromise(this.__getRun(run_id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getRun(run_id, request, requestOptions));
     }
 
     private async __getRun(
         run_id: CandidApi.preServiceRules.v1.PreServiceRunId,
+        request: CandidApi.preServiceRules.v1.GetPreServiceRunRequest = {},
         requestOptions?: V1Client.RequestOptions,
     ): Promise<
         core.WithRawResponse<
             core.APIResponse<CandidApi.preServiceRules.v1.PreServiceRun, CandidApi.preServiceRules.v1.getRun.Error>
         >
     > {
+        const { includeInitialEntityState } = request;
+        const _queryParams: Record<string, unknown> = {
+            include_initial_entity_state: includeInitialEntityState,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -213,7 +251,7 @@ export class V1Client {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

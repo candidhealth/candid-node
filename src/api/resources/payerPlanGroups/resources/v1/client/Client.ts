@@ -56,6 +56,7 @@ export class V1Client {
         const {
             planGroupName,
             payerUuid,
+            payerGroupId,
             payerId,
             planType,
             isActive,
@@ -70,6 +71,7 @@ export class V1Client {
         const _queryParams: Record<string, unknown> = {
             plan_group_name: planGroupName,
             payer_uuid: payerUuid,
+            payer_group_id: payerGroupId,
             payer_id: payerId,
             plan_type: Array.isArray(planType)
                 ? planType.map((item) =>

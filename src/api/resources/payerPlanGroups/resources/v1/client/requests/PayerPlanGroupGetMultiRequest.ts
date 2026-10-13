@@ -9,6 +9,8 @@ import type * as CandidApi from "../../../../../../index";
 export interface PayerPlanGroupGetMultiRequest {
     planGroupName?: string | string[];
     payerUuid?: CandidApi.payers.v3.PayerUuid | CandidApi.payers.v3.PayerUuid[];
+    /** Filter to payer plans under the provided payer group. */
+    payerGroupId?: CandidApi.PayerGroupId;
     payerId?: CandidApi.payers.v3.PayerId | CandidApi.payers.v3.PayerId[];
     planType?: CandidApi.SourceOfPaymentCode | CandidApi.SourceOfPaymentCode[];
     isActive?: boolean;

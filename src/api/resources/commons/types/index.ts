@@ -40,6 +40,7 @@ export * from "./OrganizationNotAuthorizedErrorMessage";
 export * from "./PageToken";
 export * from "./PatientExternalId";
 export * from "./PatientRelationshipToInsuredCodeAll";
+export * from "./PayerGroupId";
 export * from "./PayerPlanGroupId";
 export * from "./PhoneNumber";
 export * from "./PhoneNumberOptional";

@@ -4,6 +4,7 @@ import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { EncounterEdits } from "./EncounterEdits";
+import { InitialEntityState } from "./InitialEntityState";
 import { PreServiceError } from "./PreServiceError";
 import { PreServiceRunId } from "./PreServiceRunId";
 
@@ -14,6 +15,7 @@ export const PreServiceRun: core.serialization.ObjectSchema<
     runId: core.serialization.property("run_id", PreServiceRunId),
     createdAt: core.serialization.property("created_at", core.serialization.date()),
     entityExternalId: core.serialization.property("entity_external_id", core.serialization.string()),
+    initialEntityState: core.serialization.property("initial_entity_state", InitialEntityState.optional()),
     edits: EncounterEdits.optional(),
     actions: core.serialization.list(core.serialization.unknown()),
     error: PreServiceError.optional(),
@@ -24,6 +26,7 @@ export declare namespace PreServiceRun {
         run_id: PreServiceRunId.Raw;
         created_at: string;
         entity_external_id: string;
+        initial_entity_state?: InitialEntityState.Raw | null;
         edits?: EncounterEdits.Raw | null;
         actions: unknown[];
         error?: PreServiceError.Raw | null;

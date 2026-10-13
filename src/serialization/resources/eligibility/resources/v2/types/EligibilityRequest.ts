@@ -11,12 +11,18 @@ export const EligibilityRequest: core.serialization.ObjectSchema<
     memberId: core.serialization.property("member_id", core.serialization.string()),
     dependentMemberId: core.serialization.property("dependent_member_id", core.serialization.string().optional()),
     payerId: core.serialization.property("payer_id", core.serialization.string()),
+    payerName: core.serialization.property("payer_name", core.serialization.string()),
     providerNpi: core.serialization.property("provider_npi", core.serialization.string()),
     dateOfService: core.serialization.property("date_of_service", core.serialization.date()),
     serviceTypeCodes: core.serialization.property(
         "service_type_codes",
         core.serialization.list(core.serialization.string()),
     ),
+    patientGender: core.serialization.property("patient_gender", core.serialization.string().optional()),
+    patientFirstName: core.serialization.property("patient_first_name", core.serialization.string().optional()),
+    patientLastName: core.serialization.property("patient_last_name", core.serialization.string().optional()),
+    patientDateOfBirth: core.serialization.property("patient_date_of_birth", core.serialization.date().optional()),
+    patientState: core.serialization.property("patient_state", core.serialization.string().optional()),
 });
 
 export declare namespace EligibilityRequest {
@@ -24,8 +30,14 @@ export declare namespace EligibilityRequest {
         member_id: string;
         dependent_member_id?: string | null;
         payer_id: string;
+        payer_name: string;
         provider_npi: string;
         date_of_service: string;
         service_type_codes: string[];
+        patient_gender?: string | null;
+        patient_first_name?: string | null;
+        patient_last_name?: string | null;
+        patient_date_of_birth?: string | null;
+        patient_state?: string | null;
     }
 }

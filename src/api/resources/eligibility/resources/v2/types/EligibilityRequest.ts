@@ -4,7 +4,13 @@ export interface EligibilityRequest {
     memberId: string;
     dependentMemberId?: string;
     payerId: string;
+    payerName: string;
     providerNpi: string;
     dateOfService: Date;
     serviceTypeCodes: string[];
+    patientGender?: string;
+    patientFirstName?: string;
+    patientLastName?: string;
+    patientDateOfBirth?: Date;
+    patientState?: string;
 }

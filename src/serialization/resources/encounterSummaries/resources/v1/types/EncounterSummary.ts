@@ -21,6 +21,7 @@ import { WorkQueueId } from "../../../../commons/types/WorkQueueId";
 import { BillableStatusType } from "../../../../encounters/resources/v4/types/BillableStatusType";
 import { EncounterOwnerOfNextActionType } from "../../../../encounters/resources/v4/types/EncounterOwnerOfNextActionType";
 import { EncounterSubmissionExpectation } from "../../../../encounters/resources/v4/types/EncounterSubmissionExpectation";
+import { PriorAuthorizationNumber } from "../../../../encounters/resources/v4/types/PriorAuthorizationNumber";
 import { ResponsiblePartyType } from "../../../../encounters/resources/v4/types/ResponsiblePartyType";
 import { PayerId } from "../../../../payers/resources/v3/types/PayerId";
 import { EncounterServiceFacility } from "../../../../serviceFacility/types/EncounterServiceFacility";
@@ -76,6 +77,10 @@ export const EncounterSummary: core.serialization.ObjectSchema<
     ),
     secondaryGroupNumber: core.serialization.property("secondary_group_number", core.serialization.string().optional()),
     primaryMemberId: core.serialization.property("primary_member_id", core.serialization.string().optional()),
+    priorAuthorizationNumber: core.serialization.property(
+        "prior_authorization_number",
+        PriorAuthorizationNumber.optional(),
+    ),
     sumAllowedAmountCents: core.serialization.property("sum_allowed_amount_cents", core.serialization.number()),
     sumChargeAmountCents: core.serialization.property("sum_charge_amount_cents", core.serialization.number()),
     sumPaidAmountCents: core.serialization.property("sum_paid_amount_cents", core.serialization.number()),
@@ -234,6 +239,7 @@ export declare namespace EncounterSummary {
         secondary_payer_plan_name?: string | null;
         secondary_group_number?: string | null;
         primary_member_id?: string | null;
+        prior_authorization_number?: PriorAuthorizationNumber.Raw | null;
         sum_allowed_amount_cents: number;
         sum_charge_amount_cents: number;
         sum_paid_amount_cents: number;

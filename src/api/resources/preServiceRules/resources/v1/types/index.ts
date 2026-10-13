@@ -1,4 +1,5 @@
 export * from "./EncounterEdits";
+export * from "./InitialEntityState";
 export * from "./PreServiceEncounterCreate";
 export * from "./PreServiceError";
 export * from "./PreServicePipelineSummary";

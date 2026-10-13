@@ -30,6 +30,8 @@ export interface EncounterSummary {
     secondaryPayerPlanName?: string;
     secondaryGroupNumber?: string;
     primaryMemberId?: string;
+    /** Box 23 on the CMS-1500 claim form or Form Locator 63 on a UB-04 claim form. */
+    priorAuthorizationNumber?: CandidApi.encounters.v4.PriorAuthorizationNumber;
     sumAllowedAmountCents: number;
     sumChargeAmountCents: number;
     sumPaidAmountCents: number;

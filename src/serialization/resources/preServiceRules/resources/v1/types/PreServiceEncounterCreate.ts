@@ -52,7 +52,7 @@ export const PreServiceEncounterCreate: core.serialization.ObjectSchema<
     responsibleParty: core.serialization.property("responsible_party", ResponsiblePartyType),
     billingProvider: core.serialization.property("billing_provider", BillingProvider),
     submissionExpectation: core.serialization.property("submission_expectation", EncounterSubmissionExpectation),
-    dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
+    dateOfService: core.serialization.property("date_of_service", core.serialization.string()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     payToAddress: core.serialization.property("pay_to_address", StreetAddressLongZip.optional()),
     referringProvider: core.serialization.property("referring_provider", ReferringProvider.optional()),
@@ -70,13 +70,10 @@ export const PreServiceEncounterCreate: core.serialization.ObjectSchema<
     ),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
     renderingProvider: core.serialization.property("rendering_provider", RenderingProvider.optional()),
-    serviceLines: core.serialization.property(
-        "service_lines",
-        core.serialization.list(UniversalServiceLineCreate).optional(),
-    ),
+    serviceLines: core.serialization.property("service_lines", core.serialization.list(UniversalServiceLineCreate)),
     healthCareCodeInformation: core.serialization.property(
         "health_care_code_information",
-        HealthCareCodeInformationCreate.optional(),
+        HealthCareCodeInformationCreate,
     ),
     attendingProvider: core.serialization.property("attending_provider", RenderingProvider.optional()),
     initialReferringProvider: core.serialization.property(
@@ -149,7 +146,7 @@ export declare namespace PreServiceEncounterCreate {
         responsible_party: ResponsiblePartyType.Raw;
         billing_provider: BillingProvider.Raw;
         submission_expectation: EncounterSubmissionExpectation.Raw;
-        date_of_service?: string | null;
+        date_of_service: string;
         end_date_of_service?: string | null;
         pay_to_address?: StreetAddressLongZip.Raw | null;
         referring_provider?: ReferringProvider.Raw | null;
@@ -161,8 +158,8 @@ export declare namespace PreServiceEncounterCreate {
         schema_instances?: SchemaInstance.Raw[] | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
         rendering_provider?: RenderingProvider.Raw | null;
-        service_lines?: UniversalServiceLineCreate.Raw[] | null;
-        health_care_code_information?: HealthCareCodeInformationCreate.Raw | null;
+        service_lines: UniversalServiceLineCreate.Raw[];
+        health_care_code_information: HealthCareCodeInformationCreate.Raw;
         attending_provider?: RenderingProvider.Raw | null;
         initial_referring_provider?: InitialReferringProvider.Raw | null;
         treating_provider?: TreatingProvider.Raw | null;

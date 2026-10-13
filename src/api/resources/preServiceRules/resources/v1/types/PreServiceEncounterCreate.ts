@@ -39,9 +39,13 @@ export interface PreServiceEncounterCreate {
     /**
      * Date formatted as YYYY-MM-DD. Box 24a on the CMS-1500 claim form.
      * If service occurred over a range of dates, this should be the start date.
+     * Must be on or after 2010-01-01.
      */
-    dateOfService?: string;
-    /** Date formatted as YYYY-MM-DD. If omitted, assumed to be a single-day encounter. */
+    dateOfService: string;
+    /**
+     * Date formatted as YYYY-MM-DD. If omitted, assumed to be a single-day encounter.
+     * Must be on or after date_of_service.
+     */
     endDateOfService?: string;
     /** Specifies the address to which payments for the claim should be sent. */
     payToAddress?: CandidApi.StreetAddressLongZip;
@@ -79,16 +83,22 @@ export interface PreServiceEncounterCreate {
     /**
      * The practitioner performing the service.
      * For telehealth services, the rendering provider performs the visit or asynchronous communication.
-     * Required on professional claims; not required on institutional claims.
+     * Required unless submission_expectation is TARGET_INSTITUTIONAL.
      */
     renderingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
-    /** Service lines for this encounter. */
-    serviceLines?: CandidApi.serviceLines.v2.UniversalServiceLineCreate[];
+    /**
+     * Service lines for this encounter. On professional encounters each line needs a procedure_code.
+     * revenue_code must be 4 characters. diagnosis_pointers must be unique and reference diagnoses submitted in
+     * health_care_code_information.
+     */
+    serviceLines: CandidApi.serviceLines.v2.UniversalServiceLineCreate[];
     /**
      * Health care code information associated with this encounter, including diagnoses,
      * vitals, procedures, occurrences, reason for visit, and other code-related fields.
+     * Must include principal_diagnosis with principal_diagnosis_code_qualifier ABK.
+     * When responsible_party is INSURANCE_PAY, ICD-10 diagnosis codes must be valid.
      */
-    healthCareCodeInformation?: CandidApi.healthCareCodeInformation.v1.HealthCareCodeInformationCreate;
+    healthCareCodeInformation: CandidApi.healthCareCodeInformation.v1.HealthCareCodeInformationCreate;
     /**
      * 837i Loop ID-2310. The individual with overall responsibility for the patient.
      * Used in institutional claims processing.
