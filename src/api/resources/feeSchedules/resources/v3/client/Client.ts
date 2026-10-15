@@ -228,6 +228,104 @@ export class V3Client {
     }
 
     /**
+     * Gets the rate that matches each of a list of dimension points, using the same matching as the service line match endpoint.
+     * Useful for showing rates before a service line exists in Candid.
+     *
+     * Results are returned in request order, one per point. A point with no matching rate has a null `match`.
+     *
+     * An omitted optional dimension only matches rates that have no restriction on that dimension. CPT codes are matched
+     * case-insensitively, and ZIP codes are matched on their first 5 digits.
+     *
+     * @param {CandidApi.feeSchedules.v3.BatchMatchPoint[]} request
+     * @param {V3Client.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.feeSchedules.v3.batchMatch([{
+     *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *             organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *             cptCode: "cpt_code",
+     *             dateOfService: "2023-01-15"
+     *         }, {
+     *             payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *             organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+     *             cptCode: "cpt_code",
+     *             dateOfService: "2023-01-15"
+     *         }])
+     */
+    public batchMatch(
+        request: CandidApi.feeSchedules.v3.BatchMatchPoint[],
+        requestOptions?: V3Client.RequestOptions,
+    ): core.HttpResponsePromise<
+        core.APIResponse<CandidApi.feeSchedules.v3.BatchMatchResult[], CandidApi.feeSchedules.v3.batchMatch.Error>
+    > {
+        return core.HttpResponsePromise.fromPromise(this.__batchMatch(request, requestOptions));
+    }
+
+    private async __batchMatch(
+        request: CandidApi.feeSchedules.v3.BatchMatchPoint[],
+        requestOptions?: V3Client.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<
+            core.APIResponse<CandidApi.feeSchedules.v3.BatchMatchResult[], CandidApi.feeSchedules.v3.batchMatch.Error>
+        >
+    > {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (
+                        (await core.Supplier.get(this._options.environment)) ??
+                        environments.CandidApiEnvironment.Production
+                    ).candidApi,
+                "/api/fee-schedules/v3/batch-match",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: serializers.feeSchedules.v3.batchMatch.Request.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: {
+                    ok: true,
+                    body: serializers.feeSchedules.v3.batchMatch.Response.parseOrThrow(_response.body, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    }),
+                    headers: _response.headers,
+                    rawResponse: _response.rawResponse,
+                },
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        return {
+            data: {
+                ok: false,
+                error: CandidApi.feeSchedules.v3.batchMatch.Error._unknown(_response.error),
+                rawResponse: _response.rawResponse,
+            },
+            rawResponse: _response.rawResponse,
+        };
+    }
+
+    /**
      * Gets a list of dimensions with their rates. The rates returned will always be the most recent versions of those rates.
      *
      * @param {CandidApi.feeSchedules.v3.GetMultiRequest} request

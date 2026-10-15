@@ -17,6 +17,7 @@ import { EncountersClient } from "./api/resources/encounters/client/Client";
 import { EnterpriseConfigClient } from "./api/resources/enterpriseConfig/client/Client";
 import { EventsClient } from "./api/resources/events/client/Client";
 import { ExportsClient } from "./api/resources/exports/client/Client";
+import { ExternalConsolidatedRemitClient } from "./api/resources/externalConsolidatedRemit/client/Client";
 import { ExternalPaymentAccountConfigClient } from "./api/resources/externalPaymentAccountConfig/client/Client";
 import { FeeSchedulesClient } from "./api/resources/feeSchedules/client/Client";
 import { GuarantorClient } from "./api/resources/guarantor/client/Client";
@@ -72,6 +73,7 @@ export class CandidApiClient {
     protected _enterpriseConfig: EnterpriseConfigClient | undefined;
     protected _events: EventsClient | undefined;
     protected _exports: ExportsClient | undefined;
+    protected _externalConsolidatedRemit: ExternalConsolidatedRemitClient | undefined;
     protected _externalPaymentAccountConfig: ExternalPaymentAccountConfigClient | undefined;
     protected _feeSchedules: FeeSchedulesClient | undefined;
     protected _guarantor: GuarantorClient | undefined;
@@ -166,6 +168,10 @@ export class CandidApiClient {
 
     public get exports(): ExportsClient {
         return (this._exports ??= new ExportsClient(this._options));
+    }
+
+    public get externalConsolidatedRemit(): ExternalConsolidatedRemitClient {
+        return (this._externalConsolidatedRemit ??= new ExternalConsolidatedRemitClient(this._options));
     }
 
     public get externalPaymentAccountConfig(): ExternalPaymentAccountConfigClient {

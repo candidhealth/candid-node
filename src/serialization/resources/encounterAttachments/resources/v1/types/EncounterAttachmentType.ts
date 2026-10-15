@@ -7,8 +7,35 @@ import type * as serializers from "../../../../../index";
 export const EncounterAttachmentType: core.serialization.Schema<
     serializers.encounterAttachments.v1.EncounterAttachmentType.Raw,
     CandidApi.encounterAttachments.v1.EncounterAttachmentType
-> = core.serialization.enum_(["DOCUMENTATION", "EOB", "OTHER"]);
+> = core.serialization.enum_([
+    "APPEAL_LETTER",
+    "CERTIFICATION",
+    "CONSENT_FORM",
+    "DOCUMENTATION",
+    "EOB",
+    "JUSTIFICATION_OF_ADMISSION",
+    "LABORATORY_RESULTS",
+    "MEDICAL_RECORD_ATTACHMENT",
+    "OPERATIVE_NOTE",
+    "OTHER",
+    "PHYSICAL_THERAPY_NOTE",
+    "REFERRAL_FORM",
+    "SUPPORT_DATA_FOR_CLAIM",
+]);
 
 export declare namespace EncounterAttachmentType {
-    export type Raw = "DOCUMENTATION" | "EOB" | "OTHER";
+    export type Raw =
+        | "APPEAL_LETTER"
+        | "CERTIFICATION"
+        | "CONSENT_FORM"
+        | "DOCUMENTATION"
+        | "EOB"
+        | "JUSTIFICATION_OF_ADMISSION"
+        | "LABORATORY_RESULTS"
+        | "MEDICAL_RECORD_ATTACHMENT"
+        | "OPERATIVE_NOTE"
+        | "OTHER"
+        | "PHYSICAL_THERAPY_NOTE"
+        | "REFERRAL_FORM"
+        | "SUPPORT_DATA_FOR_CLAIM";
 }

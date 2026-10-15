@@ -1,3 +1,4 @@
+export * as batchMatch from "./batchMatch";
 export * as deleteRate from "./deleteRate";
 export * as getMatch from "./getMatch";
 export * as getMulti from "./getMulti";

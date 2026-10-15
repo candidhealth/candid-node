@@ -5119,6 +5119,149 @@ await client.exports.v3.getExports({
 </dl>
 </details>
 
+## ExternalConsolidatedRemit V1
+<details><summary><code>client.externalConsolidatedRemit.v1.<a href="/src/api/resources/externalConsolidatedRemit/resources/v1/client/Client.ts">getEraPayments</a>(consolidated_remit_id) -> core.APIResponse&lt;CandidApi.ExternalConsolidatedRemitEraPaymentsResponse, CandidApi.externalConsolidatedRemit.v1.getEraPayments.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns metadata for every ERA payment (835 transaction set) associated with a
+consolidated remit, including the source ERA document for each, and indicates which ERA
+payment is currently elected as primary.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.externalConsolidatedRemit.v1.getEraPayments(CandidApi.ConsolidatedRemitId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**consolidated_remit_id:** `CandidApi.ConsolidatedRemitId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.externalConsolidatedRemit.v1.<a href="/src/api/resources/externalConsolidatedRemit/resources/v1/client/Client.ts">getTransactions</a>(consolidated_remit_id, { ...params }) -> core.APIResponse&lt;CandidApi.ExternalConsolidatedRemitTransactionPage, CandidApi.externalConsolidatedRemit.v1.getTransactions.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Paginated, combined list of InsurancePayment and InsuranceAdjustment transactions posted
+from a consolidated remit's ERA payments - covering service-payment-driven and
+payment-bundle-driven activity of both kinds, and both the posted and voided sides of each
+(see is_void). Each item is discriminated by type; fields common to both transaction types
+are always present alongside the type-specific ones. One combined, single-cursor
+pagination stream rather than two separate endpoints - filter to a single type with
+transaction_type if you only care about one.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.externalConsolidatedRemit.v1.getTransactions(CandidApi.ConsolidatedRemitId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**consolidated_remit_id:** `CandidApi.ConsolidatedRemitId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.externalConsolidatedRemit.v1.GetExternalConsolidatedRemitTransactionsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## ExternalPaymentAccountConfig V1
 <details><summary><code>client.externalPaymentAccountConfig.v1.<a href="/src/api/resources/externalPaymentAccountConfig/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ExternalPaymentAccountConfigPage, CandidApi.externalPaymentAccountConfig.v1.getMulti.Error&gt;</code></summary>
 <dl>
@@ -5285,6 +5428,85 @@ await client.feeSchedules.v3.testMatch(CandidApi.ServiceLineId("d5e9c84f-c2b2-4b
 <dd>
 
 **rate_id:** `CandidApi.RateId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.feeSchedules.v3.<a href="/src/api/resources/feeSchedules/resources/v3/client/Client.ts">batchMatch</a>({ ...params }) -> core.APIResponse&lt;CandidApi.BatchMatchResult[], CandidApi.feeSchedules.v3.batchMatch.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets the rate that matches each of a list of dimension points, using the same matching as the service line match endpoint.
+Useful for showing rates before a service line exists in Candid.
+
+Results are returned in request order, one per point. A point with no matching rate has a null `match`.
+
+An omitted optional dimension only matches rates that have no restriction on that dimension. CPT codes are matched
+case-insensitively, and ZIP codes are matched on their first 5 digits.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.feeSchedules.v3.batchMatch([{
+        payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        organizationBillingProviderId: CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        cptCode: "cpt_code",
+        dateOfService: "2023-01-15"
+    }, {
+        payerUuid: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        organizationBillingProviderId: CandidApi.OrganizationProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+        cptCode: "cpt_code",
+        dateOfService: "2023-01-15"
+    }]);
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.BatchMatchPoint[]` 
     
 </dd>
 </dl>

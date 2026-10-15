@@ -16,6 +16,7 @@ export * from "./EncounterDeepOptional";
 export * from "./EncounterExternalIdUniquenessErrorType";
 export * from "./EncounterGuarantorMissingContactInfoErrorType";
 export * from "./EncounterOptional";
+export * from "./EncounterOptionalBase";
 export * from "./EncounterOwnerOfNextActionType";
 export * from "./EncounterPage";
 export * from "./EncounterPatientControlNumberUniquenessErrorType";

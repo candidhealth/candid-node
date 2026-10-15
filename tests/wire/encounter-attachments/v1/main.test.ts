@@ -20,7 +20,7 @@ describe("V1Client", () => {
         const rawResponseBody = [
             {
                 encounter_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-                attachment_type: "DOCUMENTATION",
+                attachment_type: "APPEAL_LETTER",
                 created_at: "2024-01-15T09:30:00Z",
                 created_by: {
                     user_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -39,7 +39,7 @@ describe("V1Client", () => {
             },
             {
                 encounter_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
-                attachment_type: "DOCUMENTATION",
+                attachment_type: "APPEAL_LETTER",
                 created_at: "2024-01-15T09:30:00Z",
                 created_by: {
                     user_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -73,7 +73,7 @@ describe("V1Client", () => {
             body: [
                 {
                     encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-                    attachmentType: "DOCUMENTATION",
+                    attachmentType: "APPEAL_LETTER",
                     createdAt: new Date("2024-01-15T09:30:00.000Z"),
                     createdBy: {
                         userId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -103,7 +103,7 @@ describe("V1Client", () => {
                 },
                 {
                     encounterId: CandidApi.EncounterId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
-                    attachmentType: "DOCUMENTATION",
+                    attachmentType: "APPEAL_LETTER",
                     createdAt: new Date("2024-01-15T09:30:00.000Z"),
                     createdBy: {
                         userId: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
@@ -151,7 +151,7 @@ describe("V1Client", () => {
 
         const rawResponseBody = [
             {
-                attachment_type: "DOCUMENTATION",
+                attachment_type: "APPEAL_LETTER",
                 attachment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 file_name: "file_name",
                 description: "description",
@@ -159,7 +159,7 @@ describe("V1Client", () => {
                 authed_url: "authed_url",
             },
             {
-                attachment_type: "DOCUMENTATION",
+                attachment_type: "APPEAL_LETTER",
                 attachment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 file_name: "file_name",
                 description: "description",
@@ -181,7 +181,7 @@ describe("V1Client", () => {
         expect(response).toEqual({
             body: [
                 {
-                    attachmentType: "DOCUMENTATION",
+                    attachmentType: "APPEAL_LETTER",
                     attachmentId: CandidApi.encounterAttachments.v1.AttachmentId(
                         "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     ),
@@ -191,7 +191,7 @@ describe("V1Client", () => {
                     authedUrl: CandidApi.LinkUrl("authed_url"),
                 },
                 {
-                    attachmentType: "DOCUMENTATION",
+                    attachmentType: "APPEAL_LETTER",
                     attachmentId: CandidApi.encounterAttachments.v1.AttachmentId(
                         "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     ),

@@ -186,6 +186,281 @@ describe("V3Client", () => {
         });
     });
 
+    test("batch_match", async () => {
+        const server = mockServerPool.createServer();
+        mockOAuthScheme(server);
+
+        const client = new CandidApiClient({
+            maxRetries: 0,
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            environment: { candidApi: server.baseUrl, preEncounter: server.baseUrl },
+        });
+        const rawRequestBody = [
+            {
+                payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                organization_billing_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                cpt_code: "cpt_code",
+                date_of_service: "2023-01-15",
+            },
+            {
+                payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                organization_billing_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                cpt_code: "cpt_code",
+                date_of_service: "2023-01-15",
+            },
+        ];
+        const rawResponseBody = [
+            {
+                point: {
+                    payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    organization_billing_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    cpt_code: "cpt_code",
+                    date_of_service: "2023-01-15",
+                    modifiers: ["AV", "AV"],
+                    facility_type_code: "01",
+                    state: "AA",
+                    zip_code: "zip_code",
+                    license_type: "MD",
+                    network_types: ["12", "12"],
+                    payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    quantity: "quantity",
+                },
+                match: {
+                    matched_entry: {
+                        start_date: "2023-01-15",
+                        end_date: "2023-01-15",
+                        rate_cents: 1,
+                        is_deactivated: true,
+                    },
+                    total_cents: 1,
+                    rate_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    dimensions: {
+                        payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        organization_billing_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        states: ["AA"],
+                        zip_codes: ["zip_codes"],
+                        license_types: ["MD"],
+                        facility_type_codes: ["01"],
+                        network_types: ["12"],
+                        payer_plan_group_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
+                        cpt_code: "cpt_code",
+                        modifiers: ["AV"],
+                    },
+                    version: 1,
+                    updated_at: "2023-01-15",
+                    updated_by: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    entries: [
+                        { start_date: "2023-01-15", end_date: "2023-01-15", rate_cents: 1, is_deactivated: true },
+                        { start_date: "2023-01-15", end_date: "2023-01-15", rate_cents: 1, is_deactivated: true },
+                    ],
+                },
+            },
+            {
+                point: {
+                    payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    organization_billing_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    cpt_code: "cpt_code",
+                    date_of_service: "2023-01-15",
+                    modifiers: ["AV", "AV"],
+                    facility_type_code: "01",
+                    state: "AA",
+                    zip_code: "zip_code",
+                    license_type: "MD",
+                    network_types: ["12", "12"],
+                    payer_plan_group_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    quantity: "quantity",
+                },
+                match: {
+                    matched_entry: {
+                        start_date: "2023-01-15",
+                        end_date: "2023-01-15",
+                        rate_cents: 1,
+                        is_deactivated: true,
+                    },
+                    total_cents: 1,
+                    rate_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    dimensions: {
+                        payer_uuid: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        organization_billing_provider_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        states: ["AA"],
+                        zip_codes: ["zip_codes"],
+                        license_types: ["MD"],
+                        facility_type_codes: ["01"],
+                        network_types: ["12"],
+                        payer_plan_group_ids: ["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"],
+                        cpt_code: "cpt_code",
+                        modifiers: ["AV"],
+                    },
+                    version: 1,
+                    updated_at: "2023-01-15",
+                    updated_by: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    entries: [
+                        { start_date: "2023-01-15", end_date: "2023-01-15", rate_cents: 1, is_deactivated: true },
+                        { start_date: "2023-01-15", end_date: "2023-01-15", rate_cents: 1, is_deactivated: true },
+                    ],
+                },
+            },
+        ];
+
+        server
+            .mockEndpoint()
+            .post("/api/fee-schedules/v3/batch-match")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.feeSchedules.v3.batchMatch([
+            {
+                payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                ),
+                cptCode: "cpt_code",
+                dateOfService: "2023-01-15",
+            },
+            {
+                payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                    "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                ),
+                cptCode: "cpt_code",
+                dateOfService: "2023-01-15",
+            },
+        ]);
+        expect(response).toEqual({
+            body: [
+                {
+                    point: {
+                        payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        cptCode: "cpt_code",
+                        dateOfService: "2023-01-15",
+                        modifiers: ["AV", "AV"],
+                        facilityTypeCode: "01",
+                        state: "AA",
+                        zipCode: "zip_code",
+                        licenseType: "MD",
+                        networkTypes: ["12", "12"],
+                        payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        quantity: CandidApi.Decimal("quantity"),
+                    },
+                    match: {
+                        matchedEntry: {
+                            startDate: "2023-01-15",
+                            endDate: "2023-01-15",
+                            rateCents: 1,
+                            isDeactivated: true,
+                        },
+                        totalCents: 1,
+                        rateId: CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        dimensions: {
+                            payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                            organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            states: new Set(["AA"]),
+                            zipCodes: new Set(["zip_codes"]),
+                            licenseTypes: new Set(["MD"]),
+                            facilityTypeCodes: new Set(["01"]),
+                            networkTypes: new Set(["12"]),
+                            payerPlanGroupIds: new Set([
+                                CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                            ]),
+                            cptCode: "cpt_code",
+                            modifiers: new Set(["AV"]),
+                        },
+                        version: 1,
+                        updatedAt: "2023-01-15",
+                        updatedBy: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        entries: [
+                            {
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                rateCents: 1,
+                                isDeactivated: true,
+                            },
+                            {
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                rateCents: 1,
+                                isDeactivated: true,
+                            },
+                        ],
+                    },
+                },
+                {
+                    point: {
+                        payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                            "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        ),
+                        cptCode: "cpt_code",
+                        dateOfService: "2023-01-15",
+                        modifiers: ["AV", "AV"],
+                        facilityTypeCode: "01",
+                        state: "AA",
+                        zipCode: "zip_code",
+                        licenseType: "MD",
+                        networkTypes: ["12", "12"],
+                        payerPlanGroupId: CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        quantity: CandidApi.Decimal("quantity"),
+                    },
+                    match: {
+                        matchedEntry: {
+                            startDate: "2023-01-15",
+                            endDate: "2023-01-15",
+                            rateCents: 1,
+                            isDeactivated: true,
+                        },
+                        totalCents: 1,
+                        rateId: CandidApi.RateId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        dimensions: {
+                            payerUuid: CandidApi.payers.v3.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                            organizationBillingProviderId: CandidApi.organizationProviders.v2.OrganizationProviderId(
+                                "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                            ),
+                            states: new Set(["AA"]),
+                            zipCodes: new Set(["zip_codes"]),
+                            licenseTypes: new Set(["MD"]),
+                            facilityTypeCodes: new Set(["01"]),
+                            networkTypes: new Set(["12"]),
+                            payerPlanGroupIds: new Set([
+                                CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                            ]),
+                            cptCode: "cpt_code",
+                            modifiers: new Set(["AV"]),
+                        },
+                        version: 1,
+                        updatedAt: "2023-01-15",
+                        updatedBy: CandidApi.UserId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+                        entries: [
+                            {
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                rateCents: 1,
+                                isDeactivated: true,
+                            },
+                            {
+                                startDate: "2023-01-15",
+                                endDate: "2023-01-15",
+                                rateCents: 1,
+                                isDeactivated: true,
+                            },
+                        ],
+                    },
+                },
+            ],
+            ok: true,
+            headers: expect.any(Object),
+            rawResponse: expect.any(Object),
+        });
+    });
+
     test("get_multi", async () => {
         const server = mockServerPool.createServer();
         mockOAuthScheme(server);

@@ -113,5 +113,6 @@ export const LicenseType = {
     EdD: "EdD",
     Swt: "SWT",
     Imft: "IMFT",
+    Rt: "RT",
 } as const;
 export type LicenseType = (typeof LicenseType)[keyof typeof LicenseType];

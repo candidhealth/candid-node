@@ -120,6 +120,7 @@ export const LicenseType: core.serialization.Schema<
     "EdD",
     "SWT",
     "IMFT",
+    "RT",
 ]);
 
 export declare namespace LicenseType {
@@ -235,5 +236,6 @@ export declare namespace LicenseType {
         | "SLPA"
         | "EdD"
         | "SWT"
-        | "IMFT";
+        | "IMFT"
+        | "RT";
 }
