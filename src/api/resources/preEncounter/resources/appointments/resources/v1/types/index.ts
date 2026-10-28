@@ -1,5 +1,7 @@
 export * from "./Appointment";
+export * from "./AppointmentDevice";
 export * from "./AppointmentReasonDetail";
+export * from "./AppointmentRoom";
 export * from "./AppointmentStatus";
 export * from "./AppointmentWorkQueue";
 export * from "./CountsResponse";
@@ -8,6 +10,7 @@ export * from "./MutableAppointment";
 export * from "./NotReadyReason";
 export * from "./PriorAuthorizationStatus";
 export * from "./ProcedureCode";
+export * from "./ReadyReason";
 export * from "./ReadySource";
 export * from "./Service";
 export * from "./UniversalServiceIdentifier";

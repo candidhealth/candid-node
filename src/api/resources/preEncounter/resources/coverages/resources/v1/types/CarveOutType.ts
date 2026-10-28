@@ -5,5 +5,12 @@ export const CarveOutType = {
     Medical: "MEDICAL",
     Therapy: "THERAPY",
     Other: "OTHER",
+    Aba: "ABA",
+    Fwc: "FWC",
+    Ot: "OT",
+    Slp: "SLP",
+    Pt: "PT",
+    Eeg: "EEG",
+    Ces: "CES",
 } as const;
 export type CarveOutType = (typeof CarveOutType)[keyof typeof CarveOutType];

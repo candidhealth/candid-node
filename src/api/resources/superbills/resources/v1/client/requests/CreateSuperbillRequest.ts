@@ -23,4 +23,6 @@ export interface CreateSuperbillRequest {
     outputFormat?: CandidApi.superbills.v1.SuperbillOutputFormat;
     /** If true will include claims from any alternative patients the given patient_external_id has. */
     includeMergedPatientData?: boolean;
+    /** If true, adjustment, insurance paid, patient responsibility, and balance amounts are shown for claims that are not yet finalized, reflecting their current state. These amounts may change as remaining payers adjudicate. Defaults to false, which shows these amounts only for finalized claims. */
+    includeUnfinalizedClaimFinancials?: boolean;
 }

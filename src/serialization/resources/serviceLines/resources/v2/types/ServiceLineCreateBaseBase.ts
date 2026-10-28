@@ -8,6 +8,7 @@ import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { OrderingProvider } from "../../../../encounterProviders/resources/v2/types/OrderingProvider";
+import { RenderingProvider } from "../../../../encounterProviders/resources/v2/types/RenderingProvider";
 import { DrugIdentification } from "./DrugIdentification";
 import { TestResult } from "./TestResult";
 
@@ -30,6 +31,7 @@ export const ServiceLineCreateBaseBase: core.serialization.ObjectSchema<
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
+    renderingProvider: core.serialization.property("rendering_provider", RenderingProvider.optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
     note: core.serialization.string().optional(),
     priorAuthorizationNumber: core.serialization.property(
@@ -53,6 +55,7 @@ export declare namespace ServiceLineCreateBaseBase {
         date_of_service?: string | null;
         end_date_of_service?: string | null;
         ordering_provider?: OrderingProvider.Raw | null;
+        rendering_provider?: RenderingProvider.Raw | null;
         test_results?: TestResult.Raw[] | null;
         note?: string | null;
         prior_authorization_number?: string | null;

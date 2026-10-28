@@ -28,6 +28,8 @@ export interface ServiceLineCreateStandaloneBaseBase {
      * If not required by this implementation guide, do not send.
      */
     orderingProvider?: CandidApi.encounterProviders.v2.OrderingProvider;
+    /** If set, overrides the claim-level rendering provider for this service line on the 837-P. If not set, the claim-level rendering provider is used. */
+    renderingProvider?: CandidApi.encounterProviders.v2.RenderingProvider;
     /**
      * Contains a list of test results. Test result types may map to MEA-02 on the 837-P (ex: Hemoglobin, Hematocrit).
      * This is unused by 837-i and ignored for institutional service lines.

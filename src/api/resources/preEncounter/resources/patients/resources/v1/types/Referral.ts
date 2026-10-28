@@ -12,4 +12,7 @@ export interface Referral {
     quantity?: number;
     cptCodes?: string[];
     applyForAllCptCodes?: boolean;
+    /** When set, the referral will only apply to claims for this payer. */
+    payerId?: CandidApi.preEncounter.PayerId;
+    payerName?: string;
 }

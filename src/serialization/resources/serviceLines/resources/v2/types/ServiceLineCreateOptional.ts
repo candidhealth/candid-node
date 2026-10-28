@@ -8,6 +8,7 @@ import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { OrderingProviderOptional } from "../../../../encounterProviders/resources/v2/types/OrderingProviderOptional";
+import { RenderingProviderOptional } from "../../../../encounterProviders/resources/v2/types/RenderingProviderOptional";
 import { DrugIdentificationOptional } from "./DrugIdentificationOptional";
 import { TestResultOptional } from "./TestResultOptional";
 
@@ -35,6 +36,7 @@ export const ServiceLineCreateOptional: core.serialization.ObjectSchema<
     dateOfService: core.serialization.property("date_of_service", core.serialization.string().optional()),
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     orderingProvider: core.serialization.property("ordering_provider", OrderingProviderOptional.optional()),
+    renderingProvider: core.serialization.property("rendering_provider", RenderingProviderOptional.optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResultOptional).optional()),
     note: core.serialization.string().optional(),
     revenueCode: core.serialization.property("revenue_code", core.serialization.string().optional()),
@@ -61,6 +63,7 @@ export declare namespace ServiceLineCreateOptional {
         date_of_service?: string | null;
         end_date_of_service?: string | null;
         ordering_provider?: OrderingProviderOptional.Raw | null;
+        rendering_provider?: RenderingProviderOptional.Raw | null;
         test_results?: TestResultOptional.Raw[] | null;
         note?: string | null;
         revenue_code?: string | null;

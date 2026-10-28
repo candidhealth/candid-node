@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../../index";
 export type Error =
     | CandidApi.payerPlanGroups.v1.create.Error.EntityNotFoundError
     | CandidApi.payerPlanGroups.v1.create.Error.PayerPlanGroupAlreadyExistsHttpError
+    | CandidApi.payerPlanGroups.v1.create.Error.OrganizationNotAuthorizedError
     | CandidApi.payerPlanGroups.v1.create.Error._Unknown;
 
 export namespace Error {
@@ -17,6 +18,11 @@ export namespace Error {
     export interface PayerPlanGroupAlreadyExistsHttpError extends _Utils {
         errorName: "PayerPlanGroupAlreadyExistsHttpError";
         content: CandidApi.payerPlanGroups.v1.PayerPlanGroupAlreadyExistsError;
+    }
+
+    export interface OrganizationNotAuthorizedError extends _Utils {
+        errorName: "OrganizationNotAuthorizedError";
+        content: CandidApi.OrganizationNotAuthorizedErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -33,6 +39,7 @@ export namespace Error {
         payerPlanGroupAlreadyExistsHttpError: (
             value: CandidApi.payerPlanGroups.v1.PayerPlanGroupAlreadyExistsError,
         ) => _Result;
+        organizationNotAuthorizedError: (value: CandidApi.OrganizationNotAuthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -68,6 +75,21 @@ export const Error = {
         };
     },
 
+    organizationNotAuthorizedError: (
+        value: CandidApi.OrganizationNotAuthorizedErrorMessage,
+    ): CandidApi.payerPlanGroups.v1.create.Error.OrganizationNotAuthorizedError => {
+        return {
+            content: value,
+            errorName: "OrganizationNotAuthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.payerPlanGroups.v1.create.Error.OrganizationNotAuthorizedError,
+                visitor: CandidApi.payerPlanGroups.v1.create.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.payerPlanGroups.v1.create.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.payerPlanGroups.v1.create.Error._Unknown => {
         return {
             errorName: undefined,
@@ -90,6 +112,8 @@ export const Error = {
                 return visitor.entityNotFoundError(value.content);
             case "PayerPlanGroupAlreadyExistsHttpError":
                 return visitor.payerPlanGroupAlreadyExistsHttpError(value.content);
+            case "OrganizationNotAuthorizedError":
+                return visitor.organizationNotAuthorizedError(value.content);
             default:
                 return visitor._other(value.content);
         }

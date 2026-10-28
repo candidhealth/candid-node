@@ -7,6 +7,7 @@ export type Error =
     | CandidApi.payerPlanGroups.v1.update.Error.EntityNotFoundError
     | CandidApi.payerPlanGroups.v1.update.Error.UnauthorizedError
     | CandidApi.payerPlanGroups.v1.update.Error.PayerPlanGroupAlreadyExistsHttpError
+    | CandidApi.payerPlanGroups.v1.update.Error.OrganizationNotAuthorizedError
     | CandidApi.payerPlanGroups.v1.update.Error._Unknown;
 
 export namespace Error {
@@ -25,6 +26,11 @@ export namespace Error {
         content: CandidApi.payerPlanGroups.v1.PayerPlanGroupAlreadyExistsError;
     }
 
+    export interface OrganizationNotAuthorizedError extends _Utils {
+        errorName: "OrganizationNotAuthorizedError";
+        content: CandidApi.OrganizationNotAuthorizedErrorMessage;
+    }
+
     export interface _Unknown extends _Utils {
         errorName: void;
         content: core.Fetcher.Error;
@@ -40,6 +46,7 @@ export namespace Error {
         payerPlanGroupAlreadyExistsHttpError: (
             value: CandidApi.payerPlanGroups.v1.PayerPlanGroupAlreadyExistsError,
         ) => _Result;
+        organizationNotAuthorizedError: (value: CandidApi.OrganizationNotAuthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -90,6 +97,21 @@ export const Error = {
         };
     },
 
+    organizationNotAuthorizedError: (
+        value: CandidApi.OrganizationNotAuthorizedErrorMessage,
+    ): CandidApi.payerPlanGroups.v1.update.Error.OrganizationNotAuthorizedError => {
+        return {
+            content: value,
+            errorName: "OrganizationNotAuthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.payerPlanGroups.v1.update.Error.OrganizationNotAuthorizedError,
+                visitor: CandidApi.payerPlanGroups.v1.update.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.payerPlanGroups.v1.update.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.payerPlanGroups.v1.update.Error._Unknown => {
         return {
             errorName: undefined,
@@ -114,6 +136,8 @@ export const Error = {
                 return visitor.unauthorizedError(value.content);
             case "PayerPlanGroupAlreadyExistsHttpError":
                 return visitor.payerPlanGroupAlreadyExistsHttpError(value.content);
+            case "OrganizationNotAuthorizedError":
+                return visitor.organizationNotAuthorizedError(value.content);
             default:
                 return visitor._other(value.content);
         }

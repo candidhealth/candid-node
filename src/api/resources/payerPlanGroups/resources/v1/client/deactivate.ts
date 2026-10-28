@@ -6,6 +6,7 @@ import * as CandidApi from "../../../../../index";
 export type Error =
     | CandidApi.payerPlanGroups.v1.deactivate.Error.EntityNotFoundError
     | CandidApi.payerPlanGroups.v1.deactivate.Error.UnauthorizedError
+    | CandidApi.payerPlanGroups.v1.deactivate.Error.OrganizationNotAuthorizedError
     | CandidApi.payerPlanGroups.v1.deactivate.Error._Unknown;
 
 export namespace Error {
@@ -17,6 +18,11 @@ export namespace Error {
     export interface UnauthorizedError extends _Utils {
         errorName: "UnauthorizedError";
         content: CandidApi.UnauthorizedErrorMessage;
+    }
+
+    export interface OrganizationNotAuthorizedError extends _Utils {
+        errorName: "OrganizationNotAuthorizedError";
+        content: CandidApi.OrganizationNotAuthorizedErrorMessage;
     }
 
     export interface _Unknown extends _Utils {
@@ -31,6 +37,7 @@ export namespace Error {
     export interface _Visitor<_Result> {
         entityNotFoundError: (value: CandidApi.EntityNotFoundErrorMessage) => _Result;
         unauthorizedError: (value: CandidApi.UnauthorizedErrorMessage) => _Result;
+        organizationNotAuthorizedError: (value: CandidApi.OrganizationNotAuthorizedErrorMessage) => _Result;
         _other: (value: core.Fetcher.Error) => _Result;
     }
 }
@@ -66,6 +73,21 @@ export const Error = {
         };
     },
 
+    organizationNotAuthorizedError: (
+        value: CandidApi.OrganizationNotAuthorizedErrorMessage,
+    ): CandidApi.payerPlanGroups.v1.deactivate.Error.OrganizationNotAuthorizedError => {
+        return {
+            content: value,
+            errorName: "OrganizationNotAuthorizedError",
+            _visit: function <_Result>(
+                this: CandidApi.payerPlanGroups.v1.deactivate.Error.OrganizationNotAuthorizedError,
+                visitor: CandidApi.payerPlanGroups.v1.deactivate.Error._Visitor<_Result>,
+            ) {
+                return CandidApi.payerPlanGroups.v1.deactivate.Error._visit(this, visitor);
+            },
+        };
+    },
+
     _unknown: (fetcherError: core.Fetcher.Error): CandidApi.payerPlanGroups.v1.deactivate.Error._Unknown => {
         return {
             errorName: undefined,
@@ -88,6 +110,8 @@ export const Error = {
                 return visitor.entityNotFoundError(value.content);
             case "UnauthorizedError":
                 return visitor.unauthorizedError(value.content);
+            case "OrganizationNotAuthorizedError":
+                return visitor.organizationNotAuthorizedError(value.content);
             default:
                 return visitor._other(value.content);
         }

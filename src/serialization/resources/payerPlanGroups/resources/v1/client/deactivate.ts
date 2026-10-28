@@ -4,6 +4,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
+import { OrganizationNotAuthorizedErrorMessage } from "../../../../commons/types/OrganizationNotAuthorizedErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 
 export const Error: core.serialization.Schema<
@@ -17,6 +18,9 @@ export const Error: core.serialization.Schema<
         UnauthorizedError: core.serialization.object({
             content: UnauthorizedErrorMessage,
         }),
+        OrganizationNotAuthorizedError: core.serialization.object({
+            content: OrganizationNotAuthorizedErrorMessage,
+        }),
     })
     .transform<CandidApi.payerPlanGroups.v1.deactivate.Error>({
         transform: (value) => {
@@ -25,13 +29,15 @@ export const Error: core.serialization.Schema<
                     return CandidApi.payerPlanGroups.v1.deactivate.Error.entityNotFoundError(value.content);
                 case "UnauthorizedError":
                     return CandidApi.payerPlanGroups.v1.deactivate.Error.unauthorizedError(value.content);
+                case "OrganizationNotAuthorizedError":
+                    return CandidApi.payerPlanGroups.v1.deactivate.Error.organizationNotAuthorizedError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError;
+    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.OrganizationNotAuthorizedError;
 
     export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -41,5 +47,10 @@ export declare namespace Error {
     export interface UnauthorizedError {
         errorName: "UnauthorizedError";
         content: UnauthorizedErrorMessage.Raw;
+    }
+
+    export interface OrganizationNotAuthorizedError {
+        errorName: "OrganizationNotAuthorizedError";
+        content: OrganizationNotAuthorizedErrorMessage.Raw;
     }
 }

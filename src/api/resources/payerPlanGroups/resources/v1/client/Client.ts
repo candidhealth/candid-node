@@ -351,6 +351,7 @@ export class V1Client {
             switch ((_response.error.body as serializers.payerPlanGroups.v1.create.Error.Raw)?.errorName) {
                 case "EntityNotFoundError":
                 case "PayerPlanGroupAlreadyExistsHttpError":
+                case "OrganizationNotAuthorizedError":
                     return {
                         data: {
                             ok: false,
@@ -464,6 +465,7 @@ export class V1Client {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
                 case "PayerPlanGroupAlreadyExistsHttpError":
+                case "OrganizationNotAuthorizedError":
                     return {
                         data: {
                             ok: false,
@@ -564,6 +566,7 @@ export class V1Client {
             switch ((_response.error.body as serializers.payerPlanGroups.v1.deactivate.Error.Raw)?.errorName) {
                 case "EntityNotFoundError":
                 case "UnauthorizedError":
+                case "OrganizationNotAuthorizedError":
                     return {
                         data: {
                             ok: false,

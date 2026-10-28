@@ -9,6 +9,7 @@ import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
 import { OrderingProvider } from "../../../../encounterProviders/resources/v2/types/OrderingProvider";
+import { RenderingProvider } from "../../../../encounterProviders/resources/v2/types/RenderingProvider";
 import { DrugIdentification } from "./DrugIdentification";
 import { ServiceLineDenialReason } from "./ServiceLineDenialReason";
 import { TestResult } from "./TestResult";
@@ -29,6 +30,7 @@ export const ServiceLineCreateStandaloneBaseBase: core.serialization.ObjectSchem
     endDateOfService: core.serialization.property("end_date_of_service", core.serialization.string().optional()),
     drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
     orderingProvider: core.serialization.property("ordering_provider", OrderingProvider.optional()),
+    renderingProvider: core.serialization.property("rendering_provider", RenderingProvider.optional()),
     testResults: core.serialization.property("test_results", core.serialization.list(TestResult).optional()),
     hasEpsdtIndicator: core.serialization.property("has_epsdt_indicator", core.serialization.boolean().optional()),
     hasFamilyPlanningIndicator: core.serialization.property(
@@ -52,6 +54,7 @@ export declare namespace ServiceLineCreateStandaloneBaseBase {
         end_date_of_service?: string | null;
         drug_identification?: DrugIdentification.Raw | null;
         ordering_provider?: OrderingProvider.Raw | null;
+        rendering_provider?: RenderingProvider.Raw | null;
         test_results?: TestResult.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;

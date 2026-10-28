@@ -54,6 +54,7 @@ export const EncounterFilter: core.serialization.ObjectSchema<
     attendingProviderNpi: core.serialization.property("attending_provider_npi", StringFilter.optional()),
     attendingProviderName: core.serialization.property("attending_provider_name", StringFilter.optional()),
     claimStatus: core.serialization.property("claim_status", SetFilter.optional()),
+    claimAppealStatus: core.serialization.property("claim_appeal_status", SetFilter.optional()),
     externalId: core.serialization.property("external_id", StringFilter.optional()),
     claimId: core.serialization.property("claim_id", UuidSetFilter.optional()),
     patientExternalId: core.serialization.property("patient_external_id", StringFilter.optional()),
@@ -136,6 +137,7 @@ export declare namespace EncounterFilter {
         attending_provider_npi?: StringFilter.Raw | null;
         attending_provider_name?: StringFilter.Raw | null;
         claim_status?: SetFilter.Raw | null;
+        claim_appeal_status?: SetFilter.Raw | null;
         external_id?: StringFilter.Raw | null;
         claim_id?: UuidSetFilter.Raw | null;
         patient_external_id?: StringFilter.Raw | null;

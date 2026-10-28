@@ -7,6 +7,7 @@ import { Decimal } from "../../../../commons/types/Decimal";
 import { FacilityTypeCode } from "../../../../commons/types/FacilityTypeCode";
 import { ProcedureModifier } from "../../../../commons/types/ProcedureModifier";
 import { ServiceLineUnits } from "../../../../commons/types/ServiceLineUnits";
+import { RenderingProviderUpdate } from "../../../../encounterProviders/resources/v2/types/RenderingProviderUpdate";
 import { DrugIdentification } from "./DrugIdentification";
 import { ServiceLineDenialReason } from "./ServiceLineDenialReason";
 import { TestResult } from "./TestResult";
@@ -20,6 +21,7 @@ export const ServiceLineUpdateBase: core.serialization.ObjectSchema<
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
     drugIdentification: core.serialization.property("drug_identification", DrugIdentification.optional()),
     denialReason: core.serialization.property("denial_reason", ServiceLineDenialReason.optional()),
+    renderingProvider: core.serialization.property("rendering_provider", RenderingProviderUpdate.optional()),
     placeOfServiceCode: core.serialization.property("place_of_service_code", FacilityTypeCode.optional()),
     units: ServiceLineUnits.optional(),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string().optionalNullable()),
@@ -49,6 +51,7 @@ export declare namespace ServiceLineUpdateBase {
         charge_amount_cents?: number | null;
         drug_identification?: DrugIdentification.Raw | null;
         denial_reason?: ServiceLineDenialReason.Raw | null;
+        rendering_provider?: RenderingProviderUpdate.Raw | null;
         place_of_service_code?: FacilityTypeCode.Raw | null;
         units?: ServiceLineUnits.Raw | null;
         procedure_code?: (string | null | undefined) | null;

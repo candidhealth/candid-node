@@ -3,11 +3,13 @@
 /**
  * The BOOLEAN and STRING primitives respectively map to the `boolean` and `string` JSON data types.
  * The DOUBLE and INTEGER primitives must be written as a JSON `number` type.
+ * The DATE primitive must be written as a JSON `string` containing an ISO 8601 date, formatted YYYY-MM-DD (i.e. 2012-02-01).
  */
 export const Primitive = {
     Boolean: "BOOLEAN",
     Double: "DOUBLE",
     Integer: "INTEGER",
     String: "STRING",
+    Date: "DATE",
 } as const;
 export type Primitive = (typeof Primitive)[keyof typeof Primitive];

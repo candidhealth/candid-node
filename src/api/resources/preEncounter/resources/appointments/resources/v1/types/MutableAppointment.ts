@@ -15,6 +15,8 @@ export interface MutableAppointment {
     notReadyReason?: CandidApi.preEncounter.appointments.v1.NotReadyReason;
     /** The method that set the appointment status to READY. It is not recommended to change this value manually via API. Must only be set when the status is READY, CHECKED_IN, CHECKED_OUT or NO_SHOW, it is cleared otherwise. */
     readySource?: CandidApi.preEncounter.appointments.v1.ReadySource;
+    /** Why the appointment was marked READY. May be set when moving the appointment to READY, or to change the reason while it is READY; omitting it keeps the current value. Must only be set when the status is READY, CHECKED_IN, CHECKED_OUT or NO_SHOW, it is cleared otherwise. */
+    readyReason?: CandidApi.preEncounter.appointments.v1.ReadyReason;
     /** The requested length of time allotted for the appointment. The units are in minutes. */
     serviceDuration: number;
     services: CandidApi.preEncounter.appointments.v1.Service[];
@@ -42,6 +44,10 @@ export interface MutableAppointment {
     notes?: string;
     /** Contains the coded identification of the location being scheduled. Components: <Identifier (ST)>^<Text (ST)> */
     locationResourceId?: string;
+    /** The rooms booked for the appointment. */
+    rooms?: CandidApi.preEncounter.appointments.v1.AppointmentRoom[];
+    /** The devices booked for the appointment. */
+    devices?: CandidApi.preEncounter.appointments.v1.AppointmentDevice[];
     /** True if the automated eligibility check has been completed. It is not recommended to change this value manually via API. This refers explicitly to the automated eligibility check that occurs a specific number of days before the appointment. */
     automatedEligibilityCheckComplete?: boolean;
     /** The work queue that the appointment belongs to. It is not recommended to change this value manually via API. If status is NOT_READY, work_queue must be set. If status is READY, CHECKED_OUT or NO_SHOW, work_queue must be null. */

@@ -5,6 +5,7 @@ export * from "./AuditAppointmentWorkQueueChanged";
 export * from "./AuditCoverageCreated";
 export * from "./AuditCoverageUpdated";
 export * from "./AuditEligCheckCompleted";
+export * from "./AuditPatientSelfPayUpdated";
 export * from "./AuditPatientTagsUpdated";
 export * from "./Authorization";
 export * from "./AuthorizationUnit";

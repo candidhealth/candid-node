@@ -3,7 +3,7 @@
 import type * as CandidApi from "../../../../../index";
 
 /**
- * A serialized list of filters separated by commas indicating filters to apply.  Each filter is of the form 'path:operator:value'. Example: 'patient.mrn|eq|12345'.  Filters are separated by commas. Example: 'patient.mrn|eq|12345,appointment.startDate|gt|67890'. All filters are ANDed together.  Valid operators are 'eq', 'gt', 'lt', 'contains', 'ieq', 'in'. ieq is a case-insensitive equality operator. in allows searching for values that match any item in a semicolon-separated list (e.g., 'patient.id|in|foo;bar;baz'). Path values are camelCase.
+ * A serialized list of filters separated by commas indicating filters to apply.  Each filter is of the form 'path|operator|value'. Example: 'patient.mrn|eq|12345'.  Filters are separated by commas. Example: 'patient.mrn|eq|12345,appointment.startDate|gt|67890'. All filters are ANDed together.  Valid operators are 'eq', 'gt', 'lt', 'contains', 'ieq', 'in', 'notIn'. ieq is a case-insensitive equality operator. in allows searching for values that match any item in a semicolon-separated list (e.g., 'patient.id|in|foo;bar;baz'). notIn excludes values that match any item in a semicolon-separated list (e.g., 'appointment.locationResourceId|notIn|foo;bar'); rows with no value for that field are still returned. Path values are camelCase.
  */
 export type FilterQueryString = string & {
     preEncounter_FilterQueryString: void;

@@ -3,6 +3,7 @@
 import type * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
+import { ClaimAppealStatus } from "../../../../claimAppeals/resources/v1/types/ClaimAppealStatus";
 import { ClaimStatus } from "../../../../claims/types/ClaimStatus";
 import { ClinicalTrialPhase } from "../../../../clinicalTrials/resources/v1/types/ClinicalTrialPhase";
 import { ClaimId } from "../../../../commons/types/ClaimId";
@@ -39,6 +40,7 @@ export const EncounterSummary: core.serialization.ObjectSchema<
     patientControlNumber: core.serialization.property("patient_control_number", core.serialization.string().optional()),
     claimId: core.serialization.property("claim_id", ClaimId),
     claimStatus: core.serialization.property("claim_status", ClaimStatus),
+    claimAppealStatus: core.serialization.property("claim_appeal_status", ClaimAppealStatus.optional()),
     billingProviderNpi: core.serialization.property("billing_provider_npi", Npi),
     billingProviderName: core.serialization.property("billing_provider_name", core.serialization.string()),
     billingProviderTin: core.serialization.property("billing_provider_tin", core.serialization.string().optional()),
@@ -216,6 +218,7 @@ export declare namespace EncounterSummary {
         patient_control_number?: string | null;
         claim_id: ClaimId.Raw;
         claim_status: ClaimStatus.Raw;
+        claim_appeal_status?: ClaimAppealStatus.Raw | null;
         billing_provider_npi: Npi.Raw;
         billing_provider_name: string;
         billing_provider_tin?: string | null;

@@ -5,8 +5,8 @@ import * as core from "../../../../core";
 import type * as serializers from "../../../index";
 
 export const Primitive: core.serialization.Schema<serializers.Primitive.Raw, CandidApi.Primitive> =
-    core.serialization.enum_(["BOOLEAN", "DOUBLE", "INTEGER", "STRING"]);
+    core.serialization.enum_(["BOOLEAN", "DOUBLE", "INTEGER", "STRING", "DATE"]);
 
 export declare namespace Primitive {
-    export type Raw = "BOOLEAN" | "DOUBLE" | "INTEGER" | "STRING";
+    export type Raw = "BOOLEAN" | "DOUBLE" | "INTEGER" | "STRING" | "DATE";
 }

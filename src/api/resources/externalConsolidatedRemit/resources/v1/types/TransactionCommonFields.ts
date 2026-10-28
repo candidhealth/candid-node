@@ -16,7 +16,13 @@ export interface TransactionCommonFields {
     /** Null under the same conditions as remit_id (see above). Also returned nested under EraPayer on the sibling era-payments endpoint. */
     eraPayerName?: string;
     targetType: CandidApi.externalConsolidatedRemit.v1.TargetType;
-    /** The specific organization/provider/external_provider/claim/service_line/appointment id, per target_type. */
+    /**
+     * Identifies the target, per target_type - the same value as target_id on the corresponding insurance AR event:
+     * - ORGANIZATION: the organization id
+     * - PROVIDER / EXTERNAL_PROVIDER: the provider's NPI
+     * - CLAIM: the claim id
+     * - SERVICE_LINE: the service line id
+     */
     targetId: string;
     /** Only ever resolves for target_type in (CLAIM, SERVICE_LINE). */
     organizationServiceFacilityId?: CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId;

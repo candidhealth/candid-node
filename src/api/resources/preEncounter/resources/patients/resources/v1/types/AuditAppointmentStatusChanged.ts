@@ -6,4 +6,5 @@ export interface AuditAppointmentStatusChanged {
     fromStatus?: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
     toStatus?: CandidApi.preEncounter.appointments.v1.AppointmentStatus;
     notReadyReason?: CandidApi.preEncounter.appointments.v1.NotReadyReason;
+    readyReason?: CandidApi.preEncounter.appointments.v1.ReadyReason;
 }

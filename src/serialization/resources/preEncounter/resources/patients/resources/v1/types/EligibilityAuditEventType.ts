@@ -15,6 +15,7 @@ export const EligibilityAuditEventType: core.serialization.Schema<
     "COVERAGE_UPDATED",
     "ELIG_CHECK_COMPLETED",
     "PATIENT_TAGS_UPDATED",
+    "PATIENT_SELF_PAY_UPDATED",
 ]);
 
 export declare namespace EligibilityAuditEventType {
@@ -25,5 +26,6 @@ export declare namespace EligibilityAuditEventType {
         | "COVERAGE_CREATED"
         | "COVERAGE_UPDATED"
         | "ELIG_CHECK_COMPLETED"
-        | "PATIENT_TAGS_UPDATED";
+        | "PATIENT_TAGS_UPDATED"
+        | "PATIENT_SELF_PAY_UPDATED";
 }

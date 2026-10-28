@@ -570,6 +570,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
                 {
                     provider: {
@@ -628,6 +630,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
             ],
             primary_service_facility_id: "primary_service_facility_id",
@@ -1593,6 +1597,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                     {
                         provider: {
@@ -1682,6 +1688,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                 ],
                 primaryServiceFacilityId: "primary_service_facility_id",
@@ -2376,6 +2384,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
                 {
                     provider: {
@@ -2434,6 +2444,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
             ],
             primary_service_facility_id: "primary_service_facility_id",
@@ -3400,6 +3412,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                     {
                         provider: {
@@ -3489,6 +3503,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                 ],
                 primaryServiceFacilityId: "primary_service_facility_id",
@@ -4058,6 +4074,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
                         },
                         {
                             provider: {
@@ -4110,6 +4128,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
                         },
                     ],
                     primary_service_facility_id: "primary_service_facility_id",
@@ -4612,6 +4632,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
                         },
                         {
                             provider: {
@@ -4664,6 +4686,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payer_id: "payer_id",
+                            payer_name: "payer_name",
                         },
                     ],
                     primary_service_facility_id: "primary_service_facility_id",
@@ -5423,6 +5447,8 @@ describe("V1Client", () => {
                                 quantity: 1,
                                 cptCodes: ["cptCodes", "cptCodes"],
                                 applyForAllCptCodes: true,
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
                             },
                             {
                                 provider: {
@@ -5502,6 +5528,8 @@ describe("V1Client", () => {
                                 quantity: 1,
                                 cptCodes: ["cptCodes", "cptCodes"],
                                 applyForAllCptCodes: true,
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
                             },
                         ],
                         primaryServiceFacilityId: "primary_service_facility_id",
@@ -6278,6 +6306,8 @@ describe("V1Client", () => {
                                 quantity: 1,
                                 cptCodes: ["cptCodes", "cptCodes"],
                                 applyForAllCptCodes: true,
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
                             },
                             {
                                 provider: {
@@ -6357,6 +6387,8 @@ describe("V1Client", () => {
                                 quantity: 1,
                                 cptCodes: ["cptCodes", "cptCodes"],
                                 applyForAllCptCodes: true,
+                                payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                                payerName: "payer_name",
                             },
                         ],
                         primaryServiceFacilityId: "primary_service_facility_id",
@@ -7217,6 +7249,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
                 {
                     provider: {
@@ -7275,6 +7309,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
             ],
             primary_service_facility_id: "primary_service_facility_id",
@@ -8059,6 +8095,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                     {
                         provider: {
@@ -8148,6 +8186,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                 ],
                 primaryServiceFacilityId: "primary_service_facility_id",
@@ -8730,6 +8770,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
                 {
                     provider: {
@@ -8788,6 +8830,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
             ],
             primary_service_facility_id: "primary_service_facility_id",
@@ -9578,6 +9622,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                     {
                         provider: {
@@ -9667,6 +9713,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                 ],
                 primaryServiceFacilityId: "primary_service_facility_id",
@@ -10237,6 +10285,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -10295,6 +10345,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -10805,6 +10857,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -10863,6 +10917,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -11640,6 +11696,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -11724,6 +11782,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",
@@ -12524,6 +12584,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -12608,6 +12670,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",
@@ -13173,6 +13237,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -13231,6 +13297,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -15163,6 +15231,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -15247,6 +15317,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",
@@ -17372,6 +17444,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
                 {
                     provider: {
@@ -17430,6 +17504,8 @@ describe("V1Client", () => {
                     quantity: 1,
                     cptCodes: ["cptCodes", "cptCodes"],
                     applyForAllCptCodes: true,
+                    payer_id: "payer_id",
+                    payer_name: "payer_name",
                 },
             ],
             primary_service_facility_id: "primary_service_facility_id",
@@ -18397,6 +18473,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                     {
                         provider: {
@@ -18486,6 +18564,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                        payerName: "payer_name",
                     },
                 ],
                 primaryServiceFacilityId: "primary_service_facility_id",
@@ -19106,6 +19186,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -19164,6 +19246,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -19674,6 +19758,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -19732,6 +19818,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -20503,6 +20591,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -20587,6 +20677,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",
@@ -21387,6 +21479,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -21471,6 +21565,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",
@@ -22036,6 +22132,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -22094,6 +22192,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -22604,6 +22704,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                     {
                         provider: {
@@ -22662,6 +22764,8 @@ describe("V1Client", () => {
                         quantity: 1,
                         cptCodes: ["cptCodes", "cptCodes"],
                         applyForAllCptCodes: true,
+                        payer_id: "payer_id",
+                        payer_name: "payer_name",
                     },
                 ],
                 primary_service_facility_id: "primary_service_facility_id",
@@ -23441,6 +23545,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -23525,6 +23631,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",
@@ -24325,6 +24433,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                         {
                             provider: {
@@ -24409,6 +24519,8 @@ describe("V1Client", () => {
                             quantity: 1,
                             cptCodes: ["cptCodes", "cptCodes"],
                             applyForAllCptCodes: true,
+                            payerId: CandidApi.preEncounter.PayerId("payer_id"),
+                            payerName: "payer_name",
                         },
                     ],
                     primaryServiceFacilityId: "primary_service_facility_id",

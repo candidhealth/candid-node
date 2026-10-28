@@ -4,6 +4,7 @@ import * as CandidApi from "../../../../../../api/index";
 import * as core from "../../../../../../core";
 import type * as serializers from "../../../../../index";
 import { EntityNotFoundErrorMessage } from "../../../../commons/types/EntityNotFoundErrorMessage";
+import { OrganizationNotAuthorizedErrorMessage } from "../../../../commons/types/OrganizationNotAuthorizedErrorMessage";
 import { UnauthorizedErrorMessage } from "../../../../commons/types/UnauthorizedErrorMessage";
 import { PayerPlanGroupAlreadyExistsError } from "../types/PayerPlanGroupAlreadyExistsError";
 
@@ -21,6 +22,9 @@ export const Error: core.serialization.Schema<
         PayerPlanGroupAlreadyExistsHttpError: core.serialization.object({
             content: PayerPlanGroupAlreadyExistsError,
         }),
+        OrganizationNotAuthorizedError: core.serialization.object({
+            content: OrganizationNotAuthorizedErrorMessage,
+        }),
     })
     .transform<CandidApi.payerPlanGroups.v1.update.Error>({
         transform: (value) => {
@@ -33,13 +37,19 @@ export const Error: core.serialization.Schema<
                     return CandidApi.payerPlanGroups.v1.update.Error.payerPlanGroupAlreadyExistsHttpError(
                         value.content,
                     );
+                case "OrganizationNotAuthorizedError":
+                    return CandidApi.payerPlanGroups.v1.update.Error.organizationNotAuthorizedError(value.content);
             }
         },
         untransform: ({ _visit, ...value }) => value as any,
     });
 
 export declare namespace Error {
-    export type Raw = Error.EntityNotFoundError | Error.UnauthorizedError | Error.PayerPlanGroupAlreadyExistsHttpError;
+    export type Raw =
+        | Error.EntityNotFoundError
+        | Error.UnauthorizedError
+        | Error.PayerPlanGroupAlreadyExistsHttpError
+        | Error.OrganizationNotAuthorizedError;
 
     export interface EntityNotFoundError {
         errorName: "EntityNotFoundError";
@@ -54,5 +64,10 @@ export declare namespace Error {
     export interface PayerPlanGroupAlreadyExistsHttpError {
         errorName: "PayerPlanGroupAlreadyExistsHttpError";
         content: PayerPlanGroupAlreadyExistsError.Raw;
+    }
+
+    export interface OrganizationNotAuthorizedError {
+        errorName: "OrganizationNotAuthorizedError";
+        content: OrganizationNotAuthorizedErrorMessage.Raw;
     }
 }

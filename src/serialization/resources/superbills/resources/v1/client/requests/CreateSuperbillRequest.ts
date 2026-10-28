@@ -20,6 +20,10 @@ export const CreateSuperbillRequest: core.serialization.Schema<
         "include_merged_patient_data",
         core.serialization.boolean().optional(),
     ),
+    includeUnfinalizedClaimFinancials: core.serialization.property(
+        "include_unfinalized_claim_financials",
+        core.serialization.boolean().optional(),
+    ),
 });
 
 export declare namespace CreateSuperbillRequest {
@@ -30,5 +34,6 @@ export declare namespace CreateSuperbillRequest {
         pay_to_address?: StreetAddressShortZip.Raw | null;
         output_format?: SuperbillOutputFormat.Raw | null;
         include_merged_patient_data?: boolean | null;
+        include_unfinalized_claim_financials?: boolean | null;
     }
 }

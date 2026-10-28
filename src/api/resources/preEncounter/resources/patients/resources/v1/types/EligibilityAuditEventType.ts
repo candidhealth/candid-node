@@ -8,5 +8,6 @@ export const EligibilityAuditEventType = {
     CoverageUpdated: "COVERAGE_UPDATED",
     EligCheckCompleted: "ELIG_CHECK_COMPLETED",
     PatientTagsUpdated: "PATIENT_TAGS_UPDATED",
+    PatientSelfPayUpdated: "PATIENT_SELF_PAY_UPDATED",
 } as const;
 export type EligibilityAuditEventType = (typeof EligibilityAuditEventType)[keyof typeof EligibilityAuditEventType];

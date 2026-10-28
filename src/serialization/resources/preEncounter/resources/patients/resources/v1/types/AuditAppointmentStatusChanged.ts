@@ -5,6 +5,7 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { AppointmentStatus } from "../../../../appointments/resources/v1/types/AppointmentStatus";
 import { NotReadyReason } from "../../../../appointments/resources/v1/types/NotReadyReason";
+import { ReadyReason } from "../../../../appointments/resources/v1/types/ReadyReason";
 
 export const AuditAppointmentStatusChanged: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.AuditAppointmentStatusChanged.Raw,
@@ -13,6 +14,7 @@ export const AuditAppointmentStatusChanged: core.serialization.ObjectSchema<
     fromStatus: core.serialization.property("from_status", AppointmentStatus.optional()),
     toStatus: core.serialization.property("to_status", AppointmentStatus.optional()),
     notReadyReason: core.serialization.property("not_ready_reason", NotReadyReason.optional()),
+    readyReason: core.serialization.property("ready_reason", ReadyReason.optional()),
 });
 
 export declare namespace AuditAppointmentStatusChanged {
@@ -20,5 +22,6 @@ export declare namespace AuditAppointmentStatusChanged {
         from_status?: AppointmentStatus.Raw | null;
         to_status?: AppointmentStatus.Raw | null;
         not_ready_reason?: NotReadyReason.Raw | null;
+        ready_reason?: ReadyReason.Raw | null;
     }
 }

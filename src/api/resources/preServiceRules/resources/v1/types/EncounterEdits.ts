@@ -7,21 +7,21 @@
  * Keys are field names. A scalar field holds one change: `{ type, before, after }`, where
  * `before` is the value you sent and `after` is the value to use.
  *
- * A list field such as `service_lines` is keyed by position in the list **you submitted**, and
- * each position tells you what your item there becomes:
+ * A list field such as `service_lines` is keyed by position in the list **you submitted**.
+ * Deleting an item never shifts the keys of the items after it:
  *
  * - `{ "type": "deleted", "before": {...}, "after": null }` — remove your item at this position
- * - `{ "type": "added", "before": null, "after": {...} }` — add this item at this position
  * - `{ "<field>": { "type": ..., "before": ..., "after": ... } }` — change these fields on your
  *   item at this position
+ * - `{ "type": "added", "before": null, "after": {...} }` — only at positions past the end of
+ *   your list; append this item
  *
- * Positions you do not see are unchanged, and the final ordering falls out of applying each
- * position in turn, so no separate ordering is sent.
+ * Positions you do not see are unchanged.
  *
- * To apply them, walk your own list by index. If that index has a `deleted` change, drop the
- * item; if it has an `added` change, insert the item from `after`; otherwise set each named
- * field to its `after` value and leave the rest of the item alone. Indices beyond the end of
- * your list are new items to append. The result is the encounter the rules engine produced.
+ * To apply them, first set each named field to its `after` value on your item at that index,
+ * then drop every item marked `deleted`, then append the `added` items in key order. The result
+ * is the encounter the rules engine produced. Each list is expressed in the fewest edits that
+ * reproduce it, so a reordered list may show as field changes on the items that moved.
  *
  * These are the net effect of the whole run, not a log of what each rule did.
  */

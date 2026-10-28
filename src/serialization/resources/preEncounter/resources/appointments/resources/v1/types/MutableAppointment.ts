@@ -5,11 +5,14 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { ExternalProvider } from "../../../../common/types/ExternalProvider";
 import { PatientId } from "../../../../common/types/PatientId";
+import { AppointmentDevice } from "./AppointmentDevice";
 import { AppointmentReasonDetail } from "./AppointmentReasonDetail";
+import { AppointmentRoom } from "./AppointmentRoom";
 import { AppointmentStatus } from "./AppointmentStatus";
 import { AppointmentWorkQueue } from "./AppointmentWorkQueue";
 import { NotReadyReason } from "./NotReadyReason";
 import { PriorAuthorizationStatus } from "./PriorAuthorizationStatus";
+import { ReadyReason } from "./ReadyReason";
 import { ReadySource } from "./ReadySource";
 import { Service } from "./Service";
 
@@ -22,6 +25,7 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     status: AppointmentStatus.optional(),
     notReadyReason: core.serialization.property("not_ready_reason", NotReadyReason.optional()),
     readySource: core.serialization.property("ready_source", ReadySource.optional()),
+    readyReason: core.serialization.property("ready_reason", ReadyReason.optional()),
     serviceDuration: core.serialization.property("service_duration", core.serialization.number()),
     services: core.serialization.list(Service),
     placerAppointmentId: core.serialization.property("placer_appointment_id", core.serialization.string().optional()),
@@ -50,6 +54,8 @@ export const MutableAppointment: core.serialization.ObjectSchema<
     ),
     notes: core.serialization.string().optional(),
     locationResourceId: core.serialization.property("location_resource_id", core.serialization.string().optional()),
+    rooms: core.serialization.list(AppointmentRoom).optional(),
+    devices: core.serialization.list(AppointmentDevice).optional(),
     automatedEligibilityCheckComplete: core.serialization.property(
         "automated_eligibility_check_complete",
         core.serialization.boolean().optional(),
@@ -65,6 +71,7 @@ export declare namespace MutableAppointment {
         status?: AppointmentStatus.Raw | null;
         not_ready_reason?: NotReadyReason.Raw | null;
         ready_source?: ReadySource.Raw | null;
+        ready_reason?: ReadyReason.Raw | null;
         service_duration: number;
         services: Service.Raw[];
         placer_appointment_id?: string | null;
@@ -81,6 +88,8 @@ export declare namespace MutableAppointment {
         prior_authorization_status?: PriorAuthorizationStatus.Raw | null;
         notes?: string | null;
         location_resource_id?: string | null;
+        rooms?: AppointmentRoom.Raw[] | null;
+        devices?: AppointmentDevice.Raw[] | null;
         automated_eligibility_check_complete?: boolean | null;
         work_queue?: AppointmentWorkQueue.Raw | null;
         cancellation_reason?: string | null;

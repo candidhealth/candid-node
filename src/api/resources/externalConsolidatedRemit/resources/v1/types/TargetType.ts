@@ -2,8 +2,9 @@
 
 /**
  * Where the money landed. organization_service_facility_id/_external_id only ever resolve for
- * CLAIM and SERVICE_LINE (rarely APPOINTMENT) - they're always null for ORGANIZATION, PROVIDER,
- * and EXTERNAL_PROVIDER, which have no associated service facility.
+ * CLAIM and SERVICE_LINE - they're always null for ORGANIZATION, PROVIDER, and EXTERNAL_PROVIDER,
+ * which have no associated service facility. Transactions targeting an appointment, or a provider
+ * without an NPI, are omitted, matching the insurance AR event feed.
  */
 export const TargetType = {
     Organization: "ORGANIZATION",

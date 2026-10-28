@@ -7,6 +7,8 @@ export interface EncounterSummary {
     patientControlNumber?: string;
     claimId: CandidApi.ClaimId;
     claimStatus: CandidApi.ClaimStatus;
+    /** The status of the claim's most recent appeal. Unset if the claim has no appeals. */
+    claimAppealStatus?: CandidApi.claimAppeals.v1.ClaimAppealStatus;
     billingProviderNpi: CandidApi.Npi;
     billingProviderName: string;
     billingProviderTin?: string;

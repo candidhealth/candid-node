@@ -158,7 +158,7 @@ describe("V1Client", () => {
                     consolidated_remit_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     era_payer_name: "era_payer_name",
                     target_type: "ORGANIZATION",
-                    target_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    target_id: "target_id",
                     organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     organization_service_facility_external_id: "organization_service_facility_external_id",
                     amount_cents: 1,
@@ -232,7 +232,7 @@ describe("V1Client", () => {
                     consolidated_remit_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     era_payer_name: "era_payer_name",
                     target_type: "ORGANIZATION",
-                    target_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                    target_id: "target_id",
                     organization_service_facility_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     organization_service_facility_external_id: "organization_service_facility_external_id",
                     amount_cents: 1,
@@ -332,7 +332,7 @@ describe("V1Client", () => {
                         ),
                         eraPayerName: "era_payer_name",
                         targetType: "ORGANIZATION",
-                        targetId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        targetId: "target_id",
                         organizationServiceFacilityId:
                             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
                                 "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -423,7 +423,7 @@ describe("V1Client", () => {
                         ),
                         eraPayerName: "era_payer_name",
                         targetType: "ORGANIZATION",
-                        targetId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+                        targetId: "target_id",
                         organizationServiceFacilityId:
                             CandidApi.organizationServiceFacilities.v2.OrganizationServiceFacilityId(
                                 "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",

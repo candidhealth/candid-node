@@ -44,6 +44,11 @@ export interface EncounterFilter {
     attendingProviderNpi?: CandidApi.encounterSummaries.v1.StringFilter;
     attendingProviderName?: CandidApi.encounterSummaries.v1.StringFilter;
     claimStatus?: CandidApi.encounterSummaries.v1.SetFilter;
+    /**
+     * Filter on the status of the claim's most recent appeal. Values must be claim appeal statuses.
+     * Claims without an appeal never match, including with not_in.
+     */
+    claimAppealStatus?: CandidApi.encounterSummaries.v1.SetFilter;
     externalId?: CandidApi.encounterSummaries.v1.StringFilter;
     claimId?: CandidApi.encounterSummaries.v1.UuidSetFilter;
     patientExternalId?: CandidApi.encounterSummaries.v1.StringFilter;

@@ -5,6 +5,7 @@ import * as core from "../../../../../../../../core";
 import type * as serializers from "../../../../../../../index";
 import { ExternalProvider } from "../../../../common/types/ExternalProvider";
 import { PatientServiceFacility } from "../../../../common/types/PatientServiceFacility";
+import { PayerId } from "../../../../common/types/PayerId";
 import { Period } from "../../../../common/types/Period";
 import { ReferralUnit } from "./ReferralUnit";
 
@@ -21,6 +22,8 @@ export const Referral: core.serialization.ObjectSchema<
     quantity: core.serialization.number().optional(),
     cptCodes: core.serialization.list(core.serialization.string()).optional(),
     applyForAllCptCodes: core.serialization.boolean().optional(),
+    payerId: core.serialization.property("payer_id", PayerId.optional()),
+    payerName: core.serialization.property("payer_name", core.serialization.string().optional()),
 });
 
 export declare namespace Referral {
@@ -34,5 +37,7 @@ export declare namespace Referral {
         quantity?: number | null;
         cptCodes?: string[] | null;
         applyForAllCptCodes?: boolean | null;
+        payer_id?: PayerId.Raw | null;
+        payer_name?: string | null;
     }
 }

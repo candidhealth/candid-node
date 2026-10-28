@@ -24,6 +24,7 @@ export * from "./ReferringProviderSecondaryIdentificationQualifier";
 export * from "./ReferringProviderUpdate";
 export * from "./ReferringProviderUpdateWithOptionalAddress";
 export * from "./RenderingProvider";
+export * from "./RenderingProviderOptional";
 export * from "./RenderingProviderUpdate";
 export * from "./RenderingProviderUpdateWithOptionalAddress";
 export * from "./SupervisingProvider";
