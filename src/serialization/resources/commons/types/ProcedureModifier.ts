@@ -44,6 +44,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "59",
     "62",
     "63",
+    "65",
     "66",
     "73",
     "74",
@@ -73,6 +74,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "A9",
     "AA",
     "AB",
+    "AC",
     "AD",
     "AE",
     "AF",
@@ -90,6 +92,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "AT",
     "AZ",
     "BA",
+    "BG",
     "BL",
     "BO",
     "BP",
@@ -115,6 +118,8 @@ export const ProcedureModifier: core.serialization.Schema<
     "CO",
     "CQ",
     "DA",
+    "DR",
+    "DX",
     "E1",
     "E2",
     "E3",
@@ -272,6 +277,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "MF",
     "MG",
     "MH",
+    "MR",
     "MS",
     "N1",
     "N2",
@@ -279,6 +285,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "NB",
     "NR",
     "NU",
+    "OH",
     "P1",
     "P2",
     "P3",
@@ -385,6 +392,7 @@ export const ProcedureModifier: core.serialization.Schema<
     "TU",
     "TV",
     "TW",
+    "TZ",
     "U1",
     "U2",
     "U3",
@@ -464,6 +472,7 @@ export declare namespace ProcedureModifier {
         | "59"
         | "62"
         | "63"
+        | "65"
         | "66"
         | "73"
         | "74"
@@ -493,6 +502,7 @@ export declare namespace ProcedureModifier {
         | "A9"
         | "AA"
         | "AB"
+        | "AC"
         | "AD"
         | "AE"
         | "AF"
@@ -510,6 +520,7 @@ export declare namespace ProcedureModifier {
         | "AT"
         | "AZ"
         | "BA"
+        | "BG"
         | "BL"
         | "BO"
         | "BP"
@@ -535,6 +546,8 @@ export declare namespace ProcedureModifier {
         | "CO"
         | "CQ"
         | "DA"
+        | "DR"
+        | "DX"
         | "E1"
         | "E2"
         | "E3"
@@ -692,6 +705,7 @@ export declare namespace ProcedureModifier {
         | "MF"
         | "MG"
         | "MH"
+        | "MR"
         | "MS"
         | "N1"
         | "N2"
@@ -699,6 +713,7 @@ export declare namespace ProcedureModifier {
         | "NB"
         | "NR"
         | "NU"
+        | "OH"
         | "P1"
         | "P2"
         | "P3"
@@ -805,6 +820,7 @@ export declare namespace ProcedureModifier {
         | "TU"
         | "TV"
         | "TW"
+        | "TZ"
         | "U1"
         | "U2"
         | "U3"

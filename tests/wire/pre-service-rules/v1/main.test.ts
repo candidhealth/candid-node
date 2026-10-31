@@ -183,6 +183,7 @@ describe("V1Client", () => {
             edits: { edits: { key: "value" } },
             actions: [{ key: "value" }, { key: "value" }],
             error: { message: "message" },
+            status: "IN_PROGRESS",
         };
 
         server
@@ -222,6 +223,7 @@ describe("V1Client", () => {
                 error: {
                     message: "message",
                 },
+                status: "IN_PROGRESS",
             },
             ok: true,
             headers: expect.any(Object),

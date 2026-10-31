@@ -7,6 +7,7 @@ import { EncounterEdits } from "./EncounterEdits";
 import { InitialEntityState } from "./InitialEntityState";
 import { PreServiceError } from "./PreServiceError";
 import { PreServiceRunId } from "./PreServiceRunId";
+import { PreServiceRunStatus } from "./PreServiceRunStatus";
 
 export const PreServiceRun: core.serialization.ObjectSchema<
     serializers.preServiceRules.v1.PreServiceRun.Raw,
@@ -19,6 +20,7 @@ export const PreServiceRun: core.serialization.ObjectSchema<
     edits: EncounterEdits.optional(),
     actions: core.serialization.list(core.serialization.unknown()),
     error: PreServiceError.optional(),
+    status: PreServiceRunStatus,
 });
 
 export declare namespace PreServiceRun {
@@ -30,5 +32,6 @@ export declare namespace PreServiceRun {
         edits?: EncounterEdits.Raw | null;
         actions: unknown[];
         error?: PreServiceError.Raw | null;
+        status: PreServiceRunStatus.Raw;
     }
 }

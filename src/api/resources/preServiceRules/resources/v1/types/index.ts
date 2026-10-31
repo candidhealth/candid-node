@@ -5,4 +5,5 @@ export * from "./PreServiceError";
 export * from "./PreServicePipelineSummary";
 export * from "./PreServiceRun";
 export * from "./PreServiceRunId";
+export * from "./PreServiceRunStatus";
 export * from "./PreServiceRunType";

@@ -87,6 +87,7 @@ export const ProcedureModifier = {
     /**
      * Procedure Performed on Infants less than 4 kg */
     SixtyThree: "63",
+    SixtyFive: "65",
     /**
      * Surgical Team */
     SixtySix: "66",
@@ -174,6 +175,7 @@ export const ProcedureModifier = {
     /**
      * Audiology service furnished personally by an audiologist without a physician/npp order for non-acute hearing assessment ... */
     Ab: "AB",
+    Ac: "AC",
     /**
      * Medical supervision by a physician: more than four concurrent anesthesia procedures */
     Ad: "AD",
@@ -225,6 +227,7 @@ export const ProcedureModifier = {
     /**
      * Item furnished in conjunction with parenteral enteral nutrition (pen) services */
     Ba: "BA",
+    Bg: "BG",
     /**
      * Special acquisition of blood and blood products */
     Bl: "BL",
@@ -300,6 +303,8 @@ export const ProcedureModifier = {
     /**
      * Oral health assessment by a licensed health professional other than a dentist */
     Da: "DA",
+    Dr: "DR",
+    Dx: "DX",
     /**
      * Upper left, eyelid */
     E1: "E1",
@@ -771,6 +776,7 @@ export const ProcedureModifier = {
     /**
      * Unknown if ordering professional consulted a clinical decision support mechanism for this service */
     Mh: "MH",
+    Mr: "MR",
     /**
      * Six month maintenance and servicing fee for parts and labor, not covered under any manufacturer or supplier warranty */
     Ms: "MS",
@@ -792,6 +798,7 @@ export const ProcedureModifier = {
     /**
      * New durable medical equipment purchase */
     Nu: "NU",
+    Oh: "OH",
     /**
      * A normal healthy patient */
     P1: "P1",
@@ -1110,6 +1117,7 @@ export const ProcedureModifier = {
     /**
      * Back-up equipment */
     Tw: "TW",
+    Tz: "TZ",
     /**
      * Medicaid level of care 1, as defined by each state */
     U1: "U1",

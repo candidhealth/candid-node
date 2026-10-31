@@ -18,4 +18,6 @@ export interface PreServiceRun {
     actions: unknown[];
     /** Set if the run encountered an unrecoverable error. */
     error?: CandidApi.preServiceRules.v1.PreServiceError;
+    /** Current state of the run */
+    status: CandidApi.preServiceRules.v1.PreServiceRunStatus;
 }
