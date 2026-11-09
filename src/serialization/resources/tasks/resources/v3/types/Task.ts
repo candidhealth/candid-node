@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../index";
 import { EncounterId } from "../../../../commons/types/EncounterId";
 import { OrganizationId } from "../../../../commons/types/OrganizationId";
 import { TaskId } from "../../../../commons/types/TaskId";
+import { UserId } from "../../../../commons/types/UserId";
 import { ConfigurableRuleId } from "../../../../pipelineCommons/types/ConfigurableRuleId";
 import { RuleId } from "../../../../pipelineCommons/types/RuleId";
 import { TaskCategory } from "../../commons/types/TaskCategory";
@@ -37,6 +38,7 @@ export const Task: core.serialization.ObjectSchema<serializers.tasks.v3.Task.Raw
         configurableRuleId: core.serialization.property("configurable_rule_id", ConfigurableRuleId.optional()),
         persistedRuleId: core.serialization.property("persisted_rule_id", RuleId.optional()),
         organizationId: core.serialization.property("organization_id", OrganizationId.optional()),
+        createdBy: core.serialization.property("created_by", UserId.optional()),
     });
 
 export declare namespace Task {
@@ -62,5 +64,6 @@ export declare namespace Task {
         configurable_rule_id?: ConfigurableRuleId.Raw | null;
         persisted_rule_id?: RuleId.Raw | null;
         organization_id?: OrganizationId.Raw | null;
+        created_by?: UserId.Raw | null;
     }
 }

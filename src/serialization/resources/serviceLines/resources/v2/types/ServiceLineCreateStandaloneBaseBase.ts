@@ -37,6 +37,10 @@ export const ServiceLineCreateStandaloneBaseBase: core.serialization.ObjectSchem
         "has_family_planning_indicator",
         core.serialization.boolean().optional(),
     ),
+    hasEmergencyIndicator: core.serialization.property(
+        "has_emergency_indicator",
+        core.serialization.boolean().optional(),
+    ),
     note: core.serialization.string().optional(),
 });
 
@@ -58,6 +62,7 @@ export declare namespace ServiceLineCreateStandaloneBaseBase {
         test_results?: TestResult.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;
+        has_emergency_indicator?: boolean | null;
         note?: string | null;
     }
 }

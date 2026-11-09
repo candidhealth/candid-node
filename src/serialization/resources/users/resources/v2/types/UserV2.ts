@@ -14,6 +14,7 @@ export const UserV2: core.serialization.ObjectSchema<serializers.users.v2.UserV2
         idpMetadata: core.serialization.property("idp_metadata", core.serialization.list(IdpUserMetadata)),
         primaryOrganizationId: core.serialization.property("primary_organization_id", OrganizationId.optional()),
         userMetadata: core.serialization.property("user_metadata", UserMetadata),
+        isSystem: core.serialization.property("is_system", core.serialization.boolean()),
     });
 
 export declare namespace UserV2 {
@@ -22,5 +23,6 @@ export declare namespace UserV2 {
         idp_metadata: IdpUserMetadata.Raw[];
         primary_organization_id?: OrganizationId.Raw | null;
         user_metadata: UserMetadata.Raw;
+        is_system: boolean;
     }
 }

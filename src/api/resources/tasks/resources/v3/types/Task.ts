@@ -26,4 +26,6 @@ export interface Task {
     configurableRuleId?: CandidApi.ConfigurableRuleId;
     persistedRuleId?: CandidApi.RuleId;
     organizationId?: CandidApi.OrganizationId;
+    /** The ID of the user that created the task. */
+    createdBy?: CandidApi.UserId;
 }

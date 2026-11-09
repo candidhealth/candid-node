@@ -30,6 +30,7 @@ describe("V1Client", () => {
                     ],
                     primary_organization_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     user_metadata: { type: "machine_user_metadata", name: "name" },
+                    is_system: true,
                 },
                 attachment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 file_name: "file_name",
@@ -49,6 +50,7 @@ describe("V1Client", () => {
                     ],
                     primary_organization_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     user_metadata: { type: "machine_user_metadata", name: "name" },
+                    is_system: true,
                 },
                 attachment_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                 file_name: "file_name",
@@ -92,6 +94,7 @@ describe("V1Client", () => {
                             type: "machine_user_metadata",
                             name: "name",
                         },
+                        isSystem: true,
                     },
                     attachmentId: CandidApi.encounterAttachments.v1.AttachmentId(
                         "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
@@ -122,6 +125,7 @@ describe("V1Client", () => {
                             type: "machine_user_metadata",
                             name: "name",
                         },
+                        isSystem: true,
                     },
                     attachmentId: CandidApi.encounterAttachments.v1.AttachmentId(
                         "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",

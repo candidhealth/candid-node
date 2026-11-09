@@ -605,6 +605,7 @@ describe("V3Client", () => {
                     ],
                     primary_organization_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     user_metadata: { type: "machine_user_metadata", name: "name" },
+                    is_system: true,
                 },
             },
             {
@@ -623,6 +624,7 @@ describe("V3Client", () => {
                     ],
                     primary_organization_id: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
                     user_metadata: { type: "machine_user_metadata", name: "name" },
+                    is_system: true,
                 },
             },
         ];
@@ -669,6 +671,7 @@ describe("V3Client", () => {
                             type: "machine_user_metadata",
                             name: "name",
                         },
+                        isSystem: true,
                     },
                 },
                 {
@@ -700,6 +703,7 @@ describe("V3Client", () => {
                             type: "machine_user_metadata",
                             name: "name",
                         },
+                        isSystem: true,
                     },
                 },
             ],

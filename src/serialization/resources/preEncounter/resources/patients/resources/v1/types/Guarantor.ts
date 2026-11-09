@@ -6,6 +6,7 @@ import type * as serializers from "../../../../../../../index";
 import { Address } from "../../../../common/types/Address";
 import { ContactPoint } from "../../../../common/types/ContactPoint";
 import { HumanName } from "../../../../common/types/HumanName";
+import { Relationship } from "../../../../common/types/Relationship";
 
 export const Guarantor: core.serialization.ObjectSchema<
     serializers.preEncounter.patients.v1.Guarantor.Raw,
@@ -16,6 +17,7 @@ export const Guarantor: core.serialization.ObjectSchema<
     email: core.serialization.string().optional(),
     birthDate: core.serialization.property("birth_date", core.serialization.string().optional()),
     address: Address,
+    relationship: Relationship.optional(),
 });
 
 export declare namespace Guarantor {
@@ -25,5 +27,6 @@ export declare namespace Guarantor {
         email?: string | null;
         birth_date?: string | null;
         address: Address.Raw;
+        relationship?: Relationship.Raw | null;
     }
 }

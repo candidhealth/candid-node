@@ -58,6 +58,7 @@ export * as organizationServiceFacilities from "./organizationServiceFacilities"
 export * as patientAr from "./patientAr";
 export * as patientPayments from "./patientPayments";
 export * as patientRefunds from "./patientRefunds";
+export * as payerGroups from "./payerGroups";
 export * as payerPlanGroups from "./payerPlanGroups";
 export * as payers from "./payers";
 export * as paymentAccountConfigs from "./paymentAccountConfigs";

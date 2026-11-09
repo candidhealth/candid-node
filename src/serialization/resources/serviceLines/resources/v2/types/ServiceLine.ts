@@ -93,6 +93,10 @@ export const ServiceLine: core.serialization.ObjectSchema<
         "has_family_planning_indicator",
         core.serialization.boolean().optional(),
     ),
+    hasEmergencyIndicator: core.serialization.property(
+        "has_emergency_indicator",
+        core.serialization.boolean().optional(),
+    ),
     note: core.serialization.string().optional(),
     priorAuthorizationNumber: core.serialization.property(
         "prior_authorization_number",
@@ -145,6 +149,7 @@ export declare namespace ServiceLine {
         test_results?: TestResult.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;
+        has_emergency_indicator?: boolean | null;
         note?: string | null;
         prior_authorization_number?: string | null;
         external_id?: string | null;

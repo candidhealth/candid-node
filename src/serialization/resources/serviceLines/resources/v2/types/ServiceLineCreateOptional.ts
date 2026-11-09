@@ -22,6 +22,10 @@ export const ServiceLineCreateOptional: core.serialization.ObjectSchema<
         "has_family_planning_indicator",
         core.serialization.boolean().optional(),
     ),
+    hasEmergencyIndicator: core.serialization.property(
+        "has_emergency_indicator",
+        core.serialization.boolean().optional(),
+    ),
     procedureCode: core.serialization.property("procedure_code", core.serialization.string().optional()),
     quantity: Decimal.optional(),
     units: ServiceLineUnits.optional(),
@@ -52,6 +56,7 @@ export declare namespace ServiceLineCreateOptional {
         modifiers?: ProcedureModifier.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;
+        has_emergency_indicator?: boolean | null;
         procedure_code?: string | null;
         quantity?: Decimal.Raw | null;
         units?: ServiceLineUnits.Raw | null;

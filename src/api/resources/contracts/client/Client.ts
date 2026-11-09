@@ -4,6 +4,7 @@ import type { BaseClientOptions } from "../../../../BaseClient";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient";
 import { V2Client } from "../resources/v2/client/Client";
 import { V3Client } from "../resources/v3/client/Client";
+import { V4Client } from "../resources/v4/client/Client";
 
 export declare namespace ContractsClient {
     export type Options = BaseClientOptions;
@@ -13,6 +14,7 @@ export class ContractsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ContractsClient.Options>;
     protected _v2: V2Client | undefined;
     protected _v3: V3Client | undefined;
+    protected _v4: V4Client | undefined;
 
     constructor(options: ContractsClient.Options) {
         this._options = normalizeClientOptionsWithAuth(options);
@@ -24,5 +26,9 @@ export class ContractsClient {
 
     public get v3(): V3Client {
         return (this._v3 ??= new V3Client(this._options));
+    }
+
+    public get v4(): V4Client {
+        return (this._v4 ??= new V4Client(this._options));
     }
 }

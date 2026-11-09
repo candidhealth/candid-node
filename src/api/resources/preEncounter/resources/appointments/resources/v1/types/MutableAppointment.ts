@@ -29,6 +29,8 @@ export interface MutableAppointment {
     estimatedCopayCents?: number;
     /** The estimated amount the patient will be responsible for paying at the time of service. This does not include the copay. */
     estimatedPatientResponsibilityCents?: number;
+    /** A note explaining estimated_patient_responsibility_cents */
+    estimatedPatientResponsibilityNote?: string;
     patientDepositCents?: number;
     appointmentDetails?: string;
     /** The timestamp when the patient checked in for their appointment. Must be set when status is CHECKED_IN or CHECKED_OUT, and must be unset otherwise. */

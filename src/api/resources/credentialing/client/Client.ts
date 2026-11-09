@@ -3,6 +3,7 @@
 import type { BaseClientOptions } from "../../../../BaseClient";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient";
 import { V2Client } from "../resources/v2/client/Client";
+import { V3Client } from "../resources/v3/client/Client";
 
 export declare namespace CredentialingClient {
     export type Options = BaseClientOptions;
@@ -11,6 +12,7 @@ export declare namespace CredentialingClient {
 export class CredentialingClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<CredentialingClient.Options>;
     protected _v2: V2Client | undefined;
+    protected _v3: V3Client | undefined;
 
     constructor(options: CredentialingClient.Options) {
         this._options = normalizeClientOptionsWithAuth(options);
@@ -18,5 +20,9 @@ export class CredentialingClient {
 
     public get v2(): V2Client {
         return (this._v2 ??= new V2Client(this._options));
+    }
+
+    public get v3(): V3Client {
+        return (this._v3 ??= new V3Client(this._options));
     }
 }

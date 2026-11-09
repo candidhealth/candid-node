@@ -8,4 +8,6 @@ export interface Guarantor {
     email?: string;
     birthDate?: string;
     address: CandidApi.preEncounter.Address;
+    /** The patient's relationship to the guarantor. */
+    relationship?: CandidApi.preEncounter.Relationship;
 }

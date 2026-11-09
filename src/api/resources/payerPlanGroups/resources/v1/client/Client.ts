@@ -272,7 +272,9 @@ export class V1Client {
     }
 
     /**
-     * Create a payer plan
+     * Create a payer plan.
+     *
+     * Note: If your org does not have access to Payer Plans, you cannot use APIs to create Payer Plans.
      *
      * @param {CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup} request
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.
@@ -382,7 +384,9 @@ export class V1Client {
     }
 
     /**
-     * Update any of the fields on a payer plan
+     * Update any of the fields on a payer plan.
+     *
+     * Note: If your org does not have access to Payer Plans, you cannot use APIs to update Payer Plans.
      *
      * @param {CandidApi.PayerPlanGroupId} payer_plan_group_id
      * @param {CandidApi.payerPlanGroups.v1.MutablePayerPlanGroup} request
@@ -496,7 +500,9 @@ export class V1Client {
     }
 
     /**
-     * Marks the payer plan as deactivated
+     * Marks the payer plan as deactivated.
+     *
+     * Note: If your org does not have access to Payer Plans, you cannot use APIs to deactivate Payer Plans.
      *
      * @param {CandidApi.PayerPlanGroupId} payer_plan_group_id
      * @param {V1Client.RequestOptions} requestOptions - Request-specific configuration.

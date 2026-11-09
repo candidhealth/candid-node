@@ -1878,6 +1878,883 @@ await client.contracts.v3.updateContractServiceFacility(CandidApi.ContractId("d5
 </dl>
 </details>
 
+## Contracts V4
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">get</a>(contract_id) -> core.APIResponse&lt;CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v4.get.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.get(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ContractsPage, CandidApi.contracts.v4.getMulti.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.getMulti();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.GetMultiContractsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v4.create.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new contract within the user's current organization
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.create({
+    type: "professional",
+    contractType: "professional",
+    contractingProviderId: CandidApi.ContractingProviderId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"),
+    contractPayer: {
+        type: "payer_uuid",
+        value: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"
+    },
+    effectiveDate: CandidApi.Date_("effective_date"),
+    regions: {
+        type: "states",
+        states: ["AA", "AA"]
+    },
+    commercialInsuranceTypes: {
+        type: "allApply"
+    },
+    medicareInsuranceTypes: {
+        type: "allApply"
+    },
+    medicaidInsuranceTypes: {
+        type: "allApply"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ContractCreateUnion` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">delete</a>(contract_id) -> core.APIResponse&lt;void, CandidApi.contracts.v4.delete.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.delete(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">update</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractWithProvidersUnion, CandidApi.contracts.v4.update.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.update(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    type: "professional"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.ContractUpdateUnion` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">getContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractProvidersPage, CandidApi.contracts.v4.getContractProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.getContractProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.GetContractProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">addContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.AddContractProvidersResponse, CandidApi.contracts.v4.addContractProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Appends a list of rendering provider IDs to the contract. Provider IDs already on the contract are silently ignored.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.addContractProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    renderingProviderIds: new Set([CandidApi.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.AddContractProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">removeContractProviders</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractProviderCount, CandidApi.contracts.v4.removeContractProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes the specified rendering provider IDs from the contract. Returns a 404 if any of the provided IDs are not currently in the contract.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.removeContractProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    renderingProviderIds: new Set([CandidApi.RenderingProviderid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.RemoveContractProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">createContractServiceFacility</a>(contract_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractServiceFacility, CandidApi.contracts.v4.createContractServiceFacility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.createContractServiceFacility(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    serviceFacilityId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    providerIds: new Set(["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.ContractServiceFacilityCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">updateContractServiceFacility</a>(contract_id, contract_service_facility_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractServiceFacility, CandidApi.contracts.v4.updateContractServiceFacility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deprecated. This endpoint is a temporary holdover from Contracts V3 and will be removed in a future release.
+Use the dedicated service facility provider endpoints to manage providers
+(GET/POST/DELETE /api/contracts/v4/{contract_id}/service-facilities/{contract_service_facility_id}/providers).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.updateContractServiceFacility(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ContractServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contract_service_facility_id:** `CandidApi.ContractServiceFacilityId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.ContractServiceFacilityUpdate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">getContractServiceFacilityProviders</a>(contract_id, contract_service_facility_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractProvidersPage, CandidApi.contracts.v4.getContractServiceFacilityProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of providers associated with a contract service facility.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.getContractServiceFacilityProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ContractServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contract_service_facility_id:** `CandidApi.ContractServiceFacilityId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.GetContractServiceFacilityProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">addContractServiceFacilityProviders</a>(contract_id, contract_service_facility_id, { ...params }) -> core.APIResponse&lt;CandidApi.AddContractServiceFacilityProvidersResponse, CandidApi.contracts.v4.addContractServiceFacilityProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Appends provider IDs to the contract service facility. Provider IDs already on the facility are silently ignored.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.addContractServiceFacilityProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ContractServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    providerIds: new Set(["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contract_service_facility_id:** `CandidApi.ContractServiceFacilityId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.AddContractServiceFacilityProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.contracts.v4.<a href="/src/api/resources/contracts/resources/v4/client/Client.ts">removeContractServiceFacilityProviders</a>(contract_id, contract_service_facility_id, { ...params }) -> core.APIResponse&lt;CandidApi.ContractServiceFacilityProviderCount, CandidApi.contracts.v4.removeContractServiceFacilityProviders.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes the specified provider IDs from the contract service facility. Returns a 404 if any of the provided IDs are not currently associated.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.contracts.v4.removeContractServiceFacilityProviders(CandidApi.ContractId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), CandidApi.ContractServiceFacilityId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    providerIds: new Set(["d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"])
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `CandidApi.ContractId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contract_service_facility_id:** `CandidApi.ContractServiceFacilityId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.contracts.v4.RemoveContractServiceFacilityProvidersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V4Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Credentialing V2
 <details><summary><code>client.credentialing.v2.<a href="/src/api/resources/credentialing/resources/v2/client/Client.ts">createFacility</a>({ ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v2.createFacility.Error&gt;</code></summary>
 <dl>
@@ -2416,6 +3293,559 @@ await client.credentialing.v2.update(CandidApi.ProviderCredentialingSpanId("d5e9
 <dd>
 
 **requestOptions:** `V2Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Credentialing V3
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">createFacility</a>({ ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v3.createFacility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.createFacility({
+    serviceFacilityId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    credentialingPayer: {
+        type: "payer_uuid",
+        value: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v3.FacilityCredentialingSpanCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">getFacility</a>(facility_credentialing_id) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v3.getFacility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.getFacility(CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**facility_credentialing_id:** `CandidApi.FacilityCredentialingSpanId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">getAllFacilities</a>({ ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpanPage, CandidApi.credentialing.v3.getAllFacilities.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.getAllFacilities();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v3.GetAllFacilityCredentialingSpansRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">deleteFacility</a>(facility_credentialing_id) -> core.APIResponse&lt;void, CandidApi.credentialing.v3.deleteFacility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Soft deletes a credentialing span rate from the system.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.deleteFacility(CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**facility_credentialing_id:** `CandidApi.FacilityCredentialingSpanId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">updateFacility</a>(facility_credentialing_id, { ...params }) -> core.APIResponse&lt;CandidApi.FacilityCredentialingSpan, CandidApi.credentialing.v3.updateFacility.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.updateFacility(CandidApi.FacilityCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**facility_credentialing_id:** `CandidApi.FacilityCredentialingSpanId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v3.FacilityCredentialingSpanUpdate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v3.create.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.create({
+    renderingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    contractingProviderId: "d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32",
+    credentialingPayer: {
+        type: "payer_uuid",
+        value: CandidApi.PayerUuid("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32")
+    },
+    regions: {
+        type: "states",
+        states: ["AA", "AA"]
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v3.ProviderCredentialingSpanCreate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">get</a>(provider_credentialing_id) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v3.get.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.get(CandidApi.ProviderCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**provider_credentialing_id:** `CandidApi.ProviderCredentialingSpanId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">getAll</a>({ ...params }) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpanPage, CandidApi.credentialing.v3.getAll.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.getAll();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v3.GetAllProviderCredentialingSpansRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">delete</a>(provider_credentialing_id) -> core.APIResponse&lt;void, CandidApi.credentialing.v3.delete.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Soft deletes a credentialing span rate from the system.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.delete(CandidApi.ProviderCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**provider_credentialing_id:** `CandidApi.ProviderCredentialingSpanId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.credentialing.v3.<a href="/src/api/resources/credentialing/resources/v3/client/Client.ts">update</a>(provider_credentialing_id, { ...params }) -> core.APIResponse&lt;CandidApi.ProviderCredentialingSpan, CandidApi.credentialing.v3.update.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.credentialing.v3.update(CandidApi.ProviderCredentialingSpanId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**provider_credentialing_id:** `CandidApi.ProviderCredentialingSpanId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.credentialing.v3.ProviderCredentialingSpanUpdate` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V3Client.RequestOptions` 
     
 </dd>
 </dl>
@@ -9914,6 +11344,273 @@ await client.patientRefunds.v1.delete(CandidApi.PatientRefundId("d5e9c84f-c2b2-4
 </dl>
 </details>
 
+## PayerGroups V1
+<details><summary><code>client.payerGroups.v1.<a href="/src/api/resources/payerGroups/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerGroupPage, CandidApi.payerGroups.v1.getMulti.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns all payer groups matching filter criteria.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.v1.getMulti();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.payerGroups.v1.PayerGroupGetMultiRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.payerGroups.v1.<a href="/src/api/resources/payerGroups/resources/v1/client/Client.ts">get</a>(payer_group_id) -> core.APIResponse&lt;CandidApi.PayerGroup, CandidApi.payerGroups.v1.get.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Return a payer group with a given ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.v1.get(CandidApi.PayerGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"));
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**payer_group_id:** `CandidApi.PayerGroupId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.payerGroups.v1.<a href="/src/api/resources/payerGroups/resources/v1/client/Client.ts">create</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerGroup, CandidApi.payerGroups.v1.create.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a payer group. When `payer_plan_group_ids` is provided, moves those plans into
+the new group atomically (same transaction). On any failure the group is not created
+and no plans are moved.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.v1.create({
+    name: "name"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.CreatePayerGroupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.payerGroups.v1.<a href="/src/api/resources/payerGroups/resources/v1/client/Client.ts">update</a>(payer_group_id, { ...params }) -> core.APIResponse&lt;CandidApi.PayerGroup, CandidApi.payerGroups.v1.update.Error&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the name of a payer group
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.v1.update(CandidApi.PayerGroupId("d5e9c84f-c2b2-4bf4-b4b0-7ffd7a9ffc32"), {
+    name: "name"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**payer_group_id:** `CandidApi.PayerGroupId` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `CandidApi.MutablePayerGroup` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V1Client.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## PayerPlanGroups V1
 <details><summary><code>client.payerPlanGroups.v1.<a href="/src/api/resources/payerPlanGroups/resources/v1/client/Client.ts">getMulti</a>({ ...params }) -> core.APIResponse&lt;CandidApi.PayerPlanGroupPage, CandidApi.payerPlanGroups.v1.getMulti.Error&gt;</code></summary>
 <dl>
@@ -10053,7 +11750,9 @@ await client.payerPlanGroups.v1.get(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2-4b
 <dl>
 <dd>
 
-Create a payer plan
+Create a payer plan.
+
+Note: If your org does not have access to Payer Plans, you cannot use APIs to create Payer Plans.
 </dd>
 </dl>
 </dd>
@@ -10120,7 +11819,9 @@ await client.payerPlanGroups.v1.create({
 <dl>
 <dd>
 
-Update any of the fields on a payer plan
+Update any of the fields on a payer plan.
+
+Note: If your org does not have access to Payer Plans, you cannot use APIs to update Payer Plans.
 </dd>
 </dl>
 </dd>
@@ -10195,7 +11896,9 @@ await client.payerPlanGroups.v1.update(CandidApi.PayerPlanGroupId("d5e9c84f-c2b2
 <dl>
 <dd>
 
-Marks the payer plan as deactivated
+Marks the payer plan as deactivated.
+
+Note: If your org does not have access to Payer Plans, you cannot use APIs to deactivate Payer Plans.
 </dd>
 </dl>
 </dd>

@@ -16,7 +16,8 @@ import type * as CandidApi from "../../../../../index";
  *             firstName: "John",
  *             lastName: "Doe",
  *             email: "john.doe@example.com"
- *         }
+ *         },
+ *         isSystem: false
  *     }
  */
 export interface UserV2 {
@@ -24,4 +25,6 @@ export interface UserV2 {
     idpMetadata: CandidApi.users.v2.IdpUserMetadata[];
     primaryOrganizationId?: CandidApi.OrganizationId;
     userMetadata: CandidApi.users.v2.UserMetadata;
+    /** Whether this is a Candid system user (automation), not a person or customer integration. */
+    isSystem: boolean;
 }

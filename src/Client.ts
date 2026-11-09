@@ -34,6 +34,7 @@ import { OrganizationServiceFacilitiesClient } from "./api/resources/organizatio
 import { PatientArClient } from "./api/resources/patientAr/client/Client";
 import { PatientPaymentsClient } from "./api/resources/patientPayments/client/Client";
 import { PatientRefundsClient } from "./api/resources/patientRefunds/client/Client";
+import { PayerGroupsClient } from "./api/resources/payerGroups/client/Client";
 import { PayerPlanGroupsClient } from "./api/resources/payerPlanGroups/client/Client";
 import { PayersClient } from "./api/resources/payers/client/Client";
 import { PreEncounterClient } from "./api/resources/preEncounter/client/Client";
@@ -90,6 +91,7 @@ export class CandidApiClient {
     protected _patientAr: PatientArClient | undefined;
     protected _patientPayments: PatientPaymentsClient | undefined;
     protected _patientRefunds: PatientRefundsClient | undefined;
+    protected _payerGroups: PayerGroupsClient | undefined;
     protected _payerPlanGroups: PayerPlanGroupsClient | undefined;
     protected _payers: PayersClient | undefined;
     protected _preServiceRules: PreServiceRulesClient | undefined;
@@ -236,6 +238,10 @@ export class CandidApiClient {
 
     public get patientRefunds(): PatientRefundsClient {
         return (this._patientRefunds ??= new PatientRefundsClient(this._options));
+    }
+
+    public get payerGroups(): PayerGroupsClient {
+        return (this._payerGroups ??= new PayerGroupsClient(this._options));
     }
 
     public get payerPlanGroups(): PayerPlanGroupsClient {

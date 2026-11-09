@@ -466,6 +466,7 @@ describe("V1Client", () => {
                     county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                relationship: "SELF",
             },
             self_pay: true,
             authorizations: [
@@ -1452,6 +1453,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    relationship: "SELF",
                 },
                 selfPay: true,
                 authorizations: [
@@ -2280,6 +2282,7 @@ describe("V1Client", () => {
                     county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                relationship: "SELF",
             },
             self_pay: true,
             authorizations: [
@@ -3267,6 +3270,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    relationship: "SELF",
                 },
                 selfPay: true,
                 authorizations: [
@@ -3976,6 +3980,7 @@ describe("V1Client", () => {
                             county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
+                        relationship: "SELF",
                     },
                     self_pay: true,
                     authorizations: [
@@ -4534,6 +4539,7 @@ describe("V1Client", () => {
                             county: "county",
                             period: { start: "2023-01-15", end: "2023-01-15" },
                         },
+                        relationship: "SELF",
                     },
                     self_pay: true,
                     authorizations: [
@@ -5310,6 +5316,7 @@ describe("V1Client", () => {
                                     end: "2023-01-15",
                                 },
                             },
+                            relationship: "SELF",
                         },
                         selfPay: true,
                         authorizations: [
@@ -6169,6 +6176,7 @@ describe("V1Client", () => {
                                     end: "2023-01-15",
                                 },
                             },
+                            relationship: "SELF",
                         },
                         selfPay: true,
                         authorizations: [
@@ -7145,6 +7153,7 @@ describe("V1Client", () => {
                     county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                relationship: "SELF",
             },
             self_pay: true,
             authorizations: [
@@ -7950,6 +7959,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    relationship: "SELF",
                 },
                 selfPay: true,
                 authorizations: [
@@ -8666,6 +8676,7 @@ describe("V1Client", () => {
                     county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                relationship: "SELF",
             },
             self_pay: true,
             authorizations: [
@@ -9477,6 +9488,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    relationship: "SELF",
                 },
                 selfPay: true,
                 authorizations: [
@@ -10181,6 +10193,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -10753,6 +10766,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -11554,6 +11568,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [
@@ -12442,6 +12457,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [
@@ -13133,6 +13149,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -15089,6 +15106,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [
@@ -17340,6 +17358,7 @@ describe("V1Client", () => {
                     county: "county",
                     period: { start: "2023-01-15", end: "2023-01-15" },
                 },
+                relationship: "SELF",
             },
             self_pay: true,
             authorizations: [
@@ -18328,6 +18347,7 @@ describe("V1Client", () => {
                             end: "2023-01-15",
                         },
                     },
+                    relationship: "SELF",
                 },
                 selfPay: true,
                 authorizations: [
@@ -19082,6 +19102,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -19654,6 +19675,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -20449,6 +20471,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [
@@ -21337,6 +21360,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [
@@ -22028,6 +22052,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -22600,6 +22625,7 @@ describe("V1Client", () => {
                         county: "county",
                         period: { start: "2023-01-15", end: "2023-01-15" },
                     },
+                    relationship: "SELF",
                 },
                 self_pay: true,
                 authorizations: [
@@ -23403,6 +23429,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [
@@ -24291,6 +24318,7 @@ describe("V1Client", () => {
                                 end: "2023-01-15",
                             },
                         },
+                        relationship: "SELF",
                     },
                     selfPay: true,
                     authorizations: [

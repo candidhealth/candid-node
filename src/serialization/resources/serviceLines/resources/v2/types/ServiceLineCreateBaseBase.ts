@@ -22,6 +22,10 @@ export const ServiceLineCreateBaseBase: core.serialization.ObjectSchema<
         "has_family_planning_indicator",
         core.serialization.boolean().optional(),
     ),
+    hasEmergencyIndicator: core.serialization.property(
+        "has_emergency_indicator",
+        core.serialization.boolean().optional(),
+    ),
     quantity: Decimal,
     units: ServiceLineUnits,
     chargeAmountCents: core.serialization.property("charge_amount_cents", core.serialization.number().optional()),
@@ -46,6 +50,7 @@ export declare namespace ServiceLineCreateBaseBase {
         modifiers?: ProcedureModifier.Raw[] | null;
         has_epsdt_indicator?: boolean | null;
         has_family_planning_indicator?: boolean | null;
+        has_emergency_indicator?: boolean | null;
         quantity: Decimal.Raw;
         units: ServiceLineUnits.Raw;
         charge_amount_cents?: number | null;
