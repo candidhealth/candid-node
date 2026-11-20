@@ -10,6 +10,8 @@ export const ClaimAppealStatus: core.serialization.Schema<
 > = core.serialization.enum_([
     "appealable",
     "preparing",
+    "ready_for_review",
+    "needs_attention",
     "submitted",
     "requires_additional_info",
     "overturned",
@@ -22,6 +24,8 @@ export declare namespace ClaimAppealStatus {
     export type Raw =
         | "appealable"
         | "preparing"
+        | "ready_for_review"
+        | "needs_attention"
         | "submitted"
         | "requires_additional_info"
         | "overturned"

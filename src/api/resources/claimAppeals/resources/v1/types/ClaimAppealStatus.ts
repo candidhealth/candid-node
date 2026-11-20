@@ -3,6 +3,8 @@
 export const ClaimAppealStatus = {
     Appealable: "appealable",
     Preparing: "preparing",
+    ReadyForReview: "ready_for_review",
+    NeedsAttention: "needs_attention",
     Submitted: "submitted",
     RequiresAdditionalInfo: "requires_additional_info",
     Overturned: "overturned",
